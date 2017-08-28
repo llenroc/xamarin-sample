@@ -36,6 +36,9 @@
     <Compile Include="models\request\JwtAuthenticationRequestDTO.cs" />
     <Compile Include="models\response\JwtAuthenticationResponseDTO.cs" />
     <Compile Include="utils\RestServiceFactory.cs" />
+    <Compile Include="services\IChildrenService.cs" />
+    <Compile Include="models\response\SocialMediaDTO.cs" />
+    <Compile Include="models\request\SaveSocialMediaDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

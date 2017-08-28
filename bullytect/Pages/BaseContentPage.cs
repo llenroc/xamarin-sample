@@ -39,8 +39,7 @@ namespace bullytect.Pages
 
 	public class MainBaseContentPage : ContentPage
 	{
-		bool _hasSubscribed;
-
+        
 		public Color BarTextColor
 		{
 			get;
@@ -57,34 +56,6 @@ namespace bullytect.Pages
 		{
 			BarTextColor = Color.White;
 			BackgroundColor = Color.White;
-            _hasSubscribed = false;
-		}
-
-		~MainBaseContentPage()
-		{
-			Debug.WriteLine("Destructor called for {0} {1}".Fmt(GetType().Name, GetHashCode()));
-		}
-
-		void SubscribeToIncomingPayload()
-		{
-			MessagingCenter.Subscribe<App, NotificationPayload>(this, EventTypeName.IncomingPayloadReceived, HandleIncomingPayload);
-		}
-
-		void SubscribeToAuthentication()
-		{
-			MessagingCenter.Subscribe<App>(this, MessageTypes., HandleAuthenticated);
-		}
-
-
-		void HandleAuthenticated(App sender)
-		{
-			OnAuthenticated();
-		}
-
-		void HandleIncomingPayload(App sender, NotificationPayload payload)
-		{
-			if (payload != null)
-				OnIncomingPayload(payload);
 		}
 
 		public bool HasInitialized
@@ -93,39 +64,31 @@ namespace bullytect.Pages
 			private set;
 		}
 
+		~MainBaseContentPage()
+		{
+			Debug.WriteLine("Destructor called for {0} {1}".Fmt(GetType().Name, GetHashCode()));
+		}
+
 		protected virtual void OnLoaded()
 		{
 			TrackPage(new Dictionary<string, string>());
 		}
 
-		internal virtual void OnUserAuthenticated()
-		{
-			App.Instance.ProcessPendingPayload();
-		}
-
-		protected virtual void Initialize()
-		{
-		}
-
-		protected virtual void SubscribeToMessages()
-		{
-			SubscribeToAuthentication();
-			SubscribeToIncomingPayload();
-		}
-
-		protected virtual void UnsubscribeFromMessages()
-		{
-			MessagingCenter.Unsubscribe<AuthenticationViewModel>(this, Messages.IncomingPayloadReceived);
-		}
 
 		protected override void OnAppearing()
 		{
-			if (!_hasSubscribed)
-			{
-				SubscribeToAuthentication();
-				SubscribeToIncomingPayload();
-				_hasSubscribed = true;
-			}
+            
+            MessagingCenter.Subscribe<App, NotificationPayload>(this, EventTypeName.INCOMING_PAYLOAD_RECEIVED, (App sender, NotificationPayload payload) => {
+				if (payload != null)
+					OnIncomingPayload(payload);
+            });
+
+			MessagingCenter.Subscribe<App>(this, EventTypeName.USER_AUTHENTICATED, (App sender) => {
+				if (App.Instance.CurrentAthlete != null)
+				{
+					App.Instance.ProcessPendingPayload();
+				}
+			});
 
 			var nav = Parent as NavigationPage;
 			if (nav != null)
@@ -144,14 +107,23 @@ namespace bullytect.Pages
 			base.OnAppearing();
 		}
 
+
 		protected override void OnDisappearing()
 		{
-			MessagingCenter.Unsubscribe<AuthenticationViewModel>(this, Messages.UserAuthenticated);
-			_hasSubscribed = false;
+
+			MessagingCenter.Unsubscribe<AuthenticationViewModel>(this, EventTypeName.USER_AUTHENTICATED);
 
 			base.OnDisappearing();
 			EvaluateNavigationStack();
 		}
+
+		
+
+		protected virtual void UnsubscribeFromMessages()
+		{
+			MessagingCenter.Unsubscribe<AuthenticationViewModel>(this, EventTypeName.INCOMING_PAYLOAD_RECEIVED);
+		}
+
 
 		async Task EvaluateNavigationStack()
 		{
@@ -162,13 +134,7 @@ namespace bullytect.Pages
 			}
 		}
 
-		void OnAuthenticated()
-		{
-			if (App.Instance.CurrentAthlete != null)
-			{
-				OnUserAuthenticated();
-			}
-		}
+		
 
 		/// <summary>
 		/// Wraps the ContentPage within a NavigationPage
@@ -181,14 +147,6 @@ namespace bullytect.Pages
 			return nav;
 		}
 
-		protected void SetTheme(League l)
-		{
-			if (l == null || l.Theme == null)
-				return;
-
-			BarBackgroundColor = l.Theme.Primary;
-			BarTextColor = Color.FromRgba(255, 255, 255, 220);
-		}
 
 		public void ApplyTheme(NavigationPage nav)
 		{
@@ -276,7 +234,7 @@ namespace bullytect.Pages
 
 			var authViewModel = new AuthenticationViewModel();
 			await authViewModel.LogOut(true);
-			App.Instance.StartRegistrationFlow();
+			//App.Instance.StartRegistrationFlow();
 		}
 
 		#endregion

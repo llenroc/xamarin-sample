@@ -41,9 +41,12 @@ namespace bullytect
 				BaseAddress = new Uri(SharedConfig.BASE_API_URL)
 			};
 			// Register Authentication Service.
-			containerBuilder.Register(c => RestServiceFactory.getService<IAuthenticationService>(httpClient));
+            containerBuilder.Register(c => RestServiceFactory.getService<IAuthenticationService>(httpClient)).InstancePerDependency();
 			// Register Parents Service
-			containerBuilder.Register(c => RestServiceFactory.getService<IParentsService>(httpClient));
+            containerBuilder.Register(c => RestServiceFactory.getService<IParentsService>(httpClient)).InstancePerDependency();
+            // Register Children Service
+            containerBuilder.Register(c => RestServiceFactory.getService<IChildrenService>(httpClient)).InstancePerDependency();
+
 		}
 
 		private static void PrepareContainer(IModule[] platformSpecificModules)
