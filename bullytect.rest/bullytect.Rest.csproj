@@ -26,14 +26,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="MyClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="models\response\ParentDTO.cs" />
+    <Compile Include="models\response\APIResponse.cs" />
+    <Compile Include="services\IParentsService.cs" />
+    <Compile Include="models\response\SonDTO.cs" />
+    <Compile Include="models\request\RegisterParentDTO.cs" />
+    <Compile Include="services\IAuthenticationService.cs" />
+    <Compile Include="models\request\JwtAuthenticationRequestDTO.cs" />
+    <Compile Include="models\response\JwtAuthenticationResponseDTO.cs" />
+    <Compile Include="utils\RestServiceFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="models\" />
+    <Folder Include="models\response\" />
+    <Folder Include="services\" />
+    <Folder Include="models\request\" />
+    <Folder Include="utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>
