@@ -5,15 +5,25 @@ using Autofac.Core;
 using bullytect.config;
 using bullytect.rest.services;
 using bullytect.rest.utils;
+using Bullytect.Utils.Helpers;
 using Xamarin.Forms;
 
 namespace bullytect
 {
     public partial class App : Application
     {
+
         private static IContainer _container;
 
-		
+        static App _instance;
+
+		public static App Instance
+		{
+			get
+			{
+				return _instance;
+			}
+		}
 
 		private static void RegisterPlatformSpecificModules(IModule[] platformSpecificModules, ContainerBuilder containerBuilder)
 		{
@@ -22,7 +32,6 @@ namespace bullytect
 				containerBuilder.RegisterModule(platformSpecificModule);
 			}
 		}
-
 
 		private static void RegisterRestServices(ContainerBuilder containerBuilder)
 		{
@@ -48,8 +57,10 @@ namespace bullytect
 			_container = containerBuilder.Build();
 		}
 
+
         public App(IModule[] platformSpecificModules)
         {
+            _instance = this;
             PrepareContainer(platformSpecificModules);
             InitializeComponent();
             MainPage = new bullytectPage();
@@ -57,7 +68,12 @@ namespace bullytect
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            // Handling for App Exceptions.
+            MessagingCenter.Subscribe<object, Exception>(this, EventTypeName.EXCEPTION_OCCURRED, (object sender, Exception exception) => {
+				if (exception == null)
+					return;
+				exception.Track();
+            });
         }
 
         protected override void OnSleep()

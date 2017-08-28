@@ -40,6 +40,15 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="config\SharedConfig.cs" />
+    <Compile Include="Utils\IToastNotifier.cs" />
+    <Compile Include="Models\Utils\IDirty.cs" />
+    <Compile Include="Models\Utils\BaseNotify.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\ChildrenViewModel.cs" />
+    <Compile Include="Pages\BaseContentPage.cs" />
+    <Compile Include="ViewModels\AuthenticationViewModel.cs" />
+    <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="config\Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -57,17 +66,36 @@
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.4.6.1\lib\netstandard1.1\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Settings.Abstractions">
+      <HintPath>..\packages\Xam.Plugins.Settings.2.5.1.0\lib\portable-net45+wp80+win8+wpa81\Plugin.Settings.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Settings">
+      <HintPath>..\packages\Xam.Plugins.Settings.2.5.1.0\lib\portable-net45+wp80+win8+wpa81\Plugin.Settings.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="config\" />
+    <Folder Include="Utils\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\Utils\" />
+    <Folder Include="Pages\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bullytect.rest\bullytect.rest.csproj">
       <Project>{0748EB83-D6F4-4CAC-A2C2-575E6D6AED54}</Project>
-      <Name>bullytect.Rest</Name>
+      <Name>bullytect.rest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bullytect.Utils\Bullytect.Utils.csproj">
+      <Project>{D149392A-D937-456B-B5D9-1C390BEEB538}</Project>
+      <Name>Bullytect.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\bullytect.rest\bullytect.rest.csproj">
+      <Project>{0748EB83-D6F4-4CAC-A2C2-575E6D6AED54}</Project>
+      <Name>bullytect.rest</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

@@ -5074,10 +5074,10 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "/Users/BISITE/Projects/bullytect/bullytect.rest/bullytect.rest.csproj",
+      "projectUniqueName": "/Users/BISITE/Projects/bullytect-xamarin/bullytect.rest/bullytect.rest.csproj",
       "projectName": "bullytect.rest",
-      "projectPath": "/Users/BISITE/Projects/bullytect/bullytect.rest/bullytect.rest.csproj",
-      "projectJsonPath": "/Users/BISITE/Projects/bullytect/bullytect.rest/project.json",
+      "projectPath": "/Users/BISITE/Projects/bullytect-xamarin/bullytect.rest/bullytect.rest.csproj",
+      "projectJsonPath": "/Users/BISITE/Projects/bullytect-xamarin/bullytect.rest/project.json",
       "projectStyle": "ProjectJson"
     },
     "dependencies": {
