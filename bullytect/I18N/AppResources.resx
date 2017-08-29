@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data name="WelcomePage.MainLabel" xml:space="preserve">
+    <value>BullyTect - The first anti-bullying in internet history. Designed to protect the younger and pre-teenagers from attack on social networks of other groups of their age</value>
+    <comment>Main Label Text For Welcome Page</comment>
+    </data>
+</root>
