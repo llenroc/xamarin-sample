@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using bullytect.Renderers;
 using bullytect.ViewModels;
 using Bullytect.Utils.Helpers;
 using Bullytect.Utils.Models;
@@ -84,10 +85,10 @@ namespace bullytect.Pages
             });
 
 			MessagingCenter.Subscribe<App>(this, EventTypeName.USER_AUTHENTICATED, (App sender) => {
-				if (App.Instance.CurrentAthlete != null)
+				/*if (App.Instance.CurrentAthlete != null)
 				{
 					App.Instance.ProcessPendingPayload();
-				}
+				}*/
 			});
 
 			var nav = Parent as NavigationPage;
@@ -103,7 +104,7 @@ namespace bullytect.Pages
 				OnLoaded();
 			}
 
-			App.Instance.ProcessPendingPayload();
+			//App.Instance.ProcessPendingPayload();
 			base.OnAppearing();
 		}
 
@@ -117,7 +118,9 @@ namespace bullytect.Pages
 			EvaluateNavigationStack();
 		}
 
-		
+		protected virtual void Initialize()
+		{
+		}
 
 		protected virtual void UnsubscribeFromMessages()
 		{
@@ -210,7 +213,7 @@ namespace bullytect.Pages
 			if (Navigation == null)
 				throw new Exception("Navigation is null so unable to show auth form");
 
-			var authPage = new AuthenticationPage();
+			/*var authPage = new AuthenticationPage();
 			await Navigation.PushModalAsync(authPage, true);
 
 			await Task.Delay(300);
@@ -220,7 +223,7 @@ namespace bullytect.Pages
 			{
 				await Navigation.PopModalAsync();
 				return true;
-			}
+			}*/
 
 			return false;
 		}

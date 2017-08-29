@@ -3,6 +3,7 @@ using System.Net.Http;
 using Autofac;
 using Autofac.Core;
 using bullytect.config;
+using bullytect.Pages.Welcome;
 using bullytect.rest.services;
 using bullytect.rest.utils;
 using Bullytect.Utils.Helpers;
@@ -77,6 +78,8 @@ namespace bullytect
 					return;
 				exception.Track();
             });
+
+            MainPage = new WelcomeStartPage(true).WithinNavigationPage();
         }
 
         protected override void OnSleep()
