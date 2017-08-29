@@ -6,7 +6,7 @@ using bullytect.PatformServices;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace bullytect.I18N.MarkupExtension
+namespace bullytect.I18N
 {
 	// You exclude the 'Extension' suffix when using in Xaml markup
 	[ContentProperty("Text")]

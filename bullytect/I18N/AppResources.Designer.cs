@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace bullytect {
+namespace bullytect.I18N {
     using System;
     using System.Reflection;
     
@@ -30,7 +30,7 @@ namespace bullytect {
         internal static System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.Equals(null, resourceMan)) {
-                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("bullytect.AppResources", typeof(AppResources).GetTypeInfo().Assembly);
+                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("bullytect.I18N.AppResources", typeof(AppResources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -44,6 +44,12 @@ namespace bullytect {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        internal static string WelcomePage_MainLabel {
+            get {
+                return ResourceManager.GetString("WelcomePage.MainLabel", resourceCulture);
             }
         }
     }

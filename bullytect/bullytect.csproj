@@ -36,6 +36,11 @@
     <EmbeddedResource Include="Controls\ImageButton.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="I18N\AppResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="I18N\AppResources.es.resx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -68,6 +73,12 @@
     <Compile Include="Converters\IsNotNullToBoolConverter.cs" />
     <Compile Include="Converters\IsNullToBoolConverter.cs" />
     <Compile Include="Converters\IsEmptyConverter.cs" />
+    <Compile Include="I18N\AppResources.Designer.cs">
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PatformServices\ILocalize.cs" />
+    <Compile Include="Helpers\PlatformCulture.cs" />
+    <Compile Include="I18N\TranslateExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -121,6 +132,8 @@
     <Folder Include="Controls\" />
     <Folder Include="Renderers\" />
     <Folder Include="Converters\" />
+    <Folder Include="I18N\" />
+    <Folder Include="PatformServices\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bullytect.rest\bullytect.rest.csproj">

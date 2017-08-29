@@ -3,7 +3,9 @@ using System.Net.Http;
 using Autofac;
 using Autofac.Core;
 using bullytect.config;
+using bullytect.I18N;
 using bullytect.Pages.Welcome;
+using bullytect.PatformServices;
 using bullytect.rest.services;
 using bullytect.rest.utils;
 using Bullytect.Utils.Helpers;
@@ -61,11 +63,20 @@ namespace bullytect
 			_container = containerBuilder.Build();
 		}
 
+        private void ConfigLocale() {
+			if (Device.OS == TargetPlatform.iOS || Device.OS == TargetPlatform.Android)
+			{
+				var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
+			    AppResources.Culture = ci; // set the RESX for resource localization
+				DependencyService.Get<ILocalize>().SetLocale(ci); // set the Thread for locale-aware methods
+			}
+        }
 
         public App(IModule[] platformSpecificModules)
         {
             _instance = this;
             PrepareContainer(platformSpecificModules);
+            ConfigLocale();
             InitializeComponent();
             MainPage = new bullytectPage();
         }
