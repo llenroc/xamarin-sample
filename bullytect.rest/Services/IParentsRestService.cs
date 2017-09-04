@@ -11,7 +11,7 @@ namespace Bullytect.Rest.Services
     #pragma warning disable CS1701
 
 	[Headers("Accept: application/json")]
-    public interface IParentsService
+    public interface IParentsRestService
     {
 
 		[Get("/self")]

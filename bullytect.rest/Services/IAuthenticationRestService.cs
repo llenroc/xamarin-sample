@@ -10,7 +10,7 @@ namespace Bullytect.Rest.Services
     #pragma warning disable CS1701
 
 	[Headers("Accept: application/json")]
-    public interface IAuthenticationService
+    public interface IAuthenticationRestService
     {
 
 		[Post("/")]

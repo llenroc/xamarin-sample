@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Bullytect.Rest.Models.Response;
+using Bullytect.Rest.Models.Request;
 using Refit;
 
 namespace Bullytect.Rest.Services
@@ -9,7 +10,7 @@ namespace Bullytect.Rest.Services
     #pragma warning disable CS1701
 
     [Headers("Accept: application/json")]
-	public interface IChildrenService
+	public interface IChildrenRestService
     {
 		[Get("/{id}")]
 		Task<APIResponse<SonDTO>> getSonById(string id);
