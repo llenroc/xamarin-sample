@@ -1,13 +1,13 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bullytect", "bullytect\bullytect.csproj", "{BDFCD069-46CA-4280-8560-24DF8F800421}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bullytect.Core", "Bullytect.Core\Bullytect.Core.csproj", "{BDFCD069-46CA-4280-8560-24DF8F800421}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bullytect.iOS", "iOS\bullytect.iOS.csproj", "{264A2A89-5430-4E9E-AA6E-54E75CB9141F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bullytect.iOS", "Bullytect.IOS\Bullytect.iOS.csproj", "{264A2A89-5430-4E9E-AA6E-54E75CB9141F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bullytect.Droid", "Droid\bullytect.Droid.csproj", "{D19B3DEA-270E-4B09-9413-D96793AE937C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bullytect.Droid", "Bullytect.Droid\Bullytect.Droid.csproj", "{D19B3DEA-270E-4B09-9413-D96793AE937C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bullytect.rest", "bullytect.rest\bullytect.rest.csproj", "{0748EB83-D6F4-4CAC-A2C2-575E6D6AED54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bullytect.Rest", "Bullytect.Rest\Bullytect.Rest.csproj", "{0748EB83-D6F4-4CAC-A2C2-575E6D6AED54}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bullytect.Utils", "Bullytect.Utils\Bullytect.Utils.csproj", "{D149392A-D937-456B-B5D9-1C390BEEB538}"
 EndProject

@@ -1,0 +1,43 @@
+﻿using System;
+using Android.App;
+using Android.Content.PM;
+using Android.OS;
+using MvvmCross.Forms.Presenters;
+using MvvmCross.Droid.Views;
+using MvvmCross.Platform;
+
+namespace Bullytect.Droid
+{
+
+
+	[Activity(Label = "BullyTect", Icon = "@drawable/icon", Theme = "@style/DefaultTheme", MainLauncher = false,
+			  ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    {
+        protected override void OnCreate(Bundle bundle)
+        {
+
+			try
+			{
+    			TabLayoutResource = Resource.Layout.Tabbar;
+    			ToolbarResource = Resource.Layout.Toolbar;
+
+    			base.OnCreate(bundle);
+
+    			global::Xamarin.Forms.Forms.Init(this, bundle);
+
+                XFGloss.Droid.Library.Init(this, bundle);
+
+    			var formsPresenter = (MvxFormsPagePresenter)Mvx.Resolve<IMvxAndroidViewPresenter>();
+    			LoadApplication(formsPresenter.FormsApplication);
+				
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("**BullyTect LAUNCH EXCEPTION**\n\n" + e);
+			}
+
+
+        }
+    }
+}

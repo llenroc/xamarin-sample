@@ -2,7 +2,7 @@
 using System.Net.Http;
 using Refit;
 
-namespace bullytect.rest.utils
+namespace Bullytect.Rest.Utils
 {
     public static class RestServiceFactory
     {

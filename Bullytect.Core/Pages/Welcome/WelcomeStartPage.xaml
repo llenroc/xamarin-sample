@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:MvxContentPage 
+    x:TypeArguments="viewModels:AuthenticationViewModel"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Bullytect.Core.Pages"
+    x:Class="Bullytect.Core.Pages.Welcome.WelcomeStartPage"
+    xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
+    xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
+    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+    xmlns:controls="clr-namespace:Bullytect.Core.Controls"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters">
+
+    <ContentPage.Resources>
+       <ResourceDictionary>
+           <Style TargetType="Label" BasedOn="{StaticResource whiteLabelStyle}" />
+        </ResourceDictionary>
+     </ContentPage.Resources>
+
+    <xfg:ContentPageGloss.BackgroundGradient>
+        <xfg:Gradient Rotation="150">
+            <xfg:GradientStep StepColor="#03A9F4" StepPercentage="0" />
+            <xfg:GradientStep StepColor="#303F9F" StepPercentage="1" />
+        </xfg:Gradient>
+    </xfg:ContentPageGloss.BackgroundGradient>
+
+    <ContentPage.Content>
+        <Grid VerticalOptions="Fill" HorizontalOptions="Fill" Padding="24">
+            <StackLayout x:Name="label1" Padding="24,0" VerticalOptions="Center">
+                <Label AutomationId="label1" Text="{i18n:Translate WelcomePage.MainLabel}"
+                    FontSize="Medium" XAlign="Center" />
+            </StackLayout>
+
+            <StackLayout x:Name="label2" Grid.Row="1" Padding="24,0" VerticalOptions="Center">
+                <Label AutomationId="label2" Text="Before we get going, lets get you registered." FontSize="Medium" XAlign="Center" />
+            </StackLayout>
+
+            <StackLayout x:Name="buttonStack" Spacing="0" Grid.Row="2" VerticalOptions="End">
+                <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="White" HorizontalOptions="Center"
+                    VerticalOptions="EndAndExpand" />
+
+                <Label Text="{Binding AuthenticationStatus, StringFormat='\{0\}...'}" IsVisible="{Binding IsBusy}"  FontSize="Medium"
+                    XAlign="Center" YAlign="Center" VerticalOptions="EndAndExpand" HeightRequest="70" />
+
+                <controls:AnimateButton x:Name="btnAuthenticate" AutomationId="authButton" Text="SIGN IN"
+                    VerticalOptions="EndAndExpand" Style="{StaticResource wizardButton}"
+                    IsVisible="{Binding IsBusy, Converter={x:Static converters:InverseBoolConverter.Instance}}"
+                    Clicked="AuthButtonClicked" />
+
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</d:MvxContentPage>
+    
+

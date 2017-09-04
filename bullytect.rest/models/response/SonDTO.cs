@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace bullytect.rest.models.response
+namespace Bullytect.Rest.Models.Response
 {
     public class SonDTO
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace bullytect.rest.models.request
+namespace Bullytect.Rest.Models.Request
 {
     public class SaveSocialMediaDTO
     {
