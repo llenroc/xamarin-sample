@@ -47,6 +47,29 @@ namespace Bullytect.Droid
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView = global::Bullytect.Droid.Resource.Styleable.MvxListView;
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate = global::Bullytect.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate;
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView_MvxItemTemplate = global::Bullytect.Droid.Resource.Styleable.MvxListView_MvxItemTemplate;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Attribute.MvxBind = global::Bullytect.Droid.Resource.Attribute.MvxBind;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Attribute.MvxDropDownItemTemplate = global::Bullytect.Droid.Resource.Attribute.MvxDropDownItemTemplate;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Attribute.MvxGroupItemTemplate = global::Bullytect.Droid.Resource.Attribute.MvxGroupItemTemplate;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Attribute.MvxItemTemplate = global::Bullytect.Droid.Resource.Attribute.MvxItemTemplate;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Attribute.MvxLang = global::Bullytect.Droid.Resource.Attribute.MvxLang;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Attribute.MvxSource = global::Bullytect.Droid.Resource.Attribute.MvxSource;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Attribute.MvxTemplate = global::Bullytect.Droid.Resource.Attribute.MvxTemplate;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Id.MvvmCrossTagId = global::Bullytect.Droid.Resource.Id.MvvmCrossTagId;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Id.MvxBindingTagUnique = global::Bullytect.Droid.Resource.Id.MvxBindingTagUnique;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.String.ApplicationName = global::Bullytect.Droid.Resource.String.ApplicationName;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.String.Hello = global::Bullytect.Droid.Resource.String.Hello;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Styleable.MvxBinding = global::Bullytect.Droid.Resource.Styleable.MvxBinding;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Styleable.MvxBinding_MvxBind = global::Bullytect.Droid.Resource.Styleable.MvxBinding_MvxBind;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Styleable.MvxBinding_MvxLang = global::Bullytect.Droid.Resource.Styleable.MvxBinding_MvxLang;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Styleable.MvxControl = global::Bullytect.Droid.Resource.Styleable.MvxControl;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Styleable.MvxControl_MvxTemplate = global::Bullytect.Droid.Resource.Styleable.MvxControl_MvxTemplate;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Styleable.MvxExpandableListView = global::Bullytect.Droid.Resource.Styleable.MvxExpandableListView;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Styleable.MvxExpandableListView_MvxGroupItemTemplate = global::Bullytect.Droid.Resource.Styleable.MvxExpandableListView_MvxGroupItemTemplate;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Styleable.MvxImageView = global::Bullytect.Droid.Resource.Styleable.MvxImageView;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Styleable.MvxImageView_MvxSource = global::Bullytect.Droid.Resource.Styleable.MvxImageView_MvxSource;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Styleable.MvxListView = global::Bullytect.Droid.Resource.Styleable.MvxListView;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate = global::Bullytect.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate;
+			global::MvvmCross.Plugins.Validation.Droid.Resource.Styleable.MvxListView_MvxItemTemplate = global::Bullytect.Droid.Resource.Styleable.MvxListView_MvxItemTemplate;
 			global::NControl.Controls.Droid.Resource.Animation.abc_fade_in = global::Bullytect.Droid.Resource.Animation.abc_fade_in;
 			global::NControl.Controls.Droid.Resource.Animation.abc_fade_out = global::Bullytect.Droid.Resource.Animation.abc_fade_out;
 			global::NControl.Controls.Droid.Resource.Animation.abc_grow_fade_in_from_bottom = global::Bullytect.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -8614,6 +8637,12 @@ namespace Bullytect.Droid
 		
 		public partial class String
 		{
+			
+			// aapt resource value: 0x7f070040
+			public const int ApplicationName = 2131165248;
+			
+			// aapt resource value: 0x7f07003f
+			public const int Hello = 2131165247;
 			
 			// aapt resource value: 0x7f070016
 			public const int abc_action_bar_home_description = 2131165206;
