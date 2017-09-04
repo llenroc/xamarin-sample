@@ -39,6 +39,7 @@
     <Compile Include="Services\IChildrenRestService.cs" />
     <Compile Include="Models\Response\SocialMediaDTO.cs" />
     <Compile Include="Models\Request\SaveSocialMediaDTO.cs" />
+    <Compile Include="Models\Request\UpdateParentDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

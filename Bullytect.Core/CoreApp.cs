@@ -6,6 +6,10 @@ using Bullytect.Rest.Services;
 using MvvmCross.Platform;
 using MvvmCross.Platform.IoC;
 using Bullytect.Core.ViewModels;
+using AutoMapper;
+using Bullytect.Rest.Models.Response;
+using Bullytect.Core.Models.Domain;
+using MvvmCross.Plugins.Validation;
 
 namespace Bullytect.Core
 {
@@ -31,6 +35,14 @@ namespace Bullytect.Core
                 .EndingWith("ServiceImpl")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
+
+
+			Mapper.Initialize(cfg => {
+				cfg.CreateMap<ParentDTO, ParentEntity>();
+                cfg.CreateMap<SonDTO, SonEntity>();
+			});
+
+            Mvx.RegisterType<IValidator, Validator>();
 
             RegisterAppStart<AuthenticationViewModel>();
 			

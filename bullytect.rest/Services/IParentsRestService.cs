@@ -21,7 +21,11 @@ namespace Bullytect.Rest.Services
 		Task<APIResponse<List<SonDTO>>> GetChildrenOfSelfParent();
 
 		[Post("/")]
-		Task<APIResponse<ParentDTO>> registerParent([Body] JwtAuthenticationRequestDTO parent);
+		Task<APIResponse<ParentDTO>> registerParent([Body] RegisterParentDTO parent);
+
+
+        [Post("/self")]
+        Task<APIResponse<ParentDTO>> updateSelfParent([Body] UpdateParentDTO parent);
 
     }
 }

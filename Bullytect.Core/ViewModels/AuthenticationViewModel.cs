@@ -8,13 +8,9 @@ using Xamarin.Forms;
 
 namespace Bullytect.Core.ViewModels
 {
-
-
     public enum AuthenticationStatusEnum {
         LOADING, LOGIN_SUCESS, LOGIN_FAILED
     }
-
-
 
     public class AuthenticationViewModel : BaseViewModel
     {
@@ -26,7 +22,6 @@ namespace Bullytect.Core.ViewModels
             this._authenticationService = authenticationService;
 
         }
-
 
         #region Properties
 

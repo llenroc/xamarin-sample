@@ -190,6 +190,15 @@
     <Reference Include="MvvmCross.Forms.Droid">
       <HintPath>..\packages\MvvmCross.Forms.5.1.1\lib\MonoAndroid70\MvvmCross.Forms.Droid.dll</HintPath>
     </Reference>
+    <Reference Include="MvvmCross.Plugins.Messenger">
+      <HintPath>..\packages\MvvmCross.Plugin.Messenger.4.0.0\lib\MonoAndroid\MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Validation">
+      <HintPath>..\packages\MvvmCross.Plugins.Validation.2.1.2\lib\MonoAndroid\MvvmCross.Plugins.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Validation.Droid">
+      <HintPath>..\packages\MvvmCross.Plugins.Validation.2.1.2\lib\MonoAndroid\MvvmCross.Plugins.Validation.Droid.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bullytect.Core\Bullytect.Core.csproj">
@@ -212,6 +221,8 @@
     <Compile Include="Setup.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="DebugTrace.cs" />
+    <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\ValidationPluginBootstrap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

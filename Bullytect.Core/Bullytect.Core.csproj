@@ -79,6 +79,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\IParentService.cs" />
+    <Compile Include="Models\Domain\ParentEntity.cs" />
+    <Compile Include="Services\Impl\ParentServiceImpl.cs" />
+    <Compile Include="Models\Domain\SonEntity.cs" />
+    <Compile Include="ViewModels\ParentProfileViewModel.cs" />
+    <Compile Include="Converters\AgeFormatValueConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
@@ -129,6 +135,27 @@
     <Reference Include="MvvmCross.Forms">
       <HintPath>..\packages\MvvmCross.Forms.5.1.1\lib\portable-net45+netcore45+wpa81+MonoAndroid10+Xamarin.iOS10\MvvmCross.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.Primitives">
+      <HintPath>..\packages\System.ComponentModel.Primitives.4.3.0\lib\netstandard1.0\System.ComponentModel.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.TypeConverter">
+      <HintPath>..\packages\System.ComponentModel.TypeConverter.4.3.0\lib\netstandard1.0\System.ComponentModel.TypeConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\netstandard1.1\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Messenger">
+      <HintPath>..\packages\MvvmCross.Plugin.Messenger.4.0.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Validation">
+      <HintPath>..\packages\MvvmCross.Plugins.Validation.2.1.2\lib\portable-net45+netcore45+wpa81\MvvmCross.Plugins.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.FieldBinding">
+      <HintPath>..\packages\MvvmCross.Plugin.FieldBinding.4.0.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.FieldBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Validation.ForFieldBinding">
+      <HintPath>..\packages\MvvmCross.Plugins.Validation.ForFieldBinding.2.1.2\lib\portable-net45+netcore45+wpa81\MvvmCross.Plugins.Validation.ForFieldBinding.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -148,6 +175,7 @@
     <Folder Include="PatformServices\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Impl\" />
+    <Folder Include="Models\Domain\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bullytect.rest\bullytect.rest.csproj">
