@@ -4,6 +4,7 @@ namespace Bullytect.Core.Services.Impl
     using System;
     using System.Diagnostics;
     using System.Threading.Tasks;
+    using Bullytect.Core.Config;
     using Bullytect.Rest.Models.Request;
     using Bullytect.Rest.Services;
 
@@ -17,15 +18,20 @@ namespace Bullytect.Core.Services.Impl
             Debug.WriteLine(GetType().Name + " was created on context");
         }
 
-        public Task<string> LogIn(string email, string password)
+        async public Task<string> LogIn(string email, string password)
         {
             Debug.WriteLine(String.Format("Login with {0}/{1}", email, password));
 
-            return _authenticationRestService.getAuthorizationToken(new JwtAuthenticationRequestDTO()
+            return await _authenticationRestService.getAuthorizationToken(new JwtAuthenticationRequestDTO()
             {
                 Email = email,
                 Password = password
             }).ContinueWith(t => t.Result.Data.Token, TaskContinuationOptions.OnlyOnRanToCompletion);
         }
+
+		public bool IsLoggedIn()
+		{
+            return Settings.AccessToken != null;
+		}
     }
 }

@@ -10,7 +10,7 @@ namespace Bullytect.Droid
 {
 
 
-	[Activity(Label = "BullyTect", Icon = "@drawable/icon", Theme = "@style/DefaultTheme", MainLauncher = false,
+	[Activity(Name = "com.usal.bisite.bullytect.MainActivity",  Label = "BullyTect", Icon = "@drawable/icon", Theme = "@style/DefaultTheme", MainLauncher = false,
 			  ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {

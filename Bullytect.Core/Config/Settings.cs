@@ -8,10 +8,7 @@ namespace Bullytect.Core.Config
     {
 		static ISettings AppSettings
 		{
-			get
-			{
-				return CrossSettings.Current;
-			}
+			get => CrossSettings.Current;
 		}
 
 
@@ -19,22 +16,13 @@ namespace Bullytect.Core.Config
 
 		public static string AccessToken
 		{
-			get
-			{
-				return AppSettings.GetValueOrDefault(ACCESS_TOKEN_KEY, null);
-			}
-			set
-			{
-				AppSettings.AddOrUpdateValue(ACCESS_TOKEN_KEY, value);
-			}
+			get => AppSettings.GetValueOrDefault(ACCESS_TOKEN_KEY, null);
+			set => AppSettings.AddOrUpdateValue(ACCESS_TOKEN_KEY, value);
 		}
 
 		public static string AccessTokenAndType
 		{
-			get
-			{
-				return AccessToken == null ? null : $"Bearer {AccessToken}";
-			}
+			get => AccessToken == null ? null : $"Bearer {AccessToken}";
 		}
     }
 }

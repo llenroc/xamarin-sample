@@ -8,5 +8,6 @@ namespace Bullytect.Core.Services
     public interface IAuthenticationService
     {
         Task<string> LogIn(string email, string password);
+        bool IsLoggedIn();
     }
 }

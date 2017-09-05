@@ -5,6 +5,7 @@ using MvvmCross.Droid.Views;
 namespace Bullytect.Droid
 {
     [Activity(
+        Name = "com.usal.bisite.bullytect.SplashScreen",
         Label = "Bullytect"
         , MainLauncher = true
         , Icon = "@drawable/icon"

@@ -12,16 +12,16 @@ namespace Bullytect.Rest.Services
     [Headers("Accept: application/json")]
 	public interface IChildrenRestService
     {
-		[Get("/{id}")]
+		[Get("/children/{id}")]
 		Task<APIResponse<SonDTO>> getSonById(string id);
 
-		[Get("/{id}/social")]
+		[Get("/children/{id}/social")]
 		Task<APIResponse<List<SocialMediaDTO>>> GetAllSocialMediaBySonId(string id);
 
-		[Get("/{id}/social/invalid")]
+		[Get("/children/{id}/social/invalid")]
 		Task<APIResponse<List<SocialMediaDTO>>> GetInvalidSocialMediaBySonId(string id);
 
-		[Post("/social/save")]
+		[Post("/children/social/save")]
 		Task<APIResponse<ParentDTO>> SaveSocialMedia([Body] SaveSocialMediaDTO socialMedia);
 
     }

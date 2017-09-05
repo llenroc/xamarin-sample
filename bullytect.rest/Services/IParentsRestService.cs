@@ -14,17 +14,16 @@ namespace Bullytect.Rest.Services
     public interface IParentsRestService
     {
 
-		[Get("/self")]
+		[Get("/parents/self")]
 		Task<APIResponse<ParentDTO>> GetSelfInformation();
 
-		[Get("/self/children")]
+		[Get("/parents/self/children")]
 		Task<APIResponse<List<SonDTO>>> GetChildrenOfSelfParent();
 
-		[Post("/")]
+		[Post("/parents/")]
 		Task<APIResponse<ParentDTO>> registerParent([Body] RegisterParentDTO parent);
 
-
-        [Post("/self")]
+        [Post("/parents/self")]
         Task<APIResponse<ParentDTO>> updateSelfParent([Body] UpdateParentDTO parent);
 
     }

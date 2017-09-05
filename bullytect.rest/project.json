@@ -2,7 +2,7 @@
   "dependencies": {
     "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
     "NETStandard.Library": "2.0.0",
-    "Refit": "4.0.1"
+    "Refit": "3.0.1"
   },
   "frameworks": {
     "netstandard1.5": {}

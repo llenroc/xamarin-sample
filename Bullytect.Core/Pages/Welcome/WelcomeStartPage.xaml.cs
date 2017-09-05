@@ -5,7 +5,7 @@ using MvvmCross.Forms.Core;
 
 namespace Bullytect.Core.Pages.Welcome
 {
-    public partial class WelcomeStartPage : MvxContentPage<AuthenticationViewModel>
+    public partial class WelcomeStartPage : MvxContentPage<WelcomeViewModel>
 	{
 		public WelcomeStartPage()
 		{

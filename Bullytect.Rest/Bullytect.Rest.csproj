@@ -40,6 +40,7 @@
     <Compile Include="Models\Response\SocialMediaDTO.cs" />
     <Compile Include="Models\Request\SaveSocialMediaDTO.cs" />
     <Compile Include="Models\Request\UpdateParentDTO.cs" />
+    <Compile Include="Utils\Logging\HttpLoggingHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
@@ -50,6 +51,7 @@
     <Folder Include="Services\" />
     <Folder Include="Models\Request\" />
     <Folder Include="Utils\" />
+    <Folder Include="Utils\Logging\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

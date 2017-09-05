@@ -13,7 +13,7 @@ namespace Bullytect.Rest.Services
     public interface IAuthenticationRestService
     {
 
-		[Post("/")]
+		[Post("/auth/")]
 		Task<APIResponse<JwtAuthenticationResponseDTO>> getAuthorizationToken([Body] JwtAuthenticationRequestDTO authorizationRequest);
 
     }
