@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Bullytect.Core.Services;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Validation;
@@ -82,7 +83,7 @@ namespace Bullytect.Core.ViewModels
 		#region commands
 
 
-		public void Register()
+		async public Task RegisterAsyncTask()
 		{
 
 			var errors = _validator.Validate(this);
@@ -95,14 +96,16 @@ namespace Bullytect.Core.ViewModels
 			{
 				using (new Busy(this))
 				{
-                    var parent = _parentService.register(FirstName, LastName, Age, Email, PasswordClear, ConfirmPassword);
+                    var parent = await _parentService.register(FirstName, LastName, Age, Email, PasswordClear, ConfirmPassword);
 					_toastService.DisplayMessage("Saved");
 				}
 			}
 
 		}
 
-		public IMvxCommand RegisterCommand => new MvxCommand(Register);
+		IMvxCommand _registerCommand;
+		public IMvxCommand RegisterCommand =>
+			_registerCommand ?? (_registerCommand = new MvxCommand(async () => await RegisterAsyncTask()));
 
 
 

@@ -19,30 +19,30 @@ namespace Bullytect.Core.Services.Impl
             _parentsRestService = parentsRestService;
         }
 
-        public Task<ParentEntity> getProfileInformation()
+        async public Task<ParentEntity> getProfileInformation()
         {
            Debug.WriteLine("Get Profile Information");
 
-            return _parentsRestService.GetSelfInformation()
+            return await _parentsRestService.GetSelfInformation()
                                       .ContinueWith(t => t.Result.Data, TaskContinuationOptions.OnlyOnRanToCompletion)
                                       .ContinueWith(t => Mapper.Map<ParentDTO, ParentEntity>(t.Result), TaskContinuationOptions.OnlyOnRanToCompletion);
         }
 
 
-		public Task<List<SonEntity>> getChildren()
+		async public Task<List<SonEntity>> getChildren()
 		{
 			Debug.WriteLine("Get Children");
 
-            return _parentsRestService.GetChildrenOfSelfParent()
+            return await _parentsRestService.GetChildrenOfSelfParent()
                                       .ContinueWith(t => t.Result.Data, TaskContinuationOptions.OnlyOnRanToCompletion)
                                       .ContinueWith(t => Mapper.Map<List<SonDTO>, List<SonEntity>>(t.Result), TaskContinuationOptions.OnlyOnRanToCompletion);
 		}
 
-        public Task<ParentEntity> register(string FirstName, string LastName, int Age, string Email, string PasswordClear, string ConfirmPassword)
+        async public Task<ParentEntity> register(string FirstName, string LastName, int Age, string Email, string PasswordClear, string ConfirmPassword)
         {
 			Debug.WriteLine("Register Parent");
 
-            return _parentsRestService.registerParent(new RegisterParentDTO()
+            return await _parentsRestService.registerParent(new RegisterParentDTO()
             {
                 FirstName = FirstName,
                 LastName = LastName,
@@ -56,11 +56,11 @@ namespace Bullytect.Core.Services.Impl
         }
 
 
-        public Task<ParentEntity> update(string FirstName, string LastName, int Age, string Email)
+        async public Task<ParentEntity> update(string FirstName, string LastName, int Age, string Email)
         {
             Debug.WriteLine(String.Format("Update Parent with:t FirstName: {0}, LastName: {1}, Age: {2}, Email: {3}", FirstName, LastName, Age, Email));
 
-            return _parentsRestService.updateSelfParent(new UpdateParentDTO()
+            return await _parentsRestService.updateSelfParent(new UpdateParentDTO()
             {
                 FirstName = FirstName,
                 LastName = LastName,
