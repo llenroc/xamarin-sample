@@ -10,6 +10,7 @@ using Bullytect.Rest.Models.Response;
 using Bullytect.Core.Models.Domain;
 using MvvmCross.Plugins.Validation;
 using Bullytect.Rest.Utils.Logging;
+using Acr.UserDialogs;
 
 namespace Bullytect.Core
 {
@@ -58,6 +59,8 @@ namespace Bullytect.Core
 
 
             Mvx.RegisterType<IValidator, Validator>();
+
+            Mvx.RegisterSingleton<IUserDialogs>(() => UserDialogs.Instance);
 
             RegisterAppStart(new CustomAppStart());
 			

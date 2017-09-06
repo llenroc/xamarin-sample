@@ -52,5 +52,11 @@ namespace Bullytect.Core.I18N {
                 return ResourceManager.GetString("WelcomePage.MainLabel", resourceCulture);
             }
         }
+        
+        internal static string Login_Authenticating {
+            get {
+                return ResourceManager.GetString("Login.Authenticating", resourceCulture);
+            }
+        }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using Bullytect.Core.Commands;
 using Bullytect.Core.Config;
+using Bullytect.Core.I18N;
 using Bullytect.Core.Services;
 using Bullytect.Utils.Helpers;
 using MvvmCross.Plugins.Validation;
@@ -21,12 +23,15 @@ namespace Bullytect.Core.ViewModels
         readonly IValidator _validator;
         readonly IAuthenticationService _authenticationService;
         readonly IMvxToastService _toastService;
+        readonly IUserDialogs _userDialogs;
 
-        public AuthenticationViewModel(IValidator validator, IAuthenticationService authenticationService, IMvxToastService toastService)
+        public AuthenticationViewModel(IValidator validator, IAuthenticationService authenticationService, IMvxToastService toastService,
+                                      IUserDialogs userDialogs)
         {
             _validator = validator;
             _authenticationService = authenticationService;
             _toastService = toastService;
+            _userDialogs = userDialogs;
 
         }
 
@@ -80,7 +85,11 @@ namespace Bullytect.Core.ViewModels
 
                                    try
                                    {
+                                        
                                        Status = AuthenticationStatusEnum.LOADING;
+                                       
+                                       _userDialogs.ShowLoading(AppResources.Login_Authenticating, MaskType.Black);
+
                                        // get access token
                                        string accessToken = await _authenticationService.LogIn(_email, _password);
 
@@ -92,13 +101,15 @@ namespace Bullytect.Core.ViewModels
                                        Status = AuthenticationStatusEnum.LOGIN_SUCESS;
 
                                    }
-                                   catch (ApiException ex)
-                                   {
-                                       Debug.WriteLine("Api Exception ...");
-                                   }
                                    catch (Exception ex)
                                    {
 
+                                       _userDialogs.HideLoading();
+									   var toastConfig = new ToastConfig("Toasting...");
+									   toastConfig.SetDuration(3000);
+									   toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
+
+									   _userDialogs.Toast(toastConfig);
                                        MessagingCenter.Send(new object(), EventTypeName.EXCEPTION_OCCURRED, ex);
                                        Status = AuthenticationStatusEnum.LOGIN_FAILED;
                                    }

@@ -5,6 +5,7 @@ using Android.OS;
 using MvvmCross.Forms.Presenters;
 using MvvmCross.Droid.Views;
 using MvvmCross.Platform;
+using Acr.UserDialogs;
 
 namespace Bullytect.Droid
 {
@@ -27,6 +28,8 @@ namespace Bullytect.Droid
     			global::Xamarin.Forms.Forms.Init(this, bundle);
 
                 XFGloss.Droid.Library.Init(this, bundle);
+
+                UserDialogs.Init(this);
 
     			var formsPresenter = (MvxFormsPagePresenter)Mvx.Resolve<IMvxAndroidViewPresenter>();
     			LoadApplication(formsPresenter.FormsApplication);
