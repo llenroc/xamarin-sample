@@ -41,6 +41,8 @@
     <Compile Include="Models\Request\SaveSocialMediaDTO.cs" />
     <Compile Include="Models\Request\UpdateParentDTO.cs" />
     <Compile Include="Utils\Logging\HttpLoggingHandler.cs" />
+    <Compile Include="Services\IDeviceGroupsRestService.cs" />
+    <Compile Include="Models\Response\DeviceDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

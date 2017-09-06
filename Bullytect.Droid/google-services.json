@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "304418445945",
+    "firebase_url": "https://bullytect.firebaseio.com",
+    "project_id": "bullytect",
+    "storage_bucket": "bullytect.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304418445945:android:d919d7e4bbb2b385",
+        "android_client_info": {
+          "package_name": "com.usal.bisite.bullytect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "304418445945-srfltiuhvc4spvf3h881rb0kqfl61o21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtPC8IvC8R5MyS8Ipoh9c4wZQM5ySsLUc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

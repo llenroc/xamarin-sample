@@ -13,6 +13,7 @@ namespace Bullytect.Core.Config
 
 
         const string ACCESS_TOKEN_KEY = "ACCESS_TOKEN";
+        const string FCM_TOKEN = "FCM_TOKEN";
 
 		public static string AccessToken
 		{
@@ -24,5 +25,11 @@ namespace Bullytect.Core.Config
 		{
 			get => AccessToken == null ? null : $"Bearer {AccessToken}";
 		}
+
+        public static string FcmToken
+        {
+            get => AppSettings.GetValueOrDefault(FCM_TOKEN, null);
+            set => AppSettings.AddOrUpdateValue(FCM_TOKEN, value);
+        }
     }
 }

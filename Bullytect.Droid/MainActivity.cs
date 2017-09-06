@@ -6,6 +6,7 @@ using MvvmCross.Forms.Presenters;
 using MvvmCross.Droid.Views;
 using MvvmCross.Platform;
 using Acr.UserDialogs;
+using Plugin.FirebasePushNotification;
 
 namespace Bullytect.Droid
 {
@@ -33,6 +34,8 @@ namespace Bullytect.Droid
 
     			var formsPresenter = (MvxFormsPagePresenter)Mvx.Resolve<IMvxAndroidViewPresenter>();
     			LoadApplication(formsPresenter.FormsApplication);
+
+                FirebasePushNotificationManager.ProcessIntent(Intent);
 				
 			}
 			catch (Exception e)

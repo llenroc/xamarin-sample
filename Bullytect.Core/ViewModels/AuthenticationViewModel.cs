@@ -5,11 +5,10 @@ using Acr.UserDialogs;
 using Bullytect.Core.Commands;
 using Bullytect.Core.Config;
 using Bullytect.Core.I18N;
+using Bullytect.Core.Messages;
 using Bullytect.Core.Services;
-using Bullytect.Utils.Helpers;
+using MvvmCross.Plugins.Messenger;
 using MvvmCross.Plugins.Validation;
-using Refit;
-using Xamarin.Forms;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -24,14 +23,16 @@ namespace Bullytect.Core.ViewModels
         readonly IAuthenticationService _authenticationService;
         readonly IMvxToastService _toastService;
         readonly IUserDialogs _userDialogs;
+        readonly IMvxMessenger _mvxMessenger;
 
         public AuthenticationViewModel(IValidator validator, IAuthenticationService authenticationService, IMvxToastService toastService,
-                                      IUserDialogs userDialogs)
+                                      IUserDialogs userDialogs, IMvxMessenger mvxMessenger)
         {
             _validator = validator;
             _authenticationService = authenticationService;
             _toastService = toastService;
             _userDialogs = userDialogs;
+            _mvxMessenger = mvxMessenger;
 
         }
 
@@ -100,6 +101,8 @@ namespace Bullytect.Core.ViewModels
 
                                        Status = AuthenticationStatusEnum.LOGIN_SUCESS;
 
+                                        _mvxMessenger.Publish(new AuthenticatedUserMessage(this));
+
                                    }
                                    catch (Exception ex)
                                    {
@@ -108,9 +111,10 @@ namespace Bullytect.Core.ViewModels
 									   var toastConfig = new ToastConfig("Toasting...");
 									   toastConfig.SetDuration(3000);
 									   toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
-
 									   _userDialogs.Toast(toastConfig);
-                                       MessagingCenter.Send(new object(), EventTypeName.EXCEPTION_OCCURRED, ex);
+
+                                       _mvxMessenger.Publish(new ExceptionOcurredMessage(this, ex));
+
                                        Status = AuthenticationStatusEnum.LOGIN_FAILED;
                                    }
 

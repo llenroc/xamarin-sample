@@ -30,7 +30,7 @@ namespace Bullytect.Core
 			Mvx.RegisterSingleton<IAuthenticationRestService>(() => RestServiceFactory.getService<IAuthenticationRestService>(httpClient));
 			Mvx.RegisterSingleton<IParentsRestService>(() => RestServiceFactory.getService<IParentsRestService>(httpClient));
 			Mvx.RegisterSingleton<IChildrenRestService>(() => RestServiceFactory.getService<IChildrenRestService>(httpClient));
-
+            Mvx.RegisterSingleton<IDeviceGroupsRestService>(() => RestServiceFactory.getService<IDeviceGroupsRestService>(httpClient));
         }
 
         void prepareMappers() {
@@ -38,6 +38,7 @@ namespace Bullytect.Core
 			Mapper.Initialize(cfg => {
 				cfg.CreateMap<ParentDTO, ParentEntity>();
 				cfg.CreateMap<SonDTO, SonEntity>();
+                cfg.CreateMap<DeviceDTO, DeviceEntity>();
 			});
         }
 
