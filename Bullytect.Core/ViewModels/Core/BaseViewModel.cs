@@ -1,11 +1,14 @@
-﻿using System;
-using System.ComponentModel;
-using Bullytect.Core.Models.Utils;
-using MvvmCross.Core.ViewModels;
+﻿
 
 namespace Bullytect.Core.ViewModels
 {
-    public class BaseViewModel: MvxViewModel, IDirty
+
+	using System;
+	using Bullytect.Core.Models.Utils;
+	using MvvmCross.ReactiveUI.Interop;
+
+
+    public class BaseViewModel: MvxReactiveViewModel, IDirty
     {
        
         bool _isBusy;

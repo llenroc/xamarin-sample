@@ -1,58 +1,63 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
-using Bullytect.Core.Commands;
 using Bullytect.Core.Config;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Messages;
 using Bullytect.Core.Services;
 using MvvmCross.Plugins.Messenger;
-using MvvmCross.Plugins.Validation;
+using ReactiveUI;
 
 namespace Bullytect.Core.ViewModels
 {
-    public enum AuthenticationStatusEnum {
-        LOADING, LOGIN_SUCESS, LOGIN_FAILED
-    }
 
     public class AuthenticationViewModel : BaseViewModel
     {
-
-        readonly IValidator _validator;
         readonly IAuthenticationService _authenticationService;
-        readonly IMvxToastService _toastService;
         readonly IUserDialogs _userDialogs;
         readonly IMvxMessenger _mvxMessenger;
 
-        public AuthenticationViewModel(IValidator validator, IAuthenticationService authenticationService, IMvxToastService toastService,
+        public AuthenticationViewModel(IAuthenticationService authenticationService,
                                       IUserDialogs userDialogs, IMvxMessenger mvxMessenger)
         {
-            _validator = validator;
             _authenticationService = authenticationService;
-            _toastService = toastService;
             _userDialogs = userDialogs;
             _mvxMessenger = mvxMessenger;
 
-        }
 
-        #region Properties
+            // Create Reactive Commands
+            LoginCommand = ReactiveCommand.CreateFromObservable<string>(
+                LoginObservable, this.WhenAnyValue(x => x.Email, x => x.Password, (email, pass) =>
+                    !String.IsNullOrWhiteSpace(email) && !String.IsNullOrWhiteSpace(pass)
+                           && email.Length >= 3 && pass.Length >= 6).DistinctUntilChanged());
 
-        AuthenticationStatusEnum _status;
 
-        public AuthenticationStatusEnum Status
-        {
-            get => _status;
-            set
+			LoginCommand.IsExecuting.Subscribe((isLoading) => {
+				if (isLoading)
+				{
+                    _userDialogs.ShowLoading(AppResources.Login_Authenticating ,MaskType.Black);
+                } else {
+                    _userDialogs.HideLoading();
+                }
+			});
+
+
+            LoginCommand.ThrownExceptions.Subscribe((ex) =>
             {
-                _status = value;
-                RaisePropertyChanged(() => Status);
-            }
+                Debug.WriteLine(String.Format("Exception: {0}", ex.ToString()));
+                _mvxMessenger.Publish(new ExceptionOcurredMessage(this, ex));
+            });
+
+
         }
+
+		#region Properties
+      
 
         string _email;
 
-        [Required("{0} is required")]
         public string Email
         {
             get => _email;
@@ -61,7 +66,6 @@ namespace Bullytect.Core.ViewModels
 
         string _password;
 
-        [Required("{0} is required")]
         public string Password
         {
             get => _password;
@@ -75,56 +79,31 @@ namespace Bullytect.Core.ViewModels
 		#region commands
 
 
-		RelayCommand _logInCommand;
+        public ReactiveCommand LoginCommand { get; protected set; }
 
-        public RelayCommand LoginCommand =>
-            _logInCommand ?? (_logInCommand = new RelayCommand(
-                           async () =>
-                           {
-                               using (new Busy(this))
-                               {
 
-                                   try
-                                   {
-                                        
-                                       Status = AuthenticationStatusEnum.LOADING;
-                                       
-                                       _userDialogs.ShowLoading(AppResources.Login_Authenticating, MaskType.Black);
+        #endregion
 
-                                       // get access token
-                                       string accessToken = await _authenticationService.LogIn(_email, _password);
 
-                                       Debug.WriteLine(String.Format("Access Token:t {0} ", accessToken));
+		IObservable<string> LoginObservable() {
+            
+            return _authenticationService.LogIn(_email, _password, (authFailed) =>
+            {
+                Debug.WriteLine(String.Format("Response Message: {0}", authFailed.Response.Data));
+                var toastConfig = new ToastConfig(AppResources.Login_Failed);
+                toastConfig.SetDuration(3000);
+                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
+                _userDialogs.Toast(toastConfig);
+            }).Do((accessToken) => {
+                if (!String.IsNullOrEmpty(accessToken))
+                {
+                    Debug.WriteLine(String.Format("Access Token: {0} ", accessToken));
+                    _mvxMessenger.Publish(new AuthenticatedUserMessage(this));
+                }
+            });
 
-                                       // save token on preferences.
-                                       Settings.AccessToken = accessToken;
+        }
 
-                                       Status = AuthenticationStatusEnum.LOGIN_SUCESS;
-
-                                        _mvxMessenger.Publish(new AuthenticatedUserMessage(this));
-
-                                   }
-                                   catch (Exception ex)
-                                   {
-
-                                       _userDialogs.HideLoading();
-									   var toastConfig = new ToastConfig("Toasting...");
-									   toastConfig.SetDuration(3000);
-									   toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
-									   _userDialogs.Toast(toastConfig);
-
-                                       _mvxMessenger.Publish(new ExceptionOcurredMessage(this, ex));
-
-                                       Status = AuthenticationStatusEnum.LOGIN_FAILED;
-                                   }
-
-                               }
-
-                           }, () =>
-                           {
-                               var errors = _validator.Validate(this);
-                               return !errors.IsValid || IsBusy;
-                           }));
 		
 
         async Task LogOut(bool clearCookies)
@@ -138,7 +117,7 @@ namespace Bullytect.Core.ViewModels
             }
         }
 
-        #endregion
+       
 
     }
 

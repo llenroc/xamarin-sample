@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Bullytect.Rest.Models.Request;
 using Bullytect.Rest.Models.Response;
 using Refit;
@@ -14,7 +13,7 @@ namespace Bullytect.Rest.Services
     {
 
 		[Post("/auth/")]
-		Task<APIResponse<JwtAuthenticationResponseDTO>> getAuthorizationToken([Body] JwtAuthenticationRequestDTO authorizationRequest);
+		IObservable<APIResponse<JwtAuthenticationResponseDTO>> getAuthorizationToken([Body] JwtAuthenticationRequestDTO authorizationRequest);
 
     }
 }

@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using MvvmCross.Platform.Platform;
 
-namespace bullytect.iOS
+namespace Bullytect.iOS
 {
     public class DebugTrace : IMvxTrace
     {

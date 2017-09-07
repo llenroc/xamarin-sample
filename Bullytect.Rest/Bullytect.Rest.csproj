@@ -43,6 +43,7 @@
     <Compile Include="Utils\Logging\HttpLoggingHandler.cs" />
     <Compile Include="Services\IDeviceGroupsRestService.cs" />
     <Compile Include="Models\Response\DeviceDTO.cs" />
+    <Compile Include="Models\Exceptions\AuthenticationFailedException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
@@ -54,6 +55,7 @@
     <Folder Include="Models\Request\" />
     <Folder Include="Utils\" />
     <Folder Include="Utils\Logging\" />
+    <Folder Include="Models\Exceptions\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

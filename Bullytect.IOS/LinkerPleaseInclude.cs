@@ -7,7 +7,7 @@ using UIKit;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
 
-namespace bullytect.iOS
+namespace Bullytect.iOS
 {
     // This class is never actually executed, but when Xamarin linking is enabled it does ensure types and properties
     // are preserved in the deployed app

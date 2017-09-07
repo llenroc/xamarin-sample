@@ -1,5 +1,6 @@
 ﻿
 
+using System;
 using Bullytect.Core.ViewModels;
 using MvvmCross.Forms.Core;
 

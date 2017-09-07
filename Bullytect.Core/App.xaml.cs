@@ -4,6 +4,7 @@ namespace Bullytect.Core
 {
     using System;
     using System.Diagnostics;
+    using Acr.UserDialogs;
     using Bullytect.Core.Config;
     using Bullytect.Core.I18N;
     using Bullytect.Core.Messages;
@@ -53,6 +54,10 @@ namespace Bullytect.Core
         {
             Debug.WriteLine("OnExceptionOcurredMessage ...");
 
+            var userDialogs = Mvx.Resolve<IUserDialogs>();
+
+            userDialogs.ShowError(AppResources.Global_ErrorOcurred);
+
             if (exceptionOcurredMessage.Ex != null)
 			    exceptionOcurredMessage.Ex.Track();
             
@@ -61,6 +66,7 @@ namespace Bullytect.Core
 		protected override void OnStart()
 		{
 
+            Debug.WriteLine("Forms App OnStart ...");
 
             var messenger = Mvx.Resolve<IMvxMessenger>();
             // subscribe to Authenticated User Message
@@ -77,15 +83,6 @@ namespace Bullytect.Core
 			Debug.WriteLine($"TOKEN: {CrossFirebasePushNotification.Current.Token}");
 			Settings.FcmToken = CrossFirebasePushNotification.Current.Token;
 
-
-			// Handling for App Exceptions.
-			MessagingCenter.Subscribe<object, Exception>(this, EventTypeName.EXCEPTION_OCCURRED, (object sender, Exception exception) => {
-				if (exception == null)
-					return;
-				exception.Track();
-			});
-
-			
 		}
     }
 }

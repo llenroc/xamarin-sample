@@ -20,4 +20,14 @@
         <value>Authenticating ....</value>
         <comment>Loading Title</comment>
     </data>
+	<data name="Login.Failed" xml:space="preserve">
+        <value>Invalid email or password</value>
+        <comment>Loading Failed</comment>
+    </data>
+
+	<data name="Global.ErrorOcurred" xml:space="preserve">
+        <value>An error occurred</value>
+        <comment>Global Error Ocurred</comment>
+	</data>
+   
 </root>

@@ -1,27 +1,27 @@
+using Bullytect.Core;
 using MvvmCross.Core.ViewModels;
+using MvvmCross.Forms.iOS;
 using MvvmCross.iOS.Platform;
-using MvvmCross.iOS.Views.Presenters;
 using MvvmCross.Platform.Platform;
 using UIKit;
 
-namespace bullytect.iOS
+namespace Bullytect.iOS
 {
-    public class Setup : MvxIosSetup
+    public class Setup : MvxFormsIosSetup
     {
         public Setup(IMvxApplicationDelegate applicationDelegate, UIWindow window)
             : base(applicationDelegate, window)
         {
         }
-        
-        public Setup(IMvxApplicationDelegate applicationDelegate, UIWindow window, IMvxIosViewPresenter presenter)
-            : base(applicationDelegate, window, presenter)
-        {
-        }
 
-        protected override IMvxApplication CreateApp()
-        {
-            return new Core.App();
-        }
+		protected override IMvxApplication CreateApp()
+		{
+			return new CoreApp();
+		}
+		protected override MvvmCross.Forms.Core.MvxFormsApplication CreateFormsApplication()
+		{
+			return new App();
+		}
         
         protected override IMvxTrace CreateDebugTrace()
         {

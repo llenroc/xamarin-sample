@@ -7,7 +7,7 @@
     <ProjectGuid>{264A2A89-5430-4E9E-AA6E-54E75CB9141F}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
-    <RootNamespace>bullytect.iOS</RootNamespace>
+    <RootNamespace>Bullytect.iOS</RootNamespace>
     <AssemblyName>bullytect.iOS</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
   </PropertyGroup>
@@ -243,12 +243,24 @@
     <Reference Include="Firebase.CloudMessaging">
       <HintPath>..\packages\Xamarin.Firebase.iOS.CloudMessaging.1.2.2\lib\Xamarin.iOS10\Firebase.CloudMessaging.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\bullytect\bullytect.csproj">
-      <Project>{BDFCD069-46CA-4280-8560-24DF8F800421}</Project>
-      <Name>Bullytect.Core</Name>
-    </ProjectReference>
+    <Reference Include="MvvmCross.Plugins.Validation">
+      <HintPath>..\packages\MvvmCross.Plugins.Validation.2.1.2\lib\Xamarin.iOS10\MvvmCross.Plugins.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Validation.Touch">
+      <HintPath>..\packages\MvvmCross.Plugins.Validation.2.1.2\lib\Xamarin.iOS10\MvvmCross.Plugins.Validation.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.FieldBinding">
+      <HintPath>..\packages\MvvmCross.Plugin.FieldBinding.4.0.0\lib\Xamarin.iOS10\MvvmCross.FieldBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.FieldBinding">
+      <HintPath>..\packages\MvvmCross.Plugin.FieldBinding.4.0.0\lib\Xamarin.iOS10\MvvmCross.Plugins.FieldBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Validation.ForFieldBinding">
+      <HintPath>..\packages\MvvmCross.Plugins.Validation.ForFieldBinding.2.1.2\lib\portable-net45+netcore45+wpa81\MvvmCross.Plugins.Validation.ForFieldBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Messenger">
+      <HintPath>..\packages\MvvmCross.Plugin.Messenger.5.1.1\lib\Xamarin.iOS10\MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -260,25 +272,36 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
-    <InterfaceDefinition Include="Views\MainView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
-    <None Include="ToDo-MvvmCross\_ iOS UI.txt" />
-    <None Include="AppDelegate.cs.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Providers\ToastNotifier.cs" />
-    <Compile Include="Views\MainView.designer.cs" />
-    <Compile Include="Views\MainView.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="Bootstrap\ValidationPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\FieldBindingPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
+    <Compile Include="Providers\Localize.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="GoogleService-Info.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bullytect.Core\Bullytect.Core.csproj">
+      <Project>{BDFCD069-46CA-4280-8560-24DF8F800421}</Project>
+      <Name>Bullytect.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bullytect.Utils\Bullytect.Utils.csproj">
+      <Project>{D149392A-D937-456B-B5D9-1C390BEEB538}</Project>
+      <Name>Bullytect.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Refit.4.0.1\build\netstandard1.4\refit.targets" Condition="Exists('..\packages\Refit.4.0.1\build\netstandard1.4\refit.targets')" />

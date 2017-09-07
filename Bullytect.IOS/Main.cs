@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿
 using UIKit;
 
-namespace bullytect.iOS
+namespace Bullytect.iOS
 {
     public class Application
     {

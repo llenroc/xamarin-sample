@@ -58,5 +58,17 @@ namespace Bullytect.Core.I18N {
                 return ResourceManager.GetString("Login.Authenticating", resourceCulture);
             }
         }
+        
+        internal static string Login_Failed {
+            get {
+                return ResourceManager.GetString("Login.Failed", resourceCulture);
+            }
+        }
+        
+        internal static string Global_ErrorOcurred {
+            get {
+                return ResourceManager.GetString("Global.ErrorOcurred", resourceCulture);
+            }
+        }
     }
 }
