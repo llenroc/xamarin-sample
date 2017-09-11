@@ -47,6 +47,9 @@
     <EmbeddedResource Include="Pages\Home\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Signup\SignupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,6 +110,9 @@
     <Compile Include="Messages\AuthenticatedUserMessage.cs" />
     <Compile Include="Services\Impl\DeviceGroupsServiceImpl.cs" />
     <Compile Include="Messages\ExceptionOcurredMessage.cs" />
+    <Compile Include="Pages\Signup\SignupPage.xaml.cs">
+      <DependentUpon>SignupPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
@@ -248,6 +254,7 @@
     <Folder Include="Commands\" />
     <Folder Include="ViewModels\Core\" />
     <Folder Include="Messages\" />
+    <Folder Include="Pages\Signup\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bullytect.rest\bullytect.rest.csproj">

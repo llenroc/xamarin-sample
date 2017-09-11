@@ -12,10 +12,22 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+	
 	<data name="WelcomePage.MainLabel" xml:space="preserve">
         <value>BullyTect - The first anti-bullying in internet history. Designed to protect the younger and pre-teenagers from attack on social networks of other groups of their age</value>
         <comment>Main Label Text For Welcome Page</comment>
     </data>
+
+	<data name="WelcomePage.Login.Btn" xml:space="preserve">
+        <value>Sig in</value>
+        <comment>Login button</comment>
+    </data>
+
+    <data name="WelcomePage.Signup.Btn" xml:space="preserve">
+        <value>Signup</value>
+        <comment>Signup button</comment>
+    </data>
+	
 	<data name="Login.Authenticating" xml:space="preserve">
         <value>Authenticating ....</value>
         <comment>Loading Title</comment>
@@ -25,9 +37,20 @@
         <comment>Loading Failed</comment>
     </data>
 
+    <data name="Signup.CreatingAccount" xml:space="preserve">
+        <value>Creating Account ....</value>
+        <comment>Creating Account</comment>
+    </data>
+    <data name="Login.Failed" xml:space="preserve">
+        <value>Invalid email or password</value>
+        <comment>Loading Failed</comment>
+    </data>
+
 	<data name="Global.ErrorOcurred" xml:space="preserve">
         <value>An error occurred</value>
         <comment>Global Error Ocurred</comment>
 	</data>
+
+
    
 </root>

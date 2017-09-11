@@ -53,6 +53,18 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string WelcomePage_Login_Btn {
+            get {
+                return ResourceManager.GetString("WelcomePage.Login.Btn", resourceCulture);
+            }
+        }
+        
+        internal static string WelcomePage_Signup_Btn {
+            get {
+                return ResourceManager.GetString("WelcomePage.Signup.Btn", resourceCulture);
+            }
+        }
+        
         internal static string Login_Authenticating {
             get {
                 return ResourceManager.GetString("Login.Authenticating", resourceCulture);
@@ -62,6 +74,12 @@ namespace Bullytect.Core.I18N {
         internal static string Login_Failed {
             get {
                 return ResourceManager.GetString("Login.Failed", resourceCulture);
+            }
+        }
+        
+        internal static string Signup_CreatingAccount {
+            get {
+                return ResourceManager.GetString("Signup.CreatingAccount", resourceCulture);
             }
         }
         

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:MvxContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+    xmlns:local="clr-namespace:Bullytect.Core.Pages"
+    x:Class="Bullytect.Core.Pages.Signup.SignupPage"
+    xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
+    x:TypeArguments="viewModels:SignupViewModel"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters">
+	<ContentView.Content>
+
+        <StackLayout Padding = "25,50" >
+            <Label x:Name="titleLabel" Text = "Login Page" FontSize="42" HorizontalOptions = "Center" 
+                VerticalOptions="StartAndExpand" TextColor="#3498DB"/>
+
+            <!-- Firstname -->
+            <Entry x:Name = "firstNameEntry" Placeholder="FirstName" HorizontalOptions = "Fill" 
+                VerticalOptions = "CenterAndExpand" Text="{ Binding FirstName }"/>
+            <!-- LastName -->
+            <Entry x:Name = "lastNameEntry" Placeholder="LastName" HorizontalOptions = "Fill" 
+                VerticalOptions = "CenterAndExpand" Text="{ Binding LastName }"/>
+            <!-- Age -->
+            <Entry x:Name = "ageEntry" Placeholder="Age" HorizontalOptions = "Fill"
+                VerticalOptions = "CenterAndExpand" Text="{ Binding Age }"/>
+            <!-- Email -->
+            <Entry x:Name = "emailEntry" Placeholder="Email" HorizontalOptions = "Fill"
+                VerticalOptions = "CenterAndExpand" Text="{ Binding Email }"/>
+            <!-- PasswordClear -->
+            <Entry x:Name = "passwordClearEntry" Placeholder="PasswordClear" HorizontalOptions = "Fill"
+                VerticalOptions = "CenterAndExpand" Text="{ Binding PasswordClear }"/>
+            
+            <Entry x:Name = "confirmPasswordEntry" Placeholder="ConfirmPassword" HorizontalOptions = "Fill"
+                VerticalOptions = "CenterAndExpand" Text="{ Binding ConfirmPassword }"/>
+            
+            <Button x:Name="signupButton" Text = "Signup"  HorizontalOptions = "Center"
+                VerticalOptions = "StartAndExpand" FontSize="24" Command="{ Binding SignupCommand }"/>
+        </StackLayout>
+        
+	</ContentView.Content>
+</d:MvxContentPage>

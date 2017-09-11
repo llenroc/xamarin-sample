@@ -15,16 +15,16 @@ namespace Bullytect.Rest.Services
     {
 
 		[Get("/parents/self")]
-		Task<APIResponse<ParentDTO>> GetSelfInformation();
+		IObservable<APIResponse<ParentDTO>> GetSelfInformation();
 
 		[Get("/parents/self/children")]
-		Task<APIResponse<List<SonDTO>>> GetChildrenOfSelfParent();
+		IObservable<APIResponse<List<SonDTO>>> GetChildrenOfSelfParent();
 
 		[Post("/parents/")]
-		Task<APIResponse<ParentDTO>> registerParent([Body] RegisterParentDTO parent);
+		IObservable<APIResponse<ParentDTO>> registerParent([Body] RegisterParentDTO parent);
 
         [Post("/parents/self")]
-        Task<APIResponse<ParentDTO>> updateSelfParent([Body] UpdateParentDTO parent);
+        IObservable<APIResponse<ParentDTO>> updateSelfParent([Body] UpdateParentDTO parent);
 
     }
 }

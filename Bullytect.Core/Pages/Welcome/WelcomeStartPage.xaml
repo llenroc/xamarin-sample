@@ -43,10 +43,15 @@
                 <Label Text="{Binding AuthenticationStatus, StringFormat='\{0\}...'}" IsVisible="{Binding IsBusy}"  FontSize="Medium"
                     XAlign="Center" YAlign="Center" VerticalOptions="EndAndExpand" HeightRequest="70" />
 
-                <controls:AnimateButton x:Name="btnAuthenticate" AutomationId="authButton" Text="SIGN IN"
+                <controls:AnimateButton x:Name="btnAuthenticate" AutomationId="authButton" Text="{i18n:Translate WelcomePage.Login.Btn}"
                     VerticalOptions="EndAndExpand" Style="{StaticResource wizardButton}"
                     IsVisible="{Binding IsBusy, Converter={x:Static converters:InverseBoolConverter.Instance}}"
                     Command="{Binding GoToLoginCommand }" />
+
+                <controls:AnimateButton x:Name="btnSignup" AutomationId="authButton" Text="{i18n:Translate WelcomePage.Signup.Btn}"
+                    VerticalOptions="EndAndExpand" Style="{StaticResource wizardButton}"
+                    IsVisible="{Binding IsBusy, Converter={x:Static converters:InverseBoolConverter.Instance}}"
+                    Command="{Binding GoToSignupCommand }" />
 
             </StackLayout>
         </Grid>

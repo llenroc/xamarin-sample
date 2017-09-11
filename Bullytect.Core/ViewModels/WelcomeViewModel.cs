@@ -19,6 +19,15 @@ namespace Bullytect.Core.ViewModels
         }
 
 
+		public ICommand GoToSignupCommand
+		{
+			get
+			{
+				return new MvxCommand(() => ShowViewModel<SignupViewModel>());
+			}
+		}
+
+
         #endregion
     }
 }

@@ -16,6 +16,17 @@
         <value>BullyTect - El primer anti bullyng de la historia de internet. Pensado para proteger a losmenores y pre adolescentes del ataque en redes sociales del resto de grupos de su edad</value>
         <comment>Texto Principal para la página de inicio</comment>
     </data>
+
+    <data name="WelcomePage.Login.Btn" xml:space="preserve">
+        <value>Iniciar Sesión</value>
+        <comment>Login button</comment>
+    </data>
+
+    <data name="WelcomePage.Signup.Btn" xml:space="preserve">
+        <value>Crear Cuenta</value>
+        <comment>Signup button</comment>
+    </data>
+	
 	<data name="Login.Authenticating" xml:space="preserve">
         <value>Autenticando ....</value>
         <comment>Título del diálogo de progreso</comment>

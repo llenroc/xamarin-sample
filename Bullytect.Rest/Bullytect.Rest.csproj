@@ -44,6 +44,7 @@
     <Compile Include="Services\IDeviceGroupsRestService.cs" />
     <Compile Include="Models\Response\DeviceDTO.cs" />
     <Compile Include="Models\Exceptions\AuthenticationFailedException.cs" />
+    <Compile Include="Models\Exceptions\LoadProfileFailedException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

@@ -1,23 +1,52 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿
+
+using System;
+using System.Diagnostics;
+using Acr.UserDialogs;
+using Bullytect.Core.I18N;
+using Bullytect.Core.Messages;
+using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
-using MvvmCross.Core.ViewModels;
+using MvvmCross.Plugins.Messenger;
 using MvvmCross.Plugins.Validation;
+using ReactiveUI;
 
 namespace Bullytect.Core.ViewModels
 {
     public class SignupViewModel: BaseViewModel
     {
 
-		readonly IParentService _parentService;
+        readonly IParentService _parentService;
 		readonly IValidator _validator;
-		readonly IMvxToastService _toastService;
+        readonly IUserDialogs _userDialogs;
+        readonly IMvxMessenger _mvxMessenger;
 
-        public SignupViewModel(IValidator validator, IParentService parentService, IMvxToastService toastService)
+        public SignupViewModel(IValidator validator, IParentService parentService, IUserDialogs userDialogs, IMvxMessenger mvxMessenger)
         {
 			_validator = validator;
 			_parentService = parentService;
-			_toastService = toastService;
+			_userDialogs = userDialogs;
+
+
+            SignupCommand = ReactiveCommand.CreateFromObservable<ParentEntity>(RegisterTask);
+
+
+			SignupCommand.IsExecuting.Subscribe((isLoading) => {
+				if (isLoading)
+				{
+                    _userDialogs.ShowLoading(AppResources.Signup_CreatingAccount, MaskType.Black);
+				}
+				else
+				{
+					_userDialogs.HideLoading();
+				}
+			});
+
+			SignupCommand.ThrownExceptions.Subscribe((ex) =>
+			{
+				Debug.WriteLine(String.Format("Exception: {0}", ex.ToString()));
+				_mvxMessenger.Publish(new ExceptionOcurredMessage(this, ex));
+			});
         }
 
 		#region Properties
@@ -80,34 +109,16 @@ namespace Bullytect.Core.ViewModels
 		#endregion
 
 
-		#region commands
-
-
-		async public Task RegisterAsyncTask()
+        public IObservable<ParentEntity> RegisterTask()
 		{
-
-			var errors = _validator.Validate(this);
-			if (!errors.IsValid)
-			{
-				_toastService.DisplayErrors(errors); //Display errors here.
-
-			}
-			else
-			{
-				using (new Busy(this))
-				{
-                    var parent = await _parentService.register(FirstName, LastName, Age, Email, PasswordClear, ConfirmPassword);
-					_toastService.DisplayMessage("Saved");
-				}
-			}
+            return _parentService.register(FirstName, LastName, Age, Email, PasswordClear, ConfirmPassword);
 
 		}
 
-		IMvxCommand _registerCommand;
-		public IMvxCommand RegisterCommand =>
-			_registerCommand ?? (_registerCommand = new MvxCommand(async () => await RegisterAsyncTask()));
 
+		#region commands
 
+        public ReactiveCommand SignupCommand { get; protected set; }
 
 		#endregion
 	}
