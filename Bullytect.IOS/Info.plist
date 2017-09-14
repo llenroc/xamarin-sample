@@ -48,5 +48,18 @@
 	</array>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<string>No</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+	  <dict>
+	  <key>CFBundleURLSchemes</key>
+	  <array>
+	    <string>fb341732922916068</string>
+	  </array>
+	  </dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>341732922916068</string>
+	<key>FacebookDisplayName</key>
+	<string>Bully Tect</string>
 </dict>
 </plist>

@@ -26,9 +26,11 @@ namespace Bullytect.Core.ViewModels
 			_validator = validator;
 			_parentService = parentService;
 			_userDialogs = userDialogs;
+            _mvxMessenger = mvxMessenger;
 
+            SignupCommand = ReactiveCommand.CreateFromObservable<string, ParentEntity>((param) => RegisterTask());
 
-            SignupCommand = ReactiveCommand.CreateFromObservable<ParentEntity>(RegisterTask);
+            SignupCommand.Subscribe(AccountCreated);
 
 
 			SignupCommand.IsExecuting.Subscribe((isLoading) => {
@@ -69,13 +71,12 @@ namespace Bullytect.Core.ViewModels
 			set => SetProperty(ref _lastName, value);
 		}
 
-		private int age;
+		private DateTime _birthdate;
 
-		[Range(18, 60, "{0} must between {1} and {2}")]
-		public int Age
+		public DateTime Birthdate
 		{
-			get { return age; }
-			set { SetProperty(ref age, value); }
+			get { return _birthdate; }
+			set { SetProperty(ref _birthdate, value); }
 		}
 
 		string _email;
@@ -106,20 +107,40 @@ namespace Bullytect.Core.ViewModels
 			set => SetProperty(ref _confirmPassword, value);
 		}
 
-		#endregion
+		string _telephone;
 
-
-        public IObservable<ParentEntity> RegisterTask()
+		[Required("{0} is required")]
+		public string Telephone
 		{
-            return _parentService.register(FirstName, LastName, Age, Email, PasswordClear, ConfirmPassword);
-
+			get => _telephone;
+			set => SetProperty(ref _telephone, value);
 		}
 
 
+        #endregion
+
+
+        public IObservable<ParentEntity> RegisterTask()
+        {
+            return _parentService.register(FirstName, LastName, Birthdate, Email, PasswordClear, ConfirmPassword, Telephone);
+
+        }
+
 		#region commands
 
-        public ReactiveCommand SignupCommand { get; protected set; }
+        public ReactiveCommand<string, ParentEntity> SignupCommand { get; protected set; }
 
 		#endregion
+
+
+        void AccountCreated(ParentEntity parent){
+			Debug.WriteLine(String.Format("Parent: {0}", parent.ToString()));
+			var toastConfig = new ToastConfig(AppResources.Signup_Account_Created);
+			toastConfig.SetDuration(3000);
+			toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
+			_userDialogs.Toast(toastConfig);
+			ShowViewModel<AuthenticationViewModel>();
+			Close(this);
+        }
 	}
 }

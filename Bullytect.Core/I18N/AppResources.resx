@@ -27,20 +27,39 @@
         <value>Signup</value>
         <comment>Signup button</comment>
     </data>
+
+	<data name="WelcomePage.Facebook.Btn" xml:space="preserve">
+        <value>Login with Facebook</value>
+        <comment>Login With Facebook</comment>
+    </data>
+	
 	
 	<data name="Login.Authenticating" xml:space="preserve">
         <value>Authenticating ....</value>
         <comment>Loading Title</comment>
     </data>
+
+    <data name="Login.Success" xml:space="preserve">
+        <value>Successful Authentication</value>
+        <comment>Login Success</comment>
+    </data>
+	
 	<data name="Login.Failed" xml:space="preserve">
         <value>Invalid email or password</value>
-        <comment>Loading Failed</comment>
+        <comment>Login Failed</comment>
     </data>
 
     <data name="Signup.CreatingAccount" xml:space="preserve">
         <value>Creating Account ....</value>
         <comment>Creating Account</comment>
     </data>
+
+	<data name="Signup.Account.Created" xml:space="preserve">
+        <value> You have successfully registered </value>
+        <comment>Account Created</comment>
+    </data>
+
+   
     <data name="Login.Failed" xml:space="preserve">
         <value>Invalid email or password</value>
         <comment>Loading Failed</comment>

@@ -54,7 +54,8 @@ namespace Bullytect.Core.Services.Impl
 				});
         }
 
-        public IObservable<ParentEntity> register(string FirstName, string LastName, int Age, string Email, string PasswordClear, string ConfirmPassword)
+        public IObservable<ParentEntity> register(string FirstName, string LastName, DateTime Birthdate, 
+                                                  string Email, string PasswordClear, string ConfirmPassword, string Telephone)
         {
 
             Debug.WriteLine("Register");
@@ -64,10 +65,11 @@ namespace Bullytect.Core.Services.Impl
                 {
                     FirstName = FirstName,
                     LastName = LastName,
-                    Age = Age,
+                    Birthdate = Birthdate,
                     Email = Email,
                     PasswordClear = PasswordClear,
-                    ConfirmPassword = ConfirmPassword
+                    ConfirmPassword = ConfirmPassword,
+                    Telephone = Telephone
                 })
                 .Select((APIResponse<ParentDTO> response) => response.Data)
                 .Select(parent => Mapper.Map<ParentDTO, ParentEntity>(parent))

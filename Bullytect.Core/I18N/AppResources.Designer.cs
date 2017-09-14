@@ -65,9 +65,21 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string WelcomePage_Facebook_Btn {
+            get {
+                return ResourceManager.GetString("WelcomePage.Facebook.Btn", resourceCulture);
+            }
+        }
+        
         internal static string Login_Authenticating {
             get {
                 return ResourceManager.GetString("Login.Authenticating", resourceCulture);
+            }
+        }
+        
+        internal static string Login_Success {
+            get {
+                return ResourceManager.GetString("Login.Success", resourceCulture);
             }
         }
         
@@ -80,6 +92,12 @@ namespace Bullytect.Core.I18N {
         internal static string Signup_CreatingAccount {
             get {
                 return ResourceManager.GetString("Signup.CreatingAccount", resourceCulture);
+            }
+        }
+        
+        internal static string Signup_Account_Created {
+            get {
+                return ResourceManager.GetString("Signup.Account.Created", resourceCulture);
             }
         }
         

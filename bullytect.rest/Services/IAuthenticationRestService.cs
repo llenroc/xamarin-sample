@@ -12,8 +12,12 @@ namespace Bullytect.Rest.Services
     public interface IAuthenticationRestService
     {
 
-		[Post("/auth/")]
+		[Post("/parents/auth/")]
 		IObservable<APIResponse<JwtAuthenticationResponseDTO>> getAuthorizationToken([Body] JwtAuthenticationRequestDTO authorizationRequest);
+
+        [Post("/parents/auth/facebook")]
+        IObservable<APIResponse<JwtAuthenticationResponseDTO>> getAuthorizationTokenByFacebook([Body] JwtFacebookAuthenticationRequestDTO authorizationRequest);
+
 
     }
 }

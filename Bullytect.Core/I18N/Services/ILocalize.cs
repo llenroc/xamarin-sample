@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Bullytect.Core.PatformServices
+namespace Bullytect.Core.I18N.Services
 {
     public interface ILocalize
     {

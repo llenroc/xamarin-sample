@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Reflection;
 using System.Resources;
-using Bullytect.Core.PatformServices;
+using Bullytect.Core.I18N.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

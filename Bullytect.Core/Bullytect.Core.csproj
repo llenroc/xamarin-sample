@@ -76,7 +76,6 @@
     <Compile Include="I18N\AppResources.Designer.cs">
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="PatformServices\ILocalize.cs" />
     <Compile Include="Helpers\PlatformCulture.cs" />
     <Compile Include="I18N\TranslateExtension.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -113,6 +112,12 @@
     <Compile Include="Pages\Signup\SignupPage.xaml.cs">
       <DependentUpon>SignupPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OAuth\Models\OAuth.cs" />
+    <Compile Include="OAuth\Models\OAuth2.cs" />
+    <Compile Include="OAuth\Providers\Facebook\FacebookOAuth2.cs" />
+    <Compile Include="OAuth\Services\IOAuth.cs" />
+    <Compile Include="I18N\Services\ILocalize.cs" />
+    <Compile Include="OAuth\Exceptions\FacebookAuthenticationErrorException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
@@ -229,6 +234,27 @@
     <Reference Include="MvvmCross.FieldBinding">
       <HintPath>..\packages\MvvmCross.Plugin.FieldBinding.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.FieldBinding.dll</HintPath>
     </Reference>
+    <Reference Include="PInvoke.Windows.Core">
+      <HintPath>..\packages\PInvoke.Windows.Core.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.Windows.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.Kernel32">
+      <HintPath>..\packages\PInvoke.Kernel32.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.Kernel32.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.BCrypt">
+      <HintPath>..\packages\PInvoke.BCrypt.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.BCrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.NCrypt">
+      <HintPath>..\packages\PInvoke.NCrypt.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.NCrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="Validation">
+      <HintPath>..\packages\Validation.2.2.8\lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLCrypto">
+      <HintPath>..\packages\PCLCrypto.2.0.147\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\PCLCrypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Auth">
+      <HintPath>..\packages\Xamarin.Auth.1.5.0.3\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+XamarinIOS10\Xamarin.Auth.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -245,7 +271,6 @@
     <Folder Include="Renderers\" />
     <Folder Include="Converters\" />
     <Folder Include="I18N\" />
-    <Folder Include="PatformServices\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Impl\" />
     <Folder Include="Models\Domain\" />
@@ -255,6 +280,13 @@
     <Folder Include="ViewModels\Core\" />
     <Folder Include="Messages\" />
     <Folder Include="Pages\Signup\" />
+    <Folder Include="OAuth\" />
+    <Folder Include="OAuth\Models\" />
+    <Folder Include="OAuth\Providers\" />
+    <Folder Include="OAuth\Providers\Facebook\" />
+    <Folder Include="OAuth\Services\" />
+    <Folder Include="I18N\Services\" />
+    <Folder Include="OAuth\Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bullytect.rest\bullytect.rest.csproj">
@@ -274,4 +306,5 @@
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Import Project="..\packages\refit.3.0.1\build\netstandard1.1\refit.targets" Condition="Exists('..\packages\refit.3.0.1\build\netstandard1.1\refit.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
 </Project>

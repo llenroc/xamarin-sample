@@ -13,8 +13,8 @@ namespace Bullytect.Rest.Models.Request
         [JsonProperty("last_name")]
         public string LastName { get; set; }
 
-        [JsonProperty("age")]
-        public int Age { get; set; }
+        [JsonProperty("birthdate")]
+        public DateTime Birthdate { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -24,5 +24,8 @@ namespace Bullytect.Rest.Models.Request
 
         [JsonProperty("confirm_password")]
         public string ConfirmPassword { get; set; }
+
+		[JsonProperty("telephone")]
+		public string Telephone { get; set; }
     }
 }

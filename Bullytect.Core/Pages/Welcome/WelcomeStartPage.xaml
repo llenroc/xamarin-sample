@@ -53,6 +53,11 @@
                     IsVisible="{Binding IsBusy, Converter={x:Static converters:InverseBoolConverter.Instance}}"
                     Command="{Binding GoToSignupCommand }" />
 
+                <controls:AnimateButton x:Name="btnFacebook" AutomationId="authButton" Text="{i18n:Translate WelcomePage.Facebook.Btn}"
+                    VerticalOptions="EndAndExpand" Style="{StaticResource wizardButton}"
+                    IsVisible="{Binding IsBusy, Converter={x:Static converters:InverseBoolConverter.Instance}}"
+                    Command="{Binding LoginWithFacebookCommand }" />
+
             </StackLayout>
         </Grid>
     </ContentPage.Content>

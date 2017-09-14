@@ -45,6 +45,7 @@
     <Compile Include="Models\Response\DeviceDTO.cs" />
     <Compile Include="Models\Exceptions\AuthenticationFailedException.cs" />
     <Compile Include="Models\Exceptions\LoadProfileFailedException.cs" />
+    <Compile Include="Models\Request\JwtFacebookAuthenticationRequestDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

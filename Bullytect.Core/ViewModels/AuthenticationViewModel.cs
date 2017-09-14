@@ -86,7 +86,7 @@ namespace Bullytect.Core.ViewModels
 
 
 		IObservable<string> LoginObservable() {
-            
+
             return _authenticationService.LogIn(_email, _password, (authFailed) =>
             {
                 Debug.WriteLine(String.Format("Response Message: {0}", authFailed.Response.Data));
@@ -94,18 +94,11 @@ namespace Bullytect.Core.ViewModels
                 toastConfig.SetDuration(3000);
                 toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
                 _userDialogs.Toast(toastConfig);
-            }).Do((accessToken) => {
-                if (!String.IsNullOrEmpty(accessToken))
-                {
-                    Debug.WriteLine(String.Format("Access Token: {0} ", accessToken));
-                    _mvxMessenger.Publish(new AuthenticatedUserMessage(this));
-                }
             });
 
         }
 
 		
-
         async Task LogOut(bool clearCookies)
         {
 

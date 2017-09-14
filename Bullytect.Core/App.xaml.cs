@@ -7,8 +7,8 @@ namespace Bullytect.Core
     using Acr.UserDialogs;
     using Bullytect.Core.Config;
     using Bullytect.Core.I18N;
+    using Bullytect.Core.I18N.Services;
     using Bullytect.Core.Messages;
-    using Bullytect.Core.PatformServices;
     using Bullytect.Core.Services;
     using Bullytect.Utils.Helpers;
     using MvvmCross.Forms.Core;
