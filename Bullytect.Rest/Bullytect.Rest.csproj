@@ -48,6 +48,7 @@
     <Compile Include="Models\Request\JwtFacebookAuthenticationRequestDTO.cs" />
     <Compile Include="Models\Request\SaveDeviceDTO.cs" />
     <Compile Include="Handlers\AuthenticatedHttpClientHandler.cs" />
+    <Compile Include="Handlers\UnauthorizedHttpClientHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

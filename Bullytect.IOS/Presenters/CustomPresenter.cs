@@ -17,7 +17,6 @@ namespace Bullytect.iOS.Presenters
 
 		public override void Show(MvxViewModelRequest request)
 		{
-            base.Show(request);
  
 			if (request.PresentationValues?["NavigationCommand"] == "StackClear")
 			{
@@ -25,7 +24,10 @@ namespace Bullytect.iOS.Presenters
                 Debug.WriteLine("Navigation Back Stack Count -> " + navigation.NavigationStack.Count());
                 navigation.PopToRootAsync();
                 Debug.WriteLine("Navigation Back Stack Count After PopToRootAsync -> " + navigation.NavigationStack.Count());
+                return;
             }
+
+            base.Show(request);
 		}
     }
 }

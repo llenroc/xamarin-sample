@@ -12,7 +12,7 @@ namespace Bullytect.Rest.Handlers
 
         #pragma warning disable CS170
 
-		private readonly Func<string> getToken;
+		readonly Func<string> getToken;
 
         public AuthenticatedHttpClientHandler(Func<string> getToken)
         {
@@ -30,7 +30,7 @@ namespace Bullytect.Rest.Handlers
                 Debug.WriteLine(String.Format("Schema : {0}, Parameter: {1}", auth.Scheme, auth.Parameter));
                 var token = getToken();
                 Debug.WriteLine(String.Format("Token : {0}", token));
-				request.Headers.Authorization = new AuthenticationHeaderValue(token);
+				request.Headers.Authorization = new AuthenticationHeaderValue("dsdasd");
 			}
 
             return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);

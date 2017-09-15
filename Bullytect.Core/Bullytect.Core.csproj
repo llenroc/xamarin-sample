@@ -119,6 +119,7 @@
     <Compile Include="I18N\Services\ILocalize.cs" />
     <Compile Include="OAuth\Exceptions\FacebookAuthenticationErrorException.cs" />
     <Compile Include="Converters\NullVisibilityConverter.cs" />
+    <Compile Include="Messages\SessionExpiredMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation">

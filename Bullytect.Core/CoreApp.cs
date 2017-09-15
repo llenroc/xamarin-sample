@@ -12,6 +12,9 @@ using MvvmCross.Plugins.Validation;
 using Bullytect.Rest.Utils.Logging;
 using Acr.UserDialogs;
 using Bullytect.Rest.Handlers;
+using MvvmCross.Plugins.Messenger;
+using Bullytect.Core.Messages;
+using System.Diagnostics;
 
 namespace Bullytect.Core
 {
@@ -22,7 +25,13 @@ namespace Bullytect.Core
         {
 
 
-            var httpClient = new HttpClient(new HttpLoggingHandler(new AuthenticatedHttpClientHandler(() => Settings.AccessToken )))
+            var httpClient = new HttpClient(new HttpLoggingHandler(
+                new UnauthorizedHttpClientHandler(
+                    () => {
+                        Debug.WriteLine("Session Expired ....");
+                        var messenger = Mvx.Resolve<IMvxMessenger>();
+                        messenger.Publish(new SessionExpiredMessage(this));
+                    }, new AuthenticatedHttpClientHandler(() => Settings.AccessToken))))
 			{
 				BaseAddress = new Uri(SharedConfig.BASE_API_URL),
 				Timeout = TimeSpan.FromMinutes(SharedConfig.TIMEOUT_OPERATION_MINUTES)
