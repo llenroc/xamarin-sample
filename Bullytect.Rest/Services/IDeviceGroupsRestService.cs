@@ -1,19 +1,20 @@
-﻿using System;
-using System.Threading.Tasks;
-using Bullytect.Rest.Models.Request;
-using Bullytect.Rest.Models.Response;
-using Refit;
+﻿
 
 namespace Bullytect.Rest.Services
 {
+
+	using System;
+	using System.Threading.Tasks;
+	using Bullytect.Rest.Models.Request;
+	using Bullytect.Rest.Models.Response;
+	using Refit;
 
     #pragma warning disable CS1701
 
 	[Headers("Accept: application/json")]
     public interface IDeviceGroupsRestService
     {
-		[Put("/device-groups/devices/{token}/save")]
-		Task<APIResponse<DeviceDTO>> saveToken(string token);
-
+		[Post("/device-groups/devices/save")]
+        IObservable<APIResponse<DeviceDTO>> save([Body] SaveDeviceDTO saveDevice);
     }
 }

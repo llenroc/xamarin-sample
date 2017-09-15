@@ -19,6 +19,8 @@ namespace Bullytect.iOS
 		{
 			Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
+            global::Xamarin.Forms.Forms.Init();
+
 			var setup = new Setup(this, Window);
 			setup.Initialize();
 

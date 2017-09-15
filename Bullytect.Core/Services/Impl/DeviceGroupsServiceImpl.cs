@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Bullytect.Core.Models.Domain;
+using Bullytect.Rest.Models.Request;
 using Bullytect.Rest.Models.Response;
 using Bullytect.Rest.Services;
 
@@ -17,15 +19,21 @@ namespace Bullytect.Core.Services.Impl
 		{
 			_deviceGroupsRestService = deviceGroupsRestService;
 		}
-   
 
-        async public Task<DeviceEntity> saveToken(string token)
+        public IObservable<DeviceEntity> saveDevice(string deviceId, string token)
         {
             Debug.WriteLine("Save Token ...");
-
-            return await _deviceGroupsRestService.saveToken(token)
-									.ContinueWith(t => t.Result.Data, TaskContinuationOptions.OnlyOnRanToCompletion)
-									.ContinueWith(t => Mapper.Map<DeviceDTO, DeviceEntity>(t.Result), TaskContinuationOptions.OnlyOnRanToCompletion);
+            return _deviceGroupsRestService
+                .save(new SaveDeviceDTO()
+                {
+                    DeviceId = deviceId,
+                    RegistrationToken = token
+                })
+                .Select(response => response.Data)
+                .Select((DeviceDTO deviceDto) => Mapper.Map<DeviceDTO, DeviceEntity>(deviceDto))
+                .Finally(() => {
+                    Debug.WriteLine("Save Device finished ...");
+                });
         }
     }
 }

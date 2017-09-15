@@ -10,6 +10,7 @@ using ReactiveUI;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Messages;
 using System.Windows.Input;
+using System.Collections.Generic;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -34,7 +35,8 @@ namespace Bullytect.Core.ViewModels
             LoginWithFacebookCommand.Subscribe(token => {
                 Debug.WriteLine("JWT Token -> " + token);
                 _userDialogs.ShowSuccess(AppResources.Login_Success);
-				ShowViewModel<HomeViewModel>();
+				var mvxBundle = new MvxBundle(new Dictionary<string, string> { { "NavigationCommand", "StackClear" } });
+				ShowViewModel<HomeViewModel>(presentationBundle: mvxBundle);
             });
 
 

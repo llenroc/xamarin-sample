@@ -291,6 +291,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Providers\" />
+    <Folder Include="Presenters\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -312,6 +313,7 @@
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="Providers\Localize.cs" />
     <Compile Include="Providers\OAuth.cs" />
+    <Compile Include="Presenters\CustomPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="GoogleService-Info.plist" />

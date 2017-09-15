@@ -14,6 +14,7 @@ namespace Bullytect.Core
     using MvvmCross.Forms.Core;
     using MvvmCross.Platform;
     using MvvmCross.Plugins.Messenger;
+    using Plugin.DeviceInfo;
     using Plugin.FirebasePushNotification;
     using Xamarin.Forms;
 
@@ -36,17 +37,17 @@ namespace Bullytect.Core
             InitializeComponent();
         }
 
-		async void OnAuthenticatedUserMessage(AuthenticatedUserMessage authenticatedUserMessage)
+		void OnAuthenticatedUserMessage(AuthenticatedUserMessage authenticatedUserMessage)
 		{
 
             Debug.WriteLine("OnAuthenticatedUserMessage ...");
 
             var deviceGroupsService = Mvx.Resolve<IDeviceGroupsService>();
             // save token
-            var device = await deviceGroupsService.saveToken(Settings.FcmToken);
+            deviceGroupsService.saveDevice(CrossDeviceInfo.Current.Id, Settings.FcmToken).Subscribe(device => {
+                Debug.WriteLine(String.Format("Device Saved: {0}", device.ToString()));
+            });
 
-            Debug.WriteLine(String.Format("Device Saved: {0}", device.ToString()));
-			
 		}
 
 

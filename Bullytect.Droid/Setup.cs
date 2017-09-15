@@ -7,6 +7,9 @@ using MvvmCross.Forms.Droid;
 using MvvmCross.Platform;
 using MvvmCross.Plugins.Validation;
 using MvvmCross.Plugins.Validation.Droid;
+using MvvmCross.Droid.Views;
+using Bullytect.Droid.Presenters;
+using MvvmCross.Core.Views;
 
 namespace Bullytect.Droid
 {
@@ -37,5 +40,12 @@ namespace Bullytect.Droid
         {
             return new DebugTrace();
         }
+
+        protected override IMvxAndroidViewPresenter CreateViewPresenter(){
+			var presenter = new CustomAndroidPresenter();
+			Mvx.RegisterSingleton<IMvxViewPresenter>(presenter);
+			return presenter;
+        }
+
     }
 }
