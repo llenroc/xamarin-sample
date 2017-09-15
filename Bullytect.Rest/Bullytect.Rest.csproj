@@ -47,6 +47,7 @@
     <Compile Include="Models\Exceptions\LoadProfileFailedException.cs" />
     <Compile Include="Models\Request\JwtFacebookAuthenticationRequestDTO.cs" />
     <Compile Include="Models\Request\SaveDeviceDTO.cs" />
+    <Compile Include="Handlers\AuthenticatedHttpClientHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
@@ -59,6 +60,7 @@
     <Folder Include="Utils\" />
     <Folder Include="Utils\Logging\" />
     <Folder Include="Models\Exceptions\" />
+    <Folder Include="Handlers\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

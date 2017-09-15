@@ -23,7 +23,7 @@ namespace Bullytect.Core.Services.Impl
             _parentsRestService = parentsRestService;
         }
 
-        public IObservable<ParentEntity> getProfileInformation(Action<LoadProfileFailedException> errorHandler)
+        public IObservable<ParentEntity> GetProfileInformation(Action<LoadProfileFailedException> errorHandler)
         {
            Debug.WriteLine("Get Profile Information");
 
@@ -34,13 +34,13 @@ namespace Bullytect.Core.Services.Impl
                 .Catch<ParentEntity, ApiException>(ex => {
                     var response = ex.GetContentAs<APIResponse<string>>();
                     errorHandler(new LoadProfileFailedException(response));
-                    return null;
+                    return Observable.Return(new ParentEntity());
                 }).Finally(() => {
                     Debug.WriteLine("Get Profile Information finished ...");
                 });
         }
 
-        public IObservable<List<SonEntity>> getChildren()
+        public IObservable<List<SonEntity>> GetChildren()
         {
             
             Debug.WriteLine("Get Children");
@@ -54,7 +54,7 @@ namespace Bullytect.Core.Services.Impl
 				});
         }
 
-        public IObservable<ParentEntity> register(string FirstName, string LastName, DateTime Birthdate, 
+        public IObservable<ParentEntity> Register(string FirstName, string LastName, DateTime Birthdate, 
                                                   string Email, string PasswordClear, string ConfirmPassword, string Telephone)
         {
 
@@ -79,7 +79,7 @@ namespace Bullytect.Core.Services.Impl
                 });
         }
 
-        public IObservable<ParentEntity> update(string FirstName, string LastName, int Age, string Email)
+        public IObservable<ParentEntity> Update(string FirstName, string LastName, int Age, string Email)
         {
 			Debug.WriteLine(String.Format("Update Parent with:t FirstName: {0}, LastName: {1}, Age: {2}, Email: {3}", FirstName, LastName, Age, Email));
 

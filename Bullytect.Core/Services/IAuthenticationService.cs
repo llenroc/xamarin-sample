@@ -8,7 +8,7 @@ namespace Bullytect.Core.Services
     public interface IAuthenticationService
     {
         IObservable<string> LogIn(string email, string password, Action<AuthenticationFailedException> errorHandler);
-        IObservable<string> LoginToFacebook();
+        IObservable<string> LoginWithFacebook(string accessToken);
         bool IsLoggedIn();
     }
 }

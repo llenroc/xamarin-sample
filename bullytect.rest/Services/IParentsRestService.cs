@@ -15,15 +15,18 @@ namespace Bullytect.Rest.Services
     {
 
 		[Get("/parents/self")]
+        [Headers("Authorization: Bearer")]
 		IObservable<APIResponse<ParentDTO>> GetSelfInformation();
 
 		[Get("/parents/self/children")]
+        [Headers("Authorization: Bearer")]
 		IObservable<APIResponse<List<SonDTO>>> GetChildrenOfSelfParent();
 
 		[Post("/parents/")]
 		IObservable<APIResponse<ParentDTO>> registerParent([Body] RegisterParentDTO parent);
 
         [Post("/parents/self")]
+        [Headers("Authorization: Bearer")]
         IObservable<APIResponse<ParentDTO>> updateSelfParent([Body] UpdateParentDTO parent);
 
     }

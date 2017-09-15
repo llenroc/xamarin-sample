@@ -32,7 +32,8 @@
         <value>Login with Facebook</value>
         <comment>Login With Facebook</comment>
     </data>
-	
+
+	<!-- LogIn -->
 	
 	<data name="Login.Authenticating" xml:space="preserve">
         <value>Authenticating ....</value>
@@ -49,6 +50,8 @@
         <comment>Login Failed</comment>
     </data>
 
+	<!-- Signup -->
+
     <data name="Signup.CreatingAccount" xml:space="preserve">
         <value>Creating Account ....</value>
         <comment>Creating Account</comment>
@@ -59,11 +62,14 @@
         <comment>Account Created</comment>
     </data>
 
+	<!-- Profile -->
+	<data name="Profile.Loading.Failed" xml:space="preserve">
+		<value> Failed to load user profile </value>
+        <comment>Profile Loading Failed</comment>
+	</data>
+
    
-    <data name="Login.Failed" xml:space="preserve">
-        <value>Invalid email or password</value>
-        <comment>Loading Failed</comment>
-    </data>
+    
 
 	<data name="Global.ErrorOcurred" xml:space="preserve">
         <value>An error occurred</value>

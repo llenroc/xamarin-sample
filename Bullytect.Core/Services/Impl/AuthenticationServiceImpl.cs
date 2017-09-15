@@ -6,15 +6,12 @@ namespace Bullytect.Core.Services.Impl
     using System.Reactive.Linq;
     using Bullytect.Core.Config;
     using Bullytect.Core.Messages;
-    using Bullytect.Core.OAuth.Providers.Facebook;
-    using Bullytect.Core.OAuth.Services;
     using Bullytect.Rest.Models.Exceptions;
     using Bullytect.Rest.Models.Request;
     using Bullytect.Rest.Models.Response;
     using Bullytect.Rest.Services;
     using MvvmCross.Plugins.Messenger;
     using Refit;
-    using Xamarin.Forms;
 
     public class AuthenticationServiceImpl: IAuthenticationService
     {
@@ -40,34 +37,40 @@ namespace Bullytect.Core.Services.Impl
                 var response = ex.GetContentAs<APIResponse<string>>();
                 errorHandler(new AuthenticationFailedException(response));
                 return Observable.Return<string>(String.Empty);
-            }).Do((accessToken) => {
-                if (!String.IsNullOrEmpty(accessToken))
+            }).Do((jwtToken) => {
+                if (!String.IsNullOrEmpty(jwtToken))
                 {
-                    Debug.WriteLine(String.Format("Access Token: {0} ", accessToken));
-					_mvxMessenger.Publish(new AuthenticatedUserMessage(this));
+                    Debug.WriteLine(String.Format("Jwt Access Token: {0} ", jwtToken));
+                    Settings.AccessToken = jwtToken;
+                    _mvxMessenger.Publish(new AuthenticatedUserMessage(this) {
+                        JwtToken = jwtToken
+                    });
 				}
 			}).Finally(() => {
                 Debug.WriteLine("Log in finished ...");
             });
 		}
 
-        public IObservable<string> LoginToFacebook(){
+        public IObservable<string> LoginWithFacebook(string accessToken){
             Debug.WriteLine("Log To Facebook ...");
-            var oauthService = DependencyService.Get<IOAuth>();
-            return oauthService.authenticate(new FacebookOAuth2())
-                               .SelectMany(accessToken => _authenticationRestService.getAuthorizationTokenByFacebook(new JwtFacebookAuthenticationRequestDTO() { Token  =  accessToken }))
-                               .Select(response => response.Data.Token)
-							   .Do((accessToken) => {
-								   if (!String.IsNullOrEmpty(accessToken))
-								   {
-									   Debug.WriteLine(String.Format("Access Token -> {0} ", accessToken));
-                                       Debug.WriteLine("Notify Authentication Success");
-									   _mvxMessenger.Publish(new AuthenticatedUserMessage(this));
-								   }
-							   })
-							   .Finally(() => {
-								   Debug.WriteLine("Log To Facebook finished ...");
-							   }); 
+
+            return _authenticationRestService
+                    .getAuthorizationTokenByFacebook(new JwtFacebookAuthenticationRequestDTO() { Token = accessToken })
+                    .Select(response => response.Data.Token)
+					.Do((jwtToken) => {
+                        if (!String.IsNullOrEmpty(jwtToken))
+                        {
+                            Debug.WriteLine(String.Format("Jwt Access Token -> {0} ", jwtToken));
+							Debug.WriteLine("Notify Authentication Success");
+                            Settings.AccessToken = jwtToken;
+                            _mvxMessenger.Publish(new AuthenticatedUserMessage(this) {
+                                JwtToken = jwtToken
+                            });
+                        }
+                    })
+                    .Finally(() => {
+                        Debug.WriteLine("Log To Facebook finished ...");
+                    });			    
         }
 
 		public bool IsLoggedIn()

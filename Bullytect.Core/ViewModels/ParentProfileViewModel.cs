@@ -76,7 +76,7 @@ namespace Bullytect.Core.ViewModels
             {
                 using (new Busy(this))
                 {
-                    var parent = _parentService.update(FirstName, LastName, Age, Email);
+                    var parent = _parentService.Update(FirstName, LastName, Age, Email);
                     _toastService.DisplayMessage("Updated");
                 }
             }

@@ -118,6 +118,7 @@
     <Compile Include="OAuth\Services\IOAuth.cs" />
     <Compile Include="I18N\Services\ILocalize.cs" />
     <Compile Include="OAuth\Exceptions\FacebookAuthenticationErrorException.cs" />
+    <Compile Include="Converters\NullVisibilityConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation">

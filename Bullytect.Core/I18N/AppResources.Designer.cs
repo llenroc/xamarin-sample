@@ -101,6 +101,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Profile_Loading_Failed {
+            get {
+                return ResourceManager.GetString("Profile.Loading.Failed", resourceCulture);
+            }
+        }
+        
         internal static string Global_ErrorOcurred {
             get {
                 return ResourceManager.GetString("Global.ErrorOcurred", resourceCulture);

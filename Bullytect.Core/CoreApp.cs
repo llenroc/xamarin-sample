@@ -11,16 +11,18 @@ using Bullytect.Core.Models.Domain;
 using MvvmCross.Plugins.Validation;
 using Bullytect.Rest.Utils.Logging;
 using Acr.UserDialogs;
+using Bullytect.Rest.Handlers;
 
 namespace Bullytect.Core
 {
     public class CoreApp : MvvmCross.Core.ViewModels.MvxApplication
     {
 
+        void prepareRestServices()
+        {
 
-        void prepareRestServices() {
 
-			var httpClient = new HttpClient(new HttpLoggingHandler())
+            var httpClient = new HttpClient(new HttpLoggingHandler(new AuthenticatedHttpClientHandler(() => Settings.AccessToken )))
 			{
 				BaseAddress = new Uri(SharedConfig.BASE_API_URL),
 				Timeout = TimeSpan.FromMinutes(SharedConfig.TIMEOUT_OPERATION_MINUTES)
@@ -41,7 +43,6 @@ namespace Bullytect.Core
                 cfg.CreateMap<DeviceDTO, DeviceEntity>();
 			});
         }
-
 
 
         public override void Initialize()
@@ -66,9 +67,6 @@ namespace Bullytect.Core
             RegisterAppStart(new CustomAppStart());
 			
         }
-
-
-
         
     }
 }

@@ -9,12 +9,18 @@
     x:TypeArguments="viewModels:HomeViewModel"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters">
+    <ContentPage.Resources>
+           <ResourceDictionary>
+                <converters:NullVisibilityConverter x:Key="NullToVisibilityConverter"/>
+            </ResourceDictionary>
+    </ContentPage.Resources>
 	<ContentPage.Content>
         <StackLayout Padding = "25,50">
-            <Button x:Name="settingsButton" Text= "Settings" HorizontalOptions="Center" 
-                    VerticalOptions="Center"/>
-            <Button x:Name="logoutButton" Text="Logout" HorizontalOptions="Center"
-                />
+
+            <Label IsVisible="{Binding SelfParent, Converter={StaticResource NullToVisibilityConverter}"
+            TextColor="#77d065" FontSize = "20" Text="{Binding SelfParent.FullName, StringFormat='Welcome {0} !!'}" />
+
+            
         </StackLayout>
     </ContentPage.Content>
 </d:MvxContentPage>

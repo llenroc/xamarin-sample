@@ -11,6 +11,9 @@ using Bullytect.Core.I18N;
 using Bullytect.Core.Messages;
 using System.Windows.Input;
 using System.Collections.Generic;
+using Xamarin.Forms;
+using Bullytect.Core.OAuth.Providers.Facebook;
+using Bullytect.Core.OAuth.Services;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -29,7 +32,15 @@ namespace Bullytect.Core.ViewModels
 
 			// Create Reactive Commands
 			LoginWithFacebookCommand = ReactiveCommand.CreateFromObservable<string, string>(
-                (param) => _authenticationService.LoginToFacebook());
+                (param) => {
+                    
+                    var oauthService = DependencyService.Get<IOAuth>();
+                    return oauthService
+                        .authenticate(new FacebookOAuth2())
+                        .Do(_ => _userDialogs.ShowLoading(AppResources.Login_Authenticating))
+                        .SelectMany(accessToken => authenticationService.LoginWithFacebook(accessToken))
+                        .Do(_ => _userDialogs.HideLoading());
+                 });
 
 
             LoginWithFacebookCommand.Subscribe(token => {
@@ -39,20 +50,9 @@ namespace Bullytect.Core.ViewModels
 				ShowViewModel<HomeViewModel>(presentationBundle: mvxBundle);
             });
 
-
-			LoginWithFacebookCommand.IsExecuting.Subscribe((isLoading) => {
-				/*if (isLoading)
-				{
-                    _userDialogs.ShowLoading(AppResources.Login_Authenticating, MaskType.Black);
-				}
-				else
-				{
-					_userDialogs.HideLoading();
-				}*/
-			});
-
 			LoginWithFacebookCommand.ThrownExceptions.Subscribe((ex) =>
 			{
+                _userDialogs.HideLoading();
 				Debug.WriteLine(String.Format("Exception: {0}", ex.ToString()));
 				_mvxMessenger.Publish(new ExceptionOcurredMessage(this, ex));
 			});

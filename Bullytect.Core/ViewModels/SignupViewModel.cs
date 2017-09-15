@@ -122,7 +122,7 @@ namespace Bullytect.Core.ViewModels
 
         public IObservable<ParentEntity> RegisterTask()
         {
-            return _parentService.register(FirstName, LastName, Birthdate, Email, PasswordClear, ConfirmPassword, Telephone);
+            return _parentService.Register(FirstName, LastName, Birthdate, Email, PasswordClear, ConfirmPassword, Telephone);
 
         }
 

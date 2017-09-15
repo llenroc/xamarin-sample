@@ -15,6 +15,7 @@ namespace Bullytect.Rest.Services
     public interface IDeviceGroupsRestService
     {
 		[Post("/device-groups/devices/save")]
+        [Headers("Authorization: Bearer")]
         IObservable<APIResponse<DeviceDTO>> save([Body] SaveDeviceDTO saveDevice);
     }
 }
