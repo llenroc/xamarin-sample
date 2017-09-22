@@ -3,25 +3,242 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
-    xmlns:local="clr-namespace:Bullytect.Core.Pages"
-    x:Class="Bullytect.Core.Pages.Home.HomePage"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
-    x:TypeArguments="viewModels:HomeViewModel"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
-    xmlns:converters="clr-namespace:Bullytect.Core.Converters">
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:controls="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
+    x:Class="Bullytect.Core.Pages.Home.HomePage"
+    x:TypeArguments="viewModels:HomeViewModel"
+    Title="{i18n:Translate Page.Common.Title}">
     <ContentPage.Resources>
-           <ResourceDictionary>
-                <converters:NullVisibilityConverter x:Key="NullToVisibilityConverter"/>
-            </ResourceDictionary>
+        <ResourceDictionary>
+            <converters:NullVisibilityConverter x:Key="NullToVisibilityConverter"/>
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+            <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
+        </ResourceDictionary>
     </ContentPage.Resources>
 	<ContentPage.Content>
-        <StackLayout Padding = "25,50">
 
-            <Label IsVisible="{Binding SelfParent, Converter={StaticResource NullToVisibilityConverter}"
-            TextColor="#77d065" FontSize = "20" Text="{Binding SelfParent.FullName, StringFormat='Welcome {0} !!'}" />
+        <controls:PullToRefreshLayout
+              IsPullToRefreshEnabled="True"
+              RefreshCommand="{Binding RefreshCommand}"
+              IsRefreshing="{Binding IsBusy}"
+              RefreshColor="Blue">
 
-            
-        </StackLayout>
+            <ScrollView 
+                BackgroundColor="{ DynamicResource BasePageColor }">
+     
+                <!--GRID WRAPPER-->
+                <Grid Padding="0" >
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+
+                    <!--SOCIAL HEADER-->
+                    <Grid 
+                        Grid.Row="0" 
+                        HeightRequest="300" 
+                        BackgroundColor="Black" 
+                        Padding="0">
+
+                        <!-- BACKGROUND IMAGE -->
+                        <Image 
+                            Source="{ StaticResource SocialHeaderBackgroundImage1 }" 
+                            IsOpaque="false"
+                            Aspect="AspectFill"
+                            HorizontalOptions="FillAndExpand" 
+                            VerticalOptions="FillAndExpand"/>
+
+                        <StackLayout 
+                            Orientation="Vertical" 
+                            Spacing="20">
+
+                            <Grid 
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                TranslationY="25">
+
+                                <!-- AVATAR -->
+                                <artina:CircleImage 
+                                    BorderThickness="5"
+                                    BorderColor="White"
+                                    Source="user_profile_1.jpg"
+                                    WidthRequest="100"
+                                    HeightRequest="100"/>
+
+                                <!-- BADGE -->
+                                <common:Badge
+                                    BadgeText="7+"
+                                    BadgeTextColor="{ DynamicResource InverseTextColor }"
+                                    BadgeBackgroundColor="#22c064"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Start"
+                                    TranslationX="40"/>
+                             </Grid>
+
+                            <!-- Parent FullName -->
+                            <StackLayout 
+                                Padding="20">
+
+                                <Label 
+                                    IsVisible="{Binding SelfParent, Converter={StaticResource NullToVisibilityConverter}}"
+                                    Text="{Binding SelfParent.FullName}" 
+                                    TextColor="{ DynamicResource OverImageTextColor }"
+                                    HorizontalTextAlignment="Center"
+                                    FontAttributes="Bold"
+                                    FontSize="{ artina:OnOrientationDouble
+                                        PortraitPhone=22,
+                                        LandscapePhone=22,
+                                        PortraitTablet=24,
+                                        LandscapeTablet=24 }"  />
+                           </StackLayout>
+
+                        </StackLayout>
+                            
+                        <!-- TOOLBAR -->
+                        <Grid
+                            VerticalOptions="End"
+                            Style="{ StaticResource ToolbarStyle }"
+                            BackgroundColor="{ DynamicResource TranslucidWhite }">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+
+                            <!-- Children Action -->
+
+                            <StackLayout
+                                Grid.Column="0"
+                                Orientation="Horizontal"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Spacing="0">
+                                
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{ x:Static helper:GrialShapesFont.Group }"
+                                        FontFamily="{ StaticResource IconsFontFamily }"
+                                        TextColor="{ DynamicResource AccentColor }">
+
+                                        <Label.FontSize>
+                                            <OnIdiom 
+                                                x:TypeArguments="x:Double" 
+                                                Phone="15" 
+                                                Tablet="20" />
+                                        </Label.FontSize> 
+
+                                    </Label>
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding SelfParent.Children, StringFormat={i18n:Translate Profile.Toolbar.Children} }"
+                                        TextColor="{ DynamicResource OverImageTextColor }">
+                                        <Label.FontSize>
+                                            <OnIdiom 
+                                                x:TypeArguments="x:Double" 
+                                                Phone="15" 
+                                                Tablet="20" />
+                                        </Label.FontSize> 
+                                    </Label>
+
+                                    <StackLayout.GestureRecognizers>
+                                          <TapGestureRecognizer Command="{ Binding GoToChildrenCommand }" NumberOfTapsRequired="1" /> 
+                                    </StackLayout.GestureRecognizers>
+                                
+                              </StackLayout>
+
+                              <!-- Notifications Action -->
+                              <StackLayout
+                                    Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Spacing="0">
+
+                                <Label
+                                     VerticalTextAlignment="Center" 
+                                     HorizontalTextAlignment="Center"
+                                     Text="{ x:Static helper:GrialShapesFont.ChatBubble }"
+                                     FontFamily="{ StaticResource IconsFontFamily }"
+                                     TextColor="{ DynamicResource AccentColor }">
+                                     <Label.FontSize>
+                                        <OnIdiom 
+                                            x:TypeArguments="x:Double" 
+                                            Phone="15" 
+                                            Tablet="20" />
+                                    </Label.FontSize> 
+                                </Label>
+
+                                <Label
+                                    VerticalTextAlignment="Center" 
+                                    HorizontalTextAlignment="Center"
+                                    Text=" 235"
+                                    TextColor="{ DynamicResource OverImageTextColor }">
+                                    <Label.FontSize>
+                                       <OnIdiom 
+                                            x:TypeArguments="x:Double" 
+                                            Phone="15" 
+                                            Tablet="20" />
+                                     </Label.FontSize> 
+                                 </Label>
+
+                                 <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{ Binding GoToNotificationsCommand }" NumberOfTapsRequired="1" /> 
+                                  </StackLayout.GestureRecognizers>
+
+                                
+                              </StackLayout>
+                                
+                            </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+
+                        <StackLayout 
+                            Padding="0"
+                            Spacing="0">
+
+                            <commonTemplates:MainListHeaderTemplate 
+                                Text="{i18n:Translate Profile.Children.List.Title}"
+                                IconText="{ x:Static helper:GrialShapesFont.Group } "/>
+
+                            <!-- Children LIST -->
+                            <ListView
+                                ItemsSource="{Binding Children}"
+                                RowHeight="66">
+
+                                <ListView.Behaviors>
+                                    <utils:EventToCommandBehavior 
+                                        EventName="ItemTapped" 
+                                        Command="{Binding ShowSonProfileCommand}" 
+                                        EventArgsConverter="{ StaticResource ItemTappedEventArgsConverter }" />
+                                </ListView.Behaviors>
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <commonTemplates:SonSimpleItemTemplate />
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                        </StackLayout>
+                    </Grid>
+                 </Grid>
+             </ScrollView>
+          </controls:PullToRefreshLayout>
     </ContentPage.Content>
 </d:MvxContentPage>
 

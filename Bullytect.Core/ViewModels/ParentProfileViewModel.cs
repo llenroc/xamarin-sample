@@ -1,6 +1,8 @@
 ﻿
+using Acr.UserDialogs;
 using Bullytect.Core.Services;
 using MvvmCross.Core.ViewModels;
+using MvvmCross.Plugins.Messenger;
 using MvvmCross.Plugins.Validation;
 
 namespace Bullytect.Core.ViewModels
@@ -9,14 +11,10 @@ namespace Bullytect.Core.ViewModels
     {
 
         readonly IParentService _parentService;
-        readonly IValidator _validator;
-        readonly IMvxToastService _toastService;
 
-        public ParentProfileViewModel(IValidator validator, IParentService parentService, IMvxToastService toastService)
+        public ParentProfileViewModel(IParentService parentService, IUserDialogs userDialogs, IMvxMessenger mvxMessenger): base(userDialogs, mvxMessenger)
         {
-            _validator = validator;
             _parentService = parentService;
-            _toastService = toastService;
         }
 
         #region Properties
@@ -66,7 +64,7 @@ namespace Bullytect.Core.ViewModels
         public void Save()
         {
 
-            var errors = _validator.Validate(this);
+            /*var errors = _validator.Validate(this);
             if (!errors.IsValid)
             {
                 _toastService.DisplayErrors(errors); //Display errors here.
@@ -79,7 +77,7 @@ namespace Bullytect.Core.ViewModels
                     var parent = _parentService.Update(FirstName, LastName, Age, Email);
                     _toastService.DisplayMessage("Updated");
                 }
-            }
+            }*/
 
         }
 

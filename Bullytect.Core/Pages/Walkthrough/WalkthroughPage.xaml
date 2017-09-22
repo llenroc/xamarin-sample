@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:MvxCarouselPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:d="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
+    xmlns:items="clr-namespace:Bullytect.Core.Pages.Walkthrough.Items;assembly=Bullytect.Core"
+    xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    x:Class="Bullytect.Core.Pages.Walkthrough.WalkthroughPage"
+    x:TypeArguments="viewModels:WalkthroughViewModel"
+    Style="{StaticResource WalkthroughStepStyle}">
+
+    <items:WalkthroughStepItemTemplate 
+        BackgroundColor="#e51e61"
+        StepBackgroundImage="{ StaticResource WalkthroughStepGenericPhoneBackgroundImage }"
+        Header="Welcome" 
+        Text="To a new world of posibilities, &#10; welcome to Grial UI Kit."
+        IconText="{ x:Static helper:GrialShapesFont.Public }" 
+        IconColor="#FFFFFF"
+        ButtonText="{ i18n:Translate Walkthrough.Btn.Next }"
+        ButtonBackgroundColor="#B31250"/>
+
+    <items:WalkthroughStepItemTemplate 
+        BackgroundColor="#7C4ECD"
+        StepBackgroundImage="{ StaticResource WalkthroughStepGenericPhoneBackgroundImage }"
+        Header="Save time" 
+        Text="Save countless hours of UI design. &#10; Focus on what you do best."
+        IconText="{ x:Static helper:GrialShapesFont.FlashOn }"
+        IconColor="#FFFFFF" 
+        ButtonText="{ i18n:Translate Walkthrough.Btn.Next }"
+        ButtonBackgroundColor="#6A40B9"
+        />
+
+    <items:WalkthroughStepItemTemplate 
+        BackgroundColor="#488cfb"
+        StepBackgroundImage="{ StaticResource WalkthroughStepGenericPhoneBackgroundImage }"
+        Header="Learn" 
+        Text="Learn while you do. &#10; Grial has tones of examples for you to play." 
+        IconText="{ x:Static helper:GrialShapesFont.School }"
+        IconColor="#FFFFFF"
+        ButtonText="{ i18n:Translate Walkthrough.Btn.Finish }"
+        ButtonBackgroundColor="#5F7DD4" />
+
+    
+</d:MvxCarouselPage>

@@ -47,9 +47,63 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Common_Page_Title {
+            get {
+                return ResourceManager.GetString("Common.Page.Title", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Loading {
+            get {
+                return ResourceManager.GetString("Common.Loading", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Timeout_Operation {
+            get {
+                return ResourceManager.GetString("Common.Timeout.Operation", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Server_Connection_Error {
+            get {
+                return ResourceManager.GetString("Common.Server.Connection.Error", resourceCulture);
+            }
+        }
+        
+        internal static string Walkthrough_Btn_Next {
+            get {
+                return ResourceManager.GetString("Walkthrough.Btn.Next", resourceCulture);
+            }
+        }
+        
+        internal static string Walkthrough_Btn_Finish {
+            get {
+                return ResourceManager.GetString("Walkthrough.Btn.Finish", resourceCulture);
+            }
+        }
+        
         internal static string WelcomePage_MainLabel {
             get {
                 return ResourceManager.GetString("WelcomePage.MainLabel", resourceCulture);
+            }
+        }
+        
+        internal static string WelcomePage_SecondLabel {
+            get {
+                return ResourceManager.GetString("WelcomePage.SecondLabel", resourceCulture);
+            }
+        }
+        
+        internal static string WelcomePage_ClaimText {
+            get {
+                return ResourceManager.GetString("WelcomePage.ClaimText", resourceCulture);
+            }
+        }
+        
+        internal static string WelcomePage_ClaimTextSecond {
+            get {
+                return ResourceManager.GetString("WelcomePage.ClaimTextSecond", resourceCulture);
             }
         }
         
@@ -71,6 +125,18 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string WelcomePage_Walkthrough_Btn {
+            get {
+                return ResourceManager.GetString("WelcomePage.Walkthrough.Btn", resourceCulture);
+            }
+        }
+        
+        internal static string Login_Text {
+            get {
+                return ResourceManager.GetString("Login.Text", resourceCulture);
+            }
+        }
+        
         internal static string Login_Authenticating {
             get {
                 return ResourceManager.GetString("Login.Authenticating", resourceCulture);
@@ -89,6 +155,42 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Login_Forget_Password {
+            get {
+                return ResourceManager.GetString("Login.Forget.Password", resourceCulture);
+            }
+        }
+        
+        internal static string Signup_Page_Title {
+            get {
+                return ResourceManager.GetString("Signup.Page.Title", resourceCulture);
+            }
+        }
+        
+        internal static string Signup_Title_Main {
+            get {
+                return ResourceManager.GetString("Signup.Title.Main", resourceCulture);
+            }
+        }
+        
+        internal static string Signup_Title_Second {
+            get {
+                return ResourceManager.GetString("Signup.Title.Second", resourceCulture);
+            }
+        }
+        
+        internal static string Signup_Create {
+            get {
+                return ResourceManager.GetString("Signup.Create", resourceCulture);
+            }
+        }
+        
+        internal static string Signup_Alredy_User {
+            get {
+                return ResourceManager.GetString("Signup.Alredy.User", resourceCulture);
+            }
+        }
+        
         internal static string Signup_CreatingAccount {
             get {
                 return ResourceManager.GetString("Signup.CreatingAccount", resourceCulture);
@@ -101,9 +203,117 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Signup_Account_Firstname_Placeholder {
+            get {
+                return ResourceManager.GetString("Signup.Account.Firstname.Placeholder", resourceCulture);
+            }
+        }
+        
+        internal static string Signup_Account_LastName_Placeholder {
+            get {
+                return ResourceManager.GetString("Signup.Account.LastName.Placeholder", resourceCulture);
+            }
+        }
+        
+        internal static string Signup_Account_Email_Placeholder {
+            get {
+                return ResourceManager.GetString("Signup.Account.Email.Placeholder", resourceCulture);
+            }
+        }
+        
+        internal static string Signup_Account_Password_Placeholder {
+            get {
+                return ResourceManager.GetString("Signup.Account.Password.Placeholder", resourceCulture);
+            }
+        }
+        
+        internal static string Signup_Account_ConfirmPassword_Placeholder {
+            get {
+                return ResourceManager.GetString("Signup.Account.ConfirmPassword.Placeholder", resourceCulture);
+            }
+        }
+        
+        internal static string Signup_Account_Telephone_Placeholder {
+            get {
+                return ResourceManager.GetString("Signup.Account.Telephone.Placeholder", resourceCulture);
+            }
+        }
+        
+        internal static string Signup_Account_Email_Invalid {
+            get {
+                return ResourceManager.GetString("Signup.Account.Email.Invalid", resourceCulture);
+            }
+        }
+        
+        internal static string Signup_Account_Password_Not_Match {
+            get {
+                return ResourceManager.GetString("Signup.Account.Password.Not.Match", resourceCulture);
+            }
+        }
+        
+        internal static string Password_Recovery_Main_Text {
+            get {
+                return ResourceManager.GetString("Password.Recovery.Main.Text", resourceCulture);
+            }
+        }
+        
+        internal static string Password_Recovery_Second_Text {
+            get {
+                return ResourceManager.GetString("Password.Recovery.Second.Text", resourceCulture);
+            }
+        }
+        
+        internal static string Password_Recovery_Send {
+            get {
+                return ResourceManager.GetString("Password.Recovery.Send", resourceCulture);
+            }
+        }
+        
+        internal static string Password_Recovery_Validation_Email {
+            get {
+                return ResourceManager.GetString("Password.Recovery.Validation.Email", resourceCulture);
+            }
+        }
+        
+        internal static string Password_Recovery_Request_Completed {
+            get {
+                return ResourceManager.GetString("Password.Recovery.Request.Completed", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Toolbar_Children {
+            get {
+                return ResourceManager.GetString("Profile.Toolbar.Children", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Toolbar_Notifications {
+            get {
+                return ResourceManager.GetString("Profile.Toolbar.Notifications", resourceCulture);
+            }
+        }
+        
         internal static string Profile_Loading_Failed {
             get {
                 return ResourceManager.GetString("Profile.Loading.Failed", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Children_List_Title {
+            get {
+                return ResourceManager.GetString("Profile.Children.List.Title", resourceCulture);
+            }
+        }
+        
+        internal static string Son_Profile_Birthday {
+            get {
+                return ResourceManager.GetString("Son.Profile.Birthday", resourceCulture);
+            }
+        }
+        
+        internal static string Son_Profile_School {
+            get {
+                return ResourceManager.GetString("Son.Profile.School", resourceCulture);
             }
         }
         

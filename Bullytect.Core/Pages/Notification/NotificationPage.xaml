@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:MvxContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    x:Class="Bullytect.Core.Pages.Notification.NotificationPage"
+    xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
+    x:TypeArguments="viewModels:NotificationViewModel"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:templates="clr-namespace:Bullytect.Core.Pages.Notification.Templates"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    Title="{i18n:Translate Page.Notifications.Title}">
+    <ContentPage.Resources>
+           <ResourceDictionary>
+                <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+            </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentView.Content>
+
+        <StackLayout>
+
+            <ListView 
+                ItemsSource="{Binding NotificationList}"
+                SeparatorVisibility="None"
+                SeparatorColor="Transparent"
+                ItemTapped="OnItemTapped"
+                HasUnevenRows="false"
+                IsPullToRefreshEnabled="{Binding IsBusy}"
+                RefreshCommand="{Binding LoadNotificationsCommand}"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+                <ListView.RowHeight>
+                    <OnIdiom x:TypeArguments="x:Int32"
+                        Phone="80"
+                        Tablet="120"/>
+                </ListView.RowHeight>
+                    
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <templates:NotificationItemTemplate/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <ListView.Triggers>
+                    <DataTrigger 
+                        TargetType="ListView" 
+                        Binding="{Binding IsBusy}"
+                        Value="True">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger 
+                        TargetType="ListView" 
+                        Binding="{Binding DataFound}"
+                        Value="False">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                </ListView.Triggers>
+
+
+            </ListView>
+
+            <Grid IsVisible="{ Binding DataFound, Converter={StaticResource InverseBoolConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid
+                    Grid.Row="0"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="40*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <!--ICON BACKGROUND-->
+                    <Label
+                        Grid.Row="0"
+                        Style="{StaticResource RoundShape}" 
+                        TextColor="{DynamicResource ComplementColor}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        FontSize="250"
+                        Opacity="0.1"/>
+
+                    <!--ICON BACKGROUND-->
+                    <Label
+                        Grid.Row="0"
+                        Style="{StaticResource RoundShape}" 
+                        TextColor="{DynamicResource ComplementColor}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        FontSize="180"
+                        Opacity="0.1"/> 
+
+                    <!--ICON-->
+                    <Label
+                        Grid.Row="0"
+                        Text="{ x:Static helper:GrialShapesFont.Settings }"
+                        Style="{StaticResource FontIcon}"
+                        FontSize="100"
+                        HorizontalTextAlignment="Center"
+                        TextColor="{ DynamicResource ComplementColor }"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
+
+                        
+                    <!--TEXT -->
+                    <StackLayout 
+                            Grid.Row="1" 
+                            VerticalOptions="Center"
+                            Padding="60,0" 
+                            Spacing="2">
+                        <Label 
+                            HorizontalTextAlignment="Center" 
+                            Text="Empty State" 
+                            FontSize="24" 
+                            FontAttributes="Bold" 
+                            TextColor="{ DynamicResource BaseTextColor }"/>
+                        <Label 
+                            HorizontalTextAlignment="Center"
+                            Opacity="0.8" 
+                            Text="There’s nothing here my friend :)" 
+                            FontSize="18" 
+                            TextColor="{ DynamicResource BaseTextColor }"/>
+                    </StackLayout>
+     
+                </Grid>
+            </Grid>
+
+        </StackLayout>
+   </ContentView.Content>
+</d:MvxContentPage>

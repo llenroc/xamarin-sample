@@ -1,64 +1,180 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <d:MvxContentPage 
-    x:TypeArguments="viewModels:WelcomeViewModel"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Bullytect.Core.Pages"
-    x:Class="Bullytect.Core.Pages.Welcome.WelcomeStartPage"
-    xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
     xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
     xmlns:controls="clr-namespace:Bullytect.Core.Controls"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
-    xmlns:converters="clr-namespace:Bullytect.Core.Converters">
-
-    <ContentPage.Resources>
-       <ResourceDictionary>
-           <Style TargetType="Label" BasedOn="{StaticResource whiteLabelStyle}" />
-        </ResourceDictionary>
-     </ContentPage.Resources>
-
-    <xfg:ContentPageGloss.BackgroundGradient>
-        <xfg:Gradient Rotation="150">
-            <xfg:GradientStep StepColor="#03A9F4" StepPercentage="0" />
-            <xfg:GradientStep StepColor="#303F9F" StepPercentage="1" />
-        </xfg:Gradient>
-    </xfg:ContentPageGloss.BackgroundGradient>
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    x:Class="Bullytect.Core.Pages.Welcome.WelcomeStartPage"
+    x:TypeArguments="viewModels:WelcomeViewModel">
 
     <ContentPage.Content>
-        <Grid VerticalOptions="Fill" HorizontalOptions="Fill" Padding="24">
-            <StackLayout x:Name="label1" Padding="24,0" VerticalOptions="Center">
-                <Label AutomationId="label1" Text="{i18n:Translate WelcomePage.MainLabel}"
-                    FontSize="Medium" XAlign="Center" />
-            </StackLayout>
 
-            <StackLayout x:Name="label2" Grid.Row="1" Padding="24,0" VerticalOptions="Center">
-                <Label AutomationId="label2" Text="Before we get going, lets get you registered." FontSize="Medium" XAlign="Center" />
-            </StackLayout>
+        <!-- MAIN CONTAINER-->
+        <Grid 
+            HorizontalOptions="FillAndExpand" 
+            VerticalOptions="FillAndExpand">
 
-            <StackLayout x:Name="buttonStack" Spacing="0" Grid.Row="2" VerticalOptions="End">
-                <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="White" HorizontalOptions="Center"
-                    VerticalOptions="EndAndExpand" />
+            <!---BACKGROUND IMAGE -->
+            <Image 
+                Style="{StaticResource WelcomeBackgroundImage}"/>
 
-                <Label Text="{Binding AuthenticationStatus, StringFormat='\{0\}...'}" IsVisible="{Binding IsBusy}"  FontSize="Medium"
-                    XAlign="Center" YAlign="Center" VerticalOptions="EndAndExpand" HeightRequest="70" />
+            <Grid 
+                Padding="20">
 
-                <controls:AnimateButton x:Name="btnAuthenticate" AutomationId="authButton" Text="{i18n:Translate WelcomePage.Login.Btn}"
-                    VerticalOptions="EndAndExpand" Style="{StaticResource wizardButton}"
-                    IsVisible="{Binding IsBusy, Converter={x:Static converters:InverseBoolConverter.Instance}}"
-                    Command="{Binding GoToLoginCommand }" />
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-                <controls:AnimateButton x:Name="btnSignup" AutomationId="authButton" Text="{i18n:Translate WelcomePage.Signup.Btn}"
-                    VerticalOptions="EndAndExpand" Style="{StaticResource wizardButton}"
-                    IsVisible="{Binding IsBusy, Converter={x:Static converters:InverseBoolConverter.Instance}}"
-                    Command="{Binding GoToSignupCommand }" />
+                
+                <Grid 
+                    Grid.Row="0"
+                    ColumnSpacing="0"
+                    Padding="0"
+                        HorizontalOptions="StartAndExpand"
+                    Style="{ StaticResource BrandContainerStyle }">
 
-                <controls:AnimateButton x:Name="btnFacebook" AutomationId="authButton" Text="{i18n:Translate WelcomePage.Facebook.Btn}"
-                    VerticalOptions="EndAndExpand" Style="{StaticResource wizardButton}"
-                    IsVisible="{Binding IsBusy, Converter={x:Static converters:InverseBoolConverter.Instance}}"
-                    Command="{Binding LoginWithFacebookCommand }" />
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
-            </StackLayout>
+                    
+                    <!--LOGO-->
+                    <!--<lottie:AnimationView
+                        Grid.Column="0"
+                        Margin="-20"
+                     
+                        AutoPlay="false"
+                        HeightRequest="160"
+                        WidthRequest="160"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"/>-->
+                    
+
+                    <StackLayout
+                        Grid.Column="1"
+                        Orientation="Vertical"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        Spacing="0">
+                        <Label
+                            TextColor="{ DynamicResource OverImageTextColor }"
+                            FontSize="18"
+                            Text="{i18n:Translate WelcomePage.MainLabel}" 
+                            FontAttributes="Bold" 
+                            VerticalTextAlignment="Start"/>
+                        <Label 
+                            TextColor="{ DynamicResource OverImageTextColor }"
+                            FontSize="18"
+                            Text="{i18n:Translate WelcomePage.SecondLabel}" 
+                            VerticalTextAlignment="Start"/>
+                    </StackLayout>
+
+                </Grid>
+
+                    
+                <!--CLAIM TEXT-->
+                <StackLayout
+                    Grid.Row="1"
+                    Spacing="10"
+                    Orientation="Vertical"
+                    VerticalOptions="Center"
+                    TranslationY="-20"
+                    Padding="{ artina:OnOrientationDouble
+                        Default=20,
+                        PortraitTablet=20,
+                        LandscapeTablet=20 }">
+                    <Label
+                        LineBreakMode="WordWrap"
+                        Text="{i18n:Translate WelcomePage.ClaimText}"
+                        TextColor="{DynamicResource OverImageTextColor }"
+                        VerticalTextAlignment="Center"
+                        FontAttributes="Bold"
+                        AbsoluteLayout.LayoutFlags="All">
+                            <Label.FontSize> 
+                                <OnIdiom x:TypeArguments="x:Double"
+                                     Phone="18"
+                                     Tablet="28"/>
+                            </Label.FontSize>
+                    </Label>
+                    <Label
+                        LineBreakMode="WordWrap"
+                        Text="{i18n:Translate WelcomePage.ClaimTextSecond}"
+                        TextColor="{ DynamicResource OverImageTextColor }"
+                        VerticalTextAlignment="Center"
+                        FontSize="36"
+                        AbsoluteLayout.LayoutFlags="All">
+                            <Label.FontSize> 
+                                <OnIdiom x:TypeArguments="x:Double"
+                                     Phone="9"
+                                     Tablet="19"/>
+                            </Label.FontSize>
+                    </Label>
+
+                    <!-- ACCENT LINE -->
+                    <BoxView 
+                        Style="{StaticResource BrandNameOrnamentStyle}"
+                        BackgroundColor="{ DynamicResource AccentColor }"/>
+                    
+                </StackLayout>
+                
+                <!--BUTTONS-->
+                <StackLayout
+                    Grid.Row="2"
+                    VerticalOptions="End" 
+                    HorizontalOptions="FillAndExpand" 
+                    Spacing="10">
+
+                    <artina:Button 
+                        Style="{StaticResource SecondaryActionButtonStyle}" 
+                        Text="{i18n:Translate WelcomePage.Walkthrough.Btn}"
+                        Command="{ Binding GoToWalkthroughCommand }"
+                        VerticalOptions="EndAndExpand"
+                        WidthRequest="{ artina:OnOrientationDouble
+                            LandscapeTablet=600 }"
+                        HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                            PortraitPhone=Fill,
+                            LandscapePhone=Fill,
+                            PortraitTablet=Fill,
+                            LandscapeTablet=Center }"/>
+                
+                    <artina:Button 
+                        Style="{StaticResource SecondaryActionButtonStyle}" 
+                        Text="{i18n:Translate WelcomePage.Login.Btn}"
+                        Command="{ Binding GoToLoginCommand }"
+                        VerticalOptions="EndAndExpand"
+                        WidthRequest="{ artina:OnOrientationDouble
+                            LandscapeTablet=600 }"
+                        HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                            PortraitPhone=Fill,
+                            LandscapePhone=Fill,
+                            PortraitTablet=Fill,
+                            LandscapeTablet=Center }"/>
+                    
+                    <artina:Button 
+                        Style="{StaticResource PrimaryActionButtonStyle}" 
+                        Text="{i18n:Translate WelcomePage.Signup.Btn}"
+                        Command="{ Binding GoToSignupCommand }"
+                        VerticalOptions="EndAndExpand"
+                        WidthRequest="{ artina:OnOrientationDouble
+                            LandscapeTablet=600 }"
+                        HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                            PortraitPhone=Fill,
+                            LandscapePhone=Fill,
+                            PortraitTablet=Fill,
+                            LandscapeTablet=Center }"/>
+                
+                </StackLayout>
+
+            </Grid>
         </Grid>
     </ContentPage.Content>
 </d:MvxContentPage>

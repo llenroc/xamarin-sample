@@ -23,7 +23,7 @@ namespace Bullytect.Core
 
         void prepareRestServices()
         {
-
+  
 
             var httpClient = new HttpClient(new HttpLoggingHandler(
                 new UnauthorizedHttpClientHandler(
@@ -42,6 +42,7 @@ namespace Bullytect.Core
 			Mvx.RegisterSingleton<IParentsRestService>(() => RestServiceFactory.getService<IParentsRestService>(httpClient));
 			Mvx.RegisterSingleton<IChildrenRestService>(() => RestServiceFactory.getService<IChildrenRestService>(httpClient));
             Mvx.RegisterSingleton<IDeviceGroupsRestService>(() => RestServiceFactory.getService<IDeviceGroupsRestService>(httpClient));
+            Mvx.RegisterSingleton<IAlertRestService>(() => RestServiceFactory.getService<IAlertRestService>(httpClient));
         }
 
         void prepareMappers() {
@@ -50,6 +51,7 @@ namespace Bullytect.Core
 				cfg.CreateMap<ParentDTO, ParentEntity>();
 				cfg.CreateMap<SonDTO, SonEntity>();
                 cfg.CreateMap<DeviceDTO, DeviceEntity>();
+                cfg.CreateMap<AlertDTO, AlertEntity>();
 			});
         }
 

@@ -24,8 +24,8 @@ namespace Bullytect.Rest.Handlers
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
        
-           var response =  await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
-
+            var response =  await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+            Debug.WriteLine("Check if authorized ..."+ response.StatusCode);
             if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
                 _onUnauthorizedError();
 

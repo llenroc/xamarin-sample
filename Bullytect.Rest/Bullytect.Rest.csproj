@@ -49,6 +49,15 @@
     <Compile Include="Models\Request\SaveDeviceDTO.cs" />
     <Compile Include="Handlers\AuthenticatedHttpClientHandler.cs" />
     <Compile Include="Handlers\UnauthorizedHttpClientHandler.cs" />
+    <Compile Include="Models\Request\ResetPasswordRequestDTO.cs" />
+    <Compile Include="Models\Response\FieldErrorDTO.cs" />
+    <Compile Include="Models\Response\ValidationErrorDTO.cs" />
+    <Compile Include="Utils\ResponseNames.cs" />
+    <Compile Include="Models\Exceptions\DataInvalidException.cs" />
+    <Compile Include="Models\Response\AlertDTO.cs" />
+    <Compile Include="Services\IAlertRestService.cs" />
+    <Compile Include="Models\Exceptions\NoAlertsFoundException.cs" />
+    <Compile Include="Models\Exceptions\NoChildrenFoundException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

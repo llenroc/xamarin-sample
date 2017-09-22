@@ -12,23 +12,206 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+
+
+	<!-- Page Titles -->
+
+    <data name="Page.Common.Title" xml:space="preserve">
+        <value>BullTect</value>
+        <comment>Page Common Title</comment>
+    </data>
+
+    <data name="Page.Notifications.Title" xml:space="preserve">
+        <value>Notifications</value>
+        <comment>Page Notifications Title</comment>
+    </data>
+
+	<!-- Common strings -->
+	
+    <data name="Common.Loading" xml:space="preserve">
+        <value>Operación en progreso</value>
+        <comment>Common Loading</comment>
+    </data>
+
+	<data name="Common.Timeout.Operation" xml:space="preserve">
+        <value>La operación tardo demasiado tiempo en completarse. Inténtalo de nuevo.</value>
+        <comment>Common Timeout Operation</comment>
+    </data>
+
+	<data name="Common.Server.Connection.Error" xml:space="preserve">
+        <value>Error al conectar con el servidor, inténtalo de nuevo más tarde.</value>
+        <comment>Common Server Connection Error</comment>
+    </data>
+
+    <!-- Welcome Page -->
+	
 	<data name="WelcomePage.MainLabel" xml:space="preserve">
-        <value>BullyTect - El primer anti bullyng de la historia de internet. Pensado para proteger a losmenores y pre adolescentes del ataque en redes sociales del resto de grupos de su edad</value>
-        <comment>Texto Principal para la página de inicio</comment>
+        <value>BullyTect</value>
+        <comment>WelcomePage MainLabel</comment>
+    </data>
+
+    <data name="WelcomePage.SecondLabel" xml:space="preserve">
+        <value>BullyTect -  El primer anti-bullying en la historia de Internet.</value>
+        <comment>WelcomePage SecondLabel</comment>
+    </data>
+    
+    <data name="WelcomePage.ClaimText" xml:space="preserve">
+        <value>BullyTect -  El primer anti-bullying en la historia de Internet. Diseñado para proteger a los jóvenes y preadolescentes del ataque a las redes sociales de otros grupos de su edad</value>
+        <comment>WelcomePage ClaimText</comment>
+    </data>
+
+    <data name="WelcomePage.ClaimTextSecond" xml:space="preserve">
+        <value>Inicia Sesión con tu cuenta o registrate</value>
+        <comment>WelcomePage ClaimText Second</comment>
     </data>
 
     <data name="WelcomePage.Login.Btn" xml:space="preserve">
-        <value>Iniciar Sesión</value>
+        <value>Inciar Sesión</value>
         <comment>Login button</comment>
     </data>
 
     <data name="WelcomePage.Signup.Btn" xml:space="preserve">
-        <value>Crear Cuenta</value>
+        <value>Registrarse</value>
         <comment>Signup button</comment>
     </data>
-	
-	<data name="Login.Authenticating" xml:space="preserve">
+
+    <data name="WelcomePage.Facebook.Btn" xml:space="preserve">
+        <value>Inciar sesión con Facebook</value>
+        <comment>Login With Facebook</comment>
+    </data>
+
+	<data name="WelcomePage.Walkthrough.Btn" xml:space="preserve">
+        <value>Ver Tutorial</value>
+        <comment>WelcomePage Walkthrough Btn</comment>
+    </data>
+
+    <!-- LogIn -->
+
+    <data name="Login.Text" xml:space="preserve">
+        <value>Inicia sesión con tu correo electrónico y contraseña</value>
+        <comment>Login Text</comment>
+    </data>
+    
+    <data name="Login.Authenticating" xml:space="preserve">
         <value>Autenticando ....</value>
-        <comment>Título del diálogo de progreso</comment>
+        <comment>Loading Title</comment>
+    </data>
+
+    <data name="Login.Success" xml:space="preserve">
+        <value>Successful Authentication</value>
+        <comment>Login Success</comment>
+    </data>
+    
+    <data name="Login.Failed" xml:space="preserve">
+        <value>Correo electrónico o contraseña no válidas</value>
+        <comment>Login Failed</comment>
+    </data>
+
+    <!-- Signup -->
+
+    <data name="Signup.Page.Title" xml:space="preserve">
+        <value>Registrarse</value>
+        <comment>Signup Page Title</comment>
+    </data>
+
+    <data name="Signup.Title" xml:space="preserve">
+        <value>Registrarse</value>
+        <comment>Signup Title</comment>
+    </data>
+
+    <data name="Signup.Create" xml:space="preserve">
+        <value>Crear Cuenta</value>
+        <comment>Create Account</comment>
+    </data>
+
+    <data name="Signup.Alredy.User" xml:space="preserve">
+        <value>Ya eres usuario? Inicia Sesión ahora</value>
+        <comment>Already a user? Login now</comment>
+    </data>
+
+    <data name="Signup.CreatingAccount" xml:space="preserve">
+        <value>Creando cuenta ....</value>
+        <comment>Creating Account</comment>
+    </data>
+
+    <data name="Signup.Account.Created" xml:space="preserve">
+        <value> Te has registrado correctamente </value>
+        <comment>Account Created</comment>
+    </data>
+
+	<!-- Password Recovery -->
+	<data name="Password.Recovery.Main.Text" xml:space="preserve">
+        <value> ¿Olvidaste tu contraseña? </value>
+        <comment>Password Recovery Main Text</comment>
+    </data>
+
+    
+    <data name="Password.Recovery.Second.Text" xml:space="preserve">
+        <value> No se preocupe escriba su correo electrónico aquí y lo recuperaremos para usted. </value>
+        <comment>Password Recovery Second Text</comment>
+    </data>
+
+    <data name="Password.Recovery.Send" xml:space="preserve">
+        <value> Send </value>
+        <comment>Password Recovery Send Request</comment>
+    </data>
+
+    <data name="Password.Recovery.Validation.Email" xml:space="preserve">
+        <value> Please enter a valid e-mail </value>
+        <comment>Password Recovery Validation Email</comment>
+    </data>
+
+    <!-- Password Recovery -->
+    
+    <data name="Password.Recovery.Text" xml:space="preserve">
+        <value> No se preocupe escriba su correo electrónico aquí y lo recuperaremos para usted. </value>
+        <comment>Password Recovery</comment>
+    </data>
+
+    <data name="Password.Recovery.Send" xml:space="preserve">
+        <value> Enviar </value>
+        <comment>Password Recovery Send Request</comment>
+    </data>
+    
+    
+    <!-- Profile -->
+
+    <data name="Profile.Toolbar.Children" xml:space="preserve">
+        <value> Hijos ({0}) </value>
+        <comment>Profile Toolbar Children</comment>
+    </data>
+
+    <data name="Profile.Toolbar.Notifications" xml:space="preserve">
+        <value> Notificaciones ({0}) </value>
+        <comment>Profile Toolbar Notifications</comment>
+    </data>
+	
+    <data name="Profile.Loading.Failed" xml:space="preserve">
+        <value> Error al cargar el perfil de usuario </value>
+        <comment>Profile Loading Failed</comment>
+    </data>
+
+   
+    <data name="Profile.Children.List.Title" xml:space="preserve">
+        <value> &#032;Hijos Analizados </value>
+        <comment>Profile Children List Title</comment>
+    </data>
+
+
+	<!-- Son Profile -->
+
+    <data name="Son.Profile.Birthday" xml:space="preserve">
+        <value> Fecha de Nacimiento: {0} </value>
+        <comment>Son Profile Birthday</comment>
+    </data>
+
+    <data name="Son.Profile.School" xml:space="preserve">
+        <value> Colegio: {0} </value>
+        <comment>Son Profile School</comment>
+    </data>
+
+    <data name="Global.ErrorOcurred" xml:space="preserve">
+        <value>Ocurrió un error</value>
+        <comment>Global Error Ocurred</comment>
     </data>
 </root>

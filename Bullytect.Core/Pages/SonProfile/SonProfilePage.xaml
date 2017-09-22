@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:MvxContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
+    x:TypeArguments="viewModels:SonProfileViewModel"
+    x:Class="Bullytect.Core.Pages.SonProfile.SonProfilePage"
+    x:Name="root">
+	<ContentPage.Content>
+
+        <AbsoluteLayout Padding="0">
+            <!-- MAIN IMAGE -->
+            <Image
+                x:Name="img"
+                Aspect="AspectFill"
+                Source="user_profile_1.jpg"
+                AnchorX="0.5"
+                AnchorY="0.5"
+                TranslationY="-10"
+                Scale="1.2"
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                AbsoluteLayout.LayoutFlags="All"/>
+    
+            <Grid RowSpacing="0"
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                AbsoluteLayout.LayoutFlags="All">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="40*" />
+                </Grid.RowDefinitions>
+    
+                <!-- TOP ROW -->
+                <StackLayout
+                    Spacing="0"
+                    Padding="10"
+                    VerticalOptions="FillAndExpand"
+                    Orientation="Vertical"
+                    Grid.Row="0">
+        
+                </StackLayout>
+    
+    
+                <!-- BOTTOM ROW -->
+                <StackLayout
+                    Spacing="0"
+                    Padding="0"
+                    VerticalOptions="End"
+                    Orientation="Vertical"
+                    Grid.Row="1" 
+                    AbsoluteLayout.LayoutBounds="0, 1, 1, 1">
+            
+                    <StackLayout Padding="0" Spacing="0" >
+                
+                        <StackLayout Padding="20,0,20,20">
+
+                            
+                            <!-- Full name -->
+                            <Label
+                                Text="{ Binding FullName }"
+                                FontAttributes="Bold"
+                                LineBreakMode="WordWrap"
+                                VerticalOptions="End"
+                                TextColor="{ DynamicResource OverImageTextColor }"
+                                FontSize="{ artina:OnOrientationDouble 
+                                    Default=25,
+                                    PortraitTablet=40,
+                                    LandscapeTablet=40 }"/>
+
+                            <!-- Birthday -->
+                
+                            <Label
+                                Text="{ Binding Birthdate, StringFormat={i18n:Translate Son.Profile.Birthday} }"
+                                LineBreakMode="WordWrap"
+                                VerticalOptions="End"
+                                TextColor="{ DynamicResource OverImageTextColor }"
+                                FontAttributes="None"
+                                FontSize="{ artina:OnOrientationDouble 
+                                    Default=14,
+                                    PortraitTablet=20,
+                                    LandscapeTablet=20 }" />
+
+                            <!-- School -->
+                
+                            <Label
+                                Text="{ Binding School, StringFormat={i18n:Translate Son.Profile.School} }"
+                                LineBreakMode="WordWrap"
+                                VerticalOptions="End"
+                                TextColor="{ DynamicResource OverImageTextColor }"
+                                FontAttributes="None"
+                                FontSize="{ artina:OnOrientationDouble 
+                                    Default=14,
+                                    PortraitTablet=20,
+                                    LandscapeTablet=20 }" />
+                    
+                            <BoxView Style="{StaticResource BrandNameOrnamentStyle}"/>
+                
+                        </StackLayout>
+                
+                
+                        <!-- TOOLBAR Social Comments  -->
+                        <Grid 
+                            Style="{ StaticResource ToolbarStyle }" 
+                            BackgroundColor="{ DynamicResource TranslucidBlack }">
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="33*" />
+                                <ColumnDefinition Width="33*" />
+                                <ColumnDefinition Width="33*" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Total Comments Facebook -->
+                            
+                            <StackLayout
+                                    Grid.Column="0"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Spacing="0">
+                                    <Label
+                                        VerticalTextAlignment="Center" 
+                                        HorizontalTextAlignment="Center"
+                                        Text="{ x:Static helper:GrialShapesFont.SocialFacebook }"
+                                        FontFamily="{ StaticResource IconsFontFamily }"
+                                        TextColor="{ DynamicResource AccentColor }">
+                                        <Label.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" 
+                                                Phone="15" 
+                                                Tablet="20" />
+                                        </Label.FontSize> 
+                                    </Label>
+
+                                    <Label
+                                        VerticalTextAlignment="Center" 
+                                        HorizontalTextAlignment="Center"
+                                        Text=" 0"
+                                        TextColor="{ DynamicResource OverImageTextColor }">
+                                        <Label.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" 
+                                                Phone="15" 
+                                                Tablet="20" />
+                                        </Label.FontSize> 
+                                    </Label>
+                                </StackLayout>
+
+
+                                <!-- Total Comments Instagram -->
+
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Spacing="0">
+                                    <Label
+                                        VerticalTextAlignment="Center" 
+                                        HorizontalTextAlignment="Center"
+                                        Text="{ x:Static helper:GrialShapesFont.SocialInstagram }"
+                                        FontFamily="{ StaticResource IconsFontFamily }"
+                                        TextColor="{ DynamicResource AccentColor }">
+                                        <Label.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" 
+                                                Phone="15" 
+                                                Tablet="20" />
+                                        </Label.FontSize> 
+                                    </Label>
+
+                                    <Label
+                                        VerticalTextAlignment="Center" 
+                                        HorizontalTextAlignment="Center"
+                                        Text=" 0"
+                                        TextColor="{ DynamicResource OverImageTextColor }">
+                                        <Label.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" 
+                                                Phone="15" 
+                                                Tablet="20" />
+                                        </Label.FontSize> 
+                                    </Label>
+                                </StackLayout>
+
+                                <!-- Total Comments Youtube -->
+
+                                <StackLayout
+                                    Grid.Column="2"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Spacing="0">
+                                    <Label
+                                        VerticalTextAlignment="Center" 
+                                        HorizontalTextAlignment="Center"
+                                        Text="{ x:Static helper:GrialShapesFont.SocialYoutube }"
+                                        FontFamily="{ StaticResource IconsFontFamily }"
+                                        TextColor="{ DynamicResource AccentColor }">
+                                        <Label.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" 
+                                                Phone="15" 
+                                                Tablet="20" />
+                                        </Label.FontSize> 
+                                    </Label>
+
+                                    <Label
+                                        VerticalTextAlignment="Center" 
+                                        HorizontalTextAlignment="Center"
+                                        Text=" 0"
+                                        TextColor="{ DynamicResource OverImageTextColor }">
+                                        <Label.FontSize>
+                                            <OnIdiom x:TypeArguments="x:Double" 
+                                                Phone="15" 
+                                                Tablet="20" />
+                                        </Label.FontSize> 
+                                    </Label>
+                                </StackLayout>
+                            
+                        </Grid>
+
+                    </StackLayout>
+
+                </StackLayout>
+            </Grid>
+
+        </AbsoluteLayout>
+	</ContentPage.Content>
+</d:MvxContentPage>

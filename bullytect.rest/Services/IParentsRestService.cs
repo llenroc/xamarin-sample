@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Bullytect.Rest.Models.Request;
 using Bullytect.Rest.Models.Response;
 using Refit;
@@ -28,6 +27,12 @@ namespace Bullytect.Rest.Services
         [Post("/parents/self")]
         [Headers("Authorization: Bearer")]
         IObservable<APIResponse<ParentDTO>> updateSelfParent([Body] UpdateParentDTO parent);
+
+
+		[Post("/parents/reset-password")]
+		[Headers("Authorization: Bearer")]
+		IObservable<APIResponse<string>> resetPassword([Body] ResetPasswordRequestDTO resetPasswordRequest);
+
 
     }
 }

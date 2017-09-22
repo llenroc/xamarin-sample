@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Reactive;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.Config;
 using Bullytect.Core.I18N;
-using Bullytect.Core.Messages;
+using Bullytect.Core.OAuth.Providers.Facebook;
+using Bullytect.Core.OAuth.Services;
 using Bullytect.Core.Services;
+using Bullytect.Rest.Models.Exceptions;
+using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
+using Xamarin.Forms;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -16,41 +22,45 @@ namespace Bullytect.Core.ViewModels
     public class AuthenticationViewModel : BaseViewModel
     {
         readonly IAuthenticationService _authenticationService;
-        readonly IUserDialogs _userDialogs;
-        readonly IMvxMessenger _mvxMessenger;
 
         public AuthenticationViewModel(IAuthenticationService authenticationService,
-                                      IUserDialogs userDialogs, IMvxMessenger mvxMessenger)
+                                       IUserDialogs userDialogs, IMvxMessenger mvxMessenger): base(userDialogs, mvxMessenger)
         {
             _authenticationService = authenticationService;
-            _userDialogs = userDialogs;
-            _mvxMessenger = mvxMessenger;
 
 
             // Create Reactive Commands
-            LoginCommand = ReactiveCommand.CreateFromObservable<string>(
-                LoginObservable, this.WhenAnyValue(x => x.Email, x => x.Password, (email, pass) =>
+            LoginCommand = ReactiveCommand.CreateFromObservable<Unit, string>(
+                (_) => _authenticationService.LogIn(_email, _password),
+                this.WhenAnyValue(x => x.Email, x => x.Password, (email, pass) =>
                     !String.IsNullOrWhiteSpace(email) && !String.IsNullOrWhiteSpace(pass)
                            && email.Length >= 3 && pass.Length >= 6).DistinctUntilChanged());
 
-
-			LoginCommand.IsExecuting.Subscribe((isLoading) => {
-				if (isLoading)
-				{
-                    _userDialogs.ShowLoading(AppResources.Login_Authenticating ,MaskType.Black);
-                } else {
-                    _userDialogs.HideLoading();
-                }
-			});
+            LoginCommand.Subscribe(HandleAuthSuccess);
 
 
-            LoginCommand.ThrownExceptions.Subscribe((ex) =>
-            {
-                Debug.WriteLine(String.Format("Exception: {0}", ex.ToString()));
-                _mvxMessenger.Publish(new ExceptionOcurredMessage(this, ex));
-            });
+            LoginCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Login_Authenticating));
 
 
+            LoginCommand.ThrownExceptions.Subscribe(HandleExceptions);
+
+
+			// Create Reactive Commands
+			LoginWithFacebookCommand = ReactiveCommand.CreateFromObservable<Unit, string>(
+				(param) => {
+
+					var oauthService = DependencyService.Get<IOAuth>();
+					return oauthService
+						.authenticate(new FacebookOAuth2())
+						.Do(_ => _userDialogs.ShowLoading(AppResources.Login_Authenticating))
+						.SelectMany(accessToken => authenticationService.LoginWithFacebook(accessToken))
+						.Do(_ => _userDialogs.HideLoading());
+				});
+
+
+			LoginWithFacebookCommand.Subscribe(HandleAuthSuccess);
+
+			LoginWithFacebookCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }
 
 		#region Properties
@@ -75,27 +85,36 @@ namespace Bullytect.Core.ViewModels
 		#endregion
 
 
-
 		#region commands
 
+        public ReactiveCommand<Unit, string> LoginCommand { get; protected set; }
 
-        public ReactiveCommand LoginCommand { get; protected set; }
+        public ReactiveCommand<Unit, string> LoginWithFacebookCommand { get; protected set; }
 
+        public ICommand GoToPasswordRecoveryCommand => new MvxCommand(() => ShowViewModel<PasswordRecoveryViewModel>());
 
-        #endregion
+		#endregion
 
+		protected override void HandleExceptions(Exception ex)
+		{
 
-		IObservable<string> LoginObservable() {
+			if (ex is AuthenticationFailedException)
+			{
+				var toastConfig = new ToastConfig(AppResources.Login_Failed);
+				toastConfig.SetDuration(3000);
+				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
+				_userDialogs.Toast(toastConfig);
+			}
+			else
+			{
+				base.HandleExceptions(ex);
+			}
+		}
 
-            return _authenticationService.LogIn(_email, _password, (authFailed) =>
-            {
-                Debug.WriteLine(String.Format("Response Message: {0}", authFailed.Response.Data));
-                var toastConfig = new ToastConfig(AppResources.Login_Failed);
-                toastConfig.SetDuration(3000);
-                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
-                _userDialogs.Toast(toastConfig);
-            });
-
+        void HandleAuthSuccess(string jwtToken) {
+			Debug.WriteLine("JWT Token -> " + jwtToken);
+			_userDialogs.ShowSuccess(AppResources.Login_Success);
+			ShowViewModel<HomeViewModel>();
         }
 
 		

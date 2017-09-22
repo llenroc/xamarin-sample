@@ -30,9 +30,6 @@
     <EmbeddedResource Include="Pages\Welcome\WelcomeStartPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ImageButton.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="I18N\AppResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
@@ -50,6 +47,63 @@
     <EmbeddedResource Include="Pages\Signup\SignupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\Badge.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\BrandBlock.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\CircleIcon.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\CustomActivityIndicator.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\RoundedLabel.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Themes\GrialDarkTheme.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Themes\GrialEnterpriseTheme.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Themes\GrialLightTheme.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Themes\MyAppTheme.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\PasswordRecovery\PasswordRecoveryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Walkthrough\WalkthroughPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Walkthrough\Items\WalkthroughStepItemTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Notification\NotificationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Notification\Templates\NotificationItemTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\Templates\MainListHeaderTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\Templates\SonSimpleItemTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\SonProfile\SonProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Children\ChildrenPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\Templates\SonPageTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,11 +117,7 @@
     <Compile Include="Pages\Welcome\WelcomeStartPage.xaml.cs">
       <DependentUpon>WelcomeStartPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\AnimateButton.cs" />
     <Compile Include="Renderers\ThemedNavigationPage.cs" />
-    <Compile Include="Controls\ImageButton.xaml.cs">
-      <DependentUpon>ImageButton.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Converters\InverseBoolConverter.cs" />
     <Compile Include="Converters\NullIntValueConverter.cs" />
     <Compile Include="Converters\IsNotNullToBoolConverter.cs" />
@@ -78,7 +128,6 @@
     </Compile>
     <Compile Include="Helpers\PlatformCulture.cs" />
     <Compile Include="I18N\TranslateExtension.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="CoreApp.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Services\IAuthenticationService.cs" />
@@ -102,7 +151,6 @@
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\HomeViewModel.cs" />
-    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="ViewModels\Core\BaseViewModel.cs" />
     <Compile Include="Services\IDeviceGroupsService.cs" />
     <Compile Include="Models\Domain\DeviceEntity.cs" />
@@ -120,6 +168,82 @@
     <Compile Include="OAuth\Exceptions\FacebookAuthenticationErrorException.cs" />
     <Compile Include="Converters\NullVisibilityConverter.cs" />
     <Compile Include="Messages\SessionExpiredMessage.cs" />
+    <Compile Include="Helpers\GrialShapesFont.cs" />
+    <Compile Include="Pages\Common\Badge.xaml.cs">
+      <DependentUpon>Badge.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\BrandBlock.xaml.cs">
+      <DependentUpon>BrandBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\CircleIcon.xaml.cs">
+      <DependentUpon>CircleIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\CustomActivityIndicator.xaml.cs">
+      <DependentUpon>CustomActivityIndicator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\RoundedLabel.xaml.cs">
+      <DependentUpon>RoundedLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\GrialDarkTheme.xaml.cs">
+      <DependentUpon>GrialDarkTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\GrialEnterpriseTheme.xaml.cs">
+      <DependentUpon>GrialEnterpriseTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\GrialLightTheme.xaml.cs">
+      <DependentUpon>GrialLightTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\MyAppTheme.xaml.cs">
+      <DependentUpon>MyAppTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PasswordRecovery\PasswordRecoveryPage.xaml.cs">
+      <DependentUpon>PasswordRecoveryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\PasswordRecoveryViewModel.cs" />
+    <Compile Include="Converters\ContainsKeyVisibilityConverter.cs" />
+    <Compile Include="Converters\ValidationErrorFormatValueConverter.cs" />
+    <Compile Include="Pages\Walkthrough\WalkthroughPage.xaml.cs">
+      <DependentUpon>WalkthroughPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Walkthrough\Items\WalkthroughStepItemTemplate.xaml.cs">
+      <DependentUpon>WalkthroughStepItemTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\WalkthroughViewModel.cs" />
+    <Compile Include="Utils\IMvxCarouselPage.cs" />
+    <Compile Include="Utils\MvxCarouselPage.cs" />
+    <Compile Include="Exceptions\TimeoutOperationException.cs" />
+    <Compile Include="Services\Impl\BaseService.cs" />
+    <Compile Include="Pages\Notification\NotificationPage.xaml.cs">
+      <DependentUpon>NotificationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\NotificationViewModel.cs" />
+    <Compile Include="Pages\Notification\Templates\NotificationItemTemplate.xaml.cs">
+      <DependentUpon>NotificationItemTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domain\AlertEntity.cs" />
+    <Compile Include="Services\IAlertService.cs" />
+    <Compile Include="Services\Impl\AlertServiceImpl.cs" />
+    <Compile Include="Utils\ApiUtils.cs" />
+    <Compile Include="Pages\Common\Templates\MainListHeaderTemplate.xaml.cs">
+      <DependentUpon>MainListHeaderTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\Templates\SonSimpleItemTemplate.xaml.cs">
+      <DependentUpon>SonSimpleItemTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SonProfile\SonProfilePage.xaml.cs">
+      <DependentUpon>SonProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\SonProfileViewModel.cs" />
+    <Compile Include="Converters\ItemTappedEventArgsConverter.cs" />
+    <Compile Include="Utils\EventToCommandBehavior.cs" />
+    <Compile Include="Utils\BindableBehavior.cs" />
+    <Compile Include="Pages\Children\ChildrenPage.xaml.cs">
+      <DependentUpon>ChildrenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Repeater.cs" />
+    <Compile Include="Pages\Common\Templates\SonPageTemplate.xaml.cs">
+      <DependentUpon>SonPageTemplate.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
@@ -140,18 +264,6 @@
     <Reference Include="ImageCircle.Forms.Plugin.Abstractions">
       <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.1.8.1\lib\portable-net45+wp80+win8+wpa81\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="MvvmCross.Platform">
-      <HintPath>..\packages\MvvmCross.Platform.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Core">
-      <HintPath>..\packages\MvvmCross.Core.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Binding">
-      <HintPath>..\packages\MvvmCross.Binding.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Binding.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Localization">
-      <HintPath>..\packages\MvvmCross.Binding.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Localization.dll</HintPath>
-    </Reference>
     <Reference Include="Plugin.Settings.Abstractions">
       <HintPath>..\packages\Xam.Plugins.Settings.3.0.1\lib\netstandard1.0\Plugin.Settings.Abstractions.dll</HintPath>
     </Reference>
@@ -167,9 +279,6 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
-    <Reference Include="MvvmCross.Forms">
-      <HintPath>..\packages\MvvmCross.Forms.5.1.1\lib\portable-net45+netcore45+wpa81+MonoAndroid10+Xamarin.iOS10\MvvmCross.Forms.dll</HintPath>
-    </Reference>
     <Reference Include="System.ComponentModel.Primitives">
       <HintPath>..\packages\System.ComponentModel.Primitives.4.3.0\lib\netstandard1.0\System.ComponentModel.Primitives.dll</HintPath>
     </Reference>
@@ -184,9 +293,6 @@
     </Reference>
     <Reference Include="MvvmCross.Plugins.Validation.ForFieldBinding">
       <HintPath>..\packages\MvvmCross.Plugins.Validation.ForFieldBinding.2.1.2\lib\portable-net45+netcore45+wpa81\MvvmCross.Plugins.Validation.ForFieldBinding.dll</HintPath>
-    </Reference>
-    <Reference Include="Refit">
-      <HintPath>..\packages\refit.3.0.1\lib\netstandard1.1\Refit.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.FirebasePushNotification.Abstractions">
       <HintPath>..\packages\Plugin.FirebasePushNotification.1.0.4\lib\portable-net45+wp80+win8+wpa81\Plugin.FirebasePushNotification.Abstractions.dll</HintPath>
@@ -218,23 +324,35 @@
     <Reference Include="System.Reactive.Linq">
       <HintPath>..\packages\Rx-Linq.2.2.5\lib\portable-net45+winrt45+wp8+wpa81\System.Reactive.Linq.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.PlatformServices">
-      <HintPath>..\packages\Rx-PlatformServices.2.2.5\lib\portable-net45+winrt45+wp8+wpa81\System.Reactive.PlatformServices.dll</HintPath>
-    </Reference>
-    <Reference Include="ReactiveUI">
-      <HintPath>..\packages\reactiveui-core.7.0.0\lib\portable-net45+netcore45+wpa81+win8+wp8+UAP10+MonoAndroid403+MonoTouch10+Xamarin.iOS10\ReactiveUI.dll</HintPath>
-    </Reference>
     <Reference Include="MvvmCross.ReactiveUI.Interop">
       <HintPath>..\packages\MvvmCross.ReactiveUI.Interop.3.0.0\lib\portable-net45+netcore45+win8+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\MvvmCross.ReactiveUI.Interop.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="MvvmCross.Plugins.Messenger">
-      <HintPath>..\packages\MvvmCross.Plugin.Messenger.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.Messenger.dll</HintPath>
+    <Reference Include="PCLCrypto">
+      <HintPath>..\packages\PCLCrypto.2.0.147\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\PCLCrypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Auth">
+      <HintPath>..\packages\Xamarin.Auth.1.5.0.3\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+XamarinIOS10\Xamarin.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Platform">
+      <HintPath>..\packages\MvvmCross.Platform.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Core">
+      <HintPath>..\packages\MvvmCross.Core.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Binding">
+      <HintPath>..\packages\MvvmCross.Binding.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Localization">
+      <HintPath>..\packages\MvvmCross.Binding.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Localization.dll</HintPath>
     </Reference>
     <Reference Include="MvvmCross.FieldBinding">
       <HintPath>..\packages\MvvmCross.Plugin.FieldBinding.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.FieldBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Messenger">
+      <HintPath>..\packages\MvvmCross.Plugin.Messenger.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.Messenger.dll</HintPath>
     </Reference>
     <Reference Include="PInvoke.Windows.Core">
       <HintPath>..\packages\PInvoke.Windows.Core.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.Windows.Core.dll</HintPath>
@@ -248,14 +366,56 @@
     <Reference Include="PInvoke.NCrypt">
       <HintPath>..\packages\PInvoke.NCrypt.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.NCrypt.dll</HintPath>
     </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>..\packages\Rx-PlatformServices.2.2.5\lib\portable-net45+winrt45+wp8+wpa81\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI">
+      <HintPath>..\packages\reactiveui-core.7.0.0\lib\portable-net45+netcore45+wpa81+win8+wp8+UAP10+MonoAndroid403+MonoTouch10+Xamarin.iOS10\ReactiveUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Refit">
+      <HintPath>..\packages\refit.3.0.1\lib\netstandard1.1\Refit.dll</HintPath>
+    </Reference>
     <Reference Include="Validation">
       <HintPath>..\packages\Validation.2.2.8\lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Validation.dll</HintPath>
     </Reference>
-    <Reference Include="PCLCrypto">
-      <HintPath>..\packages\PCLCrypto.2.0.147\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\PCLCrypto.dll</HintPath>
+    <Reference Include="Lottie.Forms">
+      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.1.0.0.7\lib\portable-net45+wp8+win+wpa81+dnxcore50\Lottie.Forms.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Auth">
-      <HintPath>..\packages\Xamarin.Auth.1.5.0.3\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+XamarinIOS10\Xamarin.Auth.dll</HintPath>
+    <Reference Include="MvvmCross.Forms">
+      <HintPath>..\packages\MvvmCross.Forms.5.1.1\lib\portable-net45+netcore45+wpa81+MonoAndroid10+Xamarin.iOS10\MvvmCross.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Effects">
+      <HintPath>..\packages\UXDivers.Effects.0.6.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Effects.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Artina.Shared.Base">
+      <HintPath>..\packages\UXDivers.Artina.Shared.Base.2.0.60\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Artina.Shared.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Artina.Shared">
+      <HintPath>..\packages\UXDivers.Artina.Shared.2.0.60\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Artina.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.9\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.9\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Transformations">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.9\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Transformations.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.9\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernHttpClient">
+      <HintPath>..\packages\modernhttpclient.2.4.2\lib\Portable-Net45+WinRT45+WP8+WPA81\ModernHttpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.XamForms.PullToRefresh">
+      <HintPath>..\packages\Refractored.XamForms.PullToRefresh.1.1.0\lib\portable-net45+wp80+win8+wpa81\Refractored.XamForms.PullToRefresh.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.2\lib\netstandard1.0\Plugin.Connectivity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.2\lib\netstandard1.0\Plugin.Connectivity.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -269,7 +429,6 @@
     <Folder Include="Models\Utils\" />
     <Folder Include="Pages\" />
     <Folder Include="Pages\Welcome\" />
-    <Folder Include="Controls\" />
     <Folder Include="Renderers\" />
     <Folder Include="Converters\" />
     <Folder Include="I18N\" />
@@ -278,7 +437,6 @@
     <Folder Include="Models\Domain\" />
     <Folder Include="Pages\Login\" />
     <Folder Include="Pages\Home\" />
-    <Folder Include="Commands\" />
     <Folder Include="ViewModels\Core\" />
     <Folder Include="Messages\" />
     <Folder Include="Pages\Signup\" />
@@ -289,6 +447,17 @@
     <Folder Include="OAuth\Services\" />
     <Folder Include="I18N\Services\" />
     <Folder Include="OAuth\Exceptions\" />
+    <Folder Include="Pages\Common\" />
+    <Folder Include="Themes\" />
+    <Folder Include="Pages\PasswordRecovery\" />
+    <Folder Include="Pages\Walkthrough\" />
+    <Folder Include="Pages\Walkthrough\Items\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Pages\Notification\" />
+    <Folder Include="Pages\Notification\Templates\" />
+    <Folder Include="Pages\Common\Templates\" />
+    <Folder Include="Pages\SonProfile\" />
+    <Folder Include="Pages\Children\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bullytect.rest\bullytect.rest.csproj">
@@ -307,6 +476,7 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
-  <Import Project="..\packages\refit.3.0.1\build\netstandard1.1\refit.targets" Condition="Exists('..\packages\refit.3.0.1\build\netstandard1.1\refit.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\packages\refit.3.0.1\build\netstandard1.1\refit.targets" Condition="Exists('..\packages\refit.3.0.1\build\netstandard1.1\refit.targets')" />
+  <Import Project="..\packages\UXDivers.Artina.Shared.2.0.60\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Artina.Shared.targets" Condition="Exists('..\packages\UXDivers.Artina.Shared.2.0.60\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Artina.Shared.targets')" />
 </Project>

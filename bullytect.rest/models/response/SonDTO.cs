@@ -9,10 +9,12 @@ namespace Bullytect.Rest.Models.Response
 
 		[JsonProperty("identity")]
         public string Identity { get; set; }
-        [JsonProperty("firstName")]
+        [JsonProperty("first_name")]
         public string FirstName { get; set; }
-        [JsonProperty("lastName")]
+        [JsonProperty("last_name")]
 		public string LastName { get; set; }
+        [JsonProperty("birthdate")]
+        public string Birthdate { get; set; }
         [JsonProperty("age")]
         public int Age { get; set; }
         [JsonProperty("school")]

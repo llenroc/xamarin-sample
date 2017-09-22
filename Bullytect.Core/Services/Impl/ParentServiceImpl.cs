@@ -10,11 +10,11 @@ namespace Bullytect.Core.Services.Impl
 	using Bullytect.Core.Models.Domain;
 	using Bullytect.Rest.Models.Request;
 	using Bullytect.Rest.Models.Response;
-	using Bullytect.Rest.Models.Exceptions;
 	using Bullytect.Rest.Services;
 	using Refit;
+    using System.Linq;
 
-	public class ParentServiceImpl: IParentService
+    public class ParentServiceImpl: BaseService, IParentService
     {
         readonly IParentsRestService _parentsRestService;
 
@@ -23,21 +23,19 @@ namespace Bullytect.Core.Services.Impl
             _parentsRestService = parentsRestService;
         }
 
-        public IObservable<ParentEntity> GetProfileInformation(Action<LoadProfileFailedException> errorHandler)
+        public IObservable<ParentEntity> GetProfileInformation()
         {
            Debug.WriteLine("Get Profile Information");
 
-            return _parentsRestService
+            var observable =  _parentsRestService
                 .GetSelfInformation()
                 .Select(response => response.Data)
                 .Select((ParentDTO parent) => Mapper.Map<ParentDTO, ParentEntity>(parent))
-                .Catch<ParentEntity, ApiException>(ex => {
-                    var response = ex.GetContentAs<APIResponse<string>>();
-                    errorHandler(new LoadProfileFailedException(response));
-                    return Observable.Return(new ParentEntity());
-                }).Finally(() => {
+                .Finally(() => {
                     Debug.WriteLine("Get Profile Information finished ...");
                 });
+
+            return operationDecorator(observable);
         }
 
         public IObservable<List<SonEntity>> GetChildren()
@@ -45,13 +43,15 @@ namespace Bullytect.Core.Services.Impl
             
             Debug.WriteLine("Get Children");
 
-            return _parentsRestService
+            var observable =  _parentsRestService
                 .GetChildrenOfSelfParent()
                 .Select((APIResponse<List<SonDTO>> response) => response.Data)
                 .Select((List<SonDTO> children) => Mapper.Map<List<SonDTO>, List<SonEntity>>(children))
 				.Finally(() => {
 					Debug.WriteLine("Get Children finished ...");
 				});
+
+            return operationDecorator(observable);
         }
 
         public IObservable<ParentEntity> Register(string FirstName, string LastName, DateTime Birthdate, 
@@ -60,7 +60,7 @@ namespace Bullytect.Core.Services.Impl
 
             Debug.WriteLine("Register");
 
-            return _parentsRestService
+            var observable =  _parentsRestService
                 .registerParent(new RegisterParentDTO()
                 {
                     FirstName = FirstName,
@@ -77,13 +77,15 @@ namespace Bullytect.Core.Services.Impl
                 {
                     Debug.WriteLine("Register ...");
                 });
+
+            return operationDecorator(observable);
         }
 
         public IObservable<ParentEntity> Update(string FirstName, string LastName, int Age, string Email)
         {
 			Debug.WriteLine(String.Format("Update Parent with:t FirstName: {0}, LastName: {1}, Age: {2}, Email: {3}", FirstName, LastName, Age, Email));
 
-            return _parentsRestService
+            var observable =  _parentsRestService
                 .updateSelfParent(new UpdateParentDTO()
                 {
                     FirstName = FirstName,
@@ -97,7 +99,26 @@ namespace Bullytect.Core.Services.Impl
 				{
 					Debug.WriteLine("Update ...");
 				});
+
+            return operationDecorator(observable);
         }
 
+        public IObservable<string> ResetPassword(string email)
+        {
+            Debug.WriteLine("Reset Password");
+
+			var observable =  _parentsRestService
+                .resetPassword(new ResetPasswordRequestDTO(){
+                    Email = email
+                })
+				.Select((APIResponse<string> response) => response.Data)
+				.Finally(() =>
+				{
+					Debug.WriteLine("Reset Password Finished ...");
+				});
+
+
+            return operationDecorator(observable);
+        }
     }
 }

@@ -23,9 +23,12 @@ namespace Bullytect.Core
 
 		private void ConfigLocale()
 		{
-			if (Device.OS == TargetPlatform.iOS || Device.OS == TargetPlatform.Android)
+
+            if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android )
 			{
+				Debug.WriteLine("Get Culture Info ...");
 				var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
+				Debug.WriteLine(ci.ToString());
 				AppResources.Culture = ci; // set the RESX for resource localization
 				DependencyService.Get<ILocalize>().SetLocale(ci); // set the Thread for locale-aware methods
 			}
@@ -85,5 +88,6 @@ namespace Bullytect.Core
 			Settings.FcmToken = CrossFirebasePushNotification.Current.Token;
 
 		}
-    }
+
+	}
 }

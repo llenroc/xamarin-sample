@@ -12,10 +12,71 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
+
+
+	<!-- Page Titles -->
+
+	<data name="Page.Common.Title" xml:space="preserve">
+        <value>BullTect</value>
+        <comment>Page Common Title</comment>
+    </data>
+
+	<data name="Page.Notifications.Title" xml:space="preserve">
+        <value>Notifications</value>
+        <comment>Page Notifications Title</comment>
+    </data>
+
+	<!-- Common strings -->
+
+   
+    <data name="Common.Loading" xml:space="preserve">
+        <value>Operation in progress</value>
+        <comment>Common Loading</comment>
+    </data>
+
+	<data name="Common.Timeout.Operation" xml:space="preserve">
+        <value>The operation took too long to complete. Try again.</value>
+        <comment>Common Timeout Operation</comment>
+    </data>
+
+	<data name="Common.Server.Connection.Error" xml:space="preserve">
+        <value>Failed to connect to server, please try again later.</value>
+        <comment>Common Server Connection Error</comment>
+    </data>
 	
+
+	<!-- Walkthrough -->
+
+    <data name="Walkthrough.Btn.Next" xml:space="preserve">
+        <value>Next</value>
+        <comment>Walkthrough Btn Next</comment>
+    </data>
+
+	<data name="Walkthrough.Btn.Finish" xml:space="preserve">
+        <value>Go To Login</value>
+        <comment>Walkthrough Btn Finish</comment>
+    </data>
+
+	<!-- Welcome Page -->
+   
 	<data name="WelcomePage.MainLabel" xml:space="preserve">
+        <value>BullyTect</value>
+        <comment>WelcomePage MainLabel</comment>
+    </data>
+
+    <data name="WelcomePage.SecondLabel" xml:space="preserve">
         <value>BullyTect - The first anti-bullying in internet history. Designed to protect the younger and pre-teenagers from attack on social networks of other groups of their age</value>
-        <comment>Main Label Text For Welcome Page</comment>
+        <comment>WelcomePage SecondLabel</comment>
+    </data>
+	
+	<data name="WelcomePage.ClaimText" xml:space="preserve">
+        <value>BullyTect - The first anti-bullying in internet history. Designed to protect the younger and pre-teenagers from attack on social networks of other groups of their age</value>
+        <comment>WelcomePage ClaimText</comment>
+    </data>
+
+	<data name="WelcomePage.ClaimTextSecond" xml:space="preserve">
+        <value>Sign in with your account or register</value>
+        <comment>WelcomePage ClaimText Second</comment>
     </data>
 
 	<data name="WelcomePage.Login.Btn" xml:space="preserve">
@@ -33,7 +94,18 @@
         <comment>Login With Facebook</comment>
     </data>
 
+    <data name="WelcomePage.Walkthrough.Btn" xml:space="preserve">
+        <value>See Walkthrough</value>
+        <comment>WelcomePage Walkthrough Btn</comment>
+    </data>
+	
+
 	<!-- LogIn -->
+
+	<data name="Login.Text" xml:space="preserve">
+		<value>Login or register using your&#x0a;email and password.</value>
+        <comment>Login Text</comment>
+	</data>
 	
 	<data name="Login.Authenticating" xml:space="preserve">
         <value>Authenticating ....</value>
@@ -50,7 +122,37 @@
         <comment>Login Failed</comment>
     </data>
 
+	<data name="Login.Forget.Password" xml:space="preserve">
+		<value>Did you forget your password?</value>
+        <comment>Login Forget Password</comment>
+	</data>
+
 	<!-- Signup -->
+
+	<data name="Signup.Page.Title" xml:space="preserve">
+        <value>Signup</value>
+        <comment>Signup Page Title</comment>
+    </data>
+
+	<data name="Signup.Title.Main" xml:space="preserve">
+        <value>Register now</value>
+        <comment>Signup Title Main</comment>
+    </data>
+
+	<data name="Signup.Title.Second" xml:space="preserve">
+        <value>Register now and enjoy the&#x0a;pleasures of the demo.</value>
+		<comment>Signup Title</comment>
+	</data>
+
+	<data name="Signup.Create" xml:space="preserve">
+        <value>Create Account</value>
+        <comment>Create Account</comment>
+    </data>
+
+	<data name="Signup.Alredy.User" xml:space="preserve">
+		<value>Already a user? Login now</value>
+        <comment>Already a user? Login now</comment>
+	</data>
 
     <data name="Signup.CreatingAccount" xml:space="preserve">
         <value>Creating Account ....</value>
@@ -62,13 +164,112 @@
         <comment>Account Created</comment>
     </data>
 
+	<data name="Signup.Account.Firstname.Placeholder" xml:space="preserve">
+        <value> First Name </value>
+        <comment>Signup Account Firstname Placeholder</comment>
+	</data>
+
+	<data name="Signup.Account.LastName.Placeholder" xml:space="preserve">
+        <value> Last Name </value>
+        <comment>Signup Account Last Name Placeholder</comment>
+    </data>
+
+	<data name="Signup.Account.Email.Placeholder" xml:space="preserve">
+        <value> E-mail </value>
+        <comment>Signup Account Email Placeholder</comment>
+    </data>
+
+	<data name="Signup.Account.Password.Placeholder" xml:space="preserve">
+        <value> Password </value>
+        <comment>Signup Account Password Placeholder</comment>
+    </data>
+
+	<data name="Signup.Account.ConfirmPassword.Placeholder" xml:space="preserve">
+        <value> Confirm Password </value>
+        <comment>Signup Account Confirm Password Placeholder</comment>
+    </data>
+
+	<data name="Signup.Account.Telephone.Placeholder" xml:space="preserve">
+        <value> Telephone </value>
+        <comment>Signup Account Telephone Placeholder</comment>
+    </data>
+
+
+	<data name="Signup.Account.Email.Invalid" xml:space="preserve">
+        <value> Please enter a valid e-mail </value>
+        <comment>Signup Account Email Invalid</comment>
+    </data>
+
+	<data name="Signup.Account.Password.Not.Match" xml:space="preserve">
+		<value> Passwords do not match </value>
+        <comment>Signup Account Password Not Match</comment>
+	</data>
+	
+
+   
+	<!-- Password Recovery -->
+
+	<data name="Password.Recovery.Main.Text" xml:space="preserve">
+        <value> Forgot your password? </value>
+        <comment>Password Recovery Main Text</comment>
+    </data>
+
+	
+    <data name="Password.Recovery.Second.Text" xml:space="preserve">
+        <value> Don’t worry type your email here&#x0a;and we will recover it for you. </value>
+        <comment>Password Recovery Second Text</comment>
+    </data>
+
+    <data name="Password.Recovery.Send" xml:space="preserve">
+        <value> Send </value>
+        <comment>Password Recovery Send Request</comment>
+    </data>
+
+	<data name="Password.Recovery.Validation.Email" xml:space="preserve">
+        <value> Please enter a valid e-mail </value>
+        <comment>Password Recovery Validation Email</comment>
+    </data>
+
+	<data name="Password.Recovery.Request.Completed" xml:space="preserve">
+        <value> You will receive an email with the steps to complete the process </value>
+        <comment>Password Recovery Request Completed</comment>
+    </data>
+
+
+	
 	<!-- Profile -->
+   
+    <data name="Profile.Toolbar.Children" xml:space="preserve">
+        <value> Children ({0}) </value>
+        <comment>Profile Toolbar Children</comment>
+    </data>
+
+	<data name="Profile.Toolbar.Notifications" xml:space="preserve">
+        <value> Notifications ({0}) </value>
+        <comment>Profile Toolbar Notifications</comment>
+    </data>
+
 	<data name="Profile.Loading.Failed" xml:space="preserve">
 		<value> Failed to load user profile </value>
         <comment>Profile Loading Failed</comment>
 	</data>
 
-   
+	<data name="Profile.Children.List.Title" xml:space="preserve">
+        <value> &#032;Children analyzed </value>
+        <comment>Profile Children List Title</comment>
+    </data>
+
+   <!-- Son Profile -->
+
+	<data name="Son.Profile.Birthday" xml:space="preserve">
+        <value> Birthday: {0} </value>
+        <comment>Son Profile Birthday</comment>
+    </data>
+
+	<data name="Son.Profile.School" xml:space="preserve">
+        <value> School: {0} </value>
+        <comment>Son Profile School</comment>
+    </data>
     
 
 	<data name="Global.ErrorOcurred" xml:space="preserve">

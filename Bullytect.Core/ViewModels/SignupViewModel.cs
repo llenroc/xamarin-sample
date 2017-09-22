@@ -1,14 +1,16 @@
 ﻿
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.I18N;
-using Bullytect.Core.Messages;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
+using Bullytect.Rest.Models.Exceptions;
+using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
-using MvvmCross.Plugins.Validation;
 using ReactiveUI;
 
 namespace Bullytect.Core.ViewModels
@@ -17,45 +19,33 @@ namespace Bullytect.Core.ViewModels
     {
 
         readonly IParentService _parentService;
-		readonly IValidator _validator;
-        readonly IUserDialogs _userDialogs;
-        readonly IMvxMessenger _mvxMessenger;
 
-        public SignupViewModel(IValidator validator, IParentService parentService, IUserDialogs userDialogs, IMvxMessenger mvxMessenger)
+        public SignupViewModel(IParentService parentService, IUserDialogs userDialogs, IMvxMessenger mvxMessenger): base(userDialogs, mvxMessenger)
         {
-			_validator = validator;
 			_parentService = parentService;
-			_userDialogs = userDialogs;
-            _mvxMessenger = mvxMessenger;
 
             SignupCommand = ReactiveCommand.CreateFromObservable<string, ParentEntity>((param) => RegisterTask());
 
             SignupCommand.Subscribe(AccountCreated);
 
 
-			SignupCommand.IsExecuting.Subscribe((isLoading) => {
-				if (isLoading)
-				{
-                    _userDialogs.ShowLoading(AppResources.Signup_CreatingAccount, MaskType.Black);
-				}
-				else
-				{
-					_userDialogs.HideLoading();
-				}
-			});
+            SignupCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Signup_CreatingAccount));
 
-			SignupCommand.ThrownExceptions.Subscribe((ex) =>
-			{
-				Debug.WriteLine(String.Format("Exception: {0}", ex.ToString()));
-				_mvxMessenger.Publish(new ExceptionOcurredMessage(this, ex));
-			});
+			SignupCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }
 
-		#region Properties
+        #region Properties
 
-		string _firstName;
+        Dictionary<string, string> _fieldErrors = new Dictionary<string, string>();
 
-		[Required("{0} is required")]
+        public Dictionary<string, string> FieldErrors
+		{
+			get => _fieldErrors;
+			set => SetProperty(ref _fieldErrors, value);
+		}
+
+        string _firstName;
+
 		public string FirstName
 		{
 			get => _firstName;
@@ -64,7 +54,6 @@ namespace Bullytect.Core.ViewModels
 
 		string _lastName;
 
-		[Required("{0} is required")]
 		public string LastName
 		{
 			get => _lastName;
@@ -81,7 +70,6 @@ namespace Bullytect.Core.ViewModels
 
 		string _email;
 
-		[Required("{0} is required")]
 		public string Email
 		{
 			get => _email;
@@ -90,7 +78,6 @@ namespace Bullytect.Core.ViewModels
 
         string _passwordClear;
 
-		[Required("{0} is required")]
 		public string PasswordClear
 		{
 			get => _email;
@@ -98,19 +85,24 @@ namespace Bullytect.Core.ViewModels
 		}
 
 
-		string _confirmPassword;
+        string _confirmPassword;
 
-		[Required("{0} is required")]
 		public string ConfirmPassword
 		{
 			get => _email;
 			set => SetProperty(ref _confirmPassword, value);
 		}
 
-		string _telephone;
+        readonly string _prefix = "+34";
 
-		[Required("{0} is required")]
-		public string Telephone
+        public string Prefix
+        {
+            get => _prefix;
+        }
+
+		int _telephone;
+
+		public int Telephone
 		{
 			get => _telephone;
 			set => SetProperty(ref _telephone, value);
@@ -122,7 +114,7 @@ namespace Bullytect.Core.ViewModels
 
         public IObservable<ParentEntity> RegisterTask()
         {
-            return _parentService.Register(FirstName, LastName, Birthdate, Email, PasswordClear, ConfirmPassword, Telephone);
+            return _parentService.Register(FirstName, LastName, Birthdate, Email, PasswordClear, ConfirmPassword, String.Concat(Prefix, Telephone));
 
         }
 
@@ -130,7 +122,9 @@ namespace Bullytect.Core.ViewModels
 
         public ReactiveCommand<string, ParentEntity> SignupCommand { get; protected set; }
 
-		#endregion
+        public ICommand GoToLoginCommand => new MvxCommand(() => ShowViewModel<AuthenticationViewModel>());
+
+        #endregion
 
 
         void AccountCreated(ParentEntity parent){
@@ -139,8 +133,22 @@ namespace Bullytect.Core.ViewModels
 			toastConfig.SetDuration(3000);
 			toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
 			_userDialogs.Toast(toastConfig);
-			ShowViewModel<AuthenticationViewModel>();
-			Close(this);
+			//ShowViewModel<AuthenticationViewModel>();
         }
+
+
+		protected override void HandleExceptions(Exception ex)
+		{
+
+			if (ex is DataInvalidException)
+			{
+				var dataInvalidEx = (DataInvalidException)ex;
+				FieldErrors = dataInvalidEx.FieldErrors;
+			}
+			else
+			{
+				base.HandleExceptions(ex);
+			}
+		}
 	}
 }

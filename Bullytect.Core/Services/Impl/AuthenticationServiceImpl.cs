@@ -13,7 +13,7 @@ namespace Bullytect.Core.Services.Impl
     using MvvmCross.Plugins.Messenger;
     using Refit;
 
-    public class AuthenticationServiceImpl: IAuthenticationService
+    public class AuthenticationServiceImpl: BaseService, IAuthenticationService
     {
         readonly IAuthenticationRestService _authenticationRestService;
         readonly IMvxMessenger _mvxMessenger;
@@ -25,18 +25,17 @@ namespace Bullytect.Core.Services.Impl
             Debug.WriteLine(GetType().Name + " was created on context");
         }
 
-        public IObservable<string> LogIn(string email, string password, Action<AuthenticationFailedException> errorHandler)
+        public IObservable<string> LogIn(string email, string password)
         {
             Debug.WriteLine(String.Format("Login with {0}/{1}", email, password));
 
-            return _authenticationRestService.getAuthorizationToken(new JwtAuthenticationRequestDTO()
+            var observable =  _authenticationRestService.getAuthorizationToken(new JwtAuthenticationRequestDTO()
             {
                 Email = email,
                 Password = password
             }).Select(response => response.Data.Token).Catch<string, ApiException>(ex => {
                 var response = ex.GetContentAs<APIResponse<string>>();
-                errorHandler(new AuthenticationFailedException(response));
-                return Observable.Return<string>(String.Empty);
+                return Observable.Throw<string>(new AuthenticationFailedException(response));
             }).Do((jwtToken) => {
                 if (!String.IsNullOrEmpty(jwtToken))
                 {
@@ -49,12 +48,15 @@ namespace Bullytect.Core.Services.Impl
 			}).Finally(() => {
                 Debug.WriteLine("Log in finished ...");
             });
+
+
+            return operationDecorator(observable);
 		}
 
         public IObservable<string> LoginWithFacebook(string accessToken){
             Debug.WriteLine("Log To Facebook ...");
 
-            return _authenticationRestService
+            var observable =  _authenticationRestService
                     .getAuthorizationTokenByFacebook(new JwtFacebookAuthenticationRequestDTO() { Token = accessToken })
                     .Select(response => response.Data.Token)
 					.Do((jwtToken) => {
@@ -70,7 +72,9 @@ namespace Bullytect.Core.Services.Impl
                     })
                     .Finally(() => {
                         Debug.WriteLine("Log To Facebook finished ...");
-                    });			    
+                    });
+
+            return operationDecorator(observable);
         }
 
 		public bool IsLoggedIn()

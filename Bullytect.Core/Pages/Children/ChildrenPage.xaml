@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<utils:MvxCarouselPage  
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
+    xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:sonTemplate="clr-namespace:Bullytect.Core.Pages.Son"
+    x:Class="Bullytect.Core.Pages.Children.ChildrenPage"
+    x:TypeArguments="viewModels:ChildrenViewModel"
+    BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
+    Title="{i18n:Translate Page.Common.Title}">
+    <CarouselPage.ItemTemplate>
+        <DataTemplate>
+            <commonTemplates:SonPageTemplate />
+        </DataTemplate>
+    </CarouselPage.ItemTemplate>
+</utils:MvxCarouselPage>

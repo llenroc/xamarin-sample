@@ -1,16 +1,16 @@
-﻿using System;
-using System.Diagnostics;
-using System.Reactive.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using Bullytect.Core.Models.Domain;
-using Bullytect.Rest.Models.Request;
-using Bullytect.Rest.Models.Response;
-using Bullytect.Rest.Services;
-
-namespace Bullytect.Core.Services.Impl
+﻿namespace Bullytect.Core.Services.Impl
 {
-    public class DeviceGroupsServiceImpl: IDeviceGroupsService
+
+	using System;
+	using System.Diagnostics;
+	using System.Reactive.Linq;
+	using AutoMapper;
+	using Bullytect.Core.Models.Domain;
+	using Bullytect.Rest.Models.Request;
+	using Bullytect.Rest.Models.Response;
+	using Bullytect.Rest.Services;
+
+    public class DeviceGroupsServiceImpl: BaseService, IDeviceGroupsService
     {
 
 		readonly IDeviceGroupsRestService _deviceGroupsRestService;
@@ -23,7 +23,7 @@ namespace Bullytect.Core.Services.Impl
         public IObservable<DeviceEntity> saveDevice(string deviceId, string token)
         {
             Debug.WriteLine("Save Token ...");
-            return _deviceGroupsRestService
+            var observable =  _deviceGroupsRestService
                 .save(new SaveDeviceDTO()
                 {
                     DeviceId = deviceId,
@@ -34,6 +34,8 @@ namespace Bullytect.Core.Services.Impl
                 .Finally(() => {
                     Debug.WriteLine("Save Device finished ...");
                 });
+
+            return operationDecorator(observable);
         }
     }
 }

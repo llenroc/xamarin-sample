@@ -63,6 +63,7 @@ namespace Bullytect.Droid
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahText = global::Bullytect.Droid.Resource.Styleable.ProgressWheel_ahText;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextColor = global::Bullytect.Droid.Resource.Styleable.ProgressWheel_ahTextColor;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextSize = global::Bullytect.Droid.Resource.Styleable.ProgressWheel_ahTextSize;
+			global::ModernHttpClient.Resource.String.library_name = global::Bullytect.Droid.Resource.String.library_name;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxBind = global::Bullytect.Droid.Resource.Attribute.MvxBind;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxDropDownItemTemplate = global::Bullytect.Droid.Resource.Attribute.MvxDropDownItemTemplate;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxGroupItemTemplate = global::Bullytect.Droid.Resource.Attribute.MvxGroupItemTemplate;

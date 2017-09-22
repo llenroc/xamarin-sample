@@ -20,12 +20,9 @@ namespace Bullytect.iOS.Providers
 
 		public CultureInfo GetCurrentCultureInfo()
 		{
-			var netLanguage = "en";
-			if (NSLocale.PreferredLanguages.Length > 0)
-			{
-				var pref = NSLocale.PreferredLanguages[0];
-				netLanguage = iOSToDotnetLanguage(pref);
-			}
+
+            var netLanguage = NSLocale.CurrentLocale.LanguageCode;
+
 			// this gets called a lot - try/catch can be expensive so consider caching or something
 			System.Globalization.CultureInfo ci = null;
 			try

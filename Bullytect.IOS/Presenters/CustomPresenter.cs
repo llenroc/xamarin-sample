@@ -20,6 +20,8 @@ namespace Bullytect.iOS.Presenters
  
 			if (request.PresentationValues?["NavigationCommand"] == "StackClear")
 			{
+
+
                 var navigation = FormsApplication.MainPage.Navigation;
                 Debug.WriteLine("Navigation Back Stack Count -> " + navigation.NavigationStack.Count());
                 navigation.PopToRootAsync();

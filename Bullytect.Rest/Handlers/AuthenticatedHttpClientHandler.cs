@@ -7,18 +7,20 @@ using System.Threading.Tasks;
 
 namespace Bullytect.Rest.Handlers
 {
-    public class AuthenticatedHttpClientHandler: HttpClientHandler
+    public class AuthenticatedHttpClientHandler: DelegatingHandler
     {
 
         #pragma warning disable CS170
 
 		readonly Func<string> getToken;
 
-        public AuthenticatedHttpClientHandler(Func<string> getToken)
+		public AuthenticatedHttpClientHandler(Func<string> getToken, HttpMessageHandler innerHandler = null)
+            : base(innerHandler ?? new HttpClientHandler())
         {
 			if (getToken == null) throw new ArgumentNullException("getToken");
 			this.getToken = getToken;
-        }
+		}
+
 
 		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
 		{
@@ -29,8 +31,11 @@ namespace Bullytect.Rest.Handlers
 			{
                 Debug.WriteLine(String.Format("Schema : {0}, Parameter: {1}", auth.Scheme, auth.Parameter));
                 var token = getToken();
-                Debug.WriteLine(String.Format("Token : {0}", token));
-				request.Headers.Authorization = new AuthenticationHeaderValue("dsdasd");
+                if( token != null ) {
+					Debug.WriteLine(String.Format("Token : {0}", token));
+					request.Headers.Authorization = new AuthenticationHeaderValue(token);
+                }
+
 			}
 
             return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);

@@ -11,10 +11,11 @@ namespace Bullytect.Core.Services
     public interface IParentService
     {
 
-        IObservable<ParentEntity> GetProfileInformation(Action<LoadProfileFailedException> errorHandler);
+        IObservable<ParentEntity> GetProfileInformation();
         IObservable<List<SonEntity>> GetChildren();
 		IObservable<ParentEntity> Register(string FirstName, string LastName, DateTime Birthdate,
 												  string Email, string PasswordClear, string ConfirmPassword, string Telephone);
         IObservable<ParentEntity> Update(string FirstName, string LastName, int Age, string Email);
+        IObservable<string> ResetPassword(string email);
     }
 }

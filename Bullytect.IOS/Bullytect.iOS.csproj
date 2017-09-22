@@ -283,18 +283,82 @@
       <HintPath>..\packages\Xamarin.Auth.1.5.0.3\lib\Xamarin.iOS10\Xamarin.Auth.dll</HintPath>
     </Reference>
     <Reference Include="System.Json" />
+    <Reference Include="WebP.Touch">
+      <HintPath>..\packages\WebP.Touch.1.0.4\lib\Xamarin.iOS10\WebP.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.9\lib\Xamarin.iOS10\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.9\lib\Xamarin.iOS10\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.9\lib\Xamarin.iOS10\FFImageLoading.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms.Touch">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.9\lib\Xamarin.iOS10\FFImageLoading.Forms.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Transformations">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.9\lib\Xamarin.iOS10\FFImageLoading.Transformations.dll</HintPath>
+    </Reference>
+    <Reference Include="Lottie.iOS">
+      <HintPath>..\packages\Com.Airbnb.iOS.Lottie.1.0.0.7\lib\xamarinios\Lottie.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Lottie.Forms">
+      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.1.0.0.7\lib\xamarinios\Lottie.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Lottie.Forms.iOS">
+      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.1.0.0.7\lib\xamarinios\Lottie.Forms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Artina.Shared.Base">
+      <HintPath>..\packages\UXDivers.Artina.Shared.Base.2.0.60\lib\Xamarin.iOS10\UXDivers.Artina.Shared.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Artina.Shared.Base.iOS">
+      <HintPath>..\packages\UXDivers.Artina.Shared.Base.2.0.60\lib\Xamarin.iOS10\UXDivers.Artina.Shared.Base.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Artina.Shared">
+      <HintPath>..\packages\UXDivers.Artina.Shared.2.0.60\lib\Xamarin.iOS10\UXDivers.Artina.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Artina.Shared.iOS">
+      <HintPath>..\packages\UXDivers.Artina.Shared.2.0.60\lib\Xamarin.iOS10\UXDivers.Artina.Shared.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Effects">
+      <HintPath>..\packages\UXDivers.Effects.0.6.0\lib\Xamarin.iOS10\UXDivers.Effects.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Effects.iOS">
+      <HintPath>..\packages\UXDivers.Effects.0.6.0\lib\Xamarin.iOS10\UXDivers.Effects.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernHttpClient">
+      <HintPath>..\packages\modernhttpclient.2.4.2\lib\Xamarin.iOS10\ModernHttpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.XamForms.PullToRefresh">
+      <HintPath>..\packages\Refractored.XamForms.PullToRefresh.1.1.0\lib\Xamarin.iOS10\Refractored.XamForms.PullToRefresh.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.XamForms.PullToRefresh.iOS">
+      <HintPath>..\packages\Refractored.XamForms.PullToRefresh.1.1.0\lib\Xamarin.iOS10\Refractored.XamForms.PullToRefresh.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.2\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.2\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Default-736h%403x.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Default-667h%402x.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Default%402x.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Default-568h%402x.png" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Default.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Providers\" />
     <Folder Include="Presenters\" />
-  </ItemGroup>
-  <ItemGroup>
-    <InterfaceDefinition Include="LaunchScreen.storyboard" />
+    <Folder Include="Renderers\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -314,9 +378,71 @@
     <Compile Include="Providers\Localize.cs" />
     <Compile Include="Providers\OAuth.cs" />
     <Compile Include="Presenters\CustomPresenter.cs" />
+    <Compile Include="Renderers\LoginRenderer.cs" />
+    <Compile Include="ThemeColors.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="GoogleService-Info.plist" />
+    <BundleResource Include="Resources\grial_animation.json" />
+    <BundleResource Include="Resources\article_image_5.png" />
+    <BundleResource Include="Resources\article_image_5%402x.png" />
+    <BundleResource Include="Resources\custom_navbar_bg.jpg" />
+    <BundleResource Include="Resources\custom_navbar_bg.png" />
+    <BundleResource Include="Resources\custom_navbar_bg%402x.jpg" />
+    <BundleResource Include="Resources\custom_navbar_bg%402x.png" />
+    <BundleResource Include="Resources\fontawesome-webfont.ttf" />
+    <BundleResource Include="Resources\generic_bg_image.jpg" />
+    <BundleResource Include="Resources\generic_bg_image.png" />
+    <BundleResource Include="Resources\generic_bg_image%402x.jpg" />
+    <BundleResource Include="Resources\generic_bg_image%402x.png" />
+    <BundleResource Include="Resources\grialshapes.ttf" />
+    <BundleResource Include="Resources\hamburguer_icon.png" />
+    <BundleResource Include="Resources\hamburguer_icon%402x.png" />
+    <BundleResource Include="Resources\Icon-60.png" />
+    <BundleResource Include="Resources\Icon-60%402x.png" />
+    <BundleResource Include="Resources\Icon-60%403x.png" />
+    <BundleResource Include="Resources\Icon-76.png" />
+    <BundleResource Include="Resources\Icon-76%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-40.png" />
+    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-40%403x.png" />
+    <BundleResource Include="Resources\Icon-Small.png" />
+    <BundleResource Include="Resources\Icon-Small%402x.png" />
+    <BundleResource Include="Resources\Icon-Small%403x.png" />
+    <BundleResource Include="Resources\ionicons.ttf" />
+    <BundleResource Include="Resources\login_bg_tablet.jpg" />
+    <BundleResource Include="Resources\login_bg_tablet%402x.jpg" />
+    <BundleResource Include="Resources\login_bg.jpg" />
+    <BundleResource Include="Resources\login_bg%402x.jpg" />
+    <BundleResource Include="Resources\logo%402x.png" />
+    <BundleResource Include="Resources\pass_recovery_bg_tablet.jpg" />
+    <BundleResource Include="Resources\pass_recovery_bg_tablet%402x.jpg" />
+    <BundleResource Include="Resources\pass_recovery_bg.jpg" />
+    <BundleResource Include="Resources\pass_recovery_bg%402x.jpg" />
+    <BundleResource Include="Resources\product_item_view_overlay.jpg" />
+    <BundleResource Include="Resources\product_item_view_overlay%402x.jpg" />
+    <BundleResource Include="Resources\product_item_view_overlay%403x.jpg" />
+    <BundleResource Include="Resources\product_item_view_overlay%403x.png" />
+    <BundleResource Include="Resources\profile_preview%402x.png" />
+    <BundleResource Include="Resources\signup_bg%402x.jpg" />
+    <BundleResource Include="Resources\social_album_0.jpg" />
+    <BundleResource Include="Resources\social_header_bg_0%402x.jpg" />
+    <BundleResource Include="Resources\social_header_bg_1%402x.jpg" />
+    <BundleResource Include="Resources\splash%402x.png" />
+    <BundleResource Include="Resources\user_profile_0%402x.jpg" />
+    <BundleResource Include="Resources\user_profile_0%402x.png" />
+    <BundleResource Include="Resources\user_profile_1%402x.jpg" />
+    <BundleResource Include="Resources\walkthrough_bg_0.jpg%402x.jpg" />
+    <BundleResource Include="Resources\walkthrough_bg_1.jpg%402x.jpg" />
+    <BundleResource Include="Resources\walkthrough_bg_2.jpg%402x.jpg" />
+    <BundleResource Include="Resources\walkthrough_generic_phone_bg.png" />
+    <BundleResource Include="Resources\walkthrough_generic_phone_bg%402x.png" />
+    <BundleResource Include="Resources\welcome_bg_tablet.jpg" />
+    <BundleResource Include="Resources\welcome_bg_tablet%402x.jpg" />
+    <BundleResource Include="Resources\welcome_bg.jpg" />
+    <BundleResource Include="Resources\welcome_bg%402x.jpg" />
+    <BundleResource Include="Resources\white_fader_top.png" />
+    <BundleResource Include="Resources\loading_placeholder%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bullytect.Core\Bullytect.Core.csproj">
@@ -328,6 +454,9 @@
       <Name>Bullytect.Utils</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GrialLicense" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Refit.4.0.1\build\netstandard1.4\refit.targets" Condition="Exists('..\packages\Refit.4.0.1\build\netstandard1.4\refit.targets')" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />
@@ -338,4 +467,5 @@
   <Import Project="..\packages\Xamarin.Firebase.iOS.Analytics.3.7.0\build\Xamarin.Firebase.iOS.Analytics.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Analytics.3.7.0\build\Xamarin.Firebase.iOS.Analytics.targets')" />
   <Import Project="..\packages\Xamarin.Firebase.iOS.CloudMessaging.1.2.2\build\Xamarin.Firebase.iOS.CloudMessaging.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.CloudMessaging.1.2.2\build\Xamarin.Firebase.iOS.CloudMessaging.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\packages\UXDivers.Artina.Shared.2.0.60\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Artina.Shared.targets" Condition="Exists('..\packages\UXDivers.Artina.Shared.2.0.60\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Artina.Shared.targets')" />
 </Project>

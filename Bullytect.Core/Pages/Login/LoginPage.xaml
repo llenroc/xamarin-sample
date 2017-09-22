@@ -3,24 +3,215 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
-    xmlns:local="clr-namespace:Bullytect.Core.Pages"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     x:Class="Bullytect.Core.Pages.Login.LoginPage"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
     x:TypeArguments="viewModels:AuthenticationViewModel"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
-    xmlns:converters="clr-namespace:Bullytect.Core.Converters">
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    Title="{i18n:Translate Page.Common.Title}">
 	<ContentView.Content>
 
-        <StackLayout Padding = "25,50" >
-            <Label x:Name="titleLabel" Text = "Login Page" FontSize="42" HorizontalOptions = "Center" 
-                VerticalOptions="StartAndExpand" TextColor="#3498DB"/>
-            <Entry x:Name = "emailEntry" Placeholder="Email" HorizontalOptions = "Fill" 
-                VerticalOptions = "CenterAndExpand" Text="{ Binding Email }"/>
-            <Entry x:Name = "passwordEntry" Placeholder="Password" HorizontalOptions = "Fill" IsPassword="true" 
-                VerticalOptions = "StartAndExpand" Text="{ Binding Password }"/>
-            <Button x:Name="loginButton" Text = "Login"  HorizontalOptions = "Center"
-                VerticalOptions = "StartAndExpand" FontSize="24" Command="{ Binding LoginCommand }"/>
-        </StackLayout>
+        <!--MAIN CONTAINER-->
+            <Grid>
+                <!---BACKGROUND IMAGE-->
+                <Image Style="{StaticResource LoginBackgroundImage}"/>
+                        
+                    <ScrollView
+                        Padding="{ StaticResource MainWrapperPadding }">
+                        <!-- MAIN CONTAINER -->
+                        <Grid
+                            ColumnSpacing="0" 
+                            RowSpacing="0" 
+                            HorizontalOptions="Fill"
+                            VerticalOptions="FillAndExpand" >
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="120" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <!-- LOGO -->
+                            <Grid 
+                                Grid.Row="0" 
+                                WidthRequest="60"
+                                HeightRequest="60"
+                                Margin="20"
+                                VerticalOptions="End"
+                                HorizontalOptions="Start">
+                            
+                                <BoxView
+                                    BackgroundColor="{ DynamicResource AccentColor }"/>
+                            
+                                <Label
+                                    TextColor="{ DynamicResource OverImageTextColor }"
+                                    FontSize="42"
+                                    Text="{ x:Static helper:GrialShapesFont.LogoGrial }" 
+                                    Style="{StaticResource FontIcon}"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"/>
+                            </Grid>
+
+                            <!-- CLOSE ICON -->
+                            <Label
+                                Grid.Row="0"
+                                Style="{ StaticResource IconCloseLabelStyle }" 
+                                HorizontalOptions="End"
+                                VerticalOptions="Start"
+                                TranslationX="-20"
+                                TranslationY="35">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{ Binding CloseCommand }" NumberOfTapsRequired="1"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <!--CLAIM TEXT-->
+                            <StackLayout
+                                Grid.Row="1"
+                                Spacing="10"
+                                Padding="20,10"
+                                Orientation="Vertical"
+                                VerticalOptions="Center">
+                                <Label
+                                    LineBreakMode="WordWrap"
+                                    Text="{i18n:Translate Login.Text}" 
+                                    TextColor="{ DynamicResource OverImageTextColor }"
+                                    VerticalTextAlignment="Center"
+                                    FontAttributes="Bold">
+                                        <Label.FontSize> 
+                                            <OnIdiom x:TypeArguments="x:Double"
+                                                 Phone="26"
+                                                 Tablet="36"/>
+                                        </Label.FontSize>
+                                </Label>
+                                
+                                <Label
+                                    LineBreakMode="WordWrap"
+                                    Text="{i18n:Translate Login.Text}"
+                                    TextColor="{ DynamicResource OverImageTextColor }"
+                                    VerticalTextAlignment="Center">
+                                        <Label.FontSize> 
+                                            <OnIdiom x:TypeArguments="x:Double"
+                                                 Phone="17"
+                                                 Tablet="27"/>
+                                        </Label.FontSize>
+                                </Label>
+
+
+                                
+                                <BoxView 
+                                    Style="{StaticResource BrandNameOrnamentStyle}"
+                                    BackgroundColor="{ DynamicResource OverImageTextColor }"/>
+                                
+                            </StackLayout>
+
+
+                            <!---FIELDS CONTAINER-->
+                            <Grid
+                                Grid.Row="2"
+                                Padding="40,0"
+                                ColumnSpacing="0" 
+                                RowSpacing="0" 
+                                VerticalOptions="CenterAndExpand"
+                                HeightRequest="130">
+
+                                <StackLayout
+                                    Grid.Row="0"
+                                    VerticalOptions="StartAndExpand" >
+
+                                    <!---EMAIL FIELD--> 
+                                    <Entry
+                                        Placeholder="E-mail"
+                                        Text="{ Binding Email }"
+                                        TextColor="{ DynamicResource OverImageTextColor }"
+                                        Style="{StaticResource ArtinaLoginEntryStyle}" />
+                                
+
+                                    <Label
+                                        HorizontalOptions="Start"
+                                        Text=" Please enter a valid e-mail " IsVisible="false"
+                                        Style="{StaticResource ValidationEntryErrorStyle}"
+                                        />
+                            
+
+                                </StackLayout>
+
+                                <!---PASSWORD FIELD-->
+                                <Entry 
+                                    Grid.Row="2"
+                                    Text="{ Binding Password }"
+                                    Placeholder="Password"
+                                    IsPassword="true"
+                                    Style="{StaticResource ArtinaLoginEntryStyle}" 
+                                    VerticalOptions="StartAndExpand" />
+
+                            </Grid>
+
+                                
+                            <!-- FOOTER -->
+                            <StackLayout 
+                                HorizontalOptions="Fill"
+                                VerticalOptions="EndAndExpand" 
+                                Padding="20"
+                                Grid.Row="3" >
+
+                                <Label
+                                    LineBreakMode="WordWrap"
+                                    Text="{i18n:Translate Login.Forget.Password }"
+                                    TextColor="{ DynamicResource OverImageTextColor }"
+                                    VerticalTextAlignment="Center"
+                                    FontSize="36"
+                                    AbsoluteLayout.LayoutFlags="All">
+                                       <Label.FontSize> 
+                                            <OnIdiom x:TypeArguments="x:Double"
+                                                     Phone="17"
+                                                     Tablet="27"/>
+                                        </Label.FontSize>
+                                        <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{ Binding GoToPasswordRecoveryCommand }" NumberOfTapsRequired="1" /> 
+                                        </Label.GestureRecognizers>
+                                    </Label>
+
+                                <artina:Button
+                                    IsEnabled="{Binding HaveInternet}"
+                                    Style="{StaticResource PrimaryActionButtonStyle}"
+                                    BackgroundColor="#3b5998"
+                                    VerticalOptions="End"
+                                    Text="Faceebook"
+                                    Command="{ Binding LoginWithFacebookCommand }"
+                                    WidthRequest="{ artina:OnOrientationDouble
+                                        LandscapePhone=200,
+                                        LandscapeTablet=400 }"
+                                    HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                                        PortraitPhone=Fill,
+                                        LandscapePhone=Center,
+                                        PortraitTablet=Fill,
+                                        LandscapeTablet=Center }"/>
+
+                                <artina:Button
+                                    IsEnabled="{Binding HaveInternet}"
+                                    Style="{StaticResource PrimaryActionButtonStyle}"
+                                    VerticalOptions="End"
+                                    Text="Login"
+                                    Command="{ Binding LoginCommand }"
+                                    WidthRequest="{ artina:OnOrientationDouble
+                                        LandscapePhone=200,
+                                        LandscapeTablet=400 }"
+                                    HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                                        PortraitPhone=Fill,
+                                        LandscapePhone=Center,
+                                        PortraitTablet=Fill,
+                                        LandscapeTablet=Center }"/>
+                        
+                            </StackLayout>
+
+                        </Grid>
+                    </ScrollView>
+                        
+            </Grid>
         
 	</ContentView.Content>
 </d:MvxContentPage>
