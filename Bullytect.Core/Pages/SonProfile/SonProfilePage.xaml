@@ -6,222 +6,108 @@
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
     x:TypeArguments="viewModels:SonProfileViewModel"
     x:Class="Bullytect.Core.Pages.SonProfile.SonProfilePage"
     x:Name="root">
 	<ContentPage.Content>
 
-        <AbsoluteLayout Padding="0">
-            <!-- MAIN IMAGE -->
-            <Image
-                x:Name="img"
-                Aspect="AspectFill"
-                Source="user_profile_1.jpg"
-                AnchorX="0.5"
-                AnchorY="0.5"
-                TranslationY="-10"
-                Scale="1.2"
-                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-                AbsoluteLayout.LayoutFlags="All"/>
-    
-            <Grid RowSpacing="0"
-                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-                AbsoluteLayout.LayoutFlags="All">
+        <Grid 
+            RowSpacing="0"
+            VerticalOptions="Fill">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60*" />
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--Son Profile Image -->
+            <ffimageloading:CachedImage 
+                Grid.Row="0"
+                FadeAnimationEnabled="true"
+                Source="user_profile_1.jpg" 
+                Aspect="AspectFill" >
+                <!--<ffimageloading:CachedImage.GestureRecognizers>
+                    <TapGestureRecognizer Command="" NumberOfTapsRequired="1" />
+                </ffimageloading:CachedImage.GestureRecognizers>-->
+            </ffimageloading:CachedImage>
+
+            <!-- Son Data  -->
+            <Grid
+                Grid.Row="1"
+                Padding="20,15,20,0"
+                VerticalOptions="StartAndExpand"
+                RowSpacing="5">
+
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="40*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-    
-                <!-- TOP ROW -->
-                <StackLayout
-                    Spacing="0"
-                    Padding="10"
-                    VerticalOptions="FillAndExpand"
-                    Orientation="Vertical"
-                    Grid.Row="0">
-        
-                </StackLayout>
-    
-    
-                <!-- BOTTOM ROW -->
-                <StackLayout
-                    Spacing="0"
-                    Padding="0"
-                    VerticalOptions="End"
-                    Orientation="Vertical"
-                    Grid.Row="1" 
-                    AbsoluteLayout.LayoutBounds="0, 1, 1, 1">
-            
-                    <StackLayout Padding="0" Spacing="0" >
+
+                <!-- FULLNAME NAME -->
+                <Label
+                    Grid.Row="0"
+                    Text="{Binding FullName}"
+                    FontSize="{ artina:OnOrientationDouble 
+                        PortraitPhone=18,
+                        LandscapePhone=18,
+                        PortraitTablet=28,
+                        LandscapeTablet=28 }"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Start"
+                    TextColor="{ DynamicResource BaseTextColor }"/>
                 
-                        <StackLayout Padding="20,0,20,20">
+               <!-- Birthdate -->
 
-                            
-                            <!-- Full name -->
-                            <Label
-                                Text="{ Binding FullName }"
-                                FontAttributes="Bold"
-                                LineBreakMode="WordWrap"
-                                VerticalOptions="End"
-                                TextColor="{ DynamicResource OverImageTextColor }"
-                                FontSize="{ artina:OnOrientationDouble 
-                                    Default=25,
-                                    PortraitTablet=40,
-                                    LandscapeTablet=40 }"/>
+               <Label
+                    Grid.Row="1"
+                    Text="{Binding Birthdate, StringFormat={i18n:Translate Son.Profile.Birthday}}"
+                    FontSize="{ artina:OnOrientationDouble 
+                        PortraitPhone=18,
+                        LandscapePhone=18,
+                        PortraitTablet=28,
+                        LandscapeTablet=28 }"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Start"
+                    TextColor="{ DynamicResource BaseTextColor }"/>
 
-                            <!-- Birthday -->
+
+                <!-- School -->
+
+                <Label
+                    Grid.Row="2"
+                    Text="{Binding School, StringFormat={i18n:Translate Son.Profile.School}}"
+                    FontSize="{ artina:OnOrientationDouble 
+                        PortraitPhone=18,
+                        LandscapePhone=18,
+                        PortraitTablet=28,
+                        LandscapeTablet=28 }"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Start"
+                    TextColor="{ DynamicResource BaseTextColor }"/>
                 
-                            <Label
-                                Text="{ Binding Birthdate, StringFormat={i18n:Translate Son.Profile.Birthday} }"
-                                LineBreakMode="WordWrap"
-                                VerticalOptions="End"
-                                TextColor="{ DynamicResource OverImageTextColor }"
-                                FontAttributes="None"
-                                FontSize="{ artina:OnOrientationDouble 
-                                    Default=14,
-                                    PortraitTablet=20,
-                                    LandscapeTablet=20 }" />
 
-                            <!-- School -->
-                
-                            <Label
-                                Text="{ Binding School, StringFormat={i18n:Translate Son.Profile.School} }"
-                                LineBreakMode="WordWrap"
-                                VerticalOptions="End"
-                                TextColor="{ DynamicResource OverImageTextColor }"
-                                FontAttributes="None"
-                                FontSize="{ artina:OnOrientationDouble 
-                                    Default=14,
-                                    PortraitTablet=20,
-                                    LandscapeTablet=20 }" />
-                    
-                            <BoxView Style="{StaticResource BrandNameOrnamentStyle}"/>
-                
-                        </StackLayout>
-                
-                
-                        <!-- TOOLBAR Social Comments  -->
-                        <Grid 
-                            Style="{ StaticResource ToolbarStyle }" 
-                            BackgroundColor="{ DynamicResource TranslucidBlack }">
-                            
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="33*" />
-                                <ColumnDefinition Width="33*" />
-                                <ColumnDefinition Width="33*" />
-                            </Grid.ColumnDefinitions>
-
-                            <!-- Total Comments Facebook -->
-                            
-                            <StackLayout
-                                    Grid.Column="0"
-                                    Orientation="Horizontal"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="Center"
-                                    Spacing="0">
-                                    <Label
-                                        VerticalTextAlignment="Center" 
-                                        HorizontalTextAlignment="Center"
-                                        Text="{ x:Static helper:GrialShapesFont.SocialFacebook }"
-                                        FontFamily="{ StaticResource IconsFontFamily }"
-                                        TextColor="{ DynamicResource AccentColor }">
-                                        <Label.FontSize>
-                                            <OnIdiom x:TypeArguments="x:Double" 
-                                                Phone="15" 
-                                                Tablet="20" />
-                                        </Label.FontSize> 
-                                    </Label>
-
-                                    <Label
-                                        VerticalTextAlignment="Center" 
-                                        HorizontalTextAlignment="Center"
-                                        Text=" 0"
-                                        TextColor="{ DynamicResource OverImageTextColor }">
-                                        <Label.FontSize>
-                                            <OnIdiom x:TypeArguments="x:Double" 
-                                                Phone="15" 
-                                                Tablet="20" />
-                                        </Label.FontSize> 
-                                    </Label>
-                                </StackLayout>
-
-
-                                <!-- Total Comments Instagram -->
-
-                                <StackLayout
-                                    Grid.Column="1"
-                                    Orientation="Horizontal"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="Center"
-                                    Spacing="0">
-                                    <Label
-                                        VerticalTextAlignment="Center" 
-                                        HorizontalTextAlignment="Center"
-                                        Text="{ x:Static helper:GrialShapesFont.SocialInstagram }"
-                                        FontFamily="{ StaticResource IconsFontFamily }"
-                                        TextColor="{ DynamicResource AccentColor }">
-                                        <Label.FontSize>
-                                            <OnIdiom x:TypeArguments="x:Double" 
-                                                Phone="15" 
-                                                Tablet="20" />
-                                        </Label.FontSize> 
-                                    </Label>
-
-                                    <Label
-                                        VerticalTextAlignment="Center" 
-                                        HorizontalTextAlignment="Center"
-                                        Text=" 0"
-                                        TextColor="{ DynamicResource OverImageTextColor }">
-                                        <Label.FontSize>
-                                            <OnIdiom x:TypeArguments="x:Double" 
-                                                Phone="15" 
-                                                Tablet="20" />
-                                        </Label.FontSize> 
-                                    </Label>
-                                </StackLayout>
-
-                                <!-- Total Comments Youtube -->
-
-                                <StackLayout
-                                    Grid.Column="2"
-                                    Orientation="Horizontal"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="Center"
-                                    Spacing="0">
-                                    <Label
-                                        VerticalTextAlignment="Center" 
-                                        HorizontalTextAlignment="Center"
-                                        Text="{ x:Static helper:GrialShapesFont.SocialYoutube }"
-                                        FontFamily="{ StaticResource IconsFontFamily }"
-                                        TextColor="{ DynamicResource AccentColor }">
-                                        <Label.FontSize>
-                                            <OnIdiom x:TypeArguments="x:Double" 
-                                                Phone="15" 
-                                                Tablet="20" />
-                                        </Label.FontSize> 
-                                    </Label>
-
-                                    <Label
-                                        VerticalTextAlignment="Center" 
-                                        HorizontalTextAlignment="Center"
-                                        Text=" 0"
-                                        TextColor="{ DynamicResource OverImageTextColor }">
-                                        <Label.FontSize>
-                                            <OnIdiom x:TypeArguments="x:Double" 
-                                                Phone="15" 
-                                                Tablet="20" />
-                                        </Label.FontSize> 
-                                    </Label>
-                                </StackLayout>
-                            
-                        </Grid>
-
-                    </StackLayout>
-
-                </StackLayout>
             </Grid>
 
-        </AbsoluteLayout>
+            <!-- Edit Action -->
+            <artina:Button
+                Grid.Row="2"
+                Margin="20,10,20,20"
+                Style="{StaticResource PrimaryActionButtonStyle}" 
+                Text="Edit"
+                WidthRequest="{ artina:OnOrientationDouble
+                    LandscapePhone=200,
+                    LandscapeTablet=400 }"
+                HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                    PortraitPhone=Fill,
+                    LandscapePhone=Center,
+                    PortraitTablet=Fill,
+                    LandscapeTablet=Center }"/>
+        
+        </Grid> 
+        
 	</ContentPage.Content>
 </d:MvxContentPage>

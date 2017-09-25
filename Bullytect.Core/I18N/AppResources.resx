@@ -26,6 +26,16 @@
         <comment>Page Notifications Title</comment>
     </data>
 
+	<data name="Page.Children.Title" xml:space="preserve">
+        <value>Children analyzed</value>
+        <comment>Page Children Title</comment>
+    </data>
+
+    <data name="Page.Edit.Profile.Title" xml:space="preserve">
+        <value>Edit Profile</value>
+        <comment>Page Edit Profile Title</comment>
+    </data>
+	
 	<!-- Common strings -->
 
    
@@ -269,6 +279,24 @@
 	<data name="Son.Profile.School" xml:space="preserve">
         <value> School: {0} </value>
         <comment>Son Profile School</comment>
+    </data>
+
+
+	<!-- Children Page -->
+
+	<data name="Children.Not.Found.MainText" xml:space="preserve">
+        <value> No children found </value>
+        <comment>Children Not Found MainText</comment>
+    </data>
+
+	<data name="Children.Not.Found.SecondText" xml:space="preserve">
+        <value> No children found </value>
+        <comment>Children Not Found SecondText</comment>
+    </data>
+
+	<data name="Children.Error.Ocurred" xml:space="preserve">
+        <value> An error occurred while loading children's information </value>
+        <comment>Children Error Ocurred</comment>
     </data>
     
 

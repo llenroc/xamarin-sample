@@ -104,6 +104,21 @@
     <EmbeddedResource Include="Pages\Common\Templates\SonPageTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Children\Templates\ChildrenItemTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Children\Templates\ChildrenHeader.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\AddSon\AddSonPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\NoDataFound.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\ErrorOcurred.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -243,6 +258,23 @@
     <Compile Include="Utils\Repeater.cs" />
     <Compile Include="Pages\Common\Templates\SonPageTemplate.xaml.cs">
       <DependentUpon>SonPageTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Children\Templates\ChildrenItemTemplate.xaml.cs">
+      <DependentUpon>ChildrenItemTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Children\Templates\ChildrenHeader.xaml.cs">
+      <DependentUpon>ChildrenHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\FontAwesomeFont.cs" />
+    <Compile Include="ViewModels\AddSonViewModel.cs" />
+    <Compile Include="Pages\AddSon\AddSonPage.xaml.cs">
+      <DependentUpon>AddSonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\NoDataFound.xaml.cs">
+      <DependentUpon>NoDataFound.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\ErrorOcurred.xaml.cs">
+      <DependentUpon>ErrorOcurred.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -458,6 +490,8 @@
     <Folder Include="Pages\Common\Templates\" />
     <Folder Include="Pages\SonProfile\" />
     <Folder Include="Pages\Children\" />
+    <Folder Include="Pages\Children\Templates\" />
+    <Folder Include="Pages\AddSon\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bullytect.rest\bullytect.rest.csproj">

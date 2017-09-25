@@ -7,6 +7,7 @@ using MvvmCross.Droid.Views;
 using MvvmCross.Platform;
 using Acr.UserDialogs;
 using Plugin.FirebasePushNotification;
+using Refractored.XamForms.PullToRefresh.Droid;
 
 namespace Bullytect.Droid
 {
@@ -27,8 +28,8 @@ namespace Bullytect.Droid
     			base.OnCreate(bundle);
 
     			global::Xamarin.Forms.Forms.Init(this, bundle);
-
-                XFGloss.Droid.Library.Init(this, bundle);
+				PullToRefreshLayoutRenderer.Init();
+				XFGloss.Droid.Library.Init(this, bundle);
 
                 UserDialogs.Init(this);
 

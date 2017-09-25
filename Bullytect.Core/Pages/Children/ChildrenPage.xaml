@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<utils:MvxCarouselPage  
+<d:MvxContentPage  
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
@@ -9,16 +9,86 @@
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
-    xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
+    xmlns:templates="clr-namespace:Bullytect.Core.Pages.Children.Templates"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:sonTemplate="clr-namespace:Bullytect.Core.Pages.Son"
     x:Class="Bullytect.Core.Pages.Children.ChildrenPage"
     x:TypeArguments="viewModels:ChildrenViewModel"
-    BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
-    Title="{i18n:Translate Page.Common.Title}">
-    <CarouselPage.ItemTemplate>
-        <DataTemplate>
-            <commonTemplates:SonPageTemplate />
-        </DataTemplate>
-    </CarouselPage.ItemTemplate>
-</utils:MvxCarouselPage>
+    BackgroundColor="{ DynamicResource BasePageColor }"
+    Title="{i18n:Translate Page.Children.Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!-- MAIN CONTAINER -->
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- CUSTOM NAVBAR -->
+        <templates:ChildrenHeader Grid.Row="0"/>
+
+        <ListView
+            Grid.Row="1"
+            ItemsSource="{Binding Children}"
+            HasUnevenRows="false"
+            RowHeight="150"
+            IsPullToRefreshEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
+            RefreshCommand="{Binding LoadChildrenCommand}"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+
+            <ListView.Behaviors>
+                <utils:EventToCommandBehavior 
+                    EventName="ItemTapped"
+                    Command="{Binding ShowSonProfileCommand}" 
+                    EventArgsConverter="{ StaticResource ItemTappedEventArgsConverter }" />
+            </ListView.Behaviors>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <templates:ChildrenItemTemplate />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <ListView.Triggers>
+                <DataTrigger 
+                    TargetType="ListView" 
+                    Binding="{Binding IsBusy}"
+                    Value="True">
+                    <Setter Property="IsVisible" Value="False" />
+                </DataTrigger>
+                <DataTrigger 
+                    TargetType="ListView"
+                    Binding="{Binding DataFound}"
+                    Value="False">
+                    <Setter Property="IsVisible" Value="False" />
+                </DataTrigger>
+                <DataTrigger 
+                    TargetType="ListView"
+                    Binding="{Binding ErrorOccurred}"
+                    Value="True">
+                    <Setter Property="IsVisible" Value="False" />
+                </DataTrigger>
+            </ListView.Triggers>
+        </ListView>
+
+        <common:NoDataFound 
+            Grid.Row="1"
+            IsVisible="{ Binding DataFound, Converter={StaticResource InverseBoolConverter}}"
+            MainText="{i18n:Translate Children.Not.Found.MainText}"
+            DetailText="{i18n:Translate Children.Not.Found.SecondText}"/>
+
+        <common:ErrorOcurred 
+            Grid.Row="1"
+            IsVisible="{ Binding ErrorOccurred }"
+            MainText="{i18n:Translate Children.Error.Ocurred}"/>
+        
+   </Grid>
+</d:MvxContentPage>

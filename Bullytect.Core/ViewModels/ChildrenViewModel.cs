@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
 using Bullytect.Rest.Models.Exceptions;
+using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 
@@ -24,6 +26,11 @@ namespace Bullytect.Core.ViewModels
 
             LoadChildrenCommand = ReactiveCommand.CreateFromObservable<string, IList<SonEntity>>((param) => _parentsService.GetChildren());
 
+            LoadChildrenCommand.Subscribe((children) => {
+                Debug.WriteLine("Children Count " + children?.Count);
+                Children = children;
+            });
+
             LoadChildrenCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
 
             LoadChildrenCommand.ThrownExceptions.Subscribe(HandleExceptions);
@@ -36,9 +43,38 @@ namespace Bullytect.Core.ViewModels
             LoadChildrenCommand.Execute(null);
         }
 
+		#region properties
+
+		IList<SonEntity> _children;
+
+		public IList<SonEntity> Children
+		{
+			get => _children;
+			set => SetProperty(ref _children, value);
+		}
+
+        #endregion
+
         #region commands
 
         public ReactiveCommand<string, IList<SonEntity>> LoadChildrenCommand { get; protected set; }
+
+		public ICommand ShowSonProfileCommand => new MvxCommand<SonEntity>((SonEntity SonEntity) => ShowViewModel<SonProfileViewModel>(new SonProfileViewModel.SonParameter()
+		{
+			FullName = SonEntity.FullName,
+			Birthdate = SonEntity.Birthdate,
+			School = SonEntity.School
+		}));
+
+		public ICommand GoToAddSonCommand
+		{
+			get
+			{
+				return new MvxCommand(() => ShowViewModel<AddSonViewModel>());
+			}
+		}
+
+
 
 		#endregion
 

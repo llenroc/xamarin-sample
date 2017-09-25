@@ -6,7 +6,7 @@ namespace Bullytect.Core.Config
     public static class SharedConfig
     {
         #if DEBUG
-            public const string BASE_API_URL = "http://192.168.0.106:8080/api/v1";
+            public const string BASE_API_URL = "http://172.28.110.209:8080/api/v1";
 #else
             public const string BASE_API_URL = "http://bulltec-dev.der.usal.es:8080/bullytect-integration-platform/api/v1";
 #endif

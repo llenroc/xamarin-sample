@@ -1,21 +1,17 @@
 ﻿
 using System;
-using Bullytect.Core.Utils;
 using Bullytect.Core.ViewModels;
+using MvvmCross.Forms.Core;
+using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.Children
 {
-    public partial class ChildrenPage : MvxCarouselPage<ChildrenViewModel>
+    public partial class ChildrenPage : MvxContentPage<ChildrenViewModel>
     {
         public ChildrenPage()
         {
             InitializeComponent();
-        }
-
-        protected override void OnAppearing(){
-            ViewModel.LoadChildrenCommand.Subscribe((children) => {
-                ItemsSource = children;
-            });
+            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

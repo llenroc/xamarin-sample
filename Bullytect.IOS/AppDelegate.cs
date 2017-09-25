@@ -1,6 +1,5 @@
 ﻿
 using System;
-using System.Net;
 using FFImageLoading.Forms.Touch;
 using Foundation;
 using Lottie.Forms.iOS.Renderers;
@@ -26,6 +25,8 @@ namespace Bullytect.iOS
             global::Xamarin.Forms.Forms.Init();
 			CachedImageRenderer.Init(); // Initializing FFImageLoading
 			AnimationViewRenderer.Init(); // Initializing Lottie
+			PullToRefreshLayoutRenderer.Init();
+			XFGloss.iOS.Library.Init();
 
             GrialKit.Init(new ThemeColors(), "Bullytect.iOS.GrialLicense");
            
@@ -37,10 +38,6 @@ namespace Bullytect.iOS
 
 			var startup = Mvx.Resolve<IMvxAppStart>();
 			startup.Start();
-
-            PullToRefreshLayoutRenderer.Init();
-
-			XFGloss.iOS.Library.Init();
 
 			LoadApplication(setup.FormsApplication);
 

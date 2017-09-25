@@ -36,6 +36,15 @@ namespace Bullytect.Core.ViewModels
             set => SetProperty(ref _dataFound, value);
         }
 
+
+        bool _errorOccurred = false;
+
+		public bool ErrorOccurred
+		{
+			get => _errorOccurred;
+			set => SetProperty(ref _errorOccurred, value);
+		}
+
         public bool HaveInternet
         {
 
@@ -61,7 +70,7 @@ namespace Bullytect.Core.ViewModels
 
         protected virtual void HandleExceptions(Exception ex)
         {
-
+            ErrorOccurred = true;
 
             _userDialogs.HideLoading();
 

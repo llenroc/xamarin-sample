@@ -1,7 +1,5 @@
-﻿using System;
+﻿
 using Acr.UserDialogs;
-using Bullytect.Core.I18N;
-using Bullytect.Core.Models.Domain;
 using MvvmCross.Plugins.Messenger;
 
 namespace Bullytect.Core.ViewModels
@@ -53,8 +51,6 @@ namespace Bullytect.Core.ViewModels
             Birthdate = sonParameter.Birthdate;
             School = sonParameter.School;
 		}
-
-
 
 
     }

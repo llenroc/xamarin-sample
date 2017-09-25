@@ -47,9 +47,27 @@ namespace Bullytect.Core.I18N {
             }
         }
         
-        internal static string Common_Page_Title {
+        internal static string Page_Common_Title {
             get {
-                return ResourceManager.GetString("Common.Page.Title", resourceCulture);
+                return ResourceManager.GetString("Page.Common.Title", resourceCulture);
+            }
+        }
+        
+        internal static string Page_Notifications_Title {
+            get {
+                return ResourceManager.GetString("Page.Notifications.Title", resourceCulture);
+            }
+        }
+        
+        internal static string Page_Children_Title {
+            get {
+                return ResourceManager.GetString("Page.Children.Title", resourceCulture);
+            }
+        }
+        
+        internal static string Page_Edit_Profile_Title {
+            get {
+                return ResourceManager.GetString("Page.Edit.Profile.Title", resourceCulture);
             }
         }
         
@@ -314,6 +332,24 @@ namespace Bullytect.Core.I18N {
         internal static string Son_Profile_School {
             get {
                 return ResourceManager.GetString("Son.Profile.School", resourceCulture);
+            }
+        }
+        
+        internal static string Children_Not_Found_MainText {
+            get {
+                return ResourceManager.GetString("Children.Not.Found.MainText", resourceCulture);
+            }
+        }
+        
+        internal static string Children_Not_Found_SecondText {
+            get {
+                return ResourceManager.GetString("Children.Not.Found.SecondText", resourceCulture);
+            }
+        }
+        
+        internal static string Children_Error_Ocurred {
+            get {
+                return ResourceManager.GetString("Children.Error.Ocurred", resourceCulture);
             }
         }
         

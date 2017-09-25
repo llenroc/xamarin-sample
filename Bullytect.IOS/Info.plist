@@ -56,6 +56,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>grialshapes.ttf</string>
+		<string>fontawesome-webfont.ttf</string>
 	</array>
 	<key>FacebookAppID</key>
 	<string>341732922916068</string>
@@ -63,14 +64,14 @@
 	<string>Bully Tect</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
-	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleLocalizations</key>
 	<array>
-	    <string>es</string>
-	    <string>en</string>
+		<string>es</string>
+		<string>en</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>es</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
 </dict>
 </plist>

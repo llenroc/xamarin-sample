@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    x:Class="Bullytect.Core.Pages.Common.ErrorOcurred">
+	<ContentView.Content>
+        
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+
+            <Grid
+                Grid.Row="0"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60*"/>
+                    <RowDefinition Height="40*"/>
+                </Grid.RowDefinitions>
+
+
+                <!--ICON BACKGROUND-->
+                <Label
+                    Grid.Row="0"
+                    Style="{StaticResource RoundShape}"
+                    TextColor="{DynamicResource ComplementColor}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    FontSize="250"
+                    Opacity="0.1"/>
+
+                <!--ICON BACKGROUND-->
+                <Label
+                    Grid.Row="0"
+                    Style="{StaticResource RoundShape}" 
+                    TextColor="{DynamicResource ComplementColor}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    FontSize="180"
+                    Opacity="0.1"/> 
+
+                <!--ICON-->
+                <Label
+                    Grid.Row="0"
+                    Text="{ x:Static helper:GrialShapesFont.Settings }"
+                    Style="{StaticResource FontIcon}"
+                    FontSize="100"
+                    HorizontalTextAlignment="Center"
+                    TextColor="{ DynamicResource ComplementColor }"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+
+                <!--TEXT -->
+                <StackLayout 
+                    Grid.Row="1" 
+                    VerticalOptions="Center"
+                    Padding="60,0" 
+                    Spacing="2">
+
+                    <Label 
+                        x:Name="MainTextLabel"
+                        HorizontalTextAlignment="Center" 
+                        FontSize="24" 
+                        FontAttributes="Bold" 
+                        TextColor="{ DynamicResource BaseTextColor }"/>
+
+                </StackLayout>
+            </Grid>
+        </Grid>
+	</ContentView.Content>
+</ContentView>

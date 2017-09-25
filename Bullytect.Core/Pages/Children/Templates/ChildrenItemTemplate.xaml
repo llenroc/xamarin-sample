@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Bullytect.Core.Pages.Children.Templates.ChildrenItemTemplate"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
+	<ContentView.Content>
+    
+        <Grid 
+            Padding="10" 
+            ColumnSpacing="10" >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+           <!---Left Column Content -->
+            <ffimageloading:CachedImage 
+                Grid.Column="0"
+                FadeAnimationEnabled="true"
+                Source="user_profile_1.jpg"
+                HeightRequest="{Binding ThumbnailHeight}" 
+                Aspect="AspectFill"/>
+            
+           <!-- Right Column Content-->
+           <StackLayout
+                Grid.Column="1"
+                Padding="0,10,0,10"
+                Spacing="0">
+
+                <!-- Full name -->
+                <Label 
+                    Text="{ Binding FullName }"
+                    FontSize="{ artina:OnOrientationDouble
+                        PortraitPhone=15,
+                        LandscapePhone=15,
+                        PortraitTablet=17,
+                        LandscapeTablet=17 }"
+                    HorizontalOptions="Fill"
+                    TextColor="{ DynamicResource AccentColor }"/>
+
+                <!-- School -->
+                <Label 
+                    Text="{ Binding School }"
+                    FontSize="{ artina:OnOrientationDouble
+                        PortraitPhone=9,
+                        LandscapePhone=9,
+                        PortraitTablet=10,
+                        LandscapeTablet=10 }"
+                    HorizontalOptions="Fill"
+                    TextColor="{ DynamicResource BaseTextColor }"/>
+            </StackLayout>
+
+         </Grid>
+        
+	</ContentView.Content>
+</ContentView>

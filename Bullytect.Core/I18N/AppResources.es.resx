@@ -21,6 +21,11 @@
         <comment>Page Common Title</comment>
     </data>
 
+	<data name="Page.Children.Title" xml:space="preserve">
+        <value>Hijos Analizados</value>
+        <comment>Page Children Title</comment>
+    </data>
+
     <data name="Page.Notifications.Title" xml:space="preserve">
         <value>Notifications</value>
         <comment>Page Notifications Title</comment>
@@ -213,5 +218,22 @@
     <data name="Global.ErrorOcurred" xml:space="preserve">
         <value>Ocurrió un error</value>
         <comment>Global Error Ocurred</comment>
+    </data>
+
+	<!-- Children Page -->
+
+    <data name="Children.Not.Found.MainText" xml:space="preserve">
+        <value> Ningún hijo encontrado </value>
+        <comment>Children Not Found MainText</comment>
+    </data>
+
+    <data name="Children.Not.Found.SecondText" xml:space="preserve">
+        <value> No se han encontrado hijos analizados. </value>
+        <comment>Children Not Found SecondText</comment>
+    </data>
+
+    <data name="Children.Error.Ocurred" xml:space="preserve">
+        <value> Ocurrió un error al cargar la información de los hijos analizados </value>
+        <comment>Children Error Ocurred</comment>
     </data>
 </root>
