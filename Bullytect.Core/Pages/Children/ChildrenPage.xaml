@@ -34,6 +34,7 @@
         <templates:ChildrenHeader Grid.Row="0"/>
 
         <ListView
+            x:Name="ChildrenListView"
             Grid.Row="1"
             ItemsSource="{Binding Children}"
             HasUnevenRows="false"

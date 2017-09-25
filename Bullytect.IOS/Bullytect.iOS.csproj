@@ -420,17 +420,6 @@
     <BundleResource Include="Resources\grialshapes.ttf" />
     <BundleResource Include="Resources\hamburguer_icon.png" />
     <BundleResource Include="Resources\hamburguer_icon%402x.png" />
-    <BundleResource Include="Resources\Icon-60.png" />
-    <BundleResource Include="Resources\Icon-60%402x.png" />
-    <BundleResource Include="Resources\Icon-60%403x.png" />
-    <BundleResource Include="Resources\Icon-76.png" />
-    <BundleResource Include="Resources\Icon-76%402x.png" />
-    <BundleResource Include="Resources\Icon-Small-40.png" />
-    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
-    <BundleResource Include="Resources\Icon-Small-40%403x.png" />
-    <BundleResource Include="Resources\Icon-Small.png" />
-    <BundleResource Include="Resources\Icon-Small%402x.png" />
-    <BundleResource Include="Resources\Icon-Small%403x.png" />
     <BundleResource Include="Resources\ionicons.ttf" />
     <BundleResource Include="Resources\login_bg_tablet.jpg" />
     <BundleResource Include="Resources\login_bg_tablet%402x.jpg" />
@@ -465,6 +454,7 @@
     <BundleResource Include="Resources\welcome_bg%402x.jpg" />
     <BundleResource Include="Resources\white_fader_top.png" />
     <BundleResource Include="Resources\loading_placeholder%402x.png" />
+    <BundleResource Include="Resources\Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bullytect.Core\Bullytect.Core.csproj">

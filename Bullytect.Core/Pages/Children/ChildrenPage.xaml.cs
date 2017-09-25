@@ -13,5 +13,12 @@ namespace Bullytect.Core.Pages.Children
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
         }
+
+
+		protected override void OnAppearing()
+		{
+            if(ViewModel.Children?.Count == 0)
+			    ChildrenListView.RefreshCommand?.Execute(null);
+		}
     }
 }

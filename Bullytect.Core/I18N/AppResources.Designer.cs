@@ -65,9 +65,9 @@ namespace Bullytect.Core.I18N {
             }
         }
         
-        internal static string Page_Edit_Profile_Title {
+        internal static string Page_Profile_Title {
             get {
-                return ResourceManager.GetString("Page.Edit.Profile.Title", resourceCulture);
+                return ResourceManager.GetString("Page.Profile.Title", resourceCulture);
             }
         }
         
@@ -299,27 +299,27 @@ namespace Bullytect.Core.I18N {
             }
         }
         
-        internal static string Profile_Toolbar_Children {
+        internal static string Home_Toolbar_Children {
             get {
-                return ResourceManager.GetString("Profile.Toolbar.Children", resourceCulture);
+                return ResourceManager.GetString("Home.Toolbar.Children", resourceCulture);
             }
         }
         
-        internal static string Profile_Toolbar_Notifications {
+        internal static string Home_Toolbar_Profile {
             get {
-                return ResourceManager.GetString("Profile.Toolbar.Notifications", resourceCulture);
+                return ResourceManager.GetString("Home.Toolbar.Profile", resourceCulture);
             }
         }
         
-        internal static string Profile_Loading_Failed {
+        internal static string Home_Loading_Failed {
             get {
-                return ResourceManager.GetString("Profile.Loading.Failed", resourceCulture);
+                return ResourceManager.GetString("Home.Loading.Failed", resourceCulture);
             }
         }
         
-        internal static string Profile_Children_List_Title {
+        internal static string Home_Children_List_Title {
             get {
-                return ResourceManager.GetString("Profile.Children.List.Title", resourceCulture);
+                return ResourceManager.GetString("Home.Children.List.Title", resourceCulture);
             }
         }
         
@@ -350,6 +350,66 @@ namespace Bullytect.Core.I18N {
         internal static string Children_Error_Ocurred {
             get {
                 return ResourceManager.GetString("Children.Error.Ocurred", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Save_Changes {
+            get {
+                return ResourceManager.GetString("Profile.Save.Changes", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Saving_Changes {
+            get {
+                return ResourceManager.GetString("Profile.Saving.Changes", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Delete_Account {
+            get {
+                return ResourceManager.GetString("Profile.Delete.Account", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Account_Updated {
+            get {
+                return ResourceManager.GetString("Profile.Account.Updated", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Image_Section {
+            get {
+                return ResourceManager.GetString("Profile.Image.Section", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_General_Information_Section {
+            get {
+                return ResourceManager.GetString("Profile.General.Information.Section", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Loading_Data {
+            get {
+                return ResourceManager.GetString("Profile.Loading.Data", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Account_Deleted {
+            get {
+                return ResourceManager.GetString("Profile.Account.Deleted", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Account_Deleting {
+            get {
+                return ResourceManager.GetString("Profile.Account.Deleting", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Confirm_Account_Deleting {
+            get {
+                return ResourceManager.GetString("Profile.Confirm.Account.Deleting", resourceCulture);
             }
         }
         

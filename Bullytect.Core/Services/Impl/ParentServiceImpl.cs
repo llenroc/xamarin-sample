@@ -11,16 +11,19 @@ namespace Bullytect.Core.Services.Impl
 	using Bullytect.Rest.Models.Request;
 	using Bullytect.Rest.Models.Response;
 	using Bullytect.Rest.Services;
-	using Refit;
     using System.Linq;
+    using MvvmCross.Plugins.Messenger;
+    using Bullytect.Core.Messages;
 
     public class ParentServiceImpl: BaseService, IParentService
     {
         readonly IParentsRestService _parentsRestService;
+        readonly IMvxMessenger _mvxMessenger;
 
-        public ParentServiceImpl(IParentsRestService parentsRestService)
+        public ParentServiceImpl(IParentsRestService parentsRestService, IMvxMessenger mvxMessenger)
         {
             _parentsRestService = parentsRestService;
+            _mvxMessenger = mvxMessenger;
         }
 
         public IObservable<ParentEntity> GetProfileInformation()
@@ -81,17 +84,18 @@ namespace Bullytect.Core.Services.Impl
             return operationDecorator(observable);
         }
 
-        public IObservable<ParentEntity> Update(string FirstName, string LastName, int Age, string Email)
+        public IObservable<ParentEntity> Update(string FirstName, string LastName, string Birthdate, string Email, string Telephone)
         {
-			Debug.WriteLine(String.Format("Update Parent with:t FirstName: {0}, LastName: {1}, Age: {2}, Email: {3}", FirstName, LastName, Age, Email));
+            Debug.WriteLine(String.Format("Update Parent with:t FirstName: {0}, LastName: {1}, Birthdate: {2}, Email: {3}, Telephone: {4}", FirstName, LastName, Birthdate, Email, Telephone));
 
             var observable =  _parentsRestService
                 .updateSelfParent(new UpdateParentDTO()
                 {
                     FirstName = FirstName,
                     LastName = LastName,
-                    Age = Age,
-                    Email = Email
+                    Birthdate = Birthdate,
+                    Email = Email,
+                    Telephone = Telephone
                 })
                 .Select((APIResponse<ParentDTO> response) => response.Data)
                 .Select(parent => Mapper.Map<ParentDTO, ParentEntity>(parent))
@@ -117,6 +121,22 @@ namespace Bullytect.Core.Services.Impl
 					Debug.WriteLine("Reset Password Finished ...");
 				});
 
+
+            return operationDecorator(observable);
+        }
+
+        public IObservable<string> DeleteAccount()
+        {
+            Debug.WriteLine("Delete Account");
+
+            var observable = _parentsRestService
+                .DeleteAccount()
+                .Select((APIResponse<string> response) => response.Data)
+                .Do((_) => _mvxMessenger.Publish(new AccountDeletedMessage(this){}))
+                .Finally(() =>
+                {
+                    Debug.WriteLine("Delete Account Finished ...");
+                });
 
             return operationDecorator(observable);
         }

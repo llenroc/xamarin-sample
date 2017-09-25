@@ -31,6 +31,11 @@
         <comment>Page Notifications Title</comment>
     </data>
 
+	<data name="Page.Profile.Title" xml:space="preserve">
+        <value>Profile</value>
+        <comment>Page Profile Title</comment>
+    </data>
+
 	<!-- Common strings -->
 	
     <data name="Common.Loading" xml:space="preserve">
@@ -236,4 +241,39 @@
         <value> Ocurrió un error al cargar la información de los hijos analizados </value>
         <comment>Children Error Ocurred</comment>
     </data>
+
+
+    <!-- Profile -->
+
+    <data name="Profile.Save.Changes" xml:space="preserve">
+        <value> Guardar Cambios </value>
+        <comment>Profile Save Changes</comment>
+    </data>
+
+    <data name="Profile.Saving.Changes" xml:space="preserve">
+        <value> Guardando Cambios ...</value>
+        <comment>Profile Saving Changes</comment>
+    </data>
+
+    <data name="Profile.Delete.Account" xml:space="preserve">
+        <value> Borrar cuenta </value>
+        <comment>Profile Delete Account</comment>
+    </data>
+
+    <data name="Profile.Account.Updated" xml:space="preserve">
+        <value> Cuenta actualizada ...</value>
+        <comment>Profile Account Updated</comment>
+    </data>
+
+    <data name="Profile.Image.Section" xml:space="preserve">
+        <value> Editar Imagen de Perfil </value>
+        <comment>Profile Image Section</comment>
+    </data>
+
+    <data name="Profile.General.Information.Section" xml:space="preserve">
+        <value> Información General </value>
+        <comment>Profile General Information Section</comment>
+    </data>
+
+	
 </root>

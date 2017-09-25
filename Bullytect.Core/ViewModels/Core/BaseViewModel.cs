@@ -3,6 +3,7 @@
 namespace Bullytect.Core.ViewModels
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.Net.Http;
     using System.Windows.Input;
@@ -10,6 +11,7 @@ namespace Bullytect.Core.ViewModels
     using Bullytect.Core.Exceptions;
     using Bullytect.Core.I18N;
     using Bullytect.Core.Messages;
+    using Bullytect.Rest.Models.Exceptions;
     using MvvmCross.Core.ViewModels;
     using MvvmCross.Plugins.Messenger;
     using MvvmCross.ReactiveUI.Interop;
@@ -27,6 +29,14 @@ namespace Bullytect.Core.ViewModels
             _userDialogs = userDialogs;
             _mvxMessenger = mvxMessenger;
         }
+
+        Dictionary<string, string> _fieldErrors = new Dictionary<string, string>();
+
+		public Dictionary<string, string> FieldErrors
+		{
+			get => _fieldErrors;
+			set => SetProperty(ref _fieldErrors, value);
+		}
 
         bool _dataFound = true;
 
@@ -65,7 +75,7 @@ namespace Bullytect.Core.ViewModels
         protected ObservableAsPropertyHelper<bool> _isBusy;
         public bool IsBusy
         {
-            get { return _isBusy.Value; }
+            get { return _isBusy != null ? _isBusy.Value : false; }
         }
 
         protected virtual void HandleExceptions(Exception ex)
@@ -92,7 +102,12 @@ namespace Bullytect.Core.ViewModels
 
                 _userDialogs.Toast(toastConfig);
 
-            }
+			}
+			else if (ex is DataInvalidException)
+			{
+				var dataInvalidEx = (DataInvalidException)ex;
+				FieldErrors = dataInvalidEx.FieldErrors;
+			}
             else
             {
                 Debug.WriteLine(String.Format("Exception: {0}", ex.ToString()));

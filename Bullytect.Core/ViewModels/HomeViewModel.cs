@@ -54,7 +54,7 @@ namespace Bullytect.Core.ViewModels
 
 
 
-        ParentEntity _selfParent;
+        ParentEntity _selfParent = null;
 
         public ParentEntity SelfParent
 		{
@@ -62,7 +62,7 @@ namespace Bullytect.Core.ViewModels
 			set => SetProperty(ref _selfParent, value);
 		}
 
-		IList<SonEntity> _children;
+        IList<SonEntity> _children = new List<SonEntity>();
 
 		public IList<SonEntity> Children
 		{
@@ -70,22 +70,16 @@ namespace Bullytect.Core.ViewModels
 			set => SetProperty(ref _children, value);
 		}
 
-        public override void Start()
-        {
-
-            //RefreshCommand.Execute(null);
-        }
-
 
         #region commands
 
         public ReactiveCommand RefreshCommand { get; protected set; }
 
-        public ICommand GoToNotificationsCommand
+        public ICommand GoToProfileCommand
 		{
 			get
 			{
-				return new MvxCommand(() => ShowViewModel<NotificationViewModel>());
+				return new MvxCommand(() => ShowViewModel<ProfileViewModel>());
 			}
 		}
 
@@ -111,7 +105,7 @@ namespace Bullytect.Core.ViewModels
 
 			if (ex is LoadProfileFailedException)
 			{
-				_userDialogs.ShowError(AppResources.Profile_Loading_Failed);
+                _userDialogs.ShowError(AppResources.Home_Loading_Failed);
             } else if (ex is NoChildrenFoundException) {
                 Debug.WriteLine("No Chidlren Founds");
             }

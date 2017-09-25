@@ -28,11 +28,12 @@ namespace Bullytect.Rest.Services
         [Headers("Authorization: Bearer")]
         IObservable<APIResponse<ParentDTO>> updateSelfParent([Body] UpdateParentDTO parent);
 
-
 		[Post("/parents/reset-password")]
 		[Headers("Authorization: Bearer")]
 		IObservable<APIResponse<string>> resetPassword([Body] ResetPasswordRequestDTO resetPasswordRequest);
 
-
+		[Delete("/parents/self/delete")]
+		[Headers("Authorization: Bearer")]
+		IObservable<APIResponse<string>> DeleteAccount();
     }
 }

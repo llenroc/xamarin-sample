@@ -31,9 +31,9 @@
         <comment>Page Children Title</comment>
     </data>
 
-    <data name="Page.Edit.Profile.Title" xml:space="preserve">
-        <value>Edit Profile</value>
-        <comment>Page Edit Profile Title</comment>
+    <data name="Page.Profile.Title" xml:space="preserve">
+        <value>Profile</value>
+        <comment>Page Profile Title</comment>
     </data>
 	
 	<!-- Common strings -->
@@ -247,26 +247,26 @@
 
 
 	
-	<!-- Profile -->
+	<!-- Home -->
    
-    <data name="Profile.Toolbar.Children" xml:space="preserve">
+    <data name="Home.Toolbar.Children" xml:space="preserve">
         <value> Children ({0}) </value>
-        <comment>Profile Toolbar Children</comment>
+        <comment>Home Toolbar Children</comment>
     </data>
 
-	<data name="Profile.Toolbar.Notifications" xml:space="preserve">
-        <value> Notifications ({0}) </value>
-        <comment>Profile Toolbar Notifications</comment>
+	<data name="Home.Toolbar.Profile" xml:space="preserve">
+        <value> Profile </value>
+        <comment>Home Toolbar Profile</comment>
     </data>
 
-	<data name="Profile.Loading.Failed" xml:space="preserve">
+	<data name="Home.Loading.Failed" xml:space="preserve">
 		<value> Failed to load user profile </value>
-        <comment>Profile Loading Failed</comment>
+        <comment>Home Loading Failed</comment>
 	</data>
 
-	<data name="Profile.Children.List.Title" xml:space="preserve">
+	<data name="Home.Children.List.Title" xml:space="preserve">
         <value> &#032;Children analyzed </value>
-        <comment>Profile Children List Title</comment>
+        <comment>Home Children List Title</comment>
     </data>
 
    <!-- Son Profile -->
@@ -298,7 +298,63 @@
         <value> An error occurred while loading children's information </value>
         <comment>Children Error Ocurred</comment>
     </data>
-    
+
+	<!-- Profile -->
+
+	<data name="Profile.Save.Changes" xml:space="preserve">
+        <value> Save Changes </value>
+        <comment>Profile Save Changes</comment>
+    </data>
+
+	<data name="Profile.Saving.Changes" xml:space="preserve">
+        <value> Saving Changes ...</value>
+        <comment>Profile Saving Changes</comment>
+    </data>
+
+	<data name="Profile.Delete.Account" xml:space="preserve">
+        <value> Delete Account </value>
+        <comment>Profile Delete Account</comment>
+    </data>
+
+	<data name="Profile.Account.Updated" xml:space="preserve">
+        <value> Account Updated ...</value>
+        <comment>Profile Account Updated</comment>
+    </data>
+
+	<data name="Profile.Image.Section" xml:space="preserve">
+        <value> Edit Profile Image </value>
+        <comment>Profile Image Section</comment>
+    </data>
+
+	<data name="Profile.General.Information.Section" xml:space="preserve">
+        <value> General information </value>
+        <comment>Profile General Information Section</comment>
+    </data>
+
+	<data name="Profile.General.Information.Section" xml:space="preserve">
+        <value> General information </value>
+        <comment>Profile General Information Section</comment>
+    </data>
+
+	<data name="Profile.Loading.Data" xml:space="preserve">
+        <value> Loading profile data </value>
+        <comment>Profile Loading Data</comment>
+    </data>
+
+	<data name="Profile.Account.Deleted" xml:space="preserve">
+        <value> Account Deleted </value>
+        <comment>Profile Account Deleted</comment>
+    </data>
+
+	<data name="Profile.Account.Deleting" xml:space="preserve">
+        <value> Account Deleting </value>
+        <comment>Profile Account Deleting</comment>
+    </data>
+
+	<data name="Profile.Confirm.Account.Deleting" xml:space="preserve">
+        <value> Confirm Account Deleting </value>
+        <comment>Profile Confirm Account Deleting</comment>
+    </data>
 
 	<data name="Global.ErrorOcurred" xml:space="preserve">
         <value>An error occurred</value>

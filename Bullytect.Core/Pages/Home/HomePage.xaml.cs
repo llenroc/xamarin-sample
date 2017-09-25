@@ -11,5 +11,10 @@ namespace Bullytect.Core.Pages.Home
         {
             InitializeComponent();
         }
+
+        protected override void OnAppearing() {
+            if(ViewModel.SelfParent == null && ViewModel.Children?.Count == 0)
+                RefreshLayout.RefreshCommand?.Execute(null);
+        }
     }
 }

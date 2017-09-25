@@ -29,12 +29,9 @@
 	<ContentView.Content>
 
         <Grid>
-        <!---BACKGROUND IMAGE-->
-        <Image Style="{StaticResource SignUpBackgroundImage}"/>
+            <!---BACKGROUND IMAGE-->
+            <Image Style="{StaticResource SignUpBackgroundImage}"/>
 
-        <ScrollView
-            Padding="{ StaticResource MainWrapperPadding }">
- 
             <!-- MAIN CONTAINER -->
             <Grid
                 ColumnSpacing="0" 
@@ -50,25 +47,14 @@
                 </Grid.RowDefinitions>
 
                 <!-- LOGO -->
-                <Grid 
-                    Grid.Row="0"
-                    WidthRequest="60"
-                    HeightRequest="60"
-                    Margin="20"
-                    VerticalOptions="End"
-                    HorizontalOptions="Start">
-
-                    <BoxView
-                        BackgroundColor="{DynamicResource AccentColor}"/> 
-
-                    <Label
-                        TextColor="{ DynamicResource OverImageTextColor }"
-                        FontSize="42"
-                        Text="{ x:Static helper:GrialShapesFont.LogoGrial }" 
-                        Style="{StaticResource FontIcon}"
-                        HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"/>
-                  </Grid>
+                <Image 
+                        Grid.Row="0"
+                        Source="Icon.png"
+                        WidthRequest="60"
+                        HeightRequest="60"
+                        Margin="20"
+                        VerticalOptions="End"
+                        HorizontalOptions="Start" />
 
 
                <Label
@@ -127,226 +113,229 @@
                         BackgroundColor="{DynamicResource OverImageTextColor}"/>
                 </StackLayout>
 
-                <!---FIELDS CONTAINER-->
-                <StackLayout
-                    Padding="40,0"
-                    VerticalOptions="CenterAndExpand"
-                    Grid.Row="2">
+                <ScrollView Grid.Row="2" Padding="{ StaticResource MainWrapperPadding }">
 
-                        <!-- First Name FIELD-->
-                        <StackLayout>
+                    <!---FIELDS CONTAINER-->
+                    <StackLayout
+                        Padding="40,0"
+                        VerticalOptions="CenterAndExpand">
 
-                            <Entry
-                                Placeholder="{ i18n:Translate Signup.Account.Firstname.Placeholder }"
-                                Style="{StaticResource ArtinaLoginEntryStyle}" 
-                                VerticalOptions="StartAndExpand"
-                                Text="{ Binding FirstName }"/>
-
-                            <Label
-                                    Text="{Binding Path=FieldErrors,                            
-                                                Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                ConverterParameter={StaticResource firstNameKey}}"
-                                     IsVisible="{Binding Path=FieldErrors,                            
-                                                Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                ConverterParameter={StaticResource firstNameKey}}"
-                                     Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-
-                        </StackLayout>
-                        <!-- End First Name FIELD-->
-
-                        <!-- Last Name FIELD-->
-                        <StackLayout>
-
-                        
-                            <Entry 
-                                Placeholder="{ i18n:Translate Signup.Account.LastName.Placeholder }"
-                                Style="{StaticResource ArtinaLoginEntryStyle}" 
-                                Text="{ Binding LastName }"/>
-
-
-                            <Label
-                                    Text="{Binding Path=FieldErrors,                            
-                                                Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                ConverterParameter={StaticResource lastNameKey}}"
-                                     IsVisible="{Binding Path=FieldErrors,                            
-                                                Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                ConverterParameter={StaticResource lastNameKey}}"
-                                     Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-
-                        </StackLayout>
-                        <!-- End Last Name FIELD-->
-
-                        <!-- Birthday FIELD-->
-                        <StackLayout>
-                            <DatePicker 
-                                VerticalOptions="CenterAndExpand" 
-                                Date="{ Binding Birthdate }"
-                                 >
-                                <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
-                                <DatePicker.MinimumDate>
-                                   <sys:DateTime x:FactoryMethod="Parse">
-                                       <x:Arguments>
-                                          <x:String>Jan 1 1970</x:String>
-                                       </x:Arguments>
-                                    </sys:DateTime>
-                                </DatePicker.MinimumDate>
-                                <DatePicker.MaximumDate>
-                                    <sys:DateTime x:FactoryMethod="Parse">
-                                        <x:Arguments>
-                                          <x:String>Dec 31 2050</x:String>
-                                         </x:Arguments>
-                                        </sys:DateTime>
-                                </DatePicker.MaximumDate>
-                            </DatePicker>
-
-
-                            <Label
-                                    Text="{Binding Path=FieldErrors,                            
-                                                Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                ConverterParameter={StaticResource birthdateKey}}"
-                                     IsVisible="{Binding Path=FieldErrors,                            
-                                                Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                ConverterParameter={StaticResource birthdateKey}}"
-                                     Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-
-                        </StackLayout>
-                        <!-- End Birthday FIELD-->
-                        
-                        <!-- Email FIELD-->
-                        <StackLayout>
-
-                            <Entry 
-                                Placeholder="{ i18n:Translate Signup.Account.Email.Placeholder }"
-                                Style="{StaticResource ArtinaLoginEntryStyle}"
-                                Text="{ Binding Email }">
-                                <Entry.Behaviors>
-                                    <artina:EmailValidatorBehavior x:Name="emailValidator" />
-                                </Entry.Behaviors>
-                             </Entry>
-
-                             <Label
-                                Text="{ i18n:Translate Signup.Account.Email.Invalid } " IsVisible="false"
-                                Style="{StaticResource ValidationEntryErrorStyle}">
-                                <Label.Triggers>
-                                    <DataTrigger 
-                                        TargetType="Label"
-                                        Binding="{Binding Source={x:Reference emailValidator}, Path=IsValid}"
-                                        Value="false">
-                                        <Setter Property="IsVisible" Value="true" />
-                                    </DataTrigger> 
-                                </Label.Triggers>
-                               </Label>
-
-                               <Label
-                                    Text="{Binding Path=FieldErrors,                            
-                                                Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                ConverterParameter={StaticResource emailValidationKey}}"
-                                     IsVisible="{Binding Path=FieldErrors,                            
-                                                Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                ConverterParameter={StaticResource emailValidationKey}}"
-                                     Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-                                
-                           </StackLayout>
-                           <!-- End Email FIELD-->
-
-                            <!-- Password FIELD -->
+                            <!-- First Name FIELD-->
                             <StackLayout>
 
-                                    <Entry 
-                                        x:Name="passwordEntry"
-                                        Placeholder="{ i18n:Translate Signup.Account.Password.Placeholder }"
-                                        IsPassword="true"
-                                        Style="{StaticResource ArtinaLoginEntryStyle}" 
-                                        Text="{ Binding PasswordClear }"
-                                        VerticalOptions="StartAndExpand"/>
+                                <Entry
+                                    Placeholder="{ i18n:Translate Signup.Account.Firstname.Placeholder }"
+                                    Style="{StaticResource ArtinaLoginEntryStyle}" 
+                                    VerticalOptions="StartAndExpand"
+                                    Text="{ Binding FirstName }"/>
 
-
-                                    <Label
+                                <Label
                                         Text="{Binding Path=FieldErrors,                            
                                                     Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                    ConverterParameter={StaticResource passwordClearKey}}"
+                                                    ConverterParameter={StaticResource firstNameKey}}"
                                          IsVisible="{Binding Path=FieldErrors,                            
                                                     Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                    ConverterParameter={StaticResource passwordClearKey}}"
+                                                    ConverterParameter={StaticResource firstNameKey}}"
                                          Style="{StaticResource ValidationEntryErrorStyle}"></Label>
 
                             </StackLayout>
-                            <!-- End Password FIELD -->
-                        
-                            <!-- Confirm Password -->
-                            <StackLayout
-                                    VerticalOptions="StartAndExpand" >
+                            <!-- End First Name FIELD-->
 
-                                    <Entry 
-                                        Placeholder="{ i18n:Translate Signup.Account.ConfirmPassword.Placeholder }" 
-                                        IsPassword="true"
-                                        Style="{StaticResource ArtinaLoginEntryStyle}"
-                                        Text="{ Binding ConfirmPassword }">
-                                        <Entry.Behaviors>
-                                            <artina:TextMatchValidatorBehavior x:Name="passwordValidator" 
-                                                TextToMatch="{Binding Source={x:Reference passwordEntry}, Path=Text}"/>
-                                        </Entry.Behaviors>
-                                    </Entry>
+                            <!-- Last Name FIELD-->
+                            <StackLayout>
 
-                                    <Label
-                                        Text="{ i18n:Translate Signup.Account.Password.Not.Match } " IsVisible="false"
-                                        Style="{StaticResource ValidationEntryErrorStyle}">
+                            
+                                <Entry 
+                                    Placeholder="{ i18n:Translate Signup.Account.LastName.Placeholder }"
+                                    Style="{StaticResource ArtinaLoginEntryStyle}" 
+                                    Text="{ Binding LastName }"/>
 
-                                        <Label.Triggers>
-                                            <DataTrigger 
-                                                TargetType="Label"
-                                                Binding="{Binding Source={x:Reference passwordValidator}, Path=IsValid}"
-                                                Value="false">
-                                                <Setter Property="IsVisible" Value="true" />
-                                            </DataTrigger> 
-                                        </Label.Triggers>
 
-                                    </Label>
-
-                                    <Label
+                                <Label
                                         Text="{Binding Path=FieldErrors,                            
                                                     Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                    ConverterParameter={StaticResource confirmPasswordKey}}"
+                                                    ConverterParameter={StaticResource lastNameKey}}"
                                          IsVisible="{Binding Path=FieldErrors,                            
                                                     Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                    ConverterParameter={StaticResource confirmPasswordKey}}"
+                                                    ConverterParameter={StaticResource lastNameKey}}"
                                          Style="{StaticResource ValidationEntryErrorStyle}"></Label>
 
+                            </StackLayout>
+                            <!-- End Last Name FIELD-->
+
+                            <!-- Birthday FIELD-->
+                            <StackLayout>
+                                <DatePicker 
+                                    VerticalOptions="CenterAndExpand" 
+                                    Date="{ Binding Birthdate }"
+                                     >
+                                    <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                                    <DatePicker.MinimumDate>
+                                       <sys:DateTime x:FactoryMethod="Parse">
+                                           <x:Arguments>
+                                              <x:String>Jan 1 1970</x:String>
+                                           </x:Arguments>
+                                        </sys:DateTime>
+                                    </DatePicker.MinimumDate>
+                                    <DatePicker.MaximumDate>
+                                        <sys:DateTime x:FactoryMethod="Parse">
+                                            <x:Arguments>
+                                              <x:String>Dec 31 2050</x:String>
+                                             </x:Arguments>
+                                            </sys:DateTime>
+                                    </DatePicker.MaximumDate>
+                                </DatePicker>
+
+
+                                <Label
+                                        Text="{Binding Path=FieldErrors,                            
+                                                    Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                    ConverterParameter={StaticResource birthdateKey}}"
+                                         IsVisible="{Binding Path=FieldErrors,                            
+                                                    Converter={StaticResource ContainsKeyVisibilityConverter},
+                                                    ConverterParameter={StaticResource birthdateKey}}"
+                                         Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+
+                            </StackLayout>
+                            <!-- End Birthday FIELD-->
+                            
+                            <!-- Email FIELD-->
+                            <StackLayout>
+
+                                <Entry 
+                                    Placeholder="{ i18n:Translate Signup.Account.Email.Placeholder }"
+                                    Style="{StaticResource ArtinaLoginEntryStyle}"
+                                    Text="{ Binding Email }">
+                                    <Entry.Behaviors>
+                                        <artina:EmailValidatorBehavior x:Name="emailValidator" />
+                                    </Entry.Behaviors>
+                                 </Entry>
+
+                                 <Label
+                                    Text="{ i18n:Translate Signup.Account.Email.Invalid } " IsVisible="false"
+                                    Style="{StaticResource ValidationEntryErrorStyle}">
+                                    <Label.Triggers>
+                                        <DataTrigger 
+                                            TargetType="Label"
+                                            Binding="{Binding Source={x:Reference emailValidator}, Path=IsValid}"
+                                            Value="false">
+                                            <Setter Property="IsVisible" Value="true" />
+                                        </DataTrigger> 
+                                    </Label.Triggers>
+                                   </Label>
+
+                                   <Label
+                                        Text="{Binding Path=FieldErrors,                            
+                                                    Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                    ConverterParameter={StaticResource emailValidationKey}}"
+                                         IsVisible="{Binding Path=FieldErrors,                            
+                                                    Converter={StaticResource ContainsKeyVisibilityConverter},
+                                                    ConverterParameter={StaticResource emailValidationKey}}"
+                                         Style="{StaticResource ValidationEntryErrorStyle}"></Label>
                                     
-                              </StackLayout>
-                              <!-- End Confirm Password -->
-                        
-                              <!-- Telephone -->
-                              <StackLayout>
-                                  <StackLayout Orientation="Horizontal">
-                                        
-                                         <Label Text="{Binding Prefix, StringFormat='{0} |'}" 
-                                                TextColor="#fff" 
-                                                BackgroundColor="Transparent"
-                                                VerticalTextAlignment="Center"/>
-                                         <Entry 
-                                                Placeholder="{ i18n:Translate Signup.Account.Telephone.Placeholder }" 
-                                                Text="{ Binding Telephone }" 
-                                                Keyboard="Telephone" 
-                                                Style="{StaticResource ArtinaLoginEntryStyle}">
-                                        </Entry>
-                                  </StackLayout>
+                               </StackLayout>
+                               <!-- End Email FIELD-->
 
-                                  <Label
-                                        Text="{Binding Path=FieldErrors,                            
-                                                    Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                    ConverterParameter={StaticResource telephoneKey}}"
-                                         IsVisible="{Binding Path=FieldErrors,                            
-                                                    Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                    ConverterParameter={StaticResource telephoneKey}}"
-                                         Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-                              </StackLayout>
-                            <!-- End Telephone -->
-                    </StackLayout>
+                                <!-- Password FIELD -->
+                                <StackLayout>
+
+                                        <Entry 
+                                            x:Name="passwordEntry"
+                                            Placeholder="{ i18n:Translate Signup.Account.Password.Placeholder }"
+                                            IsPassword="true"
+                                            Style="{StaticResource ArtinaLoginEntryStyle}" 
+                                            Text="{ Binding PasswordClear }"
+                                            VerticalOptions="StartAndExpand"/>
+
+
+                                        <Label
+                                            Text="{Binding Path=FieldErrors,                            
+                                                        Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                        ConverterParameter={StaticResource passwordClearKey}}"
+                                             IsVisible="{Binding Path=FieldErrors,                            
+                                                        Converter={StaticResource ContainsKeyVisibilityConverter},
+                                                        ConverterParameter={StaticResource passwordClearKey}}"
+                                             Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+
+                                </StackLayout>
+                                <!-- End Password FIELD -->
+                            
+                                <!-- Confirm Password -->
+                                <StackLayout
+                                        VerticalOptions="StartAndExpand" >
+
+                                        <Entry 
+                                            Placeholder="{ i18n:Translate Signup.Account.ConfirmPassword.Placeholder }" 
+                                            IsPassword="true"
+                                            Style="{StaticResource ArtinaLoginEntryStyle}"
+                                            Text="{ Binding ConfirmPassword }">
+                                            <Entry.Behaviors>
+                                                <artina:TextMatchValidatorBehavior x:Name="passwordValidator" 
+                                                    TextToMatch="{Binding Source={x:Reference passwordEntry}, Path=Text}"/>
+                                            </Entry.Behaviors>
+                                        </Entry>
+
+                                        <Label
+                                            Text="{ i18n:Translate Signup.Account.Password.Not.Match } " IsVisible="false"
+                                            Style="{StaticResource ValidationEntryErrorStyle}">
+
+                                            <Label.Triggers>
+                                                <DataTrigger 
+                                                    TargetType="Label"
+                                                    Binding="{Binding Source={x:Reference passwordValidator}, Path=IsValid}"
+                                                    Value="false">
+                                                    <Setter Property="IsVisible" Value="true" />
+                                                </DataTrigger> 
+                                            </Label.Triggers>
+
+                                        </Label>
+
+                                        <Label
+                                            Text="{Binding Path=FieldErrors,                            
+                                                        Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                        ConverterParameter={StaticResource confirmPasswordKey}}"
+                                             IsVisible="{Binding Path=FieldErrors,                            
+                                                        Converter={StaticResource ContainsKeyVisibilityConverter},
+                                                        ConverterParameter={StaticResource confirmPasswordKey}}"
+                                             Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+
+                                        
+                                  </StackLayout>
+                                  <!-- End Confirm Password -->
+                            
+                                  <!-- Telephone -->
+                                  <StackLayout>
+                                      <StackLayout Orientation="Horizontal">
+                                            
+                                             <Label Text="{Binding Prefix, StringFormat='{0} |'}" 
+                                                    TextColor="#fff" 
+                                                    BackgroundColor="Transparent"
+                                                    VerticalTextAlignment="Center"/>
+                                             <Entry 
+                                                    Placeholder="{ i18n:Translate Signup.Account.Telephone.Placeholder }" 
+                                                    Text="{ Binding Telephone }" 
+                                                    Keyboard="Telephone" 
+                                                    Style="{StaticResource ArtinaLoginEntryStyle}">
+                                            </Entry>
+                                      </StackLayout>
+
+                                      <Label
+                                            Text="{Binding Path=FieldErrors,                            
+                                                        Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                        ConverterParameter={StaticResource telephoneKey}}"
+                                             IsVisible="{Binding Path=FieldErrors,                            
+                                                        Converter={StaticResource ContainsKeyVisibilityConverter},
+                                                        ConverterParameter={StaticResource telephoneKey}}"
+                                             Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+                                  </StackLayout>
+                                <!-- End Telephone -->
+                        </StackLayout>
+
+
+                    </ScrollView>
 
                     <!-- FOOTER -->
-                    <StackLayout 
-                        x:Name="loginStack" 
+                    <StackLayout
                         HorizontalOptions="Fill"
                         VerticalOptions="End" 
                         Padding="20, 0"
@@ -355,37 +344,34 @@
                         <artina:Button
                             IsEnabled="{Binding HaveInternet}"
                             Style="{StaticResource PrimaryActionButtonStyle}"
-                            VerticalOptions="End" 
+                            VerticalOptions="End"
                             Text="{i18n:Translate Signup.Create}"
                             Command="{ Binding SignupCommand }"
                             WidthRequest="{ artina:OnOrientationDouble
-                                LandscapePhone=200,
-                                LandscapeTablet=400 }"
+                                    LandscapePhone=200,
+                                    LandscapeTablet=400 }"
                             HorizontalOptions="{ artina:OnOrientationLayoutOptions
-                                PortraitPhone=Fill,
-                                LandscapePhone=Center,
-                                PortraitTablet=Fill,
-                                LandscapeTablet=Center }"/>
+                                    PortraitPhone=Fill,
+                                    LandscapePhone=Center,
+                                    PortraitTablet=Fill,
+                                    LandscapeTablet=Center }"/>
 
-                        <artina:Button 
-                            Style="{StaticResource TransparentButtonStyle}" 
-                            VerticalOptions="End" 
+                        <artina:Button
+                            Style="{StaticResource TransparentButtonStyle}"
+                            VerticalOptions="End"
                             Text="{i18n:Translate Signup.Alredy.User}"
                             Command="{ Binding GoToLoginCommand }"
                             WidthRequest="{ artina:OnOrientationDouble
-                                LandscapePhone=200,
-                                LandscapeTablet=400 }"
+                                    LandscapePhone=200,
+                                    LandscapeTablet=400 }"
                             HorizontalOptions="{ artina:OnOrientationLayoutOptions
-                                PortraitPhone=Fill,
-                                LandscapePhone=Center,
-                                PortraitTablet=Fill,
-                                LandscapeTablet=Center }"/>
+                                    PortraitPhone=Fill,
+                                    LandscapePhone=Center,
+                                    PortraitTablet=Fill,
+                                    LandscapeTablet=Center }"/>
 
-                    </StackLayout>
-
+                        </StackLayout>
                 </Grid>
-
-            </ScrollView>
            </Grid>
 	</ContentView.Content>
 </d:MvxContentPage>

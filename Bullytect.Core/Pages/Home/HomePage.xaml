@@ -25,10 +25,11 @@
 	<ContentPage.Content>
 
         <controls:PullToRefreshLayout
-              IsPullToRefreshEnabled="True"
-              RefreshCommand="{Binding RefreshCommand}"
-              IsRefreshing="{Binding IsBusy}"
-              RefreshColor="Blue">
+            x:Name="RefreshLayout"
+            IsPullToRefreshEnabled="True"
+            RefreshCommand="{Binding RefreshCommand}"
+            IsRefreshing="{Binding IsBusy}"
+            RefreshColor="Blue">
 
             <ScrollView 
                 BackgroundColor="{ DynamicResource BasePageColor }">
@@ -142,7 +143,7 @@
                                     <Label
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
-                                        Text="{Binding SelfParent.Children, StringFormat={i18n:Translate Profile.Toolbar.Children} }"
+                                        Text="{Binding SelfParent.Children, StringFormat={i18n:Translate Home.Toolbar.Children} }"
                                         TextColor="{ DynamicResource OverImageTextColor }">
                                         <Label.FontSize>
                                             <OnIdiom 
@@ -158,7 +159,7 @@
                                 
                               </StackLayout>
 
-                              <!-- Notifications Action -->
+                              <!-- Profile Action -->
                               <StackLayout
                                     Grid.Column="1"
                                     Orientation="Horizontal"
@@ -169,7 +170,7 @@
                                 <Label
                                      VerticalTextAlignment="Center" 
                                      HorizontalTextAlignment="Center"
-                                     Text="{ x:Static helper:GrialShapesFont.ChatBubble }"
+                                     Text="{ x:Static helper:GrialShapesFont.AccountCircle }"
                                      FontFamily="{ StaticResource IconsFontFamily }"
                                      TextColor="{ DynamicResource AccentColor }">
                                      <Label.FontSize>
@@ -183,7 +184,7 @@
                                 <Label
                                     VerticalTextAlignment="Center" 
                                     HorizontalTextAlignment="Center"
-                                    Text=" 235"
+                                    Text="{i18n:Translate Home.Toolbar.Profile}"
                                     TextColor="{ DynamicResource OverImageTextColor }">
                                     <Label.FontSize>
                                        <OnIdiom 
@@ -194,7 +195,7 @@
                                  </Label>
 
                                  <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{ Binding GoToNotificationsCommand }" NumberOfTapsRequired="1" /> 
+                                        <TapGestureRecognizer Command="{ Binding GoToProfileCommand }" NumberOfTapsRequired="1" /> 
                                   </StackLayout.GestureRecognizers>
 
                                 
@@ -210,7 +211,7 @@
                             Spacing="0">
 
                             <commonTemplates:MainListHeaderTemplate 
-                                Text="{i18n:Translate Profile.Children.List.Title}"
+                                Text="{i18n:Translate Home.Children.List.Title}"
                                 IconText="{ x:Static helper:GrialShapesFont.Group } "/>
 
                             <!-- Children LIST -->

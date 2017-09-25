@@ -119,6 +119,9 @@
     <EmbeddedResource Include="Pages\Common\ErrorOcurred.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Profile\ProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -154,7 +157,7 @@
     <Compile Include="Models\Domain\ParentEntity.cs" />
     <Compile Include="Services\Impl\ParentServiceImpl.cs" />
     <Compile Include="Models\Domain\SonEntity.cs" />
-    <Compile Include="ViewModels\ParentProfileViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="Converters\AgeFormatValueConverter.cs" />
     <Compile Include="ViewModels\SignupViewModel.cs" />
     <Compile Include="Pages\Login\LoginPage.xaml.cs">
@@ -276,6 +279,10 @@
     <Compile Include="Pages\Common\ErrorOcurred.xaml.cs">
       <DependentUpon>ErrorOcurred.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Profile\ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messages\AccountDeletedMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
@@ -492,6 +499,7 @@
     <Folder Include="Pages\Children\" />
     <Folder Include="Pages\Children\Templates\" />
     <Folder Include="Pages\AddSon\" />
+    <Folder Include="Pages\Profile\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bullytect.rest\bullytect.rest.csproj">

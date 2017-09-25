@@ -38,14 +38,9 @@ namespace Bullytect.Core.ViewModels
 		}
 
 
-        public override void Start()
-        {
-            LoadChildrenCommand.Execute(null);
-        }
-
 		#region properties
 
-		IList<SonEntity> _children;
+        IList<SonEntity> _children = new List<SonEntity>();
 
 		public IList<SonEntity> Children
 		{

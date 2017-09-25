@@ -1,14 +1,12 @@
 ﻿
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
-using Bullytect.Rest.Models.Exceptions;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
@@ -35,14 +33,6 @@ namespace Bullytect.Core.ViewModels
         }
 
         #region Properties
-
-        Dictionary<string, string> _fieldErrors = new Dictionary<string, string>();
-
-        public Dictionary<string, string> FieldErrors
-		{
-			get => _fieldErrors;
-			set => SetProperty(ref _fieldErrors, value);
-		}
 
         string _firstName;
 
@@ -136,19 +126,5 @@ namespace Bullytect.Core.ViewModels
 			//ShowViewModel<AuthenticationViewModel>();
         }
 
-
-		protected override void HandleExceptions(Exception ex)
-		{
-
-			if (ex is DataInvalidException)
-			{
-				var dataInvalidEx = (DataInvalidException)ex;
-				FieldErrors = dataInvalidEx.FieldErrors;
-			}
-			else
-			{
-				base.HandleExceptions(ex);
-			}
-		}
 	}
 }
