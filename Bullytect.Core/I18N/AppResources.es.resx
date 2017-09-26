@@ -21,19 +21,29 @@
         <comment>Page Common Title</comment>
     </data>
 
+	<data name="Page.Home.Title" xml:space="preserve">
+        <value>Inicio</value>
+        <comment>Page Home Title</comment>
+    </data>
+
 	<data name="Page.Children.Title" xml:space="preserve">
         <value>Hijos Analizados</value>
         <comment>Page Children Title</comment>
     </data>
-
-    <data name="Page.Notifications.Title" xml:space="preserve">
-        <value>Notifications</value>
-        <comment>Page Notifications Title</comment>
+   
+    <data name="Page.Profile.Title" xml:space="preserve">
+        <value>Perfil</value>
+        <comment>Page Profile Title</comment>
     </data>
 
-	<data name="Page.Profile.Title" xml:space="preserve">
-        <value>Profile</value>
-        <comment>Page Profile Title</comment>
+	 <data name="Page.Alerts.Title" xml:space="preserve">
+        <value>Alertas</value>
+        <comment>Page Alerts Title</comment>
+    </data>
+
+    <data name="Page.Alert.Detail.Title" xml:space="preserve">
+        <value>Detalle de la Alerta</value>
+        <comment>Page Alert Detail Title</comment>
     </data>
 
 	<!-- Common strings -->

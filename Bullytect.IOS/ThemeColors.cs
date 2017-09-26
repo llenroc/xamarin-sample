@@ -13,9 +13,10 @@ namespace Bullytect.iOS
 	{
 		private readonly static Dictionary<string, Color> _themeColors = new Dictionary<string, Color>
 		{
+			{ "AccentColor", Color.FromHex("#6BC7E0") },
 			{ "BaseTextColor", Color.FromHex("#666666") },
 			{ "InverseTextColor", Color.White },
-			{ "BrandColor", Color.FromHex("#ad1457") },
+			{ "BrandColor", Color.FromHex("#6BC7E0") },
 			{ "BrandNameColor", Color.FromHex("#FFFFFF") },
 			{ "BaseLightTextColor", Color.FromHex("#7b7b7b") },
 			{ "OverImageTextColor", Color.FromHex("#FFFFFF") },
@@ -30,19 +31,19 @@ namespace Bullytect.iOS
 			{ "MainWrapperBackgroundColor", Color.FromHex("#EFEFEF") },
 			{ "CategoriesListIconColor", Color.FromHex("#55000000") },
 			{ "DashboardIconColor", Color.FromHex("#FFFFFF") },
-			{ "ComplementColor", Color.FromHex("#525ABB") },
+			{ "ComplementColor", Color.FromHex("#1c91b1") },
 			{ "TranslucidBlack", Color.FromHex("#44000000") },
 			{ "TranslucidWhite", Color.FromHex("#22ffffff") },
-			{ "OkColor", Color.FromHex("#22c064") },
-			{ "ErrorColor", Color.Red },
-			{ "WarningColor", Color.FromHex("#ffc107") },
-			{ "NotificationColor", Color.FromHex("#1274d1") },
-			{ "SaveButtonColor", Color.FromHex("#22c064") },
-			{ "DeleteButtonColor", Color.FromHex("#D50000") },
+			{ "OkColor", Color.FromHex("#6bdd9b") },
+			{ "ErrorColor", Color.FromHex("#dd6a6b") },
+			{ "WarningColor", Color.FromHex("#dbc66e") },
+			{ "NotificationColor", Color.FromHex("#6781c0") },
+			{ "SaveButtonColor", Color.FromHex("#6bdd9b") },
+			{ "DeleteButtonColor", Color.FromHex("#dd6a6b") },
 			{ "LabelButtonColor", Color.FromHex("#ffffff") },
 			{ "PlaceholderColor", Color.FromHex("#22ffffff") },
 			{ "PlaceholderColorEntry", Color.FromHex("#FFFFFF") },
-			{ "RoundedLabelBackgroundColor", Color.FromHex("#525ABB") },
+			{ "RoundedLabelBackgroundColor", Color.FromHex("#1c91b1") },
 			{ "MainMenuHeaderBackgroundColor", Color.FromHex("#384F63") },
 			{ "MainMenuBackgroundColor", Color.FromHex("#F1F3F5") },
 			{ "MainMenuSeparatorColor", Color.Transparent },
@@ -50,11 +51,10 @@ namespace Bullytect.iOS
 			{ "MainMenuIconColor", Color.FromHex("#666666") },
 			{ "ListViewSeparatorColor", Color.FromHex("#D3D3D3") },
 			{ "BaseSeparatorColor", Color.FromHex("#7b7b7b") },
-			{ "ChatRightBalloonBackgroundColor", Color.FromHex("#525ABB") },
+			{ "ChatRightBalloonBackgroundColor", Color.FromHex("#1c91b1") },
 			{ "ChatBalloonFooterTextColor", Color.FromHex("#FFFFFF") },
 			{ "ChatRightTextColor", Color.FromHex("#FFFFFF") },
-			{ "ChatLeftTextColor", Color.FromHex("#FFFFFF") },
-			{ "AccentColor", Color.FromHex("#FFDA125F") }
+			{ "ChatLeftTextColor", Color.FromHex("#dcc66d") }
 		};
 		public ThemeColors() : base(_themeColors) {}
 	}

@@ -46,17 +46,16 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    
-                    <!--LOGO-->
-                    <!--<lottie:AnimationView
+
+                    <!-- LOGO -->
+                    <Image 
                         Grid.Column="0"
+                        Source="Icon-76.png"
+                        WidthRequest="76"
+                        HeightRequest="76"
                         Margin="-20"
-                     
-                        AutoPlay="false"
-                        HeightRequest="160"
-                        WidthRequest="160"
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"/>-->
+                        VerticalOptions="End"
+                        HorizontalOptions="Start" />
                     
 
                     <StackLayout

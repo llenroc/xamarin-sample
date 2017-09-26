@@ -15,17 +15,8 @@
 
         <Application.Resources>
 
-        <ResourceDictionary MergedWith="themes:GrialLightTheme">
-        <!--<ResourceDictionary MergedWith="local:GrialDarkTheme">-->
-        <!--<ResourceDictionary MergedWith="local:GrialEnterpriseTheme">-->
+        <ResourceDictionary MergedWith="themes:BullTectAppTheme">
 
-        <!--    
-            Use the following file as your theme colors.
-            Simply replace colors to march your brand.
-            (It is based on GrialLightTheme but you can use the colors
-            of any other theme)
-        -->
-        <!--<ResourceDictionary MergedWith="local:MyAppTheme">-->
             
             <!-- UNITS -->
             <x:Double x:Key="BaseFontSize">16</x:Double>
@@ -41,7 +32,7 @@
             <x:Double x:Key="MainMenuIconWidthRequest">22</x:Double>
 
             <x:String x:Key="WebViewPageURL">http://www.grialkit.com</x:String>
-            <x:String x:Key="WebViewPageTitle">Grial UI Kit</x:String>
+            <x:String x:Key="WebViewPageTitle">BullTect</x:String>
             
             <x:String x:Key="GrialShapesFontFamily">grialshapes</x:String>
             <!-- PUT YOUR OWN ICONS FONT FAMILY BELOW -->
@@ -55,7 +46,7 @@
             <FileImageSource x:Key="WelcomeBackgroundImageTablet">welcome_bg_tablet.jpg</FileImageSource>
 
 
-            <FileImageSource x:Key="BrandImage">logo.png</FileImageSource>
+            <FileImageSource x:Key="BrandImage">Icon-60.png</FileImageSource>
 
             <FileImageSource x:Key="GenericBackgroundImage">generic_bg_image.jpg</FileImageSource>
             
@@ -73,8 +64,7 @@
             <FileImageSource x:Key="ThemeAvatarSample0Image">user_profile_0.jpg</FileImageSource>
             <FileImageSource x:Key="ThemeAvatarSample1Image">user_profile_1.jpg</FileImageSource>
 
-            <FileImageSource x:Key="SocialHeaderBackgroundImage0">social_header_bg_0.jpg</FileImageSource>
-            <FileImageSource x:Key="SocialHeaderBackgroundImage1">social_header_bg_1.jpg</FileImageSource>
+            <FileImageSource x:Key="HomeBackground">social_header_bg_1.jpg</FileImageSource>
 
             <!-- RESPONSIVE COMMON -->
             <OnIdiom x:Key="MainWrapperPadding" x:TypeArguments="Thickness">
@@ -405,7 +395,7 @@
             <Style x:Key="ArtinaEntryStyle" TargetType="Entry">
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="artina:EntryProperties.BorderStyle" Value="BottomLine" />
-                <Setter Property="artina:EntryProperties.BorderWidth" Value="1" />
+                <Setter Property="artina:EntryProperties.BorderWidth" Value="2" />
                 <Style.Triggers>
                     <Trigger TargetType="Entry" Property="IsFocused" Value="True">
                         <Setter Property="artina:EntryProperties.BorderColor" Value="{DynamicResource AccentColor}" />

@@ -52,7 +52,7 @@
 
                         <!-- BACKGROUND IMAGE -->
                         <Image 
-                            Source="{ StaticResource SocialHeaderBackgroundImage1 }" 
+                            Source="{ StaticResource HomeBackground }" 
                             IsOpaque="false"
                             Aspect="AspectFill"
                             HorizontalOptions="FillAndExpand" 

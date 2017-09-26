@@ -59,7 +59,7 @@
 
                             <!-- Firstname -->
 
-                            <ViewCell>
+                            <ViewCell >
 
                                 <StackLayout>
 
@@ -188,12 +188,47 @@
                 <artina:Button 
                     Style="{StaticResource SaveButtonStyle}"
                     Command="{ Binding SaveChangesCommand }"
-                    Text="{i18n:Translate Profile.Save.Changes}" />
+                    Text="{i18n:Translate Profile.Save.Changes}">
+
+                    <Button.Triggers>
+                        <DataTrigger 
+                            TargetType="Button" 
+                            Binding="{Binding IsBusy}"
+                            Value="True">
+                            <Setter Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+                        <DataTrigger 
+                            TargetType="Button"
+                            Binding="{Binding HaveInternet}"
+                            Value="False">
+                            <Setter Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+                    </Button.Triggers>
+
+                </artina:Button>
 
                 <artina:Button 
+                    IsEnabled="{Binding HaveInternet}"
                     Style="{StaticResource DeleteButtonStyle}"
                     Command="{ Binding DeleteAccountCommand }"
-                    Text="{i18n:Translate Profile.Delete.Account}" />
+                    Text="{i18n:Translate Profile.Delete.Account}">
+
+                    <Button.Triggers>
+                        <DataTrigger 
+                            TargetType="Button" 
+                            Binding="{Binding IsBusy}"
+                            Value="True">
+                            <Setter Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+                        <DataTrigger 
+                            TargetType="Button"
+                            Binding="{Binding HaveInternet}"
+                            Value="False">
+                            <Setter Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+                    </Button.Triggers>
+
+                 </artina:Button>
 
             </StackLayout>
          </controls:PullToRefreshLayout>

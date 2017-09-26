@@ -34,26 +34,16 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
+
                             <!-- LOGO -->
-                            <Grid 
-                                Grid.Row="0" 
-                                WidthRequest="60"
-                                HeightRequest="60"
-                                Margin="20"
-                                VerticalOptions="End"
-                                HorizontalOptions="Start">
-                            
-                                <BoxView
-                                    BackgroundColor="{ DynamicResource AccentColor }"/>
-                            
-                                <Label
-                                    TextColor="{ DynamicResource OverImageTextColor }"
-                                    FontSize="42"
-                                    Text="{ x:Static helper:GrialShapesFont.LogoGrial }" 
-                                    Style="{StaticResource FontIcon}"
-                                    HorizontalTextAlignment="Center"
-                                    VerticalTextAlignment="Center"/>
-                            </Grid>
+                            <Image 
+                                    Grid.Row="0"
+                                    Source="Icon-60.png"
+                                    WidthRequest="60"
+                                    HeightRequest="60"
+                                    Margin="20"
+                                    VerticalOptions="End"
+                                    HorizontalOptions="Start" />
 
                             <!-- CLOSE ICON -->
                             <Label

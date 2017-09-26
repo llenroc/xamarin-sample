@@ -2,7 +2,7 @@
 <ResourceDictionary 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="Bullytect.Core.Themes.MyAppTheme">
+    x:Class="Bullytect.Core.Themes.BullTectAppTheme">
 
     <!--
     THEME COLORS
@@ -21,13 +21,13 @@
     -->
     
     <!-- Grial Theme Exported Colors -->
-    <Color x:Key="AccentColor">#FFDA125F</Color>
+    <Color x:Key="AccentColor">#6BC7E0</Color>
     <Color x:Key="BaseTextColor">#666666</Color>
 
 
     <!-- GENERAL COLORS -->
     <Color x:Key="InverseTextColor">White</Color>
-    <Color x:Key="BrandColor">#ad1457</Color>
+    <Color x:Key="BrandColor">#6BC7E0</Color>
     <Color x:Key="BrandNameColor">#FFFFFF</Color>
     <Color x:Key="BaseLightTextColor">#7b7b7b</Color>
     <Color x:Key="OverImageTextColor">#FFFFFF</Color>
@@ -47,25 +47,25 @@
     <Color x:Key="DashboardIconColor">#FFFFFF</Color>
 
     <!-- COMPLEMENT COLORS -->
-    <Color x:Key="ComplementColor">#525ABB</Color>
+    <Color x:Key="ComplementColor">#1c91b1</Color>
     <Color x:Key="TranslucidBlack">#44000000</Color>
     <Color x:Key="TranslucidWhite">#22ffffff</Color>
 
     <!-- INDICATOR COLORS -->
-    <Color x:Key="OkColor">#22c064</Color>
-    <Color x:Key="ErrorColor">Red</Color>
-    <Color x:Key="WarningColor">#ffc107</Color>
-    <Color x:Key="NotificationColor">#1274d1</Color>
+    <Color x:Key="OkColor">#6bdd9b</Color>
+    <Color x:Key="ErrorColor">#dd6a6b</Color>
+    <Color x:Key="WarningColor">#dbc66e</Color>
+    <Color x:Key="NotificationColor">#6781c0</Color>
 
     <!-- BUTTONS & ENTRY COLORS -->
-    <Color x:Key="SaveButtonColor">#22c064</Color>
-    <Color x:Key="DeleteButtonColor">#D50000</Color>
+    <Color x:Key="SaveButtonColor">#6bdd9b</Color>
+    <Color x:Key="DeleteButtonColor">#dd6a6b</Color>
     <Color x:Key="LabelButtonColor">#ffffff</Color>
 
     <Color x:Key="PlaceholderColor">#22ffffff</Color>
     <Color x:Key="PlaceholderColorEntry">#FFFFFF</Color>
 
-    <Color x:Key="RoundedLabelBackgroundColor">#525ABB</Color>
+    <Color x:Key="RoundedLabelBackgroundColor">#1c91b1</Color>
 
     <!-- MAIN MENU COLORS -->   
     <Color x:Key="MainMenuHeaderBackgroundColor">#384F63</Color>
@@ -79,9 +79,9 @@
     <Color x:Key="BaseSeparatorColor">#7b7b7b</Color>
 
     <!-- CHAT COLORS -->
-    <Color x:Key="ChatRightBalloonBackgroundColor">#525ABB</Color>
+    <Color x:Key="ChatRightBalloonBackgroundColor">#1c91b1</Color>
     <Color x:Key="ChatBalloonFooterTextColor">#FFFFFF</Color>
     <Color x:Key="ChatRightTextColor">#FFFFFF</Color>
-    <Color x:Key="ChatLeftTextColor">#FFFFFF</Color>
+    <Color x:Key="ChatLeftTextColor">#dcc66d</Color>
 
 </ResourceDictionary>

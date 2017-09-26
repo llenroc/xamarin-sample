@@ -53,6 +53,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Page_Home_Title {
+            get {
+                return ResourceManager.GetString("Page.Home.Title", resourceCulture);
+            }
+        }
+        
         internal static string Page_Notifications_Title {
             get {
                 return ResourceManager.GetString("Page.Notifications.Title", resourceCulture);
@@ -71,6 +77,18 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Page_Alerts_Title {
+            get {
+                return ResourceManager.GetString("Page.Alerts.Title", resourceCulture);
+            }
+        }
+        
+        internal static string Page_Alert_Detail_Title {
+            get {
+                return ResourceManager.GetString("Page.Alert.Detail.Title", resourceCulture);
+            }
+        }
+        
         internal static string Common_Loading {
             get {
                 return ResourceManager.GetString("Common.Loading", resourceCulture);
@@ -86,6 +104,12 @@ namespace Bullytect.Core.I18N {
         internal static string Common_Server_Connection_Error {
             get {
                 return ResourceManager.GetString("Common.Server.Connection.Error", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Server_Error {
+            get {
+                return ResourceManager.GetString("Common.Server.Error", resourceCulture);
             }
         }
         
@@ -410,6 +434,18 @@ namespace Bullytect.Core.I18N {
         internal static string Profile_Confirm_Account_Deleting {
             get {
                 return ResourceManager.GetString("Profile.Confirm.Account.Deleting", resourceCulture);
+            }
+        }
+        
+        internal static string Notification_Not_Found_MainText {
+            get {
+                return ResourceManager.GetString("Notification.Not.Found.MainText", resourceCulture);
+            }
+        }
+        
+        internal static string Notification_Error_Ocurred {
+            get {
+                return ResourceManager.GetString("Notification.Error.Ocurred", resourceCulture);
             }
         }
         

@@ -21,6 +21,11 @@
         <comment>Page Common Title</comment>
     </data>
 
+	<data name="Page.Home.Title" xml:space="preserve">
+        <value>Home</value>
+        <comment>Page Home Title</comment>
+    </data>
+
 	<data name="Page.Notifications.Title" xml:space="preserve">
         <value>Notifications</value>
         <comment>Page Notifications Title</comment>
@@ -34,6 +39,16 @@
     <data name="Page.Profile.Title" xml:space="preserve">
         <value>Profile</value>
         <comment>Page Profile Title</comment>
+    </data>
+
+	<data name="Page.Alerts.Title" xml:space="preserve">
+        <value>Alerts</value>
+        <comment>Page Alerts Title</comment>
+    </data>
+
+    <data name="Page.Alert.Detail.Title" xml:space="preserve">
+        <value>Alert Detail</value>
+        <comment>Page Alert Detail Title</comment>
     </data>
 	
 	<!-- Common strings -->
@@ -53,7 +68,11 @@
         <value>Failed to connect to server, please try again later.</value>
         <comment>Common Server Connection Error</comment>
     </data>
-	
+
+	<data name="Common.Server.Error" xml:space="preserve">
+        <value>There was an error processing the request on the server.</value>
+        <comment>Common Server Error</comment>
+    </data>
 
 	<!-- Walkthrough -->
 
@@ -355,6 +374,21 @@
         <value> Confirm Account Deleting </value>
         <comment>Profile Confirm Account Deleting</comment>
     </data>
+
+	<!-- Notification -->
+
+	<data name="Notification.Not.Found.MainText" xml:space="preserve">
+        <value> Notifications Not Found </value>
+        <comment>Notification NotFound MainText</comment>
+    </data>
+
+	<data name="Notification.Error.Ocurred" xml:space="preserve">
+        <value> Error loading notifications </value>
+        <comment>Notification Error Ocurred</comment>
+    </data>
+
+	
+	
 
 	<data name="Global.ErrorOcurred" xml:space="preserve">
         <value>An error occurred</value>

@@ -71,7 +71,7 @@
     <EmbeddedResource Include="Themes\GrialLightTheme.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Themes\MyAppTheme.xaml">
+    <EmbeddedResource Include="Themes\BullTectAppTheme.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\PasswordRecovery\PasswordRecoveryPage.xaml">
@@ -83,10 +83,10 @@
     <EmbeddedResource Include="Pages\Walkthrough\Items\WalkthroughStepItemTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Notification\NotificationPage.xaml">
+    <EmbeddedResource Include="Pages\Alerts\AlertsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Notification\Templates\NotificationItemTemplate.xaml">
+    <EmbeddedResource Include="Pages\Alerts\Templates\NotificationItemTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Common\Templates\MainListHeaderTemplate.xaml">
@@ -120,6 +120,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Profile\ProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\AlertDetail\AlertDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -211,8 +214,8 @@
     <Compile Include="Themes\GrialLightTheme.xaml.cs">
       <DependentUpon>GrialLightTheme.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Themes\MyAppTheme.xaml.cs">
-      <DependentUpon>MyAppTheme.xaml</DependentUpon>
+    <Compile Include="Themes\BullTectAppTheme.cs">
+      <DependentUpon>BullTectAppTheme.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PasswordRecovery\PasswordRecoveryPage.xaml.cs">
       <DependentUpon>PasswordRecoveryPage.xaml</DependentUpon>
@@ -231,11 +234,11 @@
     <Compile Include="Utils\MvxCarouselPage.cs" />
     <Compile Include="Exceptions\TimeoutOperationException.cs" />
     <Compile Include="Services\Impl\BaseService.cs" />
-    <Compile Include="Pages\Notification\NotificationPage.xaml.cs">
-      <DependentUpon>NotificationPage.xaml</DependentUpon>
+    <Compile Include="Pages\Alerts\AlertsPage.xaml.cs">
+      <DependentUpon>AlertsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\NotificationViewModel.cs" />
-    <Compile Include="Pages\Notification\Templates\NotificationItemTemplate.xaml.cs">
+    <Compile Include="ViewModels\AlertsViewModel.cs" />
+    <Compile Include="Pages\Alerts\Templates\NotificationItemTemplate.xaml.cs">
       <DependentUpon>NotificationItemTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Domain\AlertEntity.cs" />
@@ -283,6 +286,10 @@
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Messages\AccountDeletedMessage.cs" />
+    <Compile Include="Pages\AlertDetail\AlertDetailPage.xaml.cs">
+      <DependentUpon>AlertDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AlertDetailViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
@@ -492,14 +499,15 @@
     <Folder Include="Pages\Walkthrough\" />
     <Folder Include="Pages\Walkthrough\Items\" />
     <Folder Include="Exceptions\" />
-    <Folder Include="Pages\Notification\" />
-    <Folder Include="Pages\Notification\Templates\" />
+    <Folder Include="Pages\Alerts\" />
+    <Folder Include="Pages\Alerts\Templates\" />
     <Folder Include="Pages\Common\Templates\" />
     <Folder Include="Pages\SonProfile\" />
     <Folder Include="Pages\Children\" />
     <Folder Include="Pages\Children\Templates\" />
     <Folder Include="Pages\AddSon\" />
     <Folder Include="Pages\Profile\" />
+    <Folder Include="Pages\AlertDetail\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bullytect.rest\bullytect.rest.csproj">

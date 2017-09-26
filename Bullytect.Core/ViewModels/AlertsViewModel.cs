@@ -1,32 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
 using Bullytect.Rest.Models.Exceptions;
+using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 
 namespace Bullytect.Core.ViewModels
 {
-    public class NotificationViewModel: BaseViewModel
+    public class AlertsViewModel : BaseViewModel
     {
 
         readonly IAlertService _alertService;
 
-        protected ObservableAsPropertyHelper<IList<AlertEntity>> _notificationList;
-        public IList<AlertEntity> NotificationList
+        protected ObservableAsPropertyHelper<IList<AlertEntity>> _alertList;
+        public IList<AlertEntity> AlertList
 		{
-			get { return _notificationList.Value; }
+			get { return _alertList.Value; }
 		}
 
-        public NotificationViewModel(IAlertService alertService, IUserDialogs userDialogs, IMvxMessenger mvxMessenger): base(userDialogs, mvxMessenger)
+        public AlertsViewModel(IAlertService alertService, IUserDialogs userDialogs, IMvxMessenger mvxMessenger): base(userDialogs, mvxMessenger)
         {
             _alertService = alertService;
 
             LoadNotificationsCommand = ReactiveCommand.CreateFromObservable<string, IList<AlertEntity>>((param) => _alertService.GetAllSelfNotifications());
 
-			LoadNotificationsCommand.ToProperty(this, x => x.NotificationList, out _notificationList);
+			LoadNotificationsCommand.ToProperty(this, x => x.AlertList, out _alertList);
 
 			LoadNotificationsCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
 
@@ -42,6 +44,15 @@ namespace Bullytect.Core.ViewModels
 		#region commands
 
 		public ReactiveCommand<string, IList<AlertEntity>> LoadNotificationsCommand { get; protected set; }
+
+
+        public ICommand ShowAlertDetailCommand => new MvxCommand<AlertEntity>((AlertEntity AlertEntity) => ShowViewModel<AlertDetailViewModel>(new AlertDetailViewModel.AlertParameter() {
+            Level = AlertEntity.Level,
+            Payload = AlertEntity.Payload,
+            CreateAt = AlertEntity.CreateAt,
+            SonFullName = AlertEntity.Son.FullName
+        }));
+
 
 		#endregion
 

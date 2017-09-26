@@ -103,6 +103,13 @@ namespace Bullytect.Core.ViewModels
                 _userDialogs.Toast(toastConfig);
 
 			}
+            else if (ex is GenericErrorException) {
+                var toastConfig = new ToastConfig(AppResources.Common_Server_Error);
+				toastConfig.SetDuration(3000);
+				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
+
+				_userDialogs.Toast(toastConfig);
+            }
 			else if (ex is DataInvalidException)
 			{
 				var dataInvalidEx = (DataInvalidException)ex;

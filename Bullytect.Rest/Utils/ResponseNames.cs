@@ -13,5 +13,7 @@ namespace Bullytect.Rest.Utils
         public const int NO_CHILDREN_FOUND_FOR_SELF_PARENT_CODE = 408;
         public const string PARENT_NOT_FOUND_RESPONSE = "PARENT_NOT_FOUND";
         public const int PARENT_NOT_FOUN_CODE = 406;
+        public const string GENERIC_ERROR_RESPONSE = "GENERIC_ERROR";
+        public const int GENERIC_ERROR_CODE= 502;
     }
 }

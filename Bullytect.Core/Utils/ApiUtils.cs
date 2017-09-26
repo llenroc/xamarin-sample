@@ -62,6 +62,14 @@ namespace Bullytect.Core.Utils
             };
         }
 
+        static GenericErrorException createGenericErrorException(ApiException ex)
+        {
+            return new GenericErrorException()
+            {
+                Response = ex.GetContentAs<APIResponse<string>>()
+            };
+        }
+
         public static Exception parseApiException(ApiException ex) {
 
             Exception exResponse = null;
@@ -91,7 +99,11 @@ namespace Bullytect.Core.Utils
                         case ResponseNames.PARENT_NOT_FOUND_RESPONSE:
                             exResponse = createLoadProfileFailedException(ex);
                             break;
-                    }
+							// Parse Generic Error
+                        case ResponseNames.GENERIC_ERROR_RESPONSE:
+                            exResponse = createGenericErrorException(ex);
+                            break;
+					}
 				}
 			}
             return exResponse ?? ex;

@@ -58,6 +58,7 @@
     <Compile Include="Services\IAlertRestService.cs" />
     <Compile Include="Models\Exceptions\NoAlertsFoundException.cs" />
     <Compile Include="Models\Exceptions\NoChildrenFoundException.cs" />
+    <Compile Include="Models\Exceptions\GenericErrorException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

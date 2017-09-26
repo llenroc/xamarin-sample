@@ -4,14 +4,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
-    x:Class="Bullytect.Core.Pages.Notification.NotificationPage"
+    x:Class="Bullytect.Core.Pages.Alerts.AlertsPage"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
-    x:TypeArguments="viewModels:NotificationViewModel"
+    xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
+    x:TypeArguments="viewModels:AlertsViewModel"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:templates="clr-namespace:Bullytect.Core.Pages.Notification.Templates"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
-    Title="{i18n:Translate Page.Notifications.Title}">
+    Title="{i18n:Translate Page.Alerts.Title}"
+    BackgroundColor="{ DynamicResource BasePageColor }">
     <ContentPage.Resources>
            <ResourceDictionary>
                 <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
@@ -22,12 +25,9 @@
         <StackLayout>
 
             <ListView 
-                ItemsSource="{Binding NotificationList}"
-                SeparatorVisibility="None"
-                SeparatorColor="Transparent"
-                ItemTapped="OnItemTapped"
-                HasUnevenRows="false"
-                IsPullToRefreshEnabled="{Binding IsBusy}"
+                ItemsSource="{Binding AlertList}"
+                HasUnevenRows = "true"
+                IsPullToRefreshEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter} }"
                 RefreshCommand="{Binding LoadNotificationsCommand}"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}">
                 <ListView.RowHeight>
@@ -35,6 +35,13 @@
                         Phone="80"
                         Tablet="120"/>
                 </ListView.RowHeight>
+
+                <ListView.Behaviors>
+                    <utils:EventToCommandBehavior 
+                        EventName="ItemTapped"
+                        Command="{Binding ShowAlertDetailCommand}" 
+                        EventArgsConverter="{ StaticResource ItemTappedEventArgsConverter }" />
+                </ListView.Behaviors>
                     
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -52,9 +59,15 @@
                         <Setter Property="IsVisible" Value="False" />
                     </DataTrigger>
                     <DataTrigger 
-                        TargetType="ListView" 
+                        TargetType="ListView"
                         Binding="{Binding DataFound}"
                         Value="False">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger 
+                        TargetType="ListView"
+                        Binding="{Binding ErrorOccurred}"
+                        Value="True">
                         <Setter Property="IsVisible" Value="False" />
                     </DataTrigger>
                 </ListView.Triggers>
@@ -62,6 +75,14 @@
 
             </ListView>
 
+            <common:NoDataFound 
+                IsVisible="{ Binding DataFound, Converter={StaticResource InverseBoolConverter}}"
+                MainText="{i18n:Translate Notification.Not.Found.MainText}"
+                DetailText="{i18n:Translate Notification.Not.Found.SecondText}"/>
+
+            <common:ErrorOcurred 
+                IsVisible="{ Binding ErrorOccurred }"
+                MainText="{i18n:Translate Notification.Error.Ocurred}"/>
 
 
         </StackLayout>

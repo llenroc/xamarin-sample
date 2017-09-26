@@ -4,9 +4,9 @@ using Xamarin.Forms;
 
 namespace Bullytect.Core.Themes
 {
-    public partial class MyAppTheme
+    public partial class BullTectAppTheme
     {
-        public MyAppTheme()
+        public BullTectAppTheme()
         {
             InitializeComponent();
         }

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:MvxContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:local="clr-namespace:Bullytect;assembly=Bullytect"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    Title="{i18n:Translate Page.Alert.Detail.Title}"
+    x:TypeArguments="viewModels:AlertDetailViewModel"
+    BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
+    x:Class="Bullytect.Core.Pages.NotificationDetail.NotificationDetailPage">
+	<ContentPage.Content>
+
+        <ScrollView 
+            Padding="{ StaticResource MainWrapperPadding }">
+            
+            <Grid
+                RowSpacing="0"
+                VerticalOptions="FillAndExpand">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="240" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid 
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Padding="0"
+                    BackgroundColor="Black">
+
+                    <!-- MAIN IMAGE -->
+                    <ffimageloading:CachedImage
+                        x:Name="img"
+                        Source="user_profile_1.jpg"
+                        Aspect="AspectFill"
+                        BackgroundColor="Black"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Start"
+                        Opacity=".8"/>
+                </Grid>
+
+                <!-- MAIN HEADER -->
+                <StackLayout
+                    Grid.Row="0"
+                    Padding="20"
+                    Spacing="0"
+                    VerticalOptions="End"
+                    x:Name="headers" 
+                    AnchorX="0"
+                    AnchorY="0">
+
+                    <!-- HEADERS -->
+                    <Label
+                        Text="{ Binding Post.Title }"
+                        LineBreakMode="WordWrap"
+                        TextColor="{ DynamicResource OverImageTextColor }"
+                        FontSize="26"
+                        FontAttributes="Bold"/>
+
+                    <Label
+                        Text="{ Binding Post.Subtitle }"
+                        LineBreakMode="WordWrap"
+                        TextColor="{ DynamicResource OverImageTextColor }"
+                        FontSize="16"/>
+
+                    <BoxView  
+                        Style="{StaticResource BrandNameOrnamentStyle}"
+                        Margin="0,20,0,0"/>
+
+                </StackLayout>
+
+
+
+                <Grid
+                    Grid.Row="1"
+                    BackgroundColor="{ DynamicResource BasePageColor }">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!--HEADER BACKGROUND-->
+                    <BoxView
+                        Grid.Row="0"
+                        BackgroundColor="{ DynamicResource ArticleHeaderBackgroundColor }" />
+
+                    <!--HEADER INFO-->
+                    <StackLayout
+                        Orientation="Horizontal"
+                        Grid.Row="0"
+                        Padding="20,0"
+                        VerticalOptions="Center"
+                        Spacing="10">
+                    
+                        <Label 
+                            Text="{ Binding Post.Section }" 
+                            FontSize="14"
+                            TextColor="{ DynamicResource BaseTextColor }"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalTextAlignment="Center"/>
+                        <Label 
+                            Text="{ Binding Post.When }"
+                            FontSize="14"
+                            TextColor="{ DynamicResource BaseTextColor }"
+                            HorizontalOptions="End"/>
+                    
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Label 
+                                HorizontalOptions="End"
+                                Text="{ x:Static local:GrialShapesFont.Group } " 
+                                FontSize="{ StaticResource BaseFontSize }"
+                                TextColor="{ DynamicResource AccentColor }" 
+                                FontFamily="{ StaticResource IconsFontFamily }" />
+                        
+                            <Label 
+                                HorizontalOptions="End"
+                                Text=" 72" 
+                                FontSize="14"
+                                TextColor="{ DynamicResource AccentColor }" />
+
+                            <Label 
+                                HorizontalOptions="End"
+                                Text="{ x:Static local:GrialShapesFont.Favorite } " 
+                                FontSize="{ StaticResource BaseFontSize }"
+                                TextColor="{ DynamicResource AccentColor }" 
+                                FontFamily="{ StaticResource IconsFontFamily }" />
+                        
+                            <Label 
+                                HorizontalOptions="End" 
+                                Text=" 24" 
+                                FontSize="14"
+                                TextColor="{ DynamicResource AccentColor }" />
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!-- SEPARATOR -->
+                    <BoxView
+                        Grid.Row="0"
+                        VerticalOptions="End"
+                        Style="{ StaticResource Horizontal1ptLineStyle}" />
+
+                    <!-- TEXT -->
+                    <Grid
+                        Grid.Row="1"
+                        Padding="20,20,20,0"
+                        VerticalOptions="Center"
+                        RowSpacing="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!-- MAIN PARAGRAPH -->
+                        <Label
+                            Grid.Row="0"
+                            Text="{ Binding Post.Body }"
+                            VerticalOptions="Center"
+                            TextColor="{ DynamicResource BaseTextColor }" />
+
+                        
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ScrollView>
+	</ContentPage.Content>
+</d:MvxContentPage>
