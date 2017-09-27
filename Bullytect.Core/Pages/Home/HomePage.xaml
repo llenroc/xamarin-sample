@@ -29,7 +29,7 @@
             IsPullToRefreshEnabled="True"
             RefreshCommand="{Binding RefreshCommand}"
             IsRefreshing="{Binding IsBusy}"
-            RefreshColor="Blue">
+            RefreshColor="{DynamicResource AccentColor}">
 
             <ScrollView 
                 BackgroundColor="{ DynamicResource BasePageColor }">
@@ -128,9 +128,9 @@
                                     <Label
                                         VerticalTextAlignment="Center"
                                         HorizontalTextAlignment="Center"
-                                        Text="{ x:Static helper:GrialShapesFont.Group }"
+                                        Text="{ x:Static helper:FontAwesomeFont.Users }"
                                         FontFamily="{ StaticResource IconsFontFamily }"
-                                        TextColor="{ DynamicResource AccentColor }">
+                                        TextColor="{ DynamicResource InverseTextColor }">
 
                                         <Label.FontSize>
                                             <OnIdiom 
@@ -170,9 +170,9 @@
                                 <Label
                                      VerticalTextAlignment="Center" 
                                      HorizontalTextAlignment="Center"
-                                     Text="{ x:Static helper:GrialShapesFont.AccountCircle }"
+                                     Text="{ x:Static helper:FontAwesomeFont.User }"
                                      FontFamily="{ StaticResource IconsFontFamily }"
-                                     TextColor="{ DynamicResource AccentColor }">
+                                     TextColor="{ DynamicResource InverseTextColor }">
                                      <Label.FontSize>
                                         <OnIdiom 
                                             x:TypeArguments="x:Double" 
@@ -205,14 +205,14 @@
                     </Grid>
 
                     <Grid Grid.Row="1">
-
+               
                         <StackLayout 
                             Padding="0"
                             Spacing="0">
 
                             <commonTemplates:MainListHeaderTemplate 
                                 Text="{i18n:Translate Home.Children.List.Title}"
-                                IconText="{ x:Static helper:GrialShapesFont.Group } "/>
+                                IconText="{ x:Static helper:FontAwesomeFont.Users } "/>
 
                             <!-- Children LIST -->
                             <ListView

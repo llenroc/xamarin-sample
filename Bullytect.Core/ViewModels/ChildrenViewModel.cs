@@ -26,7 +26,8 @@ namespace Bullytect.Core.ViewModels
 
             LoadChildrenCommand = ReactiveCommand.CreateFromObservable<string, IList<SonEntity>>((param) => _parentsService.GetChildren());
 
-            LoadChildrenCommand.Subscribe((children) => {
+            LoadChildrenCommand.Subscribe((children) =>
+            {
                 Debug.WriteLine("Children Count " + children?.Count);
                 Children = children;
             });
@@ -35,18 +36,18 @@ namespace Bullytect.Core.ViewModels
 
             LoadChildrenCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
-		}
+        }
 
 
-		#region properties
+        #region properties
 
         IList<SonEntity> _children = new List<SonEntity>();
 
-		public IList<SonEntity> Children
-		{
-			get => _children;
-			set => SetProperty(ref _children, value);
-		}
+        public IList<SonEntity> Children
+        {
+            get => _children;
+            set => SetProperty(ref _children, value);
+        }
 
         #endregion
 
@@ -54,22 +55,23 @@ namespace Bullytect.Core.ViewModels
 
         public ReactiveCommand<string, IList<SonEntity>> LoadChildrenCommand { get; protected set; }
 
-		public ICommand ShowSonProfileCommand => new MvxCommand<SonEntity>((SonEntity SonEntity) => ShowViewModel<SonProfileViewModel>(new SonProfileViewModel.SonParameter()
-		{
-			FullName = SonEntity.FullName,
-			Birthdate = SonEntity.Birthdate,
-			School = SonEntity.School
-		}));
+        public ICommand ShowSonProfileCommand => new MvxCommand<SonEntity>((SonEntity SonEntity) => ShowViewModel<SonProfileViewModel>(new SonProfileViewModel.SonParameter()
+        {
+            Identity = SonEntity.Identity,
+            FullName = SonEntity.FullName,
+            Birthdate = SonEntity.Birthdate,
+            School = SonEntity.School
+        }));
 
-		public ICommand GoToAddSonCommand
-		{
-			get
-			{
-				return new MvxCommand(() => ShowViewModel<AddSonViewModel>());
-			}
-		}
+        public ICommand GoToAddSonCommand
+        {
+            get
+            {
+                return new MvxCommand(() => ShowViewModel<EditSonViewModel>());
+            }
+        }
 
-
+        public ICommand EditSonCommand => new MvxCommand<string>((string Id) => ShowViewModel<EditSonViewModel>(new { Id }));
 
 		#endregion
 

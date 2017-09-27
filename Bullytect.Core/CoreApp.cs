@@ -52,6 +52,8 @@ namespace Bullytect.Core
 				cfg.CreateMap<SonDTO, SonEntity>();
                 cfg.CreateMap<DeviceDTO, DeviceEntity>();
                 cfg.CreateMap<AlertDTO, AlertEntity>();
+                cfg.CreateMap<ImageDTO, ImageEntity>();
+                cfg.CreateMap<SocialMediaDTO, SocialMediaEntity>();
 			});
         }
 

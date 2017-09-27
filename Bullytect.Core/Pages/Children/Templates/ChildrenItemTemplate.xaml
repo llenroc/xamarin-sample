@@ -9,54 +9,199 @@
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
 	<ContentView.Content>
+
+        <StackLayout
+            Padding="5">
+
+            <Grid 
+                ColumnSpacing="10" >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+               <!---Left Column Content -->
+                <ffimageloading:CachedImage 
+                    Grid.Column="0"
+                    FadeAnimationEnabled="true"
+                    Source="user_profile_1.jpg"
+                    HeightRequest="{Binding ThumbnailHeight}" 
+                    Aspect="AspectFill"/>
+                
+               <!-- Right Column Content-->
+               <StackLayout
+                    Grid.Column="1"
+                    Padding="0,10,0,10"
+                    Spacing="0">
+
+                    <!-- Full name -->
+                    <Label 
+                        Text="{ Binding FullName }"
+                        FontSize="{ artina:OnOrientationDouble
+                            PortraitPhone=15,
+                            LandscapePhone=15,
+                            PortraitTablet=17,
+                            LandscapeTablet=17 }"
+                        HorizontalOptions="Fill"
+                        TextColor="{ DynamicResource AccentColor }"/>
+
+                    <!-- School -->
+                    <Label 
+                        Text="{ Binding School }"
+                        FontSize="{ artina:OnOrientationDouble
+                            PortraitPhone=9,
+                            LandscapePhone=9,
+                            PortraitTablet=10,
+                            LandscapeTablet=10 }"
+                        HorizontalOptions="Fill"
+                        TextColor="{ DynamicResource BaseTextColor }"/>
+                </StackLayout>
+
+             </Grid>
+
+            <BoxView Style="{ StaticResource ChildrenBoxViewHorizontalStyle }" />
+
+
+            <!-- TOOLBAR -->
+            <Grid
+                VerticalOptions="End">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+
+                <!-- User Detail Action -->
+                <StackLayout
+                    Grid.Column="0"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Spacing="0">
+
+                    <Label
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{ x:Static helper:FontAwesomeFont.User }"
+                        FontFamily="{ StaticResource IconsFontFamily }"
+                        TextColor="{ DynamicResource AccentColor }">
+
+                        <Label.FontSize>
+                           <OnIdiom 
+                                x:TypeArguments="x:Double" 
+                                Phone="15" 
+                                Tablet="20" />
+                        </Label.FontSize> 
+                    </Label>
+
+                    <Label
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{i18n:Translate Children.Toolbar.Profile}"
+                        TextColor="{ DynamicResource AccentColor }">
+                        <Label.FontSize>
+                            <OnIdiom 
+                                x:TypeArguments="x:Double" 
+                                Phone="15" 
+                                Tablet="20" />
+                        </Label.FontSize> 
+                    </Label>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{ Binding ShowSonProfileCommand }" CommandParameter="{Binding .}" NumberOfTapsRequired="1" /> 
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <!-- Alerts Action -->
+
+                <StackLayout
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Spacing="0">
+
+                    <Label
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{ x:Static helper:FontAwesomeFont.Bell }"
+                        FontFamily="{ StaticResource IconsFontFamily }"
+                        TextColor="{ DynamicResource AccentColor }">
+
+                        <Label.FontSize>
+                           <OnIdiom 
+                                x:TypeArguments="x:Double" 
+                                Phone="15" 
+                                Tablet="20" />
+                        </Label.FontSize> 
+                    </Label>
+
+                    <Label
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{i18n:Translate Children.Toolbar.Alerts}"
+                        TextColor="{ DynamicResource AccentColor }">
+                        <Label.FontSize>
+                            <OnIdiom 
+                                x:TypeArguments="x:Double" 
+                                Phone="15" 
+                                Tablet="20" />
+                        </Label.FontSize> 
+                    </Label>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{ Binding ShowSonProfileCommand }" CommandParameter="{Binding .}" NumberOfTapsRequired="1" /> 
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <!-- Redes Sociales Action -->
+
+                <StackLayout
+                    Grid.Column="2"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Spacing="0">
+
+                    <Label
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{ x:Static helper:FontAwesomeFont.Facebook }"
+                        FontFamily="{ StaticResource IconsFontFamily }"
+                        TextColor="{ DynamicResource AccentColor }">
+
+                        <Label.FontSize>
+                           <OnIdiom 
+                                x:TypeArguments="x:Double" 
+                                Phone="15" 
+                                Tablet="20" />
+                        </Label.FontSize> 
+                    </Label>
+
+                    <Label
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{i18n:Translate Children.Toolbar.RRSS}"
+                        TextColor="{ DynamicResource AccentColor }">
+                        <Label.FontSize>
+                            <OnIdiom 
+                                x:TypeArguments="x:Double" 
+                                Phone="15" 
+                                Tablet="20" />
+                        </Label.FontSize> 
+                    </Label>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{ Binding ShowSonProfileCommand }" CommandParameter="{Binding .}" NumberOfTapsRequired="1" /> 
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                
+            </Grid>
+
+        </StackLayout>
     
-        <Grid 
-            Padding="10" 
-            ColumnSpacing="10" >
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-           <!---Left Column Content -->
-            <ffimageloading:CachedImage 
-                Grid.Column="0"
-                FadeAnimationEnabled="true"
-                Source="user_profile_1.jpg"
-                HeightRequest="{Binding ThumbnailHeight}" 
-                Aspect="AspectFill"/>
-            
-           <!-- Right Column Content-->
-           <StackLayout
-                Grid.Column="1"
-                Padding="0,10,0,10"
-                Spacing="0">
-
-                <!-- Full name -->
-                <Label 
-                    Text="{ Binding FullName }"
-                    FontSize="{ artina:OnOrientationDouble
-                        PortraitPhone=15,
-                        LandscapePhone=15,
-                        PortraitTablet=17,
-                        LandscapeTablet=17 }"
-                    HorizontalOptions="Fill"
-                    TextColor="{ DynamicResource AccentColor }"/>
-
-                <!-- School -->
-                <Label 
-                    Text="{ Binding School }"
-                    FontSize="{ artina:OnOrientationDouble
-                        PortraitPhone=9,
-                        LandscapePhone=9,
-                        PortraitTablet=10,
-                        LandscapeTablet=10 }"
-                    HorizontalOptions="Fill"
-                    TextColor="{ DynamicResource BaseTextColor }"/>
-            </StackLayout>
-
-         </Grid>
-        
 	</ContentView.Content>
 </ContentView>

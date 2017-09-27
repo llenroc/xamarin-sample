@@ -252,6 +252,21 @@
         <comment>Children Error Ocurred</comment>
     </data>
 
+	<data name="Children.Toolbar.Profile" xml:space="preserve">
+        <value> Perfil </value>
+        <comment>Children Toolbar Profile</comment>
+    </data>
+
+    <data name="Children.Toolbar.Alerts" xml:space="preserve">
+        <value> Alertas </value>
+        <comment>Children Toolbar Alerts</comment>
+    </data>
+
+	<data name="Children.Toolbar.RRSS" xml:space="preserve">
+        <value> Añadir RRSS </value>
+        <comment>Children Toolbar RRSS</comment>
+    </data>
+
 
     <!-- Profile -->
 
@@ -283,6 +298,21 @@
     <data name="Profile.General.Information.Section" xml:space="preserve">
         <value> Información General </value>
         <comment>Profile General Information Section</comment>
+    </data>
+
+	<data name="Profile.Updating.Profile.Image" xml:space="preserve">
+        <value> Actualizando Imagen de Perfil</value>
+        <comment>Profile Updating Profile Image</comment>
+    </data>
+
+	<data name="Profile.Select.Profile.Image.From.Camera" xml:space="preserve">
+        <value> Take photo from camera</value>
+        <comment>Profile.Select.Profile.Image.From.Camera</comment>
+    </data>
+
+    <data name="Profile.Select.Profile.Image.From.Galery" xml:space="preserve">
+        <value> Pick photo from gallery</value>
+        <comment>Profile.Select.Profile.Image.From.Galery</comment>
     </data>
 
 	

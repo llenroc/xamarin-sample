@@ -49,7 +49,7 @@
                 <!-- LOGO -->
                 <Image 
                         Grid.Row="0"
-                        Source="Icon.png"
+                        Source="Icon-60.png"
                         WidthRequest="60"
                         HeightRequest="60"
                         Margin="20"
@@ -124,7 +124,7 @@
                             <StackLayout>
 
                                 <Entry
-                                    Placeholder="{ i18n:Translate Signup.Account.Firstname.Placeholder }"
+                                    Placeholder="{ i18n:Translate Common.Placeholder.Firstname }"
                                     Style="{StaticResource ArtinaLoginEntryStyle}" 
                                     VerticalOptions="StartAndExpand"
                                     Text="{ Binding FirstName }"/>
@@ -146,7 +146,7 @@
 
                             
                                 <Entry 
-                                    Placeholder="{ i18n:Translate Signup.Account.LastName.Placeholder }"
+                                    Placeholder="{ i18n:Translate Common.Placeholder.LastName }"
                                     Style="{StaticResource ArtinaLoginEntryStyle}" 
                                     Text="{ Binding LastName }"/>
 
@@ -203,7 +203,7 @@
                             <StackLayout>
 
                                 <Entry 
-                                    Placeholder="{ i18n:Translate Signup.Account.Email.Placeholder }"
+                                    Placeholder="{ i18n:Translate Common.Placeholder.Email }"
                                     Style="{StaticResource ArtinaLoginEntryStyle}"
                                     Text="{ Binding Email }">
                                     <Entry.Behaviors>
@@ -241,7 +241,7 @@
 
                                         <Entry 
                                             x:Name="passwordEntry"
-                                            Placeholder="{ i18n:Translate Signup.Account.Password.Placeholder }"
+                                            Placeholder="{ i18n:Translate Common.Placeholder.Password }"
                                             IsPassword="true"
                                             Style="{StaticResource ArtinaLoginEntryStyle}" 
                                             Text="{ Binding PasswordClear }"
@@ -265,7 +265,7 @@
                                         VerticalOptions="StartAndExpand" >
 
                                         <Entry 
-                                            Placeholder="{ i18n:Translate Signup.Account.ConfirmPassword.Placeholder }" 
+                                            Placeholder="{ i18n:Translate Common.Placeholder.ConfirmPassword }" 
                                             IsPassword="true"
                                             Style="{StaticResource ArtinaLoginEntryStyle}"
                                             Text="{ Binding ConfirmPassword }">
@@ -312,7 +312,7 @@
                                                     BackgroundColor="Transparent"
                                                     VerticalTextAlignment="Center"/>
                                              <Entry 
-                                                    Placeholder="{ i18n:Translate Signup.Account.Telephone.Placeholder }" 
+                                                    Placeholder="{ i18n:Translate Common.Placeholder.Telephone }" 
                                                     Text="{ Binding Telephone }" 
                                                     Keyboard="Telephone" 
                                                     Style="{StaticResource ArtinaLoginEntryStyle}">

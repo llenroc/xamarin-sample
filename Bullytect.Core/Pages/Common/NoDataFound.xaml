@@ -48,7 +48,7 @@
                 <!--ICON-->
                 <Label
                     Grid.Row="0"
-                    Text="{ x:Static helper:GrialShapesFont.Settings }"
+                    Text="{ x:Static helper:FontAwesomeFont.Database }"
                     Style="{StaticResource FontIcon}"
                     FontSize="100"
                     HorizontalTextAlignment="Center"

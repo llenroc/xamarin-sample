@@ -3,10 +3,10 @@ using MvvmCross.Plugins.Messenger;
 
 namespace Bullytect.Core.Messages
 {
-    public class AccountDeletedMessage : MvxMessage
+    public class SignOutMessage : MvxMessage
     {
 
-        public AccountDeletedMessage(object sender) : base(sender)
+        public SignOutMessage(object sender) : base(sender)
         {
         }
     }

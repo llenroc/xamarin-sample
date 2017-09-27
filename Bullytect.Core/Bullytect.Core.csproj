@@ -53,12 +53,6 @@
     <EmbeddedResource Include="Pages\Common\BrandBlock.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Common\CircleIcon.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Common\CustomActivityIndicator.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\Common\RoundedLabel.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -86,7 +80,7 @@
     <EmbeddedResource Include="Pages\Alerts\AlertsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Alerts\Templates\NotificationItemTemplate.xaml">
+    <EmbeddedResource Include="Pages\Alerts\Templates\AlertItemTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Common\Templates\MainListHeaderTemplate.xaml">
@@ -110,7 +104,7 @@
     <EmbeddedResource Include="Pages\Children\Templates\ChildrenHeader.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\AddSon\AddSonPage.xaml">
+    <EmbeddedResource Include="Pages\EditSon\EditSonPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Common\NoDataFound.xaml">
@@ -123,6 +117,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\AlertDetail\AlertDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Profile\Template\ProfileHeader.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -189,18 +186,11 @@
     <Compile Include="OAuth\Exceptions\FacebookAuthenticationErrorException.cs" />
     <Compile Include="Converters\NullVisibilityConverter.cs" />
     <Compile Include="Messages\SessionExpiredMessage.cs" />
-    <Compile Include="Helpers\GrialShapesFont.cs" />
     <Compile Include="Pages\Common\Badge.xaml.cs">
       <DependentUpon>Badge.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Common\BrandBlock.xaml.cs">
       <DependentUpon>BrandBlock.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Common\CircleIcon.xaml.cs">
-      <DependentUpon>CircleIcon.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Common\CustomActivityIndicator.xaml.cs">
-      <DependentUpon>CustomActivityIndicator.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Common\RoundedLabel.xaml.cs">
       <DependentUpon>RoundedLabel.xaml</DependentUpon>
@@ -238,8 +228,8 @@
       <DependentUpon>AlertsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AlertsViewModel.cs" />
-    <Compile Include="Pages\Alerts\Templates\NotificationItemTemplate.xaml.cs">
-      <DependentUpon>NotificationItemTemplate.xaml</DependentUpon>
+    <Compile Include="Pages\Alerts\Templates\AlertItemTemplate.xaml.cs">
+      <DependentUpon>AlertItemTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Domain\AlertEntity.cs" />
     <Compile Include="Services\IAlertService.cs" />
@@ -272,9 +262,9 @@
       <DependentUpon>ChildrenHeader.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FontAwesomeFont.cs" />
-    <Compile Include="ViewModels\AddSonViewModel.cs" />
-    <Compile Include="Pages\AddSon\AddSonPage.xaml.cs">
-      <DependentUpon>AddSonPage.xaml</DependentUpon>
+    <Compile Include="ViewModels\EditSonViewModel.cs" />
+    <Compile Include="Pages\EditSon\EditSonPage.xaml.cs">
+      <DependentUpon>EditSonPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Common\NoDataFound.xaml.cs">
       <DependentUpon>NoDataFound.xaml</DependentUpon>
@@ -290,6 +280,20 @@
       <DependentUpon>AlertDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AlertDetailViewModel.cs" />
+    <Compile Include="Pages\Profile\Template\ProfileHeader.xaml.cs">
+      <DependentUpon>ProfileHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messages\SignOutMessage.cs" />
+    <Compile Include="Properties\AssemblyGlobal.cs" />
+    <Compile Include="Pages\Common\Extended\ExtendedViewCell.cs" />
+    <Compile Include="Models\Domain\ImageEntity.cs" />
+    <Compile Include="Services\IImagesService.cs" />
+    <Compile Include="Services\Impl\ImagesServiceImpl.cs" />
+    <Compile Include="Models\Domain\SocialMediaEntity.cs" />
+    <Compile Include="Services\ISocialMedia.cs" />
+    <Compile Include="Services\Impl\SocialMediaServiceImpl.cs" />
+    <Compile Include="Utils\CommandFactory.cs" />
+    <Compile Include="Converters\SocialMediaFormatValueConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
@@ -463,6 +467,12 @@
     <Reference Include="Plugin.Connectivity">
       <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.2\lib\netstandard1.0\Plugin.Connectivity.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Media.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Media.3.0.1\lib\netstandard1.0\Plugin.Media.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Media">
+      <HintPath>..\packages\Xam.Plugin.Media.3.0.1\lib\netstandard1.0\Plugin.Media.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -505,9 +515,11 @@
     <Folder Include="Pages\SonProfile\" />
     <Folder Include="Pages\Children\" />
     <Folder Include="Pages\Children\Templates\" />
-    <Folder Include="Pages\AddSon\" />
+    <Folder Include="Pages\EditSon\" />
     <Folder Include="Pages\Profile\" />
     <Folder Include="Pages\AlertDetail\" />
+    <Folder Include="Pages\Profile\Template\" />
+    <Folder Include="Pages\Common\Extended\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bullytect.rest\bullytect.rest.csproj">

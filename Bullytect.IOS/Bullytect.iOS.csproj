@@ -381,6 +381,7 @@
     <Folder Include="Providers\" />
     <Folder Include="Presenters\" />
     <Folder Include="Renderers\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -402,6 +403,7 @@
     <Compile Include="Presenters\CustomPresenter.cs" />
     <Compile Include="Renderers\LoginRenderer.cs" />
     <Compile Include="ThemeColors.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="GoogleService-Info.plist" />
@@ -417,7 +419,6 @@
     <BundleResource Include="Resources\generic_bg_image.png" />
     <BundleResource Include="Resources\generic_bg_image%402x.jpg" />
     <BundleResource Include="Resources\generic_bg_image%402x.png" />
-    <BundleResource Include="Resources\grialshapes.ttf" />
     <BundleResource Include="Resources\hamburguer_icon.png" />
     <BundleResource Include="Resources\hamburguer_icon%402x.png" />
     <BundleResource Include="Resources\ionicons.ttf" />
@@ -437,7 +438,6 @@
     <BundleResource Include="Resources\profile_preview%402x.png" />
     <BundleResource Include="Resources\signup_bg%402x.jpg" />
     <BundleResource Include="Resources\social_album_0.jpg" />
-    <BundleResource Include="Resources\social_header_bg_1%402x.jpg" />
     <BundleResource Include="Resources\user_profile_0%402x.jpg" />
     <BundleResource Include="Resources\user_profile_0%402x.png" />
     <BundleResource Include="Resources\user_profile_1%402x.jpg" />
@@ -461,6 +461,7 @@
     <BundleResource Include="Resources\Icon-Small.png" />
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
+    <BundleResource Include="Resources\home_header%402x.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bullytect.Core\Bullytect.Core.csproj">

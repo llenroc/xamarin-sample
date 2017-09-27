@@ -59,6 +59,9 @@
     <Compile Include="Models\Exceptions\NoAlertsFoundException.cs" />
     <Compile Include="Models\Exceptions\NoChildrenFoundException.cs" />
     <Compile Include="Models\Exceptions\GenericErrorException.cs" />
+    <Compile Include="Models\Response\ImageDTO.cs" />
+    <Compile Include="Models\Exceptions\UploadImageFailException.cs" />
+    <Compile Include="Models\Request\RegisterSonDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

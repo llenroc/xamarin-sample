@@ -1,6 +1,4 @@
 ﻿
-
-
 using Acr.UserDialogs;
 using MvvmCross.Plugins.Messenger;
 

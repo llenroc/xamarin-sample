@@ -95,6 +95,8 @@
             <!-- Edit Action -->
             <artina:Button
                 Grid.Row="2"
+                Command="{ Binding EditSonCommand }"
+                CommandParameter="{ Binding Identity }"
                 Margin="20,10,20,20"
                 Style="{StaticResource PrimaryActionButtonStyle}" 
                 Text="Edit"

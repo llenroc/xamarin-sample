@@ -89,6 +89,18 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Page_Add_Son_Title {
+            get {
+                return ResourceManager.GetString("Page.Add.Son.Title", resourceCulture);
+            }
+        }
+        
+        internal static string Page_Edit_Son_Title {
+            get {
+                return ResourceManager.GetString("Page.Edit.Son.Title", resourceCulture);
+            }
+        }
+        
         internal static string Common_Loading {
             get {
                 return ResourceManager.GetString("Common.Loading", resourceCulture);
@@ -110,6 +122,72 @@ namespace Bullytect.Core.I18N {
         internal static string Common_Server_Error {
             get {
                 return ResourceManager.GetString("Common.Server.Error", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Cancel_Operation {
+            get {
+                return ResourceManager.GetString("Common.Cancel.Operation", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Btn_Save_Changes {
+            get {
+                return ResourceManager.GetString("Common.Btn.Save.Changes", resourceCulture);
+            }
+        }
+        
+        internal static string Common_RRSS_Facebook {
+            get {
+                return ResourceManager.GetString("Common.RRSS.Facebook", resourceCulture);
+            }
+        }
+        
+        internal static string Common_RRSS_Instagram {
+            get {
+                return ResourceManager.GetString("Common.RRSS.Instagram", resourceCulture);
+            }
+        }
+        
+        internal static string Common_RRSS_Youtube {
+            get {
+                return ResourceManager.GetString("Common.RRSS.Youtube", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Placeholder_Firstname {
+            get {
+                return ResourceManager.GetString("Common.Placeholder.Firstname", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Placeholder_LastName {
+            get {
+                return ResourceManager.GetString("Common.Placeholder.LastName", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Placeholder_Email {
+            get {
+                return ResourceManager.GetString("Common.Placeholder.Email", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Placeholder_Password {
+            get {
+                return ResourceManager.GetString("Common.Placeholder.Password", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Placeholder_ConfirmPassword {
+            get {
+                return ResourceManager.GetString("Common.Placeholder.ConfirmPassword", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Placeholder_Telephone {
+            get {
+                return ResourceManager.GetString("Common.Placeholder.Telephone", resourceCulture);
             }
         }
         
@@ -245,42 +323,6 @@ namespace Bullytect.Core.I18N {
             }
         }
         
-        internal static string Signup_Account_Firstname_Placeholder {
-            get {
-                return ResourceManager.GetString("Signup.Account.Firstname.Placeholder", resourceCulture);
-            }
-        }
-        
-        internal static string Signup_Account_LastName_Placeholder {
-            get {
-                return ResourceManager.GetString("Signup.Account.LastName.Placeholder", resourceCulture);
-            }
-        }
-        
-        internal static string Signup_Account_Email_Placeholder {
-            get {
-                return ResourceManager.GetString("Signup.Account.Email.Placeholder", resourceCulture);
-            }
-        }
-        
-        internal static string Signup_Account_Password_Placeholder {
-            get {
-                return ResourceManager.GetString("Signup.Account.Password.Placeholder", resourceCulture);
-            }
-        }
-        
-        internal static string Signup_Account_ConfirmPassword_Placeholder {
-            get {
-                return ResourceManager.GetString("Signup.Account.ConfirmPassword.Placeholder", resourceCulture);
-            }
-        }
-        
-        internal static string Signup_Account_Telephone_Placeholder {
-            get {
-                return ResourceManager.GetString("Signup.Account.Telephone.Placeholder", resourceCulture);
-            }
-        }
-        
         internal static string Signup_Account_Email_Invalid {
             get {
                 return ResourceManager.GetString("Signup.Account.Email.Invalid", resourceCulture);
@@ -377,6 +419,24 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Children_Toolbar_Profile {
+            get {
+                return ResourceManager.GetString("Children.Toolbar.Profile", resourceCulture);
+            }
+        }
+        
+        internal static string Children_Toolbar_Alerts {
+            get {
+                return ResourceManager.GetString("Children.Toolbar.Alerts", resourceCulture);
+            }
+        }
+        
+        internal static string Children_Toolbar_RRSS {
+            get {
+                return ResourceManager.GetString("Children.Toolbar.RRSS", resourceCulture);
+            }
+        }
+        
         internal static string Profile_Save_Changes {
             get {
                 return ResourceManager.GetString("Profile.Save.Changes", resourceCulture);
@@ -437,6 +497,42 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Profile_Confirm_SignOut {
+            get {
+                return ResourceManager.GetString("Profile.Confirm.SignOut", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Updating_Profile_Image {
+            get {
+                return ResourceManager.GetString("Profile.Updating.Profile.Image", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Select_Profile_Image {
+            get {
+                return ResourceManager.GetString("Profile.Select.Profile.Image", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Select_Profile_Image_From_Camera {
+            get {
+                return ResourceManager.GetString("Profile.Select.Profile.Image.From.Camera", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Select_Profile_Image_From_Galery {
+            get {
+                return ResourceManager.GetString("Profile.Select.Profile.Image.From.Galery", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Updating_Profile_Image_Failed {
+            get {
+                return ResourceManager.GetString("Profile.Updating.Profile.Image.Failed", resourceCulture);
+            }
+        }
+        
         internal static string Notification_Not_Found_MainText {
             get {
                 return ResourceManager.GetString("Notification.Not.Found.MainText", resourceCulture);
@@ -446,6 +542,24 @@ namespace Bullytect.Core.I18N {
         internal static string Notification_Error_Ocurred {
             get {
                 return ResourceManager.GetString("Notification.Error.Ocurred", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_General_Section_Title {
+            get {
+                return ResourceManager.GetString("EditSon.General.Section.Title", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_General_Change_Profile_Image {
+            get {
+                return ResourceManager.GetString("EditSon.General.Change.Profile.Image", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_RRSS_Section_Title {
+            get {
+                return ResourceManager.GetString("EditSon.RRSS.Section.Title", resourceCulture);
             }
         }
         

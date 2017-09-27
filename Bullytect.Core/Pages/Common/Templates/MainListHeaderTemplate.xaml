@@ -12,7 +12,7 @@
             x:Name="HeaderIcon" 
             FontSize="18"
             Style="{ StaticResource SocialHeaderStyle }"
-            Text="{ x:Static helper:GrialShapesFont.Person }"
+            Text="{ x:Static helper:FontAwesomeFont.User }"
             FontFamily="{ StaticResource IconsFontFamily }"
             TranslationY="1"/>
         <Label

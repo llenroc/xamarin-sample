@@ -1,11 +1,16 @@
 ﻿
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Reactive.Linq;
+using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Bullytect.Core.I18N;
+using Bullytect.Core.Messages;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
+using Bullytect.Core.Utils;
+using Bullytect.Rest.Models.Exceptions;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 
@@ -15,10 +20,14 @@ namespace Bullytect.Core.ViewModels
     {
 
         readonly IParentService _parentService;
+        readonly IImagesService _imagesService;
 
-        public ProfileViewModel(IParentService parentService, IUserDialogs userDialogs, IMvxMessenger mvxMessenger): base(userDialogs, mvxMessenger)
+
+        public ProfileViewModel(IParentService parentService, IUserDialogs userDialogs, 
+                                IMvxMessenger mvxMessenger, IImagesService imagesService): base(userDialogs, mvxMessenger)
         {
             _parentService = parentService;
+            _imagesService = imagesService;
 
             SaveChangesCommand = ReactiveCommand.CreateFromObservable<string, ParentEntity>((_) => _parentService.Update(SelfParent.FirstName, SelfParent.LastName, SelfParent.Birthdate, SelfParent.Email, SelfParent.Telephone));
  
@@ -41,7 +50,7 @@ namespace Bullytect.Core.ViewModels
                 {
                     return Observable.FromAsync<bool>((_) => _userDialogs.ConfirmAsync(new ConfirmConfig()
                     {
-                        OkText = AppResources.Profile_Confirm_Account_Deleting
+                        Title = AppResources.Profile_Confirm_Account_Deleting
 
                     })).Where((confirmed) => confirmed).Do((_) => _userDialogs.ShowLoading(AppResources.Profile_Account_Deleting))
 						.SelectMany((_) => _parentService.DeleteAccount())
@@ -53,6 +62,22 @@ namespace Bullytect.Core.ViewModels
             });
 
 			DeleteAccountCommand.ThrownExceptions.Subscribe(HandleExceptions);
+
+
+			SignOutCommand = ReactiveCommand
+				.CreateFromObservable(() =>
+				{
+                    return Observable.FromAsync<bool>((_) => _userDialogs.ConfirmAsync(new ConfirmConfig()
+                    {
+                        Title = AppResources.Profile_Confirm_SignOut
+
+                    })).Where((confirmed) => confirmed).Do((_) => _mvxMessenger.Publish(new SignOutMessage(this)));
+				});
+
+
+            TakePhotoCommand = CommandFactory.CreateTakePhotoCommand(_parentService, _imagesService, _userDialogs);
+
+            TakePhotoCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
 		}
 
@@ -68,11 +93,17 @@ namespace Bullytect.Core.ViewModels
 
         #region commands
 
+
         public ReactiveCommand<string, ParentEntity> SaveChangesCommand { get; protected set; }
 
         public ReactiveCommand<string, string> DeleteAccountCommand { get; protected set; }
 
         public ReactiveCommand<string, ParentEntity> LoadProfileCommand { get; protected set; }
+
+        public ReactiveCommand SignOutCommand { get; protected set; }
+
+        public ReactiveCommand<string, ImageEntity> TakePhotoCommand { get; set; }
+
 
 		#endregion
 
@@ -84,5 +115,21 @@ namespace Bullytect.Core.ViewModels
 			toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
 			_userDialogs.Toast(toastConfig);
 		}
+
+		protected override void HandleExceptions(Exception ex)
+		{
+			if (ex is UploadImageFailException)
+			{
+                var toastConfig = new ToastConfig(AppResources.Profile_Updating_Profile_Image_Failed);
+				toastConfig.SetDuration(3000);
+				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
+                _userDialogs.Toast(toastConfig);
+			}
+			else
+			{
+				base.HandleExceptions(ex);
+			}
+		}
+
     }
 }

@@ -46,7 +46,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <templates:NotificationItemTemplate/>
+                            <templates:AlertItemTemplate/>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

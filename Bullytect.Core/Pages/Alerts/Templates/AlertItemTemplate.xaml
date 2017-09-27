@@ -2,8 +2,10 @@
 <ContentView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="Bullytect.Core.Pages.Notification.Templates.NotificationItemTemplate"
+    x:Class="Bullytect.Core.Pages.Notification.Templates.AlertItemTemplate"
     BackgroundColor="Black"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:converter="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared.Base">
     <ContentView.Resources>
@@ -40,7 +42,7 @@
             HorizontalOptions="FillAndExpand">
                 
 
-                <StackLayout HorizontalOptions="FillAndExpand" Spacing="0" Padding="10">
+                <!--<StackLayout HorizontalOptions="FillAndExpand" Spacing="0" Padding="10">
                     <StackLayout Orientation="Horizontal">
                         <Label 
                             Text="{Binding From.Name}" 
@@ -102,7 +104,7 @@
                             TextColor="#FFFFDC77" 
                             />
                     </StackLayout>
-                </StackLayout>
+                </StackLayout>-->
 
             </StackLayout>
     </StackLayout>

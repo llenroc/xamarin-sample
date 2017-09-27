@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace Bullytect.Core.Pages.Common
+namespace Bullytect.Core.Pages.Profile.Template
 {
-    public partial class CircleIcon : ContentView
+    public partial class ProfileHeader : ContentView
     {
-        public CircleIcon()
+        public ProfileHeader()
         {
             InitializeComponent();
         }

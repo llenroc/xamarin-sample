@@ -50,6 +50,16 @@
         <value>Alert Detail</value>
         <comment>Page Alert Detail Title</comment>
     </data>
+
+	<data name="Page.Add.Son.Title" xml:space="preserve">
+        <value>Add Son</value>
+        <comment>Page Add Son Title</comment>
+    </data>
+
+	<data name="Page.Edit.Son.Title" xml:space="preserve">
+        <value>Edit Son</value>
+        <comment>Page Edit Son Title</comment>
+    </data>
 	
 	<!-- Common strings -->
 
@@ -73,6 +83,64 @@
         <value>There was an error processing the request on the server.</value>
         <comment>Common Server Error</comment>
     </data>
+
+	<data name="Common.Cancel.Operation" xml:space="preserve">
+        <value> Cancel Operation</value>
+        <comment>Common Cancel Operation</comment>
+    </data>
+
+	<data name="Common.Btn.Save.Changes" xml:space="preserve">
+        <value> Save Changes</value>
+        <comment>Common Btn Save Changes</comment>
+    </data>
+
+	<data name="Common.RRSS.Facebook" xml:space="preserve">
+        <value> \uf09a Facebook</value>
+        <comment>Common RRSS Facebook</comment>
+    </data>
+
+	<data name="Common.RRSS.Instagram" xml:space="preserve">
+        <value> \uf16d Instagram</value>
+        <comment>Common RRSS Instagram</comment>
+    </data>
+
+	<data name="Common.RRSS.Youtube" xml:space="preserve">
+        <value> \uf167 Youtube</value>
+        <comment>Common RRSS Youtube</comment>
+    </data>
+
+	<!-- Placeholders -->
+
+	<data name="Common.Placeholder.Firstname" xml:space="preserve">
+        <value> First Name </value>
+        <comment>Common Placeholder Firstname</comment>
+    </data>
+
+    <data name="Common.Placeholder.LastName" xml:space="preserve">
+        <value> Last Name </value>
+        <comment>Common Placeholder LastName</comment>
+    </data>
+
+    <data name="Common.Placeholder.Email" xml:space="preserve">
+        <value> E-mail </value>
+        <comment>Common Placeholder Email</comment>
+    </data>
+
+    <data name="Common.Placeholder.Password" xml:space="preserve">
+        <value> Password </value>
+        <comment>Common Placeholder Password</comment>
+    </data>
+
+    <data name="Common.Placeholder.ConfirmPassword" xml:space="preserve">
+        <value> Confirm Password </value>
+        <comment>Common Placeholder ConfirmPassword</comment>
+    </data>
+
+    <data name="Common.Placeholder.Telephone" xml:space="preserve">
+        <value> Telephone </value>
+        <comment>Common Placeholder Telephone</comment>
+    </data>
+	
 
 	<!-- Walkthrough -->
 
@@ -193,35 +261,7 @@
         <comment>Account Created</comment>
     </data>
 
-	<data name="Signup.Account.Firstname.Placeholder" xml:space="preserve">
-        <value> First Name </value>
-        <comment>Signup Account Firstname Placeholder</comment>
-	</data>
-
-	<data name="Signup.Account.LastName.Placeholder" xml:space="preserve">
-        <value> Last Name </value>
-        <comment>Signup Account Last Name Placeholder</comment>
-    </data>
-
-	<data name="Signup.Account.Email.Placeholder" xml:space="preserve">
-        <value> E-mail </value>
-        <comment>Signup Account Email Placeholder</comment>
-    </data>
-
-	<data name="Signup.Account.Password.Placeholder" xml:space="preserve">
-        <value> Password </value>
-        <comment>Signup Account Password Placeholder</comment>
-    </data>
-
-	<data name="Signup.Account.ConfirmPassword.Placeholder" xml:space="preserve">
-        <value> Confirm Password </value>
-        <comment>Signup Account Confirm Password Placeholder</comment>
-    </data>
-
-	<data name="Signup.Account.Telephone.Placeholder" xml:space="preserve">
-        <value> Telephone </value>
-        <comment>Signup Account Telephone Placeholder</comment>
-    </data>
+	
 
 
 	<data name="Signup.Account.Email.Invalid" xml:space="preserve">
@@ -318,6 +358,25 @@
         <comment>Children Error Ocurred</comment>
     </data>
 
+	<data name="Children.Toolbar.Profile" xml:space="preserve">
+        <value> Profile </value>
+        <comment>Children Toolbar Profile</comment>
+    </data>
+
+	<data name="Children.Toolbar.Alerts" xml:space="preserve">
+        <value> Alerts </value>
+        <comment>Children Toolbar Alerts</comment>
+    </data>
+
+
+	<data name="Children.Toolbar.RRSS" xml:space="preserve">
+        <value> Add RRSS </value>
+        <comment>Children Toolbar RRSS</comment>
+    </data>
+
+
+
+	
 	<!-- Profile -->
 
 	<data name="Profile.Save.Changes" xml:space="preserve">
@@ -375,6 +434,42 @@
         <comment>Profile Confirm Account Deleting</comment>
     </data>
 
+	<data name="Profile.Confirm.SignOut" xml:space="preserve">
+        <value> Sign out?</value>
+        <comment>Profile.Confirm.SignOut</comment>
+    </data>
+
+	<data name="Profile.Updating.Profile.Image" xml:space="preserve">
+        <value> Updating Profile Image</value>
+        <comment>Profile Updating Profile Image</comment>
+    </data>
+
+	<data name="Profile.Updating.Profile.Image" xml:space="preserve">
+        <value> Updating Profile Image</value>
+        <comment>Profile Updating Profile Image</comment>
+    </data>
+
+	<data name="Profile.Select.Profile.Image" xml:space="preserve">
+        <value> Select profile image</value>
+        <comment>Profile Select Profile Image</comment>
+    </data>
+
+	<data name="Profile.Select.Profile.Image.From.Camera" xml:space="preserve">
+        <value> Take photo from camera</value>
+        <comment>Profile.Select.Profile.Image.From.Camera</comment>
+    </data>
+
+	<data name="Profile.Select.Profile.Image.From.Galery" xml:space="preserve">
+        <value> Pick photo from gallery</value>
+        <comment>Profile.Select.Profile.Image.From.Galery</comment>
+    </data>
+
+	<data name="Profile.Updating.Profile.Image.Failed" xml:space="preserve">
+        <value> Failed to update profile image</value>
+        <comment>Profile Updating Profile Image Failed</comment>
+    </data>
+
+
 	<!-- Notification -->
 
 	<data name="Notification.Not.Found.MainText" xml:space="preserve">
@@ -386,6 +481,26 @@
         <value> Error loading notifications </value>
         <comment>Notification Error Ocurred</comment>
     </data>
+
+
+	<!-- Edit Son -->
+
+	<data name="EditSon.General.Section.Title" xml:space="preserve">
+        <value> \uf040 General </value>
+        <comment>EditSon General Section Title</comment>
+    </data>
+
+	<data name="EditSon.General.Change.Profile.Image" xml:space="preserve">
+        <value> Change Profile Image </value>
+        <comment>EditSon General Change Profile Image</comment>
+    </data>
+
+	<data name="EditSon.RRSS.Section.Title" xml:space="preserve">
+        <value> Enabled Social Networks </value>
+        <comment>EditSon.RRSS.Section.Title</comment>
+    </data>
+
+	
 
 	
 	

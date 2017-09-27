@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Bullytect.Rest.Models.Request;
 using Bullytect.Rest.Models.Response;
 using Refit;
@@ -35,5 +36,18 @@ namespace Bullytect.Rest.Services
 		[Delete("/parents/self/delete")]
 		[Headers("Authorization: Bearer")]
 		IObservable<APIResponse<string>> DeleteAccount();
+
+		[Multipart]
+		[Post("/parents/self/image")]
+		[Headers("Authorization: Bearer")]
+		IObservable<APIResponse<ImageDTO>> UploadProfileImage([AttachmentName("profile_image")] Stream stream);
+
+		[Post("/parents/self/children/add")]
+		[Headers("Authorization: Bearer")]
+        IObservable<APIResponse<SonDTO>> AddSonToSelfParent([Body] RegisterSonDTO son);
+
+
+
+
     }
 }

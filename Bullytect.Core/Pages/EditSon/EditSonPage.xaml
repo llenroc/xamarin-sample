@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:MvxContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
+    xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
+    xmlns:extended="clr-namespace:Bullytect.Core.Pages.Common.Extended"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:controls="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
+    x:Class="Bullytect.Core.Pages.EditSon.EditSonPage"
+    x:TypeArguments="viewModels:EditSonViewModel">
+    <ContentPage.Resources>
+           <ResourceDictionary>
+                <converters:ContainsKeyVisibilityConverter x:Key="ContainsKeyVisibilityConverter"/>
+                <converters:ValidationErrorFormatValueConverter x:Key="ValidationErrorFormatValueConverter"/>
+                <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+                <x:String x:Key="firstNameKey">firstName</x:String>
+                <x:String x:Key="lastNameKey">lastName</x:String>
+                <x:String x:Key="schoolKey">school</x:String>
+            </ResourceDictionary>
+    </ContentPage.Resources>
+	<ContentPage.Content>
+
+
+        <controls:PullToRefreshLayout
+                x:Name="RefreshLayout"
+                RefreshCommand="{Binding RefreshCommand}"
+                IsRefreshing="{Binding IsBusy}"
+                RefreshColor="{DynamicResource BasePageColor}">
+
+                <StackLayout 
+                    Padding="20" 
+                    VerticalOptions="FillAndExpand">
+
+                    <TableView Intent="Settings" VerticalOptions="Start">
+                        <TableView.Root>
+
+                            <TableSection Title="{i18n:Translate EditSon.General.Section.Title}" > 
+
+                                <!-- Profile Image -->
+
+                               <ImageCell 
+                                    Command="{ Binding TakePhotoCommand }"
+                                    ImageSource="{ StaticResource ThemeAvatarSample0Image }"
+                                    Text="{i18n:Translate EditSon.General.Change.Profile.Image }"
+                                    TextColor="{ DynamicResource BaseTextColor }"/>
+
+
+                                <!-- Firstname -->
+                                <extended:ExtendedViewCell SeparatorColor="Transparent" SeparatorPadding="10">
+
+                                    <StackLayout>
+
+                                        <Entry
+                                            Placeholder="{ i18n:Translate Common.Placeholder.Firstname }"
+                                            VerticalOptions="StartAndExpand"
+                                            Text="{ Binding CurrentSon.FirstName }"/>
+                                        <Label
+                                            Text="{Binding Path=FieldErrors,  
+                                                Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                ConverterParameter={StaticResource firstNameKey}}"
+                                            IsVisible="{Binding Path=FieldErrors, 
+                                                Converter={StaticResource ContainsKeyVisibilityConverter},
+                                                ConverterParameter={StaticResource firstNameKey}}"
+                                                Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+                                    </StackLayout>
+
+                               </extended:ExtendedViewCell>
+
+                                <!-- Lastname -->
+                                <extended:ExtendedViewCell SeparatorColor="Transparent" SeparatorPadding="10">
+
+                                    <StackLayout>
+                                        <Entry
+                                            Placeholder="{ i18n:Translate Common.Placeholder.Lastname }"
+                                            VerticalOptions="StartAndExpand"
+                                            Text="{ Binding CurrentSon.Lastname }"/>
+                                        <Label
+                                            Text="{Binding Path=FieldErrors,  
+                                                Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                ConverterParameter={StaticResource lastNameKey}}"
+                                            IsVisible="{Binding Path=FieldErrors, 
+                                                Converter={StaticResource ContainsKeyVisibilityConverter},
+                                                ConverterParameter={StaticResource lastNameKey}}"
+                                                Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+                                    </StackLayout>
+
+                               </extended:ExtendedViewCell>
+                                
+                            </TableSection>
+
+                            <TableSection Title="{i18n:Translate EditSon.RRSS.Section.Title}">   
+                                <SwitchCell On="{Binding Path=FieldErrors,  
+                                                Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                ConverterParameter={StaticResource lastNameKey}}" Text="{i18n:Translate Common.RRSS.Facebook}" />
+                                <SwitchCell On="{Binding Path=FieldErrors,  
+                                                Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                ConverterParameter={StaticResource lastNameKey}}" Text="{i18n:Translate Common.RRSS.Instagram}" />
+                                <SwitchCell On="{Binding Path=FieldErrors,  
+                                                Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                ConverterParameter={StaticResource lastNameKey}}" Text="{i18n:Translate Common.RRSS.Youtube}" />
+                            </TableSection>
+
+                            
+                        </TableView.Root>
+                    </TableView>
+
+                    
+                    <artina:Button 
+                        IsEnabled="{Binding HaveInternet}"
+                        Style="{StaticResource SaveButtonStyle}" 
+                        Text="{ i18n:Translate Common.Btn.Save.Changes }" />
+
+                </StackLayout>
+
+
+
+                <controls:PullToRefreshLayout.Triggers>
+                    <DataTrigger 
+                        TargetType="controls:PullToRefreshLayout" 
+                        Binding="{Binding IsBusy}"
+                        Value="True">
+                        <Setter Property="IsPullToRefreshEnabled" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger 
+                        TargetType="controls:PullToRefreshLayout" 
+                        Binding="{Binding SonToEdit}"
+                        Value="null">
+                        <Setter Property="IsPullToRefreshEnabled" Value="False" />
+                    </DataTrigger>
+                </controls:PullToRefreshLayout.Triggers>
+
+           </controls:PullToRefreshLayout>
+
+	</ContentPage.Content>
+</d:MvxContentPage>

@@ -38,7 +38,8 @@
             Grid.Row="1"
             ItemsSource="{Binding Children}"
             HasUnevenRows="false"
-            RowHeight="150"
+            SeparatorVisibility="None"
+            RowHeight="250"
             IsPullToRefreshEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
             RefreshCommand="{Binding LoadChildrenCommand}"
             IsRefreshing="{Binding IsBusy, Mode=OneWay}">

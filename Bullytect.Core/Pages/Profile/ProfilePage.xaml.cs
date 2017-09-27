@@ -1,6 +1,7 @@
 ﻿
 using MvvmCross.Forms.Core;
 using Bullytect.Core.ViewModels;
+using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.Profile
 {
@@ -9,6 +10,7 @@ namespace Bullytect.Core.Pages.Profile
         public ProfilePage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
 		protected override void OnAppearing()

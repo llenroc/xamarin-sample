@@ -18,7 +18,7 @@
             IsVisible="{Binding Source={x:Reference Root}, Path=BadgeText, Converter={StaticResource isBadgeVisibleConverter}}">
             <Label
                 FontSize="28"
-                Text="{ x:Static helper:GrialShapesFont.Circle }"
+                Text="{ x:Static helper:FontAwesomeFont.CircleO }"
                 TextColor="{Binding Source={x:Reference Root}, Path=BadgeBackgroundColor}"
                 Style="{StaticResource FontIconBase}"
                 HorizontalTextAlignment="Center"

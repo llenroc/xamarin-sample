@@ -36,8 +36,7 @@
             
             <x:String x:Key="GrialShapesFontFamily">grialshapes</x:String>
             <!-- PUT YOUR OWN ICONS FONT FAMILY BELOW -->
-            <x:String x:Key="IconsFontFamily">grialshapes</x:String>
-            <!--<x:String x:Key="IconsFontFamily">FontAwesome</x:String>-->
+            <x:String x:Key="IconsFontFamily">FontAwesome</x:String>
             <!--<x:String x:Key="IconsFontFamily">Ionicons</x:String>-->
 
             <!-- STATIC IMAGES -->
@@ -64,7 +63,7 @@
             <FileImageSource x:Key="ThemeAvatarSample0Image">user_profile_0.jpg</FileImageSource>
             <FileImageSource x:Key="ThemeAvatarSample1Image">user_profile_1.jpg</FileImageSource>
 
-            <FileImageSource x:Key="HomeBackground">social_header_bg_1.jpg</FileImageSource>
+            <FileImageSource x:Key="HomeBackground">home_header@2x.jpg</FileImageSource>
 
             <!-- RESPONSIVE COMMON -->
             <OnIdiom x:Key="MainWrapperPadding" x:TypeArguments="Thickness">
@@ -256,7 +255,7 @@
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="VerticalOptions" Value="FillAndExpand" />
-                <Setter Property="Text" Value="{ x:Static helper:GrialShapesFont.Close }" />
+                <Setter Property="Text" Value="{ x:Static helper:FontAwesomeFont.Close }" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="TextColor" Value="{ DynamicResource OverImageTextColor }" />
@@ -265,7 +264,7 @@
             </Style>
 
             <Style x:Key="IconBackLabelStyle" TargetType="Label" BasedOn="{StaticResource IconCloseLabelStyle}">
-                <Setter Property="Text" Value="{ x:Static helper:GrialShapesFont.ArrowLeft }" />
+                <Setter Property="Text" Value="{ x:Static helper:FontAwesomeFont.ArrowLeft }" />
             </Style>
 
             <!-- COMMON -->
@@ -275,7 +274,7 @@
             </Style>
 
             <Style x:Key="RoundShape" TargetType="Label" BasedOn="{ StaticResource FontIconBase }">
-                <Setter Property="Text" Value="{ x:Static helper:GrialShapesFont.Circle }" />
+                <Setter Property="Text" Value="{ x:Static helper:FontAwesomeFont.Circle }" />
             </Style>
 
             <!-- MAIN MENU STYLES -->
@@ -316,7 +315,7 @@
             </Style>
 
             <Style x:Key="MainMenuRightChevronStyle" TargetType="Label" BasedOn="{ StaticResource FontIconBase }">
-                <Setter Property="Text" Value="{ x:Static helper:GrialShapesFont.ArrowRight }" />
+                <Setter Property="Text" Value="{ x:Static helper:FontAwesomeFont.ArrowRight }" />
                 <Setter Property="TextColor" Value="{ DynamicResource MainMenuIconColor }" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="FontSize" Value="{StaticResource MainMenuChevronRightFontsize}" />
@@ -325,7 +324,7 @@
 
             <!-- NOTIFICATION STYLES -->
             <Style x:Key="NotificationItemTemplateShape" TargetType="Label" BasedOn="{ StaticResource FontIconBase }">
-                <Setter Property="Text" Value="{ x:Static helper:GrialShapesFont.Circle }" />
+                <Setter Property="Text" Value="{ x:Static helper:FontAwesomeFont.Circle }" />
                 <Setter Property="FontSize">
                     <Setter.Value>
                         <OnIdiom x:TypeArguments="x:Double" Phone="25" Tablet="35" />
@@ -464,15 +463,6 @@
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="FontSize" Value="20" />
             </Style>
-            
-            <Style x:Key="ChatIconButtonPictureStyle" TargetType="Label" BasedOn="{ StaticResource ChatIconButtonBaseStyle }">
-                <Setter Property="Text" Value="{ x:Static helper:GrialShapesFont.PhotoCamera }" />
-            </Style>
-
-            <Style x:Key="ChatIconButtonSendStyle" TargetType="Label" BasedOn="{ StaticResource ChatIconButtonBaseStyle }">
-                <Setter Property="Text" Value="{ x:Static helper:GrialShapesFont.Send }" />
-                <Setter Property="TextColor" Value="{ DynamicResource AccentColor }" />
-            </Style>
 
             <Style x:Key="ChatMessageEntryStyle" TargetType="Entry">
                 <Setter Property="FontSize" Value="12" />
@@ -503,7 +493,7 @@
             </Style>
 
             <Style x:Key="WalktrhoughItemTemplateShape" TargetType="Label" BasedOn="{ StaticResource FontIconBase }">
-                <Setter Property="Text" Value="{ x:Static helper:GrialShapesFont.Circle }" />
+                <Setter Property="Text" Value="{ x:Static helper:FontAwesomeFont.Circle }" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
@@ -589,8 +579,8 @@
                     <Setter Property="HeightRequest" Value="1" />
                 </Style> 
 
-            <Style x:Key="ThemeShowCaseHorizontalRuleStyle" TargetType="BoxView" BasedOn="{ StaticResource HorizontalRuleStyle }">
-                <Setter Property="BackgroundColor" Value="{ DynamicResource BaseSeparatorColor }" />
+            <Style x:Key="ChildrenBoxViewHorizontalStyle" TargetType="BoxView" BasedOn="{ StaticResource HorizontalRuleStyle }">
+                <Setter Property="BackgroundColor" Value="{ DynamicResource AccentColor }" />
                 <Setter Property="Margin" Value="0,28" />
             </Style>
 
@@ -668,7 +658,7 @@
 
             <!--Dashboard Item Template-->
             <Style x:Key="DashboardItemTemplateShape" TargetType="Label" BasedOn="{ StaticResource FontIconBase }">
-                <Setter Property="Text" Value="{ x:Static helper:GrialShapesFont.Circle }" />
+                <Setter Property="Text" Value="{ x:Static helper:FontAwesomeFont.Circle }" />
                 <Setter Property="FontSize">
                     <Setter.Value>
                         <OnIdiom x:TypeArguments="x:Double" Phone="60" Tablet="65" />

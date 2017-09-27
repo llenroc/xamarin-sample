@@ -2,28 +2,31 @@
 namespace Bullytect.Core.Services.Impl
 {
 
-	using System;
-	using System.Collections.Generic;
-	using System.Diagnostics;
-	using System.Reactive.Linq;
-	using AutoMapper;
-	using Bullytect.Core.Models.Domain;
-	using Bullytect.Rest.Models.Request;
-	using Bullytect.Rest.Models.Response;
-	using Bullytect.Rest.Services;
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Reactive.Linq;
+    using AutoMapper;
+    using Bullytect.Core.Models.Domain;
+    using Bullytect.Rest.Models.Request;
+    using Bullytect.Rest.Models.Response;
+    using Bullytect.Rest.Services;
     using System.Linq;
     using MvvmCross.Plugins.Messenger;
     using Bullytect.Core.Messages;
+    using System.IO;
 
     public class ParentServiceImpl: BaseService, IParentService
     {
         readonly IParentsRestService _parentsRestService;
         readonly IMvxMessenger _mvxMessenger;
+        readonly IChildrenRestService _childrenRestService;
 
-        public ParentServiceImpl(IParentsRestService parentsRestService, IMvxMessenger mvxMessenger)
+        public ParentServiceImpl(IParentsRestService parentsRestService, IMvxMessenger mvxMessenger, IChildrenRestService childrenRestService)
         {
             _parentsRestService = parentsRestService;
             _mvxMessenger = mvxMessenger;
+            _childrenRestService = childrenRestService;
         }
 
         public IObservable<ParentEntity> GetProfileInformation()
@@ -139,6 +142,61 @@ namespace Bullytect.Core.Services.Impl
                 });
 
             return operationDecorator(observable);
+        }
+
+        public IObservable<ImageEntity> UploadProfileImage(Stream FileStream)
+        {
+            Debug.WriteLine("Upload Profile Image");
+
+            var observable = _parentsRestService
+                .UploadProfileImage(FileStream)
+                .Select((response) => response.Data)
+                .Select(image => Mapper.Map<ImageDTO, ImageEntity>(image))
+				.Finally(() =>
+				{
+					Debug.WriteLine("Upload Profile Image Finished ...");
+				});
+
+            return operationDecorator(observable);
+
+        }
+
+        public IObservable<SonEntity> AddSonToSelfParent(string FirstName, string Lastname, DateTime Birthdate)
+        {
+            Debug.WriteLine("Add Son To Self Parent");
+
+            var observable = _parentsRestService
+                .AddSonToSelfParent(new RegisterSonDTO() {
+                    FirstName = FirstName,
+                    LastName = Lastname,
+                    Birthdate = Birthdate
+                }).Select((response) => response.Data)
+                .Select(son => Mapper.Map<SonDTO, SonEntity>(son))
+				.Finally(() =>
+				{
+					Debug.WriteLine("Add Son To Self Parent Finished ...");
+				});
+
+            return operationDecorator(observable);
+
+        }
+
+        public IObservable<SonEntity> GetSonById(string Id)
+        {
+
+            Debug.WriteLine(string.Format("Get Son With id: {0}", Id));
+
+            var observable = _childrenRestService
+                .GetSonById(Id)
+                .Select((response) => response.Data)
+                .Select(son => Mapper.Map<SonDTO, SonEntity>(son))
+				.Finally(() =>
+				{
+					Debug.WriteLine("Get Son By Id ....");
+				});
+
+            return operationDecorator(observable);
+            
         }
     }
 }

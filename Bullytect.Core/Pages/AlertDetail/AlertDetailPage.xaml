@@ -3,9 +3,9 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
-    xmlns:local="clr-namespace:Bullytect;assembly=Bullytect"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
@@ -113,34 +113,7 @@
                             TextColor="{ DynamicResource BaseTextColor }"
                             HorizontalOptions="End"/>
                     
-                        <StackLayout
-                            Orientation="Horizontal">
-                            <Label 
-                                HorizontalOptions="End"
-                                Text="{ x:Static local:GrialShapesFont.Group } " 
-                                FontSize="{ StaticResource BaseFontSize }"
-                                TextColor="{ DynamicResource AccentColor }" 
-                                FontFamily="{ StaticResource IconsFontFamily }" />
                         
-                            <Label 
-                                HorizontalOptions="End"
-                                Text=" 72" 
-                                FontSize="14"
-                                TextColor="{ DynamicResource AccentColor }" />
-
-                            <Label 
-                                HorizontalOptions="End"
-                                Text="{ x:Static local:GrialShapesFont.Favorite } " 
-                                FontSize="{ StaticResource BaseFontSize }"
-                                TextColor="{ DynamicResource AccentColor }" 
-                                FontFamily="{ StaticResource IconsFontFamily }" />
-                        
-                            <Label 
-                                HorizontalOptions="End" 
-                                Text=" 24" 
-                                FontSize="14"
-                                TextColor="{ DynamicResource AccentColor }" />
-                        </StackLayout>
                     </StackLayout>
 
                     <!-- SEPARATOR -->

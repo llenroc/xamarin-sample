@@ -36,7 +36,6 @@ namespace Bullytect.Core.Utils
 			}
 
             return exResponse;
-
         }
 
 
@@ -70,6 +69,14 @@ namespace Bullytect.Core.Utils
             };
         }
 
+        static UploadImageFailException createUploadImageFailException(ApiException ex) 
+        {
+            return new UploadImageFailException()
+            {
+                Response = ex.GetContentAs<APIResponse<string>>()
+            };
+        }
+
         public static Exception parseApiException(ApiException ex) {
 
             Exception exResponse = null;
@@ -98,6 +105,10 @@ namespace Bullytect.Core.Utils
                             // Parse Load Self Profile Error
                         case ResponseNames.PARENT_NOT_FOUND_RESPONSE:
                             exResponse = createLoadProfileFailedException(ex);
+                            break;
+                            // Parse Upload File Exception
+                        case ResponseNames.FAILED_TO_UPLOAD_IMAGE_RESPONSE:
+                            exResponse = createUploadImageFailException(ex);
                             break;
 							// Parse Generic Error
                         case ResponseNames.GENERIC_ERROR_RESPONSE:

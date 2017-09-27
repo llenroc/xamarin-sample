@@ -20,7 +20,7 @@ namespace Bullytect.Rest.Models.Response
         public bool InvalidToken { get; set; }
 
         [JsonProperty("user")]
-        public string son { get; set;  }
+        public string Son { get; set;  }
 
     }
 }

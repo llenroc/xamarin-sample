@@ -3,9 +3,9 @@ using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.Notification.Templates
 {
-    public partial class NotificationItemTemplate : ContentView
+    public partial class AlertItemTemplate : ContentView
     {
-        public NotificationItemTemplate()
+        public AlertItemTemplate()
         {
             InitializeComponent();
         }

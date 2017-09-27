@@ -4,7 +4,8 @@ namespace Bullytect.Core.Services
 
 	using System;
 	using System.Collections.Generic;
-	using Bullytect.Core.Models.Domain;
+    using System.IO;
+    using Bullytect.Core.Models.Domain;
 	using Bullytect.Rest.Models.Exceptions;
 
 
@@ -18,5 +19,8 @@ namespace Bullytect.Core.Services
         IObservable<ParentEntity> Update(string FirstName, string LastName, string Birthdate, string Email, string Telephone);
         IObservable<string> ResetPassword(string email);
         IObservable<string> DeleteAccount();
+        IObservable<ImageEntity> UploadProfileImage(Stream FileStream);
+        IObservable<SonEntity> AddSonToSelfParent(string FirstName, string Lastname, DateTime Birthdate);
+        IObservable<SonEntity> GetSonById(string Id);
     }
 }

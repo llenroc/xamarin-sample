@@ -148,22 +148,21 @@
                                 Padding="20"
                                 Grid.Row="3" >
 
-                                <Label
-                                    LineBreakMode="WordWrap"
-                                    Text="{i18n:Translate Login.Forget.Password }"
-                                    TextColor="{ DynamicResource OverImageTextColor }"
-                                    VerticalTextAlignment="Center"
-                                    FontSize="36"
-                                    AbsoluteLayout.LayoutFlags="All">
-                                       <Label.FontSize> 
-                                            <OnIdiom x:TypeArguments="x:Double"
-                                                     Phone="17"
-                                                     Tablet="27"/>
-                                        </Label.FontSize>
-                                        <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{ Binding GoToPasswordRecoveryCommand }" NumberOfTapsRequired="1" /> 
-                                        </Label.GestureRecognizers>
-                                    </Label>
+                                <artina:Button
+                                    IsEnabled="{Binding HaveInternet}"
+                                    Style="{StaticResource TransparentButtonStyle}"
+                                    VerticalOptions="End"
+                                    Text="{i18n:Translate Login.Forget.Password}"
+                                    Command="{ Binding GoToPasswordRecoveryCommand }"
+                                    WidthRequest="{ artina:OnOrientationDouble
+                                            LandscapePhone=200,
+                                            LandscapeTablet=400 }"
+                                    HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                                            PortraitPhone=Fill,
+                                            LandscapePhone=Center,
+                                            PortraitTablet=Fill,
+                                            LandscapeTablet=Center }"/>
+                                       
 
                                 <artina:Button
                                     IsEnabled="{Binding HaveInternet}"

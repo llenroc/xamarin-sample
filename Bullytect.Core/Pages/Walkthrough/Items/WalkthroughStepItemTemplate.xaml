@@ -46,7 +46,6 @@
                         Style="{StaticResource WalkthroughStepIconStyle}"
                         VerticalOptions="Center"
                         HorizontalOptions="CenterAndExpand"
-                        Text="{ x:Static helper:GrialShapesFont.LogoGrial }"
                     />
 
                     <Label
@@ -95,7 +94,7 @@
                 Grid.Row="0"
                 FontSize="30"
                 TranslationY="20"
-                Text="{ x:Static helper:GrialShapesFont.Close }"
+                Text="{ x:Static helper:FontAwesomeFont.Close }"
                 HorizontalOptions="End"
                 VerticalOptions="Start"
                 TextColor="{DynamicResource OverImageTextColor}"

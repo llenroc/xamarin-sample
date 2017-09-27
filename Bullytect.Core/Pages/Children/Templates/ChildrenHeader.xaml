@@ -17,7 +17,7 @@
                 HorizontalOptions="Start"
                 VerticalOptions="Center"
                 Margin="20,0"
-                Text="{ x:Static helper:GrialShapesFont.ArrowLeft }"
+                Text="{ x:Static helper:FontAwesomeFont.ArrowLeft }"
                 FontSize="22"
                 TextColor="{ DynamicResource CustomNavBarTextColor }" 
                 Style="{ StaticResource FontIcon }">
