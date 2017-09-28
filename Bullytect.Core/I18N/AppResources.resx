@@ -513,7 +513,7 @@
 	<!-- Edit Son -->
 
 	<data name="EditSon.General.Section.Title" xml:space="preserve">
-        <value> \uf040 General </value>
+        <value> General </value>
         <comment>EditSon General Section Title</comment>
     </data>
 

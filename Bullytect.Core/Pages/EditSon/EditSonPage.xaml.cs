@@ -1,7 +1,8 @@
 ﻿
-using Bullytect.Core.I18N;
+using Bullytect.Core.Pages.AddSchool;
 using Bullytect.Core.ViewModels;
 using MvvmCross.Forms.Core;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.EditSon
@@ -11,21 +12,26 @@ namespace Bullytect.Core.Pages.EditSon
         public EditSonPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
 		protected override void OnAppearing()
 		{
-            if (ViewModel.SonToEdit != null) {
+            if(!string.IsNullOrWhiteSpace(ViewModel.SonToEdit)){
 
                 if(ViewModel.CurrentSon == null)
                     RefreshLayout.RefreshCommand?.Execute(null);
 
-                Title = AppResources.Page_Edit_Son_Title;
-
-            } else {
-                Title = AppResources.Page_Add_Son_Title;
             }
-				
+
+            Header.AddSchoolAction = async () =>  {
+                var page = new AddSchoolPopup();
+                page.BindingContext = ViewModel;
+                await PopupNavigation.PushAsync(page);
+            };
+
+
+
 		}
 
 

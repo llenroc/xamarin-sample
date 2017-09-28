@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Xamarin.Forms;
+﻿
+using Rg.Plugins.Popup.Pages;
 
 namespace Bullytect.Core.Pages.AddSchool
 {
-    public partial class AddSchoolPopup : ContentView
+    public partial class AddSchoolPopup : PopupPage
     {
         public AddSchoolPopup()
         {

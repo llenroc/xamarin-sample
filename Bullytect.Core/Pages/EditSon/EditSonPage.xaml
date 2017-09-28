@@ -10,12 +10,14 @@
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
+    xmlns:templates="clr-namespace:Bullytect.Core.Pages.EditSon.Templates"
     xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
     xmlns:extended="clr-namespace:Bullytect.Core.Pages.Common.Extended"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:controls="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
     x:Class="Bullytect.Core.Pages.EditSon.EditSonPage"
-    x:TypeArguments="viewModels:EditSonViewModel">
+    x:TypeArguments="viewModels:EditSonViewModel"
+    x:Name="Root">
     <ContentPage.Resources>
            <ResourceDictionary>
                 <converters:ContainsKeyVisibilityConverter x:Key="ContainsKeyVisibilityConverter"/>
@@ -34,7 +36,19 @@
 	<ContentPage.Content>
 
 
-        <controls:PullToRefreshLayout
+        <!-- MAIN CONTAINER -->
+        <Grid RowSpacing="0" x:Name="Parent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- CUSTOM NAVBAR -->
+            <templates:EditSonHeader Grid.Row="0" x:Name="Header" />
+
+
+            <controls:PullToRefreshLayout
+                Grid.Row="1"
                 x:Name="RefreshLayout"
                 RefreshCommand="{Binding RefreshCommand}"
                 IsRefreshing="{Binding IsBusy}"
@@ -43,6 +57,8 @@
                 <StackLayout 
                     Padding="20" 
                     VerticalOptions="FillAndExpand">
+
+
 
                     <extended:TableViewWithoutBorders VerticalOptions="Start">
                         <TableView.Root>
@@ -101,8 +117,10 @@
 
                                </extended:ExtendedViewCell>
 
-                               <!-- School -->
-                            <!--<extended:SelectCell Items="{Binding Schools}" />-->
+                               <extended:ExtendedViewCell SeparatorColor="Transparent" SeparatorPadding="10">
+
+                                    <Picker ItemsSource="{Binding Schools}" />
+                                </extended:ExtendedViewCell>
 
 
                                 
@@ -336,6 +354,8 @@
                 </controls:PullToRefreshLayout.Triggers>
 
            </controls:PullToRefreshLayout>
+
+        </Grid>
 
 	</ContentPage.Content>
 </d:MvxContentPage>

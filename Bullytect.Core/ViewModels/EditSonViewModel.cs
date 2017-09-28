@@ -109,6 +109,13 @@ namespace Bullytect.Core.ViewModels
 			set => SetProperty(ref _currentSocialMedia, value);
 		}
 
+        string _newSchoolName;
+
+		public string NewSchoolName
+		{
+			get => _newSchoolName;
+			set => SetProperty(ref _newSchoolName, value);
+		}
 
         IList<string> _schools = new List<string>() { "Colegio 1", "Colegio 2", "Colegio 3"};
 
@@ -126,6 +133,13 @@ namespace Bullytect.Core.ViewModels
 			set => SetProperty(ref _sonToEdit, value);
 		}
 
+        bool _addSchool;
+
+		public bool AddSchool
+		{
+            get => _addSchool;
+			set => SetProperty(ref _addSchool, value);
+		}
 
         public void Init(string sontToEdit)
         {
@@ -145,6 +159,12 @@ namespace Bullytect.Core.ViewModels
             public ICommand ToggleInstagramSocialMediaCommand => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new InstagramOAuth2(), AppConstants.INSTAGRAM));
 
             public ICommand ToggleYoutubeSocialMediaCommand => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new InstagramOAuth2(), AppConstants.YOUTUBE));
+
+            public ICommand SaveSchoolCommand => new MvxCommand(() =>
+            {
+                _userDialogs.ShowSuccess(string.Format("School {0}", NewSchoolName));
+                Schools.Add(NewSchoolName);
+            });
 
 
         #endregion

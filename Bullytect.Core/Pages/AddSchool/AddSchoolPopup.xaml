@@ -1,5 +1,41 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Bullytect.Core.Pages.AddSchool.AddSchoolPopup">
-	<ContentView.Content>
-	</ContentView.Content>
-</ContentView>
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    x:Class="Bullytect.Core.Pages.AddSchool.AddSchoolPopup">
+      <!--Animations use example-->
+      <pages:PopupPage.Animation>
+            <animations:ScaleAnimation 
+              PositionIn="Center"
+              PositionOut="Center"
+              ScaleIn="1.2"
+              ScaleOut="0.8"
+              DurationIn="400"
+              DurationOut="300"
+              EasingIn="SinOut"
+              EasingOut="SinIn"
+              HasBackgroundAnimation="True"/>
+      </pages:PopupPage.Animation>
+      <!-- Content -->
+      <StackLayout 
+            Padding="20"
+            VerticalOptions="Center"
+            BackgroundColor="White"
+            HeightRequest="300"
+            WidthRequest="200">
+
+           <Entry
+                    Placeholder="{ i18n:Translate Common.Placeholder.Firstname }"
+                    VerticalOptions="StartAndExpand"
+                    Style="{StaticResource ArtinaProfileEntryStyle}"
+                    Text="{ Binding NewSchoolName }"/>
+
+            <artina:Button 
+                Command="{ Binding SaveSchoolCommand }"
+                Style="{StaticResource SaveButtonStyle}" 
+                Text="{ i18n:Translate Common.Btn.Save.Changes }" />
+    </StackLayout>
+</pages:PopupPage>

@@ -1,5 +1,74 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Bullytect.Core.Pages.EditSon.Templates.EditSonHeader">
-	<ContentView.Content>
-	</ContentView.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    x:Class="Bullytect.Core.Pages.EditSon.Templates.EditSonHeader">
+    <ContentView.Content>
+
+        <Grid 
+            Style="{ StaticResource CustomNavBarStyle }"
+            Padding="0">
+
+            <Label 
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Margin="20,0"
+                Text="{ x:Static helper:FontAwesomeFont.ArrowLeft }"
+                FontSize="22"
+                TextColor="{ DynamicResource CustomNavBarTextColor }" 
+                Style="{ StaticResource FontIcon }">
+                <Label.TranslationY>
+                    <OnPlatform 
+                        x:TypeArguments="x:Double" 
+                        iOS="10" 
+                        Android="0" />
+                </Label.TranslationY>
+                <Label.GestureRecognizers>
+                     <TapGestureRecognizer Command="{ Binding CloseCommand }" NumberOfTapsRequired="1" /> 
+                </Label.GestureRecognizers>
+            </Label>
+           
+            <Label 
+                x:Name="PageTitle"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                FontSize="18" 
+                TextColor="{ DynamicResource CustomNavBarTextColor }">
+                <Label.TranslationY>
+                    <OnPlatform 
+                        x:TypeArguments="x:Double" 
+                        iOS="10" 
+                        Android="0" />
+                </Label.TranslationY>
+            </Label>
+
+            <Label 
+                x:Name="AddSchoolLabel"
+                HorizontalOptions="End"
+                TranslationY="0"
+                Margin="20,0"
+                VerticalOptions="Center"
+                Text="{ x:Static helper:FontAwesomeFont.GraduationCap } " 
+                FontSize="22"
+                TextColor="{ DynamicResource CustomNavBarTextColor }" 
+                Style="{ StaticResource FontIcon }">
+                <Label.TranslationY>
+                    <OnPlatform 
+                        x:TypeArguments="x:Double" 
+                        iOS="10" 
+                        Android="0" />
+                </Label.TranslationY>
+                <Label.GestureRecognizers>
+                     <TapGestureRecognizer Tapped="OnAddSchoolTapped" NumberOfTapsRequired="1" /> 
+                </Label.GestureRecognizers>
+                
+            </Label>
+        </Grid>
+
+
+        
+    </ContentView.Content>
 </ContentView>

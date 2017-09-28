@@ -51,7 +51,7 @@
                 TranslationY="0"
                 Margin="20,0"
                 VerticalOptions="Center"
-                Text="{ x:Static helper:FontAwesomeFont.Plus } " 
+                Text="{ x:Static helper:FontAwesomeFont.UserPlus } " 
                 FontSize="22"
                 TextColor="{ DynamicResource CustomNavBarTextColor }" 
                 Style="{ StaticResource FontIcon }">
