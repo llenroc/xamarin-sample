@@ -4,7 +4,6 @@ namespace Bullytect.Rest.Services
 {
 
 	using System;
-	using System.Threading.Tasks;
 	using Bullytect.Rest.Models.Request;
 	using Bullytect.Rest.Models.Response;
 	using Refit;

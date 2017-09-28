@@ -321,6 +321,11 @@
       <DependentUpon>AddSchoolPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\IMvxCarouselPage.cs" />
+    <Compile Include="Converters\IsSchoolNamesCollectionEmptyConverter.cs" />
+    <Compile Include="Converters\IsSchoolNamesCollectionNotEmptyConverter.cs" />
+    <Compile Include="Services\ISchoolService.cs" />
+    <Compile Include="Services\Impl\SchoolServiceImpl.cs" />
+    <Compile Include="Models\Domain\SchoolEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation">

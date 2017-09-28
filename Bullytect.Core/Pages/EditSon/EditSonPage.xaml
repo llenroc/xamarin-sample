@@ -8,6 +8,7 @@
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
     xmlns:templates="clr-namespace:Bullytect.Core.Pages.EditSon.Templates"
@@ -25,9 +26,14 @@
                 <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
                 <converters:SocialMediaFormatValueConverter x:Key="SocialMediaFormatValueConverter" />
                 <converters:SwitchChangeEventArgsConverter x:Key="SwitchChangeEventArgsConverter" />
+                <converters:IsSchoolNamesCollectionEmptyConverter x:Key="IsSchoolNamesCollectionEmptyConverter" />
+                <converters:IsSchoolNamesCollectionNotEmptyConverter x:Key="IsSchoolNamesCollectionNotEmptyConverter" />
+
+
                 <x:String x:Key="firstNameKey">firstName</x:String>
                 <x:String x:Key="lastNameKey">lastName</x:String>
                 <x:String x:Key="schoolKey">school</x:String>
+                <x:String x:Key="birthdateKey">birthdate</x:String>
                 <x:String x:Key="facebookKey">FACEBOOK</x:String>
                 <x:String x:Key="instagramKey">INSTAGRAM</x:String>
                 <x:String x:Key="youtubeKey">YOUTUBE</x:String>
@@ -119,9 +125,55 @@
 
                                <extended:ExtendedViewCell SeparatorColor="Transparent" SeparatorPadding="10">
 
-                                    <Picker ItemsSource="{Binding Schools}" />
+                                    <StackLayout>
+                                        
+                                        <Picker ItemsSource="{Binding Schools}" IsEnabled="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionEmptyConverter }}"/>
+
+                                        <common:RoundedLabel
+                                            IsVisible="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionNotEmptyConverter}}"
+                                            HorizontalOptions="Center"
+                                            RoundedLabelText="{ i18n:Translate EditSon.School.Not.Found }"
+                                            RoundedLabelBackgroundColor="{ DynamicResource WarningColor }"/>
+                                        
+                                    </StackLayout>
+                                    
                                 </extended:ExtendedViewCell>
 
+                                <!-- Birthdate -->
+                                <extended:ExtendedViewCell SeparatorColor="Transparent" SeparatorPadding="10">
+
+                                    <StackLayout>
+                                        <DatePicker 
+                                            VerticalOptions="CenterAndExpand" >
+
+                                            <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                                                <DatePicker.MinimumDate>
+                                                    <sys:DateTime x:FactoryMethod="Parse">
+                                                    <x:Arguments>
+                                                        <x:String>Jan 1 1970</x:String>
+                                                    </x:Arguments>
+                                                </sys:DateTime>
+                                            </DatePicker.MinimumDate>
+                                            <DatePicker.MaximumDate>
+                                                <sys:DateTime x:FactoryMethod="Parse">
+                                                    <x:Arguments>
+                                                        <x:String>Dec 31 2050</x:String>
+                                                    </x:Arguments>
+                                                </sys:DateTime>
+                                            </DatePicker.MaximumDate>
+                                        </DatePicker>
+
+                                        <Label
+                                            Text="{Binding Path=FieldErrors,  
+                                                Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                ConverterParameter={StaticResource birthdateKey}}"
+                                            IsVisible="{Binding Path=FieldErrors,
+                                                Converter={StaticResource ContainsKeyVisibilityConverter},
+                                                ConverterParameter={StaticResource birthdateKey}}"
+                                            Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+                                    </StackLayout>
+
+                                </extended:ExtendedViewCell>
 
                                 
                             </TableSection>

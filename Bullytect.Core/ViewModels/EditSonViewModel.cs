@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reactive.Linq;
@@ -26,14 +27,16 @@ namespace Bullytect.Core.ViewModels
         readonly IParentService _parentService;
         readonly ISocialMediaService _socialMediaService;
         readonly IImagesService _imagesService;
+        readonly ISchoolService _schoolService;
 
         public EditSonViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IParentService parentService,
-                                ISocialMediaService socialMediaService, IImagesService imagesService) : base(userDialogs, mvxMessenger)
+                                ISocialMediaService socialMediaService, IImagesService imagesService, ISchoolService schoolService) : base(userDialogs, mvxMessenger)
         {
 
             _parentService = parentService;
             _socialMediaService = socialMediaService;
             _imagesService = imagesService;
+            _schoolService = schoolService;
 
 			var GetSonByIdCommand  = ReactiveCommand
 				.CreateFromObservable<string, bool>((param) =>
@@ -55,7 +58,17 @@ namespace Bullytect.Core.ViewModels
 					}).Select((_) => true);
 				});
 
-			RefreshCommand = ReactiveCommand.CreateCombined(new[] { GetSonByIdCommand, GetAllSocialMediaCommand });
+
+			var GetAllSchoolNamesCommand = ReactiveCommand.CreateFromObservable<string, bool>((param) =>
+			{
+                return _schoolService.AllNames().OnErrorResumeNext(Observable.Return(new List<string>())).Do((Schools) =>
+				{
+					Debug.WriteLine("Schools Names Count " + Schools?.Count);
+                    Schools = new ObservableCollection<string>(Schools);
+				}).Select((_) => true);
+			});
+
+			RefreshCommand = ReactiveCommand.CreateCombined(new[] { GetSonByIdCommand, GetAllSocialMediaCommand, GetAllSchoolNamesCommand  });
 
 			RefreshCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
 
@@ -90,10 +103,28 @@ namespace Bullytect.Core.ViewModels
 
 			SaveChangesCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
+            SaveSchoolCommand = ReactiveCommand.CreateFromObservable<string, SchoolEntity>((param) =>
+            {
+                return _schoolService.CreateSchool(NewSchool.Name, NewSchool.Residence, NewSchool.Location, NewSchool.Province, NewSchool.Tfno, NewSchool.Email);
 
+            });
+
+            SaveSchoolCommand.Subscribe((school) => {
+                var toastConfig = new ToastConfig(AppResources.EditSon_School_Saved);
+				toastConfig.SetDuration(3000);
+				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
+				_userDialogs.Toast(toastConfig);
+                Schools.Add(school.Name);
+            });
+
+            SaveSchoolCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.EditSon_Saving_School));
+
+            SaveSchoolCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }
 
-		SonEntity _currentSon = new SonEntity();
+        #region properties
+
+        SonEntity _currentSon = new SonEntity();
 
 		public SonEntity CurrentSon
 		{
@@ -109,21 +140,21 @@ namespace Bullytect.Core.ViewModels
 			set => SetProperty(ref _currentSocialMedia, value);
 		}
 
-        string _newSchoolName;
 
-		public string NewSchoolName
+        SchoolEntity _newSchool;
+
+		public SchoolEntity NewSchool
 		{
-			get => _newSchoolName;
-			set => SetProperty(ref _newSchoolName, value);
+			get => _newSchool;
+			set => SetProperty(ref _newSchool, value);
 		}
 
-        IList<string> _schools = new List<string>() { "Colegio 1", "Colegio 2", "Colegio 3"};
+        ObservableCollection<string> _schools = new ObservableCollection<string>();
 
-		public IList<string> Schools
-		{
+        public ObservableCollection<string> Schools {
 			get => _schools;
 			set => SetProperty(ref _schools, value);
-		}
+        }
 
         string _sonToEdit = null;
 
@@ -146,25 +177,26 @@ namespace Bullytect.Core.ViewModels
             SonToEdit = sontToEdit;
         }
 
+        #endregion
+
         #region commands
 
-            public ReactiveCommand<string, bool> SaveChangesCommand { get; protected set; }
+        public ReactiveCommand<string, bool> SaveChangesCommand { get; protected set; }
 
-            public ReactiveCommand<string, ImageEntity> TakePhotoCommand { get; set; }
+        public ReactiveCommand<string, ImageEntity> TakePhotoCommand { get; set; }
 
-            public ReactiveCommand RefreshCommand { get; protected set; }
+        public ReactiveCommand RefreshCommand { get; protected set; }
 
-            public ICommand ToggleFacebookSocialMediaCommand => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new FacebookOAuth2(), AppConstants.FACEBOOK));
+        public ICommand ToggleFacebookSocialMediaCommand 
+                        => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new FacebookOAuth2(), AppConstants.FACEBOOK));
 
-            public ICommand ToggleInstagramSocialMediaCommand => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new InstagramOAuth2(), AppConstants.INSTAGRAM));
+        public ICommand ToggleInstagramSocialMediaCommand 
+                        => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new InstagramOAuth2(), AppConstants.INSTAGRAM));
 
-            public ICommand ToggleYoutubeSocialMediaCommand => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new InstagramOAuth2(), AppConstants.YOUTUBE));
+        public ICommand ToggleYoutubeSocialMediaCommand 
+                        => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new InstagramOAuth2(), AppConstants.YOUTUBE));
 
-            public ICommand SaveSchoolCommand => new MvxCommand(() =>
-            {
-                _userDialogs.ShowSuccess(string.Format("School {0}", NewSchoolName));
-                Schools.Add(NewSchoolName);
-            });
+        public ReactiveCommand<string, SchoolEntity> SaveSchoolCommand { get; set; }
 
 
         #endregion

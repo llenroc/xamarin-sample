@@ -3,9 +3,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     x:Class="Bullytect.Core.Pages.AddSchool.AddSchoolPopup">
+    <pages:PopupPage.Resources>
+           <ResourceDictionary>
+                <converters:ContainsKeyVisibilityConverter x:Key="ContainsKeyVisibilityConverter"/>
+                <converters:ValidationErrorFormatValueConverter x:Key="ValidationErrorFormatValueConverter"/>
+                <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+                <x:String x:Key="nameKey">name</x:String>
+                <x:String x:Key="residenceKey">residence</x:String>
+                <x:String x:Key="locationKey">location</x:String>
+                <x:String x:Key="provinceKey">province</x:String>
+                <x:String x:Key="tfnoKey">tfno</x:String>
+                <x:String x:Key="emailKey">email</x:String>
+           </ResourceDictionary>
+    </pages:PopupPage.Resources>
       <!--Animations use example-->
       <pages:PopupPage.Animation>
             <animations:ScaleAnimation 
@@ -19,23 +33,195 @@
               EasingOut="SinIn"
               HasBackgroundAnimation="True"/>
       </pages:PopupPage.Animation>
-      <!-- Content -->
-      <StackLayout 
-            Padding="20"
-            VerticalOptions="Center"
+
+        <!-- MAIN CONTAINER -->
+        <Grid
+            ColumnSpacing="0" 
+            RowSpacing="0" 
+            Margin="10"
             BackgroundColor="White"
             HeightRequest="300"
-            WidthRequest="200">
+            HorizontalOptions="Fill"
+            VerticalOptions="Center" >
 
-           <Entry
-                    Placeholder="{ i18n:Translate Common.Placeholder.Firstname }"
-                    VerticalOptions="StartAndExpand"
-                    Style="{StaticResource ArtinaProfileEntryStyle}"
-                    Text="{ Binding NewSchoolName }"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-            <artina:Button 
+
+            <Label
+                Grid.Row="1"
+                LineBreakMode="WordWrap"
+                Text="{i18n:Translate Signup.Title.Main}"
+                TextColor="{ DynamicResource AccentColor }"
+                VerticalTextAlignment="Center"
+                FontAttributes="Bold">
+                <Label.FontSize> 
+                    <OnIdiom
+                        x:TypeArguments="x:Double"
+                        Phone="26"
+                        Tablet="36"/>
+                </Label.FontSize>
+            </Label>
+
+
+            <ScrollView Grid.Row="2" Padding="{ StaticResource MainWrapperPadding }">
+
+                    <!---FIELDS CONTAINER-->
+                    <StackLayout
+                        Padding="40,0"
+                        VerticalOptions="CenterAndExpand">
+
+                            <!-- Last Name FIELD-->
+                            <StackLayout>
+
+                            
+                                <Entry 
+                                    Placeholder="{ i18n:Translate Common.Placeholder.School.Name }"
+                                    Style="{StaticResource ArtinaProfileEntryStyle}" 
+                                    Text="{ Binding NewSchool.Name }"/>
+
+
+                                <Label
+                                        Text="{Binding Path=FieldErrors,                            
+                                                    Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                    ConverterParameter={StaticResource nameKey}}"
+                                         IsVisible="{Binding Path=FieldErrors,                            
+                                                    Converter={StaticResource ContainsKeyVisibilityConverter},
+                                                    ConverterParameter={StaticResource nameKey}}"
+                                         Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+
+                            </StackLayout>
+
+                             <!-- Residence FIELD-->
+                            <StackLayout>
+
+                            
+                                <Entry 
+                                    Placeholder="{ i18n:Translate Common.Placeholder.School.Residence }"
+                                    Style="{StaticResource ArtinaProfileEntryStyle}" 
+                                    Text="{ Binding NewSchool.Residence }"/>
+
+
+                                <Label
+                                        Text="{Binding Path=FieldErrors,                            
+                                                    Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                    ConverterParameter={StaticResource residenceKey}}"
+                                         IsVisible="{Binding Path=FieldErrors,                            
+                                                    Converter={StaticResource ContainsKeyVisibilityConverter},
+                                                    ConverterParameter={StaticResource residenceKey}}"
+                                         Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+
+                            </StackLayout>
+
+                            <!-- Location FIELD-->
+                            <StackLayout>
+
+                            
+                                <Entry 
+                                    Placeholder="{ i18n:Translate Common.Placeholder.School.Location }"
+                                    Style="{StaticResource ArtinaProfileEntryStyle}" 
+                                    Text="{ Binding NewSchool.Location }"/>
+
+
+                                <Label
+                                        Text="{Binding Path=FieldErrors,                            
+                                                    Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                    ConverterParameter={StaticResource locationKey}}"
+                                         IsVisible="{Binding Path=FieldErrors,                            
+                                                    Converter={StaticResource ContainsKeyVisibilityConverter},
+                                                    ConverterParameter={StaticResource locationKey}}"
+                                         Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+
+                            </StackLayout>
+
+
+                            <!-- Province FIELD-->
+                            <StackLayout>
+
+                            
+                                <Entry 
+                                    Placeholder="{ i18n:Translate Common.Placeholder.School.Province }"
+                                    Style="{StaticResource ArtinaProfileEntryStyle}" 
+                                    Text="{ Binding NewSchool.Province }"/>
+
+
+                                <Label
+                                        Text="{Binding Path=FieldErrors,                            
+                                                    Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                    ConverterParameter={StaticResource provinceKey}}"
+                                         IsVisible="{Binding Path=FieldErrors,                            
+                                                    Converter={StaticResource ContainsKeyVisibilityConverter},
+                                                    ConverterParameter={StaticResource provinceKey}}"
+                                         Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+
+                            </StackLayout>
+
+                            <!-- Province FIELD-->
+                            <StackLayout>
+
+                            
+                                <Entry 
+                                    Placeholder="{ i18n:Translate Common.Placeholder.School.Tfno }"
+                                    Style="{StaticResource ArtinaProfileEntryStyle}" 
+                                    Text="{ Binding NewSchool.Tfno }"/>
+
+
+                                <Label
+                                        Text="{Binding Path=FieldErrors,                            
+                                                    Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                    ConverterParameter={StaticResource tfnoKey}}"
+                                         IsVisible="{Binding Path=FieldErrors,                            
+                                                    Converter={StaticResource ContainsKeyVisibilityConverter},
+                                                    ConverterParameter={StaticResource tfnoKey}}"
+                                         Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+
+                            </StackLayout>
+
+
+                             <!-- Province FIELD-->
+                            <StackLayout>
+
+                            
+                                <Entry 
+                                    Placeholder="{ i18n:Translate Common.Placeholder.School.Email }"
+                                    Style="{StaticResource ArtinaProfileEntryStyle}" 
+                                    Text="{ Binding NewSchool.Email }"/>
+
+
+                                <Label
+                                        Text="{Binding Path=FieldErrors,                            
+                                                    Converter={StaticResource ValidationErrorFormatValueConverter},
+                                                    ConverterParameter={StaticResource emailKey}}"
+                                         IsVisible="{Binding Path=FieldErrors,                            
+                                                    Converter={StaticResource ContainsKeyVisibilityConverter},
+                                                    ConverterParameter={StaticResource emailKey}}"
+                                         Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+
+                            </StackLayout>
+
+
+                    </StackLayout>
+
+         </ScrollView>
+
+
+
+        <!-- FOOTER -->
+        <StackLayout
+            Grid.Row="3"
+            HorizontalOptions="Fill"
+            VerticalOptions="End" 
+            Padding="20, 0">
+
+             <artina:Button 
                 Command="{ Binding SaveSchoolCommand }"
                 Style="{StaticResource SaveButtonStyle}" 
                 Text="{ i18n:Translate Common.Btn.Save.Changes }" />
-    </StackLayout>
+
+        </StackLayout>
+      </Grid>
 </pages:PopupPage>

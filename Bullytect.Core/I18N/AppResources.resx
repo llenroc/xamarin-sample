@@ -140,7 +140,37 @@
         <value> Telephone </value>
         <comment>Common Placeholder Telephone</comment>
     </data>
-	
+
+	<data name="Common.Placeholder.School.Name" xml:space="preserve">
+        <value> Name </value>
+        <comment>Common Placeholder School Name</comment>
+    </data>
+
+	<data name="Common.Placeholder.School.Residence" xml:space="preserve">
+        <value> Residence </value>
+        <comment>Common Placeholder School Residence</comment>
+    </data>
+
+	<data name="Common.Placeholder.School.Location" xml:space="preserve">
+        <value> Location </value>
+        <comment>Common Placeholder School Location</comment>
+    </data>
+
+	<data name="Common.Placeholder.School.Province" xml:space="preserve">
+        <value> Province </value>
+        <comment>Common Placeholder School Province</comment>
+    </data>
+
+	<data name="Common.Placeholder.School.Tfno" xml:space="preserve">
+        <value> Tfno </value>
+        <comment>Common Placeholder School Tfno</comment>
+    </data>
+
+	<data name="Common.Placeholder.School.Email" xml:space="preserve">
+        <value> Email </value>
+        <comment>Common Placeholder School Email</comment>
+    </data>
+
 
 	<!-- Walkthrough -->
 
@@ -562,7 +592,21 @@
         <comment>EditSon Social Media Deleted</comment>
     </data>
 
+	<data name="EditSon.School.Not.Found" xml:space="preserve">
+        <value> No schools found. You must add it </value>
+        <comment>EditSon School Not Found</comment>
+    </data>
 
+	<data name="EditSon.Saving.School" xml:space="preserve">
+        <value> Saving School ... </value>
+        <comment>EditSon Saving School</comment>
+    </data>
+	
+
+    <data name="EditSon.School.Saved" xml:space="preserve">
+        <value> School Saved </value>
+        <comment>EditSon School Saved</comment>
+    </data>
 	   
 	
 

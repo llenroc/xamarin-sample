@@ -191,6 +191,42 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Common_Placeholder_School_Name {
+            get {
+                return ResourceManager.GetString("Common.Placeholder.School.Name", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Placeholder_School_Residence {
+            get {
+                return ResourceManager.GetString("Common.Placeholder.School.Residence", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Placeholder_School_Location {
+            get {
+                return ResourceManager.GetString("Common.Placeholder.School.Location", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Placeholder_School_Province {
+            get {
+                return ResourceManager.GetString("Common.Placeholder.School.Province", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Placeholder_School_Tfno {
+            get {
+                return ResourceManager.GetString("Common.Placeholder.School.Tfno", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Placeholder_School_Email {
+            get {
+                return ResourceManager.GetString("Common.Placeholder.School.Email", resourceCulture);
+            }
+        }
+        
         internal static string Walkthrough_Btn_Next {
             get {
                 return ResourceManager.GetString("Walkthrough.Btn.Next", resourceCulture);
@@ -626,6 +662,24 @@ namespace Bullytect.Core.I18N {
         internal static string EditSon_Social_Media_Deleted {
             get {
                 return ResourceManager.GetString("EditSon.Social.Media.Deleted", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_School_Not_Found {
+            get {
+                return ResourceManager.GetString("EditSon.School.Not.Found", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Saving_School {
+            get {
+                return ResourceManager.GetString("EditSon.Saving.School", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_School_Saved {
+            get {
+                return ResourceManager.GetString("EditSon.School.Saved", resourceCulture);
             }
         }
         

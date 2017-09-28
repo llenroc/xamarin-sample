@@ -39,13 +39,6 @@ namespace Bullytect.Core.ViewModels
 
 		#region Properties 
 
-		Dictionary<string, string> _fieldErrors = new Dictionary<string, string>();
-
-		public Dictionary<string, string> FieldErrors
-		{
-			get => _fieldErrors;
-			set => SetProperty(ref _fieldErrors, value);
-		}
 
         string _email;
 
@@ -62,19 +55,5 @@ namespace Bullytect.Core.ViewModels
         public ReactiveCommand<string, string> ResetPasswordCommand { get; protected set; }
 
 		#endregion
-
-		protected override void HandleExceptions(Exception ex)
-		{
-
-			if (ex is DataInvalidException)
-			{
-				var dataInvalidEx = (DataInvalidException)ex;
-				FieldErrors = dataInvalidEx.FieldErrors;
-			}
-			else
-			{
-				base.HandleExceptions(ex);
-			}
-		}
     }
 }

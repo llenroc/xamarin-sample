@@ -77,6 +77,14 @@ namespace Bullytect.Core.Utils
             };
         }
 
+		static NoSchoolFoundException createNotSchoolFoundException(ApiException ex)
+		{
+			return new NoSchoolFoundException()
+			{
+				Response = ex.GetContentAs<APIResponse<string>>()
+			};
+		}
+
         public static Exception parseApiException(ApiException ex) {
 
             Exception exResponse = null;
@@ -110,10 +118,15 @@ namespace Bullytect.Core.Utils
                         case ResponseNames.FAILED_TO_UPLOAD_IMAGE_RESPONSE:
                             exResponse = createUploadImageFailException(ex);
                             break;
+                            // Parse No Schools not found
+                        case ResponseNames.NO_SCHOOLS_FOUND_RESPONSE:
+                            exResponse = createNotSchoolFoundException(ex);
+                            break;
 							// Parse Generic Error
                         case ResponseNames.GENERIC_ERROR_RESPONSE:
                             exResponse = createGenericErrorException(ex);
                             break;
+
 					}
 				}
 			}

@@ -41,7 +41,6 @@
     <Compile Include="Models\Request\SaveSocialMediaDTO.cs" />
     <Compile Include="Models\Request\UpdateParentDTO.cs" />
     <Compile Include="Utils\Logging\HttpLoggingHandler.cs" />
-    <Compile Include="Services\IDeviceGroupsRestService.cs" />
     <Compile Include="Models\Response\DeviceDTO.cs" />
     <Compile Include="Models\Exceptions\AuthenticationFailedException.cs" />
     <Compile Include="Models\Exceptions\LoadProfileFailedException.cs" />
@@ -63,6 +62,11 @@
     <Compile Include="Models\Exceptions\UploadImageFailException.cs" />
     <Compile Include="Models\Request\RegisterSonDTO.cs" />
     <Compile Include="Models\Request\UpdateSonDTO.cs" />
+    <Compile Include="Services\IDeviceGroupsRestService.cs" />
+    <Compile Include="Models\Response\SchoolDTO.cs" />
+    <Compile Include="Services\ISchoolRestService.cs" />
+    <Compile Include="Models\Request\AddSchoolDTO.cs" />
+    <Compile Include="Models\Exceptions\NoSchoolFoundException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

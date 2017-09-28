@@ -17,5 +17,7 @@ namespace Bullytect.Rest.Utils
         public const int GENERIC_ERROR_CODE= 502;
         public const string FAILED_TO_UPLOAD_IMAGE_RESPONSE = "FAILED_TO_UPLOAD_IMAGE";
         public const int FAILED_TO_UPLOAD_IMAGE_CODE = 1001;
+        public const string NO_SCHOOLS_FOUND_RESPONSE = "NO_SCHOOLS_FOUND";
+        public const int NO_SCHOOLS_FOUND_CODE = 606;
     }
 }
