@@ -8,6 +8,9 @@ namespace Bullytect.Core.Services
     {
 
         IObservable<IList<SocialMediaEntity>> GetAllSocialMediaBySon(string Id);
+        IObservable<SocialMediaEntity> SaveSocialMedia(string AccessToken, string Type, string Son);
+        IObservable<IList<SocialMediaEntity>> SaveAllSocialMedia(string IdSon, IList<SocialMediaEntity> SocialMediaEntities);
+        IObservable<SocialMediaEntity> DeleteSocialMedia(string IdSon, string IdSocial);
 
 
     }

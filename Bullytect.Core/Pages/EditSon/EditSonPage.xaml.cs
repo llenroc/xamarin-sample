@@ -2,6 +2,7 @@
 using Bullytect.Core.I18N;
 using Bullytect.Core.ViewModels;
 using MvvmCross.Forms.Core;
+using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.EditSon
 {
@@ -26,5 +27,7 @@ namespace Bullytect.Core.Pages.EditSon
             }
 				
 		}
+
+
     }
 }

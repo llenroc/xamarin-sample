@@ -46,7 +46,7 @@ namespace Bullytect.Core.ViewModels
 
 			RefreshCommand = ReactiveCommand.CreateCombined(new[] { loadProfileCommand, loadChildrenCommand });
 
-            RefreshCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);   
+            RefreshCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Home_Loading_Profile));   
 
             RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 

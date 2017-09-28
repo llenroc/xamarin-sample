@@ -12,6 +12,9 @@ namespace Bullytect.Core.Pages.Children
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+
+            //ChildrenListView.GestureRecognizers.Clear();
+            //ChildrenListView.GestureRecognizers.Add(new TapGestureRecognizer());
         }
 
 

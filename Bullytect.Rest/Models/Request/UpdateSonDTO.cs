@@ -3,9 +3,12 @@ using Newtonsoft.Json;
 
 namespace Bullytect.Rest.Models.Request
 {
-    public class RegisterSonDTO
+    public class UpdateSonDTO
     {
         #pragma warning disable CS1701
+
+		[JsonProperty("identity")]
+		public string Identity { get; set; }
 
 		[JsonProperty("first_name")]
         public string FirstName { get; set; }

@@ -11,6 +11,7 @@
 	<ContentView.Content>
 
         <StackLayout
+            x:Name="Item"
             Padding="5">
 
             <Grid 
@@ -26,7 +27,6 @@
                     Grid.Column="0"
                     FadeAnimationEnabled="true"
                     Source="user_profile_1.jpg"
-                    HeightRequest="{Binding ThumbnailHeight}" 
                     Aspect="AspectFill"/>
                 
                <!-- Right Column Content-->
@@ -38,24 +38,26 @@
                     <!-- Full name -->
                     <Label 
                         Text="{ Binding FullName }"
+                        TextColor="{ DynamicResource AccentColor }"
                         FontSize="{ artina:OnOrientationDouble
-                            PortraitPhone=15,
-                            LandscapePhone=15,
-                            PortraitTablet=17,
-                            LandscapeTablet=17 }"
+                            PortraitPhone=19,
+                            LandscapePhone=19,
+                            PortraitTablet=21,
+                            LandscapeTablet=21 }"
                         HorizontalOptions="Fill"
-                        TextColor="{ DynamicResource AccentColor }"/>
+                        />
 
                     <!-- School -->
                     <Label 
                         Text="{ Binding School }"
+                        TextColor="{ DynamicResource AccentColor }"
                         FontSize="{ artina:OnOrientationDouble
-                            PortraitPhone=9,
-                            LandscapePhone=9,
-                            PortraitTablet=10,
-                            LandscapeTablet=10 }"
+                            PortraitPhone=12,
+                            LandscapePhone=12,
+                            PortraitTablet=13,
+                            LandscapeTablet=13 }"
                         HorizontalOptions="Fill"
-                        TextColor="{ DynamicResource BaseTextColor }"/>
+                        />
                 </StackLayout>
 
              </Grid>
@@ -73,131 +75,55 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-
-                <!-- User Detail Action -->
-                <StackLayout
+                <artina:Button
                     Grid.Column="0"
-                    Orientation="Horizontal"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    Spacing="0">
+                    Style="{StaticResource TransparentAccentColorButtonStyle}"
+                    VerticalOptions="End"
+                    Text="{i18n:Translate Children.Toolbar.Profile}"
+                    Command="{ Binding ShowSonProfileCommand }"
+                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"
+                    WidthRequest="{ artina:OnOrientationDouble
+                        LandscapePhone=200,
+                        LandscapeTablet=400 }"
+                    HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                        PortraitPhone=Fill,
+                        LandscapePhone=Center,
+                        PortraitTablet=Fill,
+                        LandscapeTablet=Center }"/>
 
-                    <Label
-                        VerticalTextAlignment="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="{ x:Static helper:FontAwesomeFont.User }"
-                        FontFamily="{ StaticResource IconsFontFamily }"
-                        TextColor="{ DynamicResource AccentColor }">
 
-                        <Label.FontSize>
-                           <OnIdiom 
-                                x:TypeArguments="x:Double" 
-                                Phone="15" 
-                                Tablet="20" />
-                        </Label.FontSize> 
-                    </Label>
-
-                    <Label
-                        VerticalTextAlignment="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="{i18n:Translate Children.Toolbar.Profile}"
-                        TextColor="{ DynamicResource AccentColor }">
-                        <Label.FontSize>
-                            <OnIdiom 
-                                x:TypeArguments="x:Double" 
-                                Phone="15" 
-                                Tablet="20" />
-                        </Label.FontSize> 
-                    </Label>
-
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{ Binding ShowSonProfileCommand }" CommandParameter="{Binding .}" NumberOfTapsRequired="1" /> 
-                    </StackLayout.GestureRecognizers>
-                </StackLayout>
-
-                <!-- Alerts Action -->
-
-                <StackLayout
+                <artina:Button
                     Grid.Column="1"
-                    Orientation="Horizontal"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    Spacing="0">
+                    Style="{StaticResource TransparentAccentColorButtonStyle}"
+                    VerticalOptions="End"
+                    Text="{i18n:Translate Children.Toolbar.Alerts}"
+                    Command="{ Binding ShowSonProfileCommand }"
+                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"
+                    WidthRequest="{ artina:OnOrientationDouble
+                        LandscapePhone=200,
+                        LandscapeTablet=400 }"
+                    HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                        PortraitPhone=Fill,
+                        LandscapePhone=Center,
+                        PortraitTablet=Fill,
+                        LandscapeTablet=Center }"/>
 
-                    <Label
-                        VerticalTextAlignment="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="{ x:Static helper:FontAwesomeFont.Bell }"
-                        FontFamily="{ StaticResource IconsFontFamily }"
-                        TextColor="{ DynamicResource AccentColor }">
 
-                        <Label.FontSize>
-                           <OnIdiom 
-                                x:TypeArguments="x:Double" 
-                                Phone="15" 
-                                Tablet="20" />
-                        </Label.FontSize> 
-                    </Label>
-
-                    <Label
-                        VerticalTextAlignment="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="{i18n:Translate Children.Toolbar.Alerts}"
-                        TextColor="{ DynamicResource AccentColor }">
-                        <Label.FontSize>
-                            <OnIdiom 
-                                x:TypeArguments="x:Double" 
-                                Phone="15" 
-                                Tablet="20" />
-                        </Label.FontSize> 
-                    </Label>
-
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{ Binding ShowSonProfileCommand }" CommandParameter="{Binding .}" NumberOfTapsRequired="1" /> 
-                    </StackLayout.GestureRecognizers>
-                </StackLayout>
-
-                <!-- Redes Sociales Action -->
-
-                <StackLayout
+                <artina:Button
                     Grid.Column="2"
-                    Orientation="Horizontal"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    Spacing="0">
-
-                    <Label
-                        VerticalTextAlignment="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="{ x:Static helper:FontAwesomeFont.Facebook }"
-                        FontFamily="{ StaticResource IconsFontFamily }"
-                        TextColor="{ DynamicResource AccentColor }">
-
-                        <Label.FontSize>
-                           <OnIdiom 
-                                x:TypeArguments="x:Double" 
-                                Phone="15" 
-                                Tablet="20" />
-                        </Label.FontSize> 
-                    </Label>
-
-                    <Label
-                        VerticalTextAlignment="Center"
-                        HorizontalTextAlignment="Center"
-                        Text="{i18n:Translate Children.Toolbar.RRSS}"
-                        TextColor="{ DynamicResource AccentColor }">
-                        <Label.FontSize>
-                            <OnIdiom 
-                                x:TypeArguments="x:Double" 
-                                Phone="15" 
-                                Tablet="20" />
-                        </Label.FontSize> 
-                    </Label>
-
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{ Binding ShowSonProfileCommand }" CommandParameter="{Binding .}" NumberOfTapsRequired="1" /> 
-                    </StackLayout.GestureRecognizers>
-                </StackLayout>
+                    Style="{StaticResource TransparentAccentColorButtonStyle}"
+                    VerticalOptions="End"
+                    Text="{i18n:Translate Children.Toolbar.Edit}"
+                    Command="{ Binding ShowSonProfileCommand }"
+                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"
+                    WidthRequest="{ artina:OnOrientationDouble
+                        LandscapePhone=200,
+                        LandscapeTablet=400 }"
+                    HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                        PortraitPhone=Fill,
+                        LandscapePhone=Center,
+                        PortraitTablet=Fill,
+                        LandscapeTablet=Center }"/>
                 
             </Grid>
 

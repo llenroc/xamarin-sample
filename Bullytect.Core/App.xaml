@@ -273,7 +273,7 @@
                 <Setter Property="TextColor" Value="White" />
             </Style>
 
-            <Style x:Key="RoundShape" TargetType="Label" BasedOn="{ StaticResource FontIconBase }">
+            <Style x:Key="RoundShape" TargetType="Label" BasedOn = "{StaticResource FontIcon}">
                 <Setter Property="Text" Value="{ x:Static helper:FontAwesomeFont.Circle }" />
             </Style>
 
@@ -390,6 +390,13 @@
                 <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}" />
             </Style>
 
+
+            <Style x:Key="TransparentAccentColorButtonStyle" TargetType="Button" BasedOn="{StaticResource RoundedButtonStyle}">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="{DynamicResource AccentColor }" />
+                <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}" />
+            </Style>
+
             <!-- ENTRY FIELDS -->
             <Style x:Key="ArtinaEntryStyle" TargetType="Entry">
                 <Setter Property="TextColor" Value="White" />
@@ -426,6 +433,31 @@
                     -->
                     <Trigger TargetType="Entry" Property="IsFocused" Value="False">
                         <Setter Property="artina:EntryProperties.BorderColor" Value="{ DynamicResource OverImageTextColor }" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="ArtinaProfileEntryStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="{ DynamicResource AccentColor }" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="artina:EntryProperties.BorderStyle" Value="BottomLine" />
+                <Setter Property="artina:EntryProperties.BorderColor" Value="{ DynamicResource AccentColor }" />
+                <Setter Property="artina:EntryProperties.PlaceholderColor" Value="{ DynamicResource AccentColor }" />
+
+                <Style.Triggers>
+                    <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                        <Setter Property="artina:EntryProperties.BorderColor" Value="{ DynamicResource AccentColor }" />
+                    </Trigger>
+
+                    <!-- 
+                         Workaround:
+                    
+                         This double Property Trigger daclaration should not be necessary. Setting the Trigger for IsFocused=True
+                         should be enough. But Property Triggers don't play nice with StaticResource values (XF 2.3.3.193). As a workaround
+                         the Trigger for IsFocused=False has been added too. 
+                    -->
+                    <Trigger TargetType="Entry" Property="IsFocused" Value="False">
+                        <Setter Property="artina:EntryProperties.BorderColor" Value="{ DynamicResource AccentColor }" />
                     </Trigger>
                 </Style.Triggers>
             </Style>
@@ -581,7 +613,7 @@
 
             <Style x:Key="ChildrenBoxViewHorizontalStyle" TargetType="BoxView" BasedOn="{ StaticResource HorizontalRuleStyle }">
                 <Setter Property="BackgroundColor" Value="{ DynamicResource AccentColor }" />
-                <Setter Property="Margin" Value="0,28" />
+                <Setter Property="Margin" Value="0,15" />
             </Style>
 
             <Style x:Key="LoginPadding" TargetType="StackLayout">

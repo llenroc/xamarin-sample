@@ -161,26 +161,6 @@ namespace Bullytect.Core.Services.Impl
 
         }
 
-        public IObservable<SonEntity> AddSonToSelfParent(string FirstName, string Lastname, DateTime Birthdate)
-        {
-            Debug.WriteLine("Add Son To Self Parent");
-
-            var observable = _parentsRestService
-                .AddSonToSelfParent(new RegisterSonDTO() {
-                    FirstName = FirstName,
-                    LastName = Lastname,
-                    Birthdate = Birthdate
-                }).Select((response) => response.Data)
-                .Select(son => Mapper.Map<SonDTO, SonEntity>(son))
-				.Finally(() =>
-				{
-					Debug.WriteLine("Add Son To Self Parent Finished ...");
-				});
-
-            return operationDecorator(observable);
-
-        }
-
         public IObservable<SonEntity> GetSonById(string Id)
         {
 
@@ -197,6 +177,49 @@ namespace Bullytect.Core.Services.Impl
 
             return operationDecorator(observable);
             
+        }
+
+        public IObservable<SonEntity> AddSonToSelfParent(string FirstName, string Lastname, string Birthdate, string School)
+        {
+            Debug.WriteLine("Add Son To Self Parent");
+
+			var observable = _parentsRestService
+                .AddSonToSelfParent(new RegisterSonDTO()
+				{
+					FirstName = FirstName,
+					LastName = Lastname,
+					Birthdate = Birthdate,
+					School = School
+				}).Select((response) => response.Data)
+				.Select(son => Mapper.Map<SonDTO, SonEntity>(son))
+				.Finally(() =>
+				{
+					Debug.WriteLine("Add Son To Self Parent Finished ...");
+				});
+
+			return operationDecorator(observable);
+        }
+
+        public IObservable<SonEntity> UpdateSonInformation(string Identity, string FirstName, string Lastname, string Birthdate, string School)
+        {
+			Debug.WriteLine("Save Son Information");
+
+			var observable = _parentsRestService
+                .UpdateSonInformation(new UpdateSonDTO()
+				{
+                    Identity = Identity,
+					FirstName = FirstName,
+					LastName = Lastname,
+					Birthdate = Birthdate,
+					School = School
+				}).Select((response) => response.Data)
+				.Select(son => Mapper.Map<SonDTO, SonEntity>(son))
+				.Finally(() =>
+				{
+					Debug.WriteLine("Save Son Information Finished ...");
+				});
+
+			return operationDecorator(observable);
         }
     }
 }

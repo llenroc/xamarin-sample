@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 using Acr.UserDialogs;
+using Bullytect.Core.I18N;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
 using Bullytect.Rest.Models.Exceptions;
@@ -30,7 +31,7 @@ namespace Bullytect.Core.ViewModels
 
 			LoadNotificationsCommand.ToProperty(this, x => x.AlertList, out _alertList);
 
-			LoadNotificationsCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
+            LoadNotificationsCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Loading_Alerts));
 
 			LoadNotificationsCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }

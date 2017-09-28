@@ -318,6 +318,9 @@
     <Reference Include="Plugin.Media">
       <HintPath>..\packages\Xam.Plugin.Media.3.0.1\lib\MonoAndroid10\Plugin.Media.dll</HintPath>
     </Reference>
+    <Reference Include="Behaviors">
+      <HintPath>..\packages\Behaviors.Forms.1.2.0\lib\portable45-net45+win8+wp8+wpa81\Behaviors.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bullytect.Core\Bullytect.Core.csproj">
@@ -346,6 +349,7 @@
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="Providers\OAuth.cs" />
     <Compile Include="Presenters\CustomAndroidPresenter.cs" />
+    <Compile Include="Renderers\TableViewWithoutBorderRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -377,6 +381,7 @@
   <ItemGroup>
     <Folder Include="Providers\" />
     <Folder Include="Presenters\" />
+    <Folder Include="Renderers\" />
   </ItemGroup>
   <ItemGroup>
     <GoogleServicesJson Include="google-services.json" />

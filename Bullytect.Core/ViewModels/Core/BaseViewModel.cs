@@ -127,6 +127,7 @@ namespace Bullytect.Core.ViewModels
         {
             if (isLoading)
             {
+                ErrorOccurred = false;
                 _userDialogs.ShowLoading(Text, MaskType.Black);
             }
             else

@@ -77,6 +77,9 @@ namespace Bullytect.Core.ViewModels
 
             TakePhotoCommand = CommandFactory.CreateTakePhotoCommand(_parentService, _imagesService, _userDialogs);
 
+            TakePhotoCommand.Subscribe((image) => {
+                _userDialogs.ShowSuccess(AppResources.Profile_Updating_Profile_Image_Success);
+            });
             TakePhotoCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
 		}

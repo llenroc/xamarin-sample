@@ -26,7 +26,15 @@ namespace Bullytect.Rest.Services
 
 		[Post("/children/social/save")]
         [Headers("Authorization: Bearer")]
-		IObservable<APIResponse<ParentDTO>> SaveSocialMedia([Body] SaveSocialMediaDTO socialMedia);
+		IObservable<APIResponse<SocialMediaDTO>> SaveSocialMedia([Body] SaveSocialMediaDTO socialMedia);
+
+		[Post("/children/{id}/social/save/all")]
+		[Headers("Authorization: Bearer")]
+        IObservable<APIResponse<IList<SocialMediaDTO>>> SaveAllSocialMedia([AliasAs("id")] string IdSon, [Body] IList<SocialMediaDTO> socialMedias);
+
+        [Delete("/{idson}/social/delete/{idsocial}")]
+		[Headers("Authorization: Bearer")]
+		IObservable<APIResponse<SocialMediaDTO>> DeleteSocialMedia([AliasAs("idson")] string idson, [AliasAs("idsocial")] string idsocial);
 
     }
 }

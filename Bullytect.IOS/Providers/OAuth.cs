@@ -43,7 +43,7 @@ namespace Bullytect.iOS.Providers
                     if (!eventPattern.EventArgs.IsAuthenticated)
                         Observable.Throw<FacebookAuthenticationErrorException>(new FacebookAuthenticationErrorException());
 
-                    var accessToken = eventPattern.EventArgs.Account.Properties["access_token"].ToString();
+                    var accessToken = eventPattern?.EventArgs?.Account?.Properties["access_token"]?.ToString();
 
                     return accessToken;
 

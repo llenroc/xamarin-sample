@@ -20,7 +20,8 @@ namespace Bullytect.Core.Services
         IObservable<string> ResetPassword(string email);
         IObservable<string> DeleteAccount();
         IObservable<ImageEntity> UploadProfileImage(Stream FileStream);
-        IObservable<SonEntity> AddSonToSelfParent(string FirstName, string Lastname, DateTime Birthdate);
+        IObservable<SonEntity> AddSonToSelfParent(string FirstName, string Lastname, string Birthdate, string School);
+        IObservable<SonEntity> UpdateSonInformation(string Identity, string FirstName, string Lastname, string Birthdate, string School);
         IObservable<SonEntity> GetSonById(string Id);
     }
 }

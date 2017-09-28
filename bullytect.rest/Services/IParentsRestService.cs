@@ -44,9 +44,11 @@ namespace Bullytect.Rest.Services
 
 		[Post("/parents/self/children/add")]
 		[Headers("Authorization: Bearer")]
-        IObservable<APIResponse<SonDTO>> AddSonToSelfParent([Body] RegisterSonDTO son);
+		IObservable<APIResponse<SonDTO>> AddSonToSelfParent([Body] RegisterSonDTO son);
 
-
+		[Post("/parents/self/children/update")]
+		[Headers("Authorization: Bearer")]
+        IObservable<APIResponse<SonDTO>> UpdateSonInformation([Body] UpdateSonDTO son);
 
 
     }

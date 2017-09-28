@@ -12,13 +12,15 @@
     xmlns:templates="clr-namespace:Bullytect.Core.Pages.Children.Templates"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:sonTemplate="clr-namespace:Bullytect.Core.Pages.Son"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     x:Class="Bullytect.Core.Pages.Children.ChildrenPage"
     x:TypeArguments="viewModels:ChildrenViewModel"
     BackgroundColor="{ DynamicResource BasePageColor }"
-    Title="{i18n:Translate Page.Children.Title}">
+    Title="{i18n:Translate Page.Children.Title}"
+    x:Name="Root">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
             <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -44,28 +46,210 @@
             RefreshCommand="{Binding LoadChildrenCommand}"
             IsRefreshing="{Binding IsBusy, Mode=OneWay}">
 
-            <ListView.Behaviors>
-                <utils:EventToCommandBehavior 
-                    EventName="ItemTapped"
-                    Command="{Binding ShowSonProfileCommand}" 
-                    EventArgsConverter="{ StaticResource ItemTappedEventArgsConverter }" />
-            </ListView.Behaviors>
 
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <templates:ChildrenItemTemplate />
+                        <StackLayout
+                            x:Name="Item"
+                            Padding="5">
+
+                            <Grid 
+                                ColumnSpacing="10" >
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                               <!---Left Column Content -->
+                                <ffimageloading:CachedImage 
+                                    Grid.Column="0"
+                                    FadeAnimationEnabled="true"
+                                    Source="user_profile_1.jpg"
+                                    Aspect="AspectFill"/>
+                                
+                               <!-- Right Column Content-->
+                               <StackLayout
+                                    Grid.Column="1"
+                                    Padding="0,10,0,10"
+                                    Spacing="0">
+
+                                    <!-- Full name -->
+                                    <Label 
+                                        Text="{ Binding FullName }"
+                                        TextColor="{ DynamicResource AccentColor }"
+                                        FontSize="{ artina:OnOrientationDouble
+                                            PortraitPhone=19,
+                                            LandscapePhone=19,
+                                            PortraitTablet=21,
+                                            LandscapeTablet=21 }"
+                                        HorizontalOptions="Fill"
+                                        />
+
+                                    <!-- School -->
+                                    <Label 
+                                        Text="{ Binding School }"
+                                        TextColor="{ DynamicResource AccentColor }"
+                                        FontSize="{ artina:OnOrientationDouble
+                                            PortraitPhone=12,
+                                            LandscapePhone=12,
+                                            PortraitTablet=13,
+                                            LandscapeTablet=13 }"
+                                        HorizontalOptions="Fill"
+                                        />
+                                </StackLayout>
+
+                             </Grid>
+
+                            <BoxView Style="{ StaticResource ChildrenBoxViewHorizontalStyle }" />
+
+
+                            <!-- TOOLBAR -->
+                            <Grid
+                                Padding="10"
+                                VerticalOptions="End">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- User Detail Action -->
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Spacing="0">
+
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{ x:Static helper:FontAwesomeFont.User }"
+                                        FontFamily="{ StaticResource IconsFontFamily }"
+                                        TextColor="{ DynamicResource AccentColor }">
+
+                                        <Label.FontSize>
+                                           <OnIdiom 
+                                                x:TypeArguments="x:Double" 
+                                                Phone="15" 
+                                                Tablet="20" />
+                                        </Label.FontSize> 
+                                    </Label>
+
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{i18n:Translate Children.Toolbar.Profile}">
+                                        <Label.FontSize>
+                                            <OnIdiom 
+                                                x:TypeArguments="x:Double" 
+                                                Phone="15" 
+                                                Tablet="20" />
+                                        </Label.FontSize> 
+                                    </Label>
+
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{ Binding Path=BindingContext.ShowSonProfileCommand , Source={x:Reference Root} }"
+                                            CommandParameter="{Binding .}" NumberOfTapsRequired="1" /> 
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+
+
+                                 <!-- Alerts Action -->
+
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Spacing="0">
+
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{ x:Static helper:FontAwesomeFont.Bell }"
+                                        FontFamily="{ StaticResource IconsFontFamily }">
+
+                                        <Label.FontSize>
+                                           <OnIdiom 
+                                                x:TypeArguments="x:Double" 
+                                                Phone="15" 
+                                                Tablet="20" />
+                                        </Label.FontSize> 
+                                    </Label>
+
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{i18n:Translate Children.Toolbar.Alerts}">
+                                        <Label.FontSize>
+                                            <OnIdiom 
+                                                x:TypeArguments="x:Double" 
+                                                Phone="15" 
+                                                Tablet="20" />
+                                        </Label.FontSize> 
+                                    </Label>
+
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{ Binding Path=BindingContext.ShowSonProfileCommand , Source={x:Reference Root} }"
+                                            CommandParameter="{Binding .}" NumberOfTapsRequired="1" />  
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+
+                                <!-- Edit Profile Action -->
+
+                                <StackLayout
+                                    Grid.Column="2"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Spacing="0">
+
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{ x:Static helper:FontAwesomeFont.Pencil }"
+                                        FontFamily="{ StaticResource IconsFontFamily }">
+
+                                        <Label.FontSize>
+                                           <OnIdiom 
+                                                x:TypeArguments="x:Double" 
+                                                Phone="15" 
+                                                Tablet="20" />
+                                        </Label.FontSize> 
+                                    </Label>
+
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{i18n:Translate Children.Toolbar.Edit}">
+                                        <Label.FontSize>
+                                            <OnIdiom 
+                                                x:TypeArguments="x:Double" 
+                                                Phone="15" 
+                                                Tablet="20" />
+                                        </Label.FontSize> 
+                                    </Label>
+
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{ Binding Path=BindingContext.ShowSonProfileCommand , Source={x:Reference Root} }"
+                                            CommandParameter="{Binding .}" NumberOfTapsRequired="1" /> 
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+
+                                
+                            </Grid>
+
+                        </StackLayout>
+
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
 
             <ListView.Triggers>
-                <DataTrigger 
-                    TargetType="ListView" 
-                    Binding="{Binding IsBusy}"
-                    Value="True">
-                    <Setter Property="IsVisible" Value="False" />
-                </DataTrigger>
                 <DataTrigger 
                     TargetType="ListView"
                     Binding="{Binding DataFound}"

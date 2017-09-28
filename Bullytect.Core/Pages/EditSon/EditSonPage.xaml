@@ -9,6 +9,7 @@
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
     xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
     xmlns:extended="clr-namespace:Bullytect.Core.Pages.Common.Extended"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
@@ -20,9 +21,14 @@
                 <converters:ContainsKeyVisibilityConverter x:Key="ContainsKeyVisibilityConverter"/>
                 <converters:ValidationErrorFormatValueConverter x:Key="ValidationErrorFormatValueConverter"/>
                 <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+                <converters:SocialMediaFormatValueConverter x:Key="SocialMediaFormatValueConverter" />
+                <converters:SwitchChangeEventArgsConverter x:Key="SwitchChangeEventArgsConverter" />
                 <x:String x:Key="firstNameKey">firstName</x:String>
                 <x:String x:Key="lastNameKey">lastName</x:String>
                 <x:String x:Key="schoolKey">school</x:String>
+                <x:String x:Key="facebookKey">FACEBOOK</x:String>
+                <x:String x:Key="instagramKey">INSTAGRAM</x:String>
+                <x:String x:Key="youtubeKey">YOUTUBE</x:String>
             </ResourceDictionary>
     </ContentPage.Resources>
 	<ContentPage.Content>
@@ -38,7 +44,7 @@
                     Padding="20" 
                     VerticalOptions="FillAndExpand">
 
-                    <TableView Intent="Settings" VerticalOptions="Start">
+                    <extended:TableViewWithoutBorders VerticalOptions="Start">
                         <TableView.Root>
 
                             <TableSection Title="{i18n:Translate EditSon.General.Section.Title}" > 
@@ -60,6 +66,7 @@
                                         <Entry
                                             Placeholder="{ i18n:Translate Common.Placeholder.Firstname }"
                                             VerticalOptions="StartAndExpand"
+                                            Style="{StaticResource ArtinaProfileEntryStyle}"
                                             Text="{ Binding CurrentSon.FirstName }"/>
                                         <Label
                                             Text="{Binding Path=FieldErrors,  
@@ -78,8 +85,9 @@
 
                                     <StackLayout>
                                         <Entry
-                                            Placeholder="{ i18n:Translate Common.Placeholder.Lastname }"
+                                            Placeholder="{ i18n:Translate Common.Placeholder.LastName }"
                                             VerticalOptions="StartAndExpand"
+                                            Style="{StaticResource ArtinaProfileEntryStyle}"
                                             Text="{ Binding CurrentSon.Lastname }"/>
                                         <Label
                                             Text="{Binding Path=FieldErrors,  
@@ -92,28 +100,219 @@
                                     </StackLayout>
 
                                </extended:ExtendedViewCell>
+
+                               <!-- School -->
+                            <!--<extended:SelectCell Items="{Binding Schools}" />-->
+
+
                                 
                             </TableSection>
 
-                            <TableSection Title="{i18n:Translate EditSon.RRSS.Section.Title}">   
-                                <SwitchCell On="{Binding Path=FieldErrors,  
-                                                Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                ConverterParameter={StaticResource lastNameKey}}" Text="{i18n:Translate Common.RRSS.Facebook}" />
-                                <SwitchCell On="{Binding Path=FieldErrors,  
-                                                Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                ConverterParameter={StaticResource lastNameKey}}" Text="{i18n:Translate Common.RRSS.Instagram}" />
-                                <SwitchCell On="{Binding Path=FieldErrors,  
-                                                Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                ConverterParameter={StaticResource lastNameKey}}" Text="{i18n:Translate Common.RRSS.Youtube}" />
+                            <TableSection Title="{i18n:Translate EditSon.RRSS.Section.Title}"> 
+
+                                <!-- Facebook Switch Cell -->
+                                <extended:ExtendedViewCell SeparatorColor="{ DynamicResource AccentColor }" SeparatorPadding="5">
+                                    <Grid ColumnSpacing="10" Padding="5">
+                                    
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+
+                                        <StackLayout
+                                            Grid.Column="0"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Start"
+                                            Spacing="0">
+                                            
+                                                <Label
+                                                    VerticalTextAlignment="Center"
+                                                    HorizontalTextAlignment="Start"
+                                                    Text="{ x:Static helper:FontAwesomeFont.Facebook }"
+                                                    FontFamily="{ StaticResource IconsFontFamily }"
+                                                    TextColor="{ DynamicResource AccentColor }">
+
+                                                    <Label.FontSize>
+                                                        <OnIdiom 
+                                                            x:TypeArguments="x:Double" 
+                                                            Phone="15" 
+                                                            Tablet="20" />
+                                                    </Label.FontSize> 
+
+                                                </Label>
+                                                <Label
+                                                    VerticalTextAlignment="Center"
+                                                    HorizontalTextAlignment="Start"
+                                                    Text="{i18n:Translate Common.RRSS.Facebook}"
+                                                    TextColor="{ DynamicResource AccentColor }">
+                                                    <Label.FontSize>
+                                                        <OnIdiom 
+                                                            x:TypeArguments="x:Double" 
+                                                            Phone="15" 
+                                                            Tablet="20" />
+                                                    </Label.FontSize> 
+                                                </Label>
+                                            
+                                        </StackLayout>
+
+
+                                        <Switch VerticalOptions="Center" HorizontalOptions="End" Grid.Column="1" IsToggled="{Binding Path=CurrentSocialMedia,  
+                                                Converter={StaticResource SocialMediaFormatValueConverter},
+                                                ConverterParameter={StaticResource facebookKey}}">
+
+                                                <Switch.Behaviors>
+                                                    <behaviors:EventHandlerBehavior EventName="Toggled">
+                                                        <behaviors:InvokeCommandAction 
+                                                                Command="{Binding ToggleFacebookSocialMediaCommand}"
+                                                                Converter="{StaticResource SwitchChangeEventArgsConverter}"/>
+                                                    </behaviors:EventHandlerBehavior>
+                                                </Switch.Behaviors>
+                                        </Switch>
+
+
+
+                                    </Grid>
+
+                                </extended:ExtendedViewCell>
+
+                                <!-- Instagram Switch Cell -->
+                                <extended:ExtendedViewCell SeparatorColor="{DynamicResource AccentColor}" SeparatorPadding="5">
+                                    <Grid ColumnSpacing="10" Padding="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout
+                                            Grid.Column="0"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Start"
+                                            Spacing="0">
+                                            
+                                                <Label
+                                                    VerticalTextAlignment="Center"
+                                                    HorizontalTextAlignment="Start"
+                                                    Text="{ x:Static helper:FontAwesomeFont.Instagram }"
+                                                    FontFamily="{ StaticResource IconsFontFamily }"
+                                                    TextColor="{ DynamicResource AccentColor }">
+
+                                                    <Label.FontSize>
+                                                        <OnIdiom 
+                                                            x:TypeArguments="x:Double" 
+                                                            Phone="15" 
+                                                            Tablet="20" />
+                                                    </Label.FontSize> 
+
+                                                </Label>
+                                                <Label
+                                                    VerticalTextAlignment="Center"
+                                                    HorizontalTextAlignment="Start"
+                                                    Text="{i18n:Translate Common.RRSS.Instagram}"
+                                                    TextColor="{ DynamicResource AccentColor }">
+                                                    <Label.FontSize>
+                                                        <OnIdiom 
+                                                            x:TypeArguments="x:Double" 
+                                                            Phone="15" 
+                                                            Tablet="20" />
+                                                    </Label.FontSize> 
+                                                </Label>
+                                            
+                                        </StackLayout>
+
+                                        <Switch Grid.Column="1"  VerticalOptions="Center" HorizontalOptions="End" IsToggled="{Binding Path=CurrentSocialMedia,  
+                                                Converter={StaticResource SocialMediaFormatValueConverter},
+                                                ConverterParameter={StaticResource instagramKey}}">
+
+                                                <Switch.Behaviors>
+                                                    <behaviors:EventHandlerBehavior EventName="Toggled">
+                                                        <behaviors:InvokeCommandAction 
+                                                                Command="{Binding ToggleInstagramSocialMediaCommand}"
+                                                                Converter="{StaticResource SwitchChangeEventArgsConverter}"/>
+                                                    </behaviors:EventHandlerBehavior>
+                                                </Switch.Behaviors>
+                                        </Switch>
+
+
+
+                                    </Grid>
+                                </extended:ExtendedViewCell>
+
+                                <!-- Youtube -->
+                                <extended:ExtendedViewCell SeparatorColor="{DynamicResource AccentColor}" SeparatorPadding="5">
+                                    <Grid ColumnSpacing="10" Padding="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout
+                                            Grid.Column="0"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Start"
+                                            Spacing="0">
+                                            
+                                                <Label
+                                                    VerticalTextAlignment="Center"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{ x:Static helper:FontAwesomeFont.Youtube }"
+                                                    FontFamily="{ StaticResource IconsFontFamily }"
+                                                    TextColor="{ DynamicResource AccentColor }">
+
+                                                    <Label.FontSize>
+                                                        <OnIdiom 
+                                                            x:TypeArguments="x:Double" 
+                                                            Phone="15" 
+                                                            Tablet="20" />
+                                                    </Label.FontSize> 
+
+                                                </Label>
+                                                <Label
+                                                    VerticalTextAlignment="Center"
+                                                    HorizontalTextAlignment="Start"
+                                                    Text="{i18n:Translate Common.RRSS.Youtube}"
+                                                    TextColor="{ DynamicResource AccentColor }">
+                                                    <Label.FontSize>
+                                                        <OnIdiom 
+                                                            x:TypeArguments="x:Double" 
+                                                            Phone="15" 
+                                                            Tablet="20" />
+                                                    </Label.FontSize> 
+                                                </Label>
+                                            
+                                        </StackLayout>
+                                        
+                                    
+                                        <Switch Grid.Column="1"  VerticalOptions="Center" HorizontalOptions="End" IsToggled="{Binding Path=CurrentSocialMedia,  
+                                                Converter={StaticResource SocialMediaFormatValueConverter},
+                                                ConverterParameter={StaticResource youtubeKey}}">
+
+                                                <Switch.Behaviors>
+                                                    <behaviors:EventHandlerBehavior EventName="Toggled">
+                                                        <behaviors:InvokeCommandAction 
+                                                                Command="{Binding ToggleYoutubeSocialMediaCommand}"
+                                                                Converter="{StaticResource SwitchChangeEventArgsConverter}"/>
+                                                    </behaviors:EventHandlerBehavior>
+                                                </Switch.Behaviors>
+                                        </Switch>
+
+
+
+                                    </Grid>
+                                </extended:ExtendedViewCell>
                             </TableSection>
 
                             
                         </TableView.Root>
-                    </TableView>
+                    </extended:TableViewWithoutBorders>
 
                     
                     <artina:Button 
                         IsEnabled="{Binding HaveInternet}"
+                        Command="{ Binding SaveChangesCommand }"
                         Style="{StaticResource SaveButtonStyle}" 
                         Text="{ i18n:Translate Common.Btn.Save.Changes }" />
 

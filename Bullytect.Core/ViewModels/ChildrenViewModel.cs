@@ -55,13 +55,6 @@ namespace Bullytect.Core.ViewModels
 
         public ReactiveCommand<string, IList<SonEntity>> LoadChildrenCommand { get; protected set; }
 
-        public ICommand ShowSonProfileCommand => new MvxCommand<SonEntity>((SonEntity SonEntity) => ShowViewModel<SonProfileViewModel>(new SonProfileViewModel.SonParameter()
-        {
-            Identity = SonEntity.Identity,
-            FullName = SonEntity.FullName,
-            Birthdate = SonEntity.Birthdate,
-            School = SonEntity.School
-        }));
 
         public ICommand GoToAddSonCommand
         {

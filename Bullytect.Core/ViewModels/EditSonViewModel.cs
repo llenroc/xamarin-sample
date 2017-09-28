@@ -1,13 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Reactive.Linq;
+using System.Windows.Input;
 using Acr.UserDialogs;
+using Bullytect.Core.I18N;
 using Bullytect.Core.Models.Domain;
+using Bullytect.Core.OAuth.Models;
+using Bullytect.Core.OAuth.Providers.Facebook;
+using Bullytect.Core.OAuth.Providers.Instagram;
+using Bullytect.Core.OAuth.Services;
 using Bullytect.Core.Services;
 using Bullytect.Core.Utils;
+using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
+using Xamarin.Forms;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -24,7 +33,7 @@ namespace Bullytect.Core.ViewModels
 
             _parentService = parentService;
             _socialMediaService = socialMediaService;
-
+            _imagesService = imagesService;
 
 			var GetSonByIdCommand  = ReactiveCommand
 				.CreateFromObservable<string, bool>((param) =>
@@ -54,10 +63,35 @@ namespace Bullytect.Core.ViewModels
 
 			TakePhotoCommand = CommandFactory.CreateTakePhotoCommand(_parentService, _imagesService, _userDialogs);
 
+			TakePhotoCommand.Subscribe((image) => {
+				_userDialogs.ShowSuccess(AppResources.Profile_Updating_Profile_Image_Success);
+			});
+
 			TakePhotoCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
-        }
 
+            SaveChangesCommand = ReactiveCommand
+                .CreateFromObservable<string, bool>((param) => {
+
+					return (CurrentSon.Identity == null ?
+								 _parentService.AddSonToSelfParent(CurrentSon.FirstName, CurrentSon.LastName, CurrentSon.Birthdate, CurrentSon.School) :
+								 _parentService.UpdateSonInformation(CurrentSon.Identity, CurrentSon.FirstName, CurrentSon.LastName, CurrentSon.Birthdate, CurrentSon.School))
+                                .Do((SonEntity) => CurrentSon = SonEntity)
+                                .SelectMany((SonEntity) => _socialMediaService.SaveAllSocialMedia(CurrentSon.Identity, CurrentSocialMedia.Select(s => { s.Son = CurrentSon.Identity; return s; }).ToList()))
+                                .Do((SocialMediaEntities) => CurrentSocialMedia = SocialMediaEntities)
+                                .Select((_) => true);   
+            });
+
+            SaveChangesCommand.Subscribe((_) => {
+                _userDialogs.ShowSuccess(AppResources.EditSon_Saved_Changes_Successfully);
+            });
+
+            SaveChangesCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.EditSon_Saving_Changes));
+
+			SaveChangesCommand.ThrownExceptions.Subscribe(HandleExceptions);
+
+
+        }
 
 		SonEntity _currentSon = new SonEntity();
 
@@ -73,6 +107,15 @@ namespace Bullytect.Core.ViewModels
 		{
 			get => _currentSocialMedia;
 			set => SetProperty(ref _currentSocialMedia, value);
+		}
+
+
+        IList<string> _schools = new List<string>() { "Colegio 1", "Colegio 2", "Colegio 3"};
+
+		public IList<string> Schools
+		{
+			get => _schools;
+			set => SetProperty(ref _schools, value);
 		}
 
         string _sonToEdit = null;
@@ -91,10 +134,62 @@ namespace Bullytect.Core.ViewModels
 
         #region commands
 
+            public ReactiveCommand<string, bool> SaveChangesCommand { get; protected set; }
+
             public ReactiveCommand<string, ImageEntity> TakePhotoCommand { get; set; }
 
             public ReactiveCommand RefreshCommand { get; protected set; }
 
+            public ICommand ToggleFacebookSocialMediaCommand => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new FacebookOAuth2(), AppConstants.FACEBOOK));
+
+            public ICommand ToggleInstagramSocialMediaCommand => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new InstagramOAuth2(), AppConstants.INSTAGRAM));
+
+            public ICommand ToggleYoutubeSocialMediaCommand => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new InstagramOAuth2(), AppConstants.YOUTUBE));
+
+
         #endregion
+
+
+        void ToggleSocialMediaHandler(bool Enabled, OAuth2 Provider, string Type ) {
+
+            if(Enabled) {
+
+                Debug.WriteLine(string.Format("Enable Social Media: {0}", Type));
+
+				var oauthService = DependencyService.Get<IOAuth>();
+                oauthService
+                    .authenticate(Provider)
+                    .Where(AccessToken => !string.IsNullOrWhiteSpace(AccessToken))
+                    .Subscribe(AccessToken =>
+                    {
+
+                        var SocialMedia = CurrentSocialMedia.SingleOrDefault(Social => Social.Type.Equals(Type));
+
+                        if(SocialMedia != null) {
+                                SocialMedia.AccessToken = AccessToken;
+                                SocialMedia.InvalidToken = false;
+                        } else {
+                            CurrentSocialMedia.Add(new SocialMediaEntity() {
+                                AccessToken = AccessToken,
+                                InvalidToken = false,
+                                Type = Type
+                            });
+                        }
+
+                        _userDialogs.ShowSuccess(AppResources.EditSon_Social_Media_Added);
+                    });
+
+            } else {
+
+                Debug.WriteLine(string.Format("Disable Social Media: {0}", Type));
+
+                ((List<SocialMediaEntity>)CurrentSocialMedia).RemoveAll((Social) => Social.Type.Equals(Type));
+
+                _userDialogs.ShowSuccess(AppResources.EditSon_Social_Media_Deleted);
+            
+            }
+
+			
+        }
     }
 }

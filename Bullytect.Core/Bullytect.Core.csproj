@@ -122,6 +122,9 @@
     <EmbeddedResource Include="Pages\Profile\Template\ProfileHeader.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Home\Templates\HomeHeader.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -294,6 +297,18 @@
     <Compile Include="Services\Impl\SocialMediaServiceImpl.cs" />
     <Compile Include="Utils\CommandFactory.cs" />
     <Compile Include="Converters\SocialMediaFormatValueConverter.cs" />
+    <Compile Include="Converters\SwitchChangeEventArgsConverter.cs" />
+    <Compile Include="OAuth\Providers\Instagram\InstagramOAuth2.cs" />
+    <Compile Include="Pages\Common\Extended\TableViewWithoutBorders.cs" />
+    <Compile Include="Pages\Common\Extended\ExtendedTextCell.cs" />
+    <Compile Include="Pages\Common\Extended\TextCellDetailLocation.cs" />
+    <Compile Include="Pages\Common\Extended\SelectCell.cs" />
+    <Compile Include="Pages\Common\Extended\CheckboxCell.cs" />
+    <Compile Include="Pages\Common\Extended\EventArgs.cs" />
+    <Compile Include="Pages\Home\Templates\HomeHeader.xaml.cs">
+      <DependentUpon>HomeHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\AppConstants.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
@@ -473,6 +488,9 @@
     <Reference Include="Plugin.Media">
       <HintPath>..\packages\Xam.Plugin.Media.3.0.1\lib\netstandard1.0\Plugin.Media.dll</HintPath>
     </Reference>
+    <Reference Include="Behaviors">
+      <HintPath>..\packages\Behaviors.Forms.1.2.0\lib\portable45-net45+win8+wp8+wpa81\Behaviors.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -520,6 +538,8 @@
     <Folder Include="Pages\AlertDetail\" />
     <Folder Include="Pages\Profile\Template\" />
     <Folder Include="Pages\Common\Extended\" />
+    <Folder Include="OAuth\Providers\Instagram\" />
+    <Folder Include="Pages\Home\Templates\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bullytect.rest\bullytect.rest.csproj">

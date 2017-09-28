@@ -377,6 +377,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Home_Loading_Profile {
+            get {
+                return ResourceManager.GetString("Home.Loading.Profile", resourceCulture);
+            }
+        }
+        
         internal static string Home_Loading_Failed {
             get {
                 return ResourceManager.GetString("Home.Loading.Failed", resourceCulture);
@@ -386,6 +392,12 @@ namespace Bullytect.Core.I18N {
         internal static string Home_Children_List_Title {
             get {
                 return ResourceManager.GetString("Home.Children.List.Title", resourceCulture);
+            }
+        }
+        
+        internal static string Home_Profile_Load_Error {
+            get {
+                return ResourceManager.GetString("Home.Profile.Load.Error", resourceCulture);
             }
         }
         
@@ -431,9 +443,9 @@ namespace Bullytect.Core.I18N {
             }
         }
         
-        internal static string Children_Toolbar_RRSS {
+        internal static string Children_Toolbar_Edit {
             get {
-                return ResourceManager.GetString("Children.Toolbar.RRSS", resourceCulture);
+                return ResourceManager.GetString("Children.Toolbar.Edit", resourceCulture);
             }
         }
         
@@ -533,6 +545,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Profile_Updating_Profile_Image_Success {
+            get {
+                return ResourceManager.GetString("Profile.Updating.Profile.Image.Success", resourceCulture);
+            }
+        }
+        
         internal static string Notification_Not_Found_MainText {
             get {
                 return ResourceManager.GetString("Notification.Not.Found.MainText", resourceCulture);
@@ -542,6 +560,12 @@ namespace Bullytect.Core.I18N {
         internal static string Notification_Error_Ocurred {
             get {
                 return ResourceManager.GetString("Notification.Error.Ocurred", resourceCulture);
+            }
+        }
+        
+        internal static string Loading_Alerts {
+            get {
+                return ResourceManager.GetString("Loading.Alerts", resourceCulture);
             }
         }
         
@@ -560,6 +584,48 @@ namespace Bullytect.Core.I18N {
         internal static string EditSon_RRSS_Section_Title {
             get {
                 return ResourceManager.GetString("EditSon.RRSS.Section.Title", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Update_Social_Media_Facebook {
+            get {
+                return ResourceManager.GetString("EditSon.Update.Social.Media.Facebook", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Update_Social_Media_Instagram {
+            get {
+                return ResourceManager.GetString("EditSon.Update.Social.Media.Instagram", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Update_Social_Media_Youtube {
+            get {
+                return ResourceManager.GetString("EditSon.Update.Social.Media.Youtube", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Saving_Changes {
+            get {
+                return ResourceManager.GetString("EditSon.Saving.Changes", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Saved_Changes_Successfully {
+            get {
+                return ResourceManager.GetString("EditSon.Saved.Changes.Successfully", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Social_Media_Added {
+            get {
+                return ResourceManager.GetString("EditSon.Social.Media.Added", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Social_Media_Deleted {
+            get {
+                return ResourceManager.GetString("EditSon.Social.Media.Deleted", resourceCulture);
             }
         }
         

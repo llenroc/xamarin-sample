@@ -95,17 +95,17 @@
     </data>
 
 	<data name="Common.RRSS.Facebook" xml:space="preserve">
-        <value> \uf09a Facebook</value>
+        <value> Facebook</value>
         <comment>Common RRSS Facebook</comment>
     </data>
 
 	<data name="Common.RRSS.Instagram" xml:space="preserve">
-        <value> \uf16d Instagram</value>
+        <value> Instagram</value>
         <comment>Common RRSS Instagram</comment>
     </data>
 
 	<data name="Common.RRSS.Youtube" xml:space="preserve">
-        <value> \uf167 Youtube</value>
+        <value> Youtube</value>
         <comment>Common RRSS Youtube</comment>
     </data>
 
@@ -318,6 +318,11 @@
         <comment>Home Toolbar Profile</comment>
     </data>
 
+	<data name="Home.Loading.Profile" xml:space="preserve">
+        <value> Loading Profile </value>
+        <comment>Home Loading Profile</comment>
+    </data>
+
 	<data name="Home.Loading.Failed" xml:space="preserve">
 		<value> Failed to load user profile </value>
         <comment>Home Loading Failed</comment>
@@ -328,6 +333,11 @@
         <comment>Home Children List Title</comment>
     </data>
 
+	<data name="Home.Profile.Load.Error" xml:space="preserve">
+        <value> Error loading profile </value>
+        <comment>Home Profile Load Error</comment>
+    </data>
+	
    <!-- Son Profile -->
 
 	<data name="Son.Profile.Birthday" xml:space="preserve">
@@ -364,14 +374,14 @@
     </data>
 
 	<data name="Children.Toolbar.Alerts" xml:space="preserve">
-        <value> Alerts </value>
+        <value>  Alerts </value>
         <comment>Children Toolbar Alerts</comment>
     </data>
 
 
-	<data name="Children.Toolbar.RRSS" xml:space="preserve">
-        <value> Add RRSS </value>
-        <comment>Children Toolbar RRSS</comment>
+	<data name="Children.Toolbar.Edit" xml:space="preserve">
+        <value> Edit </value>
+        <comment>Children Toolbar Edit</comment>
     </data>
 
 
@@ -469,8 +479,20 @@
         <comment>Profile Updating Profile Image Failed</comment>
     </data>
 
+	<data name="Profile.Updating.Profile.Image.Success" xml:space="preserve">
+        <value> Profile Image Uploaded Successfully</value>
+        <comment>Profile Updating Profile Image Success</comment>
+    </data>
 
-	<!-- Notification -->
+	<data name="Profile.Updating.Profile.Image.Success" xml:space="preserve">
+        <value> Profile Image Uploaded Successfully</value>
+        <comment>Profile Updating Profile Image Success</comment>
+    </data>
+
+
+
+
+	<!-- Alerts -->
 
 	<data name="Notification.Not.Found.MainText" xml:space="preserve">
         <value> Notifications Not Found </value>
@@ -480,6 +502,11 @@
 	<data name="Notification.Error.Ocurred" xml:space="preserve">
         <value> Error loading notifications </value>
         <comment>Notification Error Ocurred</comment>
+    </data>
+
+	<data name="Loading.Alerts" xml:space="preserve">
+        <value> Loading Alerts </value>
+        <comment>Loading Alerts</comment>
     </data>
 
 
@@ -497,12 +524,46 @@
 
 	<data name="EditSon.RRSS.Section.Title" xml:space="preserve">
         <value> Enabled Social Networks </value>
-        <comment>EditSon.RRSS.Section.Title</comment>
+        <comment>EditSon RRSS Section Title</comment>
     </data>
 
+	<data name="EditSon.Update.Social.Media.Facebook" xml:space="preserve">
+        <value> Update Social Media Facebook </value>
+        <comment>EditSon Update Social Media Facebook</comment>
+    </data>
 	
+    <data name="EditSon.Update.Social.Media.Instagram" xml:space="preserve">
+        <value> Update Social Media Instagram </value>
+        <comment>EditSon Update Social Media Instagram</comment>
+    </data>
 
-	
+	<data name="EditSon.Update.Social.Media.Youtube" xml:space="preserve">
+        <value> Update Social Media Youtube </value>
+        <comment>EditSon Update Social Media Youtube</comment>
+    </data>
+
+	<data name="EditSon.Saving.Changes" xml:space="preserve">
+        <value> Saving Changes ... </value>
+        <comment>EditSon Saving Changes</comment>
+    </data>
+
+	<data name="EditSon.Saved.Changes.Successfully" xml:space="preserve">
+        <value> Saved Changes successfully ... </value>
+        <comment>EditSon Saving Changes</comment>
+    </data>
+
+	<data name="EditSon.Social.Media.Added" xml:space="preserve">
+        <value> Social Media Added </value>
+        <comment>EditSon Social Media Added</comment>
+    </data>
+
+	<data name="EditSon.Social.Media.Deleted" xml:space="preserve">
+        <value> Social Media Deleted </value>
+        <comment>EditSon Social Media Deleted</comment>
+    </data>
+
+
+	   
 	
 
 	<data name="Global.ErrorOcurred" xml:space="preserve">
