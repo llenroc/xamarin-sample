@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:304418445945:android:d919d7e4bbb2b385",
+        "mobilesdk_app_id": "1:304418445945:android:54ebb56f5fb1d556",
         "android_client_info": {
-          "package_name": "com.usal.bisite.bullytect"
+          "package_name": "com.usal.bisite.bulltect"
         }
       },
       "oauth_client": [

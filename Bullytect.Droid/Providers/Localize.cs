@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Threading;
 using Bullytect.Core.Helpers;
-using Bullytect.Core.PatformServices;
+using Bullytect.Core.I18N.Services;
 using Bullytect.Droid.Providers;
 using Xamarin.Forms;
 

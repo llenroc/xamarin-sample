@@ -337,12 +337,6 @@
     <Reference Include="Refractored.XamForms.PullToRefresh.iOS">
       <HintPath>..\packages\Refractored.XamForms.PullToRefresh.1.1.0\lib\Xamarin.iOS10\Refractored.XamForms.PullToRefresh.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.Connectivity.Abstractions">
-      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.2\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Connectivity">
-      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.2\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
-    </Reference>
     <Reference Include="Behaviors">
       <HintPath>..\packages\Behaviors.Forms.1.2.0\lib\portable45-net45+win8+wp8+wpa81\Behaviors.dll</HintPath>
     </Reference>
@@ -354,6 +348,18 @@
     </Reference>
     <Reference Include="Rg.Plugins.Popup.Platform">
       <HintPath>..\packages\Rg.Plugins.Popup.1.0.4\lib\Xamarin.IOS\Rg.Plugins.Popup.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Media.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Media.3.0.1\lib\Xamarin.iOS10\Plugin.Media.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Media">
+      <HintPath>..\packages\Xam.Plugin.Media.3.0.1\lib\Xamarin.iOS10\Plugin.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.3\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.3\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -419,7 +425,6 @@
     <Compile Include="Renderers\TableViewWithoutBorderRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="GoogleService-Info.plist" />
     <BundleResource Include="Resources\grial_animation.json" />
     <BundleResource Include="Resources\article_image_5.png" />
     <BundleResource Include="Resources\article_image_5%402x.png" />
@@ -475,6 +480,7 @@
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <BundleResource Include="Resources\home_header%402x.jpg" />
+    <BundleResource Include="GoogleService-Info.plist" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bullytect.Core\Bullytect.Core.csproj">

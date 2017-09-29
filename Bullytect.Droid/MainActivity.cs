@@ -8,30 +8,53 @@ using MvvmCross.Platform;
 using Acr.UserDialogs;
 using Plugin.FirebasePushNotification;
 using Refractored.XamForms.PullToRefresh.Droid;
+using UXDivers.Artina.Shared;
+using Android.Views;
+using Xamarin.Forms.Platform.Android;
+using FFImageLoading.Forms.Droid;
 
 namespace Bullytect.Droid
 {
 
 
-	[Activity(Name = "com.usal.bisite.bullytect.MainActivity",  Label = "BullyTect", Icon = "@drawable/icon", Theme = "@style/DefaultTheme", MainLauncher = false,
-			  ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+	[Activity(
+        Name = "com.usal.bisite.bulltect.MainActivity",  
+        Label = "BullTect", 
+        Icon = "@mipmap/ic_launcher", 
+        Theme = "@style/Theme.Splash",
+		MainLauncher = true,
+		LaunchMode = LaunchMode.SingleTask,
+		ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize
+    )]
+    public class MainActivity : FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
 
 			try
 			{
-    			TabLayoutResource = Resource.Layout.Tabbar;
-    			ToolbarResource = Resource.Layout.Toolbar;
+				// Changing to App's theme since we are OnCreate and we are ready to 
+				// "hide" the splash
+				base.Window.RequestFeature(WindowFeatures.ActionBar);
+				base.SetTheme(Resource.Style.AppTheme);
+
+
+				ToolbarResource = Resource.Layout.Toolbar;
+				TabLayoutResource = Resource.Layout.Tabs;
 
     			base.OnCreate(bundle);
 
+				//Initializing FFImageLoading
+				CachedImageRenderer.Init();
+
     			global::Xamarin.Forms.Forms.Init(this, bundle);
 				PullToRefreshLayoutRenderer.Init();
-				XFGloss.Droid.Library.Init(this, bundle);
+                XFGloss.Droid.Library.Init(this, bundle);
+                GrialKit.Init(this, "Bullytect.Droid.GrialLicense");
 
                 UserDialogs.Init(this);
+
+                FormsHelper.ForceLoadingAssemblyContainingType(typeof(UXDivers.Effects.Effects));
 
     			var formsPresenter = (MvxFormsPagePresenter)Mvx.Resolve<IMvxAndroidViewPresenter>();
     			LoadApplication(formsPresenter.FormsApplication);
@@ -41,7 +64,7 @@ namespace Bullytect.Droid
 			}
 			catch (Exception e)
 			{
-				Console.WriteLine("**BullyTect LAUNCH EXCEPTION**\n\n" + e);
+				Console.WriteLine("**BullTect LAUNCH EXCEPTION**\n\n" + e);
 			}
 
 

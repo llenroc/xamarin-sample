@@ -96,8 +96,7 @@
                                             LandscapePhone=12,
                                             PortraitTablet=13,
                                             LandscapeTablet=13 }"
-                                        HorizontalOptions="Fill"
-                                        />
+                                        HorizontalOptions="Fill"/>
                                 </StackLayout>
 
                              </Grid>
@@ -152,7 +151,7 @@
                                     </Label>
 
                                     <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{ Binding Path=BindingContext.ShowSonProfileCommand , Source={x:Reference Root} }"
+                                        <TapGestureRecognizer Command="{ Binding Path=ShowSonProfileCommand , Source={x:Reference Root} }"
                                             CommandParameter="{Binding .}" NumberOfTapsRequired="1" /> 
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
@@ -194,7 +193,7 @@
                                     </Label>
 
                                     <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{ Binding Path=BindingContext.ShowSonProfileCommand , Source={x:Reference Root} }"
+                                        <TapGestureRecognizer Command="{ Binding Path=ShowSonProfileCommand , Source={x:Reference Root} }"
                                             CommandParameter="{Binding .}" NumberOfTapsRequired="1" />  
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
@@ -235,7 +234,7 @@
                                     </Label>
 
                                     <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{ Binding Path=BindingContext.ShowSonProfileCommand , Source={x:Reference Root} }"
+                                        <TapGestureRecognizer Command="{ Binding Path=ShowSonProfileCommand , Source={x:Reference Root} }"
                                             CommandParameter="{Binding .}" NumberOfTapsRequired="1" /> 
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>

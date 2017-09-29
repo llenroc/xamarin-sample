@@ -326,6 +326,7 @@
     <Compile Include="Services\ISchoolService.cs" />
     <Compile Include="Services\Impl\SchoolServiceImpl.cs" />
     <Compile Include="Models\Domain\SchoolEntity.cs" />
+    <Compile Include="OAuth\Providers\Google\GoogleOAuth2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
@@ -493,12 +494,6 @@
     <Reference Include="Refractored.XamForms.PullToRefresh">
       <HintPath>..\packages\Refractored.XamForms.PullToRefresh.1.1.0\lib\portable-net45+wp80+win8+wpa81\Refractored.XamForms.PullToRefresh.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.Connectivity.Abstractions">
-      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.2\lib\netstandard1.0\Plugin.Connectivity.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Connectivity">
-      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.2\lib\netstandard1.0\Plugin.Connectivity.dll</HintPath>
-    </Reference>
     <Reference Include="Plugin.Media.Abstractions">
       <HintPath>..\packages\Xam.Plugin.Media.3.0.1\lib\netstandard1.0\Plugin.Media.Abstractions.dll</HintPath>
     </Reference>
@@ -513,6 +508,12 @@
     </Reference>
     <Reference Include="Rg.Plugins.Popup.Platform">
       <HintPath>..\packages\Rg.Plugins.Popup.1.0.4\lib\portable-win+net45+wp8+win8+wpa81\Rg.Plugins.Popup.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.3\lib\netstandard1.0\Plugin.Connectivity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.3\lib\netstandard1.0\Plugin.Connectivity.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -565,6 +566,7 @@
     <Folder Include="Pages\Home\Templates\" />
     <Folder Include="Pages\EditSon\Templates\" />
     <Folder Include="Pages\AddSchool\" />
+    <Folder Include="OAuth\Providers\Google\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bullytect.rest\bullytect.rest.csproj">

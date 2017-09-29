@@ -300,12 +300,6 @@
     <Reference Include="Refractored.XamForms.PullToRefresh.Droid">
       <HintPath>..\packages\Refractored.XamForms.PullToRefresh.1.1.0\lib\MonoAndroid10\Refractored.XamForms.PullToRefresh.Droid.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.Connectivity.Abstractions">
-      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.2\lib\MonoAndroid10\Plugin.Connectivity.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Connectivity">
-      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.2\lib\MonoAndroid10\Plugin.Connectivity.dll</HintPath>
-    </Reference>
     <Reference Include="Plugin.Permissions.Abstractions">
       <HintPath>..\packages\Plugin.Permissions.2.0.1\lib\MonoAndroid10\Plugin.Permissions.Abstractions.dll</HintPath>
     </Reference>
@@ -330,6 +324,48 @@
     <Reference Include="Rg.Plugins.Popup.Platform">
       <HintPath>..\packages\Rg.Plugins.Popup.1.0.4\lib\MonoAndroid\Rg.Plugins.Popup.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="UXDivers.Artina.Shared.Base">
+      <HintPath>..\packages\UXDivers.Artina.Shared.Base.2.0.60\lib\MonoAndroid10\UXDivers.Artina.Shared.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Artina.Shared.Base.Droid">
+      <HintPath>..\packages\UXDivers.Artina.Shared.Base.2.0.60\lib\MonoAndroid10\UXDivers.Artina.Shared.Base.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Artina.Shared">
+      <HintPath>..\packages\UXDivers.Artina.Shared.2.0.60\lib\MonoAndroid10\UXDivers.Artina.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Artina.Shared.Droid">
+      <HintPath>..\packages\UXDivers.Artina.Shared.2.0.60\lib\MonoAndroid10\UXDivers.Artina.Shared.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Effects">
+      <HintPath>..\packages\UXDivers.Effects.0.6.0\lib\MonoAndroid10\UXDivers.Effects.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Effects.Droid">
+      <HintPath>..\packages\UXDivers.Effects.0.6.0\lib\MonoAndroid10\UXDivers.Effects.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.18\lib\MonoAndroid10\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.18\lib\MonoAndroid10\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Transformations">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.18\lib\MonoAndroid10\FFImageLoading.Transformations.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.18\lib\MonoAndroid10\FFImageLoading.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms.Droid">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.18\lib\MonoAndroid10\FFImageLoading.Forms.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Lottie">
+      <HintPath>..\packages\Com.Airbnb.Android.Lottie.2.2.5.0\lib\MonoAndroid40\Lottie.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.3\lib\MonoAndroid10\Plugin.Connectivity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.3\lib\MonoAndroid10\Plugin.Connectivity.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bullytect.Core\Bullytect.Core.csproj">
@@ -346,9 +382,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\Localize.cs" />
-    <Compile Include="SplashScreen.cs" />
     <Compile Include="Setup.cs" />
-    <Compile Include="Views\MainView.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Bootstrap\ValidationPluginBootstrap.cs" />
@@ -359,21 +393,19 @@
     <Compile Include="Providers\OAuth.cs" />
     <Compile Include="Presenters\CustomAndroidPresenter.cs" />
     <Compile Include="Renderers\TableViewWithoutBorderRenderer.cs" />
+    <Compile Include="Renderers\CustomFontLabelRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="packages.config" />
+    <None Include="google-services.json" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
     <AndroidResource Include="Resources\layout\Toolbar.axml" />
     <AndroidResource Include="Resources\values\styles.xml" />
-    <AndroidResource Include="Resources\drawable\icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable\LaunchView.axml" />
     <AndroidResource Include="Resources\drawable-xhdpi\gradient_launch.jpg" />
     <AndroidResource Include="Resources\drawable-xxhdpi\gradient_launch.jpg" />
@@ -381,19 +413,111 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon_transparent.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_transparent.png" />
     <AndroidResource Include="Resources\values\colors.xml" />
-    <AndroidResource Include="Resources\drawable\action_bar_background.axml" />
-    <AndroidResource Include="Resources\values\SplashStyle.xml" />
-    <AndroidResource Include="Resources\layout\SplashScreen.axml" />
-    <AndroidResource Include="Resources\layout\MainView.axml" />
     <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-ldpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\values-v19\bools.xml" />
+    <AndroidResource Include="Resources\values-v21\Style.xml" />
+    <AndroidResource Include="Resources\drawable\generic_bg_image.jpg" />
+    <AndroidResource Include="Resources\drawable\hamburguer_icon.png" />
+    <AndroidResource Include="Resources\drawable\icon.png" />
+    <AndroidResource Include="Resources\drawable\login_bg_tablet.jpg" />
+    <AndroidResource Include="Resources\drawable\login_bg.jpg" />
+    <AndroidResource Include="Resources\drawable\logo.png" />
+    <AndroidResource Include="Resources\drawable\pass_recovery_bg_tablet.jpg" />
+    <AndroidResource Include="Resources\drawable\pass_recovery_bg.jpg" />
+    <AndroidResource Include="Resources\drawable\signup_bg_tablet.jpg" />
+    <AndroidResource Include="Resources\drawable\signup_bg.jpg" />
+    <AndroidResource Include="Resources\drawable\social_header_bg_0.jpg" />
+    <AndroidResource Include="Resources\drawable\social_header_bg_1.jpg" />
+    <AndroidResource Include="Resources\drawable\splash_drawable.xml" />
+    <AndroidResource Include="Resources\drawable\user_profile_0.jpg" />
+    <AndroidResource Include="Resources\drawable\user_profile_1.jpg" />
+    <AndroidResource Include="Resources\drawable\walkthrough_bg_0.jpg" />
+    <AndroidResource Include="Resources\drawable\walkthrough_bg_1.jpg" />
+    <AndroidResource Include="Resources\drawable\walkthrough_bg_2.jpg" />
+    <AndroidResource Include="Resources\drawable\walkthrough_generic_phone_bg.png" />
+    <AndroidResource Include="Resources\drawable\welcome_bg_tablet.jpg" />
+    <AndroidResource Include="Resources\drawable\welcome_bg.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\generic_bg_image.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\hamburguer_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\login_bg_tablet.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\login_bg.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\logo.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\pass_recovery_bg_tablet.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\pass_recovery_bg.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\signup_bg_tablet.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\signup_bg.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\social_album_2.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\social_album_6.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\social_header_bg_0.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\social_header_bg_1.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\SocialGallery_1.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\splash.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\user_profile_0.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\user_profile_1.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\walkthrough_bg_0.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\walkthrough_bg_1.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\walkthrough_bg_2.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\walkthrough_generic_phone_bg.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\welcome_bg_tablet.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\welcome_bg.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\generic_bg_image.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\grial_logo.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\hamburguer_icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\login_bg_tablet.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\login_bg_tablets.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\login_bg.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\logo.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\pass_recovery_bg_tablet.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\pass_recovery_bg_tablets.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\pass_recovery_bg.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\signup_bg_tablet.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\signup_bg.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\social_album_2.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\social_album_6.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\social_header_bg_0.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\social_header_bg_1.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\splash.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\user_profile_0.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\user_profile_1.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\walkthrough_bg_0.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\walkthrough_bg_1.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\walkthrough_bg_2.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\walkthrough_generic_phone_bg.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\welcome_bg_tablet.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\welcome_bg.jpg" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\hamburguer_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\loading_placeholder.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\logo.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
+    <AndroidResource Include="Resources\layout\Tabs.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Providers\" />
     <Folder Include="Presenters\" />
     <Folder Include="Renderers\" />
+    <Folder Include="Resources\mipmap-hdpi\" />
+    <Folder Include="Resources\mipmap-ldpi\" />
+    <Folder Include="Resources\mipmap-mdpi\" />
+    <Folder Include="Resources\mipmap-xhdpi\" />
+    <Folder Include="Resources\mipmap-xxhdpi\" />
+    <Folder Include="Resources\mipmap-xxxhdpi\" />
+    <Folder Include="Resources\values-v19\" />
+    <Folder Include="Resources\values-v21\" />
   </ItemGroup>
   <ItemGroup>
-    <GoogleServicesJson Include="google-services.json" />
+    <EmbeddedResource Include="GrialLicense" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\fontawesome-webfont.ttf" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Refit.4.0.1\build\netstandard1.4\refit.targets" Condition="Exists('..\packages\Refit.4.0.1\build\netstandard1.4\refit.targets')" />
@@ -422,4 +546,7 @@
   <Import Project="..\packages\Xamarin.GooglePlayServices.Base.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Base.targets" Condition="Exists('..\packages\Xamarin.GooglePlayServices.Base.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Base.targets')" />
   <Import Project="..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.targets')" />
   <Import Project="..\packages\Xamarin.Android.Support.CustomTabs.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.CustomTabs.targets" Condition="Exists('..\packages\Xamarin.Android.Support.CustomTabs.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.CustomTabs.targets')" />
+  <Import Project="..\packages\UXDivers.Artina.Shared.2.0.60\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Artina.Shared.targets" Condition="Exists('..\packages\UXDivers.Artina.Shared.2.0.60\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Artina.Shared.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
 </Project>

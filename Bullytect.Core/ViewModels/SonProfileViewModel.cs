@@ -58,6 +58,7 @@ namespace Bullytect.Core.ViewModels
 
         public void Init(SonParameter sonParameter)
         {
+            Identity = sonParameter.Identity;
             FullName = sonParameter.FullName;
             Birthdate = sonParameter.Birthdate;
             School = sonParameter.School;
@@ -66,7 +67,7 @@ namespace Bullytect.Core.ViewModels
 
         #region commands
 
-            public ICommand EditSonCommand => new MvxCommand<string>((string Id) => ShowViewModel<EditSonViewModel>(new { Id }));
+         public ICommand EditSonCommand => new MvxCommand<string>((string Id) => ShowViewModel<EditSonViewModel>(new { Id }));
 
         #endregion
 

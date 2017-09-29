@@ -1,4 +1,5 @@
 ﻿using System;
+using Bullytect.Core.Pages.Common.Extended;
 using Bullytect.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;

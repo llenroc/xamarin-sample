@@ -64,7 +64,19 @@ namespace Bullytect.Core.ViewModels
             }
         }
 
-        public ICommand EditSonCommand => new MvxCommand<string>((string Id) => ShowViewModel<EditSonViewModel>(new { Id }));
+
+		public ICommand ShowSonProfileCommand
+		{
+			get
+			{
+                return new MvxCommand<SonEntity>((SonEntity) => ShowViewModel<SonProfileViewModel>(new SonProfileViewModel.SonParameter(){
+                    Identity = SonEntity.Identity,
+                    FullName = SonEntity.FullName,
+                    Birthdate = SonEntity.Birthdate,
+                    School = SonEntity.School
+                }));
+			}
+		}
 
 		#endregion
 
@@ -73,7 +85,7 @@ namespace Bullytect.Core.ViewModels
         {
 		    if (ex is NoChildrenFoundException)
 			{
-				Debug.WriteLine("No Chidlren Founds");
+                DataFound = false;
 			}
 			else
 			{

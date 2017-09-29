@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>bullytect</string>
+	<string>bulltect</string>
 	<key>CFBundleName</key>
-	<string>bullytect</string>
+	<string>bulltect</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.usal.bisite.bullytect</string>
+	<string>com.usal.bisite.bulltect</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>

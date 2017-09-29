@@ -1,6 +1,7 @@
 using System.Reflection;
 using Xamarin.Forms;
 using Bullytect;
+using Bullytect.Droid.Renderers;
 
 [assembly: AssemblyTitle (AssemblyGlobal.ProductLine + " - " + "Grial Xamarin.Forms UIKit (Android)")]
 [assembly: AssemblyConfiguration (AssemblyGlobal.Configuration)]
@@ -14,7 +15,7 @@ using Bullytect;
 
 [assembly: ExportRenderer(typeof(Entry), typeof(UXDivers.Artina.Shared.ArtinaEntryRenderer))]
 [assembly: ExportRenderer(typeof(Editor), typeof(UXDivers.Artina.Shared.ArtinaEditorRenderer))]
-[assembly: ExportRenderer(typeof(Label), typeof(Bullytect.Droid.CustomFontLabelRenderer))]
+[assembly: ExportRenderer(typeof(Label), typeof(CustomFontLabelRenderer))]
 [assembly: ExportRenderer(typeof(Switch), typeof(UXDivers.Artina.Shared.ArtinaSwitchRenderer))]
 [assembly: ExportRenderer(typeof(ActivityIndicator), typeof(UXDivers.Artina.Shared.ArtinaActivityIndicatorRenderer))]
 [assembly: ExportRenderer(typeof(ProgressBar), typeof(UXDivers.Artina.Shared.ArtinaProgressBarRenderer))]

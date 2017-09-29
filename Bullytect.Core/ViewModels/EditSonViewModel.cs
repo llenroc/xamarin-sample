@@ -10,6 +10,7 @@ using Bullytect.Core.I18N;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.OAuth.Models;
 using Bullytect.Core.OAuth.Providers.Facebook;
+using Bullytect.Core.OAuth.Providers.Google;
 using Bullytect.Core.OAuth.Providers.Instagram;
 using Bullytect.Core.OAuth.Services;
 using Bullytect.Core.Services;
@@ -54,7 +55,7 @@ namespace Bullytect.Core.ViewModels
                 return _socialMediaService.GetAllSocialMediaBySon(SonToEdit).Do((SocialMediaList) =>
 					{
                         Debug.WriteLine("Social Medias Count " + SocialMediaList?.Count);
-						CurrentSocialMedia = SocialMediaList;
+                        CurrentSocialMedia = new ObservableCollection<SocialMediaEntity>(SocialMediaList);
 					}).Select((_) => true);
 				});
 
@@ -91,7 +92,7 @@ namespace Bullytect.Core.ViewModels
 								 _parentService.UpdateSonInformation(CurrentSon.Identity, CurrentSon.FirstName, CurrentSon.LastName, CurrentSon.Birthdate, CurrentSon.School))
                                 .Do((SonEntity) => CurrentSon = SonEntity)
                                 .SelectMany((SonEntity) => _socialMediaService.SaveAllSocialMedia(CurrentSon.Identity, CurrentSocialMedia.Select(s => { s.Son = CurrentSon.Identity; return s; }).ToList()))
-                                .Do((SocialMediaEntities) => CurrentSocialMedia = SocialMediaEntities)
+                                .Do((SocialMediaEntities) => CurrentSocialMedia = new ObservableCollection<SocialMediaEntity>(SocialMediaEntities))
                                 .Select((_) => true);   
             });
 
@@ -132,9 +133,9 @@ namespace Bullytect.Core.ViewModels
 			set => SetProperty(ref _currentSon, value);
 		}
 
-        IList<SocialMediaEntity> _currentSocialMedia = new List<SocialMediaEntity>();
+        ObservableCollection<SocialMediaEntity> _currentSocialMedia = new ObservableCollection<SocialMediaEntity>();
 
-		public IList<SocialMediaEntity> CurrentSocialMedia
+		public ObservableCollection<SocialMediaEntity> CurrentSocialMedia
 		{
 			get => _currentSocialMedia;
 			set => SetProperty(ref _currentSocialMedia, value);
@@ -172,12 +173,14 @@ namespace Bullytect.Core.ViewModels
 			set => SetProperty(ref _addSchool, value);
 		}
 
-        public void Init(string sontToEdit)
-        {
-            SonToEdit = sontToEdit;
-        }
+		#endregion
 
-        #endregion
+
+		public void Init(string SontIdentity)
+		{
+			SonToEdit = SontIdentity;
+		}
+
 
         #region commands
 
@@ -194,7 +197,7 @@ namespace Bullytect.Core.ViewModels
                         => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new InstagramOAuth2(), AppConstants.INSTAGRAM));
 
         public ICommand ToggleYoutubeSocialMediaCommand 
-                        => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new InstagramOAuth2(), AppConstants.YOUTUBE));
+                        => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new GoogleOAuth2(), AppConstants.YOUTUBE));
 
         public ReactiveCommand<string, SchoolEntity> SaveSchoolCommand { get; set; }
 
@@ -203,6 +206,9 @@ namespace Bullytect.Core.ViewModels
 
 
         void ToggleSocialMediaHandler(bool Enabled, OAuth2 Provider, string Type ) {
+
+
+            var index = CurrentSocialMedia.Select((SocialItem, SocialIndex) => new { SocialItem, SocialIndex }).First(i => i.SocialItem.Type.Equals(Type)).SocialIndex;
 
             if(Enabled) {
 
@@ -214,12 +220,11 @@ namespace Bullytect.Core.ViewModels
                     .Where(AccessToken => !string.IsNullOrWhiteSpace(AccessToken))
                     .Subscribe(AccessToken =>
                     {
+                        if(index >= 0) {
 
-                        var SocialMedia = CurrentSocialMedia.SingleOrDefault(Social => Social.Type.Equals(Type));
-
-                        if(SocialMedia != null) {
-                                SocialMedia.AccessToken = AccessToken;
-                                SocialMedia.InvalidToken = false;
+                            var SocialMedia = CurrentSocialMedia.ElementAt(index);
+                            SocialMedia.AccessToken = AccessToken;
+                            SocialMedia.InvalidToken = false;
                         } else {
                             CurrentSocialMedia.Add(new SocialMediaEntity() {
                                 AccessToken = AccessToken,
@@ -235,13 +240,11 @@ namespace Bullytect.Core.ViewModels
 
                 Debug.WriteLine(string.Format("Disable Social Media: {0}", Type));
 
-                ((List<SocialMediaEntity>)CurrentSocialMedia).RemoveAll((Social) => Social.Type.Equals(Type));
+                CurrentSocialMedia.RemoveAt(index);
 
                 _userDialogs.ShowSuccess(AppResources.EditSon_Social_Media_Deleted);
             
             }
-
-			
         }
     }
 }
