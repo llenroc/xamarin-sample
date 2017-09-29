@@ -19,7 +19,7 @@ namespace Bullytect.Droid
 
             Debug.WriteLine("Init Main Application ...");
 
-			//If debug you should reset the token each time.
+			/*//If debug you should reset the token each time.
             #if DEBUG
 			    FirebasePushNotificationManager.Initialize(this, true);
             #else
@@ -31,7 +31,7 @@ namespace Bullytect.Droid
 			{
                 Debug.WriteLine("Notification Received on Main Application");
 
-			};
+			};*/
 		}
 	}
 }

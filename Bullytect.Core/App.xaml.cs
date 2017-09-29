@@ -71,7 +71,6 @@ namespace Bullytect.Core
 		{
 
             Debug.WriteLine("Forms App OnStart ...");
-
             var messenger = Mvx.Resolve<IMvxMessenger>();
             // subscribe to Authenticated User Message
             messenger.Subscribe<AuthenticatedUserMessage>(OnAuthenticatedUserMessage);
@@ -79,13 +78,13 @@ namespace Bullytect.Core
             messenger.Subscribe<ExceptionOcurredMessage>(OnExceptionOcurredMessage);
 
             //Handling FCM Token
-			CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
+			/*CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
 			{
 				Debug.WriteLine($"TOKEN REC: {p.Token}");
 				Settings.FcmToken = p.Token;
 			};
 			Debug.WriteLine($"TOKEN: {CrossFirebasePushNotification.Current.Token}");
-			Settings.FcmToken = CrossFirebasePushNotification.Current.Token;
+			Settings.FcmToken = CrossFirebasePushNotification.Current.Token;*/
 
 		}
 

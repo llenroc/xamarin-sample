@@ -3,17 +3,18 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="Bullytect.Core.Pages.Common.RoundedLabel"
-    x:Name="Root"
     xmlns:effects="clr-namespace:UXDivers.Effects;assembly=UXDivers.Effects"
+    x:Name="Root"
     Padding="0">
 	<ContentView.Content>
         <AbsoluteLayout 
-            effects:Effects.CornerRadius="{ Binding Source={ x:Reference Root }, Path=RoundedLabelCornerRadius }"
+            
             BackgroundColor="{ Binding Source={ x:Reference Root }, Path=RoundedLabelBackgroundColor }">
             
             <Label 
                 VerticalOptions="Center"
                 LineBreakMode="TailTruncation"
+                effects:Effects.CornerRadius="{ Binding Source={ x:Reference Root }, Path=RoundedLabelCornerRadius }"
                 Margin="{ Binding Source={ x:Reference Root }, Path=RoundedLabelPadding }"
                 FontSize="{ Binding Source={ x:Reference Root }, Path=RoundedLabelFontSize }"
                 Text="{ Binding Source={ x:Reference Root }, Path=RoundedLabelText }" 

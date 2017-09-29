@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Xamarin.Forms.2.4.0.280\build\netstandard1.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.280\build\netstandard1.0\Xamarin.Forms.props')" />
   <Import Project="..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.props" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -27,6 +28,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
+<AndroidEnableMultiDex>true</AndroidEnableMultiDex>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -100,96 +102,6 @@
     </Reference>
     <Reference Include="Microsoft.AspNetCore.WebUtilities">
       <HintPath>..\packages\Microsoft.AspNetCore.WebUtilities.2.0.0\lib\netstandard2.0\Microsoft.AspNetCore.WebUtilities.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Annotations">
-      <HintPath>..\packages\Xamarin.Android.Support.Annotations.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Annotations.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Compat">
-      <HintPath>..\packages\Xamarin.Android.Support.Compat.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Compat.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Core.UI">
-      <HintPath>..\packages\Xamarin.Android.Support.Core.UI.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Core.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Core.Utils">
-      <HintPath>..\packages\Xamarin.Android.Support.Core.Utils.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Core.Utils.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Media.Compat">
-      <HintPath>..\packages\Xamarin.Android.Support.Media.Compat.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Media.Compat.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Fragment">
-      <HintPath>..\packages\Xamarin.Android.Support.Fragment.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Fragment.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Transition">
-      <HintPath>..\packages\Xamarin.Android.Support.Transition.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Transition.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v4">
-      <HintPath>..\packages\Xamarin.Android.Support.v4.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v4.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.CardView">
-      <HintPath>..\packages\Xamarin.Android.Support.v7.CardView.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.CardView.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.Palette">
-      <HintPath>..\packages\Xamarin.Android.Support.v7.Palette.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.Palette.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.RecyclerView">
-      <HintPath>..\packages\Xamarin.Android.Support.v7.RecyclerView.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Vector.Drawable">
-      <HintPath>..\packages\Xamarin.Android.Support.Vector.Drawable.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Vector.Drawable.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable">
-      <HintPath>..\packages\Xamarin.Android.Support.Animated.Vector.Drawable.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Animated.Vector.Drawable.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.AppCompat">
-      <HintPath>..\packages\Xamarin.Android.Support.v7.AppCompat.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Design">
-      <HintPath>..\packages\Xamarin.Android.Support.Design.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.MediaRouter">
-      <HintPath>..\packages\Xamarin.Android.Support.v7.MediaRouter.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.MediaRouter.dll</HintPath>
-    </Reference>
-    <Reference Include="FormsViewGroup">
-      <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform.Android">
-      <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform">
-      <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\MonoAndroid10\Xamarin.Forms.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Platform">
-      <HintPath>..\packages\MvvmCross.Platform.5.1.1\lib\MonoAndroid\MvvmCross.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Platform.Droid">
-      <HintPath>..\packages\MvvmCross.Platform.5.1.1\lib\MonoAndroid\MvvmCross.Platform.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Core">
-      <HintPath>..\packages\MvvmCross.Core.5.1.1\lib\MonoAndroid\MvvmCross.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Droid">
-      <HintPath>..\packages\MvvmCross.Core.5.1.1\lib\MonoAndroid\MvvmCross.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Binding">
-      <HintPath>..\packages\MvvmCross.Binding.5.1.1\lib\MonoAndroid\MvvmCross.Binding.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Binding.Droid">
-      <HintPath>..\packages\MvvmCross.Binding.5.1.1\lib\MonoAndroid\MvvmCross.Binding.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Localization">
-      <HintPath>..\packages\MvvmCross.Binding.5.1.1\lib\MonoAndroid\MvvmCross.Localization.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Forms">
-      <HintPath>..\packages\MvvmCross.Forms.5.1.1\lib\MonoAndroid70\MvvmCross.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Forms.Droid">
-      <HintPath>..\packages\MvvmCross.Forms.5.1.1\lib\MonoAndroid70\MvvmCross.Forms.Droid.dll</HintPath>
     </Reference>
     <Reference Include="MvvmCross.Plugins.Validation">
       <HintPath>..\packages\MvvmCross.Plugins.Validation.2.1.2\lib\MonoAndroid\MvvmCross.Plugins.Validation.dll</HintPath>
@@ -272,28 +184,10 @@
     <Reference Include="MvvmCross.ReactiveUI.Interop">
       <HintPath>..\packages\MvvmCross.ReactiveUI.Interop.3.0.0\lib\portable-net45+netcore45+win8+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\MvvmCross.ReactiveUI.Interop.dll</HintPath>
     </Reference>
-    <Reference Include="MvvmCross.FieldBinding">
-      <HintPath>..\packages\MvvmCross.Plugin.FieldBinding.5.1.1\lib\MonoAndroid\MvvmCross.FieldBinding.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Plugins.FieldBinding">
-      <HintPath>..\packages\MvvmCross.Plugin.FieldBinding.5.1.1\lib\MonoAndroid\MvvmCross.Plugins.FieldBinding.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Plugins.Messenger">
-      <HintPath>..\packages\MvvmCross.Plugin.Messenger.5.1.1\lib\MonoAndroid\MvvmCross.Plugins.Messenger.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.CustomTabs">
-      <HintPath>..\packages\Xamarin.Android.Support.CustomTabs.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.CustomTabs.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Auth">
       <HintPath>..\packages\Xamarin.Auth.1.5.0.3\lib\MonoAndroid10\Xamarin.Auth.dll</HintPath>
     </Reference>
     <Reference Include="System.Json" />
-    <Reference Include="ModernHttpClient">
-      <HintPath>..\packages\modernhttpclient.2.4.2\lib\MonoAndroid\ModernHttpClient.dll</HintPath>
-    </Reference>
-    <Reference Include="OkHttp">
-      <HintPath>..\packages\modernhttpclient.2.4.2\lib\MonoAndroid\OkHttp.dll</HintPath>
-    </Reference>
     <Reference Include="Refractored.XamForms.PullToRefresh">
       <HintPath>..\packages\Refractored.XamForms.PullToRefresh.1.1.0\lib\MonoAndroid10\Refractored.XamForms.PullToRefresh.dll</HintPath>
     </Reference>
@@ -336,27 +230,6 @@
     <Reference Include="UXDivers.Artina.Shared.Droid">
       <HintPath>..\packages\UXDivers.Artina.Shared.2.0.60\lib\MonoAndroid10\UXDivers.Artina.Shared.Droid.dll</HintPath>
     </Reference>
-    <Reference Include="UXDivers.Effects">
-      <HintPath>..\packages\UXDivers.Effects.0.6.0\lib\MonoAndroid10\UXDivers.Effects.dll</HintPath>
-    </Reference>
-    <Reference Include="UXDivers.Effects.Droid">
-      <HintPath>..\packages\UXDivers.Effects.0.6.0\lib\MonoAndroid10\UXDivers.Effects.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading">
-      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.18\lib\MonoAndroid10\FFImageLoading.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Platform">
-      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.18\lib\MonoAndroid10\FFImageLoading.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Transformations">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.18\lib\MonoAndroid10\FFImageLoading.Transformations.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Forms">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.18\lib\MonoAndroid10\FFImageLoading.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Forms.Droid">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.18\lib\MonoAndroid10\FFImageLoading.Forms.Droid.dll</HintPath>
-    </Reference>
     <Reference Include="Lottie">
       <HintPath>..\packages\Com.Airbnb.Android.Lottie.2.2.5.0\lib\MonoAndroid40\Lottie.dll</HintPath>
     </Reference>
@@ -365,6 +238,135 @@
     </Reference>
     <Reference Include="Plugin.Connectivity">
       <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.3\lib\MonoAndroid10\Plugin.Connectivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Lottie.Forms">
+      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.2.3.4\lib\MonoAndroid70\Lottie.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Lottie.Forms.Droid">
+      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.2.3.4\lib\MonoAndroid70\Lottie.Forms.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Platform">
+      <HintPath>..\packages\MvvmCross.Platform.5.2.1\lib\MonoAndroid\MvvmCross.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Platform.Droid">
+      <HintPath>..\packages\MvvmCross.Platform.5.2.1\lib\MonoAndroid\MvvmCross.Platform.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Core">
+      <HintPath>..\packages\MvvmCross.Core.5.2.1\lib\MonoAndroid\MvvmCross.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Droid">
+      <HintPath>..\packages\MvvmCross.Core.5.2.1\lib\MonoAndroid\MvvmCross.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Binding">
+      <HintPath>..\packages\MvvmCross.Binding.5.2.1\lib\MonoAndroid\MvvmCross.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Binding.Droid">
+      <HintPath>..\packages\MvvmCross.Binding.5.2.1\lib\MonoAndroid\MvvmCross.Binding.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Localization">
+      <HintPath>..\packages\MvvmCross.Binding.5.2.1\lib\MonoAndroid\MvvmCross.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.FieldBinding">
+      <HintPath>..\packages\MvvmCross.Plugin.FieldBinding.5.2.1\lib\MonoAndroid\MvvmCross.FieldBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.FieldBinding">
+      <HintPath>..\packages\MvvmCross.Plugin.FieldBinding.5.2.1\lib\MonoAndroid\MvvmCross.Plugins.FieldBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Messenger">
+      <HintPath>..\packages\MvvmCross.Plugin.Messenger.5.2.1\lib\MonoAndroid\MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Forms">
+      <HintPath>..\packages\MvvmCross.Forms.5.2.1\lib\MonoAndroid70\MvvmCross.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Forms.Droid">
+      <HintPath>..\packages\MvvmCross.Forms.5.2.1\lib\MonoAndroid70\MvvmCross.Forms.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Annotations">
+      <HintPath>..\packages\Xamarin.Android.Support.Annotations.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Compat">
+      <HintPath>..\packages\Xamarin.Android.Support.Compat.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Compat.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Core.UI">
+      <HintPath>..\packages\Xamarin.Android.Support.Core.UI.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Core.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Core.Utils">
+      <HintPath>..\packages\Xamarin.Android.Support.Core.Utils.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Core.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Media.Compat">
+      <HintPath>..\packages\Xamarin.Android.Support.Media.Compat.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Media.Compat.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Fragment">
+      <HintPath>..\packages\Xamarin.Android.Support.Fragment.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Fragment.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Transition">
+      <HintPath>..\packages\Xamarin.Android.Support.Transition.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Transition.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v4">
+      <HintPath>..\packages\Xamarin.Android.Support.v4.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.Palette">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.Palette.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.Palette.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.RecyclerView">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.RecyclerView.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Vector.Drawable">
+      <HintPath>..\packages\Xamarin.Android.Support.Vector.Drawable.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Vector.Drawable.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable">
+      <HintPath>..\packages\Xamarin.Android.Support.Animated.Vector.Drawable.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Animated.Vector.Drawable.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.AppCompat">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.AppCompat.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Design">
+      <HintPath>..\packages\Xamarin.Android.Support.Design.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.MediaRouter">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.MediaRouter.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.MediaRouter.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.CardView">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.CardView.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.CardView.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.CustomTabs">
+      <HintPath>..\packages\Xamarin.Android.Support.CustomTabs.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.CustomTabs.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.18\lib\MonoAndroid10\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.18\lib\MonoAndroid10\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.18\lib\MonoAndroid10\FFImageLoading.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms.Droid">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.18\lib\MonoAndroid10\FFImageLoading.Forms.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Transformations">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.18\lib\MonoAndroid10\FFImageLoading.Transformations.dll</HintPath>
+    </Reference>
+    <Reference Include="FormsViewGroup">
+      <HintPath>..\packages\Xamarin.Forms.2.4.0.280\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\packages\Xamarin.Forms.2.4.0.280\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform.Android">
+      <HintPath>..\packages\Xamarin.Forms.2.4.0.280\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>..\packages\Xamarin.Forms.2.4.0.280\lib\MonoAndroid10\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\packages\Xamarin.Forms.2.4.0.280\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Effects">
+      <HintPath>..\packages\UXDivers.Effects.0.6.0\lib\MonoAndroid10\UXDivers.Effects.dll</HintPath>
+    </Reference>
+    <Reference Include="UXDivers.Effects.Droid">
+      <HintPath>..\packages\UXDivers.Effects.0.6.0\lib\MonoAndroid10\UXDivers.Effects.Droid.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -378,42 +380,43 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainActivity.cs" />
+    <Compile Include="MvxFormsApplicationActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\Localize.cs" />
     <Compile Include="Setup.cs" />
-    <Compile Include="LinkerPleaseInclude.cs" />
-    <Compile Include="DebugTrace.cs" />
     <Compile Include="Bootstrap\ValidationPluginBootstrap.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="MainApplication.cs" />
-    <Compile Include="Bootstrap\FieldBindingPluginBootstrap.cs" />
-    <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="Providers\OAuth.cs" />
     <Compile Include="Presenters\CustomAndroidPresenter.cs" />
     <Compile Include="Renderers\TableViewWithoutBorderRenderer.cs" />
     <Compile Include="Renderers\CustomFontLabelRenderer.cs" />
+    <Compile Include="SplashScreen.cs" />
+    <Compile Include="Bootstrap\FieldBindingPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
+    <Compile Include="Views\MainView.cs" />
+    <Compile Include="LinkerPleaseInclude.cs" />
+    <Compile Include="DebugTrace.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="packages.config" />
-    <None Include="google-services.json" />
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
     <AndroidResource Include="Resources\layout\Toolbar.axml" />
-    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values\Styles.xml" />
     <AndroidResource Include="Resources\drawable\LaunchView.axml" />
     <AndroidResource Include="Resources\drawable-xhdpi\gradient_launch.jpg" />
     <AndroidResource Include="Resources\drawable-xxhdpi\gradient_launch.jpg" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_transparent.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_transparent.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_transparent.png" />
-    <AndroidResource Include="Resources\values\colors.xml" />
-    <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\values\Colors.xml" />
     <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-ldpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher.png" />
@@ -434,7 +437,6 @@
     <AndroidResource Include="Resources\drawable\signup_bg.jpg" />
     <AndroidResource Include="Resources\drawable\social_header_bg_0.jpg" />
     <AndroidResource Include="Resources\drawable\social_header_bg_1.jpg" />
-    <AndroidResource Include="Resources\drawable\splash_drawable.xml" />
     <AndroidResource Include="Resources\drawable\user_profile_0.jpg" />
     <AndroidResource Include="Resources\drawable\user_profile_1.jpg" />
     <AndroidResource Include="Resources\drawable\walkthrough_bg_0.jpg" />
@@ -458,7 +460,6 @@
     <AndroidResource Include="Resources\drawable-hdpi\social_header_bg_0.jpg" />
     <AndroidResource Include="Resources\drawable-hdpi\social_header_bg_1.jpg" />
     <AndroidResource Include="Resources\drawable-hdpi\SocialGallery_1.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\splash.png" />
     <AndroidResource Include="Resources\drawable-hdpi\user_profile_0.jpg" />
     <AndroidResource Include="Resources\drawable-hdpi\user_profile_1.jpg" />
     <AndroidResource Include="Resources\drawable-hdpi\walkthrough_bg_0.jpg" />
@@ -484,7 +485,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\social_album_6.jpg" />
     <AndroidResource Include="Resources\drawable-xhdpi\social_header_bg_0.jpg" />
     <AndroidResource Include="Resources\drawable-xhdpi\social_header_bg_1.jpg" />
-    <AndroidResource Include="Resources\drawable-xhdpi\splash.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\user_profile_0.jpg" />
     <AndroidResource Include="Resources\drawable-xhdpi\user_profile_1.jpg" />
     <AndroidResource Include="Resources\drawable-xhdpi\walkthrough_bg_0.jpg" />
@@ -497,8 +497,15 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\loading_placeholder.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\logo.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
     <AndroidResource Include="Resources\layout\Tabs.axml" />
+    <AndroidResource Include="Resources\drawable-hdpi\splash_background.png" />
+    <AndroidResource Include="Resources\drawable\splash_screen.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\splash_screen.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\splash_screen.png" />
+    <AndroidResource Include="Resources\values\SplashStyle.xml" />
+    <AndroidResource Include="Resources\layout\SplashScreen.axml" />
+    <AndroidResource Include="Resources\layout\MainView.axml" />
+    <AndroidResource Include="Resources\drawable\splash.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Providers\" />
@@ -514,10 +521,13 @@
     <Folder Include="Resources\values-v21\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="GrialLicense" />
+    <AndroidAsset Include="Assets\fontawesome-webfont.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\fontawesome-webfont.ttf" />
+    <GoogleServicesJson Include="google-services.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GrialLicense" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Refit.4.0.1\build\netstandard1.4\refit.targets" Condition="Exists('..\packages\Refit.4.0.1\build\netstandard1.4\refit.targets')" />
@@ -549,4 +559,5 @@
   <Import Project="..\packages\UXDivers.Artina.Shared.2.0.60\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Artina.Shared.targets" Condition="Exists('..\packages\UXDivers.Artina.Shared.2.0.60\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Artina.Shared.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.Symbols.1.1.24\build\Microsoft.Bcl.Build.Symbols.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\packages\Xamarin.Forms.2.4.0.280\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.280\build\netstandard1.0\Xamarin.Forms.targets')" />
 </Project>

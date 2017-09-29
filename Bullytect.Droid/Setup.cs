@@ -41,11 +41,11 @@ namespace Bullytect.Droid
             return new DebugTrace();
         }
 
-        protected override IMvxAndroidViewPresenter CreateViewPresenter(){
+        /*protected override IMvxAndroidViewPresenter CreateViewPresenter(){
 			var presenter = new CustomAndroidPresenter();
 			Mvx.RegisterSingleton<IMvxViewPresenter>(presenter);
 			return presenter;
-        }
+        }*/
 
     }
 }

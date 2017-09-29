@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Xamarin.Forms.2.4.0.280\build\netstandard1.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.280\build\netstandard1.0\Xamarin.Forms.props')" />
   <Import Project="..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.props" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -126,27 +127,6 @@
     <Reference Include="Refit">
       <HintPath>..\packages\Refit.4.0.1\lib\netstandard1.4\Refit.dll</HintPath>
     </Reference>
-    <Reference Include="MvvmCross.Platform">
-      <HintPath>..\packages\MvvmCross.Platform.5.1.1\lib\Xamarin.iOS10\MvvmCross.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Platform.iOS">
-      <HintPath>..\packages\MvvmCross.Platform.5.1.1\lib\Xamarin.iOS10\MvvmCross.Platform.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Core">
-      <HintPath>..\packages\MvvmCross.Core.5.1.1\lib\Xamarin.iOS10\MvvmCross.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.iOS">
-      <HintPath>..\packages\MvvmCross.Core.5.1.1\lib\Xamarin.iOS10\MvvmCross.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Binding">
-      <HintPath>..\packages\MvvmCross.Binding.5.1.1\lib\Xamarin.iOS10\MvvmCross.Binding.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Binding.iOS">
-      <HintPath>..\packages\MvvmCross.Binding.5.1.1\lib\Xamarin.iOS10\MvvmCross.Binding.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Localization">
-      <HintPath>..\packages\MvvmCross.Binding.5.1.1\lib\Xamarin.iOS10\MvvmCross.Localization.dll</HintPath>
-    </Reference>
     <Reference Include="System.Buffers">
       <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
@@ -161,24 +141,6 @@
     </Reference>
     <Reference Include="Microsoft.AspNetCore.WebUtilities">
       <HintPath>..\packages\Microsoft.AspNetCore.WebUtilities.2.0.0\lib\netstandard2.0\Microsoft.AspNetCore.WebUtilities.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform">
-      <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform.iOS">
-      <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Forms">
-      <HintPath>..\packages\MvvmCross.Forms.5.1.1\lib\Xamarin.iOS10\MvvmCross.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Forms.iOS">
-      <HintPath>..\packages\MvvmCross.Forms.5.1.1\lib\Xamarin.iOS10\MvvmCross.Forms.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.Settings.Abstractions">
       <HintPath>..\packages\Xam.Plugins.Settings.3.0.1\lib\Xamarin.iOS10\Plugin.Settings.Abstractions.dll</HintPath>
@@ -231,50 +193,14 @@
     <Reference Include="MvvmCross.ReactiveUI.Interop">
       <HintPath>..\packages\MvvmCross.ReactiveUI.Interop.3.0.0\lib\portable-net45+netcore45+win8+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\MvvmCross.ReactiveUI.Interop.dll</HintPath>
     </Reference>
-    <Reference Include="Firebase.Core">
-      <HintPath>..\packages\Xamarin.Firebase.iOS.Core.3.5.2\lib\Xamarin.iOS10\Firebase.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Firebase.InstanceID">
-      <HintPath>..\packages\Xamarin.Firebase.iOS.InstanceID.1.0.9\lib\Xamarin.iOS10\Firebase.InstanceID.dll</HintPath>
-    </Reference>
-    <Reference Include="Firebase.Analytics">
-      <HintPath>..\packages\Xamarin.Firebase.iOS.Analytics.3.7.0\lib\Xamarin.iOS10\Firebase.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="Firebase.CloudMessaging">
-      <HintPath>..\packages\Xamarin.Firebase.iOS.CloudMessaging.1.2.2\lib\Xamarin.iOS10\Firebase.CloudMessaging.dll</HintPath>
-    </Reference>
     <Reference Include="MvvmCross.Plugins.Validation">
       <HintPath>..\packages\MvvmCross.Plugins.Validation.2.1.2\lib\Xamarin.iOS10\MvvmCross.Plugins.Validation.dll</HintPath>
     </Reference>
     <Reference Include="MvvmCross.Plugins.Validation.Touch">
       <HintPath>..\packages\MvvmCross.Plugins.Validation.2.1.2\lib\Xamarin.iOS10\MvvmCross.Plugins.Validation.Touch.dll</HintPath>
     </Reference>
-    <Reference Include="MvvmCross.FieldBinding">
-      <HintPath>..\packages\MvvmCross.Plugin.FieldBinding.4.0.0\lib\Xamarin.iOS10\MvvmCross.FieldBinding.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Plugins.FieldBinding">
-      <HintPath>..\packages\MvvmCross.Plugin.FieldBinding.4.0.0\lib\Xamarin.iOS10\MvvmCross.Plugins.FieldBinding.dll</HintPath>
-    </Reference>
     <Reference Include="MvvmCross.Plugins.Validation.ForFieldBinding">
       <HintPath>..\packages\MvvmCross.Plugins.Validation.ForFieldBinding.2.1.2\lib\portable-net45+netcore45+wpa81\MvvmCross.Plugins.Validation.ForFieldBinding.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Plugins.Messenger">
-      <HintPath>..\packages\MvvmCross.Plugin.Messenger.5.1.1\lib\Xamarin.iOS10\MvvmCross.Plugins.Messenger.dll</HintPath>
-    </Reference>
-    <Reference Include="PInvoke.Windows.Core">
-      <HintPath>..\packages\PInvoke.Windows.Core.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.Windows.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="PInvoke.Kernel32">
-      <HintPath>..\packages\PInvoke.Kernel32.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.Kernel32.dll</HintPath>
-    </Reference>
-    <Reference Include="PInvoke.BCrypt">
-      <HintPath>..\packages\PInvoke.BCrypt.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.BCrypt.dll</HintPath>
-    </Reference>
-    <Reference Include="PInvoke.NCrypt">
-      <HintPath>..\packages\PInvoke.NCrypt.0.3.2\lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\PInvoke.NCrypt.dll</HintPath>
-    </Reference>
-    <Reference Include="Validation">
-      <HintPath>..\packages\Validation.2.2.8\lib\dotnet\Validation.dll</HintPath>
     </Reference>
     <Reference Include="PCLCrypto">
       <HintPath>..\packages\PCLCrypto.2.0.147\lib\xamarinios10\PCLCrypto.dll</HintPath>
@@ -285,30 +211,6 @@
     <Reference Include="System.Json" />
     <Reference Include="WebP.Touch">
       <HintPath>..\packages\WebP.Touch.1.0.4\lib\Xamarin.iOS10\WebP.Touch.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading">
-      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.9\lib\Xamarin.iOS10\FFImageLoading.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Platform">
-      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.9\lib\Xamarin.iOS10\FFImageLoading.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Forms">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.9\lib\Xamarin.iOS10\FFImageLoading.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Forms.Touch">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.9\lib\Xamarin.iOS10\FFImageLoading.Forms.Touch.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Transformations">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.9\lib\Xamarin.iOS10\FFImageLoading.Transformations.dll</HintPath>
-    </Reference>
-    <Reference Include="Lottie.iOS">
-      <HintPath>..\packages\Com.Airbnb.iOS.Lottie.1.0.0.7\lib\xamarinios\Lottie.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Lottie.Forms">
-      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.1.0.0.7\lib\xamarinios\Lottie.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="Lottie.Forms.iOS">
-      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.1.0.0.7\lib\xamarinios\Lottie.Forms.iOS.dll</HintPath>
     </Reference>
     <Reference Include="UXDivers.Artina.Shared.Base">
       <HintPath>..\packages\UXDivers.Artina.Shared.Base.2.0.60\lib\Xamarin.iOS10\UXDivers.Artina.Shared.Base.dll</HintPath>
@@ -327,9 +229,6 @@
     </Reference>
     <Reference Include="UXDivers.Effects.iOS">
       <HintPath>..\packages\UXDivers.Effects.0.6.0\lib\Xamarin.iOS10\UXDivers.Effects.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="ModernHttpClient">
-      <HintPath>..\packages\modernhttpclient.2.4.2\lib\Xamarin.iOS10\ModernHttpClient.dll</HintPath>
     </Reference>
     <Reference Include="Refractored.XamForms.PullToRefresh">
       <HintPath>..\packages\Refractored.XamForms.PullToRefresh.1.1.0\lib\Xamarin.iOS10\Refractored.XamForms.PullToRefresh.dll</HintPath>
@@ -360,6 +259,105 @@
     </Reference>
     <Reference Include="Plugin.Connectivity">
       <HintPath>..\packages\Xam.Plugin.Connectivity.3.0.3\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.18\lib\Xamarin.iOS10\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.18\lib\Xamarin.iOS10\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.18\lib\Xamarin.iOS10\FFImageLoading.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms.Touch">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.18\lib\Xamarin.iOS10\FFImageLoading.Forms.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Transformations">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.18\lib\Xamarin.iOS10\FFImageLoading.Transformations.dll</HintPath>
+    </Reference>
+    <Reference Include="Lottie.iOS">
+      <HintPath>..\packages\Com.Airbnb.iOS.Lottie.2.1.3.0\lib\xamarinios\Lottie.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Lottie.Forms">
+      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.2.3.4\lib\xamarinios\Lottie.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Lottie.Forms.iOS">
+      <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.2.3.4\lib\xamarinios\Lottie.Forms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Platform">
+      <HintPath>..\packages\MvvmCross.Platform.5.2.1\lib\Xamarin.iOS10\MvvmCross.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Platform.iOS">
+      <HintPath>..\packages\MvvmCross.Platform.5.2.1\lib\Xamarin.iOS10\MvvmCross.Platform.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Core">
+      <HintPath>..\packages\MvvmCross.Core.5.2.1\lib\Xamarin.iOS10\MvvmCross.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.iOS">
+      <HintPath>..\packages\MvvmCross.Core.5.2.1\lib\Xamarin.iOS10\MvvmCross.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Binding">
+      <HintPath>..\packages\MvvmCross.Binding.5.2.1\lib\Xamarin.iOS10\MvvmCross.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Binding.iOS">
+      <HintPath>..\packages\MvvmCross.Binding.5.2.1\lib\Xamarin.iOS10\MvvmCross.Binding.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Localization">
+      <HintPath>..\packages\MvvmCross.Binding.5.2.1\lib\Xamarin.iOS10\MvvmCross.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Messenger">
+      <HintPath>..\packages\MvvmCross.Plugin.Messenger.5.2.1\lib\Xamarin.iOS10\MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Forms">
+      <HintPath>..\packages\MvvmCross.Forms.5.2.1\lib\Xamarin.iOS10\MvvmCross.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Forms.iOS">
+      <HintPath>..\packages\MvvmCross.Forms.5.2.1\lib\Xamarin.iOS10\MvvmCross.Forms.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.FieldBinding">
+      <HintPath>..\packages\MvvmCross.Plugin.FieldBinding.5.2.1\lib\Xamarin.iOS10\MvvmCross.FieldBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.FieldBinding">
+      <HintPath>..\packages\MvvmCross.Plugin.FieldBinding.5.2.1\lib\Xamarin.iOS10\MvvmCross.Plugins.FieldBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="Validation">
+      <HintPath>..\packages\Validation.2.4.15\lib\netstandard1.3\Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.Windows.Core">
+      <HintPath>..\packages\PInvoke.Windows.Core.0.5.97\lib\portable-net45+win8+wpa81\PInvoke.Windows.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.Kernel32">
+      <HintPath>..\packages\PInvoke.Kernel32.0.5.97\lib\portable-net45+win8+wpa81\PInvoke.Kernel32.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.BCrypt">
+      <HintPath>..\packages\PInvoke.BCrypt.0.5.97\lib\portable-net45+win8+wpa81\PInvoke.BCrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="PInvoke.NCrypt">
+      <HintPath>..\packages\PInvoke.NCrypt.0.5.97\lib\portable-net45+win8+wpa81\PInvoke.NCrypt.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Core">
+      <HintPath>..\packages\Xamarin.Firebase.iOS.Core.4.0.3\lib\Xamarin.iOS10\Firebase.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.InstanceID">
+      <HintPath>..\packages\Xamarin.Firebase.iOS.InstanceID.2.0.0\lib\Xamarin.iOS10\Firebase.InstanceID.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Analytics">
+      <HintPath>..\packages\Xamarin.Firebase.iOS.Analytics.4.0.2\lib\Xamarin.iOS10\Firebase.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.CloudMessaging">
+      <HintPath>..\packages\Xamarin.Firebase.iOS.CloudMessaging.2.0.0\lib\Xamarin.iOS10\Firebase.CloudMessaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\packages\Xamarin.Forms.2.4.0.280\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>..\packages\Xamarin.Forms.2.4.0.280\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform.iOS">
+      <HintPath>..\packages\Xamarin.Forms.2.4.0.280\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\packages\Xamarin.Forms.2.4.0.280\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -410,12 +408,8 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Setup.cs" />
-    <Compile Include="LinkerPleaseInclude.cs" />
-    <Compile Include="DebugTrace.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Bootstrap\ValidationPluginBootstrap.cs" />
-    <Compile Include="Bootstrap\FieldBindingPluginBootstrap.cs" />
-    <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="Providers\Localize.cs" />
     <Compile Include="Providers\OAuth.cs" />
     <Compile Include="Presenters\CustomPresenter.cs" />
@@ -423,6 +417,10 @@
     <Compile Include="ThemeColors.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\TableViewWithoutBorderRenderer.cs" />
+    <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
+    <Compile Include="LinkerPleaseInclude.cs" />
+    <Compile Include="DebugTrace.cs" />
+    <Compile Include="Bootstrap\FieldBindingPluginBootstrap.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\grial_animation.json" />
@@ -498,12 +496,12 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Refit.4.0.1\build\netstandard1.4\refit.targets" Condition="Exists('..\packages\Refit.4.0.1\build\netstandard1.4\refit.targets')" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />
-  <Import Project="..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Import Project="..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.7\build\Xamarin.Build.Download.targets')" />
-  <Import Project="..\packages\Xamarin.Firebase.iOS.Core.3.5.2\build\Xamarin.Firebase.iOS.Core.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Core.3.5.2\build\Xamarin.Firebase.iOS.Core.targets')" />
-  <Import Project="..\packages\Xamarin.Firebase.iOS.InstanceID.1.0.9\build\Xamarin.Firebase.iOS.InstanceID.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.InstanceID.1.0.9\build\Xamarin.Firebase.iOS.InstanceID.targets')" />
-  <Import Project="..\packages\Xamarin.Firebase.iOS.Analytics.3.7.0\build\Xamarin.Firebase.iOS.Analytics.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Analytics.3.7.0\build\Xamarin.Firebase.iOS.Analytics.targets')" />
-  <Import Project="..\packages\Xamarin.Firebase.iOS.CloudMessaging.1.2.2\build\Xamarin.Firebase.iOS.CloudMessaging.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.CloudMessaging.1.2.2\build\Xamarin.Firebase.iOS.CloudMessaging.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="..\packages\UXDivers.Artina.Shared.2.0.60\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Artina.Shared.targets" Condition="Exists('..\packages\UXDivers.Artina.Shared.2.0.60\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Artina.Shared.targets')" />
+  <Import Project="..\packages\Xamarin.Firebase.iOS.Core.4.0.3\build\Xamarin.Firebase.iOS.Core.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Core.4.0.3\build\Xamarin.Firebase.iOS.Core.targets')" />
+  <Import Project="..\packages\Xamarin.Firebase.iOS.InstanceID.2.0.0\build\Xamarin.Firebase.iOS.InstanceID.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.InstanceID.2.0.0\build\Xamarin.Firebase.iOS.InstanceID.targets')" />
+  <Import Project="..\packages\Xamarin.Firebase.iOS.Analytics.4.0.2\build\Xamarin.Firebase.iOS.Analytics.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Analytics.4.0.2\build\Xamarin.Firebase.iOS.Analytics.targets')" />
+  <Import Project="..\packages\Xamarin.Firebase.iOS.CloudMessaging.2.0.0\build\Xamarin.Firebase.iOS.CloudMessaging.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.CloudMessaging.2.0.0\build\Xamarin.Firebase.iOS.CloudMessaging.targets')" />
+  <Import Project="..\packages\Xamarin.Forms.2.4.0.280\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.280\build\netstandard1.0\Xamarin.Forms.targets')" />
 </Project>

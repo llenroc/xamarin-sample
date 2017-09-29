@@ -8,8 +8,8 @@
         xmlns:commonViews="clr-namespace:Bullytect.Core.Pages.Common;assembly=Bullytect.Core"
         xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
         xmlns:controls="clr-namespace:Bullytect.Core.Controls"
-        xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared" 
         xmlns:effects="clr-namespace:UXDivers.Effects;assembly=UXDivers.Effects"
+        xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
         xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
         xmlns:themes="clr-namespace:Bullytect.Core.Themes;assembly=Bullytect.Core">
 
@@ -154,8 +154,6 @@
                 </Setter>
             </Style>
 
-            
-
             <Style TargetType="ProgressBar">
                 <Setter Property="artina:ProgressBarProperties.TintColor" Value="{DynamicResource AccentColor}" />
             </Style>
@@ -188,6 +186,8 @@
                 </Setter>
             </Style>
 
+            
+
             <Style TargetType="artina:Button">
                 <Setter Property="FontSize" Value="{StaticResource BaseFontSize}" />
                 <Setter Property="BorderRadius" Value="22" />
@@ -195,8 +195,6 @@
                 <Setter Property="BorderColor" Value="Transparent" />
                 <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}" />
         
-                
-
                 <!-- 
                 Mimic Android Buttons background color 
                 If no background color is set, 
