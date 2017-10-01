@@ -5,10 +5,10 @@ using Acr.UserDialogs;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
-using Bullytect.Rest.Models.Exceptions;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
+using Bullytect.Core.Rest.Models.Exceptions;
 
 namespace Bullytect.Core.ViewModels
 {

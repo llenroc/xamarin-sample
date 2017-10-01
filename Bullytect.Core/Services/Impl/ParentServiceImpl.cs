@@ -8,13 +8,13 @@ namespace Bullytect.Core.Services.Impl
     using System.Reactive.Linq;
     using AutoMapper;
     using Bullytect.Core.Models.Domain;
-    using Bullytect.Rest.Models.Request;
-    using Bullytect.Rest.Models.Response;
-    using Bullytect.Rest.Services;
     using System.Linq;
     using MvvmCross.Plugins.Messenger;
     using Bullytect.Core.Messages;
     using System.IO;
+    using Bullytect.Core.Rest.Services;
+    using Bullytect.Core.Rest.Models.Response;
+    using Bullytect.Core.Rest.Models.Request;
 
     public class ParentServiceImpl: BaseService, IParentService
     {

@@ -5,9 +5,9 @@ using System.Reactive.Linq;
 using AutoMapper;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Utils;
-using Bullytect.Rest.Models.Response;
-using Bullytect.Rest.Services;
 using Refit;
+using Bullytect.Core.Rest.Services;
+using Bullytect.Core.Rest.Models.Response;
 
 namespace Bullytect.Core.Services.Impl
 {

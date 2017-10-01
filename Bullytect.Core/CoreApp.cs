@@ -1,20 +1,20 @@
 using System;
 using System.Net.Http;
 using Bullytect.Core.Config;
-using Bullytect.Rest.Utils;
-using Bullytect.Rest.Services;
 using MvvmCross.Platform;
 using MvvmCross.Platform.IoC;
 using AutoMapper;
-using Bullytect.Rest.Models.Response;
 using Bullytect.Core.Models.Domain;
 using MvvmCross.Plugins.Validation;
-using Bullytect.Rest.Utils.Logging;
 using Acr.UserDialogs;
-using Bullytect.Rest.Handlers;
 using MvvmCross.Plugins.Messenger;
 using Bullytect.Core.Messages;
 using System.Diagnostics;
+using Bullytect.Core.Rest.Utils.Logging;
+using Bullytect.Core.Rest.Handlers;
+using Bullytect.Core.Rest.Services;
+using Bullytect.Core.Rest.Utils;
+using Bullytect.Core.Rest.Models.Response;
 
 namespace Bullytect.Core
 {

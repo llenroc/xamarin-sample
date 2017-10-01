@@ -6,7 +6,6 @@ namespace Bullytect.Core.Services
 	using System.Collections.Generic;
     using System.IO;
     using Bullytect.Core.Models.Domain;
-	using Bullytect.Rest.Models.Exceptions;
 
 
     public interface IParentService

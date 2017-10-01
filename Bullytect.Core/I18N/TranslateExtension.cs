@@ -24,7 +24,7 @@ namespace Bullytect.Core.I18N
 
 			ResMgr = new Lazy<ResourceManager>(() => new ResourceManager(ResourceId, typeof(TranslateExtension).GetTypeInfo().Assembly));
 
-			if (Device.OS == TargetPlatform.iOS || Device.OS == TargetPlatform.Android)
+			if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android)
 			{
 				ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
 			}

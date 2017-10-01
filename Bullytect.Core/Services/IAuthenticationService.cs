@@ -3,7 +3,6 @@ namespace Bullytect.Core.Services
 {
 
     using System;
-    using Bullytect.Rest.Models.Exceptions;
 
     public interface IAuthenticationService
     {

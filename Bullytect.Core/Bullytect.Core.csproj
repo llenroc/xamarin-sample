@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -10,6 +10,8 @@
     <AssemblyName>Bullytect.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,6 +27,22 @@
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <PlatformTarget>ARM</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\Welcome\WelcomeStartPage.xaml">
@@ -135,10 +153,50 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Config\SharedConfig.cs" />
+    <Compile Include="Rest\Handlers\AuthenticatedHttpClientHandler.cs" />
+    <Compile Include="Rest\Handlers\UnauthorizedHttpClientHandler.cs" />
+    <Compile Include="Rest\Models\Exceptions\AuthenticationFailedException.cs" />
+    <Compile Include="Rest\Models\Exceptions\DataInvalidException.cs" />
+    <Compile Include="Rest\Models\Exceptions\GenericErrorException.cs" />
+    <Compile Include="Rest\Models\Exceptions\LoadProfileFailedException.cs" />
+    <Compile Include="Rest\Models\Exceptions\NoAlertsFoundException.cs" />
+    <Compile Include="Rest\Models\Exceptions\NoChildrenFoundException.cs" />
+    <Compile Include="Rest\Models\Exceptions\NoSchoolFoundException.cs" />
+    <Compile Include="Rest\Models\Exceptions\UploadImageFailException.cs" />
+    <Compile Include="Rest\Models\Request\AddSchoolDTO.cs" />
+    <Compile Include="Rest\Models\Request\JwtAuthenticationRequestDTO.cs" />
+    <Compile Include="Rest\Models\Request\JwtFacebookAuthenticationRequestDTO.cs" />
+    <Compile Include="Rest\Models\Request\RegisterParentDTO.cs" />
+    <Compile Include="Rest\Models\Request\RegisterSonDTO.cs" />
+    <Compile Include="Rest\Models\Request\ResetPasswordRequestDTO.cs" />
+    <Compile Include="Rest\Models\Request\SaveDeviceDTO.cs" />
+    <Compile Include="Rest\Models\Request\SaveSocialMediaDTO.cs" />
+    <Compile Include="Rest\Models\Request\UpdateParentDTO.cs" />
+    <Compile Include="Rest\Models\Request\UpdateSonDTO.cs" />
+    <Compile Include="Rest\Models\Response\AlertDTO.cs" />
+    <Compile Include="Rest\Models\Response\APIResponse.cs" />
+    <Compile Include="Rest\Models\Response\DeviceDTO.cs" />
+    <Compile Include="Rest\Models\Response\FieldErrorDTO.cs" />
+    <Compile Include="Rest\Models\Response\ImageDTO.cs" />
+    <Compile Include="Rest\Models\Response\JwtAuthenticationResponseDTO.cs" />
+    <Compile Include="Rest\Models\Response\ParentDTO.cs" />
+    <Compile Include="Rest\Models\Response\SchoolDTO.cs" />
+    <Compile Include="Rest\Models\Response\SocialMediaDTO.cs" />
+    <Compile Include="Rest\Models\Response\SonDTO.cs" />
+    <Compile Include="Rest\Models\Response\ValidationErrorDTO.cs" />
+    <Compile Include="Rest\Services\IAlertRestService.cs" />
+    <Compile Include="Rest\Services\IAuthenticationRestService.cs" />
+    <Compile Include="Rest\Services\IChildrenRestService.cs" />
+    <Compile Include="Rest\Services\IDeviceGroupsRestService.cs" />
+    <Compile Include="Rest\Services\IParentsRestService.cs" />
+    <Compile Include="Rest\Services\ISchoolRestService.cs" />
+    <Compile Include="Rest\Utils\Logging\HttpLoggingHandler.cs" />
+    <Compile Include="Rest\Utils\ResponseNames.cs" />
+    <Compile Include="Rest\Utils\RestServiceFactory.cs" />
+    <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\IToastNotifier.cs" />
     <Compile Include="Models\Utils\IDirty.cs" />
     <Compile Include="ViewModels\ChildrenViewModel.cs" />
-    <Compile Include="Pages\BaseContentPage.cs" />
     <Compile Include="ViewModels\AuthenticationViewModel.cs" />
     <Compile Include="Config\Settings.cs" />
     <Compile Include="Pages\Welcome\WelcomeStartPage.xaml.cs">
@@ -166,6 +224,7 @@
     <Compile Include="Models\Domain\ParentEntity.cs" />
     <Compile Include="Services\Impl\ParentServiceImpl.cs" />
     <Compile Include="Models\Domain\SonEntity.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="Converters\AgeFormatValueConverter.cs" />
     <Compile Include="ViewModels\SignupViewModel.cs" />
@@ -305,11 +364,6 @@
     <Compile Include="Converters\SwitchChangeEventArgsConverter.cs" />
     <Compile Include="OAuth\Providers\Instagram\InstagramOAuth2.cs" />
     <Compile Include="Pages\Common\Extended\TableViewWithoutBorders.cs" />
-    <Compile Include="Pages\Common\Extended\ExtendedTextCell.cs" />
-    <Compile Include="Pages\Common\Extended\TextCellDetailLocation.cs" />
-    <Compile Include="Pages\Common\Extended\SelectCell.cs" />
-    <Compile Include="Pages\Common\Extended\CheckboxCell.cs" />
-    <Compile Include="Pages\Common\Extended\EventArgs.cs" />
     <Compile Include="Pages\Home\Templates\HomeHeader.xaml.cs">
       <DependentUpon>HomeHeader.xaml</DependentUpon>
     </Compile>
@@ -327,11 +381,40 @@
     <Compile Include="Services\Impl\SchoolServiceImpl.cs" />
     <Compile Include="Models\Domain\SchoolEntity.cs" />
     <Compile Include="OAuth\Providers\Google\GoogleOAuth2.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="MvvmCross.Binding, Version=5.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Binding.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Core, Version=5.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Core.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.FieldBinding, Version=5.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Plugin.FieldBinding.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.FieldBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Forms, Version=5.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Forms.5.1.1\lib\portable-net45+netcore45+wpa81+MonoAndroid10+Xamarin.iOS10\MvvmCross.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Localization, Version=5.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Binding.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Platform, Version=5.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Platform.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Messenger, Version=5.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Plugin.Messenger.5.1.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
       <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\netstandard1.1\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.2.3.4.270\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="XFGloss">
       <HintPath>..\packages\Ansuria.XFGloss.1.0.6.59\lib\portable-net45+wp8+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\XFGloss.dll</HintPath>
@@ -465,36 +548,6 @@
     <Reference Include="Lottie.Forms">
       <HintPath>..\packages\Com.Airbnb.Xamarin.Forms.Lottie.2.3.4\lib\portable-net45+wp8+win+wpa81+dnxcore50\Lottie.Forms.dll</HintPath>
     </Reference>
-    <Reference Include="MvvmCross.Platform">
-      <HintPath>..\packages\MvvmCross.Platform.5.2.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Core">
-      <HintPath>..\packages\MvvmCross.Core.5.2.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Binding">
-      <HintPath>..\packages\MvvmCross.Binding.5.2.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Binding.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Localization">
-      <HintPath>..\packages\MvvmCross.Binding.5.2.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Localization.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.FieldBinding">
-      <HintPath>..\packages\MvvmCross.Plugin.FieldBinding.5.2.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.FieldBinding.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Plugins.Messenger">
-      <HintPath>..\packages\MvvmCross.Plugin.Messenger.5.2.1\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.Messenger.dll</HintPath>
-    </Reference>
-    <Reference Include="MvvmCross.Forms">
-      <HintPath>..\packages\MvvmCross.Forms.5.2.1\lib\portable-net45+netcore45+wpa81+MonoAndroid10+Xamarin.iOS10\MvvmCross.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\packages\Xamarin.Forms.2.4.0.280\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform">
-      <HintPath>..\packages\Xamarin.Forms.2.4.0.280\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\packages\Xamarin.Forms.2.4.0.280\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Xaml.dll</HintPath>
-    </Reference>
     <Reference Include="Validation">
       <HintPath>..\packages\Validation.2.4.15\lib\portable-net45+win8+wp8+wpa81\Validation.dll</HintPath>
     </Reference>
@@ -515,75 +568,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Config\" />
-    <Folder Include="Utils\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Models\" />
-    <Folder Include="Models\Utils\" />
-    <Folder Include="Pages\" />
-    <Folder Include="Pages\Welcome\" />
-    <Folder Include="Renderers\" />
-    <Folder Include="Converters\" />
-    <Folder Include="I18N\" />
-    <Folder Include="Services\" />
-    <Folder Include="Services\Impl\" />
-    <Folder Include="Models\Domain\" />
-    <Folder Include="Pages\Login\" />
-    <Folder Include="Pages\Home\" />
-    <Folder Include="ViewModels\Core\" />
-    <Folder Include="Messages\" />
-    <Folder Include="Pages\Signup\" />
-    <Folder Include="OAuth\" />
-    <Folder Include="OAuth\Models\" />
-    <Folder Include="OAuth\Providers\" />
-    <Folder Include="OAuth\Providers\Facebook\" />
-    <Folder Include="OAuth\Services\" />
-    <Folder Include="I18N\Services\" />
-    <Folder Include="OAuth\Exceptions\" />
-    <Folder Include="Pages\Common\" />
-    <Folder Include="Themes\" />
-    <Folder Include="Pages\PasswordRecovery\" />
-    <Folder Include="Pages\Walkthrough\" />
-    <Folder Include="Pages\Walkthrough\Items\" />
-    <Folder Include="Exceptions\" />
-    <Folder Include="Pages\Alerts\" />
-    <Folder Include="Pages\Alerts\Templates\" />
-    <Folder Include="Pages\Common\Templates\" />
-    <Folder Include="Pages\SonProfile\" />
-    <Folder Include="Pages\Children\" />
-    <Folder Include="Pages\Children\Templates\" />
-    <Folder Include="Pages\EditSon\" />
-    <Folder Include="Pages\Profile\" />
-    <Folder Include="Pages\AlertDetail\" />
-    <Folder Include="Pages\Profile\Template\" />
-    <Folder Include="Pages\Common\Extended\" />
-    <Folder Include="OAuth\Providers\Instagram\" />
-    <Folder Include="Pages\Home\Templates\" />
-    <Folder Include="Pages\EditSon\Templates\" />
-    <Folder Include="Pages\AddSchool\" />
-    <Folder Include="OAuth\Providers\Google\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\bullytect.rest\bullytect.rest.csproj">
-      <Project>{0748EB83-D6F4-4CAC-A2C2-575E6D6AED54}</Project>
-      <Name>Bullytect.Rest</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bullytect.Utils\Bullytect.Utils.csproj">
-      <Project>{D149392A-D937-456B-B5D9-1C390BEEB538}</Project>
-      <Name>Bullytect.Utils</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\bullytect.rest\bullytect.rest.csproj">
-      <Project>{0748EB83-D6F4-4CAC-A2C2-575E6D6AED54}</Project>
-      <Name>Bullytect.Rest</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="..\packages\refit.3.0.1\build\netstandard1.1\refit.targets" Condition="Exists('..\packages\refit.3.0.1\build\netstandard1.1\refit.targets')" />
   <Import Project="..\packages\UXDivers.Artina.Shared.2.0.60\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Artina.Shared.targets" Condition="Exists('..\packages\UXDivers.Artina.Shared.2.0.60\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\UXDivers.Artina.Shared.targets')" />
-  <Import Project="..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
+  <Import Project="..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
+  </Target>
 </Project>

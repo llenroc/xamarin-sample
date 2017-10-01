@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Bullytect.Rest.Models.Exceptions;
-using Bullytect.Rest.Models.Response;
-using Bullytect.Rest.Utils;
 using Refit;
+using Bullytect.Core.Rest.Models.Response;
+using Bullytect.Core.Rest.Models.Exceptions;
+using Bullytect.Core.Rest.Utils;
 
 namespace Bullytect.Core.Utils
 {

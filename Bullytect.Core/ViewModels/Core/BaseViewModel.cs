@@ -11,12 +11,12 @@ namespace Bullytect.Core.ViewModels
     using Bullytect.Core.Exceptions;
     using Bullytect.Core.I18N;
     using Bullytect.Core.Messages;
-    using Bullytect.Rest.Models.Exceptions;
     using MvvmCross.Core.ViewModels;
     using MvvmCross.Plugins.Messenger;
     using MvvmCross.ReactiveUI.Interop;
     using Plugin.Connectivity;
     using ReactiveUI;
+    using Bullytect.Core.Rest.Models.Exceptions;
 
     public abstract class BaseViewModel : MvxReactiveViewModel
     {

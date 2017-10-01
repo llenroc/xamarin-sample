@@ -6,12 +6,12 @@ namespace Bullytect.Core.Services.Impl
     using System.Reactive.Linq;
     using Bullytect.Core.Config;
     using Bullytect.Core.Messages;
-    using Bullytect.Rest.Models.Exceptions;
-    using Bullytect.Rest.Models.Request;
-    using Bullytect.Rest.Models.Response;
-    using Bullytect.Rest.Services;
     using MvvmCross.Plugins.Messenger;
     using Refit;
+    using Bullytect.Core.Rest.Services;
+    using Bullytect.Core.Rest.Models.Request;
+    using Bullytect.Core.Rest.Models.Exceptions;
+    using Bullytect.Core.Rest.Models.Response;
 
     public class AuthenticationServiceImpl: BaseService, IAuthenticationService
     {

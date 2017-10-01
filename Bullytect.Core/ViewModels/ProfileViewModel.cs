@@ -1,18 +1,16 @@
 ﻿
 using System;
 using System.Diagnostics;
-using System.IO;
 using System.Reactive.Linq;
-using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Messages;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
 using Bullytect.Core.Utils;
-using Bullytect.Rest.Models.Exceptions;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
+using Bullytect.Core.Rest.Models.Exceptions;
 
 namespace Bullytect.Core.ViewModels
 {

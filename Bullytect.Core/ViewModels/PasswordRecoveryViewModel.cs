@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using Acr.UserDialogs;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Services;
-using Bullytect.Rest.Models.Exceptions;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 

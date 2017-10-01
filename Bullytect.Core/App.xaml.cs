@@ -10,13 +10,13 @@ namespace Bullytect.Core
     using Bullytect.Core.I18N.Services;
     using Bullytect.Core.Messages;
     using Bullytect.Core.Services;
-    using Bullytect.Utils.Helpers;
     using MvvmCross.Forms.Core;
     using MvvmCross.Platform;
     using MvvmCross.Plugins.Messenger;
     using Plugin.DeviceInfo;
     using Plugin.FirebasePushNotification;
     using Xamarin.Forms;
+    using Bullytect.Utils.Helpers;
 
     public partial class App : MvxFormsApplication
     {

@@ -10,11 +10,11 @@ using Bullytect.Core.I18N;
 using Bullytect.Core.OAuth.Providers.Facebook;
 using Bullytect.Core.OAuth.Services;
 using Bullytect.Core.Services;
-using Bullytect.Rest.Models.Exceptions;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 using Xamarin.Forms;
+using Bullytect.Core.Rest.Models.Exceptions;
 
 namespace Bullytect.Core.ViewModels
 {
