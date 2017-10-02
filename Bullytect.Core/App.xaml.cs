@@ -14,7 +14,6 @@ namespace Bullytect.Core
     using MvvmCross.Platform;
     using MvvmCross.Plugins.Messenger;
     using Plugin.DeviceInfo;
-    using Plugin.FirebasePushNotification;
     using Xamarin.Forms;
     using Bullytect.Utils.Helpers;
 

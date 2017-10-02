@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using Android.App;
 using Android.Runtime;
-using Plugin.FirebasePushNotification;
 
 namespace Bullytect.Droid
 {

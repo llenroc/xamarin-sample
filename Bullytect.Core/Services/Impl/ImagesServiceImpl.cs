@@ -1,7 +1,6 @@
 ﻿
 using System.IO;
 using System.Threading.Tasks;
-using Plugin.Media;
 
 namespace Bullytect.Core.Services.Impl
 {
@@ -10,7 +9,7 @@ namespace Bullytect.Core.Services.Impl
 
         public async Task<Stream> PickPhoto()
         {
-			await CrossMedia.Current.Initialize();
+            /*await CrossMedia.Current.Initialize();
 
 			var file = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions()
 			{
@@ -20,32 +19,34 @@ namespace Bullytect.Core.Services.Impl
 
 			var stream = file.GetStream();
 			file.Dispose();
-            return stream;
+            return stream;*/
+            return await Task.FromResult<Stream>(null);
         }
 
         public async Task<Stream> TakePhotoFromFrontCamera()
         {
-			await CrossMedia.Current.Initialize();
+            //await CrossMedia.Current.Initialize();
 
-			/*if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            /*if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
 			{
 
 			}*/
 
-			var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            /*var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
 			{
 				SaveToAlbum = true,
 				DefaultCamera = Plugin.Media.Abstractions.CameraDevice.Front
-			});
+			});*/
 
-			/*if (file == null)
+            /*if (file == null)
 				return;*/
 
-			//await DisplayAlert("File Location", file.Path, "OK");
+            //await DisplayAlert("File Location", file.Path, "OK");
 
-			var stream = file.GetStream();
+            /*var stream = file.GetStream();
 			file.Dispose();
-			return stream;
+			return stream;*/
+            return null;
         }
     }
 }

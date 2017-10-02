@@ -12,7 +12,6 @@ using Xamarin.Forms.Platform.Android;
 using FFImageLoading.Forms.Droid;
 using Xamarin.Forms;
 using UXDivers.Artina.Shared.Droid;
-using Plugin.FirebasePushNotification;
 
 namespace Bullytect.Droid
 {
