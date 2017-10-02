@@ -4,8 +4,6 @@ using System.Diagnostics;
 using System.Reactive.Linq;
 using AutoMapper;
 using Bullytect.Core.Models.Domain;
-using Bullytect.Core.Utils;
-using Refit;
 using Bullytect.Core.Rest.Services;
 using Bullytect.Core.Rest.Models.Response;
 

@@ -5,8 +5,6 @@ using Bullytect.Core;
 using MvvmCross.Forms.Core;
 using MvvmCross.Forms.Droid;
 using MvvmCross.Platform;
-using MvvmCross.Plugins.Validation;
-using MvvmCross.Plugins.Validation.Droid;
 using MvvmCross.Droid.Views;
 using Bullytect.Droid.Presenters;
 using MvvmCross.Core.Views;
@@ -23,7 +21,6 @@ namespace Bullytect.Droid
 		{
 			base.InitializePlatformServices();
 
-			Mvx.RegisterType<IMvxToastService>(() => new MvxAndroidToastService(ApplicationContext));
 		}
 
 

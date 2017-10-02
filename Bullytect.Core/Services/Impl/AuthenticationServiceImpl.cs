@@ -7,7 +7,6 @@ namespace Bullytect.Core.Services.Impl
     using Bullytect.Core.Config;
     using Bullytect.Core.Messages;
     using MvvmCross.Plugins.Messenger;
-    using Refit;
     using Bullytect.Core.Rest.Services;
     using Bullytect.Core.Rest.Models.Request;
     using Bullytect.Core.Rest.Models.Exceptions;
@@ -33,10 +32,9 @@ namespace Bullytect.Core.Services.Impl
             {
                 Email = email,
                 Password = password
-            }).Select(response => response.Data.Token).Catch<string, ApiException>(ex => {
-                var response = ex.GetContentAs<APIResponse<string>>();
-                return Observable.Throw<string>(new AuthenticationFailedException(response));
-            }).Do((jwtToken) => {
+            })
+            .Select(response => response.Data.Token)
+            .Do((jwtToken) => {
                 if (!String.IsNullOrEmpty(jwtToken))
                 {
                     Debug.WriteLine(String.Format("Jwt Access Token: {0} ", jwtToken));

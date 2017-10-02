@@ -8,27 +8,22 @@ namespace Bullytect.Droid.Renderers
 	{
 		private static readonly string[] CustomFontFamily = new [] { "grialshapes", "FontAwesome", "Ionicons" };
 		private static readonly Tuple<FontAttributes, string>[][] CustomFontFamilyData = new [] { 
-			/*new [] {
+			new [] {
 				new Tuple<FontAttributes, string>(FontAttributes.None, "grialshapes.ttf"),
 				new Tuple<FontAttributes, string>(FontAttributes.Bold, "grialshapes.ttf"),
 				new Tuple<FontAttributes, string>(FontAttributes.Italic, "grialshapes.ttf")
-			},*/
-
-			
+			},
 			new [] {
 				new Tuple<FontAttributes, string>(FontAttributes.None, "fontawesome-webfont.ttf"),
 				new Tuple<FontAttributes, string>(FontAttributes.Bold, "fontawesome-webfont.ttf"),
 				new Tuple<FontAttributes, string>(FontAttributes.Italic, "fontawesome-webfont.ttf")
-			}
-			
-
-			/*
+			},
 			new [] {
 				new Tuple<FontAttributes, string>(FontAttributes.None, "ionicons.ttf"),
 				new Tuple<FontAttributes, string>(FontAttributes.Bold, "ionicons.ttf"),
 				new Tuple<FontAttributes, string>(FontAttributes.Italic, "ionicons.ttf")
 			}
-			*/
+			
 		};
 			
 		protected override bool CheckIfCustomFont (string fontFamily, FontAttributes attributes, out string fontFileName)

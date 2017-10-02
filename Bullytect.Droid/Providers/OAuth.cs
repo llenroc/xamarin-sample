@@ -9,7 +9,7 @@ using System.Reactive.Linq;
 using Bullytect.Core.OAuth.Exceptions;
 using Android.App;
 
-[assembly: Dependency(typeof(OAuth))]
+[assembly: Dependency(typeof(Bullytect.Droid.Providers.OAuth))]
 namespace Bullytect.Droid.Providers
 {
     public class OAuth: IOAuth
@@ -38,7 +38,7 @@ namespace Bullytect.Droid.Providers
                     if (!eventPattern.EventArgs.IsAuthenticated)
                         Observable.Throw<FacebookAuthenticationErrorException>(new FacebookAuthenticationErrorException());
 
-                    var accessToken = eventPattern.EventArgs.Account.Properties["access_token"].ToString();
+                    var accessToken = eventPattern?.EventArgs?.Account?.Properties["access_token"]?.ToString();
 
                     return accessToken;
 

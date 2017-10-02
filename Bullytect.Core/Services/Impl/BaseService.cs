@@ -6,8 +6,8 @@ namespace Bullytect.Core.Services.Impl
 	using System.Reactive.Linq;
     using Bullytect.Core.Config;
     using Bullytect.Core.Exceptions;
+    using Bullytect.Core.Rest.Models.Exceptions;
     using Bullytect.Core.Utils;
-    using Refit;
 
     public abstract class BaseService
     {

@@ -13,8 +13,8 @@ using System.Diagnostics;
 using Bullytect.Core.Rest.Utils.Logging;
 using Bullytect.Core.Rest.Handlers;
 using Bullytect.Core.Rest.Services;
-using Bullytect.Core.Rest.Utils;
 using Bullytect.Core.Rest.Models.Response;
+using Bullytect.Core.Rest.Services.Impl;
 
 namespace Bullytect.Core
 {
@@ -37,13 +37,14 @@ namespace Bullytect.Core
 				Timeout = TimeSpan.FromMinutes(SharedConfig.TIMEOUT_OPERATION_MINUTES)
 			};
 
+
 			// Register REST services
-			Mvx.RegisterSingleton<IAuthenticationRestService>(() => RestServiceFactory.getService<IAuthenticationRestService>(httpClient));
-			Mvx.RegisterSingleton<IParentsRestService>(() => RestServiceFactory.getService<IParentsRestService>(httpClient));
-			Mvx.RegisterSingleton<IChildrenRestService>(() => RestServiceFactory.getService<IChildrenRestService>(httpClient));
-            Mvx.RegisterSingleton<IDeviceGroupsRestService>(() => RestServiceFactory.getService<IDeviceGroupsRestService>(httpClient));
-            Mvx.RegisterSingleton<IAlertRestService>(() => RestServiceFactory.getService<IAlertRestService>(httpClient));
-            Mvx.RegisterSingleton<ISchoolRestService>(() => RestServiceFactory.getService<ISchoolRestService>(httpClient));
+			Mvx.RegisterSingleton<IAuthenticationRestService>(() => new AuthenticationRestServiceImpl(httpClient));
+			Mvx.RegisterSingleton<IParentsRestService>(() => new ParentsRestServiceImpl(httpClient));
+			Mvx.RegisterSingleton<IChildrenRestService>(() => new ChildrenRestServiceImpl(httpClient));
+            Mvx.RegisterSingleton<IDeviceGroupsRestService>(() => new DeviceGroupsRestServiceImpl(httpClient));
+            Mvx.RegisterSingleton<IAlertRestService>(() => new AlertRestServiceImpl(httpClient));
+            Mvx.RegisterSingleton<ISchoolRestService>(() => new SchoolRestServiceImpl(httpClient));
         }
 
         void prepareMappers() {

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Refit;
 using Bullytect.Core.Rest.Models.Response;
 using Bullytect.Core.Rest.Models.Exceptions;
 using Bullytect.Core.Rest.Utils;

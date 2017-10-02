@@ -1,15 +1,20 @@
 ﻿using System;
+using Acr.UserDialogs;
 using Android.App;
 using Android.Content.PM;
+using Android.OS;
+using FFImageLoading.Forms.Droid;
 using MvvmCross.Droid.Views;
 using MvvmCross.Forms.Droid;
+using Refractored.XamForms.PullToRefresh.Droid;
+using UXDivers.Artina.Shared;
 using Xamarin.Forms;
 
 namespace Bullytect.Droid
 {
 	[Activity(
 		Name = "com.usal.bisite.bulltect.SplashScreen",
-		Label = "Bulltect"
+		Label = "bulltect"
 		, MainLauncher = true
 		, Icon = "@mipmap/ic_launcher"
 		, Theme = "@style/Theme.Splash"
@@ -17,24 +22,9 @@ namespace Bullytect.Droid
 		, ScreenOrientation = ScreenOrientation.Portrait)]
 	public class SplashScreen : MvxSplashScreenActivity
 	{
-
-		public override void InitializationComplete()
+		protected override void TriggerFirstNavigate()
 		{
 			StartActivity(typeof(MvxFormsApplicationActivity));
-		}
-
-		protected override void OnCreate(Android.OS.Bundle bundle)
-		{
-			Forms.Init(this, bundle);
-			// Leverage controls' StyleId attrib. to Xamarin.UITest
-			Forms.ViewInitialized += (object sender, ViewInitializedEventArgs e) => {
-				if (!string.IsNullOrWhiteSpace(e.View.StyleId))
-				{
-					e.NativeView.ContentDescription = e.View.StyleId;
-				}
-			};
-
-			base.OnCreate(bundle);
 		}
 	}
 }
