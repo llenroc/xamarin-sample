@@ -84,6 +84,15 @@ namespace Bullytect.Core.Utils
 			};
 		}
 
+        static AuthenticationFailedException createAuthenticationFailedException(ApiException ex) 
+        {
+            return new AuthenticationFailedException()
+            {
+                Response = ex.GetContentAs<APIResponse<string>>()
+            };
+
+        }
+
         public static Exception parseApiException(ApiException ex) {
 
             Exception exResponse = null;
@@ -94,7 +103,6 @@ namespace Bullytect.Core.Utils
 				if (!String.IsNullOrEmpty(responseName))
 				{
 					Debug.WriteLine(String.Format("Response Format: {0}", responseName));
-
                     switch(responseName) {
 
                         // Parse Validation Error
@@ -120,6 +128,10 @@ namespace Bullytect.Core.Utils
                             // Parse No Schools not found
                         case ResponseNames.NO_SCHOOLS_FOUND_RESPONSE:
                             exResponse = createNotSchoolFoundException(ex);
+                            break;
+                            // Parse Bad Credentials Response
+                        case ResponseNames.BAD_CREDENTIALS_RESPONSE:
+                            exResponse = createAuthenticationFailedException(ex);
                             break;
 							// Parse Generic Error
                         case ResponseNames.GENERIC_ERROR_RESPONSE:

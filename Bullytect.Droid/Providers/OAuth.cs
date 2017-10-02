@@ -46,7 +46,7 @@ namespace Bullytect.Droid.Providers
 			
 
             global::Android.Content.Intent ui_object = auth.GetUI(activity);
-
+        
             activity.StartActivity(ui_object);
 
             return observable;

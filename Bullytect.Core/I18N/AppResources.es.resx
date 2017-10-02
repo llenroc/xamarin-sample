@@ -58,6 +58,11 @@
         <comment>Common Timeout Operation</comment>
     </data>
 
+	<data name="Common.Invalid.Session" xml:space="preserve">
+        <value>Tu sesión ya no es válida, debe autenticarte de nuevo</value>
+        <comment>Common Invalid Session</comment>
+    </data>
+
 	<data name="Common.Server.Connection.Error" xml:space="preserve">
         <value>Error al conectar con el servidor, inténtalo de nuevo más tarde.</value>
         <comment>Common Server Connection Error</comment>

@@ -52,6 +52,7 @@ namespace Bullytect.Core.ViewModels
 					var oauthService = DependencyService.Get<IOAuth>();
 					return oauthService
 						.authenticate(new FacebookOAuth2())
+                        .Where(AccessToken => !string.IsNullOrEmpty(AccessToken))
 						.Do(_ => _userDialogs.ShowLoading(AppResources.Login_Authenticating))
 						.SelectMany(accessToken => authenticationService.LoginWithFacebook(accessToken))
 						.Do(_ => _userDialogs.HideLoading());
@@ -102,7 +103,7 @@ namespace Bullytect.Core.ViewModels
 			{
 				var toastConfig = new ToastConfig(AppResources.Login_Failed);
 				toastConfig.SetDuration(3000);
-				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
+				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
 				_userDialogs.Toast(toastConfig);
 			}
 			else

@@ -74,6 +74,11 @@
         <comment>Common Timeout Operation</comment>
     </data>
 
+	<data name="Common.Invalid.Session" xml:space="preserve">
+        <value>Your session is no longer valid, you must authenticate again.</value>
+        <comment>Common Invalid Session</comment>
+    </data>
+
 	<data name="Common.Server.Connection.Error" xml:space="preserve">
         <value>Failed to connect to server, please try again later.</value>
         <comment>Common Server Connection Error</comment>

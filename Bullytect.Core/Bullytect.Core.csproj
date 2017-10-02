@@ -223,7 +223,6 @@
     <Compile Include="Models\Domain\ParentEntity.cs" />
     <Compile Include="Services\Impl\ParentServiceImpl.cs" />
     <Compile Include="Models\Domain\SonEntity.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="Converters\AgeFormatValueConverter.cs" />
     <Compile Include="ViewModels\SignupViewModel.cs" />

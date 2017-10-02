@@ -20,5 +20,7 @@ namespace Bullytect.Core.Rest.Utils
         public const int FAILED_TO_UPLOAD_IMAGE_CODE = 1001;
         public const string NO_SCHOOLS_FOUND_RESPONSE = "NO_SCHOOLS_FOUND";
         public const int NO_SCHOOLS_FOUND_CODE = 606;
+        public const string BAD_CREDENTIALS_RESPONSE = "BAD_CREDENTIALS";
+        public const int BAD_CREDENTIALS_CODE = 416;
     }
 }

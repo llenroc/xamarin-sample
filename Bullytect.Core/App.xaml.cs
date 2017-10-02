@@ -16,6 +16,8 @@ namespace Bullytect.Core
     using Plugin.DeviceInfo;
     using Xamarin.Forms;
     using Bullytect.Utils.Helpers;
+    using MvvmCross.Core.Navigation;
+    using Bullytect.Core.ViewModels;
 
     public partial class App : MvxFormsApplication
     {
@@ -66,6 +68,33 @@ namespace Bullytect.Core
             
         }
 
+		void OnSessionExpiredMessage(SessionExpiredMessage sessionExpiredMessage)
+		{
+			Debug.WriteLine("OnSessionExpiredMessage ...");
+
+            var userDialogs = Mvx.Resolve<IUserDialogs>();
+            var navigationService = Mvx.Resolve<IMvxNavigationService>();
+
+            userDialogs.ShowError(AppResources.Common_Invalid_Session);
+
+            Settings.AccessToken = null;
+
+            navigationService?.Navigate<AuthenticationViewModel>();
+
+		}
+
+		void OnSignOutMessage(SignOutMessage signOutMessage)
+		{
+			Debug.WriteLine("OnSignOutMessage ...");
+
+			var navigationService = Mvx.Resolve<IMvxNavigationService>();
+
+			Settings.AccessToken = null;
+
+            navigationService?.Navigate<AuthenticationViewModel>();
+
+		}
+
 		protected override void OnStart()
 		{
 
@@ -75,6 +104,14 @@ namespace Bullytect.Core
             messenger.Subscribe<AuthenticatedUserMessage>(OnAuthenticatedUserMessage);
             // subscribe to Exception Ocurred Message
             messenger.Subscribe<ExceptionOcurredMessage>(OnExceptionOcurredMessage);
+			// subscribe to SessionExpiredMessage
+			messenger.Subscribe<SessionExpiredMessage>(OnSessionExpiredMessage);
+			// subscribe to SessionExpiredMessage
+			messenger.Subscribe<SignOutMessage>(OnSignOutMessage);
+
+
+
+
 
             //Handling FCM Token
 			/*CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>

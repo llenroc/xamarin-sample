@@ -113,6 +113,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Common_Invalid_Session {
+            get {
+                return ResourceManager.GetString("Common.Invalid.Session", resourceCulture);
+            }
+        }
+        
         internal static string Common_Server_Connection_Error {
             get {
                 return ResourceManager.GetString("Common.Server.Connection.Error", resourceCulture);
