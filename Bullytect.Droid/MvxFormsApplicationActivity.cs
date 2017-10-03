@@ -15,6 +15,7 @@ using MvvmCross.Forms.Presenters;
 using MvvmCross.Droid.Views;
 using Xamarin.Forms.Platform.Android;
 using MvvmCross.Droid.Platform;
+using Plugin.Permissions;
 
 namespace Bullytect.Droid
 {
@@ -94,5 +95,10 @@ namespace Bullytect.Droid
 
 			DeviceOrientationLocator.NotifyOrientationChanged();
 		}
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 }

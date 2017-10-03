@@ -16,6 +16,7 @@
     <ContentView.Content>
         <AbsoluteLayout
             IsVisible="{Binding Source={x:Reference Root}, Path=BadgeText, Converter={StaticResource isBadgeVisibleConverter}}">
+            
             <Label
                 FontSize="28"
                 Text="{ x:Static helper:FontAwesomeFont.Circle }"

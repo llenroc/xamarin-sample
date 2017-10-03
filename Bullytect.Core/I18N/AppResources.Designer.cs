@@ -467,6 +467,15 @@ namespace Bullytect.Core.I18N {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Add Son.
+        /// </summary>
+        internal static string Home_Add_Son {
+            get {
+                return ResourceManager.GetString("Home.Add.Son", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a   Children analyzed .
         /// </summary>
         internal static string Home_Children_List_Title {
@@ -490,6 +499,15 @@ namespace Bullytect.Core.I18N {
         internal static string Home_Loading_Profile {
             get {
                 return ResourceManager.GetString("Home.Loading.Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No child to analyze.
+        /// </summary>
+        internal static string Home_Not_Children_Found {
+            get {
+                return ResourceManager.GetString("Home.Not.Children.Found", resourceCulture);
             }
         }
         
@@ -744,6 +762,15 @@ namespace Bullytect.Core.I18N {
         internal static string Profile_Account_Updated {
             get {
                 return ResourceManager.GetString("Profile.Account.Updated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Can not take Photo From Camera.
+        /// </summary>
+        internal static string Profile_Can_Not_Take_Photo_From_Camera {
+            get {
+                return ResourceManager.GetString("Profile.Can.Not.Take.Photo.From.Camera", resourceCulture);
             }
         }
         

@@ -63,15 +63,70 @@
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand">
 
-                <ScrollView
+                <StackLayout
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
                     Padding="20,10">
 
-                    
-                    <!-- Profile General Information Section -->
                     <StackLayout VerticalOptions="StartAndExpand" Spacing="10">
 
+                      <!-- Profile Image Section -->
+                      <StackLayout Padding="5">
+
+                            <Label
+                                LineBreakMode="WordWrap"
+                                Text="{i18n:Translate Profile.Image.Section}"
+                                TextColor="{ DynamicResource AccentColor }"
+                                VerticalTextAlignment="Center"
+                                FontSize="27">
+                              <Label.FontSize>
+                                <OnIdiom
+                                    x:TypeArguments="x:Double"
+                                    Phone="27"
+                                    Tablet="37"/>
+                              </Label.FontSize>
+                            </Label>
+
+                            <BoxView
+                                Style="{StaticResource BrandNameOrnamentStyle}"
+                                BackgroundColor="{DynamicResource AccentColor}"
+                                Margin="10, 0"/>
+                      
+                      </StackLayout>
+                      
+                      <StackLayout Orientation="Horizontal" Spacing="10">
+                        
+                          <!-- AVATAR -->
+                          <artina:CircleImage
+                            BorderThickness="5"
+                            BorderColor="{ DynamicResource AccentColor }"
+                            Source="user_profile_1.jpg"
+                            WidthRequest="100"
+                            HeightRequest="100"/>
+                        
+                          <Label
+                            LineBreakMode="WordWrap"
+                            Text="{i18n:Translate Profile.Image.Change}"
+                            TextColor="{ DynamicResource AccentColor }"
+                            VerticalTextAlignment="Center"
+                            FontSize="19">
+                          
+                            <Label.FontSize>
+                              <OnIdiom
+                                x:TypeArguments="x:Double" Phone="19" Tablet="22"/>
+                            </Label.FontSize>
+                          </Label>
+                        
+                          <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer 
+                              Command="{ Binding TakePhotoCommand }" 
+                              NumberOfTapsRequired="1" />
+                          </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+
+                        <!-- Profile General Information Section -->
                         <StackLayout Padding="5">
 
                             <Label
@@ -391,7 +446,7 @@
                             Text="{ i18n:Translate Common.Btn.Save.Changes }" />
                     </StackLayout>
 
-               </ScrollView>
+               </StackLayout>
 
 
                 <controls:PullToRefreshLayout.Triggers>

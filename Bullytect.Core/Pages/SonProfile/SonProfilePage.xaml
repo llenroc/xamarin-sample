@@ -50,15 +50,20 @@
                 <!-- FULLNAME NAME -->
                 <Label
                     Grid.Row="0"
+                    Margin="0,0,0,15"
                     Text="{Binding FullName}"
                     FontSize="{ artina:OnOrientationDouble 
-                        PortraitPhone=18,
-                        LandscapePhone=18,
-                        PortraitTablet=28,
-                        LandscapeTablet=28 }"
+                        PortraitPhone=28,
+                        LandscapePhone=28,
+                        PortraitTablet=38,
+                        LandscapeTablet=38 }"
                     FontAttributes="Bold"
-                    HorizontalTextAlignment="Start"
-                    TextColor="{ DynamicResource BaseTextColor }"/>
+                    HorizontalTextAlignment="Start"/>
+
+              <BoxView
+                Style="{StaticResource BrandNameOrnamentStyle}"
+                BackgroundColor="{DynamicResource AccentColor}"
+               />
                 
                <!-- Birthdate -->
 
@@ -70,9 +75,7 @@
                         LandscapePhone=18,
                         PortraitTablet=28,
                         LandscapeTablet=28 }"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Start"
-                    TextColor="{ DynamicResource BaseTextColor }"/>
+                    HorizontalTextAlignment="Start"/>
 
 
                 <!-- School -->
@@ -85,7 +88,6 @@
                         LandscapePhone=18,
                         PortraitTablet=28,
                         LandscapeTablet=28 }"
-                    FontAttributes="Bold"
                     HorizontalTextAlignment="Start"
                     TextColor="{ DynamicResource BaseTextColor }"/>
                 

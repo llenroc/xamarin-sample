@@ -56,12 +56,10 @@
                 VerticalOptions="FillAndExpand">
 
               <StackLayout
-                  HorizontalOptions="FillAndExpand"
-                  VerticalOptions="FillAndExpand"
                   Padding="20,10">
 
                 <ScrollView VerticalOptions="StartAndExpand">
-                    <!-- Profile General Information Section -->
+                    <!-- Profile Image Section -->
                     <StackLayout 
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="StartAndExpand"
@@ -106,12 +104,12 @@
                             Text="{i18n:Translate Profile.Image.Change}"
                             TextColor="{ DynamicResource AccentColor }"
                             VerticalTextAlignment="Center"
-                            FontSize="27">
+                            FontSize="19">
                           <Label.FontSize>
                             <OnIdiom
                                 x:TypeArguments="x:Double"
-                                Phone="27"
-                                Tablet="37"/>
+                                Phone="19"
+                                Tablet="22"/>
                           </Label.FontSize>
                         </Label>
 

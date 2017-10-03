@@ -12,6 +12,7 @@ using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 using Bullytect.Core.Rest.Models.Exceptions;
 using Bullytect.Core.Config;
+using Bullytect.Core.Exceptions;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -137,17 +138,23 @@ namespace Bullytect.Core.ViewModels
 
 		protected override void HandleExceptions(Exception ex)
 		{
-			if (ex is UploadImageFailException)
-			{
+            if (ex is UploadImageFailException)
+            {
                 var toastConfig = new ToastConfig(AppResources.Profile_Updating_Profile_Image_Failed);
-				toastConfig.SetDuration(3000);
-				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
+                toastConfig.SetDuration(3000);
+                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
                 _userDialogs.Toast(toastConfig);
-			}
-			else
-			{
-				base.HandleExceptions(ex);
-			}
+            }
+            else if (ex is CanNotTakePhotoFromCameraException) {
+                var toastConfig = new ToastConfig(AppResources.Profile_Can_Not_Take_Photo_From_Camera);
+                toastConfig.SetDuration(3000);
+                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
+                _userDialogs.Toast(toastConfig);
+            }
+            else
+            {
+                base.HandleExceptions(ex);
+            }
 		}
 
     }

@@ -572,6 +572,18 @@ and we will recover it for you. </value>
     <value>Add school</value>
     <comment>EditSon Add School Title</comment>
   </data>
+  <data name="Home.Add.Son" xml:space="preserve">
+    <value>Add Son</value>
+    <comment>Home Add Son</comment>
+  </data>
+  <data name="Home.Not.Children.Found" xml:space="preserve">
+    <value>No child to analyze</value>
+    <comment>Home Not Children Found</comment>
+  </data>
+  <data name="Profile.Can.Not.Take.Photo.From.Camera" xml:space="preserve">
+    <value>Can not take Photo From Camera</value>
+    <comment>Profile Can Not Take Photo From Camera</comment>
+  </data>
   <data name="Profile.Image.Change" xml:space="preserve">
     <value>Change profile picture</value>
     <comment>Profile Image Change</comment>

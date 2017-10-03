@@ -2,12 +2,16 @@ using System.Reflection;
 using Xamarin.Forms;
 using Bullytect;
 using Bullytect.Droid.Renderers;
+using Android.App;
 
 [assembly: AssemblyTitle (AssemblyGlobal.ProductLine + " - " + "Grial Xamarin.Forms UIKit (Android)")]
 [assembly: AssemblyConfiguration (AssemblyGlobal.Configuration)]
 [assembly: AssemblyCompany (AssemblyGlobal.Company)]
 [assembly: AssemblyProduct (AssemblyGlobal.ProductLine + " - " + "Grial Xamarin.Forms UIKit (Android)")]
 [assembly: AssemblyCopyright (AssemblyGlobal.Copyright)]
+
+[assembly: UsesFeature("android.hardware.camera", Required = false)]
+[assembly: UsesFeature("android.hardware.camera.autofocus", Required = false)]
 
 [assembly: UXDivers.Artina.Shared.GrialVersion("2.0.60.0")]
 

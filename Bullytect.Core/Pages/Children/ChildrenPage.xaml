@@ -137,8 +137,8 @@
                               <Label.FontSize>
                                 <OnIdiom
                                      x:TypeArguments="x:Double"
-                                     Phone="15"
-                                     Tablet="20" />
+                                     Phone="20"
+                                     Tablet="25" />
                               </Label.FontSize>
                             </Label>
 
@@ -149,8 +149,8 @@
                               <Label.FontSize>
                                 <OnIdiom
                                     x:TypeArguments="x:Double"
-                                    Phone="15"
-                                    Tablet="20" />
+                                    Phone="20"
+                                    Tablet="25" />
                               </Label.FontSize>
                             </Label>
 
@@ -179,8 +179,8 @@
                               <Label.FontSize>
                                 <OnIdiom
                                      x:TypeArguments="x:Double"
-                                     Phone="15"
-                                     Tablet="20" />
+                                     Phone="20"
+                                     Tablet="25" />
                               </Label.FontSize>
                             </Label>
 
@@ -191,8 +191,8 @@
                               <Label.FontSize>
                                 <OnIdiom
                                     x:TypeArguments="x:Double"
-                                    Phone="15"
-                                    Tablet="20" />
+                                    Phone="20"
+                                    Tablet="25" />
                               </Label.FontSize>
                             </Label>
 
@@ -220,8 +220,8 @@
                               <Label.FontSize>
                                 <OnIdiom
                                      x:TypeArguments="x:Double"
-                                     Phone="15"
-                                     Tablet="20" />
+                                     Phone="20"
+                                     Tablet="25" />
                               </Label.FontSize>
                             </Label>
 
@@ -232,14 +232,15 @@
                               <Label.FontSize>
                                 <OnIdiom
                                     x:TypeArguments="x:Double"
-                                    Phone="15"
-                                    Tablet="20" />
+                                    Phone="20"
+                                    Tablet="25" />
                               </Label.FontSize>
                             </Label>
 
                             <StackLayout.GestureRecognizers>
-                              <TapGestureRecognizer Command="{ Binding Path=BindingContext.ShowSonProfileCommand , Source={x:Reference Root} }"
-                                  CommandParameter="{Binding .}" NumberOfTapsRequired="1" />
+                              <TapGestureRecognizer 
+                                  Command="{ Binding Path=BindingContext.EditSonCommand , Source={x:Reference Root} }"
+                                  CommandParameter="{ Binding Identity }" NumberOfTapsRequired="1" />
                             </StackLayout.GestureRecognizers>
                           </StackLayout>
 

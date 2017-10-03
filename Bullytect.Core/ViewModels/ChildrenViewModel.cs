@@ -78,7 +78,9 @@ namespace Bullytect.Core.ViewModels
 			}
 		}
 
-		#endregion
+        public ICommand EditSonCommand => new MvxCommand<string>((string Id) => ShowViewModel<EditSonViewModel>(new { Id }));
+
+        #endregion
 
 
         protected override void HandleExceptions(Exception ex)

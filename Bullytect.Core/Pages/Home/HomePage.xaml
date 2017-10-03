@@ -98,6 +98,10 @@
                                                     HorizontalOptions="Center"
                                                     VerticalOptions="Start"
                                                     TranslationX="40"/>
+
+                                                <Grid.GestureRecognizers>
+                                                  <TapGestureRecognizer Command="{ Binding TakePhotoCommand }"  NumberOfTapsRequired="1" />
+                                                </Grid.GestureRecognizers>
                                             </Grid>
 
                                             <!-- Parent FullName -->
@@ -219,7 +223,7 @@
                                             </Grid>
                                     </Grid>
 
-                                    <Grid Grid.Row="1">
+                                    <Grid Grid.Row="1" IsVisible="{Binding NoChildrenFound, Converter={StaticResource InverseBoolConverter}}">
                                
                                         <StackLayout 
                                             Padding="0"
@@ -253,7 +257,32 @@
                                         </StackLayout>
                                     </Grid>
 
-                                 </Grid>
+                                  <StackLayout
+                                    Grid.Row="1"
+                                    IsVisible="{ Binding  NoChildrenFound }"
+                                    Margin="30, 0, 0, 0"
+                                    Padding="10">
+
+                                    <Label
+                                        LineBreakMode="WordWrap"
+                                        Text="{i18n:Translate Home.Not.Children.Found}"
+                                        TextColor="{ DynamicResource AccentColor }"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"
+                                        FontSize="19">
+                                        <Label.FontSize>
+                                          <OnIdiom
+                                            x:TypeArguments="x:Double" Phone="19" Tablet="22"/>
+                                        </Label.FontSize>
+                                    </Label>
+
+                                    <artina:Button
+                                        Style="{StaticResource SaveButtonStyle}"
+                                        Command="{ Binding AddSonCommand }"
+                                        Text="{i18n:Translate Home.Add.Son}" />
+                                  
+                                  </StackLayout>
+                            </Grid>
 
                         </ScrollView>
 
