@@ -17,8 +17,6 @@ namespace Bullytect.Core.Utils
 
 			return ReactiveCommand.CreateFromObservable<string, ImageEntity>((param) =>
 			{
-
-
 				return Observable.FromAsync<string>((_) => userDialogs.ActionSheetAsync(AppResources.Profile_Select_Profile_Image,
 				AppResources.Common_Cancel_Operation, null, null, new string[] { AppResources.Profile_Select_Profile_Image_From_Camera, AppResources.Profile_Select_Profile_Image_From_Galery }))
 								 .Where((action => !action.Equals(AppResources.Common_Cancel_Operation)))

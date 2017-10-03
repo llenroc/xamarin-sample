@@ -302,8 +302,6 @@ email and password.</value>
     <value>Account is disabled</value>
     <comment>Account Disabled</comment>
   </data>
-
-	
   <data name="Login.Forget.Password" xml:space="preserve">
     <value>Did you forget your password?</value>
     <comment>Login Forget Password</comment>
@@ -494,7 +492,7 @@ and we will recover it for you. </value>
     <value> There was an error updating profile information</value>
     <comment>Profile Updating Error</comment>
   </data>
-    <data name="Profile.Data.Not.Found" xml:space="preserve">
+  <data name="Profile.Data.Not.Found" xml:space="preserve">
     <value> Profile information not found</value>
     <comment>Profile Data Not Found</comment>
   </data>
@@ -573,5 +571,9 @@ and we will recover it for you. </value>
   <data name="EditSon.Add.School.Title" xml:space="preserve">
     <value>Add school</value>
     <comment>EditSon Add School Title</comment>
+  </data>
+  <data name="Profile.Image.Change" xml:space="preserve">
+    <value>Change profile picture</value>
+    <comment>Profile Image Change</comment>
   </data>
 </root>

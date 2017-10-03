@@ -55,15 +55,73 @@
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand">
 
-                <ScrollView
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
-                    Padding="20,10">
+              <StackLayout
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand"
+                  Padding="20,10">
 
-                    
+                <ScrollView VerticalOptions="StartAndExpand">
                     <!-- Profile General Information Section -->
                     <StackLayout 
-                        VerticalOptions="StartAndExpand">
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="StartAndExpand"
+                        Spacing="10">
+
+                      <StackLayout Padding="5">
+
+                        <Label
+                            LineBreakMode="WordWrap"
+                            Text="{i18n:Translate Profile.Image.Section}"
+                            TextColor="{ DynamicResource AccentColor }"
+                            VerticalTextAlignment="Center"
+                            FontSize="27">
+                          <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Phone="27"
+                                Tablet="37"/>
+                          </Label.FontSize>
+                        </Label>
+
+                        <BoxView
+                            Style="{StaticResource BrandNameOrnamentStyle}"
+                            BackgroundColor="{DynamicResource AccentColor}"
+                            Margin="10, 0"/>
+
+                      </StackLayout>
+
+
+                      <StackLayout Orientation="Horizontal" Spacing="10">
+
+                        <!-- AVATAR -->
+                        <artina:CircleImage
+                            BorderThickness="5"
+                            BorderColor="{ DynamicResource AccentColor }"
+                            Source="user_profile_1.jpg"
+                            WidthRequest="100"
+                            HeightRequest="100"/>
+
+                        <Label
+                            LineBreakMode="WordWrap"
+                            Text="{i18n:Translate Profile.Image.Change}"
+                            TextColor="{ DynamicResource AccentColor }"
+                            VerticalTextAlignment="Center"
+                            FontSize="27">
+                          <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Phone="27"
+                                Tablet="37"/>
+                          </Label.FontSize>
+                        </Label>
+
+                        <StackLayout.GestureRecognizers>
+                          <TapGestureRecognizer Command="{ Binding TakePhotoCommand }"  NumberOfTapsRequired="1" />
+                        </StackLayout.GestureRecognizers>
+                        
+                      </StackLayout>
+
+                      <StackLayout Padding="5">
 
                         <Label
                             LineBreakMode="WordWrap"
@@ -71,18 +129,20 @@
                             TextColor="{ DynamicResource AccentColor }"
                             VerticalTextAlignment="Center"
                             FontSize="27">
-                            <Label.FontSize> 
-                                <OnIdiom 
-                                    x:TypeArguments="x:Double"
-                                    Phone="27"
-                                    Tablet="37"/>
-                            </Label.FontSize>
+                          <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Phone="27"
+                                Tablet="37"/>
+                          </Label.FontSize>
                         </Label>
 
-                        <BoxView 
+                        <BoxView
                             Style="{StaticResource BrandNameOrnamentStyle}"
                             BackgroundColor="{DynamicResource AccentColor}"
                             Margin="10, 0"/>
+
+                      </StackLayout>
 
                         <!-- Firstname -->
                         <StackLayout>
@@ -222,35 +282,36 @@
 
                       </StackLayout>
 
-
-                       <StackLayout Orientation="Vertical" VerticalOptions="End">
-
-                            <artina:Button
-                                Style="{StaticResource SaveButtonStyle}"
-                                Command="{ Binding SaveChangesCommand }"
-                                Text="{i18n:Translate Profile.Save.Changes}" >
-
-                                <Button.Triggers>
-                                    <DataTrigger
-                                        TargetType="Button"
-                                        Binding="{Binding IsBusy}"
-                                        Value="True">
-                                            <Setter Property="IsEnabled" Value="False" />
-                                    </DataTrigger>
-                                    <DataTrigger
-                                         TargetType="Button"
-                                         Binding="{Binding HaveInternet}"
-                                         Value="False">
-                                        <Setter Property="IsEnabled" Value="False" />
-                                     </DataTrigger>
-                                 </Button.Triggers>
-                            </artina:Button>
-
-                            <artina:Button 
-                                IsEnabled="{Binding HaveInternet}"
-                                Style="{StaticResource DeleteButtonStyle}"
-                                Command="{ Binding DeleteAccountCommand }"
-                                Text="{i18n:Translate Profile.Delete.Account}">
+                </ScrollView>
+                
+                <StackLayout Orientation="Vertical" VerticalOptions="End">
+                  
+                  <artina:Button
+                    Style="{StaticResource SaveButtonStyle}"
+                    Command="{ Binding SaveChangesCommand }"
+                    Text="{i18n:Translate Profile.Save.Changes}" >
+                    
+                    <Button.Triggers>
+                      <DataTrigger
+                          TargetType="Button"
+                          Binding="{Binding IsBusy}"
+                          Value="True">
+                        <Setter Property="IsEnabled" Value="False" />
+                      </DataTrigger>
+                      <DataTrigger
+                        TargetType="Button"
+                        Binding="{Binding HaveInternet}"
+                        Value="False">
+                        <Setter Property="IsEnabled" Value="False" />
+                      </DataTrigger>
+                    </Button.Triggers>
+                  </artina:Button>
+                  
+                  <artina:Button 
+                    IsEnabled="{Binding HaveInternet}"
+                    Style="{StaticResource DeleteButtonStyle}"
+                    Command="{ Binding DeleteAccountCommand }"
+                    Text="{i18n:Translate Profile.Delete.Account}">
 
                                 <Button.Triggers>
                                     <DataTrigger 
@@ -266,12 +327,14 @@
                                         <Setter Property="IsEnabled" Value="False" />
                                 </DataTrigger>
                             </Button.Triggers>
-                        </artina:Button>
-                    </StackLayout>
+                  </artina:Button>
+                </StackLayout>
 
-              </ScrollView>
+              
 
-              <controls:PullToRefreshLayout.Triggers>
+             </StackLayout>
+
+             <controls:PullToRefreshLayout.Triggers>
                 <DataTrigger
                     TargetType="controls:PullToRefreshLayout"
                     Binding="{Binding DataFound}"
