@@ -63,126 +63,147 @@
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand">
 
-                <StackLayout 
-                    Padding="20" >
+                <ScrollView
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Padding="20,10">
 
-                    <extended:TableViewWithoutBorders VerticalOptions="CenterAndExpand">
-                        <TableView.Root>
+                    
+                    <!-- Profile General Information Section -->
+                    <StackLayout VerticalOptions="StartAndExpand" Spacing="10">
 
-                            <TableSection Title="{i18n:Translate EditSon.General.Section.Title}" > 
+                        <StackLayout Padding="5">
 
-                                <!-- Profile Image -->
+                            <Label
+                                LineBreakMode="WordWrap"
+                                Text="{i18n:Translate EditSon.General.Section.Title}"
+                                TextColor="{ DynamicResource AccentColor }"
+                                VerticalTextAlignment="Center"
+                                FontSize="27">
+                                <Label.FontSize> 
+                                    <OnIdiom 
+                                        x:TypeArguments="x:Double"
+                                        Phone="27"
+                                        Tablet="37"/>
+                                </Label.FontSize>
+                            </Label>
 
-                               <ImageCell 
-                                    Command="{ Binding TakePhotoCommand }"
-                                    ImageSource="{ StaticResource ThemeAvatarSample0Image }"
-                                    Text="{i18n:Translate EditSon.General.Change.Profile.Image }"
-                                    TextColor="{ DynamicResource BaseTextColor }"/>
+                            <BoxView 
+                                Style="{StaticResource BrandNameOrnamentStyle}"
+                                BackgroundColor="{DynamicResource AccentColor}"/>
+                        </StackLayout>
+
+                        <!-- Firstname -->
+                        <StackLayout>
+
+                            <Entry
+                                Placeholder="{ i18n:Translate Common.Placeholder.Firstname }"
+                                VerticalOptions="StartAndExpand"
+                                Style="{StaticResource ArtinaProfileEntryStyle}"
+                                Text="{ Binding CurrentSon.FirstName }"/>
+
+                            <Label
+                                Text="{Binding Path=FieldErrors,
+                                Converter={StaticResource ValidationErrorFormatValueConverter},
+                                ConverterParameter={StaticResource firstNameKey}}"
+                                IsVisible="{Binding Path=FieldErrors, 
+                                Converter={StaticResource ContainsKeyVisibilityConverter},
+                                ConverterParameter={StaticResource firstNameKey}}"
+                                Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+
+                        </StackLayout>
+
+                        <!-- lastname -->
+                        <StackLayout>
+
+                            <Entry
+                                Placeholder="{ i18n:Translate Common.Placeholder.LastName }"
+                                VerticalOptions="StartAndExpand"
+                                Style="{StaticResource ArtinaProfileEntryStyle}"
+                                Text="{ Binding CurrentSon.Lastname }"/>
+
+                            <Label
+                                Text="{Binding Path=FieldErrors,
+                                Converter={StaticResource ValidationErrorFormatValueConverter},
+                                ConverterParameter={StaticResource lastNameKey}}"
+                                IsVisible="{Binding Path=FieldErrors,
+                                Converter={StaticResource ContainsKeyVisibilityConverter},
+                                ConverterParameter={StaticResource lastNameKey}}"
+                                Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+
+                        </StackLayout>
+
+                        <!-- shools -->
+                        <StackLayout>
+
+                            <Picker ItemsSource="{Binding Schools}" IsEnabled="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionNotEmptyConverter }}"/>
+
+                             <common:RoundedLabel
+                                IsVisible="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionEmptyConverter}}"
+                                HorizontalOptions="Center"
+                                RoundedLabelText="{ i18n:Translate EditSon.School.Not.Found }"
+                                RoundedLabelBackgroundColor="{ DynamicResource WarningColor }"/>
+
+                        </StackLayout>
 
 
-                                <!-- Firstname -->
-                                <extended:ExtendedViewCell SeparatorColor="Transparent" SeparatorPadding="10">
+                        <!-- birthdate -->
 
-                                    <StackLayout>
+                        <StackLayout>
 
-                                        <Entry
-                                            Placeholder="{ i18n:Translate Common.Placeholder.Firstname }"
-                                            VerticalOptions="StartAndExpand"
-                                            Style="{StaticResource ArtinaProfileEntryStyle}"
-                                            Text="{ Binding CurrentSon.FirstName }"/>
-                                        <Label
-                                            Text="{Binding Path=FieldErrors,  
-                                                Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                ConverterParameter={StaticResource firstNameKey}}"
-                                            IsVisible="{Binding Path=FieldErrors, 
-                                                Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                ConverterParameter={StaticResource firstNameKey}}"
-                                                Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-                                    </StackLayout>
+                            <DatePicker 
+                                VerticalOptions="CenterAndExpand" >
 
-                               </extended:ExtendedViewCell>
+                                <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                                    <DatePicker.MinimumDate>
+                                        <sys:DateTime x:FactoryMethod="Parse">
+                                        <x:Arguments>
+                                            <x:String>Jan 1 1970</x:String>
+                                        </x:Arguments>
+                                    </sys:DateTime>
+                                </DatePicker.MinimumDate>
+                                <DatePicker.MaximumDate>
+                                    <sys:DateTime x:FactoryMethod="Parse">
+                                        <x:Arguments>
+                                            <x:String>Dec 31 2050</x:String>
+                                        </x:Arguments>
+                                    </sys:DateTime>
+                                </DatePicker.MaximumDate>
+                            </DatePicker>
 
-                                <!-- Lastname -->
-                                <extended:ExtendedViewCell SeparatorColor="Transparent" SeparatorPadding="10">
+                            <Label
+                                Text="{Binding Path=FieldErrors,  
+                                Converter={StaticResource ValidationErrorFormatValueConverter},
+                                ConverterParameter={StaticResource birthdateKey}}"
+                                IsVisible="{Binding Path=FieldErrors,
+                                Converter={StaticResource ContainsKeyVisibilityConverter},
+                                ConverterParameter={StaticResource birthdateKey}}"
+                            Style="{StaticResource ValidationEntryErrorStyle}"></Label>
 
-                                    <StackLayout>
-                                        <Entry
-                                            Placeholder="{ i18n:Translate Common.Placeholder.LastName }"
-                                            VerticalOptions="StartAndExpand"
-                                            Style="{StaticResource ArtinaProfileEntryStyle}"
-                                            Text="{ Binding CurrentSon.Lastname }"/>
-                                        <Label
-                                            Text="{Binding Path=FieldErrors,  
-                                                Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                ConverterParameter={StaticResource lastNameKey}}"
-                                            IsVisible="{Binding Path=FieldErrors, 
-                                                Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                ConverterParameter={StaticResource lastNameKey}}"
-                                                Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-                                    </StackLayout>
+                        </StackLayout>
 
-                               </extended:ExtendedViewCell>
+                       <StackLayout Padding="10">
+                            <Label
+                                LineBreakMode="WordWrap"
+                                Text="{i18n:Translate EditSon.RRSS.Section.Title}"
+                                TextColor="{ DynamicResource AccentColor }"
+                                VerticalTextAlignment="Center"
+                                FontSize="27">
+                                <Label.FontSize> 
+                                    <OnIdiom 
+                                        x:TypeArguments="x:Double"
+                                        Phone="27"
+                                        Tablet="37"/>
+                                </Label.FontSize>
+                            </Label>
 
-                               <extended:ExtendedViewCell SeparatorColor="Transparent" SeparatorPadding="10">
+                            <BoxView 
+                                Style="{StaticResource BrandNameOrnamentStyle}"
+                                BackgroundColor="{DynamicResource AccentColor}"/>
+                        </StackLayout>
 
-                                    <StackLayout>
-                                        
-                                        <Picker ItemsSource="{Binding Schools}" IsEnabled="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionEmptyConverter }}"/>
 
-                                        <common:RoundedLabel
-                                            IsVisible="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionNotEmptyConverter}}"
-                                            HorizontalOptions="Center"
-                                            RoundedLabelText="{ i18n:Translate EditSon.School.Not.Found }"
-                                            RoundedLabelBackgroundColor="{ DynamicResource WarningColor }"/>
-                                        
-                                    </StackLayout>
-                                    
-                                </extended:ExtendedViewCell>
-
-                                <!-- Birthdate -->
-                                <extended:ExtendedViewCell SeparatorColor="Transparent" SeparatorPadding="10">
-
-                                    <StackLayout>
-                                        <DatePicker 
-                                            VerticalOptions="CenterAndExpand" >
-
-                                            <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
-                                                <DatePicker.MinimumDate>
-                                                    <sys:DateTime x:FactoryMethod="Parse">
-                                                    <x:Arguments>
-                                                        <x:String>Jan 1 1970</x:String>
-                                                    </x:Arguments>
-                                                </sys:DateTime>
-                                            </DatePicker.MinimumDate>
-                                            <DatePicker.MaximumDate>
-                                                <sys:DateTime x:FactoryMethod="Parse">
-                                                    <x:Arguments>
-                                                        <x:String>Dec 31 2050</x:String>
-                                                    </x:Arguments>
-                                                </sys:DateTime>
-                                            </DatePicker.MaximumDate>
-                                        </DatePicker>
-
-                                        <Label
-                                            Text="{Binding Path=FieldErrors,  
-                                                Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                ConverterParameter={StaticResource birthdateKey}}"
-                                            IsVisible="{Binding Path=FieldErrors,
-                                                Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                ConverterParameter={StaticResource birthdateKey}}"
-                                            Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-                                    </StackLayout>
-
-                                </extended:ExtendedViewCell>
-
-                                
-                            </TableSection>
-
-                            <TableSection Title="{i18n:Translate EditSon.RRSS.Section.Title}"> 
-
-                                <!-- Facebook Switch Cell -->
-                                <extended:ExtendedViewCell SeparatorColor="{ DynamicResource AccentColor }" SeparatorPadding="5">
-                                    <Grid ColumnSpacing="10" Padding="5">
+                        <Grid ColumnSpacing="10" Padding="5">
                                     
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
@@ -240,16 +261,10 @@
                                                     </behaviors:EventHandlerBehavior>
                                                 </Switch.Behaviors>
                                         </Switch>
+                        </Grid>
 
 
-
-                                    </Grid>
-
-                                </extended:ExtendedViewCell>
-
-                                <!-- Instagram Switch Cell -->
-                                <extended:ExtendedViewCell SeparatorColor="{DynamicResource AccentColor}" SeparatorPadding="5">
-                                    <Grid ColumnSpacing="10" Padding="5">
+                        <Grid ColumnSpacing="10" Padding="5">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
@@ -304,15 +319,10 @@
                                                     </behaviors:EventHandlerBehavior>
                                                 </Switch.Behaviors>
                                         </Switch>
+                        </Grid>
 
 
-
-                                    </Grid>
-                                </extended:ExtendedViewCell>
-
-                                <!-- Youtube -->
-                                <extended:ExtendedViewCell SeparatorColor="{DynamicResource AccentColor}" SeparatorPadding="5">
-                                    <Grid ColumnSpacing="10" Padding="5">
+                        <Grid ColumnSpacing="10" Padding="5">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
@@ -368,27 +378,20 @@
                                                     </behaviors:EventHandlerBehavior>
                                                 </Switch.Behaviors>
                                         </Switch>
+                        </Grid>
+
+                    </StackLayout>
 
 
+                    <StackLayout Orientation="Vertical" VerticalOptions="End">
+                        <artina:Button 
+                            IsEnabled="{Binding HaveInternet}"
+                            Command="{ Binding SaveChangesCommand }"
+                            Style="{StaticResource SaveButtonStyle}" 
+                            Text="{ i18n:Translate Common.Btn.Save.Changes }" />
+                    </StackLayout>
 
-                                    </Grid>
-                                </extended:ExtendedViewCell>
-                            </TableSection>
-
-                            
-                        </TableView.Root>
-                    </extended:TableViewWithoutBorders>
-
-                  <StackLayout Orientation="Vertical" VerticalOptions="End">
-                    <artina:Button 
-                        IsEnabled="{Binding HaveInternet}"
-                        Command="{ Binding SaveChangesCommand }"
-                        Style="{StaticResource SaveButtonStyle}" 
-                        Text="{ i18n:Translate Common.Btn.Save.Changes }" />
-                  </StackLayout>
-
-                </StackLayout>
-
+               </ScrollView>
 
 
                 <controls:PullToRefreshLayout.Triggers>

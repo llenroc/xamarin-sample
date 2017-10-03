@@ -69,6 +69,10 @@ namespace Bullytect.Droid
     			CachedImageRenderer.Init();
     			FormsHelper.ForceLoadingAssemblyContainingType(typeof(UXDivers.Effects.Effects));
 
+				global::Android.Graphics.Color color_xamarin_blue;
+				color_xamarin_blue = new global::Android.Graphics.Color(0x34, 0x98, 0xdb);
+				global::Xamarin.Auth.CustomTabsConfiguration.ToolbarColor = color_xamarin_blue;
+
                 LoadApplication(FormsApplication);
 
     			var starter = Mvx.Resolve<IMvxAppStart>();

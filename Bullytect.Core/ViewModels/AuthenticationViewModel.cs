@@ -69,10 +69,9 @@ namespace Bullytect.Core.ViewModels
 
         #region Properties
 
+        public string _reasonForAuthentication = NORMAL_AUTHENTICATION;
 
-        public ReasonForAuthenticationEnum _reasonForAuthentication = ReasonForAuthenticationEnum.NORMAL_AUTHENTICATION;
-
-        public ReasonForAuthenticationEnum ReasonForAuthentication
+        public string ReasonForAuthentication
         {
             get => _reasonForAuthentication;
             set => SetProperty(ref _reasonForAuthentication, value);
@@ -96,29 +95,44 @@ namespace Bullytect.Core.ViewModels
 
         #endregion
 
-        public enum ReasonForAuthenticationEnum { NORMAL_AUTHENTICATION, SIGN_OUT, SESSION_EXPIRED }
+        public const string NORMAL_AUTHENTICATION = "NORMAL_AUTHENTICATION";
+        public const string SIGN_OUT = "SIGN_OUT";
+        public const string SESSION_EXPIRED = "SESSION_EXPIRED";
+        public const string SIGN_UP = "SIGN_UP";
+
+		public class AuthenticationParameter
+		{
+			public string ReasonForAuthentication { get; set; }
+		}
 
 
-        public void Init(ReasonForAuthenticationEnum reasonForAuthentication)
+        public void Init(AuthenticationParameter authenticationParameter)
         {
-            ReasonForAuthentication = reasonForAuthentication;
+            ReasonForAuthentication = authenticationParameter.ReasonForAuthentication;
         }
 
 
         public override void Start()
         {
-            if (ReasonForAuthenticationEnum.SIGN_OUT.Equals(ReasonForAuthentication))
+
+
+            if (ReasonForAuthentication.Equals(SIGN_OUT))
             {
                 var toastConfig = new ToastConfig(AppResources.Common_SignOut);
                 toastConfig.SetDuration(3000);
                 toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
                 _userDialogs.Toast(toastConfig);
             }
-            else if (ReasonForAuthenticationEnum.SESSION_EXPIRED.Equals(ReasonForAuthentication)) {
+            else if (ReasonForAuthentication.Equals(SESSION_EXPIRED)) {
                 var toastConfig = new ToastConfig(AppResources.Common_Invalid_Session);
                 toastConfig.SetDuration(3000);
                 toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
                 _userDialogs.Toast(toastConfig);
+            } else if(ReasonForAuthentication.Equals(SIGN_UP)) {
+				var toastConfig = new ToastConfig(AppResources.Signup_Account_Created);
+				toastConfig.SetDuration(3000);
+				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
+				_userDialogs.Toast(toastConfig);
             }
         }
 
@@ -141,7 +155,14 @@ namespace Bullytect.Core.ViewModels
 				toastConfig.SetDuration(3000);
 				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
 				_userDialogs.Toast(toastConfig);
-			}
+			} else if(ex is AccountDisabledException)
+            {
+                var toastConfig = new ToastConfig(AppResources.Account_Disabled);
+				toastConfig.SetDuration(3000);
+				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
+				_userDialogs.Toast(toastConfig);
+
+            }
 			else
 			{
 				base.HandleExceptions(ex);

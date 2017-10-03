@@ -298,6 +298,12 @@ email and password.</value>
     <value>Invalid email or password</value>
     <comment>Login Failed</comment>
   </data>
+  <data name="Account.Disabled" xml:space="preserve">
+    <value>Account is disabled</value>
+    <comment>Account Disabled</comment>
+  </data>
+
+	
   <data name="Login.Forget.Password" xml:space="preserve">
     <value>Did you forget your password?</value>
     <comment>Login Forget Password</comment>
@@ -483,6 +489,14 @@ and we will recover it for you. </value>
   <data name="Profile.Updating.Profile.Image.Success" xml:space="preserve">
     <value> Profile Image Uploaded Successfully</value>
     <comment>Profile Updating Profile Image Success</comment>
+  </data>
+  <data name="Profile.Updating.Error" xml:space="preserve">
+    <value> There was an error updating profile information</value>
+    <comment>Profile Updating Error</comment>
+  </data>
+    <data name="Profile.Data.Not.Found" xml:space="preserve">
+    <value> Profile information not found</value>
+    <comment>Profile Data Not Found</comment>
   </data>
   <data name="Notification.Not.Found.MainText" xml:space="preserve">
     <value> Notifications Not Found </value>

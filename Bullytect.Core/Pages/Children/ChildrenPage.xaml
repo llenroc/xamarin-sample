@@ -50,12 +50,14 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout
-                            x:Name="Item"
-                            Padding="5">
 
-                            <Grid 
-                                ColumnSpacing="10" >
+                        <StackLayout
+
+                        
+                        <Grid 
+                            x:Name="Item"
+                            ColumnSpacing="10"
+                            Padding="5">
 
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
@@ -75,17 +77,22 @@
                                     Padding="10"
                                     Spacing="0">
 
+
                                     <!-- Full name -->
                                     <Label 
                                         Text="{ Binding FullName }"
                                         TextColor="{ DynamicResource AccentColor }"
                                         FontSize="{ artina:OnOrientationDouble
-                                            PortraitPhone=19,
-                                            LandscapePhone=19,
-                                            PortraitTablet=21,
-                                            LandscapeTablet=21 }"
+                                            PortraitPhone=22,
+                                            LandscapePhone=22,
+                                            PortraitTablet=27,
+                                            LandscapeTablet=27 }"
                                         HorizontalOptions="Fill"
                                         />
+
+                                    <BoxView 
+                                        Style="{StaticResource BrandNameOrnamentStyle}"
+                                        BackgroundColor="{DynamicResource AccentColor}"/>
 
                                     <!-- School -->
                                     <Label 
@@ -241,9 +248,7 @@
 
                                 
                             </Grid>
-
-                        </StackLayout>
-
+                           
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -19,7 +19,10 @@ namespace Bullytect.Core.ViewModels
         {
             get
             {
-                return new MvxCommand(() => ShowViewModel<AuthenticationViewModel>());
+                return new MvxCommand(() => ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter()
+                {
+                    ReasonForAuthentication = AuthenticationViewModel.NORMAL_AUTHENTICATION
+                }));
             }
         }
 

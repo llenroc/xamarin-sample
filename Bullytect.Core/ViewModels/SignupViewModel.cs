@@ -70,7 +70,7 @@ namespace Bullytect.Core.ViewModels
 
 		public string PasswordClear
 		{
-			get => _email;
+			get => _passwordClear;
 			set => SetProperty(ref _passwordClear, value);
 		}
 
@@ -79,7 +79,7 @@ namespace Bullytect.Core.ViewModels
 
 		public string ConfirmPassword
 		{
-			get => _email;
+			get => _confirmPassword;
 			set => SetProperty(ref _confirmPassword, value);
 		}
 
@@ -112,18 +112,19 @@ namespace Bullytect.Core.ViewModels
 
         public ReactiveCommand<string, ParentEntity> SignupCommand { get; protected set; }
 
-        public ICommand GoToLoginCommand => new MvxCommand(() => ShowViewModel<AuthenticationViewModel>());
+        public ICommand GoToLoginCommand => new MvxCommand(() => ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter() {
+            ReasonForAuthentication = AuthenticationViewModel.NORMAL_AUTHENTICATION
+        }));
 
         #endregion
 
 
         void AccountCreated(ParentEntity parent){
 			Debug.WriteLine(String.Format("Parent: {0}", parent.ToString()));
-			var toastConfig = new ToastConfig(AppResources.Signup_Account_Created);
-			toastConfig.SetDuration(3000);
-			toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
-			_userDialogs.Toast(toastConfig);
-			//ShowViewModel<AuthenticationViewModel>();
+			ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter()
+			{
+                ReasonForAuthentication = AuthenticationViewModel.SIGN_UP
+			});
         }
 
 	}

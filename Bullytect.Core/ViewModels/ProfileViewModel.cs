@@ -11,8 +11,7 @@ using Bullytect.Core.Utils;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 using Bullytect.Core.Rest.Models.Exceptions;
-using System.Collections.Generic;
-using MvvmCross.Core.ViewModels;
+using Bullytect.Core.Config;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -33,7 +32,7 @@ namespace Bullytect.Core.ViewModels
  
             SaveChangesCommand.Subscribe(AccountUpdated);
 
-            SaveChangesCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Profile_Saving_Changes));
+            SaveChangesCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
 
 			SaveChangesCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
@@ -41,7 +40,7 @@ namespace Bullytect.Core.ViewModels
 
             LoadProfileCommand.ToProperty(this, x => x.SelfParent, out _selfParent);
 
-            LoadProfileCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Profile_Loading_Data));
+            LoadProfileCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
 
 			LoadProfileCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
@@ -71,13 +70,17 @@ namespace Bullytect.Core.ViewModels
                     {
                         Title = AppResources.Profile_Confirm_SignOut
 
-                    })).Where((confirmed) => confirmed).Do((_) => _mvxMessenger.Publish(new SignOutMessage(this)));
+                    })).Where((confirmed) => confirmed);
 				});
 
             SignOutCommand.Subscribe((_) =>
             {
-                var mvxBundle = new MvxBundle(new Dictionary<string, string> { { "NavigationCommand", "StackClear" } });
-                ShowViewModel<AuthenticationViewModel>(new { AuthenticationViewModel.ReasonForAuthenticationEnum.SIGN_OUT }, presentationBundle: mvxBundle);
+                Settings.AccessToken = null;
+                //var mvxBundle = new MvxBundle(new Dictionary<string, string> { { "NavigationCommand", "StackClear" } });
+                ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter()
+                {
+                    ReasonForAuthentication = AuthenticationViewModel.SIGN_OUT
+                });
             });
 
             TakePhotoCommand = CommandFactory.CreateTakePhotoCommand(_parentService, _imagesService, _userDialogs);
@@ -95,6 +98,14 @@ namespace Bullytect.Core.ViewModels
 		public ParentEntity SelfParent
 		{
 			get { return _selfParent.Value; }
+		}
+
+
+		readonly string _prefix = "+34";
+
+		public string Prefix
+		{
+			get => _prefix;
 		}
 
         #endregion

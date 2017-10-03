@@ -24,10 +24,13 @@
                 <converters:ContainsKeyVisibilityConverter x:Key="ContainsKeyVisibilityConverter"/>
                 <converters:ValidationErrorFormatValueConverter x:Key="ValidationErrorFormatValueConverter"/>
                 <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+                <converters:TailStringConverter x:Key="TailStringConverter"/>
+            
                 <x:String x:Key="firstNameKey">firstName</x:String>
                 <x:String x:Key="lastNameKey">lastName</x:String>
                 <x:String x:Key="birthdateKey">birthdate</x:String>
                 <x:String x:Key="emailValidationKey">email</x:String>
+                <x:String x:Key="telephoneKey">telephone</x:String>
             </ResourceDictionary>
     </ContentPage.Resources>
 	<ContentPage.Content>
@@ -51,212 +54,222 @@
                 RefreshColor="{DynamicResource BasePageColor}"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand">
-        
-                <StackLayout 
-                    Padding="20">
 
-                        <extended:TableViewWithoutBorders VerticalOptions="CenterAndExpand" >
+                <ScrollView
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Padding="20,10">
 
-                            <TableView.Root>
-                                <!-- General Information -->
-                                <TableSection Title="{i18n:Translate Profile.General.Information.Section}">
+                    
+                    <!-- Profile General Information Section -->
+                    <StackLayout 
+                        VerticalOptions="StartAndExpand">
 
-                                     <extended:ExtendedViewCell SeparatorColor="Transparent" SeparatorPadding="10">
+                        <Label
+                            LineBreakMode="WordWrap"
+                            Text="{i18n:Translate Profile.General.Information.Section}"
+                            TextColor="{ DynamicResource AccentColor }"
+                            VerticalTextAlignment="Center"
+                            FontSize="27">
+                            <Label.FontSize> 
+                                <OnIdiom 
+                                    x:TypeArguments="x:Double"
+                                    Phone="27"
+                                    Tablet="37"/>
+                            </Label.FontSize>
+                        </Label>
 
-                                        <StackLayout
-                                            Padding="5" 
-                                            HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="FillAndExpand">
+                        <BoxView 
+                            Style="{StaticResource BrandNameOrnamentStyle}"
+                            BackgroundColor="{DynamicResource AccentColor}"
+                            Margin="10, 0"/>
 
-                                            <Image
-                                                Source="{ StaticResource ThemeAvatarSample0Image }">
+                        <!-- Firstname -->
+                        <StackLayout>
 
-                                                <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{ Binding TakePhotoCommand }" NumberOfTapsRequired="1" /> 
-                                                </Image.GestureRecognizers>
-                                                
-                                             </Image>
+                            <Entry
+                                Placeholder="{ i18n:Translate Common.Placeholder.Firstname }"
+                                VerticalOptions="StartAndExpand"
+                                Style="{StaticResource ArtinaProfileEntryStyle}" 
+                                Text="{ Binding SelfParent.FirstName }" />
 
-                                        </StackLayout>
-                                    </extended:ExtendedViewCell>
-
-                                    <!-- Firstname -->
-                                    <extended:ExtendedViewCell SeparatorColor="Transparent" SeparatorPadding="10">
-                                        <StackLayout>
-                                            <Entry
-                                                Placeholder="{ i18n:Translate Common.Placeholder.Firstname }"
-                                                VerticalOptions="StartAndExpand"
-                                                Style="{StaticResource ArtinaProfileEntryStyle}" 
-                                                Text="{ Binding SelfParent.FirstName }" />
-
-                                            <Label
-                                                Text="{Binding Path=FieldErrors,                            
-                                                                    Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                                    ConverterParameter={StaticResource firstNameKey}}"
-                                                         IsVisible="{Binding Path=FieldErrors,                            
-                                                                    Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                                    ConverterParameter={StaticResource firstNameKey}}"
-                                                         Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-
-                                            </StackLayout>
-
-                                       </extended:ExtendedViewCell>
-
-
-                                       <!-- Last Name FIELD-->
-                                       <extended:ExtendedViewCell SeparatorColor="Transparent" SeparatorPadding="10">
-                                            <StackLayout>
-
-                                                <Entry 
-                                                    Placeholder="{ i18n:Translate Common.Placeholder.LastName }"
-                                                    Style="{StaticResource ArtinaProfileEntryStyle}" 
-                                                    Text="{ Binding SelfParent.LastName }"/>
-
-
-                                                <Label
-                                                        Text="{Binding Path=FieldErrors,                            
-                                                                    Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                                    ConverterParameter={StaticResource lastNameKey}}"
-                                                         IsVisible="{Binding Path=FieldErrors,                            
-                                                                    Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                                    ConverterParameter={StaticResource lastNameKey}}"
-                                                         Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-
-                                            </StackLayout>
-                                       </extended:ExtendedViewCell>
-
-                                        <!-- Email -->
-                                        <extended:ExtendedViewCell SeparatorColor="Transparent" SeparatorPadding="10">
-                                            <StackLayout>
-
-                                                <Entry 
-                                                    Placeholder="{ i18n:Translate Common.Placeholder.Email }"
-                                                    Style="{StaticResource ArtinaProfileEntryStyle}" 
-                                                    Text="{ Binding SelfParent.Email }">
-                                                    <Entry.Behaviors>
-                                                        <artina:EmailValidatorBehavior x:Name="emailValidator" />
-                                                    </Entry.Behaviors>
-                                                 </Entry>
-
-                                                 <Label
-                                                    Text="{ i18n:Translate Signup.Account.Email.Invalid } " IsVisible="false"
-                                                    Style="{StaticResource ValidationEntryErrorStyle}">
-                                                    <Label.Triggers>
-                                                        <DataTrigger 
-                                                            TargetType="Label"
-                                                            Binding="{Binding Source={x:Reference emailValidator}, Path=IsValid}"
-                                                            Value="false">
-                                                            <Setter Property="IsVisible" Value="true" />
-                                                        </DataTrigger> 
-                                                    </Label.Triggers>
-                                                  </Label>
-
-                                                  <Label
-                                                        Text="{Binding Path=FieldErrors,                            
-                                                                    Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                                    ConverterParameter={StaticResource emailValidationKey}}"
-                                                         IsVisible="{Binding Path=FieldErrors,                            
-                                                                    Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                                    ConverterParameter={StaticResource emailValidationKey}}"
-                                                         Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-                                                    
-                                               </StackLayout>
-                                       </extended:ExtendedViewCell>
-
-                                    <!-- Birthdate -->
-
-                                        <extended:ExtendedViewCell SeparatorColor="Transparent" SeparatorPadding="10">
-                                            <StackLayout>
-                                                <DatePicker 
-                                                    VerticalOptions="CenterAndExpand" 
-                                                    Date="{ Binding SelfParent.Birthdate }"
-                                                     >
-                                                    <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
-                                                    <DatePicker.MinimumDate>
-                                                       <sys:DateTime x:FactoryMethod="Parse">
-                                                           <x:Arguments>
-                                                              <x:String>Jan 1 1970</x:String>
-                                                           </x:Arguments>
-                                                        </sys:DateTime>
-                                                    </DatePicker.MinimumDate>
-                                                    <DatePicker.MaximumDate>
-                                                        <sys:DateTime x:FactoryMethod="Parse">
-                                                            <x:Arguments>
-                                                              <x:String>Dec 31 2050</x:String>
-                                                             </x:Arguments>
-                                                            </sys:DateTime>
-                                                    </DatePicker.MaximumDate>
-                                                </DatePicker>
-
-
-                                                <Label
-                                                        Text="{Binding Path=FieldErrors,                            
-                                                                    Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                                    ConverterParameter={StaticResource birthdateKey}}"
-                                                         IsVisible="{Binding Path=FieldErrors,                            
-                                                                    Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                                    ConverterParameter={StaticResource birthdateKey}}"
-                                                         Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-
-                                            </StackLayout>
-                                        </extended:ExtendedViewCell>
-                                        
-                                    </TableSection>
-                                </TableView.Root>
-
-                            </extended:TableViewWithoutBorders>
-
-                          <StackLayout Orientation="Vertical" VerticalOptions="End">
-                                <artina:Button
-                                  Style="{StaticResource SaveButtonStyle}"
-                                  Command="{ Binding SaveChangesCommand }"
-                                  Text="{i18n:Translate Profile.Save.Changes}" >
-                                    <Button.Triggers>
-                                      <DataTrigger
-                                          TargetType="Button"
-                                          Binding="{Binding IsBusy}"
-                                          Value="True">
-                                        <Setter Property="IsEnabled" Value="False" />
-                                      </DataTrigger>
-                                      <DataTrigger
-                                          TargetType="Button"
-                                          Binding="{Binding HaveInternet}"
-                                          Value="False">
-                                        <Setter Property="IsEnabled" Value="False" />
-                                      </DataTrigger>
-                                    </Button.Triggers>
-
-                                </artina:Button>
-                                
-
-                                <artina:Button 
-                                    IsEnabled="{Binding HaveInternet}"
-                                    Style="{StaticResource DeleteButtonStyle}"
-                                    Command="{ Binding DeleteAccountCommand }"
-                                    Text="{i18n:Translate Profile.Delete.Account}">
-
-                                    <Button.Triggers>
-                                        <DataTrigger 
-                                            TargetType="Button" 
-                                            Binding="{Binding IsBusy}"
-                                            Value="True">
-                                            <Setter Property="IsEnabled" Value="False" />
-                                        </DataTrigger>
-                                        <DataTrigger 
-                                            TargetType="Button"
-                                            Binding="{Binding HaveInternet}"
-                                            Value="False">
-                                            <Setter Property="IsEnabled" Value="False" />
-                                        </DataTrigger>
-                                    </Button.Triggers>
-
-                                 </artina:Button>
-
-
-                            </StackLayout>
-                            
-
+                             <Label
+                                Text="{Binding Path=FieldErrors,        
+                                Converter={StaticResource ValidationErrorFormatValueConverter},
+                                ConverterParameter={StaticResource firstNameKey}}"
+                                IsVisible="{Binding Path=FieldErrors,   
+                                Converter={StaticResource ContainsKeyVisibilityConverter},
+                                ConverterParameter={StaticResource firstNameKey}}"
+                                Style="{StaticResource ValidationEntryErrorStyle}"></Label>
                         </StackLayout>
+
+                        <!-- lastname -->
+                        <StackLayout>
+
+                            <Entry 
+                                Placeholder="{ i18n:Translate Common.Placeholder.LastName }"
+                                Style="{StaticResource ArtinaProfileEntryStyle}" 
+                                Text="{ Binding SelfParent.LastName }"/>
+
+                            <Label
+                                Text="{Binding Path=FieldErrors,        
+                                Converter={StaticResource ValidationErrorFormatValueConverter},
+                                ConverterParameter={StaticResource lastNameKey}}"
+                                IsVisible="{Binding Path=FieldErrors,          
+                                Converter={StaticResource ContainsKeyVisibilityConverter},
+                                ConverterParameter={StaticResource lastNameKey}}"
+                                Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+                        </StackLayout>
+
+                        <!-- email -->
+                        <StackLayout>
+
+                            <Entry 
+                                Placeholder="{ i18n:Translate Common.Placeholder.Email }"
+                                Style="{StaticResource ArtinaProfileEntryStyle}" 
+                                Text="{ Binding SelfParent.Email }">
+                                <Entry.Behaviors>
+                                    <artina:EmailValidatorBehavior x:Name="emailValidator" />
+                                </Entry.Behaviors>
+                            </Entry>
+
+                            <Label
+                                Text="{ i18n:Translate Signup.Account.Email.Invalid } " 
+                                IsVisible="false"
+                                Style="{StaticResource ValidationEntryErrorStyle}">
+
+                                <Label.Triggers>
+                                    <DataTrigger 
+                                        TargetType="Label"
+                                        Binding="{Binding Source={x:Reference emailValidator}, Path=IsValid}"
+                                        Value="false">
+                                        <Setter Property="IsVisible" Value="true" />
+                                    </DataTrigger> 
+                                </Label.Triggers>
+                            </Label>
+
+                            <Label
+                                Text="{Binding Path=FieldErrors,       
+                                Converter={StaticResource ValidationErrorFormatValueConverter},
+                                ConverterParameter={StaticResource emailValidationKey}}"
+                                IsVisible="{Binding Path=FieldErrors,   
+                                Converter={StaticResource ContainsKeyVisibilityConverter},
+                                ConverterParameter={StaticResource emailValidationKey}}"
+                                Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+                        </StackLayout>
+
+                        <!-- Birthdate -->
+                        <StackLayout>
+                            <DatePicker 
+                                VerticalOptions="CenterAndExpand" 
+                                Date="{ Binding SelfParent.Birthdate }"
+                                >
+                                <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                                <DatePicker.MinimumDate>
+                                    <sys:DateTime x:FactoryMethod="Parse">
+                                        <x:Arguments>
+                                            <x:String>Jan 1 1970</x:String>
+                                        </x:Arguments>
+                                    </sys:DateTime>
+                                </DatePicker.MinimumDate>
+                                <DatePicker.MaximumDate>
+                                    <sys:DateTime x:FactoryMethod="Parse">
+                                        <x:Arguments>
+                                            <x:String>Dec 31 2050</x:String>
+                                        </x:Arguments>
+                                    </sys:DateTime>
+                                </DatePicker.MaximumDate>
+                            </DatePicker>
+
+                            <Label
+                                Text="{Binding Path=FieldErrors,       
+                                Converter={StaticResource ValidationErrorFormatValueConverter},
+                                ConverterParameter={StaticResource birthdateKey}}"
+                                IsVisible="{Binding Path=FieldErrors,   
+                                Converter={StaticResource ContainsKeyVisibilityConverter},
+                                ConverterParameter={StaticResource birthdateKey}}"
+                                Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+                        </StackLayout>
+
+                        <!-- Telephone -->
+                        <!--<StackLayout>
+
+                            <StackLayout Orientation="Horizontal">
+
+                                <Label Text="{Binding Prefix, StringFormat='{0} |'}" 
+                                    TextColor="#fff"
+                                    BackgroundColor="Transparent"
+                                    VerticalTextAlignment="Center"/>
+                                    <Entry 
+                                        Placeholder="{ i18n:Translate Common.Placeholder.Telephone }" 
+                                        Text="{ Binding Telephone, Converter={ StaticResource TailStringConverter}, ConverterParameter=4 }" 
+                                        Keyboard="Telephone" 
+                                        Style="{StaticResource ArtinaProfileEntryStyle}">
+                                    </Entry>
+                             </StackLayout>
+
+                             <Label
+                                Text="{Binding Path=FieldErrors, 
+                                Converter={StaticResource ValidationErrorFormatValueConverter},
+                                ConverterParameter={StaticResource telephoneKey}}"
+                                IsVisible="{Binding Path=FieldErrors,
+                                Converter={StaticResource ContainsKeyVisibilityConverter},
+                                ConverterParameter={StaticResource telephoneKey}}"
+                                Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+                        </StackLayout>-->
+                        <!-- End Telephone -->
+                        
+
+                      </StackLayout>
+
+
+                       <StackLayout Orientation="Vertical" VerticalOptions="End">
+
+                            <artina:Button
+                                Style="{StaticResource SaveButtonStyle}"
+                                Command="{ Binding SaveChangesCommand }"
+                                Text="{i18n:Translate Profile.Save.Changes}" >
+
+                                <Button.Triggers>
+                                    <DataTrigger
+                                        TargetType="Button"
+                                        Binding="{Binding IsBusy}"
+                                        Value="True">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger
+                                         TargetType="Button"
+                                         Binding="{Binding HaveInternet}"
+                                         Value="False">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                     </DataTrigger>
+                                 </Button.Triggers>
+                            </artina:Button>
+
+                            <artina:Button 
+                                IsEnabled="{Binding HaveInternet}"
+                                Style="{StaticResource DeleteButtonStyle}"
+                                Command="{ Binding DeleteAccountCommand }"
+                                Text="{i18n:Translate Profile.Delete.Account}">
+
+                                <Button.Triggers>
+                                    <DataTrigger 
+                                        TargetType="Button"
+                                        Binding="{Binding IsBusy}"
+                                        Value="True">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger 
+                                        TargetType="Button"
+                                        Binding="{Binding HaveInternet}"
+                                        Value="False">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </artina:Button>
+                    </StackLayout>
+
+              </ScrollView>
 
               <controls:PullToRefreshLayout.Triggers>
                 <DataTrigger
@@ -280,12 +293,12 @@
               Grid.Row="1"
               IsVisible="{Binding DataFound, Converter={StaticResource InverseBoolConverter}}"
               MainText="{i18n:Translate Children.Not.Found.MainText}"
-              DetailText="{i18n:Translate Children.Not.Found.SecondText}"/>
+              DetailText="{i18n:Translate Profile.Data.Not.Found}"/>
 
           <common:ErrorOcurred
                Grid.Row="1"
               IsVisible="{ Binding ErrorOccurred }"
-              MainText="{i18n:Translate Children.Error.Ocurred}"/>
+              MainText="{i18n:Translate Profile.Updating.Error}"/>
 
         </Grid>
 	</ContentPage.Content>

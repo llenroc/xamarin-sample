@@ -41,6 +41,7 @@ namespace Bullytect.Droid
         /*protected override IMvxAndroidViewPresenter CreateViewPresenter(){
 			var presenter = new CustomAndroidPresenter();
 			Mvx.RegisterSingleton<IMvxViewPresenter>(presenter);
+            presenter.FormsApplication = FormsApplication;
 			return presenter;
         }*/
 

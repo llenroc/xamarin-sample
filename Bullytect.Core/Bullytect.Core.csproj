@@ -390,6 +390,8 @@
     <Compile Include="Rest\Utils\ApiEndpoints.cs" />
     <Compile Include="Rest\Services\Impl\BaseRestServiceImpl.cs" />
     <Compile Include="Rest\Models\Exceptions\ApiException.cs" />
+    <Compile Include="Rest\Models\Exceptions\AccountDisabledException.cs" />
+    <Compile Include="Converters\TailStringConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">

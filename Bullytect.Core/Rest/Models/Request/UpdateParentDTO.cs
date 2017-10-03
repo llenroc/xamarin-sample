@@ -19,7 +19,7 @@ namespace Bullytect.Core.Rest.Models.Request
 		[JsonProperty("email")]
 		public string Email { get; set; }
 
-		[JsonProperty("telephone")]
-		public string Telephone { get; set; }
+		/*[JsonProperty("telephone")]
+		public string Telephone { get; set; }*/
 	}
 }

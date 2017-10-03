@@ -93,6 +93,14 @@ namespace Bullytect.Core.Utils
 
         }
 
+        static AccountDisabledException createAccountDisabledException(ApiException ex) {
+
+			return new AccountDisabledException()
+			{
+				Response = ex.GetContentAs<APIResponse<string>>()
+			};
+        }
+
         public static Exception parseApiException(ApiException ex) {
 
             Exception exResponse = null;
@@ -132,6 +140,9 @@ namespace Bullytect.Core.Utils
                             // Parse Bad Credentials Response
                         case ResponseNames.BAD_CREDENTIALS_RESPONSE:
                             exResponse = createAuthenticationFailedException(ex);
+                            break;
+                        case ResponseNames.ACCOUNT_DISABLED_RESPONSE:
+                            exResponse = createAccountDisabledException(ex);
                             break;
 							// Parse Generic Error
                         case ResponseNames.GENERIC_ERROR_RESPONSE:

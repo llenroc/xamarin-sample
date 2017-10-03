@@ -23,17 +23,18 @@ namespace Bullytect.Droid.Providers
             var activity = Forms.Context as Activity;
 
 			var auth = new OAuth2Authenticator(
-                clientId: oauth2Info.OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer,
-                scope: oauth2Info.OAuth2_Scope,
-                authorizeUrl: oauth2Info.OAuth_UriAuthorization,
-                redirectUrl: oauth2Info.OAuth_UriCallbackAKARedirect);
+				clientId: oauth2Info.OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer,
+				scope: oauth2Info.OAuth2_Scope,
+				authorizeUrl: oauth2Info.OAuth_UriAuthorization,
+				redirectUrl: oauth2Info.OAuth_UriCallbackAKARedirect);
 
             IObservable<string> observable = Observable.FromEventPattern<EventHandler<AuthenticatorCompletedEventArgs>, AuthenticatorCompletedEventArgs>(
                 h => auth.Completed += h,
                 h => auth.Completed -= h)
                 .Select(eventPattern =>
                 {
-                    activity.Finish();
+
+                    //activity.F
 
                     if (!eventPattern.EventArgs.IsAuthenticated)
                         Observable.Throw<FacebookAuthenticationErrorException>(new FacebookAuthenticationErrorException());
@@ -45,9 +46,7 @@ namespace Bullytect.Droid.Providers
                 });
 			
 
-            global::Android.Content.Intent ui_object = auth.GetUI(activity);
-        
-            activity.StartActivity(ui_object);
+            activity.StartActivity(auth.GetUI(activity));
 
             return observable;
 

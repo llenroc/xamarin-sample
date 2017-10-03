@@ -22,5 +22,7 @@ namespace Bullytect.Core.Rest.Utils
         public const int NO_SCHOOLS_FOUND_CODE = 606;
         public const string BAD_CREDENTIALS_RESPONSE = "BAD_CREDENTIALS";
         public const int BAD_CREDENTIALS_CODE = 416;
+		public const string ACCOUNT_DISABLED_RESPONSE = "ACCOUNT_DISABLED";
+		public const int ACCOUNT_DISABLED_CODE = 417;
     }
 }

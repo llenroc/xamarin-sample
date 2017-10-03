@@ -97,14 +97,14 @@ namespace Bullytect.Core.Services.Impl
                     FirstName = FirstName,
                     LastName = LastName,
                     Birthdate = Birthdate,
-                    Email = Email,
-                    Telephone = Telephone
+                    Email = Email
+                    //Telephone = Telephone ?? string.Empty
                 })
                 .Select((APIResponse<ParentDTO> response) => response.Data)
                 .Select(parent => Mapper.Map<ParentDTO, ParentEntity>(parent))
 				.Finally(() =>
 				{
-					Debug.WriteLine("Update ...");
+					Debug.WriteLine("Update Profile Finished ...");
 				});
 
             return operationDecorator(observable);
