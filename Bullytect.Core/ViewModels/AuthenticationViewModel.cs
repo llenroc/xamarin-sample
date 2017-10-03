@@ -15,6 +15,7 @@ using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 using Xamarin.Forms;
 using Bullytect.Core.Rest.Models.Exceptions;
+using System.Collections.Generic;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -64,8 +65,18 @@ namespace Bullytect.Core.ViewModels
 			LoginWithFacebookCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }
 
-		#region Properties
-      
+
+
+        #region Properties
+
+
+        public ReasonForAuthenticationEnum _reasonForAuthentication = ReasonForAuthenticationEnum.NORMAL_AUTHENTICATION;
+
+        public ReasonForAuthenticationEnum ReasonForAuthentication
+        {
+            get => _reasonForAuthentication;
+            set => SetProperty(ref _reasonForAuthentication, value);
+        }
 
         string _email;
 
@@ -83,10 +94,35 @@ namespace Bullytect.Core.ViewModels
             set => SetProperty(ref _password, value);
         }
 
-		#endregion
+        #endregion
+
+        public enum ReasonForAuthenticationEnum { NORMAL_AUTHENTICATION, SIGN_OUT, SESSION_EXPIRED }
 
 
-		#region commands
+        public void Init(ReasonForAuthenticationEnum reasonForAuthentication)
+        {
+            ReasonForAuthentication = reasonForAuthentication;
+        }
+
+
+        public override void Start()
+        {
+            if (ReasonForAuthenticationEnum.SIGN_OUT.Equals(ReasonForAuthentication))
+            {
+                var toastConfig = new ToastConfig(AppResources.Common_SignOut);
+                toastConfig.SetDuration(3000);
+                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
+                _userDialogs.Toast(toastConfig);
+            }
+            else if (ReasonForAuthenticationEnum.SESSION_EXPIRED.Equals(ReasonForAuthentication)) {
+                var toastConfig = new ToastConfig(AppResources.Common_Invalid_Session);
+                toastConfig.SetDuration(3000);
+                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
+                _userDialogs.Toast(toastConfig);
+            }
+        }
+
+        #region commands
 
         public ReactiveCommand<Unit, string> LoginCommand { get; protected set; }
 
@@ -115,7 +151,8 @@ namespace Bullytect.Core.ViewModels
         void HandleAuthSuccess(string jwtToken) {
 			Debug.WriteLine("JWT Token -> " + jwtToken);
 			_userDialogs.ShowSuccess(AppResources.Login_Success);
-			ShowViewModel<HomeViewModel>();
+            var mvxBundle = new MvxBundle(new Dictionary<string, string> { { "NavigationCommand", "StackClear" } });
+            ShowViewModel<HomeViewModel>(presentationBundle: mvxBundle);
         }
 
 		

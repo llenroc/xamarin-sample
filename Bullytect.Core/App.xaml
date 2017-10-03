@@ -63,7 +63,7 @@
             <FileImageSource x:Key="ThemeAvatarSample0Image">user_profile_0.jpg</FileImageSource>
             <FileImageSource x:Key="ThemeAvatarSample1Image">user_profile_1.jpg</FileImageSource>
 
-            <FileImageSource x:Key="HomeBackground">home_header@2x.jpg</FileImageSource>
+            <FileImageSource x:Key="HomeBackground">home_header.jpg</FileImageSource>
 
             <!-- RESPONSIVE COMMON -->
             <OnIdiom x:Key="MainWrapperPadding" x:TypeArguments="Thickness">

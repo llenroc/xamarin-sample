@@ -40,13 +40,12 @@
             RowSpacing="0" 
             Margin="10"
             BackgroundColor="White"
-            HeightRequest="300"
+            HeightRequest="550"
             HorizontalOptions="Fill"
             VerticalOptions="Center" >
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="120" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="40" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
@@ -54,9 +53,9 @@
 
             <Label
                 Grid.Row="1"
-                LineBreakMode="WordWrap"
-                Text="{i18n:Translate Signup.Title.Main}"
+                Text="{i18n:Translate EditSon.Add.School.Title}"
                 TextColor="{ DynamicResource AccentColor }"
+                HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"
                 FontAttributes="Bold">
                 <Label.FontSize> 
@@ -72,11 +71,11 @@
 
                     <!---FIELDS CONTAINER-->
                     <StackLayout
-                        Padding="40,0"
+                        Padding="20,0"
                         VerticalOptions="CenterAndExpand">
 
                             <!-- Last Name FIELD-->
-                            <StackLayout>
+                            <StackLayout Padding="5">
 
                             
                                 <Entry 
@@ -97,7 +96,7 @@
                             </StackLayout>
 
                              <!-- Residence FIELD-->
-                            <StackLayout>
+                            <StackLayout Padding="5">
 
                             
                                 <Entry 
@@ -118,7 +117,7 @@
                             </StackLayout>
 
                             <!-- Location FIELD-->
-                            <StackLayout>
+                            <StackLayout Padding="5">
 
                             
                                 <Entry 
@@ -140,7 +139,7 @@
 
 
                             <!-- Province FIELD-->
-                            <StackLayout>
+                            <StackLayout Padding="5">
 
                             
                                 <Entry 
@@ -161,7 +160,7 @@
                             </StackLayout>
 
                             <!-- Province FIELD-->
-                            <StackLayout>
+                            <StackLayout Padding="5">
 
                             
                                 <Entry 
@@ -183,7 +182,7 @@
 
 
                              <!-- Province FIELD-->
-                            <StackLayout>
+                            <StackLayout Padding="5">
 
                             
                                 <Entry 
@@ -215,7 +214,7 @@
             Grid.Row="3"
             HorizontalOptions="Fill"
             VerticalOptions="End" 
-            Padding="20, 0">
+            Padding="10">
 
              <artina:Button 
                 Command="{ Binding SaveSchoolCommand }"

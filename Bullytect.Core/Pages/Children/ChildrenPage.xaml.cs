@@ -22,6 +22,13 @@ namespace Bullytect.Core.Pages.Children
 		{
             if(ViewModel.Children?.Count == 0)
 			    ChildrenListView.RefreshCommand?.Execute(null);
-		}
+
+            ChildrenListView.ItemTapped += (object sender, ItemTappedEventArgs e) => {
+                // don't do anything if we just de-selected the row
+                if (e.Item == null) return;
+                // do something with e.SelectedItem
+                ((ListView)sender).SelectedItem = null; // de-select the row
+            };
+        }
     }
 }

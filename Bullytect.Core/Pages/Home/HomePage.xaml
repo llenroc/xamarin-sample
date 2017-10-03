@@ -36,18 +36,16 @@
             <templates:HomeHeader Grid.Row="0"/>
 
 
-            <StackLayout
-                Grid.Row="1"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
-
-
-                <controls:PullToRefreshLayout
+            <controls:PullToRefreshLayout
+                    Grid.Row="1"
                     x:Name="RefreshLayout"
+                    IsVisible="{ Binding ErrorOccurred, Converter={StaticResource InverseBoolConverter} }"
                     IsPullToRefreshEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
                     RefreshCommand="{Binding RefreshCommand}"
                     IsRefreshing="{Binding IsBusy}"
-                    RefreshColor="{DynamicResource AccentColor}">
+                    RefreshColor="{DynamicResource AccentColor}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
 
                     <ScrollView 
                         BackgroundColor="{ DynamicResource BasePageColor }">
@@ -278,10 +276,10 @@
 
 
                 <common:ErrorOcurred 
-                            IsVisible="{ Binding ErrorOccurred }"
-                            MainText="{i18n:Translate Home.Profile.Load.Error}"/>
+                    Grid.Row="1"
+                    IsVisible="{ Binding ErrorOccurred }"
+                    MainText="{i18n:Translate Home.Profile.Load.Error}"/>
 
-            </StackLayout>
            </Grid>
     </ContentPage.Content>
 </d:MvxContentPage>

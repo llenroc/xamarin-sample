@@ -72,7 +72,7 @@
                                <!-- Right Column Content-->
                                <StackLayout
                                     Grid.Column="1"
-                                    Padding="0,10,0,10"
+                                    Padding="10"
                                     Spacing="0">
 
                                     <!-- Full name -->

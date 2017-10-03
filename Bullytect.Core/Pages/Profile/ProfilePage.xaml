@@ -48,16 +48,14 @@
                 IsPullToRefreshEnabled="{ Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
                 RefreshCommand="{Binding LoadProfileCommand}"
                 IsRefreshing="{Binding IsBusy}"
-                RefreshColor="{DynamicResource BasePageColor}">
+                RefreshColor="{DynamicResource BasePageColor}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
         
                 <StackLayout 
-                    Padding="20" 
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand">
+                    Padding="20">
 
-                    <StackLayout>
-
-                        <extended:TableViewWithoutBorders VerticalOptions="Start" >
+                        <extended:TableViewWithoutBorders VerticalOptions="CenterAndExpand" >
 
                             <TableView.Root>
                                 <!-- General Information -->
@@ -208,83 +206,86 @@
 
                             </extended:TableViewWithoutBorders>
 
-                            <artina:Button 
-                                Style="{StaticResource SaveButtonStyle}"
-                                Command="{ Binding SaveChangesCommand }"
-                                Text="{i18n:Translate Profile.Save.Changes}">
-
-                                <Button.Triggers>
-                                    <DataTrigger 
-                                        TargetType="Button" 
-                                        Binding="{Binding IsBusy}"
-                                        Value="True">
+                          <StackLayout Orientation="Vertical" VerticalOptions="End">
+                                <artina:Button
+                                  Style="{StaticResource SaveButtonStyle}"
+                                  Command="{ Binding SaveChangesCommand }"
+                                  Text="{i18n:Translate Profile.Save.Changes}" >
+                                    <Button.Triggers>
+                                      <DataTrigger
+                                          TargetType="Button"
+                                          Binding="{Binding IsBusy}"
+                                          Value="True">
                                         <Setter Property="IsEnabled" Value="False" />
-                                    </DataTrigger>
-                                    <DataTrigger 
-                                        TargetType="Button"
-                                        Binding="{Binding HaveInternet}"
-                                        Value="False">
+                                      </DataTrigger>
+                                      <DataTrigger
+                                          TargetType="Button"
+                                          Binding="{Binding HaveInternet}"
+                                          Value="False">
                                         <Setter Property="IsEnabled" Value="False" />
-                                    </DataTrigger>
-                                </Button.Triggers>
+                                      </DataTrigger>
+                                    </Button.Triggers>
 
-                            </artina:Button>
+                                </artina:Button>
+                                
 
-                            <artina:Button 
-                                IsEnabled="{Binding HaveInternet}"
-                                Style="{StaticResource DeleteButtonStyle}"
-                                Command="{ Binding DeleteAccountCommand }"
-                                Text="{i18n:Translate Profile.Delete.Account}">
+                                <artina:Button 
+                                    IsEnabled="{Binding HaveInternet}"
+                                    Style="{StaticResource DeleteButtonStyle}"
+                                    Command="{ Binding DeleteAccountCommand }"
+                                    Text="{i18n:Translate Profile.Delete.Account}">
 
-                                <Button.Triggers>
-                                    <DataTrigger 
-                                        TargetType="Button" 
-                                        Binding="{Binding IsBusy}"
-                                        Value="True">
-                                        <Setter Property="IsEnabled" Value="False" />
-                                    </DataTrigger>
-                                    <DataTrigger 
-                                        TargetType="Button"
-                                        Binding="{Binding HaveInternet}"
-                                        Value="False">
-                                        <Setter Property="IsEnabled" Value="False" />
-                                    </DataTrigger>
-                                </Button.Triggers>
+                                    <Button.Triggers>
+                                        <DataTrigger 
+                                            TargetType="Button" 
+                                            Binding="{Binding IsBusy}"
+                                            Value="True">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </DataTrigger>
+                                        <DataTrigger 
+                                            TargetType="Button"
+                                            Binding="{Binding HaveInternet}"
+                                            Value="False">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </DataTrigger>
+                                    </Button.Triggers>
 
-                             </artina:Button>
+                                 </artina:Button>
 
 
-                            <StackLayout.Triggers>
-                                <DataTrigger 
-                                    TargetType="StackLayout"
-                                    Binding="{Binding DataFound}"
-                                    Value="False">
-                                    <Setter Property="IsVisible" Value="False" />
-                                </DataTrigger>
-                                <DataTrigger 
-                                    TargetType="StackLayout"
-                                    Binding="{Binding ErrorOccurred}"
-                                    Value="True">
-                                    <Setter Property="IsVisible" Value="False" />
-                                </DataTrigger>
-                            </StackLayout.Triggers>
+                            </StackLayout>
+                            
 
                         </StackLayout>
 
-
-                        <common:NoDataFound 
-                            IsVisible="{Binding DataFound, Converter={StaticResource InverseBoolConverter}}"
-                            MainText="{i18n:Translate Children.Not.Found.MainText}"
-                            DetailText="{i18n:Translate Children.Not.Found.SecondText}"/>
-
-                        <common:ErrorOcurred 
-                            IsVisible="{ Binding ErrorOccurred }"
-                            MainText="{i18n:Translate Children.Error.Ocurred}"/>
-
-
-                    </StackLayout>
+              <controls:PullToRefreshLayout.Triggers>
+                <DataTrigger
+                    TargetType="controls:PullToRefreshLayout"
+                    Binding="{Binding DataFound}"
+                    Value="False">
+                  <Setter Property="IsVisible" Value="False" />
+                </DataTrigger>
+                <DataTrigger
+                    TargetType="controls:PullToRefreshLayout"
+                    Binding="{Binding ErrorOccurred}"
+                    Value="True">
+                  <Setter Property="IsVisible" Value="False" />
+                </DataTrigger>
+              </controls:PullToRefreshLayout.Triggers>
+              
                 
          </controls:PullToRefreshLayout>
+
+          <common:NoDataFound
+              Grid.Row="1"
+              IsVisible="{Binding DataFound, Converter={StaticResource InverseBoolConverter}}"
+              MainText="{i18n:Translate Children.Not.Found.MainText}"
+              DetailText="{i18n:Translate Children.Not.Found.SecondText}"/>
+
+          <common:ErrorOcurred
+               Grid.Row="1"
+              IsVisible="{ Binding ErrorOccurred }"
+              MainText="{i18n:Translate Children.Error.Ocurred}"/>
 
         </Grid>
 	</ContentPage.Content>

@@ -178,7 +178,8 @@ namespace Bullytect.Core.ViewModels
 
 		public void Init(string SontIdentity)
 		{
-			SonToEdit = SontIdentity;
+            if(!string.IsNullOrEmpty(SontIdentity))
+			    SonToEdit = SontIdentity;
 		}
 
 

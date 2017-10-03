@@ -11,6 +11,8 @@ using Bullytect.Core.Utils;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 using Bullytect.Core.Rest.Models.Exceptions;
+using System.Collections.Generic;
+using MvvmCross.Core.ViewModels;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -63,7 +65,7 @@ namespace Bullytect.Core.ViewModels
 
 
 			SignOutCommand = ReactiveCommand
-				.CreateFromObservable(() =>
+                .CreateFromObservable<string, bool>((param) =>
 				{
                     return Observable.FromAsync<bool>((_) => _userDialogs.ConfirmAsync(new ConfirmConfig()
                     {
@@ -72,6 +74,11 @@ namespace Bullytect.Core.ViewModels
                     })).Where((confirmed) => confirmed).Do((_) => _mvxMessenger.Publish(new SignOutMessage(this)));
 				});
 
+            SignOutCommand.Subscribe((_) =>
+            {
+                var mvxBundle = new MvxBundle(new Dictionary<string, string> { { "NavigationCommand", "StackClear" } });
+                ShowViewModel<AuthenticationViewModel>(new { AuthenticationViewModel.ReasonForAuthenticationEnum.SIGN_OUT }, presentationBundle: mvxBundle);
+            });
 
             TakePhotoCommand = CommandFactory.CreateTakePhotoCommand(_parentService, _imagesService, _userDialogs);
 
@@ -101,7 +108,7 @@ namespace Bullytect.Core.ViewModels
 
         public ReactiveCommand<string, ParentEntity> LoadProfileCommand { get; protected set; }
 
-        public ReactiveCommand SignOutCommand { get; protected set; }
+        public ReactiveCommand<string, bool> SignOutCommand { get; protected set; }
 
         public ReactiveCommand<string, ImageEntity> TakePhotoCommand { get; set; }
 

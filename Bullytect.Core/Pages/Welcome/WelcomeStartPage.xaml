@@ -36,7 +36,7 @@
                     <!-- LOGO -->
                     <Image 
                         Grid.Column="0"
-                        Source="Icon-76.png"
+                        Source="Icon_76.png"
                         WidthRequest="76"
                         HeightRequest="76"
                         Margin="20"

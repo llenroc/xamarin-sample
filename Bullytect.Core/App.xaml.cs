@@ -46,11 +46,11 @@ namespace Bullytect.Core
 
             Debug.WriteLine("OnAuthenticatedUserMessage ...");
 
-            var deviceGroupsService = Mvx.Resolve<IDeviceGroupsService>();
+            /*var deviceGroupsService = Mvx.Resolve<IDeviceGroupsService>();
             // save token
             deviceGroupsService.saveDevice(CrossDeviceInfo.Current.Id, Settings.FcmToken).Subscribe(device => {
                 Debug.WriteLine(String.Format("Device Saved: {0}", device.ToString()));
-            });
+            });*/
 
 		}
 
