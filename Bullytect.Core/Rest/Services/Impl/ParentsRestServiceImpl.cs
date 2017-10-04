@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reactive.Linq;
 using Bullytect.Core.Rest.Models.Request;
 using Bullytect.Core.Rest.Models.Response;
@@ -56,7 +57,7 @@ namespace Bullytect.Core.Rest.Services.Impl
 
         public IObservable<APIResponse<ImageDTO>> UploadProfileImage(Stream stream)
         {
-            throw new NotImplementedException();
+            return Observable.FromAsync(() => PostStreamData<APIResponse<ImageDTO>>(ApiEndpoints.UPLOAD_PROFILE_IMAGE, "profile_image", stream));
         }
     }
 }

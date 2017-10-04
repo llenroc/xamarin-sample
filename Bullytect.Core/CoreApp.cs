@@ -15,6 +15,12 @@ using Bullytect.Core.Rest.Handlers;
 using Bullytect.Core.Rest.Services;
 using Bullytect.Core.Rest.Models.Response;
 using Bullytect.Core.Rest.Services.Impl;
+using FFImageLoading;
+using FFImageLoading.Config;
+using Bullytect.Core.Models.Domain.Converter;
+using MvvmCross.Core.Navigation;
+using Bullytect.Core.ViewModels;
+using static Bullytect.Core.ViewModels.AuthenticationViewModel;
 
 namespace Bullytect.Core
 {
@@ -29,8 +35,10 @@ namespace Bullytect.Core
                 new UnauthorizedHttpClientHandler(
                     () => {
                         Debug.WriteLine("Session Expired ....");
-                        var messenger = Mvx.Resolve<IMvxMessenger>();
-                        messenger.Publish(new SessionExpiredMessage(this));
+                        var navigationService = Mvx.Resolve<IMvxNavigationService>();
+						Settings.AccessToken = null;
+                        navigationService?.Navigate<AuthenticationViewModel>();
+
                     }, new AuthenticatedHttpClientHandler(() => Settings.AccessToken))))
 			{
 				BaseAddress = new Uri(SharedConfig.BASE_API_URL),
@@ -45,11 +53,18 @@ namespace Bullytect.Core
             Mvx.RegisterSingleton<IDeviceGroupsRestService>(() => new DeviceGroupsRestServiceImpl(httpClient));
             Mvx.RegisterSingleton<IAlertRestService>(() => new AlertRestServiceImpl(httpClient));
             Mvx.RegisterSingleton<ISchoolRestService>(() => new SchoolRestServiceImpl(httpClient));
+
+
+			ImageService.Instance.Initialize(new Configuration
+			{
+				HttpClient = httpClient
+			});
         }
 
         void prepareMappers() {
-
+            
 			Mapper.Initialize(cfg => {
+                cfg.CreateMap<string, DateTime>().ConvertUsing<StringToDateTimeConverter>();
 				cfg.CreateMap<ParentDTO, ParentEntity>();
 				cfg.CreateMap<SonDTO, SonEntity>();
                 cfg.CreateMap<DeviceDTO, DeviceEntity>();

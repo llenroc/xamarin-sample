@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\home_header.jpg" />
+    <AndroidResource Include="Resources\drawable\user_default.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bullytect.Core\Bullytect.Core.csproj">

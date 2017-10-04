@@ -21,13 +21,11 @@ namespace Bullytect.Core.ViewModels
     {
         
         readonly IParentService _parentService;
-        readonly IImagesService _imagesService;
 
         public HomeViewModel(IUserDialogs userDialogs, IParentService parentService, 
-            IMvxMessenger mvxMessenger, IImagesService imagesService) : base(userDialogs, mvxMessenger)
+            IMvxMessenger mvxMessenger, IImagesService imagesService) : base(userDialogs, mvxMessenger, imagesService)
         {
             _parentService = parentService;
-            _imagesService = imagesService;
 
 
             var loadProfileCommand = ReactiveCommand
@@ -55,11 +53,22 @@ namespace Bullytect.Core.ViewModels
 
             RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
-            TakePhotoCommand = CommandFactory.CreateTakePhotoCommand(_parentService, _imagesService, _userDialogs);
+
+			TakePhotoCommand =  ReactiveCommand.CreateFromObservable<string, ImageEntity>((param) =>
+			{
+                return PickPhotoStream()
+                    .Select(MediaFile => MediaFile.GetStream())
+                    .Do((_) => _userDialogs.ShowLoading(AppResources.Profile_Updating_Profile_Image))
+                    .SelectMany((FileStream) => parentService.UploadProfileImage(FileStream))
+                    .Do((_) => _userDialogs.HideLoading());
+
+
+			});
 
             TakePhotoCommand.Subscribe((image) => {
                 _userDialogs.ShowSuccess(AppResources.Profile_Updating_Profile_Image_Success);
             });
+
             TakePhotoCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
         }
@@ -140,7 +149,7 @@ namespace Bullytect.Core.ViewModels
 			{
                 _userDialogs.ShowError(AppResources.Home_Loading_Failed);
             } else if (ex is NoChildrenFoundException) {
-                Debug.WriteLine("No Chidlren Founds");
+                NoChildrenFound = false;
             } else if (ex is CanNotTakePhotoFromCameraException) {
                 var toastConfig = new ToastConfig(AppResources.Profile_Can_Not_Take_Photo_From_Camera);
                 toastConfig.SetDuration(3000);

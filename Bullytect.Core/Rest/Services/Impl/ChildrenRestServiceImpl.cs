@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Reactive.Linq;
 using Bullytect.Core.Rest.Models.Request;
@@ -42,6 +43,11 @@ namespace Bullytect.Core.Rest.Services.Impl
         public IObservable<APIResponse<SocialMediaDTO>> SaveSocialMedia(SaveSocialMediaDTO socialMedia)
         {
             return Observable.FromAsync(() => PostData<APIResponse<SocialMediaDTO>, SaveSocialMediaDTO>(ApiEndpoints.SAVE_SOCIAL_MEDIA, socialMedia));
+        }
+
+        public IObservable<APIResponse<ImageDTO>> UploadProfileImage(string id, Stream stream)
+        {
+            return Observable.FromAsync(() => PostStreamData<APIResponse<ImageDTO>>(ApiEndpoints.UPLOAD_SON_PROFILE_IMAGE.Replace(":id", id), "profile_image", stream));
         }
     }
 }

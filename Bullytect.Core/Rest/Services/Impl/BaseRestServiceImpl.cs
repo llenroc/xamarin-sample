@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Bullytect.Core.Rest.Models.Exceptions;
@@ -66,6 +68,36 @@ namespace Bullytect.Core.Rest.Services.Impl
                 return DeserializeObject<T>(responseContent);
             }
         }
+
+
+		protected async Task<T> PostStreamData<T>(string urlString, string Name, Stream Data)
+		{
+
+			var uri = new Uri(urlString);
+
+			MultipartFormDataContent form = new MultipartFormDataContent();
+			HttpContent content = new StringContent(Name);
+            content.Headers.ContentType = MediaTypeHeaderValue.Parse("image/png");
+			form.Add(content, Name);
+			content = new StreamContent(Data);
+			content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+			{
+				Name = Name,
+				FileName = Name
+			};
+			form.Add(content);
+
+			using (var resp = await _client.PostAsync(uri, form).ConfigureAwait(false))
+			{
+				if (!resp.IsSuccessStatusCode)
+				{
+					throw await ApiException.Create(uri, HttpMethod.Post, resp).ConfigureAwait(false);
+				}
+
+				var responseContent = await resp.Content.ReadAsStringAsync();
+				return DeserializeObject<T>(responseContent);
+			}
+		}
 
 
 		protected async Task<T> DeleteData<T>(string urlString)

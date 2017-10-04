@@ -1,6 +1,7 @@
 ﻿
 using System.Windows.Input;
 using Acr.UserDialogs;
+using Bullytect.Core.Services;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 
@@ -9,7 +10,7 @@ namespace Bullytect.Core.ViewModels
     public class SonProfileViewModel : BaseViewModel
     {
 
-        public SonProfileViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger) : base(userDialogs, mvxMessenger)
+        public SonProfileViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IImagesService imagesService) : base(userDialogs, mvxMessenger, imagesService)
         {
         }
 

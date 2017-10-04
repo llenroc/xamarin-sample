@@ -18,7 +18,7 @@ namespace Bullytect.Core.ViewModels
 
         readonly IParentService _parentService;
 
-        public SignupViewModel(IParentService parentService, IUserDialogs userDialogs, IMvxMessenger mvxMessenger): base(userDialogs, mvxMessenger)
+        public SignupViewModel(IParentService parentService, IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IImagesService imagesService): base(userDialogs, mvxMessenger, imagesService)
         {
 			_parentService = parentService;
 

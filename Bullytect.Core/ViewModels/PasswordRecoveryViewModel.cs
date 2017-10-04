@@ -14,7 +14,7 @@ namespace Bullytect.Core.ViewModels
         readonly IParentService _parentService;
 
         public PasswordRecoveryViewModel(IParentService parentService,
-                                         IUserDialogs userDialogs, IMvxMessenger mvxMessenger): base(userDialogs, mvxMessenger)
+                                         IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IImagesService imagesService): base(userDialogs, mvxMessenger, imagesService)
         {
             _parentService = parentService;
 

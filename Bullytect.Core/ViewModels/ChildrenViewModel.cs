@@ -18,7 +18,7 @@ namespace Bullytect.Core.ViewModels
 
         readonly IParentService _parentsService;
 
-        public ChildrenViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IParentService parentsService) : base(userDialogs, mvxMessenger)
+        public ChildrenViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IParentService parentsService, IImagesService imagesService) : base(userDialogs, mvxMessenger, imagesService)
         {
 
             _parentsService = parentsService;

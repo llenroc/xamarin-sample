@@ -25,7 +25,7 @@ namespace Bullytect.Core.ViewModels
         readonly IAuthenticationService _authenticationService;
 
         public AuthenticationViewModel(IAuthenticationService authenticationService,
-                                       IUserDialogs userDialogs, IMvxMessenger mvxMessenger): base(userDialogs, mvxMessenger)
+                                       IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IImagesService imagesService): base(userDialogs, mvxMessenger, imagesService)
         {
             _authenticationService = authenticationService;
 

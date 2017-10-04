@@ -15,12 +15,13 @@ namespace Bullytect.Core.Services
         IObservable<List<SonEntity>> GetChildren();
 		IObservable<ParentEntity> Register(string FirstName, string LastName, DateTime Birthdate,
 												  string Email, string PasswordClear, string ConfirmPassword, string Telephone);
-        IObservable<ParentEntity> Update(string FirstName, string LastName, string Birthdate, string Email, string Telephone);
+        IObservable<ParentEntity> Update(string FirstName, string LastName, DateTime Birthdate, string Email, string Telephone);
         IObservable<string> ResetPassword(string email);
         IObservable<string> DeleteAccount();
         IObservable<ImageEntity> UploadProfileImage(Stream FileStream);
         IObservable<SonEntity> AddSonToSelfParent(string FirstName, string Lastname, string Birthdate, string School);
         IObservable<SonEntity> UpdateSonInformation(string Identity, string FirstName, string Lastname, string Birthdate, string School);
         IObservable<SonEntity> GetSonById(string Id);
+        IObservable<ImageEntity> UploadSonProfileImage(string identity, Stream stream);
     }
 }

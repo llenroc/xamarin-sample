@@ -1,6 +1,9 @@
 ﻿
 
+using System;
+using Bullytect.Core.Rest.Utils;
 using Bullytect.Core.ViewModels;
+using FFImageLoading;
 using MvvmCross.Forms.Core;
 using Xamarin.Forms;
 
@@ -17,6 +20,7 @@ namespace Bullytect.Core.Pages.Home
         protected override void OnAppearing() {
             if(ViewModel.SelfParent == null && ViewModel.Children?.Count == 0)
                 RefreshLayout.RefreshCommand?.Execute(null);
+
         }
     }
 }

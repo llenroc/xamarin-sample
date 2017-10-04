@@ -87,7 +87,7 @@ namespace Bullytect.Core.Services.Impl
             return operationDecorator(observable);
         }
 
-        public IObservable<ParentEntity> Update(string FirstName, string LastName, string Birthdate, string Email, string Telephone)
+        public IObservable<ParentEntity> Update(string FirstName, string LastName, DateTime Birthdate, string Email, string Telephone)
         {
             Debug.WriteLine(String.Format("Update Parent with:t FirstName: {0}, LastName: {1}, Birthdate: {2}, Email: {3}, Telephone: {4}", FirstName, LastName, Birthdate, Email, Telephone));
 
@@ -217,6 +217,22 @@ namespace Bullytect.Core.Services.Impl
 				.Finally(() =>
 				{
 					Debug.WriteLine("Save Son Information Finished ...");
+				});
+
+			return operationDecorator(observable);
+        }
+
+        public IObservable<ImageEntity> UploadSonProfileImage(string identity, Stream stream)
+        {
+			Debug.WriteLine("Upload Son Profile Image");
+
+            var observable = _childrenRestService
+                .UploadProfileImage(identity, stream)
+				.Select((response) => response.Data)
+				.Select(image => Mapper.Map<ImageDTO, ImageEntity>(image))
+				.Finally(() =>
+				{
+					Debug.WriteLine("Upload Son Profile Image Finished ...");
 				});
 
 			return operationDecorator(observable);

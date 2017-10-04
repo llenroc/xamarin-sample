@@ -13,6 +13,9 @@
     xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:controls="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:rest="clr-namespace:Bullytect.Core.Rest.Utils"
     x:Class="Bullytect.Core.Pages.Home.HomePage"
     x:TypeArguments="viewModels:HomeViewModel"
     Title="{i18n:Translate Page.Common.Title}">
@@ -83,12 +86,21 @@
                                                 TranslationY="25">
 
                                                <!-- AVATAR -->
-                                                <artina:CircleImage
-                                                    BorderThickness="5"
-                                                    BorderColor="White"
-                                                    Source="user_profile_1.jpg"
+
+                                                <ffimageloading:CachedImage  
+                                                    x:Name="profileImage"
+                                                    CacheType="Disk"
+                                                    CacheDuration="30"
                                                     WidthRequest="100"
-                                                    HeightRequest="100"/>
+                                                    HeightRequest="100"
+                                                    FadeAnimationEnabled="true"
+                                                    ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+                                                    LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
+                                                    Source="{ x:Static rest:ApiEndpoints.GET_SELF_PARENT_PROFILE_IMAGE }">
+                                                    <ffimageloading:CachedImage.Transformations>
+                                                        <fftransformations:CircleTransformation BorderSize="5" BorderHexColor="#FFFFFF" />
+                                                    </ffimageloading:CachedImage.Transformations>
+                                                </ffimageloading:CachedImage>
 
                                                 <!-- BADGE -->
                                                 <common:Badge
@@ -102,6 +114,7 @@
                                                 <Grid.GestureRecognizers>
                                                   <TapGestureRecognizer Command="{ Binding TakePhotoCommand }"  NumberOfTapsRequired="1" />
                                                 </Grid.GestureRecognizers>
+                                    
                                             </Grid>
 
                                             <!-- Parent FullName -->

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Bullytect.Core.Rest.Models.Response;
 using Bullytect.Core.Rest.Models.Request;
+using System.IO;
 
 namespace Bullytect.Core.Rest.Services
 {
@@ -22,5 +23,7 @@ namespace Bullytect.Core.Rest.Services
 
 		IObservable<APIResponse<SocialMediaDTO>> DeleteSocialMedia(string idson, string idsocial);
 
+        IObservable<APIResponse<ImageDTO>> UploadProfileImage(string id, Stream stream);
+ 
     }
 }

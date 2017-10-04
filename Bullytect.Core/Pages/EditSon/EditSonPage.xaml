@@ -13,6 +13,8 @@
     xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
     xmlns:templates="clr-namespace:Bullytect.Core.Pages.EditSon.Templates"
     xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:extended="clr-namespace:Bullytect.Core.Pages.Common.Extended"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:controls="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
@@ -29,9 +31,7 @@
                 <converters:IsSchoolNamesCollectionEmptyConverter x:Key="IsSchoolNamesCollectionEmptyConverter" />
                 <converters:IsSchoolNamesCollectionNotEmptyConverter x:Key="IsSchoolNamesCollectionNotEmptyConverter" />
                 <converters:IsNullToBoolConverter x:Key="IsNullToBoolConverter" />
-             
-
-             <x:String x:Key="firstNameKey">firstName</x:String>
+                <x:String x:Key="firstNameKey">firstName</x:String>
                 <x:String x:Key="lastNameKey">lastName</x:String>
                 <x:String x:Key="schoolKey">school</x:String>
                 <x:String x:Key="birthdateKey">birthdate</x:String>
@@ -68,7 +68,7 @@
                     VerticalOptions="FillAndExpand"
                     Padding="20,10">
 
-                    <StackLayout VerticalOptions="StartAndExpand" Spacing="10">
+                    <ScrollView VerticalOptions="StartAndExpand">
 
                       <!-- Profile Image Section -->
                       <StackLayout Padding="5">
@@ -97,12 +97,19 @@
                       <StackLayout Orientation="Horizontal" Spacing="10">
                         
                           <!-- AVATAR -->
-                          <artina:CircleImage
-                            BorderThickness="5"
-                            BorderColor="{ DynamicResource AccentColor }"
-                            Source="user_profile_1.jpg"
-                            WidthRequest="100"
-                            HeightRequest="100"/>
+                           <ffimageloading:CachedImage   
+                                    x:Name="profileImage"
+                                    WidthRequest="100"
+                                    HeightRequest="100"
+                                    CacheType="Disk"
+                                    CacheDuration="30"
+                                    ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+                                    LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }">
+                                    <ffimageloading:CachedImage.Transformations>
+                                        <fftransformations:CircleTransformation BorderSize="5" BorderHexColor="#6BC7E0" />
+                                    </ffimageloading:CachedImage.Transformations>
+                                </ffimageloading:CachedImage>
+                          
                         
                           <Label
                             LineBreakMode="WordWrap"
@@ -435,7 +442,7 @@
                                         </Switch>
                         </Grid>
 
-                    </StackLayout>
+                    </ScrollView>
 
 
                     <StackLayout Orientation="Vertical" VerticalOptions="End">

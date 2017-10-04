@@ -17,6 +17,7 @@ using Bullytect.Core.Services;
 using Bullytect.Core.Utils;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
+using Plugin.Media.Abstractions;
 using ReactiveUI;
 using Xamarin.Forms;
 
@@ -27,16 +28,14 @@ namespace Bullytect.Core.ViewModels
 
         readonly IParentService _parentService;
         readonly ISocialMediaService _socialMediaService;
-        readonly IImagesService _imagesService;
         readonly ISchoolService _schoolService;
 
         public EditSonViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IParentService parentService,
-                                ISocialMediaService socialMediaService, IImagesService imagesService, ISchoolService schoolService) : base(userDialogs, mvxMessenger)
+                                ISocialMediaService socialMediaService, IImagesService imagesService, ISchoolService schoolService) : base(userDialogs, mvxMessenger, imagesService)
         {
 
             _parentService = parentService;
             _socialMediaService = socialMediaService;
-            _imagesService = imagesService;
             _schoolService = schoolService;
 
 			var GetSonByIdCommand  = ReactiveCommand
@@ -75,11 +74,14 @@ namespace Bullytect.Core.ViewModels
 
 			RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
-			TakePhotoCommand = CommandFactory.CreateTakePhotoCommand(_parentService, _imagesService, _userDialogs);
+            TakePhotoCommand = ReactiveCommand.CreateFromObservable<string, MediaFile>((param) => PickPhotoStream());
 
-			TakePhotoCommand.Subscribe((image) => {
-				_userDialogs.ShowSuccess(AppResources.Profile_Updating_Profile_Image_Success);
+			TakePhotoCommand.Subscribe((ImageFile) => {
+				_userDialogs.HideLoading();
+				NewProfileImage = ImageFile;
+				OnNewSelectedImage(ImageFile);
 			});
+
 
 			TakePhotoCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
@@ -87,13 +89,21 @@ namespace Bullytect.Core.ViewModels
             SaveChangesCommand = ReactiveCommand
                 .CreateFromObservable<string, bool>((param) => {
 
+
 					return (CurrentSon.Identity == null ?
 								 _parentService.AddSonToSelfParent(CurrentSon.FirstName, CurrentSon.LastName, CurrentSon.Birthdate, CurrentSon.School) :
 								 _parentService.UpdateSonInformation(CurrentSon.Identity, CurrentSon.FirstName, CurrentSon.LastName, CurrentSon.Birthdate, CurrentSon.School))
                                 .Do((SonEntity) => CurrentSon = SonEntity)
                                 .SelectMany((SonEntity) => _socialMediaService.SaveAllSocialMedia(CurrentSon.Identity, CurrentSocialMedia.Select(s => { s.Son = CurrentSon.Identity; return s; }).ToList()))
                                 .Do((SocialMediaEntities) => CurrentSocialMedia = new ObservableCollection<SocialMediaEntity>(SocialMediaEntities))
-                                .Select((_) => true);   
+                                .SelectMany((_) => {
+
+                                    return NewProfileImage != null ?
+                                            _parentService.UploadSonProfileImage(CurrentSon.Identity, NewProfileImage.GetStream()) :
+                                            Observable.Empty<ImageEntity>();
+                                 })
+                                .Select((_) => true)
+                                .Finally(() => NewProfileImage = null);   
             });
 
             SaveChangesCommand.Subscribe((_) => {
@@ -123,7 +133,16 @@ namespace Bullytect.Core.ViewModels
             SaveSchoolCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }
 
-        #region properties
+		#region properties
+
+
+		protected MediaFile _newProfileImage;
+
+		public MediaFile NewProfileImage
+		{
+			get => _newProfileImage;
+			set => SetProperty(ref _newProfileImage, value);
+		}
 
         SonEntity _currentSon = new SonEntity();
 
@@ -175,8 +194,21 @@ namespace Bullytect.Core.ViewModels
 
 		#endregion
 
+		#region delegates
 
-		public void Init(string SontIdentity)
+		public delegate void NewSelectedImageEvent(object sender, MediaFile NewProfileImage);
+		public event NewSelectedImageEvent NewSelectedImage;
+
+		protected virtual void OnNewSelectedImage(MediaFile NewProfileImage)
+		{
+			NewSelectedImage?.Invoke(this, NewProfileImage);
+		}
+
+        #endregion
+
+
+
+        public void Init(string SontIdentity)
 		{
             if(!string.IsNullOrEmpty(SontIdentity))
 			    SonToEdit = SontIdentity;
@@ -187,7 +219,7 @@ namespace Bullytect.Core.ViewModels
 
         public ReactiveCommand<string, bool> SaveChangesCommand { get; protected set; }
 
-        public ReactiveCommand<string, ImageEntity> TakePhotoCommand { get; set; }
+        public ReactiveCommand<string, MediaFile> TakePhotoCommand { get; set; }
 
         public ReactiveCommand RefreshCommand { get; protected set; }
 

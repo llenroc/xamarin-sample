@@ -15,6 +15,9 @@
     xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:controls="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:rest="clr-namespace:Bullytect.Core.Rest.Utils"
     x:Class="Bullytect.Core.Pages.Profile.ProfilePage"
     x:TypeArguments="viewModels:ProfileViewModel"
     Title="{i18n:Translate Page.Profile.Title}"
@@ -25,7 +28,7 @@
                 <converters:ValidationErrorFormatValueConverter x:Key="ValidationErrorFormatValueConverter"/>
                 <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
                 <converters:TailStringConverter x:Key="TailStringConverter"/>
-            
+          
                 <x:String x:Key="firstNameKey">firstName</x:String>
                 <x:String x:Key="lastNameKey">lastName</x:String>
                 <x:String x:Key="birthdateKey">birthdate</x:String>
@@ -91,31 +94,38 @@
 
                       <StackLayout Orientation="Horizontal" Spacing="10">
 
-                        <!-- AVATAR -->
-                        <artina:CircleImage
-                            BorderThickness="5"
-                            BorderColor="{ DynamicResource AccentColor }"
-                            Source="user_profile_1.jpg"
-                            WidthRequest="100"
-                            HeightRequest="100"/>
+                                <!-- AVATAR -->
+                                <ffimageloading:CachedImage   
+                                    x:Name="profileImage"
+                                    WidthRequest="100"
+                                    HeightRequest="100"
+                                    CacheType="Disk"
+                                    CacheDuration="30"
+                                    ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+                                    LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
+                                    Source="{ x:Static rest:ApiEndpoints.GET_SELF_PARENT_PROFILE_IMAGE }">
+                                    <ffimageloading:CachedImage.Transformations>
+                                        <fftransformations:CircleTransformation BorderSize="5" BorderHexColor="#6BC7E0" />
+                                    </ffimageloading:CachedImage.Transformations>
+                                </ffimageloading:CachedImage>
 
-                        <Label
-                            LineBreakMode="WordWrap"
-                            Text="{i18n:Translate Profile.Image.Change}"
-                            TextColor="{ DynamicResource AccentColor }"
-                            VerticalTextAlignment="Center"
-                            FontSize="19">
-                          <Label.FontSize>
-                            <OnIdiom
-                                x:TypeArguments="x:Double"
-                                Phone="19"
-                                Tablet="22"/>
-                          </Label.FontSize>
-                        </Label>
+                                <Label
+                                    LineBreakMode="WordWrap"
+                                    Text="{i18n:Translate Profile.Image.Change}"
+                                    TextColor="{ DynamicResource AccentColor }"
+                                    VerticalTextAlignment="Center"
+                                    FontSize="19">
+                                  <Label.FontSize>
+                                    <OnIdiom
+                                        x:TypeArguments="x:Double"
+                                        Phone="19"
+                                        Tablet="22"/>
+                                  </Label.FontSize>
+                                </Label>
 
-                        <StackLayout.GestureRecognizers>
-                          <TapGestureRecognizer Command="{ Binding TakePhotoCommand }"  NumberOfTapsRequired="1" />
-                        </StackLayout.GestureRecognizers>
+                                <StackLayout.GestureRecognizers>
+                                  <TapGestureRecognizer Command="{ Binding TakePhotoCommand }"  NumberOfTapsRequired="1" />
+                                </StackLayout.GestureRecognizers>
                         
                       </StackLayout>
 
@@ -250,21 +260,12 @@
                         </StackLayout>
 
                         <!-- Telephone -->
-                        <!--<StackLayout>
+                        <StackLayout>
 
-                            <StackLayout Orientation="Horizontal">
-
-                                <Label Text="{Binding Prefix, StringFormat='{0} |'}" 
-                                    TextColor="#fff"
-                                    BackgroundColor="Transparent"
-                                    VerticalTextAlignment="Center"/>
-                                    <Entry 
-                                        Placeholder="{ i18n:Translate Common.Placeholder.Telephone }" 
-                                        Text="{ Binding Telephone, Converter={ StaticResource TailStringConverter}, ConverterParameter=4 }" 
-                                        Keyboard="Telephone" 
-                                        Style="{StaticResource ArtinaProfileEntryStyle}">
-                                    </Entry>
-                             </StackLayout>
+                            <Entry 
+                                    Placeholder="{ i18n:Translate Common.Placeholder.Telephone }" 
+                                    Text="{ Binding SelfParent.Telephone}" 
+                                    Style="{StaticResource ArtinaProfileEntryStyle}" />
 
                              <Label
                                 Text="{Binding Path=FieldErrors, 
@@ -274,7 +275,8 @@
                                 Converter={StaticResource ContainsKeyVisibilityConverter},
                                 ConverterParameter={StaticResource telephoneKey}}"
                                 Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-                        </StackLayout>-->
+                                    
+                        </StackLayout>
                         <!-- End Telephone -->
                         
 

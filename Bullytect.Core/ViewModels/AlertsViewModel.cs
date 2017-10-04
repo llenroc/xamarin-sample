@@ -23,7 +23,7 @@ namespace Bullytect.Core.ViewModels
 			get { return _alertList.Value; }
 		}
 
-        public AlertsViewModel(IAlertService alertService, IUserDialogs userDialogs, IMvxMessenger mvxMessenger): base(userDialogs, mvxMessenger)
+        public AlertsViewModel(IAlertService alertService, IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IImagesService imagesService): base(userDialogs, mvxMessenger, imagesService)
         {
             _alertService = alertService;
 

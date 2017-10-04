@@ -8,10 +8,16 @@
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
     x:TypeArguments="viewModels:SonProfileViewModel"
     x:Class="Bullytect.Core.Pages.SonProfile.SonProfilePage"
     x:Name="root">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 	<ContentPage.Content>
 
         <Grid 
@@ -27,11 +33,13 @@
             <ffimageloading:CachedImage 
                 Grid.Row="0"
                 FadeAnimationEnabled="true"
-                Source="user_profile_1.jpg" 
+                ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+                LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
+                Source="{ Binding Identity, Converter={ StaticResource SonProfileImageURLConverter }}"
                 Aspect="AspectFill" >
-                <!--<ffimageloading:CachedImage.GestureRecognizers>
-                    <TapGestureRecognizer Command="" NumberOfTapsRequired="1" />
-                </ffimageloading:CachedImage.GestureRecognizers>-->
+                <ffimageloading:CachedImage.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnImageTapped" />
+                </ffimageloading:CachedImage.GestureRecognizers>
             </ffimageloading:CachedImage>
 
             <!-- Son Data  -->

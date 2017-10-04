@@ -149,6 +149,9 @@
     <EmbeddedResource Include="Pages\AddSchool\AddSchoolPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\SonProfileFullScreen\SonProfileFullScreenPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\CanNotTakePhotoFromCameraException.cs" />
@@ -360,7 +363,6 @@
     <Compile Include="Models\Domain\SocialMediaEntity.cs" />
     <Compile Include="Services\ISocialMedia.cs" />
     <Compile Include="Services\Impl\SocialMediaServiceImpl.cs" />
-    <Compile Include="Utils\CommandFactory.cs" />
     <Compile Include="Converters\SocialMediaFormatValueConverter.cs" />
     <Compile Include="Converters\SwitchChangeEventArgsConverter.cs" />
     <Compile Include="OAuth\Providers\Instagram\InstagramOAuth2.cs" />
@@ -393,6 +395,12 @@
     <Compile Include="Rest\Models\Exceptions\ApiException.cs" />
     <Compile Include="Rest\Models\Exceptions\AccountDisabledException.cs" />
     <Compile Include="Converters\TailStringConverter.cs" />
+    <Compile Include="Models\Domain\Converter\StringToDateTimeConverter.cs" />
+    <Compile Include="Converters\SonProfileImageURLConverter.cs" />
+    <Compile Include="Pages\SonProfileFullScreen\SonProfileFullScreenPage.xaml.cs">
+      <DependentUpon>SonProfileFullScreenPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\NavigationPageHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -482,9 +490,6 @@
     <Reference Include="Plugin.Settings, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xam.Plugins.Settings.3.0.1\lib\netstandard1.0\Plugin.Settings.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.Settings.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xam.Plugins.Settings.3.0.1\lib\netstandard1.0\Plugin.Settings.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="ReactiveUI, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\reactiveui-core.7.0.0\lib\portable-net45+netcore45+wpa81+win8+wp8+UAP10+MonoAndroid403+MonoTouch10+Xamarin.iOS10\ReactiveUI.dll</HintPath>
     </Reference>
@@ -563,6 +568,9 @@
     <Reference Include="System.Net.Http.Primitives">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Settings.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Settings.3.0.1\lib\netstandard1.0\Plugin.Settings.Abstractions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -572,6 +580,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\Domain\Converter\" />
+    <Folder Include="Pages\SonProfileFullScreen\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

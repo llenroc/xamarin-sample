@@ -3,13 +3,14 @@ using Bullytect.Core.Exceptions;
 using Plugin.Media;
 using System.IO;
 using System.Threading.Tasks;
+using Plugin.Media.Abstractions;
 
 namespace Bullytect.Core.Services.Impl
 {
     public class ImagesServiceImpl: BaseService, IImagesService
     {
 
-        public async Task<Stream> PickPhoto()
+        public async Task<MediaFile> PickPhoto()
         {
             await CrossMedia.Current.Initialize();
 
@@ -19,12 +20,10 @@ namespace Bullytect.Core.Services.Impl
 
 			});
 
-			var stream = file.GetStream();
-			file.Dispose();
-            return stream;
+            return file;
         }
 
-        public async Task<Stream> TakePhotoFromFrontCamera()
+        public async Task<MediaFile> TakePhotoFromFrontCamera()
         {
             await CrossMedia.Current.Initialize();
 
@@ -42,9 +41,8 @@ namespace Bullytect.Core.Services.Impl
            if (file == null)
                 throw new CanNotTakePhotoFromCameraException();
 
-            var stream = file.GetStream();
-			file.Dispose();
-			return stream;
+   
+			return file;
         }
     }
 }

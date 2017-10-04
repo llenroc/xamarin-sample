@@ -13,6 +13,8 @@ using ReactiveUI;
 using Bullytect.Core.Rest.Models.Exceptions;
 using Bullytect.Core.Config;
 using Bullytect.Core.Exceptions;
+using System.IO;
+using Plugin.Media.Abstractions;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -20,17 +22,26 @@ namespace Bullytect.Core.ViewModels
     {
 
         readonly IParentService _parentService;
-        readonly IImagesService _imagesService;
 
 
-        public ProfileViewModel(IParentService parentService, IUserDialogs userDialogs, 
-                                IMvxMessenger mvxMessenger, IImagesService imagesService): base(userDialogs, mvxMessenger)
+        public ProfileViewModel(IParentService parentService, IUserDialogs userDialogs,
+                                IMvxMessenger mvxMessenger, IImagesService imagesService) : base(userDialogs, mvxMessenger, imagesService)
         {
             _parentService = parentService;
-            _imagesService = imagesService;
 
-            SaveChangesCommand = ReactiveCommand.CreateFromObservable<string, ParentEntity>((_) => _parentService.Update(SelfParent.FirstName, SelfParent.LastName, SelfParent.Birthdate, SelfParent.Email, SelfParent.Telephone));
- 
+            SaveChangesCommand = ReactiveCommand.CreateFromObservable<string, ParentEntity>((param) =>
+            {
+
+                return NewProfileImage != null ?
+                    _parentService.UploadProfileImage(NewProfileImage.GetStream())
+                                  .SelectMany((_) => _parentService.Update(SelfParent.FirstName, SelfParent.LastName, SelfParent.Birthdate, SelfParent.Email, SelfParent.Telephone)) :
+
+                    _parentService.Update(SelfParent.FirstName, SelfParent.LastName, SelfParent.Birthdate, SelfParent.Email, SelfParent.Telephone);
+                    
+                
+            });
+
+
             SaveChangesCommand.Subscribe(AccountUpdated);
 
             SaveChangesCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
@@ -57,8 +68,14 @@ namespace Bullytect.Core.ViewModels
                                      .Do((_) => _userDialogs.HideLoading());
                 });
 
+
             DeleteAccountCommand.Subscribe((_) => {
-                _userDialogs.ShowSuccess(AppResources.Profile_Account_Deleted);
+
+				var toastConfig = new ToastConfig(AppResources.Profile_Account_Deleted);
+				toastConfig.SetDuration(3000);
+				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
+				_userDialogs.Toast(toastConfig);
+
             });
 
 			DeleteAccountCommand.ThrownExceptions.Subscribe(HandleExceptions);
@@ -84,16 +101,31 @@ namespace Bullytect.Core.ViewModels
                 });
             });
 
-            TakePhotoCommand = CommandFactory.CreateTakePhotoCommand(_parentService, _imagesService, _userDialogs);
+            TakePhotoCommand = ReactiveCommand.CreateFromObservable<string, MediaFile>((param) => PickPhotoStream());
+			
 
-            TakePhotoCommand.Subscribe((image) => {
-                _userDialogs.ShowSuccess(AppResources.Profile_Updating_Profile_Image_Success);
-            });
+            TakePhotoCommand.Subscribe((ImageStream) => {
+                _userDialogs.HideLoading();
+                NewProfileImage = ImageStream;
+                OnNewSelectedImage(ImageStream);
+			});
+
             TakePhotoCommand.ThrownExceptions.Subscribe(HandleExceptions);
+
+   
 
 		}
 
         #region Properties
+
+
+        protected MediaFile _newProfileImage;
+
+        public MediaFile NewProfileImage
+        {
+            get => _newProfileImage;
+            set => SetProperty(ref _newProfileImage, value);
+        }
 
         protected ObservableAsPropertyHelper<ParentEntity> _selfParent;
 		public ParentEntity SelfParent
@@ -109,6 +141,15 @@ namespace Bullytect.Core.ViewModels
 			get => _prefix;
 		}
 
+
+        public delegate void NewSelectedImageEvent(object sender, MediaFile NewProfileImage);
+		public event NewSelectedImageEvent NewSelectedImage;
+
+		protected virtual void OnNewSelectedImage(MediaFile NewProfileImage)
+		{
+			NewSelectedImage?.Invoke(this, NewProfileImage);
+		}
+
         #endregion
 
         #region commands
@@ -122,7 +163,7 @@ namespace Bullytect.Core.ViewModels
 
         public ReactiveCommand<string, bool> SignOutCommand { get; protected set; }
 
-        public ReactiveCommand<string, ImageEntity> TakePhotoCommand { get; set; }
+        public ReactiveCommand<string, MediaFile> TakePhotoCommand { get; set; }
 
 
 		#endregion
@@ -142,13 +183,13 @@ namespace Bullytect.Core.ViewModels
             {
                 var toastConfig = new ToastConfig(AppResources.Profile_Updating_Profile_Image_Failed);
                 toastConfig.SetDuration(3000);
-                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
+                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
                 _userDialogs.Toast(toastConfig);
             }
             else if (ex is CanNotTakePhotoFromCameraException) {
                 var toastConfig = new ToastConfig(AppResources.Profile_Can_Not_Take_Photo_From_Camera);
                 toastConfig.SetDuration(3000);
-                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
+                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
                 _userDialogs.Toast(toastConfig);
             }
             else
