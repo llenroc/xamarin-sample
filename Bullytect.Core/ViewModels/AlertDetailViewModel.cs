@@ -20,6 +20,7 @@ namespace Bullytect.Core.ViewModels
 			public string Payload { get; set; }
 			public string CreateAt { get; set; }
             public string SonFullName { get; set; }
+            public string SonIdentity { get; set; }
 		}
 
 
@@ -29,6 +30,7 @@ namespace Bullytect.Core.ViewModels
             Payload = alertParameter.Payload;
             CreateAt = alertParameter.CreateAt;
             SonFullName = alertParameter.SonFullName;
+            SonIdentity = alertParameter.SonIdentity;
 		}
 
         #region properties
@@ -67,6 +69,16 @@ namespace Bullytect.Core.ViewModels
 			get => _sonFullName;
 			set => SetProperty(ref _sonFullName, value);
 		}
+
+		string _sonIdentity;
+
+		public string SonIdentity
+		{
+
+			get => _sonIdentity;
+			set => SetProperty(ref _sonIdentity, value);
+		}
+
 
         #endregion
 

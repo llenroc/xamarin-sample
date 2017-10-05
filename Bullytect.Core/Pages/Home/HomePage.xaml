@@ -8,13 +8,15 @@
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:alertTemplates="clr-namespace:Bullytect.Core.Pages.Alerts.Templates"
+    xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
     xmlns:templates="clr-namespace:Bullytect.Core.Pages.Home.Templates"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
-    xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:controls="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
     xmlns:rest="clr-namespace:Bullytect.Core.Rest.Utils"
     x:Class="Bullytect.Core.Pages.Home.HomePage"
     x:TypeArguments="viewModels:HomeViewModel"
@@ -24,10 +26,24 @@
             <converters:NullVisibilityConverter x:Key="NullToVisibilityConverter"/>
             <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
             <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
+            <converters:ValueEqualToZeroConverter x:Key="ValueEqualToZeroConverter" />
+            <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
+
+    <!-- Refresh On Appearing Event -->
+    <ContentPage.Behaviors>
+        <behaviors:EventHandlerBehavior EventName="Appearing">
+            <behaviors:InvokeCommandAction 
+                    Command="{Binding RefreshCommand}" 
+                    Converter="{ StaticResource DefaultReactiveUnitConverter}" />
+        </behaviors:EventHandlerBehavior>
+    </ContentPage.Behaviors>
+    
 	<ContentPage.Content>
 
+        
+       
         <!-- MAIN CONTAINER -->
         <Grid RowSpacing="0">
             <Grid.RowDefinitions>
@@ -104,7 +120,8 @@
 
                                                 <!-- BADGE -->
                                                 <common:Badge
-                                                    BadgeText="7+"
+                                                    IsVisible="{ Binding  AlertsPage.Remaining, Converter={ StaticResource ValueEqualToZeroConverter }"
+                                                    BadgeText="{ Binding  AlertsPage.Remaining, StringFormat='+ ${0}'}"
                                                     BadgeTextColor="{ DynamicResource InverseTextColor }"
                                                     BadgeBackgroundColor="#22c064"
                                                     HorizontalOptions="Center"
@@ -236,65 +253,107 @@
                                             </Grid>
                                     </Grid>
 
-                                    <Grid Grid.Row="1" IsVisible="{Binding NoChildrenFound, Converter={StaticResource InverseBoolConverter}}">
+                                    <Grid Grid.Row="1">
                                
                                         <StackLayout 
                                             Padding="0"
                                             Spacing="0">
 
                                             <commonTemplates:MainListHeaderTemplate 
-                                                Text="{i18n:Translate Home.Children.List.Title}"
-                                                IconText="{ x:Static helper:FontAwesomeFont.Users } "/>
+                                                Text="{i18n:Translate Home.Alerts.List.Title}"
+                                                IconText="{ x:Static helper:FontAwesomeFont.ExclamationTriangle } "/>
 
                                             <!-- Children LIST -->
                                             <ListView
-                                                ItemsSource="{Binding Children}"
+                                                ItemsSource="{Binding AlertsPage.Alerts}"
                                                 RowHeight="66">
 
                                                 <ListView.Behaviors>
                                                     <utils:EventToCommandBehavior 
                                                         EventName="ItemTapped" 
-                                                        Command="{Binding ShowSonProfileCommand}" 
+                                                        Command="{Binding ShowAlertDetailCommand}" 
                                                         EventArgsConverter="{ StaticResource ItemTappedEventArgsConverter }" />
                                                 </ListView.Behaviors>
 
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <commonTemplates:SonSimpleItemTemplate />
+                                                            <alertTemplates:AlertItemTemplate/>
                                                         </ViewCell>
                                                     </DataTemplate>
                                                 </ListView.ItemTemplate>
                                             </ListView>
 
                                         </StackLayout>
+
+
+                                        <Grid.Triggers>
+                                            <DataTrigger 
+                                                TargetType="Grid"
+                                                Binding="{Binding SelfParent, Converter={StaticResource NullToVisibilityConverter} }"
+                                                Value="False">
+                                                <Setter Property="IsVisible" Value="False" />
+                                            </DataTrigger>
+                                            <DataTrigger 
+                                                TargetType="Grid"
+                                                Binding="{Binding NoAlertsFound }"
+                                                Value="True">
+                                                <Setter Property="IsVisible" Value="False" />
+                                            </DataTrigger>
+                                            <DataTrigger
+                                                TargetType="Grid"
+                                                Binding="{Binding IsBusy}"
+                                                Value="True">
+                                                <Setter Property="IsVisible" Value="False" />
+                                            </DataTrigger>
+                                        </Grid.Triggers>
+                                
                                     </Grid>
 
                                   <StackLayout
-                                    Grid.Row="1"
-                                    IsVisible="{ Binding  NoChildrenFound }"
-                                    Margin="30, 0, 0, 0"
-                                    Padding="10">
+                                        Grid.Row="1"
+                                        IsVisible="False"
+                                        VerticalOptions="EndAndExpand"
+                                        Padding="20">
 
-                                    <Label
-                                        LineBreakMode="WordWrap"
-                                        Text="{i18n:Translate Home.Not.Children.Found}"
-                                        TextColor="{ DynamicResource AccentColor }"
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center"
-                                        FontSize="19">
-                                        <Label.FontSize>
-                                          <OnIdiom
-                                            x:TypeArguments="x:Double" Phone="19" Tablet="22"/>
-                                        </Label.FontSize>
-                                    </Label>
+                                        <Label
+                                            LineBreakMode="WordWrap"
+                                            Text="{i18n:Translate Home.Not.Children.Found}"
+                                            TextColor="{ DynamicResource AccentColor }"
+                                            HorizontalTextAlignment="Center"
+                                            VerticalTextAlignment="Center"
+                                            FontSize="19">
+                                            <Label.FontSize>
+                                              <OnIdiom
+                                                x:TypeArguments="x:Double" Phone="19" Tablet="22"/>
+                                            </Label.FontSize>
+                                        </Label>
 
-                                    <artina:Button
-                                        Style="{StaticResource SaveButtonStyle}"
-                                        Command="{ Binding AddSonCommand }"
-                                        Text="{i18n:Translate Home.Add.Son}" />
-                                  
-                                  </StackLayout>
+                                        <artina:Button
+                                            Style="{StaticResource SaveButtonStyle}"
+                                            Command="{ Binding AddSonCommand }"
+                                            Text="{i18n:Translate Home.Add.Son}" />
+
+
+                                          <StackLayout.Triggers>
+                                            <DataTrigger 
+                                                TargetType="StackLayout"
+                                                Binding="{ Binding  SelfParent.Children, Converter={ StaticResource ValueEqualToZeroConverter } }"
+                                                Value="True">
+                                                <Setter Property="IsVisible" Value="True" />
+                                            </DataTrigger>
+                                            <DataTrigger
+                                                TargetType="StackLayout"
+                                                Binding="{Binding IsBusy}"
+                                                Value="True">
+                                                <Setter Property="IsVisible" Value="False" />
+                                            </DataTrigger>
+                                        </StackLayout.Triggers>
+                            
+                                      
+                                   </StackLayout>
+
+                                    
                             </Grid>
 
                         </ScrollView>

@@ -15,6 +15,7 @@ using Bullytect.Core.Config;
 using Bullytect.Core.Exceptions;
 using System.IO;
 using Plugin.Media.Abstractions;
+using System.Reactive;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -48,7 +49,7 @@ namespace Bullytect.Core.ViewModels
 
 			SaveChangesCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
-            LoadProfileCommand = ReactiveCommand.CreateFromObservable<string, ParentEntity>((param) => _parentService.GetProfileInformation());
+            LoadProfileCommand = ReactiveCommand.CreateFromObservable<Unit, ParentEntity>((param) => _parentService.GetProfileInformation());
 
             LoadProfileCommand.ToProperty(this, x => x.SelfParent, out _selfParent);
 
@@ -159,7 +160,7 @@ namespace Bullytect.Core.ViewModels
 
         public ReactiveCommand<string, string> DeleteAccountCommand { get; protected set; }
 
-        public ReactiveCommand<string, ParentEntity> LoadProfileCommand { get; protected set; }
+        public ReactiveCommand<Unit, ParentEntity> LoadProfileCommand { get; protected set; }
 
         public ReactiveCommand<string, bool> SignOutCommand { get; protected set; }
 

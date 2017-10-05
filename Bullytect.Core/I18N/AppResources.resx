@@ -380,9 +380,9 @@ and we will recover it for you. </value>
     <value> Failed to load user profile </value>
     <comment>Home Loading Failed</comment>
   </data>
-  <data name="Home.Children.List.Title" xml:space="preserve">
-    <value>  Children analyzed </value>
-    <comment>Home Children List Title</comment>
+  <data name="Home.Alerts.List.Title" xml:space="preserve">
+    <value>  Last Alerts </value>
+    <comment>Home Alerts List Title</comment>
   </data>
   <data name="Home.Profile.Load.Error" xml:space="preserve">
     <value> Error loading profile </value>

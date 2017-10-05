@@ -10,6 +10,7 @@ using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 using Bullytect.Core.Rest.Models.Exceptions;
+using System.Reactive;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -24,7 +25,7 @@ namespace Bullytect.Core.ViewModels
             _parentsService = parentsService;
 
 
-            LoadChildrenCommand = ReactiveCommand.CreateFromObservable<string, IList<SonEntity>>((param) => _parentsService.GetChildren());
+            LoadChildrenCommand = ReactiveCommand.CreateFromObservable<Unit, IList<SonEntity>>((param) => _parentsService.GetChildren());
 
             LoadChildrenCommand.Subscribe((children) =>
             {
@@ -53,7 +54,7 @@ namespace Bullytect.Core.ViewModels
 
         #region commands
 
-        public ReactiveCommand<string, IList<SonEntity>> LoadChildrenCommand { get; protected set; }
+        public ReactiveCommand<Unit, IList<SonEntity>> LoadChildrenCommand { get; protected set; }
 
 
         public ICommand GoToAddSonCommand
@@ -94,8 +95,5 @@ namespace Bullytect.Core.ViewModels
 				base.HandleExceptions(ex);
 			}
 		}
-
-
-
     }
 }

@@ -14,7 +14,7 @@
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
-    xmlns:controls="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
+    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:rest="clr-namespace:Bullytect.Core.Rest.Utils"
@@ -28,6 +28,7 @@
                 <converters:ValidationErrorFormatValueConverter x:Key="ValidationErrorFormatValueConverter"/>
                 <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
                 <converters:TailStringConverter x:Key="TailStringConverter"/>
+                <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
           
                 <x:String x:Key="firstNameKey">firstName</x:String>
                 <x:String x:Key="lastNameKey">lastName</x:String>
@@ -36,6 +37,16 @@
                 <x:String x:Key="telephoneKey">telephone</x:String>
             </ResourceDictionary>
     </ContentPage.Resources>
+
+
+    <ContentPage.Behaviors>
+        <behaviors:EventHandlerBehavior EventName="Appearing">
+            <behaviors:InvokeCommandAction 
+                    Command="{Binding LoadProfileCommand}" 
+                    Converter="{ StaticResource DefaultReactiveUnitConverter}" />
+        </behaviors:EventHandlerBehavior>
+    </ContentPage.Behaviors>
+    
 	<ContentPage.Content>
     
         <!-- MAIN CONTAINER -->
@@ -48,18 +59,11 @@
             <!-- CUSTOM NAVBAR -->
             <templates:ProfileHeader Grid.Row="0"/>
 
-            <controls:PullToRefreshLayout
-                Grid.Row="1"
-                x:Name="RefreshLayout"
-                IsPullToRefreshEnabled="{ Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
-                RefreshCommand="{Binding LoadProfileCommand}"
-                IsRefreshing="{Binding IsBusy}"
-                RefreshColor="{DynamicResource BasePageColor}"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
-
-              <StackLayout
-                  Padding="20,10">
+            <StackLayout
+                    Grid.Row="1"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Padding="20,10">
 
                 <ScrollView VerticalOptions="StartAndExpand">
                     <!-- Profile Image Section -->
@@ -330,27 +334,24 @@
                   </artina:Button>
                 </StackLayout>
 
+                 <StackLayout.Triggers>
+                    <DataTrigger
+                        TargetType="StackLayout"
+                        Binding="{Binding DataFound}"
+                        Value="False">
+                      <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger
+                        TargetType="StackLayout"
+                        Binding="{Binding ErrorOccurred}"
+                        Value="True">
+                      <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                  </StackLayout.Triggers>
+
               
 
              </StackLayout>
-
-             <controls:PullToRefreshLayout.Triggers>
-                <DataTrigger
-                    TargetType="controls:PullToRefreshLayout"
-                    Binding="{Binding DataFound}"
-                    Value="False">
-                  <Setter Property="IsVisible" Value="False" />
-                </DataTrigger>
-                <DataTrigger
-                    TargetType="controls:PullToRefreshLayout"
-                    Binding="{Binding ErrorOccurred}"
-                    Value="True">
-                  <Setter Property="IsVisible" Value="False" />
-                </DataTrigger>
-              </controls:PullToRefreshLayout.Triggers>
-              
-                
-         </controls:PullToRefreshLayout>
 
           <common:NoDataFound
               Grid.Row="1"

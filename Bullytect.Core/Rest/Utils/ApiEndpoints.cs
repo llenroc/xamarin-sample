@@ -9,7 +9,6 @@ namespace Bullytect.Core.Rest.Utils
 
         public static string GET_AUTHORIZATION_TOKEN = string.Concat(SharedConfig.BASE_API_URL, "/parents/auth/");
         public static string GET_AUTHORIZATION_TOKEN_BY_FACEBOOK = string.Concat(SharedConfig.BASE_API_URL, "/parents/auth/facebook");
-        public static string GET_ALL_SELF_ALERTS = string.Concat(SharedConfig.BASE_API_URL, "/alerts/self/all/");
         public static string GET_SON_BY_ID = string.Concat(SharedConfig.BASE_API_URL, "/children/:id");
         public static string GET_ALL_SOCIAL_MEDIA_BY_SON_ID = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/social");
         public static string GET_INVALID_SOCIAL_MEDIA_BY_SON_ID = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/social/invalid");
@@ -31,6 +30,10 @@ namespace Bullytect.Core.Rest.Utils
         public static string GET_SELF_PARENT_PROFILE_IMAGE = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/image");
         public static string GET_SON_PROFILE_IMAGE = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/image");
         public static string UPLOAD_SON_PROFILE_IMAGE = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/image");
+        public static string GET_SELF_ALERTS = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/alerts");
+
+
+        
 
 
 

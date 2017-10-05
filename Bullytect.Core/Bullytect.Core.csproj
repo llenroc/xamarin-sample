@@ -401,6 +401,12 @@
       <DependentUpon>SonProfileFullScreenPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\NavigationPageHelper.cs" />
+    <Compile Include="Rest\Models\Response\AlertsPageDTO.cs" />
+    <Compile Include="Rest\Utils\Extensions.cs" />
+    <Compile Include="Rest\Models\Exceptions\NoNewAlertsFoundException.cs" />
+    <Compile Include="Converters\ValueEqualToZeroConverter.cs" />
+    <Compile Include="Models\Domain\AlertsPageEntity.cs" />
+    <Compile Include="Converters\DefaultReactiveUnitConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">

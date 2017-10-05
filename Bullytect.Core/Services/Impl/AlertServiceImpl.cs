@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Reactive.Linq;
-using AutoMapper;
-using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Rest.Services;
+using System.Reactive.Linq;
 using Bullytect.Core.Rest.Models.Response;
+using AutoMapper;
+using System.Diagnostics;
+using Bullytect.Core.Models.Domain;
 
 namespace Bullytect.Core.Services.Impl
 {
@@ -19,22 +18,19 @@ namespace Bullytect.Core.Services.Impl
             _alertRestService = alertRestService;
         }
 
-        public IObservable<IList<AlertEntity>> GetAllSelfNotifications()
+        public IObservable<AlertsPageEntity> GetLast10AlertsForSelfParent()
         {
-            Debug.WriteLine("Get All Self Notifications");
+			Debug.WriteLine("Get Last 10 Alerts For Self Parent");
 
-            var observable = _alertRestService
-                .getAllSelfNotifications()
-                .Select((response) => response.Data)
-                .Select((alerts) => Mapper.Map<IList<AlertDTO>, IList<AlertEntity>>(alerts))
-                .Finally(() =>
-                {
-                    Debug.WriteLine("Get All Self Notifications finished ...");
-                });
+			var observable = _alertRestService
+                .GetSelfAlerts(10)
+				.Select((APIResponse<AlertsPageDTO> response) => response.Data)
+				.Select((AlertsPage) => Mapper.Map<AlertsPageDTO, AlertsPageEntity>(AlertsPage))
+				.Finally(() => {
+					Debug.WriteLine("Get Last 10 Alerts For Self Parent finished ...");
+				});
 
-
-            return operationDecorator(observable);              
-
+			return operationDecorator(observable);
         }
     }
 }

@@ -18,8 +18,6 @@ namespace Bullytect.Core.Pages.Profile
 
 		protected override void OnAppearing()
 		{
-            if(ViewModel.SelfParent == null)
-			    RefreshLayout.RefreshCommand?.Execute(null);
 
             ViewModel.NewSelectedImage += ViewModel_OnNewSelectedImage;
 

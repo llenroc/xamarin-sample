@@ -11,7 +11,7 @@
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
-    xmlns:templates="clr-namespace:Bullytect.Core.Pages.Notification.Templates"
+    xmlns:templates="clr-namespace:Bullytect.Core.Pages.Alerts.Templates"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     Title="{i18n:Translate Page.Alerts.Title}"
     BackgroundColor="{ DynamicResource BasePageColor }">

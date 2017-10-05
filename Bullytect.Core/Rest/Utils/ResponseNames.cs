@@ -24,5 +24,9 @@ namespace Bullytect.Core.Rest.Utils
         public const int BAD_CREDENTIALS_CODE = 416;
 		public const string ACCOUNT_DISABLED_RESPONSE = "ACCOUNT_DISABLED";
 		public const int ACCOUNT_DISABLED_CODE = 417;
+		public const string NO_NEW_ALERTS_FOUND_RESPONSE = "NO_NEW_ALERTS_FOUND";
+		public const int NO_NEW_ALERTS_FOUND_CODE = 709;
+
+
     }
 }

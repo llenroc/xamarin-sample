@@ -27,7 +27,7 @@ namespace Bullytect.Core.ViewModels
         {
             _alertService = alertService;
 
-            LoadNotificationsCommand = ReactiveCommand.CreateFromObservable<string, IList<AlertEntity>>((param) => _alertService.GetAllSelfNotifications());
+            //LoadNotificationsCommand = ReactiveCommand.CreateFromObservable<string, IList<AlertEntity>>((param) => _alertService.GetAllSelfNotifications());
 
 			LoadNotificationsCommand.ToProperty(this, x => x.AlertList, out _alertList);
 

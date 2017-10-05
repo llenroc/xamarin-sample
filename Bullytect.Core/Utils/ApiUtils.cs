@@ -37,70 +37,6 @@ namespace Bullytect.Core.Utils
             return exResponse;
         }
 
-
-        static NoAlertsFoundException createNoAlertsFoundException(ApiException ex) {
-			return new NoAlertsFoundException()
-			{
-				Response = ex.GetContentAs<APIResponse<string>>()
-			};
-        }
-
-        static NoChildrenFoundException createNoChildrenFoundException(ApiException ex) {
-            return new NoChildrenFoundException()
-            {
-                Response = ex.GetContentAs<APIResponse<string>>()
-            };
-        }
-
-        static LoadProfileFailedException createLoadProfileFailedException(ApiException ex)
-        {
-            return new LoadProfileFailedException()
-            {
-                Response = ex.GetContentAs<APIResponse<string>>()
-            };
-        }
-
-        static GenericErrorException createGenericErrorException(ApiException ex)
-        {
-            return new GenericErrorException()
-            {
-                Response = ex.GetContentAs<APIResponse<string>>()
-            };
-        }
-
-        static UploadImageFailException createUploadImageFailException(ApiException ex) 
-        {
-            return new UploadImageFailException()
-            {
-                Response = ex.GetContentAs<APIResponse<string>>()
-            };
-        }
-
-		static NoSchoolFoundException createNotSchoolFoundException(ApiException ex)
-		{
-			return new NoSchoolFoundException()
-			{
-				Response = ex.GetContentAs<APIResponse<string>>()
-			};
-		}
-
-        static AuthenticationFailedException createAuthenticationFailedException(ApiException ex) 
-        {
-            return new AuthenticationFailedException()
-            {
-                Response = ex.GetContentAs<APIResponse<string>>()
-            };
-
-        }
-
-        static AccountDisabledException createAccountDisabledException(ApiException ex) {
-
-			return new AccountDisabledException()
-			{
-				Response = ex.GetContentAs<APIResponse<string>>()
-			};
-        }
-
         public static Exception parseApiException(ApiException ex) {
 
             Exception exResponse = null;
@@ -119,34 +55,63 @@ namespace Bullytect.Core.Utils
                             break;
                             // Parse Alerts Not Found
                         case ResponseNames.NO_ALERTS_FOUND_RESPONSE:
-                            exResponse = createNoAlertsFoundException(ex);
+							exResponse = new NoAlertsFoundException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
                             break;
                             // Parse No Children Found
                         case ResponseNames.NO_CHILDREN_FOUND_FOR_SELF_PARENT_RESPONSE:
-                            exResponse = createNoChildrenFoundException(ex);
+							exResponse = new NoChildrenFoundException(){
+                                Response = ex.GetContentAs<APIResponse<string>>()
+                			};
                             break;
                             // Parse Load Self Profile Error
                         case ResponseNames.PARENT_NOT_FOUND_RESPONSE:
-                            exResponse = createLoadProfileFailedException(ex);
+							exResponse = new LoadProfileFailedException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
                             break;
                             // Parse Upload File Exception
                         case ResponseNames.FAILED_TO_UPLOAD_IMAGE_RESPONSE:
-                            exResponse = createUploadImageFailException(ex);
+							exResponse = new UploadImageFailException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
                             break;
                             // Parse No Schools not found
                         case ResponseNames.NO_SCHOOLS_FOUND_RESPONSE:
-                            exResponse = createNotSchoolFoundException(ex);
+							exResponse = new NoSchoolFoundException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
                             break;
                             // Parse Bad Credentials Response
                         case ResponseNames.BAD_CREDENTIALS_RESPONSE:
-                            exResponse = createAuthenticationFailedException(ex);
+							exResponse = new AuthenticationFailedException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
                             break;
                         case ResponseNames.ACCOUNT_DISABLED_RESPONSE:
-                            exResponse = createAccountDisabledException(ex);
+							exResponse = new AccountDisabledException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
                             break;
+						case ResponseNames.NO_NEW_ALERTS_FOUND_RESPONSE:
+							exResponse = new NoNewAlertsFoundException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
+							break;
 							// Parse Generic Error
                         case ResponseNames.GENERIC_ERROR_RESPONSE:
-                            exResponse = createGenericErrorException(ex);
+							exResponse = new GenericErrorException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
                             break;
 
 					}

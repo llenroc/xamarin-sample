@@ -14,10 +14,13 @@ namespace Bullytect.Core.Rest.Services.Impl
         {
         }
 
-        public IObservable<APIResponse<IList<AlertDTO>>> getAllSelfNotifications()
-        {
-            return Observable.FromAsync(() => GetData<APIResponse<IList<AlertDTO>>>(ApiEndpoints.GET_ALL_SELF_ALERTS));
 
-		}
+        public IObservable<APIResponse<AlertsPageDTO>> GetSelfAlerts(int count)
+        {
+			return Observable.FromAsync(() => GetData<APIResponse<AlertsPageDTO>>(new Uri(ApiEndpoints.GET_SELF_ALERTS).AttachParameters(new Dictionary<string, string>()
+			{
+				{ "count", "10"}
+			})));
+        }
     }
 }

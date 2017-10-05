@@ -13,15 +13,11 @@ namespace Bullytect.Core.Pages.Children
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
 
-            //ChildrenListView.GestureRecognizers.Clear();
-            //ChildrenListView.GestureRecognizers.Add(new TapGestureRecognizer());
         }
 
 
 		protected override void OnAppearing()
 		{
-            if(ViewModel.Children?.Count == 0)
-			    ChildrenListView.RefreshCommand?.Execute(null);
 
             ChildrenListView.ItemTapped += (object sender, ItemTappedEventArgs e) => {
                 // don't do anything if we just de-selected the row

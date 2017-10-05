@@ -50,6 +50,19 @@ namespace Bullytect.Core.Rest.Services.Impl
 			}
         }
 
+        protected async Task<T> GetData<T>(Uri uri)
+		{
+			using (var resp = await _client.GetAsync(uri).ConfigureAwait(false))
+			{
+				if (!resp.IsSuccessStatusCode)
+				{
+					throw await ApiException.Create(uri, HttpMethod.Get, resp).ConfigureAwait(false);
+				}
+
+				var content = await resp.Content.ReadAsStringAsync();
+				return DeserializeObject<T>(content);
+			}
+		}
 
         protected async Task<T> PostData<T, E>(string urlString, E Data)
         {

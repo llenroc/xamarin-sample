@@ -2,14 +2,18 @@
 <ContentView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="Bullytect.Core.Pages.Notification.Templates.AlertItemTemplate"
+    x:Class="Bullytect.Core.Pages.Alerts.Templates.AlertItemTemplate"
     BackgroundColor="Black"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:converter="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared.Base">
     <ContentView.Resources>
         <ResourceDictionary>
+            <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
             <converter:BooleanToObjectConverter x:Key="isReadConverter" x:TypeArguments="FontAttributes">
                 <converter:BooleanToObjectConverter.TrueValue>
                     <FontAttributes>None</FontAttributes>
@@ -28,13 +32,25 @@
         HorizontalOptions="FillAndExpand"
         VerticalOptions="Center">
 
-        <artina:CircleImage Source="user_profile_1.jpg"  
-            Style="{ StaticResource Avatar }"
-            Aspect ="AspectFill"
+
+        <ffimageloading:CachedImage
+            Grid.Column="0"
             HorizontalOptions = "Center"
-            VerticalOptions = "Start" 
+            VerticalOptions = "Start"
             TranslationX="8" 
-            TranslationY="14"/>
+            TranslationY="14"
+            WidthRequest="50"
+            HeightRequest="50"
+            FadeAnimationEnabled="true"
+            ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+            LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
+            Source="{ Binding Son.Identity , Converter={ StaticResource SonProfileImageURLConverter }}">
+            <ffimageloading:CachedImage.Transformations>
+                <fftransformations:CircleTransformation BorderSize="3" BorderHexColor="#6BC7E0" />
+            </ffimageloading:CachedImage.Transformations>
+        </ffimageloading:CachedImage>
+
+
 
         <StackLayout 
             Padding="10, 0, 0, 0" Spacing="0"
@@ -42,69 +58,43 @@
             HorizontalOptions="FillAndExpand">
                 
 
-                <!--<StackLayout HorizontalOptions="FillAndExpand" Spacing="0" Padding="10">
+                <StackLayout HorizontalOptions="FillAndExpand" Spacing="0" Padding="10">
+
                     <StackLayout Orientation="Horizontal">
-                        <Label 
-                            Text="{Binding From.Name}" 
-                            HorizontalOptions="Fill"
-                            VerticalOptions="EndAndExpand"
-                            TextColor="{ DynamicResource AccentColor }"
-                            FontAttributes="{Binding IsRead,Converter={ StaticResource isReadConverter }"/>
 
                         <Label 
-                            FontAttributes="Bold"
-                            TextColor ="#FF777777"
-                            Text="{Binding ThreadCount}" 
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="EndAndExpand"/>
+                                Text="Sergio Sánchez" 
+                                HorizontalOptions="Fill"
+                                VerticalOptions="EndAndExpand"
+                                TextColor="{ DynamicResource AccentColor }"/>
                         
                         <Label 
-                            Style="{StaticResource FontIcon}"
-                            Text="{ x:Static local:GrialShapesFont.AttachFile }"  
-                            HorizontalOptions="EndAndExpand"
-                            VerticalOptions="Center"
-                            IsVisible="{Binding HasAttachment}"
-                            TextColor="{ DynamicResource AccentColor }"/>
-                        <Label 
-                            Text="{Binding When}" 
+                            Text="08/10/20017" 
                             FontSize ="12"
                             HorizontalTextAlignment="End" 
                             HorizontalOptions="End" 
                             VerticalOptions="Center"/>
-                    
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal" >
-                        <Label 
-                            Text="{Binding Title}"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
-                        />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal" Padding="0,8,0,0">
                         
-                        <Label 
-                            Text="{Binding Body}"
-                            LineBreakMode="WordWrap"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
-
-                        />
-
-                        <Label  
-                            HorizontalTextAlignment="End" 
-                            HorizontalOptions="End"
-                            VerticalOptions="EndAndExpand"
-                            FontSize ="16"
-                            WidthRequest="24"
-                            Style="{StaticResource FontIcon}"
-                            Text="{ 
-                                    Binding IsStared, 
-                                    Converter={ StaticResource isStaredIconConverter 
-                                }"
-                            TextColor="#FFFFDC77" 
-                            />
                     </StackLayout>
-                </StackLayout>-->
+
+                    <StackLayout Orientation="Horizontal" >
+
+                        <Label 
+                                Text="Título de la alerta"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Padding="0,8,0,0">
+
+                        <Label 
+                                Text="Este es el payload"
+                                LineBreakMode="WordWrap"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"/>
+
+                    </StackLayout>
+                </StackLayout>
 
             </StackLayout>
     </StackLayout>

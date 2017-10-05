@@ -7,8 +7,6 @@ using AutoMapper;
 using Bullytect.Core.Models.Domain;
 using MvvmCross.Plugins.Validation;
 using Acr.UserDialogs;
-using MvvmCross.Plugins.Messenger;
-using Bullytect.Core.Messages;
 using System.Diagnostics;
 using Bullytect.Core.Rest.Utils.Logging;
 using Bullytect.Core.Rest.Handlers;
@@ -20,33 +18,15 @@ using FFImageLoading.Config;
 using Bullytect.Core.Models.Domain.Converter;
 using MvvmCross.Core.Navigation;
 using Bullytect.Core.ViewModels;
-using static Bullytect.Core.ViewModels.AuthenticationViewModel;
 
 namespace Bullytect.Core
 {
     public class CoreApp : MvvmCross.Core.ViewModels.MvxApplication
     {
 
-        void prepareRestServices()
+        void prepareRestServices(HttpClient httpClient)
         {
-  
-
-            var httpClient = new HttpClient(new HttpLoggingHandler(
-                new UnauthorizedHttpClientHandler(
-                    () => {
-                        Debug.WriteLine("Session Expired ....");
-                        var navigationService = Mvx.Resolve<IMvxNavigationService>();
-						Settings.AccessToken = null;
-                        navigationService?.Navigate<AuthenticationViewModel>();
-
-                    }, new AuthenticatedHttpClientHandler(() => Settings.AccessToken))))
-			{
-				BaseAddress = new Uri(SharedConfig.BASE_API_URL),
-				Timeout = TimeSpan.FromMinutes(SharedConfig.TIMEOUT_OPERATION_MINUTES)
-			};
-
-
-			// Register REST services
+ 
 			Mvx.RegisterSingleton<IAuthenticationRestService>(() => new AuthenticationRestServiceImpl(httpClient));
 			Mvx.RegisterSingleton<IParentsRestService>(() => new ParentsRestServiceImpl(httpClient));
 			Mvx.RegisterSingleton<IChildrenRestService>(() => new ChildrenRestServiceImpl(httpClient));
@@ -54,11 +34,6 @@ namespace Bullytect.Core
             Mvx.RegisterSingleton<IAlertRestService>(() => new AlertRestServiceImpl(httpClient));
             Mvx.RegisterSingleton<ISchoolRestService>(() => new SchoolRestServiceImpl(httpClient));
 
-
-			ImageService.Instance.Initialize(new Configuration
-			{
-				HttpClient = httpClient
-			});
         }
 
         void prepareMappers() {
@@ -72,6 +47,7 @@ namespace Bullytect.Core
                 cfg.CreateMap<ImageDTO, ImageEntity>();
                 cfg.CreateMap<SocialMediaDTO, SocialMediaEntity>();
                 cfg.CreateMap<SchoolDTO, SchoolEntity>();
+                cfg.CreateMap<AlertsPageDTO, AlertsPageEntity>();
 			});
         }
 
@@ -79,8 +55,22 @@ namespace Bullytect.Core
         public override void Initialize()
         {
 
+			var httpClient = new HttpClient(new HttpLoggingHandler(
+				new UnauthorizedHttpClientHandler(
+					() => {
+						Debug.WriteLine("Session Expired ....");
+						var navigationService = Mvx.Resolve<IMvxNavigationService>();
+						Settings.AccessToken = null;
+						navigationService?.Navigate<AuthenticationViewModel>();
 
-            prepareRestServices();
+					}, new AuthenticatedHttpClientHandler(() => Settings.AccessToken))))
+			{
+				BaseAddress = new Uri(SharedConfig.BASE_API_URL),
+				Timeout = TimeSpan.FromMinutes(SharedConfig.TIMEOUT_OPERATION_MINUTES)
+			};
+
+
+            prepareRestServices(httpClient);
 
             prepareMappers();
 
@@ -94,6 +84,11 @@ namespace Bullytect.Core
             Mvx.RegisterType<IValidator, Validator>();
 
             Mvx.RegisterSingleton<IUserDialogs>(() => UserDialogs.Instance);
+
+			ImageService.Instance.Initialize(new Configuration
+			{
+				HttpClient = httpClient
+			});
 
             RegisterAppStart(new CustomAppStart());
 			

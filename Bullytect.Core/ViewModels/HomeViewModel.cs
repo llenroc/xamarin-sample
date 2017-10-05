@@ -1,6 +1,5 @@
 ﻿
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reactive.Linq;
 using System.Windows.Input;
@@ -12,7 +11,6 @@ using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 using Bullytect.Core.Rest.Models.Exceptions;
-using Bullytect.Core.Utils;
 using Bullytect.Core.Exceptions;
 
 namespace Bullytect.Core.ViewModels
@@ -21,38 +19,28 @@ namespace Bullytect.Core.ViewModels
     {
         
         readonly IParentService _parentService;
+        readonly IAlertService _alertService;
 
         public HomeViewModel(IUserDialogs userDialogs, IParentService parentService, 
-            IMvxMessenger mvxMessenger, IImagesService imagesService) : base(userDialogs, mvxMessenger, imagesService)
+            IMvxMessenger mvxMessenger, IImagesService imagesService, IAlertService alertService) : base(userDialogs, mvxMessenger, imagesService)
         {
             _parentService = parentService;
+            _alertService = alertService;
 
-
-            var loadProfileCommand = ReactiveCommand
-                .CreateFromObservable<string, bool>((param) =>
-                {
-					return _parentService.GetProfileInformation().Do((parent) =>
-					{
-                        Debug.WriteLine("Parent Profile " + parent?.ToString());
-						SelfParent = parent;
-					}).Select((_) => true);
-                });
-
-            var loadChildrenCommand = ReactiveCommand.CreateFromObservable<string, bool>((param) => {
-                return _parentService.GetChildren().Do((children) =>
-                {
-                    Debug.WriteLine("Children Count " + children?.Count);
-                    Children = children;
-                }).Select((_) => true);
-            });
-
-
-			RefreshCommand = ReactiveCommand.CreateCombined(new[] { loadProfileCommand, loadChildrenCommand });
+			RefreshCommand = ReactiveCommand.CreateFromObservable(() => _parentService.GetProfileInformation().Do((parent) =>
+			{
+				Debug.WriteLine("Parent Profile " + parent?.ToString());
+				SelfParent = parent;
+			}).SelectMany((_) => _alertService.GetLast10AlertsForSelfParent().Do((AlertsPageEntity) =>
+			{
+				Debug.WriteLine("Total Alerts  " + AlertsPageEntity?.Alerts?.Count);
+				AlertsPage = AlertsPageEntity;
+				NoAlertsFound = false;
+			})));
 
             RefreshCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
 
             RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
-
 
 			TakePhotoCommand =  ReactiveCommand.CreateFromObservable<string, ImageEntity>((param) =>
 			{
@@ -83,20 +71,20 @@ namespace Bullytect.Core.ViewModels
 			set => SetProperty(ref _selfParent, value);
 		}
 
-        IList<SonEntity> _children = new List<SonEntity>();
+        AlertsPageEntity _alertsPage = new AlertsPageEntity();
 
-		public IList<SonEntity> Children
+		public AlertsPageEntity AlertsPage
 		{
-			get => _children;
-			set => SetProperty(ref _children, value);
+			get => _alertsPage;
+			set => SetProperty(ref _alertsPage, value);
 		}
 
-        bool _noChildrenFound;
+        bool _noAlertsFound = false;
 
-        public bool NoChildrenFound
+        public bool NoAlertsFound
         {
-            get => _noChildrenFound;
-            set => SetProperty(ref _noChildrenFound, value);
+            get => _noAlertsFound;
+            set => SetProperty(ref _noAlertsFound, value);
         }
 
         #endregion
@@ -132,10 +120,11 @@ namespace Bullytect.Core.ViewModels
         }
         
 
-        public ICommand ShowSonProfileCommand => new MvxCommand<SonEntity>((SonEntity SonEntity) => ShowViewModel<SonProfileViewModel>(new SonProfileViewModel.SonParameter(){
-            FullName = SonEntity.FullName,
-            Birthdate = SonEntity.Birthdate,
-            School = SonEntity.School
+        public ICommand ShowAlertDetailCommand => new MvxCommand<AlertEntity>((AlertEntity AlertEntity) => ShowViewModel<AlertDetailViewModel>(new AlertDetailViewModel.AlertParameter(){
+            Level = AlertEntity.Level,
+            Payload = AlertEntity.Payload,
+            CreateAt = AlertEntity.CreateAt,
+            SonFullName = AlertEntity.Son.FullName
         }));
 
         public ReactiveCommand<string, ImageEntity> TakePhotoCommand { get; set; }
@@ -143,14 +132,16 @@ namespace Bullytect.Core.ViewModels
         #endregion
 
 
-        protected override void HandleExceptions(Exception ex){
+        protected override void HandleExceptions(Exception ex)
+        {
 
-			if (ex is LoadProfileFailedException)
-			{
+            if (ex is LoadProfileFailedException)
+            {
                 _userDialogs.ShowError(AppResources.Home_Loading_Failed);
-            } else if (ex is NoChildrenFoundException) {
-                NoChildrenFound = false;
-            } else if (ex is CanNotTakePhotoFromCameraException) {
+            }
+            else if( ex is NoNewAlertsFoundException) {
+                NoAlertsFound = true;
+            }else if (ex is CanNotTakePhotoFromCameraException) {
                 var toastConfig = new ToastConfig(AppResources.Profile_Can_Not_Take_Photo_From_Camera);
                 toastConfig.SetDuration(3000);
                 toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));

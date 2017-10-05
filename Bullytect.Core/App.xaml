@@ -614,7 +614,7 @@
 
             <Style x:Key="ChildrenBoxViewHorizontalStyle" TargetType="BoxView" BasedOn="{ StaticResource HorizontalRuleStyle }">
                 <Setter Property="BackgroundColor" Value="{ DynamicResource AccentColor }" />
-                <Setter Property="Margin" Value="0,15" />
+                <Setter Property="Margin" Value="0,5" />
             </Style>
 
             <Style x:Key="LoginPadding" TargetType="StackLayout">
