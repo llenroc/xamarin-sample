@@ -30,13 +30,13 @@ namespace Bullytect.Core.Rest.Utils
         public static string GET_SELF_PARENT_PROFILE_IMAGE = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/image");
         public static string GET_SON_PROFILE_IMAGE = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/image");
         public static string UPLOAD_SON_PROFILE_IMAGE = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/image");
+        public static string GET_LAST_SELF_ALERTS = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/alerts/last");
         public static string GET_SELF_ALERTS = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/alerts");
-
-
-        
-
-
-
+        public static string CLEAR_SELF_ALERTS = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/alerts");
+        public static string GET_ALERTS_BY_SON = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/alerts");
+        public static string CLEAR_ALERTS_FOR_SON = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/alerts");
+        public static string DELETE_ALERT = string.Concat(SharedConfig.BASE_API_URL, "/children/:son/alerts/:alert");
+                                                 
 
 
     }

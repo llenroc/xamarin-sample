@@ -14,13 +14,37 @@ namespace Bullytect.Core.Rest.Services.Impl
         {
         }
 
-
-        public IObservable<APIResponse<AlertsPageDTO>> GetSelfAlerts(int count)
+        public IObservable<int> ClearAlertsOfSon(string SonId)
         {
-			return Observable.FromAsync(() => GetData<APIResponse<AlertsPageDTO>>(new Uri(ApiEndpoints.GET_SELF_ALERTS).AttachParameters(new Dictionary<string, string>()
+            return Observable.FromAsync(() => DeleteData<int>(ApiEndpoints.CLEAR_ALERTS_FOR_SON.Replace(":id", SonId)));
+        }
+
+        public IObservable<int> ClearSelfAlerts()
+        {
+            return Observable.FromAsync(() => DeleteData<int>(ApiEndpoints.CLEAR_SELF_ALERTS));
+        }
+
+        public IObservable<string> DeleteAlertOfSon(string SonId, string AlertId)
+        {
+            return Observable.FromAsync(() => DeleteData<string>(ApiEndpoints.DELETE_ALERT.Replace(":son", SonId).Replace(":alert", AlertId)));
+        }
+
+        public IObservable<APIResponse<IList<AlertDTO>>> GetAlertsBySon(string SonId)
+        {
+            return Observable.FromAsync(() => GetData<APIResponse<IList<AlertDTO>>>(ApiEndpoints.GET_ALERTS_BY_SON.Replace(":id", SonId)));
+        }
+
+        public IObservable<APIResponse<AlertsPageDTO>> GetLastSelfAlerts(int count)
+        {
+            return Observable.FromAsync(() => GetData<APIResponse<AlertsPageDTO>>(new Uri(ApiEndpoints.GET_LAST_SELF_ALERTS).AttachParameters(new Dictionary<string, string>()
 			{
 				{ "count", "10"}
 			})));
+        }
+
+        public IObservable<APIResponse<IList<AlertDTO>>> GetSelfAlerts()
+        {
+            return Observable.FromAsync(() => GetData<APIResponse<IList<AlertDTO>>>(ApiEndpoints.GET_SELF_ALERTS));
         }
     }
 }

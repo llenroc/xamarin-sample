@@ -443,6 +443,18 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Home_Alerts_Not_Found_MainText {
+            get {
+                return ResourceManager.GetString("Home.Alerts.Not.Found.MainText", resourceCulture);
+            }
+        }
+        
+        internal static string Home_Alerts_Not_Found_SecondText {
+            get {
+                return ResourceManager.GetString("Home.Alerts.Not.Found.SecondText", resourceCulture);
+            }
+        }
+        
         internal static string Home_Profile_Load_Error {
             get {
                 return ResourceManager.GetString("Home.Profile.Load.Error", resourceCulture);
@@ -611,15 +623,33 @@ namespace Bullytect.Core.I18N {
             }
         }
         
-        internal static string Notification_Not_Found_MainText {
+        internal static string Alerts_Not_Found_MainText {
             get {
-                return ResourceManager.GetString("Notification.Not.Found.MainText", resourceCulture);
+                return ResourceManager.GetString("Alerts.Not.Found.MainText", resourceCulture);
             }
         }
         
-        internal static string Notification_Error_Ocurred {
+        internal static string Alerts_Not_Found_SecondText {
             get {
-                return ResourceManager.GetString("Notification.Error.Ocurred", resourceCulture);
+                return ResourceManager.GetString("Alerts.Not.Found.SecondText", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Error_Ocurred {
+            get {
+                return ResourceManager.GetString("Alerts.Error.Ocurred", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Confirm_Clear {
+            get {
+                return ResourceManager.GetString("Alerts.Confirm.Clear", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Deleting_Alerts {
+            get {
+                return ResourceManager.GetString("Alerts.Deleting.Alerts", resourceCulture);
             }
         }
         

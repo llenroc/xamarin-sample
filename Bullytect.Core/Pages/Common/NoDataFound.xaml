@@ -32,7 +32,7 @@
                     TextColor="{DynamicResource ComplementColor}"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
-                    FontSize="250"
+                    FontSize="180"
                     Opacity="0.1"/>
 
                 <!--ICON BACKGROUND-->
@@ -42,7 +42,7 @@
                     TextColor="{DynamicResource ComplementColor}"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
-                    FontSize="180"
+                    FontSize="130"
                     Opacity="0.1"/> 
 
                 <!--ICON-->
@@ -50,7 +50,7 @@
                     Grid.Row="0"
                     Text="{ x:Static helper:FontAwesomeFont.Database }"
                     Style="{StaticResource FontIcon}"
-                    FontSize="100"
+                    FontSize="70"
                     HorizontalTextAlignment="Center"
                     TextColor="{ DynamicResource ComplementColor }"
                     VerticalOptions="Center"

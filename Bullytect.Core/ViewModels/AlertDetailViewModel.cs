@@ -1,9 +1,9 @@
 ﻿
+using System;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
-using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 
 namespace Bullytect.Core.ViewModels
@@ -16,9 +16,9 @@ namespace Bullytect.Core.ViewModels
 
         public class AlertParameter
 		{
-			public string Level { get; set; }
+			public AlertLevelEnum Level { get; set; }
 			public string Payload { get; set; }
-			public string CreateAt { get; set; }
+			public DateTime CreateAt { get; set; }
             public string SonFullName { get; set; }
             public string SonIdentity { get; set; }
 		}
@@ -35,9 +35,9 @@ namespace Bullytect.Core.ViewModels
 
         #region properties
 
-        string _level;
+        AlertLevelEnum _level;
 
-		public string Level
+		public AlertLevelEnum Level
 		{
 			get => _level;
 			set => SetProperty(ref _level, value);
@@ -52,9 +52,9 @@ namespace Bullytect.Core.ViewModels
 			set => SetProperty(ref _payload, value);
 		}
 
-		string _createAt;
+		DateTime _createAt;
 
-		public string CreateAt
+		public DateTime CreateAt
 		{
 
 			get => _createAt;

@@ -8,7 +8,6 @@
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
-    xmlns:alertTemplates="clr-namespace:Bullytect.Core.Pages.Alerts.Templates"
     xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
     xmlns:templates="clr-namespace:Bullytect.Core.Pages.Home.Templates"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
@@ -66,79 +65,76 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand">
 
-                    <ScrollView 
-                        BackgroundColor="{ DynamicResource BasePageColor }">
+                    <!--GRID WRAPPER-->
+                    <Grid Padding="0" >
 
-                            <!--GRID WRAPPER-->
-                            <Grid Padding="0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
 
-                                <Grid.RowDefinitions>
-                                     <RowDefinition Height="Auto" />
-                                     <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
+                        <!-- PROFILE HEADER-->
+                        <Grid 
+                            Grid.Row="0" 
+                            HeightRequest="250"
+                            BackgroundColor="Black"
+                            Padding="0">
 
-                                <!--SOCIAL HEADER-->
-                                <Grid 
-                                    Grid.Row="0" 
-                                    HeightRequest="250"
-                                    BackgroundColor="Black"
-                                    Padding="0">
 
-                                    <!-- BACKGROUND IMAGE -->
-                                    <Image 
-                                        Source="{ StaticResource HomeBackground }"
-                                        IsOpaque="false"
-                                        Aspect="AspectFill"
-                                        HorizontalOptions="FillAndExpand"
-                                        VerticalOptions="FillAndExpand"/>
+                            <!-- BACKGROUND IMAGE -->
+                            <Image 
+                                Source="{ StaticResource HomeBackground }"
+                                IsOpaque="false"
+                                Aspect="AspectFill"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"/>
 
+
+                                <StackLayout
+                                    Orientation="Vertical" 
+                                    Spacing="20">
+
+                                    <Grid 
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        TranslationY="25">
+
+                                        <!-- AVATAR -->
+                                        <ffimageloading:CachedImage
+                                            x:Name="profileImage"
+                                            CacheType="Disk"
+                                            CacheDuration="30"
+                                            WidthRequest="100"
+                                            HeightRequest="100"
+                                            FadeAnimationEnabled="true"
+                                            ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+                                            LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
+                                            Source="{ x:Static rest:ApiEndpoints.GET_SELF_PARENT_PROFILE_IMAGE }">
+                                            <ffimageloading:CachedImage.Transformations>
+                                                <fftransformations:CircleTransformation BorderSize="5" BorderHexColor="#FFFFFF" />
+                                            </ffimageloading:CachedImage.Transformations>
+                                        </ffimageloading:CachedImage>
+
+                                        <!-- BADGE -->
+                                        <common:Badge
+                                            IsVisible="{ Binding  AlertsPage.Remaining, Converter={ StaticResource ValueEqualToZeroConverter }"
+                                            BadgeText="{ Binding  AlertsPage.Remaining, StringFormat='0'}"
+                                            BadgeTextColor="{ DynamicResource InverseTextColor }"
+                                            BadgeBackgroundColor="#22c064"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Start"
+                                            TranslationX="40"/>
+
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{ Binding TakePhotoCommand }"  NumberOfTapsRequired="1" />
+                                        </Grid.GestureRecognizers>
+                                    </Grid>
+
+                                    <!-- Parent FullName -->
                                     <StackLayout
-                                        Orientation="Vertical" 
-                                        Spacing="20">
+                                            Padding="20">
 
-                                            <Grid 
-                                                HorizontalOptions="Center"
-                                                VerticalOptions="Center"
-                                                TranslationY="25">
-
-                                               <!-- AVATAR -->
-
-                                                <ffimageloading:CachedImage  
-                                                    x:Name="profileImage"
-                                                    CacheType="Disk"
-                                                    CacheDuration="30"
-                                                    WidthRequest="100"
-                                                    HeightRequest="100"
-                                                    FadeAnimationEnabled="true"
-                                                    ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
-                                                    LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
-                                                    Source="{ x:Static rest:ApiEndpoints.GET_SELF_PARENT_PROFILE_IMAGE }">
-                                                    <ffimageloading:CachedImage.Transformations>
-                                                        <fftransformations:CircleTransformation BorderSize="5" BorderHexColor="#FFFFFF" />
-                                                    </ffimageloading:CachedImage.Transformations>
-                                                </ffimageloading:CachedImage>
-
-                                                <!-- BADGE -->
-                                                <common:Badge
-                                                    IsVisible="{ Binding  AlertsPage.Remaining, Converter={ StaticResource ValueEqualToZeroConverter }"
-                                                    BadgeText="{ Binding  AlertsPage.Remaining, StringFormat='+ ${0}'}"
-                                                    BadgeTextColor="{ DynamicResource InverseTextColor }"
-                                                    BadgeBackgroundColor="#22c064"
-                                                    HorizontalOptions="Center"
-                                                    VerticalOptions="Start"
-                                                    TranslationX="40"/>
-
-                                                <Grid.GestureRecognizers>
-                                                  <TapGestureRecognizer Command="{ Binding TakePhotoCommand }"  NumberOfTapsRequired="1" />
-                                                </Grid.GestureRecognizers>
-                                    
-                                            </Grid>
-
-                                            <!-- Parent FullName -->
-                                            <StackLayout
-                                                Padding="20">
-
-                                                <Label 
+                                            <Label 
                                                     IsVisible="{Binding SelfParent, Converter={StaticResource NullToVisibilityConverter}}"
                                                     Text="{Binding SelfParent.FullName}" 
                                                     TextColor="{ DynamicResource OverImageTextColor }"
@@ -151,7 +147,7 @@
                                                                 LandscapeTablet=24 }"  />
                                             </StackLayout>
 
-                                        </StackLayout>
+                                    </StackLayout>
                                             
                                         <!-- TOOLBAR -->
                                         <Grid
@@ -253,20 +249,19 @@
                                             </Grid>
                                     </Grid>
 
-                                    <Grid Grid.Row="1">
-                               
-                                        <StackLayout 
-                                            Padding="0"
-                                            Spacing="0">
+                                    <StackLayout 
+                                        Grid.Row="1"
+                                        Padding="0"
+                                        Spacing="0">
 
-                                            <commonTemplates:MainListHeaderTemplate 
+                                           <commonTemplates:MainListHeaderTemplate 
                                                 Text="{i18n:Translate Home.Alerts.List.Title}"
                                                 IconText="{ x:Static helper:FontAwesomeFont.ExclamationTriangle } "/>
 
-                                            <!-- Children LIST -->
+                                            <!-- Last Alerts LIST -->
                                             <ListView
                                                 ItemsSource="{Binding AlertsPage.Alerts}"
-                                                RowHeight="66">
+                                                RowHeight="90">
 
                                                 <ListView.Behaviors>
                                                     <utils:EventToCommandBehavior 
@@ -278,37 +273,36 @@
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <alertTemplates:AlertItemTemplate/>
+                                                            <templates:AlertItemTemplate/>
                                                         </ViewCell>
                                                     </DataTemplate>
                                                 </ListView.ItemTemplate>
                                             </ListView>
 
-                                        </StackLayout>
 
 
-                                        <Grid.Triggers>
+                                        <StackLayout.Triggers>
                                             <DataTrigger 
-                                                TargetType="Grid"
+                                                TargetType="StackLayout"
                                                 Binding="{Binding SelfParent, Converter={StaticResource NullToVisibilityConverter} }"
                                                 Value="False">
                                                 <Setter Property="IsVisible" Value="False" />
                                             </DataTrigger>
                                             <DataTrigger 
-                                                TargetType="Grid"
+                                                TargetType="StackLayout"
                                                 Binding="{Binding NoAlertsFound }"
                                                 Value="True">
                                                 <Setter Property="IsVisible" Value="False" />
                                             </DataTrigger>
                                             <DataTrigger
-                                                TargetType="Grid"
+                                                TargetType="StackLayout"
                                                 Binding="{Binding IsBusy}"
                                                 Value="True">
                                                 <Setter Property="IsVisible" Value="False" />
                                             </DataTrigger>
-                                        </Grid.Triggers>
+                                        </StackLayout.Triggers>
                                 
-                                    </Grid>
+                                    </StackLayout>
 
                                   <StackLayout
                                         Grid.Row="1"
@@ -353,10 +347,54 @@
                                       
                                    </StackLayout>
 
+                                   <Grid
+                                        IsVisible="{ Binding IsBusy }"
+                                        Grid.Row="1"
+                                        VerticalOptions="Center">
+                        
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+                                        <common:CustomActivityIndicator
+                                            Grid.Row="0"
+                                            x:Name="Indicator"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="CenterAndExpand"/>
+                                        <Label
+                                            Grid.Row="1"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Loading..." />
+                                </Grid>
+
+
+
+                                <!-- No Alerts Found -->
+                                <common:NoDataFound 
+                                    Grid.Row="1"
+                                    IsVisible="{ Binding NoAlertsFound }"
+                                    MainText="{i18n:Translate Home.Alerts.Not.Found.MainText }"
+                                    DetailText="{i18n:Translate Home.Alerts.Not.Found.SecondText }">
+
+                                    <common:NoDataFound.Triggers>
+                                        <DataTrigger 
+                                             TargetType="common:NoDataFound"
+                                             Binding="{ Binding  NoAlertsFound }"
+                                             Value="True">
+                                            <Setter Property="IsVisible" Value="True" />
+                                        </DataTrigger>
+                                        <DataTrigger
+                                             TargetType="common:NoDataFound"
+                                             Binding="{Binding IsBusy}"
+                                             Value="True">
+                                            <Setter Property="IsVisible" Value="False" />
+                                        </DataTrigger>
+                                    </common:NoDataFound.Triggers>
+
+                                </common:NoDataFound>
                                     
                             </Grid>
-
-                        </ScrollView>
 
                         <controls:PullToRefreshLayout.Triggers>
                             <DataTrigger 

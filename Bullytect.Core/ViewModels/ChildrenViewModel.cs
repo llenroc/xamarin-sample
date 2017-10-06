@@ -81,6 +81,15 @@ namespace Bullytect.Core.ViewModels
 
         public ICommand EditSonCommand => new MvxCommand<string>((string Id) => ShowViewModel<EditSonViewModel>(new { Id }));
 
+
+        public ICommand GoToAlerts {
+
+            get {
+
+                return new MvxCommand<SonEntity>((SonEntity) => ShowViewModel<AlertsViewModel>(new { Identity = SonEntity.Identity }));
+            }
+        }
+
         #endregion
 
 

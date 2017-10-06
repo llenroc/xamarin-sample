@@ -152,6 +152,15 @@
     <EmbeddedResource Include="Pages\SonProfileFullScreen\SonProfileFullScreenPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Alerts\Templates\AlertsPageHeader.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Home\Templates\AlertItemTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\CustomActivityIndicator.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\CanNotTakePhotoFromCameraException.cs" />
@@ -407,6 +416,20 @@
     <Compile Include="Converters\ValueEqualToZeroConverter.cs" />
     <Compile Include="Models\Domain\AlertsPageEntity.cs" />
     <Compile Include="Converters\DefaultReactiveUnitConverter.cs" />
+    <Compile Include="Pages\Alerts\Templates\AlertsPageHeader.xaml.cs">
+      <DependentUpon>AlertsPageHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Home\Templates\AlertItemTemplate.xaml.cs">
+      <DependentUpon>AlertItemTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\DateTimeExtenstions.cs" />
+    <Compile Include="Converters\DateConverters.cs" />
+    <Compile Include="Converters\AlertLevelToFontIconConverter.cs" />
+    <Compile Include="Converters\AlertLevelToColorConverter.cs" />
+    <Compile Include="Models\Domain\AlertLevelEnum.cs" />
+    <Compile Include="Pages\Common\CustomActivityIndicator.xaml.cs">
+      <DependentUpon>CustomActivityIndicator.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">

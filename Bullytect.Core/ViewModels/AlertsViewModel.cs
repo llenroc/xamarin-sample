@@ -9,6 +9,10 @@ using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 using Bullytect.Core.Rest.Models.Exceptions;
+using System.Reactive;
+using System.Reactive.Linq;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -27,25 +31,68 @@ namespace Bullytect.Core.ViewModels
         {
             _alertService = alertService;
 
-            //LoadNotificationsCommand = ReactiveCommand.CreateFromObservable<string, IList<AlertEntity>>((param) => _alertService.GetAllSelfNotifications());
+			ClearAlertsCommand = ReactiveCommand
+				.CreateFromObservable<Unit, int>((param) =>
+				{
+					return Observable.FromAsync<bool>((_) => _userDialogs.ConfirmAsync(new ConfirmConfig()
+					{
+                        Title = AppResources.Alerts_Confirm_Clear
 
-			LoadNotificationsCommand.ToProperty(this, x => x.AlertList, out _alertList);
+                })).Where((confirmed) => confirmed).Do((_) => _userDialogs.ShowLoading(AppResources.Alerts_Deleting_Alerts))
+                                     .SelectMany((_) => string.IsNullOrEmpty(SonIdentity) 
+                                                 ? _alertService.ClearSelfAlerts() : _alertService.ClearAlertsOfSon(SonIdentity))
+									 .Do((_) => _userDialogs.HideLoading());
+				});
 
-            LoadNotificationsCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Loading_Alerts));
+            ClearAlertsCommand.Subscribe((alertsDeleted) => {
+                Debug.WriteLine("Alerts Deleted -> " + alertsDeleted);
+                Alerts = new ObservableCollection<AlertEntity>();
+            });
 
-			LoadNotificationsCommand.ThrownExceptions.Subscribe(HandleExceptions);
+            ClearAlertsCommand.ThrownExceptions.Subscribe(HandleExceptions);
+
+            LoadAlertsCommand = ReactiveCommand
+                .CreateFromObservable<Unit, IList<AlertEntity>>((param) => string.IsNullOrEmpty(SonIdentity) ? alertService.GetSelfAlerts() : _alertService.GetAlertsBySon(SonIdentity));
+
+            LoadAlertsCommand.Subscribe((AlertsEntities) => {
+                Alerts = new ObservableCollection<AlertEntity>(AlertsEntities);
+            });
+
+            LoadAlertsCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
+
+			LoadAlertsCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }
 
-		public override void Start()
+        public void Init(string Identity) {
+            SonIdentity = Identity;
+        }
+
+        #region properties
+
+        string _sonIdentity;
+
+        public string SonIdentity
+        {
+			get => _sonIdentity;
+			set => SetProperty(ref _sonIdentity, value);
+        }
+
+        ObservableCollection<AlertEntity> _alerts = new ObservableCollection<AlertEntity>();
+
+		public ObservableCollection<AlertEntity> Alerts
 		{
-			LoadNotificationsCommand.Execute(null);
+			get => _alerts;
+			set => SetProperty(ref _alerts, value);
 		}
 
+        #endregion
 
-		#region commands
 
-		public ReactiveCommand<string, IList<AlertEntity>> LoadNotificationsCommand { get; protected set; }
+        #region commands
 
+        public ReactiveCommand<Unit, IList<AlertEntity>> LoadAlertsCommand { get; protected set; }
+
+        public ReactiveCommand<Unit, int> ClearAlertsCommand { get; protected set; }
 
         public ICommand ShowAlertDetailCommand => new MvxCommand<AlertEntity>((AlertEntity AlertEntity) => ShowViewModel<AlertDetailViewModel>(new AlertDetailViewModel.AlertParameter() {
             Level = AlertEntity.Level,

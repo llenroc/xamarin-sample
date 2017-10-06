@@ -9,6 +9,7 @@
     xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
     x:TypeArguments="viewModels:AlertsViewModel"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:templates="clr-namespace:Bullytect.Core.Pages.Alerts.Templates"
@@ -18,18 +19,39 @@
     <ContentPage.Resources>
            <ResourceDictionary>
                 <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+                <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
+                <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
             </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentView.Content>
 
-        <StackLayout>
+    <!-- Refresh On Appearing Event -->
+    <ContentPage.Behaviors>
+        <behaviors:EventHandlerBehavior EventName="Appearing">
+            <behaviors:InvokeCommandAction 
+                    Command="{ Binding LoadAlertsCommand }" 
+                    Converter="{ StaticResource DefaultReactiveUnitConverter}" />
+        </behaviors:EventHandlerBehavior>
+    </ContentPage.Behaviors>
+    
+    <!-- MAIN CONTAINER -->
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- CUSTOM NAVBAR -->
+        <templates:AlertsPageHeader Grid.Row="0"/>
+
+        <StackLayout Grid.Row="1">
 
             <ListView 
-                ItemsSource="{Binding AlertList}"
+                
+                ItemsSource="{ Binding Alerts }"
                 HasUnevenRows = "true"
                 IsPullToRefreshEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter} }"
-                RefreshCommand="{Binding LoadNotificationsCommand}"
-                IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+                RefreshCommand="{ Binding LoadAlertsCommand }"
+                IsRefreshing="{Binding IsBusy}">
                 <ListView.RowHeight>
                     <OnIdiom x:TypeArguments="x:Int32"
                         Phone="80"
@@ -39,7 +61,7 @@
                 <ListView.Behaviors>
                     <utils:EventToCommandBehavior 
                         EventName="ItemTapped"
-                        Command="{Binding ShowAlertDetailCommand}" 
+                        Command="{Binding ShowAlertDetailCommand }" 
                         EventArgsConverter="{ StaticResource ItemTappedEventArgsConverter }" />
                 </ListView.Behaviors>
                     
@@ -77,14 +99,14 @@
 
             <common:NoDataFound 
                 IsVisible="{ Binding DataFound, Converter={StaticResource InverseBoolConverter}}"
-                MainText="{i18n:Translate Notification.Not.Found.MainText}"
-                DetailText="{i18n:Translate Notification.Not.Found.SecondText}"/>
+                MainText="{i18n:Translate Alerts.Not.Found.MainText}"
+                DetailText="{i18n:Translate Alerts.Not.Found.SecondText}"/>
 
             <common:ErrorOcurred 
                 IsVisible="{ Binding ErrorOccurred }"
-                MainText="{i18n:Translate Notification.Error.Ocurred}"/>
+                MainText="{i18n:Translate Alerts.Error.Ocurred}"/>
 
 
         </StackLayout>
-   </ContentView.Content>
+   </Grid>
 </d:MvxContentPage>

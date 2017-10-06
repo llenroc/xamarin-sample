@@ -12,6 +12,7 @@ namespace Bullytect.Core.Pages.Alerts
         public AlertsPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
     }

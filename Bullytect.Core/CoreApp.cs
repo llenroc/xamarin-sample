@@ -18,6 +18,7 @@ using FFImageLoading.Config;
 using Bullytect.Core.Models.Domain.Converter;
 using MvvmCross.Core.Navigation;
 using Bullytect.Core.ViewModels;
+using Bullytect.Utils.Helpers;
 
 namespace Bullytect.Core
 {
@@ -43,7 +44,9 @@ namespace Bullytect.Core
 				cfg.CreateMap<ParentDTO, ParentEntity>();
 				cfg.CreateMap<SonDTO, SonEntity>();
                 cfg.CreateMap<DeviceDTO, DeviceEntity>();
-                cfg.CreateMap<AlertDTO, AlertEntity>();
+                cfg.CreateMap<AlertDTO, AlertEntity>()
+                    .ForMember(d => d.Level, (obj) => 
+                               obj.ResolveUsing(o => o?.Level.ToEnum<AlertLevelEnum>()));
                 cfg.CreateMap<ImageDTO, ImageEntity>();
                 cfg.CreateMap<SocialMediaDTO, SocialMediaEntity>();
                 cfg.CreateMap<SchoolDTO, SchoolEntity>();

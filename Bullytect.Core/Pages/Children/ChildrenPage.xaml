@@ -212,7 +212,7 @@
                                     </Label>
 
                                     <StackLayout.GestureRecognizers>
-                                      <TapGestureRecognizer Command="{ Binding Path=BindingContext.ShowSonProfileCommand , Source={x:Reference Root} }"
+                                      <TapGestureRecognizer Command="{ Binding Path=BindingContext.GoToAlerts , Source={x:Reference Root} }"
                                           CommandParameter="{Binding .}" NumberOfTapsRequired="1" />
                                     </StackLayout.GestureRecognizers>
                                   </StackLayout>

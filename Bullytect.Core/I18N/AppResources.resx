@@ -384,6 +384,15 @@ and we will recover it for you. </value>
     <value>  Last Alerts </value>
     <comment>Home Alerts List Title</comment>
   </data>
+  <data name="Home.Alerts.Not.Found.MainText" xml:space="preserve">
+    <value>  No Alert Found </value>
+    <comment>Home Alerts Not Found MainText</comment>
+  </data>
+  <data name="Home.Alerts.Not.Found.SecondText" xml:space="preserve">
+    <value> No new alerts available </value>
+    <comment>Home Alerts Not Found SecondText</comment>
+  </data>
+	
   <data name="Home.Profile.Load.Error" xml:space="preserve">
     <value> Error loading profile </value>
     <comment>Home Profile Load Error</comment>
@@ -496,13 +505,25 @@ and we will recover it for you. </value>
     <value> Profile information not found</value>
     <comment>Profile Data Not Found</comment>
   </data>
-  <data name="Notification.Not.Found.MainText" xml:space="preserve">
-    <value> Notifications Not Found </value>
-    <comment>Notification NotFound MainText</comment>
+  <data name="Alerts.Not.Found.MainText" xml:space="preserve">
+    <value> Alerts Not Found </value>
+    <comment>Alerts Not Found MainText</comment>
   </data>
-  <data name="Notification.Error.Ocurred" xml:space="preserve">
-    <value> Error loading notifications </value>
-    <comment>Notification Error Ocurred</comment>
+	<data name="Alerts.Not.Found.SecondText" xml:space="preserve">
+    <value> Alerts Not Found </value>
+    <comment>Alerts Not Found SecondText</comment>
+  </data>
+  <data name="Alerts.Error.Ocurred" xml:space="preserve">
+    <value> Error loading Alerts </value>
+    <comment>Alerts Error Ocurred</comment>
+  </data>
+	<data name="Alerts.Confirm.Clear" xml:space="preserve">
+    <value> Clear alerts? </value>
+    <comment>Alerts Confirm Clear</comment>
+  </data>
+  <data name="Alerts.Deleting.Alerts" xml:space="preserve">
+    <value> Deleting Alerts </value>
+    <comment>Alerts Deleting Alerts</comment>
   </data>
   <data name="Loading.Alerts" xml:space="preserve">
     <value> Loading Alerts </value>

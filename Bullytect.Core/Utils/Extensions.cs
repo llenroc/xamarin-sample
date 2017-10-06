@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -25,6 +26,11 @@ namespace Bullytect.Utils.Helpers
 		public static bool IsEmpty(this string s)
 		{
 			return string.IsNullOrWhiteSpace(s);
+		}
+
+		public static T ToEnum<T>(this string value)
+		{
+			return (T)Enum.Parse(typeof(T), value, true);
 		}
 
 		public static string ToOrdinal(this int num)

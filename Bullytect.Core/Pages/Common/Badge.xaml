@@ -20,6 +20,7 @@
             <Label
                 FontSize="28"
                 Text="{ x:Static helper:FontAwesomeFont.Circle }"
+                Style="{StaticResource FontIcon}"
                 TextColor="{Binding Source={x:Reference Root}, Path=BadgeBackgroundColor}"
                 HorizontalTextAlignment="Center"
                 VerticalTextAlignment="Center"

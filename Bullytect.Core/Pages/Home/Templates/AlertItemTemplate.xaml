@@ -2,17 +2,28 @@
 <ContentView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="Bullytect.Core.Pages.Alerts.Templates.AlertItemTemplate"
+    x:Class="Bullytect.Core.Pages.Home.Templates.AlertItemTemplate"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
-    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:converter="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared.Base">
     <ContentView.Resources>
         <ResourceDictionary>
             <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
+            <converters:DateTimeToElapsedTimeConverter x:Key="DateTimeToElapsedTimeConverter" />
+            <converters:AlertLevelToFontIconConverter x:Key="AlertLevelToFontIconConverter" />
+            <converters:AlertLevelToColorConverter x:Key="AlertLevelToColorConverter" />
+            <converter:BooleanToObjectConverter x:Key="isReadConverter" x:TypeArguments="FontAttributes">
+                <converter:BooleanToObjectConverter.TrueValue>
+                    <FontAttributes>None</FontAttributes>
+                </converter:BooleanToObjectConverter.TrueValue>
+                <converter:BooleanToObjectConverter.FalseValue>
+                    <FontAttributes>Bold</FontAttributes>
+                </converter:BooleanToObjectConverter.FalseValue>
+            </converter:BooleanToObjectConverter>
         </ResourceDictionary>
     </ContentView.Resources>
 
@@ -54,33 +65,33 @@
                     <StackLayout Orientation="Horizontal">
 
                         <Label 
-                                Text="Sergio Sánchez" 
-                                HorizontalOptions="Fill"
-                                VerticalOptions="EndAndExpand"
-                                TextColor="{ DynamicResource AccentColor }"/>
+                            Text="{Binding Title }"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="FillAndExpand"/>
+
+                        <Label 
+                            Text="{ Binding Level , Converter={ StaticResource AlertLevelToFontIconConverter}}" 
+                            TextColor="{ Binding Level, Converter={ StaticResource AlertLevelToColorConverter }}"
+                            Style="{StaticResource FontIcon}"
+                            FontSize ="12"
+                            HorizontalTextAlignment="End" 
+                            HorizontalOptions="End" 
+                            VerticalOptions="Center" />
                         
                         <Label 
-                            Text="08/10/20017" 
+                            Text="{ Binding CreateAt , Converter={ StaticResource DateTimeToElapsedTimeConverter }}" 
                             FontSize ="12"
                             HorizontalTextAlignment="End" 
                             HorizontalOptions="End" 
                             VerticalOptions="Center"/>
                         
                     </StackLayout>
-
-                    <StackLayout Orientation="Horizontal" >
-
-                        <Label 
-                                Text="Título de la alerta"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand"/>
-                    </StackLayout>
-
-                    <StackLayout Orientation="Horizontal" Padding="0,8,0,0">
+                
+                    <StackLayout Orientation="Horizontal" Padding="8">
 
                         <Label 
-                                Text="Este es el payload"
-                                LineBreakMode="WordWrap"
+                                Text="{ Binding Payload }"
+                                LineBreakMode="TailTruncation"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand"/>
 
@@ -90,3 +101,4 @@
             </StackLayout>
     </StackLayout>
 </ContentView>
+
