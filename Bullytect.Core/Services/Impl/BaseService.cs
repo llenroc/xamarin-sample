@@ -7,7 +7,7 @@ namespace Bullytect.Core.Services.Impl
     using Bullytect.Core.Config;
     using Bullytect.Core.Exceptions;
     using Bullytect.Core.Rest.Models.Exceptions;
-    using Bullytect.Core.Utils;
+    using Bullytect.Core.Rest.Utils;
 
     public abstract class BaseService
     {

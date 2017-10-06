@@ -101,9 +101,6 @@
     <EmbeddedResource Include="Pages\Alerts\Templates\AlertItemTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Common\Templates\MainListHeaderTemplate.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\Common\Templates\SonSimpleItemTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -314,10 +311,6 @@
     <Compile Include="Models\Domain\AlertEntity.cs" />
     <Compile Include="Services\IAlertService.cs" />
     <Compile Include="Services\Impl\AlertServiceImpl.cs" />
-    <Compile Include="Utils\ApiUtils.cs" />
-    <Compile Include="Pages\Common\Templates\MainListHeaderTemplate.xaml.cs">
-      <DependentUpon>MainListHeaderTemplate.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Common\Templates\SonSimpleItemTemplate.xaml.cs">
       <DependentUpon>SonSimpleItemTemplate.xaml</DependentUpon>
     </Compile>
@@ -430,6 +423,8 @@
     <Compile Include="Pages\Common\CustomActivityIndicator.xaml.cs">
       <DependentUpon>CustomActivityIndicator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\AlertLevelToTextConverter.cs" />
+    <Compile Include="Rest\Utils\ApiUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">

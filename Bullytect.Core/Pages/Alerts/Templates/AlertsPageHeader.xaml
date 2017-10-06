@@ -64,6 +64,22 @@
                 <Label.GestureRecognizers>
                      <TapGestureRecognizer Command="{ Binding ClearAlertsCommand }" NumberOfTapsRequired="1" /> 
                 </Label.GestureRecognizers>
+
+                <Label.Triggers>
+                    <DataTrigger 
+                        TargetType="Label"
+                        Binding="{Binding HaveInternet}"
+                        Value="False">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger
+                        TargetType="Label"
+                        Binding="{Binding DataFound}"
+                        Value="False">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                </Label.Triggers>
+                
             </Label>
         </Grid>
 

@@ -13,6 +13,9 @@
     <ContentView.Resources>
         <ResourceDictionary>
             <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
+            <converters:DateTimeToElapsedTimeConverter x:Key="DateTimeToElapsedTimeConverter" />
+            <converters:AlertLevelToFontIconConverter x:Key="AlertLevelToFontIconConverter" />
+            <converters:AlertLevelToColorConverter x:Key="AlertLevelToColorConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
 
@@ -24,23 +27,21 @@
         VerticalOptions="Center">
 
 
-        <ffimageloading:CachedImage
+
+        <Label 
             Grid.Column="0"
-            HorizontalOptions = "Center"
-            VerticalOptions = "Start"
-            TranslationX="8" 
-            TranslationY="14"
+            Text="{ Binding Level , Converter={ StaticResource AlertLevelToFontIconConverter}}" 
+            TextColor="{ Binding Level, Converter={ StaticResource AlertLevelToColorConverter }}"
+            Style="{StaticResource FontIcon}"
+            FontSize ="45"
             WidthRequest="50"
             HeightRequest="50"
-            FadeAnimationEnabled="true"
-            ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
-            LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
-            Source="{ Binding Son.Identity , Converter={ StaticResource SonProfileImageURLConverter }}">
-            <ffimageloading:CachedImage.Transformations>
-                <fftransformations:CircleTransformation BorderSize="3" BorderHexColor="#6BC7E0" />
-            </ffimageloading:CachedImage.Transformations>
-        </ffimageloading:CachedImage>
-
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            HorizontalOptions = "Center"
+            VerticalOptions = "Start" 
+            TranslationX="8" 
+            TranslationY="14"/>
 
 
         <StackLayout 
@@ -49,38 +50,31 @@
             HorizontalOptions="FillAndExpand">
                 
 
-                <StackLayout HorizontalOptions="FillAndExpand" Spacing="0" Padding="10">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0" Padding="10">
 
                     <StackLayout Orientation="Horizontal">
 
                         <Label 
-                                Text="Sergio Sánchez" 
-                                HorizontalOptions="Fill"
-                                VerticalOptions="EndAndExpand"
-                                TextColor="{ DynamicResource AccentColor }"/>
+                            Text="{Binding Title }"
+                            TextColor="{ Binding Level, Converter={ StaticResource AlertLevelToColorConverter }}"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="FillAndExpand"/>
+                           
                         
                         <Label 
-                            Text="08/10/20017" 
+                            Text="{ Binding CreateAt , Converter={ StaticResource DateTimeToElapsedTimeConverter }}" 
                             FontSize ="12"
                             HorizontalTextAlignment="End" 
                             HorizontalOptions="End" 
                             VerticalOptions="Center"/>
                         
                     </StackLayout>
-
-                    <StackLayout Orientation="Horizontal" >
-
-                        <Label 
-                                Text="Título de la alerta"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand"/>
-                    </StackLayout>
-
-                    <StackLayout Orientation="Horizontal" Padding="0,8,0,0">
+                
+                    <StackLayout Orientation="Horizontal" VerticalOptions="End">
 
                         <Label 
-                                Text="Este es el payload"
-                                LineBreakMode="WordWrap"
+                                Text="{ Binding Payload }"
+                                LineBreakMode="TailTruncation"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand"/>
 
@@ -88,5 +82,7 @@
                 </StackLayout>
 
             </StackLayout>
+
+        
     </StackLayout>
 </ContentView>

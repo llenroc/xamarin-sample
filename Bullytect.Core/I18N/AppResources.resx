@@ -384,6 +384,10 @@ and we will recover it for you. </value>
     <value>  Last Alerts </value>
     <comment>Home Alerts List Title</comment>
   </data>
+  <data name="Home.Show.Alerts" xml:space="preserve">
+    <value>  Show Alerts </value>
+    <comment>Home Show Alerts</comment>
+  </data>
   <data name="Home.Alerts.Not.Found.MainText" xml:space="preserve">
     <value>  No Alert Found </value>
     <comment>Home Alerts Not Found MainText</comment>
@@ -513,6 +517,10 @@ and we will recover it for you. </value>
     <value> Alerts Not Found </value>
     <comment>Alerts Not Found SecondText</comment>
   </data>
+  <data name="Alerts.Delete.Alert" xml:space="preserve">
+    <value> Delete Alert </value>
+    <comment>Alerts Delete Alert</comment>
+  </data>
   <data name="Alerts.Error.Ocurred" xml:space="preserve">
     <value> Error loading Alerts </value>
     <comment>Alerts Error Ocurred</comment>
@@ -521,9 +529,29 @@ and we will recover it for you. </value>
     <value> Clear alerts? </value>
     <comment>Alerts Confirm Clear</comment>
   </data>
+  <data name="Alert.Confirm.Clear" xml:space="preserve">
+    <value> Delete alert? </value>
+    <comment>Alert Confirm Clear</comment>
+  </data>
   <data name="Alerts.Deleting.Alerts" xml:space="preserve">
     <value> Deleting Alerts </value>
     <comment>Alerts Deleting Alerts</comment>
+  </data>
+  <data name="Alerts.Warning.Text" xml:space="preserve">
+    <value> Warning  </value>
+    <comment>Alerts Warning Text</comment>
+  </data>
+  <data name="Alerts.Error.Text" xml:space="preserve">
+    <value> Error  </value>
+    <comment>Alerts Error Text</comment>
+  </data>
+  <data name="Alerts.Info.Text" xml:space="preserve">
+    <value> Info  </value>
+    <comment>Alerts Info Text</comment>
+  </data>
+  <data name="Alerts.Success.Text" xml:space="preserve">
+    <value> Success  </value>
+    <comment>Alerts Success Text</comment>
   </data>
   <data name="Loading.Alerts" xml:space="preserve">
     <value> Loading Alerts </value>

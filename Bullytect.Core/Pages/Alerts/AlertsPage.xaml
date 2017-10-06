@@ -98,11 +98,13 @@
             </ListView>
 
             <common:NoDataFound 
+                Grid.Row="1"
                 IsVisible="{ Binding DataFound, Converter={StaticResource InverseBoolConverter}}"
                 MainText="{i18n:Translate Alerts.Not.Found.MainText}"
                 DetailText="{i18n:Translate Alerts.Not.Found.SecondText}"/>
 
             <common:ErrorOcurred 
+                Grid.Row="1"
                 IsVisible="{ Binding ErrorOccurred }"
                 MainText="{i18n:Translate Alerts.Error.Ocurred}"/>
 

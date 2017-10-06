@@ -6,7 +6,7 @@ using Bullytect.Core.Rest.Models.Response;
 using Bullytect.Core.Rest.Models.Exceptions;
 using Bullytect.Core.Rest.Utils;
 
-namespace Bullytect.Core.Utils
+namespace Bullytect.Core.Rest.Utils
 {
     public static class ApiUtils
     {
@@ -106,6 +106,12 @@ namespace Bullytect.Core.Utils
 								Response = ex.GetContentAs<APIResponse<string>>()
 							};
 							break;
+                        case ResponseNames.NO_ALERTS_BY_SON_FOUNDED_RESPONSE:
+							exResponse = new NoAlertsFoundException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
+                            break;
 							// Parse Generic Error
                         case ResponseNames.GENERIC_ERROR_RESPONSE:
 							exResponse = new GenericErrorException()

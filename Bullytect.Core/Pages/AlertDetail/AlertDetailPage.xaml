@@ -7,12 +7,22 @@
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     Title="{i18n:Translate Page.Alert.Detail.Title}"
     x:TypeArguments="viewModels:AlertDetailViewModel"
     BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
     x:Class="Bullytect.Core.Pages.NotificationDetail.NotificationDetailPage">
+     <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
+            <converters:DateTimeToElapsedTimeConverter x:Key="DateTimeToElapsedTimeConverter" />
+            <converters:AlertLevelToFontIconConverter x:Key="AlertLevelToFontIconConverter" />
+            <converters:AlertLevelToColorConverter x:Key="AlertLevelToColorConverter" />
+            <converters:AlertLevelToTextConverter x:Key="AlertLevelToTextConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
 	<ContentPage.Content>
 
         <ScrollView 
@@ -35,13 +45,17 @@
 
                     <!-- MAIN IMAGE -->
                     <ffimageloading:CachedImage
-                        x:Name="img"
-                        Source="user_profile_1.jpg"
+                        ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+                        LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
+                        Source="{ Binding SonIdentity , Converter={ StaticResource SonProfileImageURLConverter }}"
                         Aspect="AspectFill"
-                        BackgroundColor="Black"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="Start"
-                        Opacity=".8"/>
+                        Opacity=".8">
+                        <ffimageloading:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnImageTapped" />
+                        </ffimageloading:CachedImage.GestureRecognizers>
+                     </ffimageloading:CachedImage>
                 </Grid>
 
                 <!-- MAIN HEADER -->
@@ -56,14 +70,14 @@
 
                     <!-- HEADERS -->
                     <Label
-                        Text="{ Binding Post.Title }"
+                        Text="{ Binding Title }"
                         LineBreakMode="WordWrap"
                         TextColor="{ DynamicResource OverImageTextColor }"
                         FontSize="26"
                         FontAttributes="Bold"/>
 
                     <Label
-                        Text="{ Binding Post.Subtitle }"
+                        Text="{ Binding SonFullName }"
                         LineBreakMode="WordWrap"
                         TextColor="{ DynamicResource OverImageTextColor }"
                         FontSize="16"/>
@@ -81,11 +95,7 @@
                     BackgroundColor="{ DynamicResource BasePageColor }">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="60" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <!--HEADER BACKGROUND-->
@@ -100,15 +110,30 @@
                         Padding="20,0"
                         VerticalOptions="Center"
                         Spacing="10">
-                    
+
+
                         <Label 
-                            Text="{ Binding Post.Section }" 
+                            Text="{ Binding Level , Converter={ StaticResource AlertLevelToFontIconConverter}}" 
+                            TextColor="{ Binding Level, Converter={ StaticResource AlertLevelToColorConverter }}"
+                            Style="{StaticResource FontIcon}"
                             FontSize="14"
-                            TextColor="{ DynamicResource BaseTextColor }"
+                            HorizontalOptions="Start"
+                            VerticalTextAlignment="Center"/>
+
+
+                        <Label 
+                            Text="{ Binding Level , Converter={ StaticResource AlertLevelToTextConverter}}" 
+                            TextColor="{ Binding Level, Converter={ StaticResource AlertLevelToColorConverter }}"
+                            Style="{StaticResource FontIcon}"
+                            FontSize="14"
+                            Margin="5,0,0,0"
                             HorizontalOptions="StartAndExpand"
                             VerticalTextAlignment="Center"/>
+
+                        
+                        
                         <Label 
-                            Text="{ Binding Post.When }"
+                            Text="{ Binding CreateAt , Converter={ StaticResource DateTimeToElapsedTimeConverter }}"
                             FontSize="14"
                             TextColor="{ DynamicResource BaseTextColor }"
                             HorizontalOptions="End"/>
@@ -123,26 +148,51 @@
                         Style="{ StaticResource Horizontal1ptLineStyle}" />
 
                     <!-- TEXT -->
-                    <Grid
+                    <StackLayout
                         Grid.Row="1"
                         Padding="20,20,20,0"
-                        VerticalOptions="Center"
-                        RowSpacing="20">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
+                        VerticalOptions="StartAndExpand">
 
                         <!-- MAIN PARAGRAPH -->
                         <Label
-                            Grid.Row="0"
-                            Text="{ Binding Post.Body }"
-                            VerticalOptions="Center"
+                            Text="{ Binding Payload }"
+                            VerticalOptions="Start"
                             TextColor="{ DynamicResource BaseTextColor }" />
 
-                        
-                    </Grid>
+
+                        <!-- Edit Action -->
+                        <artina:Button
+                            Command="{ Binding DeleteAlertCommand }"
+                            CommandParameter="{ Binding SonIdentity }"
+                            Margin="20,10,20,20"
+                            Style="{StaticResource PrimaryActionButtonStyle}" 
+                            Text="{i18n:Translate Alerts.Delete.Alert}"
+                            WidthRequest="{ artina:OnOrientationDouble
+                                LandscapePhone=200,
+                                LandscapeTablet=400 }"
+                            HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                                PortraitPhone=Fill,
+                                LandscapePhone=Center,
+                                PortraitTablet=Fill,
+                                LandscapeTablet=Center }"
+                            VerticalOptions="End">
+
+                            <Button.Triggers>
+                                <DataTrigger
+                                    TargetType="Button"
+                                    Binding="{Binding IsBusy}"
+                                    Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    TargetType="Button"
+                                    Binding="{Binding HaveInternet}"
+                                    Value="False">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </artina:Button>
+                    </StackLayout>
                 </Grid>
             </Grid>
         </ScrollView>

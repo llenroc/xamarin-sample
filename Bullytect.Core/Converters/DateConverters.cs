@@ -17,7 +17,7 @@ namespace Bullytect.Core.Converters
 				if (!(value is DateTime))
 					return string.Empty;
                 
-                return ((DateTime)value).ElapsedTime();
+                return ((DateTime)value).GetElapsedTime();
 			}
 			catch (Exception ex)
 			{

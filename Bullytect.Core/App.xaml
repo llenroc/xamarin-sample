@@ -21,6 +21,7 @@
             <!-- UNITS -->
             <x:Double x:Key="BaseFontSize">16</x:Double>
             <x:Double x:Key="BaseButtonHeight">44</x:Double>
+            <x:Double x:Key="BaseSmallButtonHeight">20</x:Double>
             <x:Double x:Key="BaseButtonBorderRadius">22</x:Double>
 
 
@@ -549,6 +550,13 @@
                 <Setter Property="HeightRequest" Value="{StaticResource BaseButtonHeight}" />
             </Style>
 
+
+            <Style x:Key="InfoSmallButtonStyle" TargetType="Button" BasedOn="{StaticResource RoundedButtonStyle}">
+                <Setter Property="BackgroundColor" Value="{DynamicResource InfoButtonColor}" />
+                <Setter Property="TextColor" Value="#FFF" />
+                <Setter Property="HeightRequest" Value="{StaticResource BaseSmallButtonHeight}" />
+            </Style>
+
             <!-- DOCUMENT TIMELINE -->
             <Style x:Key="DocumentTimelineBubbleStyle" TargetType="VisualElement">
                 <Setter Property="effects:Effects.CornerRadius" Value="4" />
@@ -559,7 +567,7 @@
             </Style>
             
             <!-- SOCIAL -->
-            <Style x:Key="SocialHeaderStyle" TargetType="Label">
+            <Style x:Key="CommonHeaderStyle" TargetType="Label">
                 <Setter Property="TranslationX" Value="20" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Setter Property="FontSize" Value="14" />
@@ -568,7 +576,7 @@
                 <Setter Property="TextColor" Value="{ DynamicResource BaseTextColor }" />
             </Style>
 
-            <Style x:Key="SocialHeaderStyleBorderBottomStyle" TargetType="Label">
+            <Style x:Key="CommonHeaderStyleBorderBottomStyle" TargetType="Label">
                 <Setter Property="HeightRequest" Value="1" />
                 <Setter Property="BackgroundColor" Value="{ DynamicResource ListViewSeparatorColor }" />
             </Style>

@@ -4,25 +4,44 @@ namespace Bullytect.Core.Utils
 {
     public static class DateTimeExtenstions
     {
-		public static string ElapsedTime(this DateTime dtEvent)
+
+		public static string GetElapsedTime(this DateTime datetime)
 		{
-			TimeSpan TS = DateTime.Now - dtEvent;
-			int intYears = DateTime.Now.Year - dtEvent.Year;
-			int intMonths = DateTime.Now.Month - dtEvent.Month;
-			int intDays = DateTime.Now.Day - dtEvent.Day;
-			int intHours = DateTime.Now.Hour - dtEvent.Hour;
-			int intMinutes = DateTime.Now.Minute - dtEvent.Minute;
-			int intSeconds = DateTime.Now.Second - dtEvent.Second;
-			if (intYears > 0) return String.Format("{0} {1} ago", intYears, (intYears == 1) ? "year" : "years");
-			else if (intMonths > 0) return String.Format("{0} {1} ago", intMonths, (intMonths == 1) ? "month" : "months");
-			else if (intDays > 0) return String.Format("{0} {1} ago", intDays, (intDays == 1) ? "day" : "days");
-			else if (intHours > 0) return String.Format("{0} {1} ago", intHours, (intHours == 1) ? "hour" : "hours");
-			else if (intMinutes > 0) return String.Format("{0} {1} ago", intMinutes, (intMinutes == 1) ? "minute" : "minutes");
-			else if (intSeconds > 0) return String.Format("{0} {1} ago", intSeconds, (intSeconds == 1) ? "second" : "seconds");
-			else
+			TimeSpan ts = DateTime.Now.Subtract(datetime);
+
+			// The trick: make variable contain date and time representing the desired timespan,
+			// having +1 in each date component.
+			DateTime date = DateTime.MinValue + ts;
+
+			return ProcessPeriod(date.Year - 1, date.Month - 1, "year")
+				   ?? ProcessPeriod(date.Month - 1, date.Day - 1, "month")
+				   ?? ProcessPeriod(date.Day - 1, date.Hour, "day", "Yesterday")
+				   ?? ProcessPeriod(date.Hour, date.Minute, "hour")
+				   ?? ProcessPeriod(date.Minute, date.Second, "minute")
+				   ?? ProcessPeriod(date.Second, 0, "second")
+				   ?? "Right now";
+		}
+
+		private static string ProcessPeriod(int value, int subValue, string name, string singularName = null)
+		{
+			if (value == 0)
 			{
-				return String.Format("{0} {1} ago", dtEvent.ToString("d"), dtEvent.ToString("t"));
+				return null;
 			}
+			if (value == 1)
+			{
+				if (!String.IsNullOrEmpty(singularName))
+				{
+					return singularName;
+				}
+				string articleSuffix = name[0] == 'h' ? "n" : String.Empty;
+				return subValue == 0
+					? String.Format("A{0} {1} ago", articleSuffix, name)
+					: String.Format("About a{0} {1} ago", articleSuffix, name);
+			}
+			return subValue == 0
+				? String.Format("{0} {1}s ago", value, name)
+				: String.Format("About {0} {1}s ago", value, name);
 		}
 	}
 }

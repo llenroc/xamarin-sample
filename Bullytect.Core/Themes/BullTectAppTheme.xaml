@@ -59,6 +59,7 @@
 
     <!-- BUTTONS & ENTRY COLORS -->
     <Color x:Key="SaveButtonColor">#6bdd9b</Color>
+    <Color x:Key="InfoButtonColor">#6BC7E0</Color>
     <Color x:Key="DeleteButtonColor">#dd6a6b</Color>
     <Color x:Key="LabelButtonColor">#ffffff</Color>
 

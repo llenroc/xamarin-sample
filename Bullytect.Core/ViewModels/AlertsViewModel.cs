@@ -46,7 +46,8 @@ namespace Bullytect.Core.ViewModels
 
             ClearAlertsCommand.Subscribe((alertsDeleted) => {
                 Debug.WriteLine("Alerts Deleted -> " + alertsDeleted);
-                Alerts = new ObservableCollection<AlertEntity>();
+                Alerts = null;
+                DataFound = false;
             });
 
             ClearAlertsCommand.ThrownExceptions.Subscribe(HandleExceptions);
@@ -77,7 +78,7 @@ namespace Bullytect.Core.ViewModels
 			set => SetProperty(ref _sonIdentity, value);
         }
 
-        ObservableCollection<AlertEntity> _alerts = new ObservableCollection<AlertEntity>();
+        ObservableCollection<AlertEntity> _alerts;
 
 		public ObservableCollection<AlertEntity> Alerts
 		{
@@ -95,6 +96,8 @@ namespace Bullytect.Core.ViewModels
         public ReactiveCommand<Unit, int> ClearAlertsCommand { get; protected set; }
 
         public ICommand ShowAlertDetailCommand => new MvxCommand<AlertEntity>((AlertEntity AlertEntity) => ShowViewModel<AlertDetailViewModel>(new AlertDetailViewModel.AlertParameter() {
+            Identity = AlertEntity.Identity,
+            Title = AlertEntity.Title,
             Level = AlertEntity.Level,
             Payload = AlertEntity.Payload,
             CreateAt = AlertEntity.CreateAt,

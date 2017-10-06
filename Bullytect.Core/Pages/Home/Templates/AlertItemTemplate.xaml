@@ -81,13 +81,14 @@
                         <Label 
                             Text="{ Binding CreateAt , Converter={ StaticResource DateTimeToElapsedTimeConverter }}" 
                             FontSize ="12"
+                            LineBreakMode="TailTruncation"
                             HorizontalTextAlignment="End" 
                             HorizontalOptions="End" 
                             VerticalOptions="Center"/>
                         
                     </StackLayout>
                 
-                    <StackLayout Orientation="Horizontal" Padding="8">
+                    <StackLayout Orientation="Horizontal" Padding="10">
 
                         <Label 
                                 Text="{ Binding Payload }"

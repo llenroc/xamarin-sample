@@ -443,6 +443,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Home_Show_Alerts {
+            get {
+                return ResourceManager.GetString("Home.Show.Alerts", resourceCulture);
+            }
+        }
+        
         internal static string Home_Alerts_Not_Found_MainText {
             get {
                 return ResourceManager.GetString("Home.Alerts.Not.Found.MainText", resourceCulture);
@@ -635,6 +641,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Alerts_Delete_Alert {
+            get {
+                return ResourceManager.GetString("Alerts.Delete.Alert", resourceCulture);
+            }
+        }
+        
         internal static string Alerts_Error_Ocurred {
             get {
                 return ResourceManager.GetString("Alerts.Error.Ocurred", resourceCulture);
@@ -647,9 +659,39 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Alert_Confirm_Clear {
+            get {
+                return ResourceManager.GetString("Alert.Confirm.Clear", resourceCulture);
+            }
+        }
+        
         internal static string Alerts_Deleting_Alerts {
             get {
                 return ResourceManager.GetString("Alerts.Deleting.Alerts", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Warning_Text {
+            get {
+                return ResourceManager.GetString("Alerts.Warning.Text", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Error_Text {
+            get {
+                return ResourceManager.GetString("Alerts.Error.Text", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Info_Text {
+            get {
+                return ResourceManager.GetString("Alerts.Info.Text", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Success_Text {
+            get {
+                return ResourceManager.GetString("Alerts.Success.Text", resourceCulture);
             }
         }
         

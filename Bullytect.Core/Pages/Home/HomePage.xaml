@@ -254,9 +254,32 @@
                                         Padding="0"
                                         Spacing="0">
 
-                                           <commonTemplates:MainListHeaderTemplate 
-                                                Text="{i18n:Translate Home.Alerts.List.Title}"
-                                                IconText="{ x:Static helper:FontAwesomeFont.ExclamationTriangle } "/>
+
+                                        <StackLayout
+                                            Orientation="Horizontal">
+                            
+                                            <Label
+                                                FontSize="18"
+                                                Style="{ StaticResource CommonHeaderStyle }"
+                                                Text="{ x:Static helper:FontAwesomeFont.Inbox }"
+                                                FontFamily="{ StaticResource IconsFontFamily }" />
+                            
+                                            <Label
+                                                Style="{ StaticResource CommonHeaderStyle }"
+                                                Text="{ i18n:Translate Home.Alerts.List.Title }"/>
+
+
+
+                                            <artina:Button
+                                                Style="{ StaticResource InfoSmallButtonStyle }"
+                                                HorizontalOptions="End"
+                                                Command="{ Binding GoToAlertsCommand }"
+                                                Text="{ i18n:Translate Home.Show.Alerts }" />
+                                               
+                            
+                                        </StackLayout>
+
+                   
 
                                             <!-- Last Alerts LIST -->
                                             <ListView

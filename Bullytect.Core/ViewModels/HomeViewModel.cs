@@ -121,13 +121,24 @@ namespace Bullytect.Core.ViewModels
         
 
         public ICommand ShowAlertDetailCommand => new MvxCommand<AlertEntity>((AlertEntity AlertEntity) => ShowViewModel<AlertDetailViewModel>(new AlertDetailViewModel.AlertParameter(){
+            Identity = AlertEntity.Identity,
             Level = AlertEntity.Level,
+            Title = AlertEntity.Title,
             Payload = AlertEntity.Payload,
             CreateAt = AlertEntity.CreateAt,
-            SonFullName = AlertEntity.Son.FullName
+            SonFullName = AlertEntity.Son.FullName,
+            SonIdentity = AlertEntity.Son.Identity
         }));
 
         public ReactiveCommand<string, ImageEntity> TakePhotoCommand { get; set; }
+
+		public ICommand GoToAlertsCommand
+		{
+			get
+			{
+                return new MvxCommand(() => ShowViewModel<AlertsViewModel>());
+			}
+		}
 
         #endregion
 
