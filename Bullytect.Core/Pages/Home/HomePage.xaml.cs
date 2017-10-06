@@ -1,6 +1,10 @@
 ﻿
 
+using System;
+using System.Windows.Input;
+using Bullytect.Core.Pages.Results;
 using Bullytect.Core.ViewModels;
+using MvvmCross.Core.ViewModels;
 using MvvmCross.Forms.Core;
 using Xamarin.Forms;
 
@@ -20,5 +24,10 @@ namespace Bullytect.Core.Pages.Home
 
 
         }
+
+		async void OnUpcomingAppointmentsButtonClicked(object sender, EventArgs e)
+		{
+            await Navigation.PushAsync(new ResultsPage());
+		}
     }
 }

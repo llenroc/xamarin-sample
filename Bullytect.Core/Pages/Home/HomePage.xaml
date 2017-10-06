@@ -158,6 +158,7 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
 
 
@@ -204,9 +205,55 @@
                                                 
                                               </StackLayout>
 
-                                              <!-- Profile Action -->
+
+                                              <!-- Results Action -->
                                               <StackLayout
                                                     Grid.Column="1"
+                                                    Orientation="Horizontal"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="Center"
+                                                    Spacing="0">
+
+                                                <Label
+                                                     VerticalTextAlignment="Center" 
+                                                     HorizontalTextAlignment="Center"
+                                                     Text="{ x:Static helper:FontAwesomeFont.AreaChart }"
+                                                     FontFamily="{ StaticResource IconsFontFamily }"
+                                                     TextColor="{ DynamicResource InverseTextColor }">
+                                                     <Label.FontSize>
+                                                        <OnIdiom 
+                                                            x:TypeArguments="x:Double" 
+                                                            Phone="15" 
+                                                            Tablet="20" />
+                                                    </Label.FontSize> 
+                                                </Label>
+
+                                                <Label
+                                                    VerticalTextAlignment="Center" 
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{i18n:Translate Home.Toolbar.Results}"
+                                                    TextColor="{ DynamicResource OverImageTextColor }">
+                                                    <Label.FontSize>
+                                                       <OnIdiom 
+                                                            x:TypeArguments="x:Double" 
+                                                            Phone="15" 
+                                                            Tablet="20" />
+                                                     </Label.FontSize> 
+                                                 </Label>
+
+                                                 <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnUpcomingAppointmentsButtonClicked" NumberOfTapsRequired="1" /> 
+                                                  </StackLayout.GestureRecognizers>
+
+                                                
+                                              </StackLayout>
+
+                                            
+                                               
+
+                                              <!-- Profile Action -->
+                                              <StackLayout
+                                                    Grid.Column="2"
                                                     Orientation="Horizontal"
                                                     VerticalOptions="Center"
                                                     HorizontalOptions="Center"

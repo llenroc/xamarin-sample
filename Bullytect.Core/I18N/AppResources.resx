@@ -368,6 +368,10 @@ and we will recover it for you. </value>
     <value> Children ({0}) </value>
     <comment>Home Toolbar Children</comment>
   </data>
+  <data name="Home.Toolbar.Results" xml:space="preserve">
+    <value> Results </value>
+    <comment>Home Toolbar Resuls</comment>
+  </data>
   <data name="Home.Toolbar.Profile" xml:space="preserve">
     <value> Profile </value>
     <comment>Home Toolbar Profile</comment>

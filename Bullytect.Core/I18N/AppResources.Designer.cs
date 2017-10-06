@@ -419,6 +419,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Home_Toolbar_Results {
+            get {
+                return ResourceManager.GetString("Home.Toolbar.Results", resourceCulture);
+            }
+        }
+        
         internal static string Home_Toolbar_Profile {
             get {
                 return ResourceManager.GetString("Home.Toolbar.Profile", resourceCulture);

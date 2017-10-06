@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:MvxContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
+    xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
+    xmlns:rest="clr-namespace:Bullytect.Core.Rest.Utils"
+    x:Class="Bullytect.Core.Pages.Results.Tabs.CommentsBySon"
+    x:TypeArguments="viewModels:CommentsBySonViewModel">
+	<ContentPage.Content>
+        <Grid>
+
+            <Label
+                
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                Text="{ Binding Title }"
+                TextColor="{ DynamicResource AccentColor }">
+                <Label.FontSize>
+                    <OnIdiom 
+                        x:TypeArguments="x:Double" 
+                        Phone="45" 
+                    Tablet="20" />
+                </Label.FontSize> 
+            </Label>
+
+        </Grid>
+	</ContentPage.Content>
+</d:MvxContentPage >
