@@ -272,6 +272,7 @@
                                 <Label
                                     VerticalTextAlignment="Center"
                                     HorizontalTextAlignment="Center"
+                                
                                     HorizontalOptions="End"
                                     VerticalOptions="CenterAndExpand"
                                     Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"

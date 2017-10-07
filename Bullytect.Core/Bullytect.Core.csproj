@@ -268,9 +268,9 @@
     <Compile Include="OAuth\Models\OAuth.cs" />
     <Compile Include="OAuth\Models\OAuth2.cs" />
     <Compile Include="OAuth\Providers\Facebook\FacebookOAuth2.cs" />
-    <Compile Include="OAuth\Services\IOAuth.cs" />
+    <Compile Include="OAuth\Services\IOAuthService.cs" />
     <Compile Include="I18N\Services\ILocalize.cs" />
-    <Compile Include="OAuth\Exceptions\FacebookAuthenticationErrorException.cs" />
+    <Compile Include="OAuth\Exceptions\OAuthAuthenticationErrorException.cs" />
     <Compile Include="Converters\NullVisibilityConverter.cs" />
     <Compile Include="Messages\SessionExpiredMessage.cs" />
     <Compile Include="Pages\Common\Badge.xaml.cs">
@@ -445,6 +445,7 @@
     <Compile Include="Pages\EditSon\Popup\SocialMediaInfoPopup.xaml.cs">
       <DependentUpon>SocialMediaInfoPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OAuth\Services\Impl\IOAuthServiceImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -630,6 +631,7 @@
     <Folder Include="Pages\Results\" />
     <Folder Include="Pages\Results\Tabs\" />
     <Folder Include="Pages\EditSon\Popup\" />
+    <Folder Include="OAuth\Services\Impl\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />

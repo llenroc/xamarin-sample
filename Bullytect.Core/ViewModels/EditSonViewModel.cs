@@ -31,14 +31,16 @@ namespace Bullytect.Core.ViewModels
         readonly IParentService _parentService;
         readonly ISocialMediaService _socialMediaService;
         readonly ISchoolService _schoolService;
+        readonly IOAuthService _oauthService;
 
         public EditSonViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IParentService parentService,
-                                ISocialMediaService socialMediaService, AppHelper appHelper, ISchoolService schoolService) : base(userDialogs, mvxMessenger, appHelper)
+                                ISocialMediaService socialMediaService, AppHelper appHelper, IOAuthService oauthService,  ISchoolService schoolService) : base(userDialogs, mvxMessenger, appHelper)
         {
 
             _parentService = parentService;
             _socialMediaService = socialMediaService;
             _schoolService = schoolService;
+            _oauthService = oauthService;
 
             // Refresh Command (Get son Information And All School Names)
             RefreshCommand = ReactiveCommand.CreateFromObservable(() => !string.IsNullOrEmpty(SonToEdit) ?
@@ -271,10 +273,7 @@ namespace Bullytect.Core.ViewModels
 
 					Debug.WriteLine(string.Format("Enable Social Media: {0}", Type));
 
-					var oauthService = DependencyService.Get<IOAuth>();
-					oauthService
-						.authenticate(Provider)
-						.Where(AccessToken => !string.IsNullOrWhiteSpace(AccessToken))
+                    _oauthService.Authenticate(Provider).Where(AccessToken => !string.IsNullOrWhiteSpace(AccessToken))
 						.Subscribe(AccessToken =>
 						{
 							if (index >= 0)

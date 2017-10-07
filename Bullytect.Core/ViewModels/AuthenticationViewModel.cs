@@ -17,6 +17,8 @@ using Xamarin.Forms;
 using Bullytect.Core.Rest.Models.Exceptions;
 using System.Collections.Generic;
 using Bullytect.Core.Helpers;
+using Bullytect.Core.OAuth.Models;
+using Xamarin.Auth;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -26,7 +28,7 @@ namespace Bullytect.Core.ViewModels
         readonly IAuthenticationService _authenticationService;
 
         public AuthenticationViewModel(IAuthenticationService authenticationService,
-                                       IUserDialogs userDialogs, IMvxMessenger mvxMessenger, AppHelper appHelper): base(userDialogs, mvxMessenger, appHelper)
+                                       IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IOAuthService oauthService,  AppHelper appHelper): base(userDialogs, mvxMessenger, appHelper)
         {
             _authenticationService = authenticationService;
 
@@ -51,17 +53,18 @@ namespace Bullytect.Core.ViewModels
 			LoginWithFacebookCommand = ReactiveCommand.CreateFromObservable<Unit, string>(
 				(param) => {
 
-					var oauthService = DependencyService.Get<IOAuth>();
-					return oauthService
-						.authenticate(new FacebookOAuth2())
+                    _userDialogs.ShowLoading(AppResources.Login_Authenticating);
+                            
+                    return oauthService
+                        .Authenticate(new FacebookOAuth2())
                         .Where(AccessToken => !string.IsNullOrEmpty(AccessToken))
-						.Do(_ => _userDialogs.ShowLoading(AppResources.Login_Authenticating))
 						.SelectMany(accessToken => authenticationService.LoginWithFacebook(accessToken))
 						.Do(_ => _userDialogs.HideLoading());
+                    
 				});
 
 
-			LoginWithFacebookCommand.Subscribe(HandleAuthSuccess);
+            LoginWithFacebookCommand.Subscribe(HandleAuthSuccess);
 
 			LoginWithFacebookCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }
@@ -161,8 +164,8 @@ namespace Bullytect.Core.ViewModels
         void HandleAuthSuccess(string jwtToken) {
 			Debug.WriteLine("JWT Token -> " + jwtToken);
 			_userDialogs.ShowSuccess(AppResources.Login_Success);
-            var mvxBundle = new MvxBundle(new Dictionary<string, string> { { "NavigationCommand", "StackClear" } });
-            ShowViewModel<HomeViewModel>(presentationBundle: mvxBundle);
+            //var mvxBundle = new MvxBundle(new Dictionary<string, string> { { "NavigationCommand", "StackClear" } });
+            ShowViewModel<HomeViewModel>();
         }
        
 

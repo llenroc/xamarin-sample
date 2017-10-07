@@ -64,7 +64,6 @@
     <Compile Include="Providers\Localize.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="MainApplication.cs" />
-    <Compile Include="Providers\OAuth.cs" />
     <Compile Include="Presenters\CustomAndroidPresenter.cs" />
     <Compile Include="Renderers\TableViewWithoutBorderRenderer.cs" />
     <Compile Include="Renderers\CustomFontLabelRenderer.cs" />

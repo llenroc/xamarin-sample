@@ -476,7 +476,6 @@
     <Compile Include="Setup.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Providers\Localize.cs" />
-    <Compile Include="Providers\OAuth.cs" />
     <Compile Include="Presenters\CustomPresenter.cs" />
     <Compile Include="Renderers\LoginRenderer.cs" />
     <Compile Include="ThemeColors.cs" />

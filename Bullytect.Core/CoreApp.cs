@@ -20,6 +20,8 @@ using MvvmCross.Core.Navigation;
 using Bullytect.Core.ViewModels;
 using Bullytect.Utils.Helpers;
 using Bullytect.Core.Helpers;
+using Bullytect.Core.OAuth.Services.Impl;
+using Bullytect.Core.OAuth.Services;
 
 namespace Bullytect.Core
 {
@@ -91,6 +93,7 @@ namespace Bullytect.Core
 
             // Register App Helper
             Mvx.LazyConstructAndRegisterSingleton<AppHelper, AppHelper>();
+            Mvx.LazyConstructAndRegisterSingleton<IOAuthService, IOAuthServiceImpl>();
 
 			ImageService.Instance.Initialize(new Configuration
 			{
