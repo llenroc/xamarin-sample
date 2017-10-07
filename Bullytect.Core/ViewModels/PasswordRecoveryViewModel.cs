@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Reactive;
 using Acr.UserDialogs;
+using Bullytect.Core.Helpers;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Services;
 using MvvmCross.Plugins.Messenger;
@@ -14,18 +16,15 @@ namespace Bullytect.Core.ViewModels
         readonly IParentService _parentService;
 
         public PasswordRecoveryViewModel(IParentService parentService,
-                                         IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IImagesService imagesService): base(userDialogs, mvxMessenger, imagesService)
+                                         IUserDialogs userDialogs, IMvxMessenger mvxMessenger, AppHelper appHelper): base(userDialogs, mvxMessenger, appHelper)
         {
             _parentService = parentService;
 
-            ResetPasswordCommand = ReactiveCommand.CreateFromObservable<string, string>((_) => _parentService.ResetPassword(_email));
+            ResetPasswordCommand = ReactiveCommand.CreateFromObservable<Unit, string>((_) => _parentService.ResetPassword(_email));
 
             ResetPasswordCommand.Subscribe((_) => {
 				Debug.WriteLine(String.Format("Password Reset Request"));
-                var toastConfig = new ToastConfig(AppResources.Password_Recovery_Request_Completed);
-				toastConfig.SetDuration(3000);
-				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
-				_userDialogs.Toast(toastConfig);
+                _appHelper.Toast(AppResources.Password_Recovery_Request_Completed, System.Drawing.Color.FromArgb(12, 131, 193));
 				ShowViewModel<AuthenticationViewModel>();
             });
 
@@ -50,7 +49,7 @@ namespace Bullytect.Core.ViewModels
 
         #region commands
 
-        public ReactiveCommand<string, string> ResetPasswordCommand { get; protected set; }
+        public ReactiveCommand<Unit, string> ResetPasswordCommand { get; protected set; }
 
 		#endregion
     }

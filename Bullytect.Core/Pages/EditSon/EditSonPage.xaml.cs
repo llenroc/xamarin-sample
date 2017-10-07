@@ -1,6 +1,7 @@
 ﻿
 using System;
 using Bullytect.Core.Pages.AddSchool;
+using Bullytect.Core.Pages.EditSon.Popup;
 using Bullytect.Core.ViewModels;
 using MvvmCross.Forms.Core;
 using Plugin.Media.Abstractions;
@@ -19,12 +20,6 @@ namespace Bullytect.Core.Pages.EditSon
 
 		protected override void OnAppearing()
 		{
-            if(!string.IsNullOrWhiteSpace(ViewModel.SonToEdit)){
-
-                if(ViewModel.CurrentSon == null)
-                    RefreshLayout.RefreshCommand?.Execute(null);
-                
-            }
 
             Header.AddSchoolAction = async () =>  {
                 var page = new AddSchoolPopup();
@@ -46,6 +41,13 @@ namespace Bullytect.Core.Pages.EditSon
 			profileImage.Source = ImageSource.FromStream(() => NewProfileImage.GetStream());
 		}
 
+        async void OnSocialMediaInfoAsync(object sender, EventArgs args)
+        {
+            var page = new SocialMediaInfoPopup();
+            page.BindingContext = ViewModel;
+            await PopupNavigation.PushAsync(page);
+
+        }
 
     }
 }

@@ -10,13 +10,13 @@ namespace Bullytect.Core.Rest.Models.Response
         [JsonProperty("identity")]
         public string Identity { get; set; }
 
-        [JsonProperty("accessToken")]
+        [JsonProperty("access_token")]
         public string AccessToken { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
-        [JsonProperty("invalidToken")]
+        [JsonProperty("invalid_token")]
         public bool InvalidToken { get; set; }
 
         [JsonProperty("user")]

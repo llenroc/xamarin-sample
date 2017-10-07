@@ -4,8 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     x:Class="Bullytect.Core.Pages.EditSon.Templates.EditSonHeader">
+    <ContentPage.Resources>
+           <ResourceDictionary>
+                <converters:IsNullToBoolConverter x:Key="IsNullToBoolConverter" />
+            </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentView.Content>
 
         <Grid 
@@ -35,6 +42,7 @@
                 x:Name="PageTitle"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
+                Text="{ Binding PageTitle }"
                 FontSize="18" 
                 TextColor="{ DynamicResource CustomNavBarTextColor }">
                 <Label.TranslationY>
@@ -43,6 +51,51 @@
                         iOS="10" 
                         Android="0" />
                 </Label.TranslationY>
+            </Label>
+
+
+            <!-- Refresh Action -->
+            <Label 
+                
+                HorizontalOptions="End"
+                TranslationY="0"
+                Margin="20,0"
+                VerticalOptions="Center"
+                Text="{ x:Static helper:FontAwesomeFont.Refresh } " 
+                FontSize="22"
+                TextColor="{ DynamicResource CustomNavBarTextColor }" 
+                Style="{ StaticResource FontIcon }">
+                <Label.TranslationY>
+                    <OnPlatform 
+                        x:TypeArguments="x:Double" 
+                        iOS="10" 
+                        Android="0" />
+                </Label.TranslationY>
+                <Label.GestureRecognizers>
+                     <TapGestureRecognizer Command="{ Binding RefreshCommand }" NumberOfTapsRequired="1" /> 
+                </Label.GestureRecognizers>
+
+                <Label.Triggers>
+                    <DataTrigger
+                        TargetType="Label"
+                        Binding="{Binding IsBusy}"
+                        Value="True">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger 
+                        TargetType="Label"
+                        Binding="{Binding SonToEdit,  Converter={StaticResource IsNullToBoolConverter}}"
+                        Value="True">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger
+                        TargetType="Label"
+                        Binding="{Binding ErrorOccurred}"
+                        Value="False">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                </Label.Triggers>
+                
             </Label>
 
             <Label 

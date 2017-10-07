@@ -641,4 +641,13 @@ and we will recover it for you. </value>
     <value>Change profile picture</value>
     <comment>Profile Image Change</comment>
   </data>
+  <data name="EditSon.Social.Media.Info.Title" xml:space="preserve">
+    <value>How to enable social media?</value>
+    <comment>EditSon Social Media Info Title</comment>
+  </data>
+<data name="EditSon.Social.Media.Info.Text" xml:space="preserve">
+    <value>Unconfigured social media or an invalid access token will appear disabled. In this case, I changed the status of the switch to the desired social medium and enter the child's credentials in the login screen that will appear next.</value>
+    <comment>EditSon Social Media Info Title</comment>
+  </data>
+	
 </root>

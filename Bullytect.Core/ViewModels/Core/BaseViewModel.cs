@@ -17,24 +17,36 @@ namespace Bullytect.Core.ViewModels
     using Plugin.Connectivity;
     using ReactiveUI;
     using Bullytect.Core.Rest.Models.Exceptions;
-    using System.IO;
     using System.Reactive.Linq;
-    using System.Threading.Tasks;
-    using Bullytect.Core.Services;
-    using Plugin.Media.Abstractions;
+    using Bullytect.Core.Helpers;
+    using System.Reactive;
 
     public abstract class BaseViewModel : MvxReactiveViewModel
     {
 
         protected readonly IUserDialogs _userDialogs;
         protected readonly IMvxMessenger _mvxMessenger;
-        protected readonly IImagesService _imagesService;
+        protected readonly AppHelper _appHelper;
 
-        public BaseViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IImagesService imagesService)
+        public BaseViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger, AppHelper appHelper)
         {
             _userDialogs = userDialogs;
             _mvxMessenger = mvxMessenger;
-            _imagesService = imagesService;
+            _appHelper = appHelper;
+
+
+			SignOutCommand = ReactiveCommand
+                .CreateFromObservable<Unit, bool>((_) => _appHelper.RequestConfirmation(AppResources.Profile_Confirm_SignOut));
+
+			SignOutCommand.Subscribe((_) =>
+			{
+                Bullytect.Core.Config.Settings.AccessToken = null;
+				//var mvxBundle = new MvxBundle(new Dictionary<string, string> { { "NavigationCommand", "StackClear" } });
+				ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter()
+				{
+					ReasonForAuthentication = AuthenticationViewModel.SIGN_OUT
+				});
+			});
         }
 
         Dictionary<string, string> _fieldErrors = new Dictionary<string, string>();
@@ -93,31 +105,18 @@ namespace Bullytect.Core.ViewModels
 
             if (ex is TimeoutOperationException)
             {
-                var toastConfig = new ToastConfig(AppResources.Common_Timeout_Operation);
-                toastConfig.SetDuration(3000);
-                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
-
-                _userDialogs.Toast(toastConfig);
+               _appHelper.Toast(AppResources.Common_Timeout_Operation, System.Drawing.Color.FromArgb(255, 0, 0));
 
             }
             else if (ex is HttpRequestException)
             {
                 ErrorOccurred = true;
-
-                var toastConfig = new ToastConfig(AppResources.Common_Server_Connection_Error);
-                toastConfig.SetDuration(3000);
-                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
-
-                _userDialogs.Toast(toastConfig);
+                _appHelper.Toast(AppResources.Common_Server_Connection_Error, System.Drawing.Color.FromArgb(255, 0, 0));
 
 			}
             else if (ex is GenericErrorException) {
                 ErrorOccurred = true;
-                var toastConfig = new ToastConfig(AppResources.Common_Server_Error);
-				toastConfig.SetDuration(3000);
-				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
-
-				_userDialogs.Toast(toastConfig);
+                _appHelper.Toast(AppResources.Common_Server_Error, System.Drawing.Color.FromArgb(255, 0, 0));
             }
 			else if (ex is DataInvalidException)
 			{
@@ -146,37 +145,12 @@ namespace Bullytect.Core.ViewModels
             }
         }
 
-		protected IObservable<MediaFile> PickPhotoStream()
-		{
-
-            return Observable.FromAsync<string>((_) => _userDialogs.ActionSheetAsync(
-                AppResources.Profile_Select_Profile_Image,
-                AppResources.Common_Cancel_Operation, null, null,
-                new string[] { AppResources.Profile_Select_Profile_Image_From_Camera, AppResources.Profile_Select_Profile_Image_From_Galery }))
-                             .Where((action => !action.Equals(AppResources.Common_Cancel_Operation)))
-                             .SelectMany((action) =>
-                             {
-
-                                 Task<MediaFile> photoSelectedTask;
-                                 if (action.Equals(AppResources.Profile_Select_Profile_Image_From_Camera))
-                                 {
-                                     photoSelectedTask = _imagesService.TakePhotoFromFrontCamera();
-                                 }
-                                 else
-                                 {
-                                     photoSelectedTask = _imagesService.PickPhoto();
-                                 }
-
-                                return Observable.FromAsync<MediaFile>((_) => photoSelectedTask);
-                             });
-
-
-		}
-
-
+		
         #region commmands 
 
             public ICommand CloseCommand => new MvxCommand(() => Close(this));
+
+		    public ReactiveCommand<Unit, bool> SignOutCommand { get; protected set; }
 
         #endregion
 

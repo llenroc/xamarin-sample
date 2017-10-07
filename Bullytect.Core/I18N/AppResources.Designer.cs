@@ -826,5 +826,17 @@ namespace Bullytect.Core.I18N {
                 return ResourceManager.GetString("Profile.Image.Change", resourceCulture);
             }
         }
+        
+        internal static string EditSon_Social_Media_Info_Title {
+            get {
+                return ResourceManager.GetString("EditSon.Social.Media.Info.Title", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Social_Media_Info_Text {
+            get {
+                return ResourceManager.GetString("EditSon.Social.Media.Info.Text", resourceCulture);
+            }
+        }
     }
 }

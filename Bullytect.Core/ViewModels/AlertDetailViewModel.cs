@@ -3,6 +3,7 @@ using System;
 using System.Reactive.Linq;
 using System.Windows.Input;
 using Acr.UserDialogs;
+using Bullytect.Core.Helpers;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
@@ -17,15 +18,14 @@ namespace Bullytect.Core.ViewModels
         readonly IAlertService _alertService;
 
 
-        public AlertDetailViewModel(IUserDialogs userDialogs, 
-                                    IMvxMessenger mvxMessenger, IImagesService imagesService, IAlertService alertService) : base(userDialogs, mvxMessenger, imagesService)
+        public AlertDetailViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger,
+                                    IAlertService alertService, AppHelper appHelper) : base(userDialogs, mvxMessenger, appHelper)
         {
             _alertService = alertService;
 
             DeleteAlertCommand = ReactiveCommand
-                .CreateFromObservable(() =>  Observable.FromAsync<bool>((_) => _userDialogs.ConfirmAsync(new ConfirmConfig() {
-                    Title = AppResources.Alert_Confirm_Clear
-            })).Where((confirmed) => confirmed).SelectMany((_) => alertService.DeleteAlertOfSon(SonIdentity, Identity)).Finally(() => Close(this)));
+                .CreateFromObservable(() =>  _appHelper.RequestConfirmation(AppResources.Alert_Confirm_Clear)
+                                      .SelectMany((_) => alertService.DeleteAlertOfSon(SonIdentity, Identity)).Finally(() => Close(this)));
             
             DeleteAlertCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Common_Loading));
 

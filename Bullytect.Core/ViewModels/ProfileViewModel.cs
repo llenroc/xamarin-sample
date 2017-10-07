@@ -16,6 +16,7 @@ using Bullytect.Core.Exceptions;
 using System.IO;
 using Plugin.Media.Abstractions;
 using System.Reactive;
+using Bullytect.Core.Helpers;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -26,11 +27,11 @@ namespace Bullytect.Core.ViewModels
 
 
         public ProfileViewModel(IParentService parentService, IUserDialogs userDialogs,
-                                IMvxMessenger mvxMessenger, IImagesService imagesService) : base(userDialogs, mvxMessenger, imagesService)
+                                IMvxMessenger mvxMessenger, AppHelper appHelper) : base(userDialogs, mvxMessenger, appHelper)
         {
             _parentService = parentService;
 
-            SaveChangesCommand = ReactiveCommand.CreateFromObservable<string, ParentEntity>((param) =>
+            SaveChangesCommand = ReactiveCommand.CreateFromObservable<Unit, ParentEntity>((param) =>
             {
 
                 return NewProfileImage != null ?
@@ -58,7 +59,7 @@ namespace Bullytect.Core.ViewModels
 			LoadProfileCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
             DeleteAccountCommand = ReactiveCommand
-                .CreateFromObservable<string, string>((param) =>
+                .CreateFromObservable<Unit, string>((param) =>
                 {
                     return Observable.FromAsync<bool>((_) => _userDialogs.ConfirmAsync(new ConfirmConfig()
                     {
@@ -70,39 +71,13 @@ namespace Bullytect.Core.ViewModels
                 });
 
 
-            DeleteAccountCommand.Subscribe((_) => {
+            DeleteAccountCommand.Subscribe((_) => _appHelper.Toast(AppResources.Profile_Account_Deleted, System.Drawing.Color.FromArgb(12, 131, 193)));
 
-				var toastConfig = new ToastConfig(AppResources.Profile_Account_Deleted);
-				toastConfig.SetDuration(3000);
-				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
-				_userDialogs.Toast(toastConfig);
-
-            });
 
 			DeleteAccountCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
 
-			SignOutCommand = ReactiveCommand
-                .CreateFromObservable<string, bool>((param) =>
-				{
-                    return Observable.FromAsync<bool>((_) => _userDialogs.ConfirmAsync(new ConfirmConfig()
-                    {
-                        Title = AppResources.Profile_Confirm_SignOut
-
-                    })).Where((confirmed) => confirmed);
-				});
-
-            SignOutCommand.Subscribe((_) =>
-            {
-                Settings.AccessToken = null;
-                //var mvxBundle = new MvxBundle(new Dictionary<string, string> { { "NavigationCommand", "StackClear" } });
-                ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter()
-                {
-                    ReasonForAuthentication = AuthenticationViewModel.SIGN_OUT
-                });
-            });
-
-            TakePhotoCommand = ReactiveCommand.CreateFromObservable<string, MediaFile>((param) => PickPhotoStream());
+            TakePhotoCommand = ReactiveCommand.CreateFromObservable<Unit, MediaFile>((_) => appHelper.PickPhotoStream());
 			
 
             TakePhotoCommand.Subscribe((ImageStream) => {
@@ -156,15 +131,13 @@ namespace Bullytect.Core.ViewModels
         #region commands
 
 
-        public ReactiveCommand<string, ParentEntity> SaveChangesCommand { get; protected set; }
+        public ReactiveCommand<Unit, ParentEntity> SaveChangesCommand { get; protected set; }
 
-        public ReactiveCommand<string, string> DeleteAccountCommand { get; protected set; }
+        public ReactiveCommand<Unit, string> DeleteAccountCommand { get; protected set; }
 
         public ReactiveCommand<Unit, ParentEntity> LoadProfileCommand { get; protected set; }
 
-        public ReactiveCommand<string, bool> SignOutCommand { get; protected set; }
-
-        public ReactiveCommand<string, MediaFile> TakePhotoCommand { get; set; }
+        public ReactiveCommand<Unit, MediaFile> TakePhotoCommand { get; set; }
 
 
 		#endregion
@@ -172,26 +145,18 @@ namespace Bullytect.Core.ViewModels
 		void AccountUpdated(ParentEntity parent)
 		{
 			Debug.WriteLine(String.Format("Parent: {0}", parent.ToString()));
-            var toastConfig = new ToastConfig(AppResources.Profile_Account_Updated);
-			toastConfig.SetDuration(3000);
-			toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
-			_userDialogs.Toast(toastConfig);
+            _appHelper.Toast(AppResources.Profile_Account_Updated, System.Drawing.Color.FromArgb(12, 131, 193));
 		}
 
 		protected override void HandleExceptions(Exception ex)
 		{
             if (ex is UploadImageFailException)
             {
-                var toastConfig = new ToastConfig(AppResources.Profile_Updating_Profile_Image_Failed);
-                toastConfig.SetDuration(3000);
-                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
-                _userDialogs.Toast(toastConfig);
+                _appHelper.Toast(AppResources.Profile_Updating_Profile_Image_Failed, System.Drawing.Color.FromArgb(255, 0, 0));
+
             }
             else if (ex is CanNotTakePhotoFromCameraException) {
-                var toastConfig = new ToastConfig(AppResources.Profile_Can_Not_Take_Photo_From_Camera);
-                toastConfig.SetDuration(3000);
-                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
-                _userDialogs.Toast(toastConfig);
+                _appHelper.Toast(AppResources.Profile_Can_Not_Take_Photo_From_Camera, System.Drawing.Color.FromArgb(255, 0, 0));
             }
             else
             {

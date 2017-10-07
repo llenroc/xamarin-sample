@@ -10,7 +10,6 @@
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
-    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
     xmlns:templates="clr-namespace:Bullytect.Core.Pages.EditSon.Templates"
     xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
@@ -18,6 +17,7 @@
     xmlns:extended="clr-namespace:Bullytect.Core.Pages.Common.Extended"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:controls="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
+    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
     x:Class="Bullytect.Core.Pages.EditSon.EditSonPage"
     x:TypeArguments="viewModels:EditSonViewModel"
     x:Name="Root">
@@ -40,6 +40,9 @@
                 <x:String x:Key="youtubeKey">YOUTUBE</x:String>
             </ResourceDictionary>
     </ContentPage.Resources>
+
+
+
 	<ContentPage.Content>
 
 
@@ -53,54 +56,52 @@
             <!-- CUSTOM NAVBAR -->
             <templates:EditSonHeader Grid.Row="0" x:Name="Header" />
 
-
-            <controls:PullToRefreshLayout
-                Grid.Row="1"
-                x:Name="RefreshLayout"
-                RefreshCommand="{Binding RefreshCommand}"
-                IsRefreshing="{Binding IsBusy}"
-                RefreshColor="{DynamicResource BasePageColor}"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
-
-                <StackLayout
+            <StackLayout
+                    Grid.Row="1"
+                    IsVisible="{ Binding IsVisible, Converter = { StaticResource InverseBoolConverter }}"
+                    Padding="20"
                     HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
-                    Padding="20,10">
+                    VerticalOptions="FillAndExpand">
 
-                    <ScrollView VerticalOptions="StartAndExpand">
+                <ScrollView VerticalOptions="StartAndExpand" >
 
-                      <!-- Profile Image Section -->
-                      <StackLayout Padding="5">
+                    <StackLayout 
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="StartAndExpand"
+                        Spacing="10">
 
-                            <Label
-                                LineBreakMode="WordWrap"
-                                Text="{i18n:Translate Profile.Image.Section}"
-                                TextColor="{ DynamicResource AccentColor }"
-                                VerticalTextAlignment="Center"
-                                FontSize="27">
-                              <Label.FontSize>
-                                <OnIdiom
-                                    x:TypeArguments="x:Double"
-                                    Phone="27"
-                                    Tablet="37"/>
-                              </Label.FontSize>
-                            </Label>
+                          <!-- Profile Image Section -->
+                          <StackLayout
+                                Spacing="10">
 
-                            <BoxView
-                                Style="{StaticResource BrandNameOrnamentStyle}"
-                                BackgroundColor="{DynamicResource AccentColor}"
-                                Margin="10, 0"/>
-                      
-                      </StackLayout>
-                      
-                      <StackLayout Orientation="Horizontal" Spacing="10">
-                        
-                          <!-- AVATAR -->
-                           <ffimageloading:CachedImage   
+                                <Label
+                                    LineBreakMode="WordWrap"
+                                    Text="{i18n:Translate Profile.Image.Section}"
+                                    TextColor="{ DynamicResource AccentColor }"
+                                    VerticalTextAlignment="Center"
+                                    FontSize="17">
+                                  <Label.FontSize>
+                                    <OnIdiom
+                                        x:TypeArguments="x:Double"
+                                        Phone="17"
+                                        Tablet="27"/>
+                                  </Label.FontSize>
+                                </Label>
+
+                                <BoxView
+                                    Style="{StaticResource BrandNameOrnamentStyle}"
+                                    BackgroundColor="{DynamicResource AccentColor}"
+                                    Margin="10, 0"/>
+                          
+                          </StackLayout>
+                          
+                          <StackLayout Orientation="Horizontal" Spacing="10">
+                            
+                              <!-- AVATAR -->
+                               <ffimageloading:CachedImage 
                                     x:Name="profileImage"
-                                    WidthRequest="100"
-                                    HeightRequest="100"
+                                    WidthRequest="70"
+                                    HeightRequest="70"
                                     CacheType="Disk"
                                     CacheDuration="30"
                                     ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
@@ -109,339 +110,387 @@
                                         <fftransformations:CircleTransformation BorderSize="5" BorderHexColor="#6BC7E0" />
                                     </ffimageloading:CachedImage.Transformations>
                                 </ffimageloading:CachedImage>
-                          
-                        
-                          <Label
-                            LineBreakMode="WordWrap"
-                            Text="{i18n:Translate Profile.Image.Change}"
-                            TextColor="{ DynamicResource AccentColor }"
-                            VerticalTextAlignment="Center"
-                            FontSize="19">
-                          
-                            <Label.FontSize>
-                              <OnIdiom
-                                x:TypeArguments="x:Double" Phone="19" Tablet="22"/>
-                            </Label.FontSize>
-                          </Label>
-                        
-                          <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer 
-                              Command="{ Binding TakePhotoCommand }" 
-                              NumberOfTapsRequired="1" />
-                          </StackLayout.GestureRecognizers>
+                              
+                            
+                              <Label
+                                  LineBreakMode="WordWrap"
+                                  Text="{i18n:Translate Profile.Image.Change}"
+                                  TextColor="{ DynamicResource AccentColor }"
+                                  VerticalTextAlignment="Center"
+                                   FontSize="17">
+                                  
+                                    <Label.FontSize>
+                                      <OnIdiom
+                                        x:TypeArguments="x:Double" Phone="17" Tablet="20"/>
+                                    </Label.FontSize>
+                              </Label>
+                            
+                              <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                  Command="{ Binding TakePhotoCommand }" 
+                                  NumberOfTapsRequired="1" />
+                              </StackLayout.GestureRecognizers>
 
-                        </StackLayout>
-
-
-                        <!-- Profile General Information Section -->
-                        <StackLayout Padding="5">
-
-                            <Label
-                                LineBreakMode="WordWrap"
-                                Text="{i18n:Translate EditSon.General.Section.Title}"
-                                TextColor="{ DynamicResource AccentColor }"
-                                VerticalTextAlignment="Center"
-                                FontSize="27">
-                                <Label.FontSize> 
-                                    <OnIdiom 
-                                        x:TypeArguments="x:Double"
-                                        Phone="27"
-                                        Tablet="37"/>
-                                </Label.FontSize>
-                            </Label>
-
-                            <BoxView 
-                                Style="{StaticResource BrandNameOrnamentStyle}"
-                                BackgroundColor="{DynamicResource AccentColor}"/>
-                        </StackLayout>
-
-                        <!-- Firstname -->
-                        <StackLayout>
-
-                            <Entry
-                                Placeholder="{ i18n:Translate Common.Placeholder.Firstname }"
-                                VerticalOptions="StartAndExpand"
-                                Style="{StaticResource ArtinaProfileEntryStyle}"
-                                Text="{ Binding CurrentSon.FirstName }"/>
-
-                            <Label
-                                Text="{Binding Path=FieldErrors,
-                                Converter={StaticResource ValidationErrorFormatValueConverter},
-                                ConverterParameter={StaticResource firstNameKey}}"
-                                IsVisible="{Binding Path=FieldErrors, 
-                                Converter={StaticResource ContainsKeyVisibilityConverter},
-                                ConverterParameter={StaticResource firstNameKey}}"
-                                Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-
-                        </StackLayout>
-
-                        <!-- lastname -->
-                        <StackLayout>
-
-                            <Entry
-                                Placeholder="{ i18n:Translate Common.Placeholder.LastName }"
-                                VerticalOptions="StartAndExpand"
-                                Style="{StaticResource ArtinaProfileEntryStyle}"
-                                Text="{ Binding CurrentSon.Lastname }"/>
-
-                            <Label
-                                Text="{Binding Path=FieldErrors,
-                                Converter={StaticResource ValidationErrorFormatValueConverter},
-                                ConverterParameter={StaticResource lastNameKey}}"
-                                IsVisible="{Binding Path=FieldErrors,
-                                Converter={StaticResource ContainsKeyVisibilityConverter},
-                                ConverterParameter={StaticResource lastNameKey}}"
-                                Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-
-                        </StackLayout>
-
-                        <!-- shools -->
-                        <StackLayout>
-
-                            <Picker ItemsSource="{Binding Schools}" IsEnabled="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionNotEmptyConverter }}"/>
-
-                             <common:RoundedLabel
-                                IsVisible="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionEmptyConverter}}"
-                                HorizontalOptions="Center"
-                                RoundedLabelText="{ i18n:Translate EditSon.School.Not.Found }"
-                                RoundedLabelBackgroundColor="{ DynamicResource WarningColor }"/>
-
-                        </StackLayout>
+                           </StackLayout>
 
 
-                        <!-- birthdate -->
+                            <!-- Profile General Information Section -->
+                            <StackLayout>
 
-                        <StackLayout>
+                                <Label
+                                    LineBreakMode="WordWrap"
+                                    Text="{i18n:Translate EditSon.General.Section.Title}"
+                                    TextColor="{ DynamicResource AccentColor }"
+                                    VerticalTextAlignment="Center"
+                                    FontSize="17">
+                                    <Label.FontSize> 
+                                        <OnIdiom 
+                                            x:TypeArguments="x:Double"
+                                            Phone="17"
+                                            Tablet="27"/>
+                                    </Label.FontSize>
+                                </Label>
 
-                            <DatePicker 
-                                VerticalOptions="CenterAndExpand" >
+                                <BoxView 
+                                    Style="{StaticResource BrandNameOrnamentStyle}"
+                                    BackgroundColor="{DynamicResource AccentColor}"/>
+                            </StackLayout>
 
-                                <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
-                                    <DatePicker.MinimumDate>
+                            <!-- Firstname -->
+                            <StackLayout>
+
+                                <Entry
+                                    Placeholder="{ i18n:Translate Common.Placeholder.Firstname }"
+                                    VerticalOptions="StartAndExpand"
+                                    Style="{StaticResource ArtinaProfileEntryStyle}"
+                                    Text="{ Binding CurrentSon.FirstName }"/>
+
+                                <Label
+                                    Text="{Binding Path=FieldErrors,
+                                    Converter={StaticResource ValidationErrorFormatValueConverter},
+                                    ConverterParameter={StaticResource firstNameKey}}"
+                                    IsVisible="{Binding Path=FieldErrors, 
+                                    Converter={StaticResource ContainsKeyVisibilityConverter},
+                                    ConverterParameter={StaticResource firstNameKey}}"
+                                    Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+
+                            </StackLayout>
+
+                            <!-- lastname -->
+                            <StackLayout>
+
+                                <Entry
+                                    Placeholder="{ i18n:Translate Common.Placeholder.LastName }"
+                                    VerticalOptions="StartAndExpand"
+                                    Style="{StaticResource ArtinaProfileEntryStyle}"
+                                    Text="{ Binding CurrentSon.LastName }"/>
+
+                                <Label
+                                    Text="{Binding Path=FieldErrors,
+                                    Converter={StaticResource ValidationErrorFormatValueConverter},
+                                    ConverterParameter={StaticResource lastNameKey}}"
+                                    IsVisible="{Binding Path=FieldErrors,
+                                    Converter={StaticResource ContainsKeyVisibilityConverter},
+                                    ConverterParameter={StaticResource lastNameKey}}"
+                                    Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+
+                            </StackLayout>
+
+                            <!-- shools -->
+                            <StackLayout>
+
+                                <Picker ItemsSource="{Binding Schools}" IsEnabled="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionNotEmptyConverter }}"/>
+
+                                 <common:RoundedLabel
+                                    IsVisible="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionEmptyConverter}}"
+                                    HorizontalOptions="Center"
+                                    RoundedLabelText="{ i18n:Translate EditSon.School.Not.Found }"
+                                    RoundedLabelBackgroundColor="{ DynamicResource WarningColor }"/>
+
+                            </StackLayout>
+
+
+                            <!-- birthdate -->
+
+                            <StackLayout>
+
+                                <DatePicker 
+                                    VerticalOptions="CenterAndExpand" >
+
+                                    <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                                        <DatePicker.MinimumDate>
+                                            <sys:DateTime x:FactoryMethod="Parse">
+                                            <x:Arguments>
+                                                <x:String>Jan 1 1970</x:String>
+                                            </x:Arguments>
+                                        </sys:DateTime>
+                                    </DatePicker.MinimumDate>
+                                    <DatePicker.MaximumDate>
                                         <sys:DateTime x:FactoryMethod="Parse">
-                                        <x:Arguments>
-                                            <x:String>Jan 1 1970</x:String>
-                                        </x:Arguments>
-                                    </sys:DateTime>
-                                </DatePicker.MinimumDate>
-                                <DatePicker.MaximumDate>
-                                    <sys:DateTime x:FactoryMethod="Parse">
-                                        <x:Arguments>
-                                            <x:String>Dec 31 2050</x:String>
-                                        </x:Arguments>
-                                    </sys:DateTime>
-                                </DatePicker.MaximumDate>
-                            </DatePicker>
+                                            <x:Arguments>
+                                                <x:String>Dec 31 2050</x:String>
+                                            </x:Arguments>
+                                        </sys:DateTime>
+                                    </DatePicker.MaximumDate>
+                                </DatePicker>
 
-                            <Label
-                                Text="{Binding Path=FieldErrors,  
-                                Converter={StaticResource ValidationErrorFormatValueConverter},
-                                ConverterParameter={StaticResource birthdateKey}}"
-                                IsVisible="{Binding Path=FieldErrors,
-                                Converter={StaticResource ContainsKeyVisibilityConverter},
-                                ConverterParameter={StaticResource birthdateKey}}"
-                            Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+                                <Label
+                                    Text="{Binding Path=FieldErrors,  
+                                    Converter={StaticResource ValidationErrorFormatValueConverter},
+                                    ConverterParameter={StaticResource birthdateKey}}"
+                                    IsVisible="{Binding Path=FieldErrors,
+                                    Converter={StaticResource ContainsKeyVisibilityConverter},
+                                    ConverterParameter={StaticResource birthdateKey}}"
+                                Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+
+                            </StackLayout>
+
+                           <StackLayout Padding="10" Orientation="Horizontal">
+
+                                <StackLayout HorizontalOptions="StartAndExpand" >
+
+                                    <Label
+                                        LineBreakMode="WordWrap"
+                                        Text="{i18n:Translate EditSon.RRSS.Section.Title}"
+                                        TextColor="{ DynamicResource AccentColor }"
+                                        VerticalTextAlignment="Center"
+                                        FontSize="17">
+                                        <Label.FontSize> 
+                                            <OnIdiom 
+                                                x:TypeArguments="x:Double"
+                                                Phone="17"
+                                                Tablet="27"/>
+                                        </Label.FontSize>
+                                    </Label>
+
+                                    <BoxView 
+                                        Style="{StaticResource BrandNameOrnamentStyle}"
+                                        BackgroundColor="{DynamicResource AccentColor}"/>
+
+                                </StackLayout>
+
+                                <Label
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="CenterAndExpand"
+                                    Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                                    FontFamily="{ StaticResource IconsFontFamily }"
+                                    TextColor="{ DynamicResource AccentColor }">
+                                        <Label.FontSize>
+                                            <OnIdiom 
+                                                x:TypeArguments="x:Double"
+                                                Phone="20" 
+                                                Tablet="20" />
+                                        </Label.FontSize> 
+
+
+                                        <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnSocialMediaInfoAsync"
+                                                     NumberOfTapsRequired="1" /> 
+                                        </Label.GestureRecognizers>
+                                </Label>
+                                
+                            
+                                
+                            </StackLayout>
+
+                            <!-- Facebook -->
+
+                            <Grid ColumnSpacing="10" Padding="5">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- RRSS Name -->
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Start"
+                                    Spacing="0">
+
+                                        <Label
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Start"
+                                            Text="{ x:Static helper:FontAwesomeFont.Facebook }"
+                                            FontFamily="{ StaticResource IconsFontFamily }"
+                                            TextColor="{ DynamicResource AccentColor }">
+
+                                            <Label.FontSize>
+                                                <OnIdiom 
+                                                    x:TypeArguments="x:Double" 
+                                                    Phone="15" 
+                                                    Tablet="20" />
+                                            </Label.FontSize> 
+
+                                         </Label>
+
+                                           <Label
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="Start"
+                                                Text="{i18n:Translate Common.RRSS.Facebook}"
+                                                 TextColor="{ DynamicResource AccentColor }">
+                                                <Label.FontSize>
+                                                    <OnIdiom 
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="15" 
+                                                        Tablet="20" />
+                                                 </Label.FontSize> 
+                                           </Label>
+                                                
+                                       </StackLayout>
+
+
+                                    <Switch 
+                                        Grid.Column="1"
+                                        VerticalOptions="Center" 
+                                        HorizontalOptions="End" IsToggled="{Binding Path=CurrentSocialMedia,  
+                                                    Converter={StaticResource SocialMediaFormatValueConverter},
+                                                    ConverterParameter={StaticResource facebookKey}}">
+
+                                        <Switch.Behaviors>
+                                            <behaviors:EventHandlerBehavior EventName="Toggled">
+                                                <behaviors:InvokeCommandAction
+                                                    Command="{Binding ToggleFacebookSocialMediaCommand}"
+                                                    Converter="{StaticResource SwitchChangeEventArgsConverter}"/>
+                                                </behaviors:EventHandlerBehavior>
+                                        </Switch.Behaviors>
+                                    </Switch>
+                            </Grid>
+
+                            <!-- Instagram -->
+                            <Grid ColumnSpacing="10" Padding="5">
+
+                                   <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout
+                                        Grid.Column="0"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Start"
+                                        Spacing="0">
+
+                                            <Label
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="Start"
+                                                Text="{ x:Static helper:FontAwesomeFont.Instagram }"
+                                                FontFamily="{ StaticResource IconsFontFamily }"
+                                                TextColor="{ DynamicResource AccentColor }">
+
+                                                <Label.FontSize>
+                                                    <OnIdiom 
+                                                        x:TypeArguments="x:Double" 
+                                                        Phone="15" Tablet="20" />
+                                                </Label.FontSize>
+                                            </Label>
+
+                                            <Label
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="Start"
+                                                Text="{i18n:Translate Common.RRSS.Instagram}"
+                                                TextColor="{ DynamicResource AccentColor }">
+                                                <Label.FontSize>
+                                                    <OnIdiom 
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="15" 
+                                                        Tablet="20" />
+                                                </Label.FontSize> 
+                                            </Label>
+                                    </StackLayout>
+
+                                    <Switch 
+                                        Grid.Column="1"  
+                                        VerticalOptions="Center" 
+                                        HorizontalOptions="End" 
+                                        IsToggled="{Binding Path=CurrentSocialMedia,  
+                                                    Converter={StaticResource SocialMediaFormatValueConverter},
+                                                    ConverterParameter={StaticResource instagramKey}}">
+                                        <Switch.Behaviors>
+                                            <behaviors:EventHandlerBehavior EventName="Toggled">
+                                                <behaviors:InvokeCommandAction 
+                                                    Command="{Binding ToggleInstagramSocialMediaCommand}"
+                                                    Converter="{StaticResource SwitchChangeEventArgsConverter}"/>
+                                            </behaviors:EventHandlerBehavior>
+                                        </Switch.Behaviors>
+                                    </Switch>
+                            </Grid>
+
+                            <!-- Youtube -->
+                            <Grid ColumnSpacing="10" Padding="5">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Start"
+                                    Spacing="0">
+
+                                        <Label
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{ x:Static helper:FontAwesomeFont.Youtube }"
+                                            FontFamily="{ StaticResource IconsFontFamily }"
+                                            TextColor="{ DynamicResource AccentColor }">
+
+                                            <Label.FontSize>
+                                                <OnIdiom 
+                                                    x:TypeArguments="x:Double" 
+                                                    Phone="15" 
+                                                    Tablet="20" />
+                                            </Label.FontSize> 
+                                        </Label>
+
+                                        <Label
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Start"
+                                            Text="{i18n:Translate Common.RRSS.Youtube}"
+                                            TextColor="{ DynamicResource AccentColor }">
+
+                                            <Label.FontSize>
+                                                <OnIdiom 
+                                                    x:TypeArguments="x:Double" 
+                                                    Phone="15" Tablet="20" />
+                                            </Label.FontSize> 
+
+                                        </Label>
+
+                                    </StackLayout>
+
+
+                                    <Switch Grid.Column="1" 
+                                        VerticalOptions="Center" 
+                                        HorizontalOptions="End" 
+                                        IsToggled="{Binding Path=CurrentSocialMedia,  
+                                                    Converter={StaticResource SocialMediaFormatValueConverter},
+                                                    ConverterParameter={StaticResource youtubeKey}}">
+
+
+                                        <Switch.Behaviors>
+
+                                            <behaviors:EventHandlerBehavior EventName="Toggled">
+
+                                                <behaviors:InvokeCommandAction
+                                                    Command="{Binding ToggleYoutubeSocialMediaCommand}"
+                                                    Converter="{StaticResource SwitchChangeEventArgsConverter}"/>
+
+                                                </behaviors:EventHandlerBehavior>
+
+                                        </Switch.Behaviors>
+                                    </Switch>
+                            </Grid>
 
                         </StackLayout>
-
-                       <StackLayout Padding="10">
-                            <Label
-                                LineBreakMode="WordWrap"
-                                Text="{i18n:Translate EditSon.RRSS.Section.Title}"
-                                TextColor="{ DynamicResource AccentColor }"
-                                VerticalTextAlignment="Center"
-                                FontSize="27">
-                                <Label.FontSize> 
-                                    <OnIdiom 
-                                        x:TypeArguments="x:Double"
-                                        Phone="27"
-                                        Tablet="37"/>
-                                </Label.FontSize>
-                            </Label>
-
-                            <BoxView 
-                                Style="{StaticResource BrandNameOrnamentStyle}"
-                                BackgroundColor="{DynamicResource AccentColor}"/>
-                        </StackLayout>
-
-
-                        <Grid ColumnSpacing="10" Padding="5">
-                                    
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-
-
-                                        <StackLayout
-                                            Grid.Column="0"
-                                            Orientation="Horizontal"
-                                            VerticalOptions="Center"
-                                            HorizontalOptions="Start"
-                                            Spacing="0">
-                                            
-                                                <Label
-                                                    VerticalTextAlignment="Center"
-                                                    HorizontalTextAlignment="Start"
-                                                    Text="{ x:Static helper:FontAwesomeFont.Facebook }"
-                                                    FontFamily="{ StaticResource IconsFontFamily }"
-                                                    TextColor="{ DynamicResource AccentColor }">
-
-                                                    <Label.FontSize>
-                                                        <OnIdiom 
-                                                            x:TypeArguments="x:Double" 
-                                                            Phone="15" 
-                                                            Tablet="20" />
-                                                    </Label.FontSize> 
-
-                                                </Label>
-                                                <Label
-                                                    VerticalTextAlignment="Center"
-                                                    HorizontalTextAlignment="Start"
-                                                    Text="{i18n:Translate Common.RRSS.Facebook}"
-                                                    TextColor="{ DynamicResource AccentColor }">
-                                                    <Label.FontSize>
-                                                        <OnIdiom 
-                                                            x:TypeArguments="x:Double" 
-                                                            Phone="15" 
-                                                            Tablet="20" />
-                                                    </Label.FontSize> 
-                                                </Label>
-                                            
-                                        </StackLayout>
-
-
-                                        <Switch VerticalOptions="Center" HorizontalOptions="End" Grid.Column="1" IsToggled="{Binding Path=CurrentSocialMedia,  
-                                                Converter={StaticResource SocialMediaFormatValueConverter},
-                                                ConverterParameter={StaticResource facebookKey}}">
-
-                                                <Switch.Behaviors>
-                                                    <behaviors:EventHandlerBehavior EventName="Toggled">
-                                                        <behaviors:InvokeCommandAction 
-                                                                Command="{Binding ToggleFacebookSocialMediaCommand}"
-                                                                Converter="{StaticResource SwitchChangeEventArgsConverter}"/>
-                                                    </behaviors:EventHandlerBehavior>
-                                                </Switch.Behaviors>
-                                        </Switch>
-                        </Grid>
-
-
-                        <Grid ColumnSpacing="10" Padding="5">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <StackLayout
-                                            Grid.Column="0"
-                                            Orientation="Horizontal"
-                                            VerticalOptions="Center"
-                                            HorizontalOptions="Start"
-                                            Spacing="0">
-                                            
-                                                <Label
-                                                    VerticalTextAlignment="Center"
-                                                    HorizontalTextAlignment="Start"
-                                                    Text="{ x:Static helper:FontAwesomeFont.Instagram }"
-                                                    FontFamily="{ StaticResource IconsFontFamily }"
-                                                    TextColor="{ DynamicResource AccentColor }">
-
-                                                    <Label.FontSize>
-                                                        <OnIdiom 
-                                                            x:TypeArguments="x:Double" 
-                                                            Phone="15" 
-                                                            Tablet="20" />
-                                                    </Label.FontSize> 
-
-                                                </Label>
-                                                <Label
-                                                    VerticalTextAlignment="Center"
-                                                    HorizontalTextAlignment="Start"
-                                                    Text="{i18n:Translate Common.RRSS.Instagram}"
-                                                    TextColor="{ DynamicResource AccentColor }">
-                                                    <Label.FontSize>
-                                                        <OnIdiom 
-                                                            x:TypeArguments="x:Double" 
-                                                            Phone="15" 
-                                                            Tablet="20" />
-                                                    </Label.FontSize> 
-                                                </Label>
-                                            
-                                        </StackLayout>
-
-                                        <Switch Grid.Column="1"  VerticalOptions="Center" HorizontalOptions="End" IsToggled="{Binding Path=CurrentSocialMedia,  
-                                                Converter={StaticResource SocialMediaFormatValueConverter},
-                                                ConverterParameter={StaticResource instagramKey}}">
-
-                                                <Switch.Behaviors>
-                                                    <behaviors:EventHandlerBehavior EventName="Toggled">
-                                                        <behaviors:InvokeCommandAction 
-                                                                Command="{Binding ToggleInstagramSocialMediaCommand}"
-                                                                Converter="{StaticResource SwitchChangeEventArgsConverter}"/>
-                                                    </behaviors:EventHandlerBehavior>
-                                                </Switch.Behaviors>
-                                        </Switch>
-                        </Grid>
-
-
-                        <Grid ColumnSpacing="10" Padding="5">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <StackLayout
-                                            Grid.Column="0"
-                                            Orientation="Horizontal"
-                                            VerticalOptions="Center"
-                                            HorizontalOptions="Start"
-                                            Spacing="0">
-                                            
-                                                <Label
-                                                    VerticalTextAlignment="Center"
-                                                    HorizontalTextAlignment="Center"
-                                                    Text="{ x:Static helper:FontAwesomeFont.Youtube }"
-                                                    FontFamily="{ StaticResource IconsFontFamily }"
-                                                    TextColor="{ DynamicResource AccentColor }">
-
-                                                    <Label.FontSize>
-                                                        <OnIdiom 
-                                                            x:TypeArguments="x:Double" 
-                                                            Phone="15" 
-                                                            Tablet="20" />
-                                                    </Label.FontSize> 
-
-                                                </Label>
-                                                <Label
-                                                    VerticalTextAlignment="Center"
-                                                    HorizontalTextAlignment="Start"
-                                                    Text="{i18n:Translate Common.RRSS.Youtube}"
-                                                    TextColor="{ DynamicResource AccentColor }">
-                                                    <Label.FontSize>
-                                                        <OnIdiom 
-                                                            x:TypeArguments="x:Double" 
-                                                            Phone="15" 
-                                                            Tablet="20" />
-                                                    </Label.FontSize> 
-                                                </Label>
-                                            
-                                        </StackLayout>
-                                        
-                                    
-                                        <Switch Grid.Column="1"  VerticalOptions="Center" HorizontalOptions="End" IsToggled="{Binding Path=CurrentSocialMedia,  
-                                                Converter={StaticResource SocialMediaFormatValueConverter},
-                                                ConverterParameter={StaticResource youtubeKey}}">
-
-                                                <Switch.Behaviors>
-                                                    <behaviors:EventHandlerBehavior EventName="Toggled">
-                                                        <behaviors:InvokeCommandAction 
-                                                                Command="{Binding ToggleYoutubeSocialMediaCommand}"
-                                                                Converter="{StaticResource SwitchChangeEventArgsConverter}"/>
-                                                    </behaviors:EventHandlerBehavior>
-                                                </Switch.Behaviors>
-                                        </Switch>
-                        </Grid>
-
                     </ScrollView>
 
 
@@ -453,36 +502,14 @@
                             Text="{ i18n:Translate Common.Btn.Save.Changes }" />
                     </StackLayout>
 
-               </StackLayout>
+            </StackLayout>
 
+              
 
-                <controls:PullToRefreshLayout.Triggers>
-                    <DataTrigger 
-                        TargetType="controls:PullToRefreshLayout" 
-                        Binding="{Binding IsBusy}"
-                        Value="True">
-                        <Setter Property="IsPullToRefreshEnabled" Value="False" />
-                    </DataTrigger>
-                    <DataTrigger 
-                        TargetType="controls:PullToRefreshLayout" 
-                        Binding="{Binding SonToEdit,  Converter={StaticResource IsNullToBoolConverter}}"
-                        Value="True">
-                        <Setter Property="IsPullToRefreshEnabled" Value="False" />
-                    </DataTrigger>
-                  <DataTrigger
-                      TargetType="controls:PullToRefreshLayout"
-                      Binding="{Binding ErrorOccurred}"
-                      Value="True">
-                    <Setter Property="IsVisible" Value="False" />
-                  </DataTrigger>
-                </controls:PullToRefreshLayout.Triggers>
-
-           </controls:PullToRefreshLayout>
-
-          <common:ErrorOcurred
-                    Grid.Row="1"
-                    IsVisible="{ Binding ErrorOccurred }"
-                    MainText="{i18n:Translate Home.Profile.Load.Error}"/>
+            <common:ErrorOcurred
+                Grid.Row="1"
+                IsVisible="{ Binding ErrorOccurred }"
+                MainText="{i18n:Translate Home.Profile.Load.Error}"/>
 
         </Grid>
 

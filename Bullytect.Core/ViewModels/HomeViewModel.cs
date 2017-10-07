@@ -12,6 +12,7 @@ using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 using Bullytect.Core.Rest.Models.Exceptions;
 using Bullytect.Core.Exceptions;
+using Bullytect.Core.Helpers;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -22,7 +23,7 @@ namespace Bullytect.Core.ViewModels
         readonly IAlertService _alertService;
 
         public HomeViewModel(IUserDialogs userDialogs, IParentService parentService, 
-            IMvxMessenger mvxMessenger, IImagesService imagesService, IAlertService alertService) : base(userDialogs, mvxMessenger, imagesService)
+            IMvxMessenger mvxMessenger, AppHelper appHelper, IAlertService alertService) : base(userDialogs, mvxMessenger, appHelper)
         {
             _parentService = parentService;
             _alertService = alertService;
@@ -44,7 +45,7 @@ namespace Bullytect.Core.ViewModels
 
 			TakePhotoCommand =  ReactiveCommand.CreateFromObservable<string, ImageEntity>((param) =>
 			{
-                return PickPhotoStream()
+                return _appHelper.PickPhotoStream()
                     .Select(MediaFile => MediaFile.GetStream())
                     .Do((_) => _userDialogs.ShowLoading(AppResources.Profile_Updating_Profile_Image))
                     .SelectMany((FileStream) => parentService.UploadProfileImage(FileStream))
@@ -156,10 +157,7 @@ namespace Bullytect.Core.ViewModels
             else if( ex is NoNewAlertsFoundException) {
                 NoAlertsFound = true;
             }else if (ex is CanNotTakePhotoFromCameraException) {
-                var toastConfig = new ToastConfig(AppResources.Profile_Can_Not_Take_Photo_From_Camera);
-                toastConfig.SetDuration(3000);
-                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
-                _userDialogs.Toast(toastConfig);
+                _appHelper.Toast(AppResources.Profile_Can_Not_Take_Photo_From_Camera, System.Drawing.Color.FromArgb(12, 131, 193));
             }
 			else
 			{

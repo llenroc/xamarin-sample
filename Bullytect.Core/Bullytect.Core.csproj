@@ -164,6 +164,9 @@
     <EmbeddedResource Include="Pages\Results\Tabs\CommentsBySon.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\EditSon\Popup\SocialMediaInfoPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\CanNotTakePhotoFromCameraException.cs" />
@@ -438,6 +441,10 @@
       <DependentUpon>CommentsBySon.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CommentsBySonViewModel.cs" />
+    <Compile Include="Helpers\AppHelper.cs" />
+    <Compile Include="Pages\EditSon\Popup\SocialMediaInfoPopup.xaml.cs">
+      <DependentUpon>SocialMediaInfoPopup.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -622,6 +629,7 @@
     <Folder Include="Pages\SonProfileFullScreen\" />
     <Folder Include="Pages\Results\" />
     <Folder Include="Pages\Results\Tabs\" />
+    <Folder Include="Pages\EditSon\Popup\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />

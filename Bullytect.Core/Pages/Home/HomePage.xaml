@@ -32,7 +32,7 @@
 
     <!-- Refresh On Appearing Event -->
     <ContentPage.Behaviors>
-        <behaviors:EventHandlerBehavior EventName="Appearing">
+        <behaviors:EventHandlerBehavior EventName="Appearing" >
             <behaviors:InvokeCommandAction 
                     Command="{Binding RefreshCommand}" 
                     Converter="{ StaticResource DefaultReactiveUnitConverter}" />

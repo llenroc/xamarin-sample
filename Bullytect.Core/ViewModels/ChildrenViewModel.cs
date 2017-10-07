@@ -11,6 +11,7 @@ using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 using Bullytect.Core.Rest.Models.Exceptions;
 using System.Reactive;
+using Bullytect.Core.Helpers;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -19,7 +20,8 @@ namespace Bullytect.Core.ViewModels
 
         readonly IParentService _parentsService;
 
-        public ChildrenViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IParentService parentsService, IImagesService imagesService) : base(userDialogs, mvxMessenger, imagesService)
+        public ChildrenViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger, 
+                                 IParentService parentsService, AppHelper appHelper) : base(userDialogs, mvxMessenger, appHelper)
         {
 
             _parentsService = parentsService;
@@ -79,7 +81,7 @@ namespace Bullytect.Core.ViewModels
 			}
 		}
 
-        public ICommand EditSonCommand => new MvxCommand<string>((string Id) => ShowViewModel<EditSonViewModel>(new { Id }));
+        public ICommand EditSonCommand => new MvxCommand<string>((string Id) => ShowViewModel<EditSonViewModel>(new { SonIdentity = Id }));
 
 
         public ICommand GoToAlerts {

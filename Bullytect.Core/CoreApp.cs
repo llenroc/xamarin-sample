@@ -19,6 +19,7 @@ using Bullytect.Core.Models.Domain.Converter;
 using MvvmCross.Core.Navigation;
 using Bullytect.Core.ViewModels;
 using Bullytect.Utils.Helpers;
+using Bullytect.Core.Helpers;
 
 namespace Bullytect.Core
 {
@@ -63,10 +64,10 @@ namespace Bullytect.Core
 					() => {
 						Debug.WriteLine("Session Expired ....");
 						var navigationService = Mvx.Resolve<IMvxNavigationService>();
-						Settings.AccessToken = null;
+						Config.Settings.AccessToken = null;
 						navigationService?.Navigate<AuthenticationViewModel>();
 
-					}, new AuthenticatedHttpClientHandler(() => Settings.AccessToken))))
+					}, new AuthenticatedHttpClientHandler(() => Config.Settings.AccessToken))))
 			{
 				BaseAddress = new Uri(SharedConfig.BASE_API_URL),
 				Timeout = TimeSpan.FromMinutes(SharedConfig.TIMEOUT_OPERATION_MINUTES)
@@ -87,6 +88,9 @@ namespace Bullytect.Core
             Mvx.RegisterType<IValidator, Validator>();
 
             Mvx.RegisterSingleton<IUserDialogs>(() => UserDialogs.Instance);
+
+            // Register App Helper
+            Mvx.LazyConstructAndRegisterSingleton<AppHelper, AppHelper>();
 
 			ImageService.Instance.Initialize(new Configuration
 			{

@@ -2,8 +2,10 @@
 
 using System;
 using System.Diagnostics;
+using System.Reactive;
 using System.Windows.Input;
 using Acr.UserDialogs;
+using Bullytect.Core.Helpers;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
@@ -18,11 +20,13 @@ namespace Bullytect.Core.ViewModels
 
         readonly IParentService _parentService;
 
-        public SignupViewModel(IParentService parentService, IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IImagesService imagesService): base(userDialogs, mvxMessenger, imagesService)
+        public SignupViewModel(IParentService parentService, IUserDialogs userDialogs, 
+                               IMvxMessenger mvxMessenger, AppHelper appHelper): base(userDialogs, mvxMessenger, appHelper)
         {
 			_parentService = parentService;
 
-            SignupCommand = ReactiveCommand.CreateFromObservable<string, ParentEntity>((param) => RegisterTask());
+            SignupCommand = ReactiveCommand
+                .CreateFromObservable<Unit, ParentEntity>((_) => _parentService.Register(FirstName, LastName, Birthdate, Email, PasswordClear, ConfirmPassword, String.Concat(Prefix, Telephone)));
 
             SignupCommand.Subscribe(AccountCreated);
 
@@ -101,23 +105,15 @@ namespace Bullytect.Core.ViewModels
 
         #endregion
 
-
-        public IObservable<ParentEntity> RegisterTask()
-        {
-            return _parentService.Register(FirstName, LastName, Birthdate, Email, PasswordClear, ConfirmPassword, String.Concat(Prefix, Telephone));
-
-        }
-
 		#region commands
 
-        public ReactiveCommand<string, ParentEntity> SignupCommand { get; protected set; }
+        public ReactiveCommand<Unit, ParentEntity> SignupCommand { get; protected set; }
 
         public ICommand GoToLoginCommand => new MvxCommand(() => ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter() {
             ReasonForAuthentication = AuthenticationViewModel.NORMAL_AUTHENTICATION
         }));
 
         #endregion
-
 
         void AccountCreated(ParentEntity parent){
 			Debug.WriteLine(String.Format("Parent: {0}", parent.ToString()));

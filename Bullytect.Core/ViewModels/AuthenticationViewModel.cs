@@ -16,6 +16,7 @@ using ReactiveUI;
 using Xamarin.Forms;
 using Bullytect.Core.Rest.Models.Exceptions;
 using System.Collections.Generic;
+using Bullytect.Core.Helpers;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -25,7 +26,7 @@ namespace Bullytect.Core.ViewModels
         readonly IAuthenticationService _authenticationService;
 
         public AuthenticationViewModel(IAuthenticationService authenticationService,
-                                       IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IImagesService imagesService): base(userDialogs, mvxMessenger, imagesService)
+                                       IUserDialogs userDialogs, IMvxMessenger mvxMessenger, AppHelper appHelper): base(userDialogs, mvxMessenger, appHelper)
         {
             _authenticationService = authenticationService;
 
@@ -118,21 +119,13 @@ namespace Bullytect.Core.ViewModels
 
             if (ReasonForAuthentication.Equals(SIGN_OUT))
             {
-                var toastConfig = new ToastConfig(AppResources.Common_SignOut);
-                toastConfig.SetDuration(3000);
-                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
-                _userDialogs.Toast(toastConfig);
+                _appHelper.Toast(AppResources.Common_SignOut, System.Drawing.Color.FromArgb(255, 0, 0));
             }
             else if (ReasonForAuthentication.Equals(SESSION_EXPIRED)) {
-                var toastConfig = new ToastConfig(AppResources.Common_Invalid_Session);
-                toastConfig.SetDuration(3000);
-                toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
-                _userDialogs.Toast(toastConfig);
+                _appHelper.Toast(AppResources.Common_Invalid_Session, System.Drawing.Color.FromArgb(255, 0, 0));
+
             } else if(ReasonForAuthentication.Equals(SIGN_UP)) {
-				var toastConfig = new ToastConfig(AppResources.Signup_Account_Created);
-				toastConfig.SetDuration(3000);
-				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(12, 131, 193));
-				_userDialogs.Toast(toastConfig);
+                _appHelper.Toast(AppResources.Signup_Account_Created, System.Drawing.Color.FromArgb(12, 131, 193));
             }
         }
 
@@ -151,16 +144,12 @@ namespace Bullytect.Core.ViewModels
 
 			if (ex is AuthenticationFailedException)
 			{
-				var toastConfig = new ToastConfig(AppResources.Login_Failed);
-				toastConfig.SetDuration(3000);
-				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
-				_userDialogs.Toast(toastConfig);
+                _appHelper.Toast(AppResources.Login_Failed, System.Drawing.Color.FromArgb(255, 0, 0));
+
 			} else if(ex is AccountDisabledException)
             {
-                var toastConfig = new ToastConfig(AppResources.Account_Disabled);
-				toastConfig.SetDuration(3000);
-				toastConfig.SetBackgroundColor(System.Drawing.Color.FromArgb(255, 0, 0));
-				_userDialogs.Toast(toastConfig);
+                _appHelper.Toast(AppResources.Account_Disabled, System.Drawing.Color.FromArgb(255, 0, 0));
+
 
             }
 			else
@@ -175,19 +164,6 @@ namespace Bullytect.Core.ViewModels
             var mvxBundle = new MvxBundle(new Dictionary<string, string> { { "NavigationCommand", "StackClear" } });
             ShowViewModel<HomeViewModel>(presentationBundle: mvxBundle);
         }
-
-		
-        async Task LogOut(bool clearCookies)
-        {
-
-            Settings.AccessToken = null;
-
-            if (clearCookies)
-            {
-
-            }
-        }
-
        
 
     }

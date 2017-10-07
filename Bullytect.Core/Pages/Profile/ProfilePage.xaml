@@ -61,11 +61,11 @@
 
             <StackLayout
                     Grid.Row="1"
+                    Padding="20,10"
                     HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
-                    Padding="20,10">
+                    VerticalOptions="FillAndExpand">
 
-                <ScrollView VerticalOptions="StartAndExpand">
+                <ScrollView VerticalOptions="StartAndExpand" >
                     <!-- Profile Image Section -->
                     <StackLayout 
                         HorizontalOptions="FillAndExpand"
@@ -79,12 +79,12 @@
                             Text="{i18n:Translate Profile.Image.Section}"
                             TextColor="{ DynamicResource AccentColor }"
                             VerticalTextAlignment="Center"
-                            FontSize="27">
+                            FontSize="17">
                           <Label.FontSize>
                             <OnIdiom
                                 x:TypeArguments="x:Double"
-                                Phone="27"
-                                Tablet="37"/>
+                                Phone="17"
+                                Tablet="27"/>
                           </Label.FontSize>
                         </Label>
 
@@ -101,8 +101,8 @@
                                 <!-- AVATAR -->
                                 <ffimageloading:CachedImage   
                                     x:Name="profileImage"
-                                    WidthRequest="100"
-                                    HeightRequest="100"
+                                    WidthRequest="70"
+                                    HeightRequest="70"
                                     CacheType="Disk"
                                     CacheDuration="30"
                                     ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
@@ -118,12 +118,12 @@
                                     Text="{i18n:Translate Profile.Image.Change}"
                                     TextColor="{ DynamicResource AccentColor }"
                                     VerticalTextAlignment="Center"
-                                    FontSize="19">
+                                    FontSize="17">
                                   <Label.FontSize>
                                     <OnIdiom
                                         x:TypeArguments="x:Double"
-                                        Phone="19"
-                                        Tablet="22"/>
+                                        Phone="17"
+                                        Tablet="27"/>
                                   </Label.FontSize>
                                 </Label>
 
@@ -140,12 +140,12 @@
                             Text="{i18n:Translate Profile.General.Information.Section}"
                             TextColor="{ DynamicResource AccentColor }"
                             VerticalTextAlignment="Center"
-                            FontSize="27">
+                            FontSize="17">
                           <Label.FontSize>
                             <OnIdiom
                                 x:TypeArguments="x:Double"
-                                Phone="27"
-                                Tablet="37"/>
+                                Phone="17"
+                                Tablet="27"/>
                           </Label.FontSize>
                         </Label>
 

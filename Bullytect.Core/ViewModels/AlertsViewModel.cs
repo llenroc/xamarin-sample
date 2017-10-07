@@ -13,6 +13,7 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using Bullytect.Core.Helpers;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -27,18 +28,16 @@ namespace Bullytect.Core.ViewModels
 			get { return _alertList.Value; }
 		}
 
-        public AlertsViewModel(IAlertService alertService, IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IImagesService imagesService): base(userDialogs, mvxMessenger, imagesService)
+        public AlertsViewModel(IAlertService alertService, IUserDialogs userDialogs, 
+                               IMvxMessenger mvxMessenger, AppHelper appHelper): base(userDialogs, mvxMessenger, appHelper)
         {
             _alertService = alertService;
 
 			ClearAlertsCommand = ReactiveCommand
 				.CreateFromObservable<Unit, int>((param) =>
 				{
-					return Observable.FromAsync<bool>((_) => _userDialogs.ConfirmAsync(new ConfirmConfig()
-					{
-                        Title = AppResources.Alerts_Confirm_Clear
-
-                })).Where((confirmed) => confirmed).Do((_) => _userDialogs.ShowLoading(AppResources.Alerts_Deleting_Alerts))
+                    return _appHelper.RequestConfirmation(AppResources.Alerts_Confirm_Clear)
+                                     .Do((_) => _userDialogs.ShowLoading(AppResources.Alerts_Deleting_Alerts))
                                      .SelectMany((_) => string.IsNullOrEmpty(SonIdentity) 
                                                  ? _alertService.ClearSelfAlerts() : _alertService.ClearAlertsOfSon(SonIdentity))
 									 .Do((_) => _userDialogs.HideLoading());
