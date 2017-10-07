@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.Helpers;
@@ -20,7 +21,7 @@ namespace Bullytect.Core.ViewModels
         {
             public string Identity { get; set; }
             public string FullName { get; set; }
-            public string Birthdate { get; set; }
+            public DateTime Birthdate { get; set; }
             public string School { get; set; }
         }
 
@@ -41,9 +42,9 @@ namespace Bullytect.Core.ViewModels
             set => SetProperty(ref _fullName, value);
         }
 
-        string _birthdate;
+        DateTime _birthdate;
 
-        public string Birthdate
+        public DateTime Birthdate
         {
 
             get => _birthdate;

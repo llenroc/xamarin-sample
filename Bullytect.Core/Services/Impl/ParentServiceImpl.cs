@@ -179,7 +179,7 @@ namespace Bullytect.Core.Services.Impl
             
         }
 
-        public IObservable<SonEntity> AddSonToSelfParent(string FirstName, string Lastname, string Birthdate, string School)
+        public IObservable<SonEntity> AddSonToSelfParent(string FirstName, string Lastname, DateTime Birthdate, string School)
         {
             Debug.WriteLine("Add Son To Self Parent");
 
@@ -200,7 +200,7 @@ namespace Bullytect.Core.Services.Impl
 			return operationDecorator(observable);
         }
 
-        public IObservable<SonEntity> UpdateSonInformation(string Identity, string FirstName, string Lastname, string Birthdate, string School)
+        public IObservable<SonEntity> UpdateSonInformation(string Identity, string FirstName, string Lastname, DateTime Birthdate, string School)
         {
 			Debug.WriteLine("Save Son Information");
 

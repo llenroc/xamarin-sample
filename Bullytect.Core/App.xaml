@@ -593,18 +593,25 @@
                 <Setter Property="VerticalOptions" Value="Start" />
             </Style>
             
-                <Style x:Key="BrandNameStyle" TargetType="Label">
-                    <Setter Property="FontSize" Value="24" />
-                    <Setter Property="TextColor" Value="{DynamicResource BaseTextColor}" />
-                </Style>
-                
-                <Style x:Key="BrandNameOrnamentStyle" TargetType="BoxView">
-                    <Setter Property="HeightRequest" Value="4" />
-                    <Setter Property="VerticalOptions" Value="End" />
-                    <Setter Property="HorizontalOptions" Value="Start" />
-                    <Setter Property="WidthRequest" Value="40" />
-                    <Setter Property="BackgroundColor" Value="{ DynamicResource AccentColor }" />
-                </Style>
+            <Style x:Key="BrandNameStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="TextColor" Value="{DynamicResource BaseTextColor}" />
+            </Style>
+
+            <Style x:Key="BaseBrandNameOrnamentStyle" TargetType="BoxView">
+                <Setter Property="HeightRequest" Value="4" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="BackgroundColor" Value="{ DynamicResource AccentColor }" />
+            </Style>
+
+            <Style x:Key="BrandNameOrnamentStyle" TargetType="BoxView" BasedOn="{ StaticResource BaseBrandNameOrnamentStyle }">
+                <Setter Property="WidthRequest" Value="40" />
+            </Style>
+
+            <Style x:Key="LargeBrandNameOrnamentStyle" TargetType="BoxView" BasedOn="{ StaticResource BaseBrandNameOrnamentStyle }"> 
+                    <Setter Property="WidthRequest" Value="150" />
+            </Style>
 
             <!-- LAYOUT HELPERS -->
             <Style x:Key="Spacer" TargetType="BoxView">

@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Bullytect.Core.Converters
 {
-	public class SocialMediaFormatValueConverter : IValueConverter
+	public class SocialMediaStatusToBoolConverter : IValueConverter
 	{
 
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

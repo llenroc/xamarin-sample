@@ -17,7 +17,7 @@ namespace Bullytect.Core.Rest.Models.Request
         public string LastName { get; set; }
 
         [JsonProperty("birthdate")]
-        public string Birthdate { get; set; }
+        public DateTime Birthdate { get; set; }
 
         [JsonProperty("school")]
         public string School { get; set; }

@@ -32,6 +32,40 @@ namespace Bullytect.Core.Converters
 		{
 			throw new NotImplementedException();
 		}
+
     }
+
+
+	class DateTimeToStringConverter : IValueConverter
+	{
+
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			try
+			{
+				if (!(value is DateTime))
+					return string.Empty;
+
+                return ((DateTime)value).ToString("dd MMMM, yyyy");
+			}
+			catch (Exception ex)
+			{
+				Debug.WriteLine("Unable to convert: " + ex);
+			}
+
+			return string.Empty;
+		}
+
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			throw new NotImplementedException();
+		}
+
+	}
+
+
+
+
 
 }

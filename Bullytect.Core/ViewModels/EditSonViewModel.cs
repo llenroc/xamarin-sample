@@ -106,7 +106,13 @@ namespace Bullytect.Core.ViewModels
 
             });
 
-            SaveSchoolCommand.Subscribe((school) => _appHelper.Toast(AppResources.EditSon_School_Saved, System.Drawing.Color.FromArgb(12, 131, 193)));
+            SaveSchoolCommand.Subscribe((SchoolAdded) =>
+            {
+                NewSchool = new SchoolEntity();
+                Schools.Add(SchoolAdded.Name);
+                OnSchoolAdded(SchoolAdded);
+                _appHelper.Toast(AppResources.EditSon_School_Saved, System.Drawing.Color.FromArgb(12, 131, 193));
+            });
 
 
             SaveSchoolCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.EditSon_Saving_School));
@@ -142,7 +148,7 @@ namespace Bullytect.Core.ViewModels
         }
 
 
-        SchoolEntity _newSchool;
+        SchoolEntity _newSchool = new SchoolEntity();
 
         public SchoolEntity NewSchool
         {
@@ -191,6 +197,14 @@ namespace Bullytect.Core.ViewModels
         {
             NewSelectedImage?.Invoke(this, NewProfileImage);
         }
+
+        public delegate void SchoolAddedEvent(object sender, SchoolEntity SchoolEntity);
+		public event SchoolAddedEvent SchoolAdded;
+
+		protected virtual void OnSchoolAdded(SchoolEntity SchoolEntity)
+		{
+			SchoolAdded?.Invoke(this, SchoolEntity);
+		}
 
         #endregion
 
@@ -293,7 +307,7 @@ namespace Bullytect.Core.ViewModels
 								});
 							}
 
-							_userDialogs.ShowSuccess(AppResources.EditSon_Social_Media_Added);
+							//_userDialogs.ShowSuccess(AppResources.EditSon_Social_Media_Added);
 						});
 
                 }

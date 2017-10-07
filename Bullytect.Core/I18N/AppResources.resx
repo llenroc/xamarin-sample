@@ -557,6 +557,10 @@ and we will recover it for you. </value>
     <value> Success  </value>
     <comment>Alerts Success Text</comment>
   </data>
+  <data name="Alerts.Deleted" xml:space="preserve">
+    <value> Alert Deleted  </value>
+    <comment>Alerts Deleted</comment>
+  </data>
   <data name="Loading.Alerts" xml:space="preserve">
     <value> Loading Alerts </value>
     <comment>Loading Alerts</comment>
@@ -645,9 +649,22 @@ and we will recover it for you. </value>
     <value>How to enable social media?</value>
     <comment>EditSon Social Media Info Title</comment>
   </data>
-<data name="EditSon.Social.Media.Info.Text" xml:space="preserve">
+    <data name="EditSon.Social.Media.Info.Text" xml:space="preserve">
     <value>Unconfigured social media or an invalid access token will appear disabled. In this case, I changed the status of the switch to the desired social medium and enter the child's credentials in the login screen that will appear next.</value>
     <comment>EditSon Social Media Info Title</comment>
   </data>
+  <data name="EditSon.Social.Media.Invalid.Access.Token" xml:space="preserve">
+    <value>The Access Token is invalid</value>
+    <comment>EditSon Social Media Invalid Access Token</comment>
+  </data>
+  <data name="EditSon.Social.Media.Unconfigured.Access.Token" xml:space="preserve">
+    <value>Unconfigured access token</value>
+    <comment>EditSon Social Media Unconfigured Access Token</comment>
+  </data>
+   <data name="EditSon.Social.Media.Valid.Access.Token" xml:space="preserve">
+    <value>Access Token is valid</value>
+    <comment>EditSon Social Media Valid Access Token</comment>
+  </data>   
+
 	
 </root>

@@ -701,6 +701,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Alerts_Deleted {
+            get {
+                return ResourceManager.GetString("Alerts.Deleted", resourceCulture);
+            }
+        }
+        
         internal static string Loading_Alerts {
             get {
                 return ResourceManager.GetString("Loading.Alerts", resourceCulture);
@@ -836,6 +842,24 @@ namespace Bullytect.Core.I18N {
         internal static string EditSon_Social_Media_Info_Text {
             get {
                 return ResourceManager.GetString("EditSon.Social.Media.Info.Text", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Social_Media_Invalid_Access_Token {
+            get {
+                return ResourceManager.GetString("EditSon.Social.Media.Invalid.Access.Token", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Social_Media_Unconfigured_Access_Token {
+            get {
+                return ResourceManager.GetString("EditSon.Social.Media.Unconfigured.Access.Token", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Social_Media_Valid_Access_Token {
+            get {
+                return ResourceManager.GetString("EditSon.Social.Media.Valid.Access.Token", resourceCulture);
             }
         }
     }

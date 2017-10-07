@@ -374,7 +374,7 @@
     <Compile Include="Models\Domain\SocialMediaEntity.cs" />
     <Compile Include="Services\ISocialMedia.cs" />
     <Compile Include="Services\Impl\SocialMediaServiceImpl.cs" />
-    <Compile Include="Converters\SocialMediaFormatValueConverter.cs" />
+    <Compile Include="Converters\SocialMediaStatusToBoolConverter.cs" />
     <Compile Include="Converters\SwitchChangeEventArgsConverter.cs" />
     <Compile Include="OAuth\Providers\Instagram\InstagramOAuth2.cs" />
     <Compile Include="Pages\Common\Extended\TableViewWithoutBorders.cs" />
@@ -446,6 +446,9 @@
       <DependentUpon>SocialMediaInfoPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="OAuth\Services\Impl\IOAuthServiceImpl.cs" />
+    <Compile Include="Converters\SocialMediaStatusToColorConverter.cs" />
+    <Compile Include="Converters\SocialMediaStatusToTextConverter.cs" />
+    <Compile Include="Pages\Common\Extended\BindablePicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">

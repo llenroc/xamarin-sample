@@ -14,6 +14,7 @@ using System.Reactive.Linq;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Bullytect.Core.Helpers;
+using System.Linq;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -21,12 +22,6 @@ namespace Bullytect.Core.ViewModels
     {
 
         readonly IAlertService _alertService;
-
-        protected ObservableAsPropertyHelper<IList<AlertEntity>> _alertList;
-        public IList<AlertEntity> AlertList
-		{
-			get { return _alertList.Value; }
-		}
 
         public AlertsViewModel(IAlertService alertService, IUserDialogs userDialogs, 
                                IMvxMessenger mvxMessenger, AppHelper appHelper): base(userDialogs, mvxMessenger, appHelper)
@@ -61,6 +56,24 @@ namespace Bullytect.Core.ViewModels
             LoadAlertsCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
 
 			LoadAlertsCommand.ThrownExceptions.Subscribe(HandleExceptions);
+
+            DeleteAlertCommand = ReactiveCommand
+                .CreateFromObservable<AlertEntity, string>((AlertEntity) => 
+                                                           alertService.DeleteAlertOfSon(AlertEntity.Son.Identity, AlertEntity.Identity)
+                                                           .Do((_) => Alerts.Remove(AlertEntity)));
+
+			DeleteAlertCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
+
+            DeleteAlertCommand.Subscribe((_) => {
+
+                _userDialogs.ShowSuccess(AppResources.Alerts_Deleted);
+
+                if (Alerts.Count() == 0)
+                    DataFound = false;
+
+            });
+
+            DeleteAlertCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }
 
         public void Init(string Identity) {
@@ -102,6 +115,8 @@ namespace Bullytect.Core.ViewModels
             CreateAt = AlertEntity.CreateAt,
             SonFullName = AlertEntity.Son.FullName
         }));
+
+        public ReactiveCommand<AlertEntity, string> DeleteAlertCommand { get; protected set; }
 
 
 		#endregion

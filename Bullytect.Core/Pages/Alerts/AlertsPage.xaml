@@ -68,6 +68,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Action" Command="{Binding DeleteAlertCommand }" CommandParameter="{Binding .}"/>
+                            </ViewCell.ContextActions>
                             <templates:AlertItemTemplate/>
                         </ViewCell>
                     </DataTemplate>

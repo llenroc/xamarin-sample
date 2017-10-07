@@ -11,7 +11,7 @@ namespace Bullytect.Core.Converters
 
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-            Collection<string> items = (Collection<string>)value;
+            ObservableCollection<string> items = (ObservableCollection<string>)value;
 
             return items?.Count > 0;
 		}

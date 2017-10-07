@@ -10,11 +10,11 @@
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:extended="clr-namespace:Bullytect.Core.Pages.Common.Extended"
     xmlns:templates="clr-namespace:Bullytect.Core.Pages.EditSon.Templates"
     xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-    xmlns:extended="clr-namespace:Bullytect.Core.Pages.Common.Extended"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:controls="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
     xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
@@ -26,11 +26,15 @@
                 <converters:ContainsKeyVisibilityConverter x:Key="ContainsKeyVisibilityConverter"/>
                 <converters:ValidationErrorFormatValueConverter x:Key="ValidationErrorFormatValueConverter"/>
                 <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
-                <converters:SocialMediaFormatValueConverter x:Key="SocialMediaFormatValueConverter" />
+                <converters:SocialMediaStatusToBoolConverter x:Key="SocialMediaStatusToBoolConverter" />
                 <converters:SwitchChangeEventArgsConverter x:Key="SwitchChangeEventArgsConverter" />
                 <converters:IsSchoolNamesCollectionEmptyConverter x:Key="IsSchoolNamesCollectionEmptyConverter" />
                 <converters:IsSchoolNamesCollectionNotEmptyConverter x:Key="IsSchoolNamesCollectionNotEmptyConverter" />
                 <converters:IsNullToBoolConverter x:Key="IsNullToBoolConverter" />
+                <converters:SocialMediaStatusToColorConverter x:Key="SocialMediaStatusToColorConverter" />
+                <converters:SocialMediaStatusToTextConverter x:Key="SocialMediaStatusToTextConverter" />
+                <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
+            
                 <x:String x:Key="firstNameKey">firstName</x:String>
                 <x:String x:Key="lastNameKey">lastName</x:String>
                 <x:String x:Key="schoolKey">school</x:String>
@@ -58,7 +62,7 @@
 
             <StackLayout
                     Grid.Row="1"
-                    IsVisible="{ Binding IsVisible, Converter = { StaticResource InverseBoolConverter }}"
+                    IsVisible="{ Binding ErrorOccurred, Converter = { StaticResource InverseBoolConverter }}"
                     Padding="20"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand">
@@ -89,7 +93,7 @@
                                 </Label>
 
                                 <BoxView
-                                    Style="{StaticResource BrandNameOrnamentStyle}"
+                                    Style="{StaticResource LargeBrandNameOrnamentStyle}"
                                     BackgroundColor="{DynamicResource AccentColor}"
                                     Margin="10, 0"/>
                           
@@ -104,6 +108,7 @@
                                     HeightRequest="70"
                                     CacheType="Disk"
                                     CacheDuration="30"
+                                    Source="{ Binding CurrentSon.Identity, Converter={ StaticResource SonProfileImageURLConverter }}"
                                     ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
                                     LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }">
                                     <ffimageloading:CachedImage.Transformations>
@@ -152,7 +157,7 @@
                                 </Label>
 
                                 <BoxView 
-                                    Style="{StaticResource BrandNameOrnamentStyle}"
+                                    Style="{StaticResource LargeBrandNameOrnamentStyle}"
                                     BackgroundColor="{DynamicResource AccentColor}"/>
                             </StackLayout>
 
@@ -199,7 +204,7 @@
                             <!-- shools -->
                             <StackLayout>
 
-                                <Picker ItemsSource="{Binding Schools}" IsEnabled="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionNotEmptyConverter }}"/>
+                                <extended:BindablePicker ItemsSource="{Binding Schools}" IsEnabled="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionNotEmptyConverter }}" />
 
                                  <common:RoundedLabel
                                     IsVisible="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionEmptyConverter}}"
@@ -212,9 +217,10 @@
 
                             <!-- birthdate -->
 
-                            <StackLayout>
+                            <StackLayout> 
 
                                 <DatePicker 
+                                    Date="{ Binding CurrentSon.Birthdate }"
                                     VerticalOptions="CenterAndExpand" >
 
                                     <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
@@ -264,7 +270,7 @@
                                     </Label>
 
                                     <BoxView 
-                                        Style="{StaticResource BrandNameOrnamentStyle}"
+                                        Style="{StaticResource LargeBrandNameOrnamentStyle}"
                                         BackgroundColor="{DynamicResource AccentColor}"/>
 
                                 </StackLayout>
@@ -302,7 +308,7 @@
 
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
                                 <!-- RRSS Name -->
@@ -315,7 +321,8 @@
 
                                         <Label
                                             VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Start"
+                                            HorizontalTextAlignment="Center"
+                                            HorizontalOptions="Start"
                                             Text="{ x:Static helper:FontAwesomeFont.Facebook }"
                                             FontFamily="{ StaticResource IconsFontFamily }"
                                             TextColor="{ DynamicResource AccentColor }">
@@ -329,11 +336,33 @@
 
                                          </Label>
 
-                                           <Label
+                                          <Label
                                                 VerticalTextAlignment="Center"
-                                                HorizontalTextAlignment="Start"
+                                                HorizontalTextAlignment="Center"
+                                                HorizontalOptions="StartAndExpand"
                                                 Text="{i18n:Translate Common.RRSS.Facebook}"
+                                                Margin="0,0,10,0"
                                                  TextColor="{ DynamicResource AccentColor }">
+                                                <Label.FontSize>
+                                                    <OnIdiom 
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="15" 
+                                                        Tablet="20" />
+                                                 </Label.FontSize> 
+                                           </Label>
+
+
+                                            <Label
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="End"
+                                                HorizontalOptions="EndAndExpand"
+                                                LineBreakMode="TailTruncation"
+                                                Text="{ Binding Path=CurrentSocialMedia,
+                                                    Converter={StaticResource SocialMediaStatusToTextConverter},
+                                                    ConverterParameter={StaticResource facebookKey}}"
+                                                TextColor="{ Binding Path=CurrentSocialMedia,
+                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
+                                                    ConverterParameter={StaticResource facebookKey}}">
                                                 <Label.FontSize>
                                                     <OnIdiom 
                                                         x:TypeArguments="x:Double"
@@ -349,7 +378,7 @@
                                         Grid.Column="1"
                                         VerticalOptions="Center" 
                                         HorizontalOptions="End" IsToggled="{Binding Path=CurrentSocialMedia,  
-                                                    Converter={StaticResource SocialMediaFormatValueConverter},
+                                                    Converter={StaticResource SocialMediaStatusToBoolConverter},
                                                     ConverterParameter={StaticResource facebookKey}}">
 
                                         <Switch.Behaviors>
@@ -367,7 +396,7 @@
 
                                    <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
 
                                     <StackLayout
@@ -379,7 +408,8 @@
 
                                             <Label
                                                 VerticalTextAlignment="Center"
-                                                HorizontalTextAlignment="Start"
+                                                HorizontalTextAlignment="Center"
+                                                HorizontalOptions="Start"
                                                 Text="{ x:Static helper:FontAwesomeFont.Instagram }"
                                                 FontFamily="{ StaticResource IconsFontFamily }"
                                                 TextColor="{ DynamicResource AccentColor }">
@@ -393,8 +423,10 @@
 
                                             <Label
                                                 VerticalTextAlignment="Center"
-                                                HorizontalTextAlignment="Start"
+                                                HorizontalTextAlignment="Center"
+                                                HorizontalOptions="StartAndExpand"
                                                 Text="{i18n:Translate Common.RRSS.Instagram}"
+                                                Margin="0,0,10,0"
                                                 TextColor="{ DynamicResource AccentColor }">
                                                 <Label.FontSize>
                                                     <OnIdiom 
@@ -403,6 +435,26 @@
                                                         Tablet="20" />
                                                 </Label.FontSize> 
                                             </Label>
+
+                                            <Label
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="End"
+                                                HorizontalOptions="EndAndExpand"
+                                                LineBreakMode="TailTruncation"
+                                                Text="{ Binding Path=CurrentSocialMedia,
+                                                    Converter={StaticResource SocialMediaStatusToTextConverter},
+                                                    ConverterParameter={StaticResource instagramKey}}"
+                                                TextColor="{ Binding Path=CurrentSocialMedia,
+                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
+                                                    ConverterParameter={StaticResource instagramKey}}">
+                                                <Label.FontSize>
+                                                    <OnIdiom 
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="15" 
+                                                        Tablet="20" />
+                                                 </Label.FontSize> 
+                                           </Label>
+                                
                                     </StackLayout>
 
                                     <Switch 
@@ -410,7 +462,7 @@
                                         VerticalOptions="Center" 
                                         HorizontalOptions="End" 
                                         IsToggled="{Binding Path=CurrentSocialMedia,  
-                                                    Converter={StaticResource SocialMediaFormatValueConverter},
+                                                    Converter={StaticResource SocialMediaStatusToBoolConverter},
                                                     ConverterParameter={StaticResource instagramKey}}">
                                         <Switch.Behaviors>
                                             <behaviors:EventHandlerBehavior EventName="Toggled">
@@ -427,7 +479,7 @@
 
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
                                 <StackLayout
@@ -440,6 +492,7 @@
                                         <Label
                                             VerticalTextAlignment="Center"
                                             HorizontalTextAlignment="Center"
+                                            HorizontalOptions="Start"
                                             Text="{ x:Static helper:FontAwesomeFont.Youtube }"
                                             FontFamily="{ StaticResource IconsFontFamily }"
                                             TextColor="{ DynamicResource AccentColor }">
@@ -454,8 +507,10 @@
 
                                         <Label
                                             VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Start"
+                                            HorizontalTextAlignment="Center"
+                                            HorizontalOptions="StartAndExpand"
                                             Text="{i18n:Translate Common.RRSS.Youtube}"
+                                            Margin="0,0,10,0"
                                             TextColor="{ DynamicResource AccentColor }">
 
                                             <Label.FontSize>
@@ -466,6 +521,25 @@
 
                                         </Label>
 
+                                        <Label
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="End"
+                                                HorizontalOptions="EndAndExpand"
+                                                LineBreakMode="TailTruncation"
+                                                Text="{ Binding Path=CurrentSocialMedia,
+                                                    Converter={StaticResource SocialMediaStatusToTextConverter},
+                                                    ConverterParameter={StaticResource youtubeKey}}"
+                                                TextColor="{ Binding Path=CurrentSocialMedia,
+                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
+                                                    ConverterParameter={StaticResource youtubeKey}}">
+                                                <Label.FontSize>
+                                                    <OnIdiom 
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="15" 
+                                                        Tablet="20" />
+                                                 </Label.FontSize> 
+                                           </Label>
+
                                     </StackLayout>
 
 
@@ -473,7 +547,7 @@
                                         VerticalOptions="Center" 
                                         HorizontalOptions="End" 
                                         IsToggled="{Binding Path=CurrentSocialMedia,  
-                                                    Converter={StaticResource SocialMediaFormatValueConverter},
+                                                    Converter={StaticResource SocialMediaStatusToBoolConverter},
                                                     ConverterParameter={StaticResource youtubeKey}}">
 
 

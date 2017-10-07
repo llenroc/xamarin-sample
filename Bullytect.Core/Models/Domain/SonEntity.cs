@@ -8,7 +8,7 @@ namespace Bullytect.Core.Models.Domain
         public string Identity { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Birthdate { get; set; }
+        public DateTime Birthdate { get; set; } = new DateTime();
         public int Age { get; set; }
         public string School { get; set; }
 

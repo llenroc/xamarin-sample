@@ -16,6 +16,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
+            <converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 	<ContentPage.Content>
@@ -77,7 +78,9 @@
 
                <Label
                     Grid.Row="1"
-                    Text="{Binding Birthdate, StringFormat={i18n:Translate Son.Profile.Birthday}}"
+                    Text="{Binding Birthdate, 
+                        Converter={ StaticResource DateTimeToStringConverter }, 
+                        StringFormat={i18n:Translate Son.Profile.Birthday}}"
                     FontSize="{ artina:OnOrientationDouble 
                         PortraitPhone=18,
                         LandscapePhone=18,

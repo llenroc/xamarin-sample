@@ -159,13 +159,14 @@
 
                             </StackLayout>
 
-                            <!-- Province FIELD-->
+                            <!-- Tfno FIELD-->
                             <StackLayout Padding="5">
 
                             
                                 <Entry 
                                     Placeholder="{ i18n:Translate Common.Placeholder.School.Tfno }"
                                     Style="{StaticResource ArtinaProfileEntryStyle}" 
+                                    Keyboard="Telephone" 
                                     Text="{ Binding NewSchool.Tfno }"/>
 
 
@@ -181,7 +182,7 @@
                             </StackLayout>
 
 
-                             <!-- Province FIELD-->
+                             <!-- email FIELD-->
                             <StackLayout Padding="5">
 
                             
