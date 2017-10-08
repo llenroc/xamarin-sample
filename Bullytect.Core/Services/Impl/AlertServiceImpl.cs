@@ -7,6 +7,7 @@ using System.Diagnostics;
 using Bullytect.Core.Models.Domain;
 using System.Collections.Generic;
 using System.Collections;
+using Bullytect.Core.Config;
 
 namespace Bullytect.Core.Services.Impl
 {
@@ -75,12 +76,47 @@ namespace Bullytect.Core.Services.Impl
 			return operationDecorator(observable);
         }
 
-        public IObservable<AlertsPageEntity> GetLast10AlertsForSelfParent()
+        public IObservable<IList<AlertCategoryEntity>> GetAllAlertsCategories()
+        {
+            Debug.WriteLine("Get All Alerts Categories");
+
+			var list = new List<AlertCategoryEntity>() {
+                new AlertCategoryEntity() {
+					Name = "Success Alerts",
+					Description = "Success Alerts",
+					Level = AlertLevelEnum.SUCCESS
+                },
+                new AlertCategoryEntity() {
+					Name = "INFO Alerts",
+					Description = "INFO Alerts",
+					Level = AlertLevelEnum.INFO
+                },
+                new AlertCategoryEntity() {
+					Name = "WARNING Alerts",
+					Description = "WARNING Alerts",
+					Level = AlertLevelEnum.WARNING
+                },
+				new AlertCategoryEntity() {
+					Name = "DANGER Alerts",
+					Description = "DANGER Alerts",
+					Level = AlertLevelEnum.DANGER
+				}
+			};
+
+            return Observable.Return(list);
+        
+        }
+
+        public IObservable<AlertsPageEntity> GetLastAlertsForSelfParent()
         {
 			Debug.WriteLine("Get Last 10 Alerts For Self Parent");
 
 			var observable = _alertRestService
-                .GetLastSelfAlerts(10)
+                .GetLastSelfAlerts(
+                    Count: Settings.Current.LastAlertsCount,
+                    OnlyNews: Settings.Current.ShowOnlyNewAlerts, 
+                    Levels: String.IsNullOrEmpty(Settings.Current.FilteredCategories) ? 
+                        new string[] {} : Settings.Current.FilteredCategories.Split(','))
 				.Select((APIResponse<AlertsPageDTO> response) => response.Data)
 				.Select((AlertsPage) => Mapper.Map<AlertsPageDTO, AlertsPageEntity>(AlertsPage))
 				.Finally(() => {

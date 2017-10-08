@@ -32,12 +32,12 @@ namespace Bullytect.Core.ViewModels
 			{
 				Debug.WriteLine("Parent Profile " + parent?.ToString());
 				SelfParent = parent;
-			}).SelectMany((_) => _alertService.GetLast10AlertsForSelfParent().Do((AlertsPageEntity) =>
+			}).SelectMany((_) => _alertService.GetLastAlertsForSelfParent().Do((AlertsPageEntity) =>
 			{
 				Debug.WriteLine("Total Alerts  " + AlertsPageEntity?.Alerts?.Count);
 				AlertsPage = AlertsPageEntity;
 				NoAlertsFound = false;
-			})));
+            })).Finally(() => ErrorOccurred = false));
 
             RefreshCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
 
@@ -109,6 +109,14 @@ namespace Bullytect.Core.ViewModels
 			get
 			{
 				return new MvxCommand(() => ShowViewModel<ChildrenViewModel>());
+			}
+		}
+
+		public ICommand GoToSettingsCommand
+		{
+			get
+			{
+				return new MvxCommand(() => ShowViewModel<SettingsViewModel>());
 			}
 		}
 

@@ -167,10 +167,18 @@
     <EmbeddedResource Include="Pages\EditSon\Popup\SocialMediaInfoPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Settings\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Settings\Templates\AlertCategoryCellView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Settings\Templates\SettingsHeader.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\CanNotTakePhotoFromCameraException.cs" />
-    <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Config\SharedConfig.cs" />
     <Compile Include="Rest\Handlers\AuthenticatedHttpClientHandler.cs" />
@@ -449,6 +457,17 @@
     <Compile Include="Converters\SocialMediaStatusToColorConverter.cs" />
     <Compile Include="Converters\SocialMediaStatusToTextConverter.cs" />
     <Compile Include="Pages\Common\Extended\BindablePicker.cs" />
+    <Compile Include="Models\Domain\AlertCategoryEntity.cs" />
+    <Compile Include="Pages\Settings\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="Pages\Settings\Templates\AlertCategoryCellView.xaml.cs">
+      <DependentUpon>AlertCategoryCellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Settings\Templates\SettingsHeader.xaml.cs">
+      <DependentUpon>SettingsHeader.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -619,6 +638,9 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.3.4.247\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="MvvmHelpers">
+      <HintPath>..\packages\Refractored.MvvmHelpers.1.3.0\lib\netstandard1.0\MvvmHelpers.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -635,6 +657,8 @@
     <Folder Include="Pages\Results\Tabs\" />
     <Folder Include="Pages\EditSon\Popup\" />
     <Folder Include="OAuth\Services\Impl\" />
+    <Folder Include="Pages\Settings\" />
+    <Folder Include="Pages\Settings\Templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />

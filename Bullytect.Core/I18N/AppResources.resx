@@ -121,6 +121,10 @@
     <value>BullTect</value>
     <comment>Page Common Title</comment>
   </data>
+  <data name="Page.Settings.Title" xml:space="preserve">
+    <value> Settings </value>
+    <comment>Page Settings Title</comment>
+  </data>
   <data name="Page.Home.Title" xml:space="preserve">
     <value>Home</value>
     <comment>Page Home Title</comment>
@@ -665,6 +669,33 @@ and we will recover it for you. </value>
     <value>Access Token is valid</value>
     <comment>EditSon Social Media Valid Access Token</comment>
   </data>   
+   <data name="Settings.Alerts.Categories" xml:space="preserve">
+    <value>Alerts Categories</value>
+    <comment>Settings Alerts Categories</comment>
+  </data> 
+  <data name="Settings.Alerts.General" xml:space="preserve">
+    <value>General configuration</value>
+    <comment>Settings Alerts General</comment>
+  </data>
+  <data name="Settings.Alerts.Show.Only.New.Alerts" xml:space="preserve">
+    <value>Show only new aLerts</value>
+    <comment>Settings Alerts Show Only New Alerts</comment>
+  </data>
+  <data name="Settings.Alerts.Count.New.Alerts" xml:space="preserve">
+    <value>Number of Alerts</value>
+    <comment>Settings Alerts Count New Alerts</comment>
+  </data>
+  <data name="Settings.Alerts.Last.Alerts" xml:space="preserve">
+    <value>{0} Alerts</value>
+    <comment>Settings Alerts Last Alerts</comment>
+  </data>
+  <data name="Settings.Changes.Saved" xml:space="preserve">
+    <value>Changes saved</value>
+    <comment>Settings Changes Saved</comment>
+  </data>   
+
+	
+
 
 	
 </root>

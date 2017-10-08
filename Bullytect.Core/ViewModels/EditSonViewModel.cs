@@ -19,6 +19,7 @@ using Bullytect.Core.Services;
 using Bullytect.Core.Utils;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
+using MvvmHelpers;
 using Plugin.Media.Abstractions;
 using ReactiveUI;
 using Xamarin.Forms;
@@ -47,10 +48,9 @@ namespace Bullytect.Core.ViewModels
                               GetSonInformation().Do((SonInformation) =>
                               {
                                   CurrentSon = SonInformation.Son;
-                                  CurrentSocialMedia = new ObservableCollection<SocialMediaEntity>(SonInformation.SocialMedia);
-                              }).SelectMany((_) => GetSchoolNames())
-                              .Do((SchoolNames) => Schools = new ObservableCollection<string>(SchoolNames)) :
-                              GetSchoolNames().Do((SchoolNames) => Schools = new ObservableCollection<string>(SchoolNames)));
+                                  CurrentSocialMedia.ReplaceRange(SonInformation.SocialMedia);
+                              }).SelectMany((_) => GetSchoolNames()).Do((SchoolNames) => Schools.ReplaceRange(SchoolNames)) :
+                                                                  GetSchoolNames().Do((SchoolNames) => Schools.ReplaceRange(SchoolNames)));
 
             RefreshCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
 
@@ -79,7 +79,7 @@ namespace Bullytect.Core.ViewModels
                                  _parentService.UpdateSonInformation(CurrentSon.Identity, CurrentSon.FirstName, CurrentSon.LastName, CurrentSon.Birthdate, CurrentSon.School))
                                 .Do((SonEntity) => CurrentSon = SonEntity)
                                 .SelectMany((SonEntity) => _socialMediaService.SaveAllSocialMedia(CurrentSon.Identity, CurrentSocialMedia.Select(s => { s.Son = CurrentSon.Identity; return s; }).ToList()))
-                                .Do((SocialMediaEntities) => CurrentSocialMedia = new ObservableCollection<SocialMediaEntity>(SocialMediaEntities))
+                                .Do((SocialMediaEntities) => CurrentSocialMedia.ReplaceRange(SocialMediaEntities))
                                 .SelectMany((_) =>
                                 {
 
@@ -120,7 +120,10 @@ namespace Bullytect.Core.ViewModels
             SaveSchoolCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }
 
-        #region properties
+		#region properties
+
+		public ObservableRangeCollection<SocialMediaEntity> CurrentSocialMedia { get; } = new ObservableRangeCollection<SocialMediaEntity>();
+		public ObservableRangeCollection<string> Schools { get; } = new ObservableRangeCollection<string>();
 
 
         protected MediaFile _newProfileImage;
@@ -139,14 +142,6 @@ namespace Bullytect.Core.ViewModels
             set => SetProperty(ref _currentSon, value);
         }
 
-        ObservableCollection<SocialMediaEntity> _currentSocialMedia = new ObservableCollection<SocialMediaEntity>();
-
-        public ObservableCollection<SocialMediaEntity> CurrentSocialMedia
-        {
-            get => _currentSocialMedia;
-            set => SetProperty(ref _currentSocialMedia, value);
-        }
-
 
         SchoolEntity _newSchool = new SchoolEntity();
 
@@ -154,14 +149,6 @@ namespace Bullytect.Core.ViewModels
         {
             get => _newSchool;
             set => SetProperty(ref _newSchool, value);
-        }
-
-        ObservableCollection<string> _schools = new ObservableCollection<string>();
-
-        public ObservableCollection<string> Schools
-        {
-            get => _schools;
-            set => SetProperty(ref _schools, value);
         }
 
         string _sonToEdit = null;
@@ -223,14 +210,14 @@ namespace Bullytect.Core.ViewModels
 				GetSonInformation().Subscribe((SonInformation) =>
 				{
 					CurrentSon = SonInformation.Son;
-					CurrentSocialMedia = new ObservableCollection<SocialMediaEntity>(SonInformation.SocialMedia);
+                    CurrentSocialMedia.ReplaceRange(SonInformation.SocialMedia);
 
 				});
 
 			GetSchoolNames().Subscribe((SchoolNames) =>
 			{
 				Debug.WriteLine("Schools Names Count " + SchoolNames?.Count);
-				Schools = new ObservableCollection<string>(SchoolNames);
+                Schools.ReplaceRange(SchoolNames);
 
 			});
 		}

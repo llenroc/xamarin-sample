@@ -57,7 +57,6 @@
             <controls:PullToRefreshLayout
                     Grid.Row="1"
                     x:Name="RefreshLayout"
-                    IsVisible="{ Binding ErrorOccurred, Converter={StaticResource InverseBoolConverter} }"
                     IsPullToRefreshEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
                     RefreshCommand="{Binding RefreshCommand}"
                     IsRefreshing="{Binding IsBusy}"
@@ -443,7 +442,6 @@
                                 <!-- No Alerts Found -->
                                 <common:NoDataFound 
                                     Grid.Row="1"
-                                    IsVisible="{ Binding NoAlertsFound }"
                                     MainText="{i18n:Translate Home.Alerts.Not.Found.MainText }"
                                     DetailText="{i18n:Translate Home.Alerts.Not.Found.SecondText }">
 
@@ -458,6 +456,12 @@
                                              TargetType="common:NoDataFound"
                                              Binding="{Binding IsBusy}"
                                              Value="True">
+                                            <Setter Property="IsVisible" Value="False" />
+                                        </DataTrigger>
+                                         <DataTrigger 
+                                             TargetType="common:NoDataFound"
+                                             Binding="{ Binding  NoAlertsFound }"
+                                             Value="False">
                                             <Setter Property="IsVisible" Value="False" />
                                         </DataTrigger>
                                     </common:NoDataFound.Triggers>
@@ -478,6 +482,12 @@
                                 Binding="{Binding ErrorOccurred}"
                                 Value="True">
                                 <Setter Property="IsVisible" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger
+                                TargetType="controls:PullToRefreshLayout"
+                                Binding="{Binding ErrorOccurred}"
+                                Value="False">
+                                <Setter Property="IsVisible" Value="True" />
                             </DataTrigger>
                         </controls:PullToRefreshLayout.Triggers>
 

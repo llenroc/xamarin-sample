@@ -53,6 +53,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Page_Settings_Title {
+            get {
+                return ResourceManager.GetString("Page.Settings.Title", resourceCulture);
+            }
+        }
+        
         internal static string Page_Home_Title {
             get {
                 return ResourceManager.GetString("Page.Home.Title", resourceCulture);
@@ -860,6 +866,42 @@ namespace Bullytect.Core.I18N {
         internal static string EditSon_Social_Media_Valid_Access_Token {
             get {
                 return ResourceManager.GetString("EditSon.Social.Media.Valid.Access.Token", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Alerts_Categories {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.Categories", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Alerts_General {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.General", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Alerts_Show_Only_New_Alerts {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.Show.Only.New.Alerts", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Alerts_Count_New_Alerts {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.Count.New.Alerts", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Alerts_Last_Alerts {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.Last.Alerts", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Changes_Saved {
+            get {
+                return ResourceManager.GetString("Settings.Changes.Saved", resourceCulture);
             }
         }
     }

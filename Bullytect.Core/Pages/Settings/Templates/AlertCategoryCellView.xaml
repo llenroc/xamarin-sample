@@ -1,5 +1,46 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Bullytect.Core.Pages.Settings.Templates.AlertCategoryCellView">
-	<ContentView.Content>
-	</ContentView.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    x:Class="Bullytect.Core.Pages.Settings.Templates.AlertCategoryCellView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:AlertLevelToFontIconConverter x:Key="AlertLevelToFontIconConverter" />
+            <converters:AlertLevelToColorConverter x:Key="AlertLevelToColorConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid Padding="16,6,16,6" ColumnSpacing="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+             <Label 
+                Grid.Column="0"
+                Text="{ Binding Level , Converter={ StaticResource AlertLevelToFontIconConverter}}" 
+                TextColor="{ Binding Level, Converter={ StaticResource AlertLevelToColorConverter }}"
+                Style="{StaticResource FontIcon}"
+                FontSize ="12"
+                WidthRequest="12" HeightRequest="12" 
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"/>
+            
+            <Label Grid.Column="1" 
+                   x:Name="LabelName"
+                   Text="{Binding Name}" 
+                   VerticalTextAlignment="Center" 
+                   HorizontalOptions="StartAndExpand"
+                   />
+            <Switch Grid.Column="2" 
+                    VerticalOptions="Center"
+                    IsEnabled="{Binding IsEnabled}"
+                    IsToggled="{Binding IsFiltered}"/>
+            
+        </Grid>
+    </ContentView.Content>
 </ContentView>

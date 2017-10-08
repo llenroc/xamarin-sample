@@ -377,7 +377,7 @@
                                     <Switch 
                                         Grid.Column="1"
                                         VerticalOptions="Center" 
-                                        HorizontalOptions="End" IsToggled="{Binding Path=CurrentSocialMedia,  
+                                        HorizontalOptions="End" IsToggled="{Binding CurrentSocialMedia,  
                                                     Converter={StaticResource SocialMediaStatusToBoolConverter},
                                                     ConverterParameter={StaticResource facebookKey}}">
 
@@ -441,7 +441,7 @@
                                                 HorizontalTextAlignment="End"
                                                 HorizontalOptions="EndAndExpand"
                                                 LineBreakMode="TailTruncation"
-                                                Text="{ Binding Path=CurrentSocialMedia,
+                                                Text="{ Binding CurrentSocialMedia,
                                                     Converter={StaticResource SocialMediaStatusToTextConverter},
                                                     ConverterParameter={StaticResource instagramKey}}"
                                                 TextColor="{ Binding Path=CurrentSocialMedia,
@@ -526,7 +526,7 @@
                                                 HorizontalTextAlignment="End"
                                                 HorizontalOptions="EndAndExpand"
                                                 LineBreakMode="TailTruncation"
-                                                Text="{ Binding Path=CurrentSocialMedia,
+                                                Text="{ Binding CurrentSocialMedia,
                                                     Converter={StaticResource SocialMediaStatusToTextConverter},
                                                     ConverterParameter={StaticResource youtubeKey}}"
                                                 TextColor="{ Binding Path=CurrentSocialMedia,
