@@ -9,6 +9,7 @@ using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Rest.Services;
 using Bullytect.Core.Rest.Models.Request;
 using Bullytect.Core.Rest.Models.Response;
+using System.Linq;
 
 namespace Bullytect.Core.Services.Impl
 {
@@ -21,13 +22,14 @@ namespace Bullytect.Core.Services.Impl
             _schoolRestService = schoolRestService;
         }
 
-        public IObservable<IList<string>> AllNames()
+        public IObservable<Dictionary<string, string>> AllNames()
         {
             Debug.WriteLine("All School Names");
 
             var observable = _schoolRestService
                 .AllNames()
                 .Select(response => response.Data)
+                .Select((response) => response.ToDictionary(SchoolName => SchoolName.Identity, SchoolName => SchoolName.Name))
                 .Finally(() =>
                 {
                     Debug.WriteLine("All School Finish ...");

@@ -12,7 +12,7 @@ namespace Bullytect.Core.Rest.Services
     public interface ISchoolRestService
     {
 		// /schools/all/names
-		IObservable<APIResponse<IList<string>>> AllNames();
+		IObservable<APIResponse<IList<SchoolNameDTO>>> AllNames();
 
 		// /schools/
 		IObservable<APIResponse<SchoolDTO>> CreateSchool(AddSchoolDTO school);

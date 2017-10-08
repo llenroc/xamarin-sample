@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reactive;
@@ -109,7 +111,10 @@ namespace Bullytect.Core.ViewModels
             SaveSchoolCommand.Subscribe((SchoolAdded) =>
             {
                 NewSchool = new SchoolEntity();
-                Schools.Add(SchoolAdded.Name);
+                Schools.Add(new SchoolPickerModel() {
+                    Identity = SchoolAdded.Identity,
+                    Name = SchoolAdded.Name
+                });
                 OnSchoolAdded(SchoolAdded);
                 _appHelper.Toast(AppResources.EditSon_School_Saved, System.Drawing.Color.FromArgb(12, 131, 193));
             });
@@ -123,7 +128,7 @@ namespace Bullytect.Core.ViewModels
 		#region properties
 
 		public ObservableRangeCollection<SocialMediaEntity> CurrentSocialMedia { get; } = new ObservableRangeCollection<SocialMediaEntity>();
-		public ObservableRangeCollection<string> Schools { get; } = new ObservableRangeCollection<string>();
+		public ObservableRangeCollection<SchoolPickerModel> Schools { get; } = new ObservableRangeCollection<SchoolPickerModel>();
 
 
         protected MediaFile _newProfileImage;
@@ -216,10 +221,23 @@ namespace Bullytect.Core.ViewModels
 
 			GetSchoolNames().Subscribe((SchoolNames) =>
 			{
-				Debug.WriteLine("Schools Names Count " + SchoolNames?.Count);
-                Schools.ReplaceRange(SchoolNames);
+	
+                  Schools.ReplaceRange(SchoolNames);
 
 			});
+
+            CurrentSocialMedia.CollectionChanged += CurrentSocialMediaCollectionChanged;
+            Schools.CollectionChanged += SchoolsCollectionChanged;
+		}
+
+		void CurrentSocialMediaCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+		{
+			RaisePropertyChanged(nameof(CurrentSocialMedia));
+		}
+
+		void SchoolsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+		{
+			RaisePropertyChanged(nameof(Schools));
 		}
 
         #region commands
@@ -258,9 +276,14 @@ namespace Bullytect.Core.ViewModels
                 });
         }
 
-        private IObservable<IList<string>> GetSchoolNames() => _schoolService.AllNames().OnErrorResumeNext(Observable.Return(new List<string>()));
-
-
+        private IObservable<IEnumerable<SchoolPickerModel>> GetSchoolNames()
+        {
+            return _schoolService.AllNames().Select(SchoolNamesDict => SchoolNamesDict.ToList()).Select((SchoolEntryList) => SchoolEntryList.Select((SchoolEntry) => new SchoolPickerModel()
+            {
+                Identity = SchoolEntry.Key,
+                Name = SchoolEntry.Value
+            }));//.OnErrorResumeNext(Observable.Return(new List<SchoolPickerModel>()));
+		}
 
         private void ToggleSocialMediaHandler(bool Enabled, OAuth2 Provider, string Type)
         {
@@ -283,6 +306,7 @@ namespace Bullytect.Core.ViewModels
 								var SocialMedia = CurrentSocialMedia.ElementAt(index);
 								SocialMedia.AccessToken = AccessToken;
 								SocialMedia.InvalidToken = false;
+                                RaisePropertyChanged(nameof(CurrentSocialMedia));
 							}
 							else
 							{
@@ -320,6 +344,12 @@ namespace Bullytect.Core.ViewModels
             public SonEntity Son { get; set; }
             public IList<SocialMediaEntity> SocialMedia { get; set; }
 
+        }
+
+        public class SchoolPickerModel {
+
+            public string Identity { get; set; }
+            public string Name { get; set; }
         }
 
     }

@@ -456,7 +456,6 @@
     <Compile Include="OAuth\Services\Impl\IOAuthServiceImpl.cs" />
     <Compile Include="Converters\SocialMediaStatusToColorConverter.cs" />
     <Compile Include="Converters\SocialMediaStatusToTextConverter.cs" />
-    <Compile Include="Pages\Common\Extended\BindablePicker.cs" />
     <Compile Include="Models\Domain\AlertCategoryEntity.cs" />
     <Compile Include="Pages\Settings\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -468,6 +467,7 @@
     <Compile Include="Pages\Settings\Templates\SettingsHeader.xaml.cs">
       <DependentUpon>SettingsHeader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Rest\Models\Response\SchoolNameDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">

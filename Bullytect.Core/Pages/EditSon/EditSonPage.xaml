@@ -204,7 +204,12 @@
                             <!-- shools -->
                             <StackLayout>
 
-                                <extended:BindablePicker ItemsSource="{Binding Schools}" IsEnabled="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionNotEmptyConverter }}" />
+                                <Picker 
+                                    Title="{ i18n:Translate Common.Placeholder.School }"
+                                    IsEnabled="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionNotEmptyConverter }}"
+                                    ItemsSource="{Binding Schools}"
+                                    SelectedItem="{Binding Path=CurrentSon.School, Mode=TwoWay}"
+                                    ItemDisplayBinding="{Binding Name}"/>
 
                                  <common:RoundedLabel
                                     IsVisible="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionEmptyConverter}}"

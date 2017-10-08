@@ -173,6 +173,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Common_Placeholder_School {
+            get {
+                return ResourceManager.GetString("Common.Placeholder.School", resourceCulture);
+            }
+        }
+        
         internal static string Common_Placeholder_LastName {
             get {
                 return ResourceManager.GetString("Common.Placeholder.LastName", resourceCulture);
@@ -872,6 +878,54 @@ namespace Bullytect.Core.I18N {
         internal static string Settings_Alerts_Categories {
             get {
                 return ResourceManager.GetString("Settings.Alerts.Categories", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Alerts_Categories_Success_Alerts_Name {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.Categories.Success.Alerts.Name", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Alerts_Categories_Success_Alerts_Description {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.Categories.Success.Alerts.Description", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Alerts_Categories_Info_Alerts_Name {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.Categories.Info.Alerts.Name", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Alerts_Categories_Info_Alerts_Description {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.Categories.Info.Alerts.Description", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Alerts_Categories_Warning_Alerts_Name {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.Categories.Warning.Alerts.Name", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Alerts_Categories_Warning_Alerts_Description {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.Categories.Warning.Alerts.Description", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Alerts_Categories_Danger_Alerts_Name {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.Categories.Danger.Alerts.Name", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Alerts_Categories_Danger_Alerts_Description {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.Categories.Danger.Alerts.Description", resourceCulture);
             }
         }
         

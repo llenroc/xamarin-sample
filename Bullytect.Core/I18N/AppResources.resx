@@ -201,6 +201,10 @@
     <value> First Name </value>
     <comment>Common Placeholder Firstname</comment>
   </data>
+  <data name="Common.Placeholder.School" xml:space="preserve">
+    <value> Select School </value>
+    <comment>Common Placeholder School</comment>
+  </data>
   <data name="Common.Placeholder.LastName" xml:space="preserve">
     <value> Last Name </value>
     <comment>Common Placeholder LastName</comment>
@@ -570,7 +574,7 @@ and we will recover it for you. </value>
     <comment>Loading Alerts</comment>
   </data>
   <data name="EditSon.General.Section.Title" xml:space="preserve">
-    <value> General </value>
+    <value> General Information </value>
     <comment>EditSon General Section Title</comment>
   </data>
   <data name="EditSon.General.Change.Profile.Image" xml:space="preserve">
@@ -669,16 +673,48 @@ and we will recover it for you. </value>
     <value>Access Token is valid</value>
     <comment>EditSon Social Media Valid Access Token</comment>
   </data>   
-   <data name="Settings.Alerts.Categories" xml:space="preserve">
+  <data name="Settings.Alerts.Categories" xml:space="preserve">
     <value>Alerts Categories</value>
     <comment>Settings Alerts Categories</comment>
-  </data> 
+  </data>
+  <data name="Settings.Alerts.Categories.Success.Alerts.Name" xml:space="preserve">
+    <value>Success Alerts</value>
+    <comment>Settings Alerts Categories Success Alerts Name</comment>
+  </data>
+  <data name="Settings.Alerts.Categories.Success.Alerts.Description" xml:space="preserve">
+    <value>Success Alerts</value>
+    <comment>Settings Alerts Categories Success Alerts Description</comment>
+  </data>
+  <data name="Settings.Alerts.Categories.Info.Alerts.Name" xml:space="preserve">
+    <value>Info Alerts</value>
+    <comment>Settings Alerts Categories Info Name</comment>
+  </data>
+  <data name="Settings.Alerts.Categories.Info.Alerts.Description" xml:space="preserve">
+    <value>Info Alerts</value>
+    <comment>Settings Alerts Categories Info Description</comment>
+  </data>
+ <data name="Settings.Alerts.Categories.Warning.Alerts.Name" xml:space="preserve">
+    <value>Warning Alerts</value>
+    <comment>Settings Alerts Categories Warning Name</comment>
+  </data>
+  <data name="Settings.Alerts.Categories.Warning.Alerts.Description" xml:space="preserve">
+    <value>Warning Alerts</value>
+    <comment>Settings Alerts Categories Warning Description</comment>
+  </data>
+	<data name="Settings.Alerts.Categories.Danger.Alerts.Name" xml:space="preserve">
+    <value>Danger Alerts</value>
+    <comment>Settings Alerts Categories Danger Name</comment>
+  </data>
+  <data name="Settings.Alerts.Categories.Danger.Alerts.Description" xml:space="preserve">
+    <value>Danger Alerts</value>
+    <comment>Settings Alerts Categories Danger Description</comment>
+  </data>
   <data name="Settings.Alerts.General" xml:space="preserve">
     <value>General configuration</value>
     <comment>Settings Alerts General</comment>
   </data>
   <data name="Settings.Alerts.Show.Only.New.Alerts" xml:space="preserve">
-    <value>Show only new aLerts</value>
+    <value>Show only new alerts</value>
     <comment>Settings Alerts Show Only New Alerts</comment>
   </data>
   <data name="Settings.Alerts.Count.New.Alerts" xml:space="preserve">

@@ -8,6 +8,7 @@ using Bullytect.Core.Models.Domain;
 using System.Collections.Generic;
 using System.Collections;
 using Bullytect.Core.Config;
+using Bullytect.Core.I18N;
 
 namespace Bullytect.Core.Services.Impl
 {
@@ -82,23 +83,23 @@ namespace Bullytect.Core.Services.Impl
 
 			var list = new List<AlertCategoryEntity>() {
                 new AlertCategoryEntity() {
-					Name = "Success Alerts",
-					Description = "Success Alerts",
+                    Name = AppResources.Settings_Alerts_Categories_Success_Alerts_Name,
+                    Description = AppResources.Settings_Alerts_Categories_Success_Alerts_Description,
 					Level = AlertLevelEnum.SUCCESS
                 },
                 new AlertCategoryEntity() {
-					Name = "INFO Alerts",
-					Description = "INFO Alerts",
+					Name = AppResources.Settings_Alerts_Categories_Info_Alerts_Name,
+                    Description = AppResources.Settings_Alerts_Categories_Info_Alerts_Description,
 					Level = AlertLevelEnum.INFO
                 },
                 new AlertCategoryEntity() {
-					Name = "WARNING Alerts",
-					Description = "WARNING Alerts",
+                    Name = AppResources.Settings_Alerts_Categories_Warning_Alerts_Name,
+                    Description = AppResources.Settings_Alerts_Categories_Warning_Alerts_Description,
 					Level = AlertLevelEnum.WARNING
                 },
 				new AlertCategoryEntity() {
-					Name = "DANGER Alerts",
-					Description = "DANGER Alerts",
+                    Name = AppResources.Settings_Alerts_Categories_Danger_Alerts_Name,
+                    Description = AppResources.Settings_Alerts_Categories_Danger_Alerts_Description,
 					Level = AlertLevelEnum.DANGER
 				}
 			};
@@ -109,7 +110,7 @@ namespace Bullytect.Core.Services.Impl
 
         public IObservable<AlertsPageEntity> GetLastAlertsForSelfParent()
         {
-			Debug.WriteLine("Get Last 10 Alerts For Self Parent");
+			Debug.WriteLine("Get Last Alerts For Self Parent");
 
 			var observable = _alertRestService
                 .GetLastSelfAlerts(
@@ -120,7 +121,7 @@ namespace Bullytect.Core.Services.Impl
 				.Select((APIResponse<AlertsPageDTO> response) => response.Data)
 				.Select((AlertsPage) => Mapper.Map<AlertsPageDTO, AlertsPageEntity>(AlertsPage))
 				.Finally(() => {
-					Debug.WriteLine("Get Last 10 Alerts For Self Parent finished ...");
+					Debug.WriteLine("Get Last Alerts For Self Parent finished ...");
 				});
 
 			return operationDecorator(observable);
