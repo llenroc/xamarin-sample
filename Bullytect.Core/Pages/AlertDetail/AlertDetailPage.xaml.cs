@@ -3,6 +3,7 @@ using System;
 using Bullytect.Core.Pages.SonProfileFullScreen;
 using Bullytect.Core.ViewModels;
 using MvvmCross.Forms.Core;
+using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.NotificationDetail
 {
@@ -11,6 +12,7 @@ namespace Bullytect.Core.Pages.NotificationDetail
         public NotificationDetailPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
 		async void OnImageTapped(Object sender, EventArgs e)

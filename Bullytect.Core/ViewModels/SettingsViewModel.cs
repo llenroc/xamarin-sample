@@ -71,27 +71,36 @@ namespace Bullytect.Core.ViewModels
         public AlertCategoryEntity AllCategory { get; }
         public List<AlertCategoryEntity> Categories { get; } = new List<AlertCategoryEntity>();
 
-        public bool ShowOnlyNewAlerts
-        {
+  
 
-            get => Settings.Current.ShowOnlyNewAlerts;
-            set => Settings.Current.ShowOnlyNewAlerts = value;
-
-        }
-
-		public List<AlertsCountOptions> AlertsOptionsList { get; set; } = new List<AlertsCountOptions>()
+		public List<PickerOptionModel> AlertsOptionsList { get; set; } = new List<PickerOptionModel>()
     	{
-            new AlertsCountOptions(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 5), Value = 5 },
-            new AlertsCountOptions(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 10), Value = 10 },
-            new AlertsCountOptions(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 15), Value = 15 },
-            new AlertsCountOptions(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 20), Value = 20 }
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 5), Value = 5 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 10), Value = 10 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 15), Value = 15 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 20), Value = 20 }
     	};
 
-		public AlertsCountOptions AlertsOption
+		public List<PickerOptionModel> AntiquityOfAlertsOptionsList { get; set; } = new List<PickerOptionModel>()
+		{
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 15), Value = 15 },
+			new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 30), Value = 30 },
+			new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 45), Value = 45 },
+			new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 60), Value = 60 }
+		};
+
+		public PickerOptionModel AlertsOption
 		{
             get => AlertsOptionsList.First((AlertOption) => AlertOption.Value.Equals(Settings.Current.LastAlertsCount));
 
             set => Settings.Current.LastAlertsCount = value.Value;
+		}
+
+		public PickerOptionModel AntiquityOfAlertsOption
+		{
+			get => AntiquityOfAlertsOptionsList.First((AntiquityOfAlertsOption) => AntiquityOfAlertsOption.Value.Equals(Settings.Current.AntiquityOfAlerts));
+
+			set => Settings.Current.AntiquityOfAlerts = value.Value;
 		}
 
 		#endregion
@@ -146,16 +155,14 @@ namespace Bullytect.Core.ViewModels
 
             public ReactiveCommand<Unit, IList<AlertCategoryEntity>> RefreshCommand{ get; protected set; }
 
-            public ICommand ToggleShowOnlyNewAlerts
-                => new MvxCommand<bool>((bool Enabled) => ShowOnlyNewAlerts = Enabled);
-
 
 		#endregion
 
-		public class AlertsCountOptions
+		public class PickerOptionModel
 		{
 			public string Description { get; set; }
 			public int Value { get; set; }
 		}
+
     }
 }

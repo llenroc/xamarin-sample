@@ -35,9 +35,9 @@ namespace Bullytect.Core.Rest.Services.Impl
             return Observable.FromAsync(() => GetData<APIResponse<SonDTO>>(ApiEndpoints.GET_SON_BY_ID.Replace(":id", id)));
         }
 
-        public IObservable<APIResponse<IList<SocialMediaDTO>>> SaveAllSocialMedia(string IdSon, IList<SocialMediaDTO> socialMedias)
+        public IObservable<APIResponse<IList<SocialMediaDTO>>> SaveAllSocialMedia(string IdSon, IList<SaveSocialMediaDTO> socialMedias)
         {
-            return Observable.FromAsync(() => PostData<APIResponse<IList<SocialMediaDTO>>, IList<SocialMediaDTO>>(ApiEndpoints.SAVE_ALL_SOCIAL_MEDIA.Replace(":id", IdSon), socialMedias));
+            return Observable.FromAsync(() => PostData<APIResponse<IList<SocialMediaDTO>>, IList<SaveSocialMediaDTO>>(ApiEndpoints.SAVE_ALL_SOCIAL_MEDIA.Replace(":id", IdSon), socialMedias));
         }
 
         public IObservable<APIResponse<SocialMediaDTO>> SaveSocialMedia(SaveSocialMediaDTO socialMedia)

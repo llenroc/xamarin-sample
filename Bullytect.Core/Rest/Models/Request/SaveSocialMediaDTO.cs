@@ -7,7 +7,7 @@ namespace Bullytect.Core.Rest.Models.Request
     {
         #pragma warning disable CS1701
 
-		[JsonProperty("accessToken")]
+		[JsonProperty("access_token")]
         public string AccessToken { get; set; }
         [JsonProperty("type")] 
         public string Type;

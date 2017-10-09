@@ -126,6 +126,7 @@
                                 <!-- TOOLBAR -->
                                 <Grid
                                     Margin="5"
+                                    ColumnSpacing="5"
                                     VerticalOptions="End">
 
                                   <Grid.ColumnDefinitions>
@@ -140,7 +141,7 @@
                                       Orientation="Horizontal"
                                       VerticalOptions="Center"
                                       HorizontalOptions="Center"
-                                      Spacing="0">
+                                      BackgroundColor="{ DynamicResource AccentColor }">
 
                                     <Label
                                         VerticalTextAlignment="Center"
@@ -183,7 +184,7 @@
                                       Orientation="Horizontal"
                                       VerticalOptions="Center"
                                       HorizontalOptions="Center"
-                                      Spacing="0">
+                                      BackgroundColor="{ DynamicResource AccentColor }">
 
                                     <Label
                                         VerticalTextAlignment="Center"
@@ -224,7 +225,7 @@
                                       Orientation="Horizontal"
                                       VerticalOptions="Center"
                                       HorizontalOptions="Center"
-                                      Spacing="0">
+                                      BackgroundColor="{ DynamicResource AccentColor }">
 
                                     <Label
                                         VerticalTextAlignment="Center"

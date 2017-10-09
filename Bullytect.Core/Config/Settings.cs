@@ -51,29 +51,27 @@ namespace Bullytect.Core.Config
 			}
 		}
 
-        static readonly bool ShowOnlyNewAlertsDefault = false;
 
-		public bool ShowOnlyNewAlerts
+        static readonly int LastAlertsCountDefault = 5;
+
+		public int LastAlertsCount
 		{
-
-            get => AppSettings.GetValueOrDefault(nameof(ShowOnlyNewAlerts), false);
+            get { return AppSettings.GetValueOrDefault(nameof(LastAlertsCount), LastAlertsCountDefault); }
 			set
 			{
-				if (AppSettings.AddOrUpdateValue(nameof(ShowOnlyNewAlerts), value))
+				if (AppSettings.AddOrUpdateValue(nameof(LastAlertsCount), value))
 					OnPropertyChanged();
 			}
 		}
 
+		static readonly int AntiquityOfAlertsDefault = 15;
 
-		const string LastAlertsCountKey = "SHOW_ONLY_NEW_ALERTS";
-        static readonly int LastAlertsCounDefault = 5;
-
-		public int LastAlertsCount
+		public int AntiquityOfAlerts
 		{
-			get { return AppSettings.GetValueOrDefault(LastAlertsCountKey, LastAlertsCounDefault); }
+			get { return AppSettings.GetValueOrDefault(nameof(AntiquityOfAlerts), AntiquityOfAlertsDefault); }
 			set
 			{
-				if (AppSettings.AddOrUpdateValue(LastAlertsCountKey, value))
+				if (AppSettings.AddOrUpdateValue(nameof(AntiquityOfAlerts), value))
 					OnPropertyChanged();
 			}
 		}

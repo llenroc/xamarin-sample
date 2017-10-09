@@ -9,8 +9,8 @@
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
+    xmlns:templates="clr-namespace:Bullytect.Core.Pages.AlertDetail.Templates"
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-    Title="{i18n:Translate Page.Alert.Detail.Title}"
     x:TypeArguments="viewModels:AlertDetailViewModel"
     BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
     x:Class="Bullytect.Core.Pages.NotificationDetail.NotificationDetailPage">
@@ -25,176 +25,157 @@
     </ContentView.Resources>
 	<ContentPage.Content>
 
-        <ScrollView 
-            Padding="{ StaticResource MainWrapperPadding }">
-            
-            <Grid
-                RowSpacing="0"
-                VerticalOptions="FillAndExpand">
+        <!-- MAIN CONTAINER -->
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="240" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+            <!-- CUSTOM NAVBAR -->
+            <templates:AlertDetailHeader Grid.Row="0"/>
 
-                <Grid 
-                    Grid.Row="0"
-                    Grid.RowSpan="2"
-                    Padding="0"
-                    BackgroundColor="Black">
-
-                    <!-- MAIN IMAGE -->
-                    <ffimageloading:CachedImage
-                        ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
-                        LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
-                        Source="{ Binding SonIdentity , Converter={ StaticResource SonProfileImageURLConverter }}"
-                        Aspect="AspectFill"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="Start"
-                        Opacity=".8">
-                        <ffimageloading:CachedImage.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnImageTapped" />
-                        </ffimageloading:CachedImage.GestureRecognizers>
-                     </ffimageloading:CachedImage>
-                </Grid>
-
-                <!-- MAIN HEADER -->
-                <StackLayout
-                    Grid.Row="0"
-                    Padding="20"
-                    Spacing="0"
-                    VerticalOptions="End"
-                    x:Name="headers" 
-                    AnchorX="0"
-                    AnchorY="0">
-
-                    <!-- HEADERS -->
-                    <Label
-                        Text="{ Binding Title }"
-                        LineBreakMode="WordWrap"
-                        TextColor="{ DynamicResource OverImageTextColor }"
-                        FontSize="26"
-                        FontAttributes="Bold"/>
-
-                    <Label
-                        Text="{ Binding SonFullName }"
-                        LineBreakMode="WordWrap"
-                        TextColor="{ DynamicResource OverImageTextColor }"
-                        FontSize="16"/>
-
-                    <BoxView  
-                        Style="{StaticResource BrandNameOrnamentStyle}"
-                        Margin="0,20,0,0"/>
-
-                </StackLayout>
-
-
-
+            <ScrollView 
+                Grid.Row="1"
+                Padding="{ StaticResource MainWrapperPadding }">
+                
                 <Grid
-                    Grid.Row="1"
-                    BackgroundColor="{ DynamicResource BasePageColor }">
+                    RowSpacing="0"
+                    VerticalOptions="FillAndExpand">
+
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="60" />
+                        <RowDefinition Height="240" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <!--HEADER BACKGROUND-->
-                    <BoxView
+                    <Grid 
                         Grid.Row="0"
-                        BackgroundColor="{ DynamicResource ArticleHeaderBackgroundColor }" />
+                        Grid.RowSpan="2"
+                        Padding="0"
+                        BackgroundColor="Black">
 
-                    <!--HEADER INFO-->
-                    <StackLayout
-                        Orientation="Horizontal"
-                        Grid.Row="0"
-                        Padding="20,0"
-                        VerticalOptions="Center"
-                        Spacing="10">
-
-
-                        <Label 
-                            Text="{ Binding Level , Converter={ StaticResource AlertLevelToFontIconConverter}}" 
-                            TextColor="{ Binding Level, Converter={ StaticResource AlertLevelToColorConverter }}"
-                            Style="{StaticResource FontIcon}"
-                            FontSize="14"
-                            HorizontalOptions="Start"
-                            VerticalTextAlignment="Center"/>
-
-
-                        <Label 
-                            Text="{ Binding Level , Converter={ StaticResource AlertLevelToTextConverter}}" 
-                            TextColor="{ Binding Level, Converter={ StaticResource AlertLevelToColorConverter }}"
-                            Style="{StaticResource FontIcon}"
-                            FontSize="14"
-                            Margin="5,0,0,0"
-                            HorizontalOptions="StartAndExpand"
-                            VerticalTextAlignment="Center"/>
-
-                        
-                        
-                        <Label 
-                            Text="{ Binding CreateAt , Converter={ StaticResource DateTimeToElapsedTimeConverter }}"
-                            FontSize="14"
-                            TextColor="{ DynamicResource BaseTextColor }"
-                            HorizontalOptions="End"/>
-                    
-                        
-                    </StackLayout>
-
-                    <!-- SEPARATOR -->
-                    <BoxView
-                        Grid.Row="0"
-                        VerticalOptions="End"
-                        Style="{ StaticResource Horizontal1ptLineStyle}" />
-
-                    <!-- TEXT -->
-                    <StackLayout
-                        Grid.Row="1"
-                        Padding="20,20,20,0"
-                        VerticalOptions="StartAndExpand">
-
-                        <!-- MAIN PARAGRAPH -->
-                        <Label
-                            Text="{ Binding Payload }"
+                        <!-- MAIN IMAGE -->
+                        <ffimageloading:CachedImage
+                            ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+                            LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
+                            Source="{ Binding SonIdentity , Converter={ StaticResource SonProfileImageURLConverter }}"
+                            Aspect="AspectFill"
+                            HorizontalOptions="FillAndExpand"
                             VerticalOptions="Start"
-                            TextColor="{ DynamicResource BaseTextColor }" />
+                            Opacity=".8">
+                            <ffimageloading:CachedImage.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnImageTapped" />
+                            </ffimageloading:CachedImage.GestureRecognizers>
+                         </ffimageloading:CachedImage>
+                    </Grid>
 
+                    <!-- MAIN HEADER -->
+                    <StackLayout
+                        Grid.Row="0"
+                        Padding="20"
+                        Spacing="0"
+                        VerticalOptions="End"
+                        x:Name="headers" 
+                        AnchorX="0"
+                        AnchorY="0">
 
-                        <!-- Edit Action -->
-                        <artina:Button
-                            Command="{ Binding DeleteAlertCommand }"
-                            CommandParameter="{ Binding SonIdentity }"
-                            Margin="20,10,20,20"
-                            Style="{StaticResource PrimaryActionButtonStyle}" 
-                            Text="{i18n:Translate Alerts.Delete.Alert}"
-                            WidthRequest="{ artina:OnOrientationDouble
-                                LandscapePhone=200,
-                                LandscapeTablet=400 }"
-                            HorizontalOptions="{ artina:OnOrientationLayoutOptions
-                                PortraitPhone=Fill,
-                                LandscapePhone=Center,
-                                PortraitTablet=Fill,
-                                LandscapeTablet=Center }"
-                            VerticalOptions="End">
+                        <!-- HEADERS -->
+                        <Label
+                            Text="{ Binding Title }"
+                            LineBreakMode="WordWrap"
+                            TextColor="{ DynamicResource OverImageTextColor }"
+                            FontSize="26"
+                            FontAttributes="Bold"/>
 
-                            <Button.Triggers>
-                                <DataTrigger
-                                    TargetType="Button"
-                                    Binding="{Binding IsBusy}"
-                                    Value="True">
-                                    <Setter Property="IsEnabled" Value="False" />
-                                </DataTrigger>
-                                <DataTrigger
-                                    TargetType="Button"
-                                    Binding="{Binding HaveInternet}"
-                                    Value="False">
-                                    <Setter Property="IsEnabled" Value="False" />
-                                </DataTrigger>
-                            </Button.Triggers>
-                        </artina:Button>
+                        <Label
+                            Text="{ Binding SonFullName }"
+                            LineBreakMode="WordWrap"
+                            TextColor="{ DynamicResource OverImageTextColor }"
+                            FontSize="16"/>
+
+                        <BoxView  
+                            Style="{StaticResource BrandNameOrnamentStyle}"
+                            Margin="0,20,0,0"/>
+
                     </StackLayout>
+
+
+
+                    <Grid
+                        Grid.Row="1"
+                        BackgroundColor="{ DynamicResource BasePageColor }">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <!--HEADER BACKGROUND-->
+                        <BoxView
+                            Grid.Row="0"
+                            BackgroundColor="{ DynamicResource ArticleHeaderBackgroundColor }" />
+
+                        <!--HEADER INFO-->
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Grid.Row="0"
+                            Padding="20,0"
+                            VerticalOptions="Center"
+                            Spacing="10">
+
+
+                            <Label 
+                                Text="{ Binding Level , Converter={ StaticResource AlertLevelToFontIconConverter}}" 
+                                TextColor="{ Binding Level, Converter={ StaticResource AlertLevelToColorConverter }}"
+                                Style="{StaticResource FontIcon}"
+                                FontSize="14"
+                                HorizontalOptions="Start"
+                                VerticalTextAlignment="Center"/>
+
+
+                            <Label 
+                                Text="{ Binding Level , Converter={ StaticResource AlertLevelToTextConverter}}" 
+                                TextColor="{ Binding Level, Converter={ StaticResource AlertLevelToColorConverter }}"
+                                Style="{StaticResource FontIcon}"
+                                FontSize="14"
+                                Margin="5,0,0,0"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalTextAlignment="Center"/>
+
+                            
+                            
+                            <Label 
+                                Text="{ Binding CreateAt , Converter={ StaticResource DateTimeToElapsedTimeConverter }}"
+                                FontSize="14"
+                                TextColor="{ DynamicResource BaseTextColor }"
+                                HorizontalOptions="End"/>
+                        
+                            
+                        </StackLayout>
+
+                        <!-- SEPARATOR -->
+                        <BoxView
+                            Grid.Row="0"
+                            VerticalOptions="End"
+                            Style="{ StaticResource Horizontal1ptLineStyle}" />
+
+                        <!-- TEXT -->
+                        <StackLayout
+                            Grid.Row="1"
+                            Padding="20,20,20,0"
+                            VerticalOptions="StartAndExpand">
+
+                            <!-- MAIN PARAGRAPH -->
+                            <Label
+                                Text="{ Binding Payload }"
+                                VerticalOptions="Start"
+                                TextColor="{ DynamicResource BaseTextColor }" />
+
+
+                            
+                        </StackLayout>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </ScrollView>
+            </ScrollView>
+         </Grid>
 	</ContentPage.Content>
 </d:MvxContentPage>

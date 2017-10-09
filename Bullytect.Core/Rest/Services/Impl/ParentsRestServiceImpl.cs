@@ -30,6 +30,20 @@ namespace Bullytect.Core.Rest.Services.Impl
             return Observable.FromAsync(() => GetData<APIResponse<List<SonDTO>>>(ApiEndpoints.GET_CHILDREN_OF_SELF_PARENT));
         }
 
+        public IObservable<APIResponse<List<CommentsBySonDTO>>> GetCommentsBySonForLastIteration()
+        {
+            return Observable.FromAsync(() => GetData<APIResponse<List<CommentsBySonDTO>>>(ApiEndpoints.GET_COMMENTS_BY_SON_FOR_LAST_ITERATION));
+        }
+
+        public IObservable<APIResponse<List<IterationDTO>>> GetLastIterations(int count)
+        {
+
+			return Observable.FromAsync(() => GetData<APIResponse<List<IterationDTO>>>(new Uri(ApiEndpoints.GET_LAST_ITERATIONS_FOR_SELF_PARENT).AttachParameters(new Dictionary<string, string>()
+			{
+                { "count", count.ToString()}
+			})));
+        }
+
         public IObservable<APIResponse<ParentDTO>> GetSelfInformation()
         {
             return Observable.FromAsync(() => GetData<APIResponse<ParentDTO>>(ApiEndpoints.GET_SELF_PARENT_INFORMATION));

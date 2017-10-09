@@ -713,13 +713,21 @@ and we will recover it for you. </value>
     <value>General configuration</value>
     <comment>Settings Alerts General</comment>
   </data>
-  <data name="Settings.Alerts.Show.Only.New.Alerts" xml:space="preserve">
-    <value>Show only new alerts</value>
-    <comment>Settings Alerts Show Only New Alerts</comment>
+  <data name="Settings.Antiquity.Of.Alerts" xml:space="preserve">
+    <value>Antiquity of alerts</value>
+    <comment>Settings Antiquity Of Alerts</comment>
+  </data>
+  <data name="Settings.Antiquity.Of.Alerts.Description" xml:space="preserve">
+    <value>Show alerts for the last {0} minutes</value>
+    <comment>Settings Antiquity Of Alerts Description</comment>
   </data>
   <data name="Settings.Alerts.Count.New.Alerts" xml:space="preserve">
     <value>Number of Alerts</value>
     <comment>Settings Alerts Count New Alerts</comment>
+  </data>
+   <data name="Settings.Alerts.Count.New.Alerts.Description" xml:space="preserve">
+    <value>Select the maximum number of alerts you want to appear on the home screen</value>
+    <comment>Settings Alerts Count New Alerts Description</comment>
   </data>
   <data name="Settings.Alerts.Last.Alerts" xml:space="preserve">
     <value>{0} Alerts</value>
@@ -729,7 +737,14 @@ and we will recover it for you. </value>
     <value>Changes saved</value>
     <comment>Settings Changes Saved</comment>
   </data>   
-
+  <data name="Results.Comments.By.Son" xml:space="preserve">
+    <value>Comments by son for last iteration </value>
+    <comment>Results Comments By Son</comment>
+  </data> 
+  <data name="Results.Last.Iterations" xml:space="preserve">
+    <value>Last Iterations</value>
+    <comment>Results Last Iterations</comment>
+  </data> 
 	
 
 

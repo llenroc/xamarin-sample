@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reactive;
@@ -24,7 +22,6 @@ using MvvmCross.Plugins.Messenger;
 using MvvmHelpers;
 using Plugin.Media.Abstractions;
 using ReactiveUI;
-using Xamarin.Forms;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -46,13 +43,31 @@ namespace Bullytect.Core.ViewModels
             _oauthService = oauthService;
 
             // Refresh Command (Get son Information And All School Names)
-            RefreshCommand = ReactiveCommand.CreateFromObservable(() => !string.IsNullOrEmpty(SonToEdit) ?
+            RefreshCommand = ReactiveCommand.CreateFromObservable(() =>
+            {
+
+				var GetAllSchools = GetSchoolNames().Do((SchoolNames) =>
+				{
+					if (SchoolNames?.Count() > 0)
+						Schools.ReplaceRange(SchoolNames);
+
+				});
+
+                return !string.IsNullOrEmpty(SonToEdit) ? 
                               GetSonInformation().Do((SonInformation) =>
                               {
                                   CurrentSon = SonInformation.Son;
                                   CurrentSocialMedia.ReplaceRange(SonInformation.SocialMedia);
-                              }).SelectMany((_) => GetSchoolNames()).Do((SchoolNames) => Schools.ReplaceRange(SchoolNames)) :
-                                                                  GetSchoolNames().Do((SchoolNames) => Schools.ReplaceRange(SchoolNames)));
+                              })
+                              .SelectMany((_) => GetAllSchools).Do((_) => {
+
+								  var index = Schools.Select((SchoolItem, SchoolIndex) => new { SchoolItem, SchoolIndex })
+																	   .First(i => i.SchoolItem.Identity.Equals(CurrentSon.School)).SchoolIndex;
+								  SchoolSelectedIndex = index;
+							  }) : GetAllSchools;
+
+
+            }); 
 
             RefreshCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
 
@@ -74,8 +89,7 @@ namespace Bullytect.Core.ViewModels
             SaveChangesCommand = ReactiveCommand
                 .CreateFromObservable<Unit, bool>((param) =>
                 {
-
-
+                
                     return (CurrentSon.Identity == null ?
                                  _parentService.AddSonToSelfParent(CurrentSon.FirstName, CurrentSon.LastName, CurrentSon.Birthdate, CurrentSon.School) :
                                  _parentService.UpdateSonInformation(CurrentSon.Identity, CurrentSon.FirstName, CurrentSon.LastName, CurrentSon.Birthdate, CurrentSon.School))
@@ -84,7 +98,6 @@ namespace Bullytect.Core.ViewModels
                                 .Do((SocialMediaEntities) => CurrentSocialMedia.ReplaceRange(SocialMediaEntities))
                                 .SelectMany((_) =>
                                 {
-
                                     return NewProfileImage != null ?
                                             _parentService.UploadSonProfileImage(CurrentSon.Identity, NewProfileImage.GetStream()) :
                                             Observable.Empty<ImageEntity>();
@@ -95,6 +108,7 @@ namespace Bullytect.Core.ViewModels
 
             SaveChangesCommand.Subscribe((_) =>
             {
+                OnSonUpdated(CurrentSon);
                 _userDialogs.ShowSuccess(AppResources.EditSon_Saved_Changes_Successfully);
             });
 
@@ -178,6 +192,16 @@ namespace Bullytect.Core.ViewModels
 
         }
 
+        int _schoolSelectedIndex;
+        public int SchoolSelectedIndex {
+			get => _schoolSelectedIndex;
+            set {
+
+                CurrentSon.School = Schools[value]?.Identity;
+                SetProperty(ref _schoolSelectedIndex, value);
+            }
+        }
+
         #endregion
 
         #region delegates
@@ -198,6 +222,14 @@ namespace Bullytect.Core.ViewModels
 			SchoolAdded?.Invoke(this, SchoolEntity);
 		}
 
+        public delegate void SonUpdatedEvent(object sender, SonEntity SonEntity);
+		public event SonUpdatedEvent SonUpdated;
+
+		protected virtual void OnSonUpdated(SonEntity SonEntity)
+		{
+			SonUpdated?.Invoke(this, SonEntity);
+		}
+
         #endregion
 
 
@@ -210,21 +242,6 @@ namespace Bullytect.Core.ViewModels
 
 		public override void Start()
 		{
-
-			if (!string.IsNullOrEmpty(SonToEdit))
-				GetSonInformation().Subscribe((SonInformation) =>
-				{
-					CurrentSon = SonInformation.Son;
-                    CurrentSocialMedia.ReplaceRange(SonInformation.SocialMedia);
-
-				});
-
-			GetSchoolNames().Subscribe((SchoolNames) =>
-			{
-	
-                  Schools.ReplaceRange(SchoolNames);
-
-			});
 
             CurrentSocialMedia.CollectionChanged += CurrentSocialMediaCollectionChanged;
             Schools.CollectionChanged += SchoolsCollectionChanged;
@@ -260,6 +277,7 @@ namespace Bullytect.Core.ViewModels
         public ReactiveCommand<Unit, SchoolEntity> SaveSchoolCommand { get; set; }
 
 
+
         #endregion
 
         #region methods
@@ -282,7 +300,7 @@ namespace Bullytect.Core.ViewModels
             {
                 Identity = SchoolEntry.Key,
                 Name = SchoolEntry.Value
-            }));//.OnErrorResumeNext(Observable.Return(new List<SchoolPickerModel>()));
+            })).OnErrorResumeNext(Observable.Return(new List<SchoolPickerModel>()));
 		}
 
         private void ToggleSocialMediaHandler(bool Enabled, OAuth2 Provider, string Type)

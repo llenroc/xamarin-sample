@@ -36,6 +36,10 @@ namespace Bullytect.Core.Rest.Utils
         public static string GET_ALERTS_BY_SON = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/alerts");
         public static string CLEAR_ALERTS_FOR_SON = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/alerts");
         public static string DELETE_ALERT = string.Concat(SharedConfig.BASE_API_URL, "/children/:son/alerts/:alert");
+        public static string GET_COMMENTS_BY_SON_FOR_LAST_ITERATION = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/iterations/last/comments-by-son");
+        public static string GET_LAST_ITERATIONS_FOR_SELF_PARENT = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/iterations");
+       
+
                                                  
 
 

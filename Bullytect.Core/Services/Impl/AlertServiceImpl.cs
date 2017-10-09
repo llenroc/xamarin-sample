@@ -115,7 +115,7 @@ namespace Bullytect.Core.Services.Impl
 			var observable = _alertRestService
                 .GetLastSelfAlerts(
                     Count: Settings.Current.LastAlertsCount,
-                    OnlyNews: Settings.Current.ShowOnlyNewAlerts, 
+                    LastMinutes: Settings.Current.AntiquityOfAlerts, 
                     Levels: String.IsNullOrEmpty(Settings.Current.FilteredCategories) ? 
                         new string[] {} : Settings.Current.FilteredCategories.Split(','))
 				.Select((APIResponse<AlertsPageDTO> response) => response.Data)

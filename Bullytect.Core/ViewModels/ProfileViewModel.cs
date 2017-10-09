@@ -44,7 +44,7 @@ namespace Bullytect.Core.ViewModels
             });
 
 
-            SaveChangesCommand.Subscribe(AccountUpdated);
+            SaveChangesCommand.Subscribe(AccountUpdatedHandler);
 
             SaveChangesCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
 
@@ -117,8 +117,12 @@ namespace Bullytect.Core.ViewModels
 			get => _prefix;
 		}
 
+		#endregion
 
-        public delegate void NewSelectedImageEvent(object sender, MediaFile NewProfileImage);
+		#region delegates
+
+
+		public delegate void NewSelectedImageEvent(object sender, MediaFile NewProfileImage);
 		public event NewSelectedImageEvent NewSelectedImage;
 
 		protected virtual void OnNewSelectedImage(MediaFile NewProfileImage)
@@ -126,7 +130,17 @@ namespace Bullytect.Core.ViewModels
 			NewSelectedImage?.Invoke(this, NewProfileImage);
 		}
 
+		public delegate void AccountUpdatedEvent(object sender, ParentEntity ParentEntity);
+		public event AccountUpdatedEvent AccountUpdated;
+
+		protected virtual void OnAccountUpdated(ParentEntity ParentEntity)
+		{
+			AccountUpdated?.Invoke(this, ParentEntity);
+		}
+
         #endregion
+
+
 
         #region commands
 
@@ -142,10 +156,11 @@ namespace Bullytect.Core.ViewModels
 
 		#endregion
 
-		void AccountUpdated(ParentEntity parent)
+		void AccountUpdatedHandler(ParentEntity parent)
 		{
 			Debug.WriteLine(String.Format("Parent: {0}", parent.ToString()));
             _appHelper.Toast(AppResources.Profile_Account_Updated, System.Drawing.Color.FromArgb(12, 131, 193));
+            OnAccountUpdated(parent);
 		}
 
 		protected override void HandleExceptions(Exception ex)

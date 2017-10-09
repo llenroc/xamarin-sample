@@ -5,38 +5,19 @@
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
-    x:Class="Bullytect.Core.Pages.Children.Templates.ChildrenHeader">
-	<ContentView.Content>
-
+    x:Class="Bullytect.Core.Pages.Results.Templates.ResultsHeader">
+    <ContentView.Content>
 
         <Grid 
             Style="{ StaticResource CustomNavBarStyle }"
             Padding="0">
 
-            <Label 
-                HorizontalOptions="Start"
-                VerticalOptions="Center"
-                Margin="20,0"
-                Text="{ x:Static helper:FontAwesomeFont.ArrowLeft }"
-                FontSize="22"
-                TextColor="{ DynamicResource CustomNavBarTextColor }" 
-                Style="{ StaticResource FontIcon }">
-                <Label.TranslationY>
-                    <OnPlatform 
-                        x:TypeArguments="x:Double" 
-                        iOS="10" 
-                        Android="0" />
-                </Label.TranslationY>
-                <Label.GestureRecognizers>
-                     <TapGestureRecognizer Command="{ Binding CloseCommand }" NumberOfTapsRequired="1" /> 
-                </Label.GestureRecognizers>
-            </Label>
-
+           
             <Label 
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 FontSize="18"
-                Text="{i18n:Translate Page.Children.Title}" 
+                Text="{i18n:Translate Page.Home.Title}" 
                 TextColor="{ DynamicResource CustomNavBarTextColor }">
                 <Label.TranslationY>
                     <OnPlatform 
@@ -47,7 +28,7 @@
             </Label>
 
 
-             <StackLayout 
+            <StackLayout 
                 Spacing="5"
                 Orientation="Horizontal"
                 HorizontalOptions="EndAndExpand"
@@ -55,14 +36,9 @@
                 Margin="20,0"
                 VerticalOptions="Center">
 
-
-
                 <Label 
-                
                     HorizontalOptions="End"
-                    TranslationY="0"
-                    Margin="20,0"
-                    VerticalOptions="Center"
+                    Margin="0,0,10,0"
                     Text="{ x:Static helper:FontAwesomeFont.Refresh } " 
                     FontSize="22"
                     TextColor="{ DynamicResource CustomNavBarTextColor }" 
@@ -94,32 +70,10 @@
                     
                 </Label>
 
-
-                <Label 
-                    HorizontalOptions="End"
-                    TranslationY="0"
-                    Margin="20,0"
-                    VerticalOptions="Center"
-                    Text="{ x:Static helper:FontAwesomeFont.UserPlus } " 
-                    FontSize="22"
-                    TextColor="{ DynamicResource CustomNavBarTextColor }" 
-                    Style="{ StaticResource FontIcon }">
-                    <Label.TranslationY>
-                        <OnPlatform 
-                            x:TypeArguments="x:Double" 
-                            iOS="10" 
-                            Android="0" />
-                    </Label.TranslationY>
-                    <Label.GestureRecognizers>
-                         <TapGestureRecognizer Command="{ Binding GoToAddSonCommand }" NumberOfTapsRequired="1" /> 
-                    </Label.GestureRecognizers>
-                </Label>
-
-
-            </StackLayout>
-
+             </StackLayout>
         </Grid>
 
+
         
-	</ContentView.Content>
+    </ContentView.Content>
 </ContentView>

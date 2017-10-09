@@ -4,15 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
-    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
-    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
-    x:Class="Bullytect.Core.Pages.EditSon.Templates.EditSonHeader">
-    <ContentPage.Resources>
-           <ResourceDictionary>
-                <converters:IsNullToBoolConverter x:Key="IsNullToBoolConverter" />
-            </ResourceDictionary>
-    </ContentPage.Resources>
+    x:Class="Bullytect.Core.Pages.AlertDetail.Templates.AlertDetailHeader">
     <ContentView.Content>
 
         <Grid 
@@ -37,13 +30,13 @@
                      <TapGestureRecognizer Command="{ Binding CloseCommand }" NumberOfTapsRequired="1" /> 
                 </Label.GestureRecognizers>
             </Label>
+
            
             <Label 
-                x:Name="PageTitle"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
-                Text="{ Binding PageTitle }"
-                FontSize="18" 
+                FontSize="18"
+                Text="{i18n:Translate Page.Alert.Detail.Title}" 
                 TextColor="{ DynamicResource CustomNavBarTextColor }">
                 <Label.TranslationY>
                     <OnPlatform 
@@ -62,13 +55,8 @@
                 Margin="20,0"
                 VerticalOptions="Center">
 
-
-                <!-- Refresh Action -->
                 <Label 
-                    
                     HorizontalOptions="End"
-                    TranslationY="0"
-                    VerticalOptions="Center"
                     Margin="0,0,10,0"
                     Text="{ x:Static helper:FontAwesomeFont.Refresh } " 
                     FontSize="22"
@@ -91,12 +79,6 @@
                             Value="True">
                             <Setter Property="IsVisible" Value="False" />
                         </DataTrigger>
-                        <DataTrigger 
-                            TargetType="Label"
-                            Binding="{Binding SonToEdit,  Converter={StaticResource IsNullToBoolConverter}}"
-                            Value="True">
-                            <Setter Property="IsVisible" Value="False" />
-                        </DataTrigger>
                         <DataTrigger
                             TargetType="Label"
                             Binding="{Binding ErrorOccurred}"
@@ -107,13 +89,11 @@
                     
                 </Label>
 
+
                 <Label 
-                    x:Name="AddSchoolLabel"
                     HorizontalOptions="End"
-                    TranslationY="0"
-                    Margin="20,0"
-                    VerticalOptions="Center"
-                    Text="{ x:Static helper:FontAwesomeFont.GraduationCap } " 
+                    Margin="0,0,10,0"
+                    Text="{ x:Static helper:FontAwesomeFont.Trash } " 
                     FontSize="22"
                     TextColor="{ DynamicResource CustomNavBarTextColor }" 
                     Style="{ StaticResource FontIcon }">
@@ -124,12 +104,29 @@
                             Android="0" />
                     </Label.TranslationY>
                     <Label.GestureRecognizers>
-                         <TapGestureRecognizer Tapped="OnAddSchoolTapped" NumberOfTapsRequired="1" /> 
+                         <TapGestureRecognizer Command="{ Binding DeleteAlertCommand }" NumberOfTapsRequired="1" /> 
                     </Label.GestureRecognizers>
+
+
+                    <Label.Triggers>
+                        <DataTrigger 
+                            TargetType="Label"
+                            Binding="{Binding HaveInternet}"
+                            Value="False">
+                            <Setter Property="IsVisible" Value="False" />
+                        </DataTrigger>
+                        <DataTrigger
+                            TargetType="Label"
+                            Binding="{Binding DataFound}"
+                            Value="False">
+                            <Setter Property="IsVisible" Value="False" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                   
                     
                 </Label>
 
-              </StackLayout>
+             </StackLayout>
         </Grid>
 
 

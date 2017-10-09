@@ -10,7 +10,7 @@ namespace Bullytect.Core.Rest.Services
     public interface IAlertRestService
     {
 
-        IObservable<APIResponse<AlertsPageDTO>> GetLastSelfAlerts(int Count, bool OnlyNews, String[] Levels);
+        IObservable<APIResponse<AlertsPageDTO>> GetLastSelfAlerts(int Count, int LastMinutes, String[] Levels);
         IObservable<APIResponse<IList<AlertDTO>>> GetSelfAlerts();
         IObservable<APIResponse<IList<AlertDTO>>> GetAlertsBySon(string SonId);
         IObservable<int> ClearAlertsOfSon(string SonId);

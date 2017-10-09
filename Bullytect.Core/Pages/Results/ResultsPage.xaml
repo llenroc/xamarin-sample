@@ -1,18 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TabbedPage
-    xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    xmlns:tabs="clr-namespace:Bullytect.Core.Pages.Results.Tabs"
+<utils:MvxCarouselPage  
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
+    xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:carouselTemplate="clr-namespace:Bullytect.Core.Pages.Results.Templates"
     x:Class="Bullytect.Core.Pages.Results.ResultsPage"
-    Title="Tabbed Page"
-    BackgroundColor="{DynamicResource BaseTabbedPageColor}">
+    x:TypeArguments="viewModels:ResultsViewModel"
+    BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
+    Title="{i18n:Translate Home.Toolbar.Results}">
+    <CarouselPage.Resources>
+        <ResourceDictionary>
+            <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
+        </ResourceDictionary>
+    </CarouselPage.Resources>
 
-    <TabbedPage.Children>
+    <!-- Refresh On Appearing Event -->
+    <CarouselPage.Behaviors>
+        <behaviors:EventHandlerBehavior EventName="Appearing" >
+            <behaviors:InvokeCommandAction 
+                    Command="{Binding RefreshCommand}" 
+                    Converter="{ StaticResource DefaultReactiveUnitConverter}" />
+        </behaviors:EventHandlerBehavior>
+    </CarouselPage.Behaviors>
 
-        <tabs:CommentsBySon></tabs:CommentsBySon>
-        <tabs:CommentsBySon></tabs:CommentsBySon>
-        <tabs:CommentsBySon></tabs:CommentsBySon>
+
+
+
+    <CarouselPage.Children>
+
+        <carouselTemplate:CommentsBySon />
+
+    
+        <carouselTemplate:CommentsBySon />
+
+    </CarouselPage.Children>
+
         
-    </TabbedPage.Children>
 
-</TabbedPage>
+</utils:MvxCarouselPage>

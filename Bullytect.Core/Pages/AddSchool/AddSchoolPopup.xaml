@@ -12,7 +12,7 @@
                 <converters:ContainsKeyVisibilityConverter x:Key="ContainsKeyVisibilityConverter"/>
                 <converters:ValidationErrorFormatValueConverter x:Key="ValidationErrorFormatValueConverter"/>
                 <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
-                <x:String x:Key="nameKey">name</x:String>
+                <x:String x:Key="nameKey">schoolName</x:String>
                 <x:String x:Key="residenceKey">residence</x:String>
                 <x:String x:Key="locationKey">location</x:String>
                 <x:String x:Key="provinceKey">province</x:String>

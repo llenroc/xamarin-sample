@@ -18,7 +18,6 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
-            <converters:SwitchChangeEventArgsConverter x:Key="SwitchChangeEventArgsConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -53,6 +52,7 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
                              <Label 
@@ -71,7 +71,32 @@
                                    HorizontalOptions="StartAndExpand"
                                    />
 
-                            <Picker Grid.Column="2"
+
+                            <Label
+                                Grid.Column="2" 
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions="End"
+                                VerticalOptions="CenterAndExpand"
+                                Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                                FontFamily="{ StaticResource IconsFontFamily }"
+                                TextColor="{ DynamicResource AccentColor }">
+                                <Label.FontSize>
+                                    <OnIdiom 
+                                        x:TypeArguments="x:Double"
+                                        Phone="20" 
+                                        Tablet="20" />
+                                </Label.FontSize> 
+
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Tapped="OnCountNewAlertsInfo"
+                                        NumberOfTapsRequired="1" /> 
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Picker Grid.Column="3"
+                                WidthRequest="100"
                                 VerticalOptions="Center"
                                 ItemsSource="{Binding AlertsOptionsList}"
                                 SelectedItem="{Binding AlertsOption}"
@@ -89,11 +114,12 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
                              <Label 
                                 Grid.Column="0"
-                                Text="{ x:Static helper:FontAwesomeFont.Inbox }"
+                                Text="{ x:Static helper:FontAwesomeFont.ClockO }"
                                 Style="{StaticResource FontIcon}"
                                 FontSize ="12"
                                 WidthRequest="12" HeightRequest="12" 
@@ -102,21 +128,42 @@
                                 VerticalTextAlignment="Center"/>
                             
                             <Label Grid.Column="1" 
-                                   Text="{i18n:Translate Settings.Alerts.Show.Only.New.Alerts }"
+                                   Text="{i18n:Translate Settings.Antiquity.Of.Alerts }"
                                    VerticalTextAlignment="Center" 
                                    HorizontalOptions="StartAndExpand"
                                    />
-                            <Switch Grid.Column="2" 
-                                    VerticalOptions="Center"
-                                    IsToggled="{ Binding ShowOnlyNewAlerts }">
-                                <Switch.Behaviors>
-                                    <behaviors:EventHandlerBehavior EventName="Toggled">
-                                        <behaviors:InvokeCommandAction 
-                                            Command="{Binding ToggleShowOnlyNewAlerts }"
-                                            Converter="{StaticResource SwitchChangeEventArgsConverter}"/>
-                                    </behaviors:EventHandlerBehavior>
-                                </Switch.Behaviors>
-                            </Switch>
+
+                            <Label
+                                Grid.Column="2" 
+                                
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions="End"
+                                VerticalOptions="CenterAndExpand"
+                                Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                                FontFamily="{ StaticResource IconsFontFamily }"
+                                TextColor="{ DynamicResource AccentColor }">
+                                <Label.FontSize>
+                                    <OnIdiom 
+                                        x:TypeArguments="x:Double"
+                                        Phone="20" 
+                                        Tablet="20" />
+                                </Label.FontSize> 
+
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Tapped="OnAntiquityOfAlertsInfo"
+                                        NumberOfTapsRequired="1" /> 
+                                </Label.GestureRecognizers>
+                            </Label>
+
+
+                             <Picker Grid.Column="3"
+                                WidthRequest="100"
+                                VerticalOptions="Center"
+                                ItemsSource="{Binding AntiquityOfAlertsOptionsList }"
+                                SelectedItem="{Binding AntiquityOfAlertsOption}"
+                                ItemDisplayBinding="{Binding Description}"/>
                             
                         </Grid>
 

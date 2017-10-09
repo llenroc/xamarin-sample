@@ -19,7 +19,7 @@ namespace Bullytect.Core.Rest.Services
 
 		IObservable<APIResponse<SocialMediaDTO>> SaveSocialMedia(SaveSocialMediaDTO socialMedia);
 
-        IObservable<APIResponse<IList<SocialMediaDTO>>> SaveAllSocialMedia(string IdSon, IList<SocialMediaDTO> socialMedias);
+        IObservable<APIResponse<IList<SocialMediaDTO>>> SaveAllSocialMedia(string IdSon, IList<SaveSocialMediaDTO> socialMedias);
 
 		IObservable<APIResponse<SocialMediaDTO>> DeleteSocialMedia(string idson, string idsocial);
 

@@ -13,6 +13,7 @@ using ReactiveUI;
 using Bullytect.Core.Rest.Models.Exceptions;
 using Bullytect.Core.Exceptions;
 using Bullytect.Core.Helpers;
+using Plugin.Media.Abstractions;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -37,7 +38,8 @@ namespace Bullytect.Core.ViewModels
 				Debug.WriteLine("Total Alerts  " + AlertsPageEntity?.Alerts?.Count);
 				AlertsPage = AlertsPageEntity;
 				NoAlertsFound = false;
-            })).Finally(() => ErrorOccurred = false));
+                ErrorOccurred = false;
+            })));
 
             RefreshCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
 
@@ -55,6 +57,7 @@ namespace Bullytect.Core.ViewModels
 			});
 
             TakePhotoCommand.Subscribe((image) => {
+                OnNewSelectedImage(image);
                 _userDialogs.ShowSuccess(AppResources.Profile_Updating_Profile_Image_Success);
             });
 
@@ -88,8 +91,19 @@ namespace Bullytect.Core.ViewModels
             set => SetProperty(ref _noAlertsFound, value);
         }
 
-        #endregion
+		#endregion
 
+		#region delegates
+
+        public delegate void NewSelectedImageEvent(object sender, ImageEntity NewProfileImage);
+		public event NewSelectedImageEvent NewSelectedImage;
+
+		protected virtual void OnNewSelectedImage(ImageEntity NewProfileImage)
+		{
+			NewSelectedImage?.Invoke(this, NewProfileImage);
+		}
+
+        #endregion
 
         #region commands
 
@@ -111,6 +125,16 @@ namespace Bullytect.Core.ViewModels
 				return new MvxCommand(() => ShowViewModel<ChildrenViewModel>());
 			}
 		}
+
+
+		public ICommand GoToResultsCommand
+		{
+			get
+			{
+				return new MvxCommand(() => ShowViewModel<ResultsViewModel>());
+			}
+		}
+
 
 		public ICommand GoToSettingsCommand
 		{
@@ -149,9 +173,7 @@ namespace Bullytect.Core.ViewModels
 			}
 		}
 
-		
-
-
+	
         #endregion
 
 
@@ -164,7 +186,13 @@ namespace Bullytect.Core.ViewModels
             }
             else if( ex is NoNewAlertsFoundException) {
                 NoAlertsFound = true;
-            }else if (ex is CanNotTakePhotoFromCameraException) {
+            }
+            else if (ex is UploadImageFailException)
+			{
+				_appHelper.Toast(AppResources.Profile_Updating_Profile_Image_Failed, System.Drawing.Color.FromArgb(255, 0, 0));
+
+			}
+			else if (ex is CanNotTakePhotoFromCameraException) {
                 _appHelper.Toast(AppResources.Profile_Can_Not_Take_Photo_From_Camera, System.Drawing.Color.FromArgb(12, 131, 193));
             }
 			else

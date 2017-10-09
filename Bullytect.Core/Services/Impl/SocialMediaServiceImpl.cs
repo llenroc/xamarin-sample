@@ -11,6 +11,7 @@ namespace Bullytect.Core.Services.Impl
 	using Bullytect.Core.Models.Domain;
     using Bullytect.Core.Rest.Services;
     using Bullytect.Core.Rest.Models.Response;
+    using Bullytect.Core.Rest.Models.Request;
 
     public class SocialMediaServiceImpl: BaseService, ISocialMediaService
     {
@@ -57,7 +58,7 @@ namespace Bullytect.Core.Services.Impl
 			Debug.WriteLine("Save All Social Medias");
 
             var observable = _childrenRestService
-                .SaveAllSocialMedia(IdSon, Mapper.Map<IList<SocialMediaEntity>, IList<SocialMediaDTO>>(SocialMediaEntities))
+                .SaveAllSocialMedia(IdSon, Mapper.Map<IList<SocialMediaEntity>, IList<SaveSocialMediaDTO>>(SocialMediaEntities))
                 .Select(Response => Response.Data)
                 .Select(SocialMedias => Mapper.Map<IList<SocialMediaDTO>, IList<SocialMediaEntity>>(SocialMedias))
 				.Finally(() => {

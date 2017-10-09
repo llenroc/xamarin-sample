@@ -10,6 +10,7 @@
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
     xmlns:extended="clr-namespace:Bullytect.Core.Pages.Common.Extended"
     xmlns:templates="clr-namespace:Bullytect.Core.Pages.EditSon.Templates"
     xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
@@ -17,7 +18,6 @@
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:controls="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
-    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
     x:Class="Bullytect.Core.Pages.EditSon.EditSonPage"
     x:TypeArguments="viewModels:EditSonViewModel"
     x:Name="Root">
@@ -34,7 +34,8 @@
                 <converters:SocialMediaStatusToColorConverter x:Key="SocialMediaStatusToColorConverter" />
                 <converters:SocialMediaStatusToTextConverter x:Key="SocialMediaStatusToTextConverter" />
                 <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
-            
+                <converters:PickerSelectedIndexChangedArgsConverter x:Key="PickerSelectedIndexChangedArgsConverter" />
+                <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
                 <x:String x:Key="firstNameKey">firstName</x:String>
                 <x:String x:Key="lastNameKey">lastName</x:String>
                 <x:String x:Key="schoolKey">school</x:String>
@@ -44,6 +45,16 @@
                 <x:String x:Key="youtubeKey">YOUTUBE</x:String>
             </ResourceDictionary>
     </ContentPage.Resources>
+
+
+    <!-- Refresh On Appearing Event -->
+    <ContentPage.Behaviors>
+        <behaviors:EventHandlerBehavior EventName="Appearing" >
+            <behaviors:InvokeCommandAction 
+                    Command="{Binding RefreshCommand}" 
+                    Converter="{ StaticResource DefaultReactiveUnitConverter}" />
+        </behaviors:EventHandlerBehavior>
+    </ContentPage.Behaviors>
 
 
 
@@ -204,12 +215,34 @@
                             <!-- shools -->
                             <StackLayout>
 
-                                <Picker 
-                                    Title="{ i18n:Translate Common.Placeholder.School }"
-                                    IsEnabled="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionNotEmptyConverter }}"
-                                    ItemsSource="{Binding Schools}"
-                                    SelectedItem="{Binding Path=CurrentSon.School, Mode=TwoWay}"
-                                    ItemDisplayBinding="{Binding Name}"/>
+                                <StackLayout>
+
+                                    <Picker 
+                                        Title="{ i18n:Translate Common.Placeholder.School }"
+                                        IsEnabled="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionNotEmptyConverter }}"
+                                        ItemsSource="{Binding Schools}"
+                                        SelectedIndex="{Binding SchoolSelectedIndex}"
+                                        ItemDisplayBinding="{Binding Name}">
+                                        <!--<Picker.Behaviors>
+                                            <behaviors:EventHandlerBehavior EventName="SelectedIndexChanged">
+                                                <behaviors:InvokeCommandAction
+                                                        Command="{Binding ChangeCurrentSchoolCommand}"
+                                                        Converter="{StaticResource PickerSelectedIndexChangedArgsConverter}"/>
+                                            </behaviors:EventHandlerBehavior>
+                                        </Picker.Behaviors>-->
+                                    </Picker>
+
+                                    <Label
+                                        Text="{Binding Path=FieldErrors,
+                                        Converter={StaticResource ValidationErrorFormatValueConverter},
+                                        ConverterParameter={StaticResource schoolKey}}"
+                                        IsVisible="{Binding Path=FieldErrors,
+                                        Converter={StaticResource ContainsKeyVisibilityConverter},
+                                        ConverterParameter={StaticResource schoolKey}}"
+                                        Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+
+                                </StackLayout>
+
 
                                  <common:RoundedLabel
                                     IsVisible="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionEmptyConverter}}"

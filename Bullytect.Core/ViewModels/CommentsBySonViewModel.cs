@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Acr.UserDialogs;
 using Bullytect.Core.Helpers;
 using Bullytect.Core.Services;
@@ -8,17 +9,23 @@ namespace Bullytect.Core.ViewModels
 {
     public class CommentsBySonViewModel : BaseViewModel
     {
-        public CommentsBySonViewModel(IUserDialogs userDialogs, 
+        public CommentsBySonViewModel(IUserDialogs userDialogs,
                                       IMvxMessenger mvxMessenger, AppHelper appHelper) : base(userDialogs, mvxMessenger, appHelper)
         {
         }
 
-		string _title = "Comments BY Son";
+        string _title = "Comments BY Son";
 
-		public string Title
-		{
-			get => _title;
-			set => SetProperty(ref _title, value);
-		}
+        public string Title
+        {
+            get => _title;
+            set => SetProperty(ref _title, value);
+        }
+
+
+        public override void Start()
+        {
+            Debug.WriteLine("CommentsBySonViewModel Started ...");
+        }
     }
 }

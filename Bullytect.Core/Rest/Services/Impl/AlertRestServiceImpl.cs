@@ -34,12 +34,12 @@ namespace Bullytect.Core.Rest.Services.Impl
             return Observable.FromAsync(() => GetData<APIResponse<IList<AlertDTO>>>(ApiEndpoints.GET_ALERTS_BY_SON.Replace(":id", SonId)));
         }
 
-        public IObservable<APIResponse<AlertsPageDTO>> GetLastSelfAlerts(int Count, bool OnlyNews, String[] Levels)
+        public IObservable<APIResponse<AlertsPageDTO>> GetLastSelfAlerts(int Count, int LastMinutes, String[] Levels)
         {
 			var queryParams = new Dictionary<string, string>()
 			{
 				{ "count", Count.ToString()},
-				{ "only_news", OnlyNews.ToString()}
+				{ "last_minutes", LastMinutes.ToString()}
             };
 
             if (Levels?.Length > 0)

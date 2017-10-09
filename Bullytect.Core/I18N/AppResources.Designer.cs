@@ -935,15 +935,27 @@ namespace Bullytect.Core.I18N {
             }
         }
         
-        internal static string Settings_Alerts_Show_Only_New_Alerts {
+        internal static string Settings_Antiquity_Of_Alerts {
             get {
-                return ResourceManager.GetString("Settings.Alerts.Show.Only.New.Alerts", resourceCulture);
+                return ResourceManager.GetString("Settings.Antiquity.Of.Alerts", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Antiquity_Of_Alerts_Description {
+            get {
+                return ResourceManager.GetString("Settings.Antiquity.Of.Alerts.Description", resourceCulture);
             }
         }
         
         internal static string Settings_Alerts_Count_New_Alerts {
             get {
                 return ResourceManager.GetString("Settings.Alerts.Count.New.Alerts", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Alerts_Count_New_Alerts_Description {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.Count.New.Alerts.Description", resourceCulture);
             }
         }
         
@@ -956,6 +968,18 @@ namespace Bullytect.Core.I18N {
         internal static string Settings_Changes_Saved {
             get {
                 return ResourceManager.GetString("Settings.Changes.Saved", resourceCulture);
+            }
+        }
+        
+        internal static string Results_Comments_By_Son {
+            get {
+                return ResourceManager.GetString("Results.Comments.By.Son", resourceCulture);
+            }
+        }
+        
+        internal static string Results_Last_Iterations {
+            get {
+                return ResourceManager.GetString("Results.Last.Iterations", resourceCulture);
             }
         }
     }

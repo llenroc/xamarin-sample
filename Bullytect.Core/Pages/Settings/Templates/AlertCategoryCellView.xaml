@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     x:Class="Bullytect.Core.Pages.Settings.Templates.AlertCategoryCellView">
     <ContentView.Resources>
@@ -16,6 +17,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
@@ -36,7 +38,32 @@
                    VerticalTextAlignment="Center" 
                    HorizontalOptions="StartAndExpand"
                    />
-            <Switch Grid.Column="2" 
+
+             <Label
+                Grid.Column="2" 
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="End"
+                VerticalOptions="CenterAndExpand"
+                Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                FontFamily="{ StaticResource IconsFontFamily }"
+                TextColor="{ DynamicResource AccentColor }">
+                <Label.FontSize>
+                    <OnIdiom 
+                        x:TypeArguments="x:Double"
+                        Phone="20" 
+                        Tablet="20" />
+                </Label.FontSize> 
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Tapped="OnAlertCategoryInfo"
+                        NumberOfTapsRequired="1" /> 
+                </Label.GestureRecognizers>
+            </Label>
+
+            
+            <Switch Grid.Column="3" 
                     VerticalOptions="Center"
                     IsEnabled="{Binding IsEnabled}"
                     IsToggled="{Binding IsFiltered}"/>

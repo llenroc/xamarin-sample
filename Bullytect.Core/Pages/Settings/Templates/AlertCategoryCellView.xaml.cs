@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using Bullytect.Core.Models.Domain;
+using Bullytect.Core.Pages.Common.Templates;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.Settings.Templates
@@ -29,6 +30,16 @@ namespace Bullytect.Core.Pages.Settings.Templates
 			if (category == null)
 				return;
 			
+		}
+
+
+		async void OnAlertCategoryInfo(object sender, EventArgs args)
+		{
+
+            var alertCategory = BindingContext as AlertCategoryEntity;
+            var page = new CommonInfoPopup(alertCategory.Name, alertCategory.Description);
+			await PopupNavigation.PushAsync(page);
+
 		}
 	}
 }

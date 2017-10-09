@@ -25,7 +25,7 @@ namespace Bullytect.Core.ViewModels
 
             DeleteAlertCommand = ReactiveCommand
                 .CreateFromObservable(() =>  _appHelper.RequestConfirmation(AppResources.Alert_Confirm_Clear)
-                                      .SelectMany((_) => alertService.DeleteAlertOfSon(SonIdentity, Identity)).Finally(() => Close(this)));
+                                      .SelectMany((_) => alertService.DeleteAlertOfSon(SonIdentity, Identity)).Do((_) => Close(this)));
             
             DeleteAlertCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Common_Loading));
 

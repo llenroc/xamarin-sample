@@ -22,6 +22,8 @@ using Bullytect.Utils.Helpers;
 using Bullytect.Core.Helpers;
 using Bullytect.Core.OAuth.Services.Impl;
 using Bullytect.Core.OAuth.Services;
+using Bullytect.Core.Rest.Models.Request;
+using System.Collections.Generic;
 
 namespace Bullytect.Core
 {
@@ -45,15 +47,20 @@ namespace Bullytect.Core
 			Mapper.Initialize(cfg => {
                 cfg.CreateMap<string, DateTime>().ConvertUsing<StringToDateTimeConverter>();
 				cfg.CreateMap<ParentDTO, ParentEntity>();
-				cfg.CreateMap<SonDTO, SonEntity>();
+				cfg.CreateMap<SonDTO, SonEntity>()
+                .ForMember(s => s.School, (obj) => 
+                           obj.ResolveUsing(o => o?.School.Identity));
                 cfg.CreateMap<DeviceDTO, DeviceEntity>();
                 cfg.CreateMap<AlertDTO, AlertEntity>()
                     .ForMember(d => d.Level, (obj) => 
                                obj.ResolveUsing(o => o?.Level.ToEnum<AlertLevelEnum>()));
                 cfg.CreateMap<ImageDTO, ImageEntity>();
                 cfg.CreateMap<SocialMediaDTO, SocialMediaEntity>();
+				cfg.CreateMap<SocialMediaEntity, SaveSocialMediaDTO>();
                 cfg.CreateMap<SchoolDTO, SchoolEntity>();
                 cfg.CreateMap<AlertsPageDTO, AlertsPageEntity>();
+
+
 			});
         }
 

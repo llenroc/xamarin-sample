@@ -30,6 +30,12 @@ namespace Bullytect.Core.Rest.Services
 
 		IObservable<APIResponse<SonDTO>> UpdateSonInformation(UpdateSonDTO son);
 
+        IObservable<APIResponse<List<CommentsBySonDTO>>> GetCommentsBySonForLastIteration();
+
+        IObservable<APIResponse<List<IterationDTO>>> GetLastIterations(int count);
+
+
+
 
     }
 }

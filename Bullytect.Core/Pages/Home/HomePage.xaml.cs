@@ -1,10 +1,10 @@
 ﻿
 
 using System;
-using System.Windows.Input;
-using Bullytect.Core.Pages.Results;
+using Bullytect.Core.Models.Domain;
 using Bullytect.Core.ViewModels;
-using MvvmCross.Core.ViewModels;
+using FFImageLoading.Cache;
+using FFImageLoading.Forms;
 using MvvmCross.Forms.Core;
 using Xamarin.Forms;
 
@@ -18,16 +18,22 @@ namespace Bullytect.Core.Pages.Home
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        protected override void OnAppearing() {
-            /*if(ViewModel.SelfParent == null || ViewModel.AlertsPage.Alerts?.Count == 0)
-                RefreshLayout.RefreshCommand?.Execute(null);*/
-
-
-        }
-
-		async void OnUpcomingAppointmentsButtonClicked(object sender, EventArgs e)
+		protected override void OnAppearing()
 		{
-            await Navigation.PushAsync(new ResultsPage());
+
+			ViewModel.NewSelectedImage += ViewModel_OnNewSelectedImageAsync;
+
 		}
+
+		protected override void OnDisappearing()
+		{
+			ViewModel.NewSelectedImage -= ViewModel_OnNewSelectedImageAsync;
+		}
+
+        async void ViewModel_OnNewSelectedImageAsync(Object sender, ImageEntity NewProfileImage)
+        {
+            await CachedImage.InvalidateCache(profileImage.Source, CacheType.All, true);
+            profileImage.ReloadImage();
+        }
     }
 }

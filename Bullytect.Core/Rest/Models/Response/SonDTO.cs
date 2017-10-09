@@ -18,6 +18,6 @@ namespace Bullytect.Core.Rest.Models.Response
         [JsonProperty("age")]
         public int Age { get; set; }
         [JsonProperty("school")]
-        public string School { get; set; }
+        public SchoolNameDTO School { get; set; }
     }
 }

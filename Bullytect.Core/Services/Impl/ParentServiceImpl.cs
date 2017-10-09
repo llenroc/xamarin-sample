@@ -202,24 +202,22 @@ namespace Bullytect.Core.Services.Impl
 
         public IObservable<SonEntity> UpdateSonInformation(string Identity, string FirstName, string Lastname, DateTime Birthdate, string School)
         {
-			Debug.WriteLine("Save Son Information");
-
 			var observable = _parentsRestService
                 .UpdateSonInformation(new UpdateSonDTO()
-				{
+                {
                     Identity = Identity,
-					FirstName = FirstName,
-					LastName = Lastname,
-					Birthdate = Birthdate,
-					School = School
-				}).Select((response) => response.Data)
-				.Select(son => Mapper.Map<SonDTO, SonEntity>(son))
-				.Finally(() =>
-				{
-					Debug.WriteLine("Save Son Information Finished ...");
-				});
+                    FirstName = FirstName,
+                    LastName = Lastname,
+                    Birthdate = Birthdate,
+                    School = School
+                }).Select((response) => response.Data)
+                .Select(son => Mapper.Map<SonDTO, SonEntity>(son))
+                .Finally(() =>
+                {
+                    Debug.WriteLine("Save Son Information Finished ...");
+                });
 
-			return operationDecorator(observable);
+            return operationDecorator(observable);
         }
 
         public IObservable<ImageEntity> UploadSonProfileImage(string identity, Stream stream)
@@ -233,6 +231,40 @@ namespace Bullytect.Core.Services.Impl
 				.Finally(() =>
 				{
 					Debug.WriteLine("Upload Son Profile Image Finished ...");
+				});
+
+			return operationDecorator(observable);
+        }
+
+        public IObservable<Dictionary<string, string>> GetCommentsBySonForLastIteration()
+        {
+
+            var commentsBySon = new Dictionary<string, string>() {
+
+                { "Sergio Sánchez", "30" },
+                { "David Martín", "20" }
+
+            };
+
+
+            return Observable.Return(commentsBySon);
+
+
+
+        }
+
+        public IObservable<List<IterationEntity>> GetLastIterations(int count)
+        {
+
+            Debug.WriteLine("Get Last Iterations ...");
+
+            var observable = _parentsRestService
+                .GetLastIterations(count)
+                .Select((response) => response.Data)
+                .Select(iterations => Mapper.Map<List<IterationDTO>, List<IterationEntity>>(iterations))
+				.Finally(() =>
+				{
+					Debug.WriteLine("Get Last Finished ...");
 				});
 
 			return operationDecorator(observable);

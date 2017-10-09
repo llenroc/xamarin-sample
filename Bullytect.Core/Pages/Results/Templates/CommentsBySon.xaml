@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    x:Class="Bullytect.Core.Pages.Results.Templates.CommentsBySon"
+    xmlns:templates="clr-namespace:Bullytect.Core.Pages.Results.Templates"
+    BackgroundColor="{ DynamicResource BasePageColor }">
+
+    <ContentPage.Content>
+   
+       
+        <!-- MAIN CONTAINER -->
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- CUSTOM NAVBAR -->
+            <templates:ResultsHeader Grid.Row="0"/>
+    
+            <Grid 
+                Grid.Row="1"
+                RowSpacing="0"
+                VerticalOptions="Fill">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="40*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackLayout
+                    Grid.Row="0"
+                    Spacing="10">
+
+
+                    <Label
+                        LineBreakMode="WordWrap"
+                        Text="{i18n:Translate Results.Comments.By.Son}"
+                        TextColor="{ DynamicResource AccentColor }"
+                        VerticalTextAlignment="Center"
+                        FontSize="17">
+
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Phone="17"
+                                Tablet="27"/>
+                        </Label.FontSize>
+                    </Label>
+
+                    <BoxView
+                        Style="{StaticResource LargeBrandNameOrnamentStyle}"
+                        BackgroundColor="{DynamicResource AccentColor}"
+                        Margin="10, 0"/>
+                </StackLayout>
+
+               
+    
+            </Grid> 
+        </Grid>
+
+     </ContentPage.Content>
+
+</ContentPage>

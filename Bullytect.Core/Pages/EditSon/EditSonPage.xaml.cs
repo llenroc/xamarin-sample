@@ -4,6 +4,8 @@ using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Pages.AddSchool;
 using Bullytect.Core.Pages.EditSon.Popup;
 using Bullytect.Core.ViewModels;
+using FFImageLoading.Cache;
+using FFImageLoading.Forms;
 using MvvmCross.Forms.Core;
 using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
@@ -31,6 +33,7 @@ namespace Bullytect.Core.Pages.EditSon
             ViewModel.NewSelectedImage += ViewModel_OnNewSelectedImage;
 
             ViewModel.SchoolAdded += ViewModel_OnSchoolAddedAsync;
+            ViewModel.SonUpdated += ViewModel_OnOnSonUpdatedAsync;
 
 		}
 
@@ -38,6 +41,7 @@ namespace Bullytect.Core.Pages.EditSon
 		{
 			ViewModel.NewSelectedImage -= ViewModel_OnNewSelectedImage;
             ViewModel.SchoolAdded -= ViewModel_OnSchoolAddedAsync;
+            ViewModel.SonUpdated -= ViewModel_OnOnSonUpdatedAsync;
 		}
 
 		void ViewModel_OnNewSelectedImage(Object sender, MediaFile NewProfileImage)
@@ -49,6 +53,13 @@ namespace Bullytect.Core.Pages.EditSon
         {
             await PopupNavigation.PopAsync(animate: true);
         }
+
+
+        async void ViewModel_OnOnSonUpdatedAsync(Object sender, SonEntity SonEntity)
+		{
+			await CachedImage.InvalidateCache(profileImage.Source, CacheType.All, true);
+			profileImage.ReloadImage();
+		}
 
         async void OnSocialMediaInfoAsync(object sender, EventArgs args)
         {

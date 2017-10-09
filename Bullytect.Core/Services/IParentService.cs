@@ -23,5 +23,7 @@ namespace Bullytect.Core.Services
         IObservable<SonEntity> UpdateSonInformation(string Identity, string FirstName, string Lastname, DateTime Birthdate, string School);
         IObservable<SonEntity> GetSonById(string Id);
         IObservable<ImageEntity> UploadSonProfileImage(string identity, Stream stream);
+        IObservable<Dictionary<string, string>> GetCommentsBySonForLastIteration();
+        IObservable<List<IterationEntity>> GetLastIterations(int count);
     }
 }
