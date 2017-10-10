@@ -223,13 +223,6 @@
                                         ItemsSource="{Binding Schools}"
                                         SelectedIndex="{Binding SchoolSelectedIndex}"
                                         ItemDisplayBinding="{Binding Name}">
-                                        <!--<Picker.Behaviors>
-                                            <behaviors:EventHandlerBehavior EventName="SelectedIndexChanged">
-                                                <behaviors:InvokeCommandAction
-                                                        Command="{Binding ChangeCurrentSchoolCommand}"
-                                                        Converter="{StaticResource PickerSelectedIndexChangedArgsConverter}"/>
-                                            </behaviors:EventHandlerBehavior>
-                                        </Picker.Behaviors>-->
                                     </Picker>
 
                                     <Label

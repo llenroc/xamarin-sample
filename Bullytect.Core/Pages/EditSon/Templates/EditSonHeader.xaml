@@ -111,7 +111,6 @@
                     x:Name="AddSchoolLabel"
                     HorizontalOptions="End"
                     TranslationY="0"
-                    Margin="20,0"
                     VerticalOptions="Center"
                     Text="{ x:Static helper:FontAwesomeFont.GraduationCap } " 
                     FontSize="22"

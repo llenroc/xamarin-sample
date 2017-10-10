@@ -33,6 +33,8 @@
             <!--Son Profile Image -->
             <ffimageloading:CachedImage 
                 Grid.Row="0"
+                CacheType="Disk"
+                CacheDuration="30"
                 FadeAnimationEnabled="true"
                 ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
                 LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"

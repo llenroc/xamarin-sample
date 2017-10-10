@@ -27,6 +27,8 @@
             <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
             <converters:ValueEqualToZeroConverter x:Key="ValueEqualToZeroConverter" />
             <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
+            <converters:ValueGreaterThanZeroConverter x:Key="ValueGreaterThanZeroConverter" />
+
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -116,8 +118,8 @@
 
                                         <!-- BADGE -->
                                         <common:Badge
-                                            IsVisible="{ Binding  AlertsPage.Remaining, Converter={ StaticResource ValueEqualToZeroConverter }"
-                                            BadgeText="{ Binding  AlertsPage.Remaining, StringFormat='{0:N}'}"
+                                            IsVisible="{ Binding  AlertsPage.Remaining, Converter={ StaticResource ValueGreaterThanZeroConverter }"
+                                            BadgeText="{ Binding  AlertsPage.Remaining, StringFormat='{0}'}"
                                             BadgeTextColor="{ DynamicResource InverseTextColor }"
                                             BadgeBackgroundColor="#22c064"
                                             HorizontalOptions="Center"

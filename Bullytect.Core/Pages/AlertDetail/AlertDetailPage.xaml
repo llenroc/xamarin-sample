@@ -58,6 +58,7 @@
                         <ffimageloading:CachedImage
                             ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
                             LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
+                            CacheType="Disk" CacheDuration="30"
                             Source="{ Binding SonIdentity , Converter={ StaticResource SonProfileImageURLConverter }}"
                             Aspect="AspectFill"
                             HorizontalOptions="FillAndExpand"

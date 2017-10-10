@@ -71,7 +71,7 @@ namespace Bullytect.Core.ViewModels
 
         #region commands
 
-         public ICommand EditSonCommand => new MvxCommand<string>((string Id) => ShowViewModel<EditSonViewModel>(new { Id }));
+         public ICommand EditSonCommand => new MvxCommand<string>((string Id) => ShowViewModel<EditSonViewModel>(new { SonIdentity = Id }));
 
         #endregion
 

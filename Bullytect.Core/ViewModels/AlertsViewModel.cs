@@ -113,7 +113,9 @@ namespace Bullytect.Core.ViewModels
             Level = AlertEntity.Level,
             Payload = AlertEntity.Payload,
             CreateAt = AlertEntity.CreateAt,
-            SonFullName = AlertEntity.Son.FullName
+            SonFullName = AlertEntity.Son.FullName,
+            SonIdentity = AlertEntity.Son.Identity
+                                     
         }));
 
         public ReactiveCommand<AlertEntity, string> DeleteAlertCommand { get; protected set; }

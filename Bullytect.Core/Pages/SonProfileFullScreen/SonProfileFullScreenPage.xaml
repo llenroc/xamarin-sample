@@ -23,6 +23,8 @@
                     x:Name="img" 
                     HorizontalOptions="FillAndExpand" 
                     VerticalOptions="FillAndExpand" 
+                    CacheType="Disk"
+                    CacheDuration="30"
                     Scale="2"
                     ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
                     LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"/>
@@ -35,7 +37,7 @@
                 HorizontalOptions="End"
                 VerticalOptions="Start"
                 AbsoluteLayout.LayoutBounds="0, 0, 1, .1"
-                AbsoluteLayout.LayoutFlags="All"  >
+                AbsoluteLayout.LayoutFlags="All">
                 
                 <Label
                     FontSize="30"

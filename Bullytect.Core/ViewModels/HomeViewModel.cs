@@ -37,6 +37,7 @@ namespace Bullytect.Core.ViewModels
 			{
 				Debug.WriteLine("Total Alerts  " + AlertsPageEntity?.Alerts?.Count);
 				AlertsPage = AlertsPageEntity;
+
 				NoAlertsFound = false;
                 ErrorOccurred = false;
             })));
@@ -179,6 +180,8 @@ namespace Bullytect.Core.ViewModels
 
         protected override void HandleExceptions(Exception ex)
         {
+
+            _userDialogs.HideLoading();
 
             if (ex is LoadProfileFailedException)
             {

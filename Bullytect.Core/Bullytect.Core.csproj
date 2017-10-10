@@ -497,6 +497,7 @@
     <Compile Include="Pages\AlertDetail\Templates\AlertDetailHeader.xaml.cs">
       <DependentUpon>AlertDetailHeader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ValueGreaterThanZeroConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">

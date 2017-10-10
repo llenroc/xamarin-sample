@@ -54,7 +54,7 @@
             ItemsSource="{Binding Children}"
             HasUnevenRows="false"
             SeparatorVisibility="None"
-            BackgroundColor="{ DynamicResource BaseTextColor}"
+            BackgroundColor="{ DynamicResource AccentColor }"
             RowHeight="250"
             IsPullToRefreshEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
             RefreshCommand="{Binding LoadChildrenCommand}"
@@ -66,65 +66,81 @@
                     <ViewCell>
                       <StackLayout  x:Name="Item" Padding="5">
 
-                            <StackLayout BackgroundColor="White">
-                                <Grid ColumnSpacing="10" >
+                            <Grid BackgroundColor="White">
 
-                                  <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                  </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
 
-                                  <!---Left Column Content -->
-                                  <ffimageloading:CachedImage
-                                            Margin="5"
-                                            Grid.Column="0"
-                                            FadeAnimationEnabled="true"
-                                            ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
-                                            LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
-                                            Source="{ Binding Identity, Converter={ StaticResource SonProfileImageURLConverter }}"
-                                            Aspect="AspectFill"/>
+                                
+                                <Grid 
+                                    Grid.Row="0"
+                                    ColumnSpacing="10" >
 
-                                  <!-- Right Column Content-->
-                                  <StackLayout
-                                       Grid.Column="1"
-                                       Padding="10"
-                                       Spacing="0">
+                                      <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                      </Grid.ColumnDefinitions>
+
+                                      <!---Left Column Content -->
+                                      <ffimageloading:CachedImage
+                                                Margin="5"
+                                                Grid.Column="0"
+                                                CacheType="Disk"
+                                                CacheDuration="30"
+                                                VerticalOptions="CenterAndExpand"
+                                                FadeAnimationEnabled="true"
+                                                ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+                                                LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
+                                                Source="{ Binding Identity, Converter={ StaticResource SonProfileImageURLConverter }}"
+                                                Aspect="AspectFill"/>
+
+                                      <!-- Right Column Content-->
+                                      <StackLayout
+                                           Grid.Column="1"
+                                           Padding="10"
+                                           VerticalOptions="CenterAndExpand"
+                                           Spacing="0">
 
 
-                                    <!-- Full name -->
-                                    <Label
-                                        Text="{ Binding FullName }"
-                                        TextColor="{ DynamicResource AccentColor }"
-                                        FontSize="{ artina:OnOrientationDouble
-                                                    PortraitPhone=22,
-                                                    LandscapePhone=22,
-                                                    PortraitTablet=27,
-                                                    LandscapeTablet=27 }"
-                                        HorizontalOptions="Fill"
-                                                />
+                                        <!-- Full name -->
+                                        <Label
+                                            Text="{ Binding FullName }"
+                                            TextColor="{ DynamicResource AccentColor }"
+                                            FontSize="{ artina:OnOrientationDouble
+                                                        PortraitPhone=22,
+                                                        LandscapePhone=22,
+                                                        PortraitTablet=27,
+                                                        LandscapeTablet=27 }"
+                                            HorizontalOptions="Fill"
+                                                    />
 
-                                    <BoxView
-                                        Style="{StaticResource BrandNameOrnamentStyle}"
-                                        BackgroundColor="{DynamicResource AccentColor}"/>
+                                        <BoxView
+                                            Style="{StaticResource BrandNameOrnamentStyle}"
+                                            BackgroundColor="{DynamicResource AccentColor}"/>
 
-                                    <!-- School -->
-                                    <Label
-                                        Text="{ Binding School }"
-                                        TextColor="{ DynamicResource AccentColor }"
-                                        FontSize="{ artina:OnOrientationDouble
-                                                    PortraitPhone=12,
-                                                    LandscapePhone=12,
-                                                    PortraitTablet=13,
-                                                    LandscapeTablet=13 }"
-                                        HorizontalOptions="Fill"/>
-                                  </StackLayout>
+                                        <!-- School -->
+                                        <Label
+                                            Text="{ Binding SchoolName }"
+                                            
+                                            TextColor="{ DynamicResource AccentColor }"
+                                            FontSize="{ artina:OnOrientationDouble
+                                                        PortraitPhone=12,
+                                                        LandscapePhone=12,
+                                                        PortraitTablet=13,
+                                                        LandscapeTablet=13 }"
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Fill"/>
+                                    </StackLayout>
 
                                 </Grid>
 
-                                <BoxView Style="{ StaticResource ChildrenBoxViewHorizontalStyle }" />
+
                             
                                 <!-- TOOLBAR -->
                                 <Grid
+                                    Grid.Row="1"
                                     Margin="5"
                                     ColumnSpacing="5"
                                     VerticalOptions="End">
@@ -139,13 +155,12 @@
                                   <StackLayout
                                       Grid.Column="0"
                                       Orientation="Horizontal"
-                                      VerticalOptions="Center"
-                                      HorizontalOptions="Center"
-                                      BackgroundColor="{ DynamicResource AccentColor }">
+                                      VerticalOptions="FillAndExpand"
+                                      HorizontalOptions="FillAndExpand">
 
                                     <Label
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
                                         Text="{ x:Static helper:FontAwesomeFont.User }"
                                         FontFamily="{ StaticResource IconsFontFamily }"
                                         TextColor="{ DynamicResource AccentColor }">
@@ -159,8 +174,8 @@
                                     </Label>
 
                                     <Label
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
                                         Text="{i18n:Translate Children.Toolbar.Profile}">
                                       <Label.FontSize>
                                         <OnIdiom
@@ -182,13 +197,12 @@
                                   <StackLayout
                                       Grid.Column="1"
                                       Orientation="Horizontal"
-                                      VerticalOptions="Center"
-                                      HorizontalOptions="Center"
-                                      BackgroundColor="{ DynamicResource AccentColor }">
+                                      VerticalOptions="FillAndExpand"
+                                      HorizontalOptions="FillAndExpand">
 
                                     <Label
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
                                         Text="{ x:Static helper:FontAwesomeFont.Bell }"
                                         FontFamily="{ StaticResource IconsFontFamily }">
 
@@ -201,8 +215,8 @@
                                     </Label>
 
                                     <Label
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
                                         Text="{i18n:Translate Children.Toolbar.Alerts}">
                                       <Label.FontSize>
                                         <OnIdiom
@@ -223,13 +237,12 @@
                                   <StackLayout
                                       Grid.Column="2"
                                       Orientation="Horizontal"
-                                      VerticalOptions="Center"
-                                      HorizontalOptions="Center"
-                                      BackgroundColor="{ DynamicResource AccentColor }">
+                                      VerticalOptions="FillAndExpand"
+                                      HorizontalOptions="FillAndExpand">
 
                                     <Label
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
                                         Text="{ x:Static helper:FontAwesomeFont.Pencil }"
                                         FontFamily="{ StaticResource IconsFontFamily }">
 
@@ -242,8 +255,8 @@
                                     </Label>
 
                                     <Label
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
                                         Text="{i18n:Translate Children.Toolbar.Edit}">
                                       <Label.FontSize>
                                         <OnIdiom
@@ -263,7 +276,7 @@
 
                                 </Grid>
 
-                            </StackLayout>
+                            </Grid>
 
                       </StackLayout>
                            

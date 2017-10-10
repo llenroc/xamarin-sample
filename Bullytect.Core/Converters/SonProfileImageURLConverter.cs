@@ -14,8 +14,7 @@ namespace Bullytect.Core.Converters
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 
-            return new Uri(ApiEndpoints.GET_SON_PROFILE_IMAGE.Replace(":id", (string)value));
-
+            return ImageSource.FromUri(new Uri(ApiEndpoints.GET_SON_PROFILE_IMAGE.Replace(":id", (string)value)));
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
