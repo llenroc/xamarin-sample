@@ -27,8 +27,8 @@ namespace Bullytect.Core.Rest.Utils
         public static string UPDATE_SON_INFORMATION = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/children/update");
         public static string ALL_SCHOOL_NAMES = string.Concat(SharedConfig.BASE_API_URL, "/schools/all/names");
         public static string CREATE_SCHOOL = string.Concat(SharedConfig.BASE_API_URL, "/schools/");
-        public static string GET_SELF_PARENT_PROFILE_IMAGE = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/image");
-        public static string GET_SON_PROFILE_IMAGE = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/image");
+        public static string GET_PARENT_PROFILE_IMAGE = string.Concat(SharedConfig.BASE_API_URL, "/images/parents/:id");
+        public static string GET_SON_PROFILE_IMAGE = string.Concat(SharedConfig.BASE_API_URL, "/images/children/:id");
         public static string UPLOAD_SON_PROFILE_IMAGE = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/image");
         public static string GET_LAST_SELF_ALERTS = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/alerts/last");
         public static string GET_SELF_ALERTS = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/alerts");

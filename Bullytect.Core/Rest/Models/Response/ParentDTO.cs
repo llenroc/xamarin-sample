@@ -17,7 +17,7 @@ namespace Bullytect.Core.Rest.Models.Response
 		public string LastName { get; set; }
 
 		[JsonProperty("birthdate")]
-		public string Birthdate { get; set; }
+		public DateTime Birthdate { get; set; }
 
 		[JsonProperty("age")]
 		public int Age { get; set; }
@@ -37,7 +37,8 @@ namespace Bullytect.Core.Rest.Models.Response
 		[JsonProperty("locale")]
         public string Locale { get; set; }
 
-
+        [JsonProperty("profile_image")]
+        public string ProfileImage { get; set; }
 
     }
 }

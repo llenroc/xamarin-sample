@@ -73,7 +73,8 @@
 
                 <Label 
                     HorizontalOptions="End"
-                    Margin="0,0,10,0"
+                    VerticalOptions="CenterAndExpand"
+                    Margin="0,0,15,0"
                     Text="{ x:Static helper:FontAwesomeFont.Gear } " 
                     FontSize="22"
                     TextColor="{ DynamicResource CustomNavBarTextColor }" 
@@ -94,6 +95,7 @@
 
                 <Label 
                     HorizontalOptions="End"
+                    VerticalOptions="CenterAndExpand"
                     Text="{ x:Static helper:FontAwesomeFont.SignOut } " 
                     FontSize="22"
                     TextColor="{ DynamicResource CustomNavBarTextColor }" 

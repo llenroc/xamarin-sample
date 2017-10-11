@@ -50,7 +50,6 @@
 
                     <Grid 
                         Grid.Row="0"
-                        Grid.RowSpan="2"
                         Padding="0"
                         BackgroundColor="Black">
 
@@ -59,7 +58,7 @@
                             ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
                             LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
                             CacheType="Disk" CacheDuration="30"
-                            Source="{ Binding SonIdentity , Converter={ StaticResource SonProfileImageURLConverter }}"
+                            Source="{ Binding ProfileImage, Converter={ StaticResource SonProfileImageURLConverter }}"
                             Aspect="AspectFill"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="Start"

@@ -38,7 +38,7 @@
                 FadeAnimationEnabled="true"
                 ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
                 LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
-                Source="{ Binding Identity, Converter={ StaticResource SonProfileImageURLConverter }}"
+                Source="{ Binding ProfileImage, Converter={ StaticResource SonProfileImageURLConverter }}"
                 Aspect="AspectFill" >
                 <ffimageloading:CachedImage.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnImageTapped" />

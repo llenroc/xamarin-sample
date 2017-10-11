@@ -35,7 +35,8 @@
                 <converters:SocialMediaStatusToTextConverter x:Key="SocialMediaStatusToTextConverter" />
                 <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
                 <converters:PickerSelectedIndexChangedArgsConverter x:Key="PickerSelectedIndexChangedArgsConverter" />
-                <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
+                <converters:NullVisibilityConverter x:Key="NullVisibilityConverter" />
+                <converters:SocialMediaInvalidStatusToBoolConverter x:Key="SocialMediaInvalidStatusToBoolConverter" />
                 <x:String x:Key="firstNameKey">firstName</x:String>
                 <x:String x:Key="lastNameKey">lastName</x:String>
                 <x:String x:Key="schoolKey">school</x:String>
@@ -45,18 +46,6 @@
                 <x:String x:Key="youtubeKey">YOUTUBE</x:String>
             </ResourceDictionary>
     </ContentPage.Resources>
-
-
-    <!-- Refresh On Appearing Event -->
-    <ContentPage.Behaviors>
-        <behaviors:EventHandlerBehavior EventName="Appearing" >
-            <behaviors:InvokeCommandAction 
-                    Command="{Binding RefreshCommand}" 
-                    Converter="{ StaticResource DefaultReactiveUnitConverter}" />
-        </behaviors:EventHandlerBehavior>
-    </ContentPage.Behaviors>
-
-
 
 	<ContentPage.Content>
 
@@ -119,7 +108,7 @@
                                     HeightRequest="70"
                                     CacheType="Disk"
                                     CacheDuration="30"
-                                    Source="{ Binding CurrentSon.Identity, Converter={ StaticResource SonProfileImageURLConverter }}"
+                                    Source="{ Binding CurrentSon.ProfileImage, Converter={ StaticResource SonProfileImageURLConverter }}"
                                     ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
                                     LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }">
                                     <ffimageloading:CachedImage.Transformations>
@@ -401,25 +390,61 @@
                                                         Tablet="20" />
                                                  </Label.FontSize> 
                                            </Label>
+
+
+                                            
                                                 
-                                       </StackLayout>
+                                   </StackLayout>
 
+                                   <StackLayout Grid.Column="1" Orientation="Horizontal">
 
-                                    <Switch 
-                                        Grid.Column="1"
-                                        VerticalOptions="Center" 
-                                        HorizontalOptions="End" IsToggled="{Binding CurrentSocialMedia,  
-                                                    Converter={StaticResource SocialMediaStatusToBoolConverter},
-                                                    ConverterParameter={StaticResource facebookKey}}">
+                                        <Label
+                                                IsVisible="{Binding Path=CurrentSocialMedia,  
+                                                    Converter={StaticResource SocialMediaInvalidStatusToBoolConverter},
+                                                    ConverterParameter={StaticResource facebookKey}}"
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="Start"
+                                                VerticalOptions="FillAndExpand"
+                                                HorizontalOptions="Start"
+                                                Text="{ x:Static helper:FontAwesomeFont.Trash }"
+                                                FontFamily="{ StaticResource IconsFontFamily }"
+                                                TextColor="{ DynamicResource AccentColor }">
 
-                                        <Switch.Behaviors>
-                                            <behaviors:EventHandlerBehavior EventName="Toggled">
-                                                <behaviors:InvokeCommandAction
-                                                    Command="{Binding ToggleFacebookSocialMediaCommand}"
-                                                    Converter="{StaticResource SwitchChangeEventArgsConverter}"/>
-                                                </behaviors:EventHandlerBehavior>
-                                        </Switch.Behaviors>
+                                                <Label.FontSize>
+                                                    <OnIdiom 
+                                                        x:TypeArguments="x:Double" 
+                                                        Phone="20" 
+                                                        Tablet="20" />
+                                                </Label.FontSize> 
+
+                                                <Grid.GestureRecognizers>
+                                                    <TapGestureRecognizer 
+                                                        Command="{ Binding ResetSocialMediaCommand }" 
+                                                        CommandParameter="{StaticResource facebookKey}"
+                                                        NumberOfTapsRequired="1" />
+                                               </Grid.GestureRecognizers>
+
+                                            </Label>
+
+                                        <Switch 
+                                            x:Name="FacebookSwitch"
+                                            IsEnabled="false"
+                                            InputTransparent="true"
+                                            VerticalOptions="Center" 
+                                            HorizontalOptions="End" IsToggled="{Binding CurrentSocialMedia,  
+                                                        Converter={StaticResource SocialMediaStatusToBoolConverter},
+                                                        ConverterParameter={StaticResource facebookKey}}">
                                     </Switch>
+
+
+                                   </StackLayout>
+
+
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Command="{ Binding ToggleFacebookSocialMediaCommand }" 
+                                            NumberOfTapsRequired="1" />
+                                   </Grid.GestureRecognizers>
                             </Grid>
 
                             <!-- Instagram -->
@@ -485,24 +510,60 @@
                                                         Tablet="20" />
                                                  </Label.FontSize> 
                                            </Label>
+
                                 
                                     </StackLayout>
 
-                                    <Switch 
-                                        Grid.Column="1"  
-                                        VerticalOptions="Center" 
-                                        HorizontalOptions="End" 
-                                        IsToggled="{Binding Path=CurrentSocialMedia,  
-                                                    Converter={StaticResource SocialMediaStatusToBoolConverter},
-                                                    ConverterParameter={StaticResource instagramKey}}">
-                                        <Switch.Behaviors>
-                                            <behaviors:EventHandlerBehavior EventName="Toggled">
-                                                <behaviors:InvokeCommandAction 
-                                                    Command="{Binding ToggleInstagramSocialMediaCommand}"
-                                                    Converter="{StaticResource SwitchChangeEventArgsConverter}"/>
-                                            </behaviors:EventHandlerBehavior>
-                                        </Switch.Behaviors>
-                                    </Switch>
+                                    <StackLayout Grid.Column="1" Orientation="Horizontal">
+
+                                        <Label
+                                                IsVisible="{Binding Path=CurrentSocialMedia,  
+                                                    Converter={StaticResource SocialMediaInvalidStatusToBoolConverter},
+                                                    ConverterParameter={StaticResource instagramKey}}"
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="Start"
+                                                VerticalOptions="FillAndExpand"
+                                                HorizontalOptions="Start"
+                                                Text="{ x:Static helper:FontAwesomeFont.Trash }"
+                                                FontFamily="{ StaticResource IconsFontFamily }"
+                                                TextColor="{ DynamicResource AccentColor }">
+
+                                                <Label.FontSize>
+                                                    <OnIdiom 
+                                                        x:TypeArguments="x:Double" 
+                                                        Phone="20" 
+                                                        Tablet="20" />
+                                                </Label.FontSize> 
+
+                                                <Grid.GestureRecognizers>
+                                                    <TapGestureRecognizer 
+                                                        Command="{ Binding ResetSocialMediaCommand }" 
+                                                        CommandParameter="{StaticResource instagramKey}"
+                                                        NumberOfTapsRequired="1" />
+                                               </Grid.GestureRecognizers>
+
+                                          </Label>
+
+                                        <Switch 
+                                            x:Name="InstagramSwitch"
+                                            IsEnabled="false"
+                                            InputTransparent="true"
+                                            VerticalOptions="Center" 
+                                            HorizontalOptions="End" 
+                                            IsToggled="{Binding Path=CurrentSocialMedia,  
+                                                        Converter={StaticResource SocialMediaStatusToBoolConverter},
+                                                        ConverterParameter={StaticResource instagramKey}}">
+
+                                        </Switch>
+
+                                    </StackLayout>
+
+
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Command="{ Binding ToggleInstagramSocialMediaCommand }" 
+                                            NumberOfTapsRequired="1" />
+                                   </Grid.GestureRecognizers>
                             </Grid>
 
                             <!-- Youtube -->
@@ -571,29 +632,61 @@
                                                  </Label.FontSize> 
                                            </Label>
 
+                                            
                                     </StackLayout>
 
 
-                                    <Switch Grid.Column="1" 
-                                        VerticalOptions="Center" 
-                                        HorizontalOptions="End" 
-                                        IsToggled="{Binding Path=CurrentSocialMedia,  
-                                                    Converter={StaticResource SocialMediaStatusToBoolConverter},
-                                                    ConverterParameter={StaticResource youtubeKey}}">
+                                    <StackLayout Grid.Column="1" Orientation="Horizontal">
+
+                                        <Label
+                                                IsVisible="{Binding Path=CurrentSocialMedia,  
+                                                    Converter={StaticResource SocialMediaInvalidStatusToBoolConverter},
+                                                    ConverterParameter={StaticResource youtubeKey}}"
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="Start"
+                                                VerticalOptions="FillAndExpand"
+                                                HorizontalOptions="Start"
+                                                Text="{ x:Static helper:FontAwesomeFont.Trash }"
+                                                FontFamily="{ StaticResource IconsFontFamily }"
+                                                TextColor="{ DynamicResource AccentColor }">
+
+                                                <Label.FontSize>
+                                                    <OnIdiom 
+                                                        x:TypeArguments="x:Double" 
+                                                        Phone="20" 
+                                                        Tablet="20" />
+                                                </Label.FontSize> 
+
+                                                <Grid.GestureRecognizers>
+                                                    <TapGestureRecognizer 
+                                                        Command="{ Binding ResetSocialMediaCommand }" 
+                                                        CommandParameter="{StaticResource youtubeKey}"
+                                                        NumberOfTapsRequired="1" />
+                                               </Grid.GestureRecognizers>
+
+                                          </Label>
+
+                                        <Switch 
+                                            x:Name="YoutubeSwitch"
+                                            IsEnabled="false"
+                                            InputTransparent="true"
+                                            VerticalOptions="Center" 
+                                            HorizontalOptions="End" 
+                                            IsToggled="{Binding Path=CurrentSocialMedia,  
+                                                        Converter={StaticResource SocialMediaStatusToBoolConverter},
+                                                        ConverterParameter={StaticResource youtubeKey}}">
+
+                                                       
+                                        </Switch>
+
+                                    </StackLayout>
 
 
-                                        <Switch.Behaviors>
-
-                                            <behaviors:EventHandlerBehavior EventName="Toggled">
-
-                                                <behaviors:InvokeCommandAction
-                                                    Command="{Binding ToggleYoutubeSocialMediaCommand}"
-                                                    Converter="{StaticResource SwitchChangeEventArgsConverter}"/>
-
-                                                </behaviors:EventHandlerBehavior>
-
-                                        </Switch.Behaviors>
-                                    </Switch>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Command="{ Binding ToggleYoutubeSocialMediaCommand }" 
+                                            NumberOfTapsRequired="1" />
+                                   </Grid.GestureRecognizers>
                             </Grid>
 
                         </StackLayout>

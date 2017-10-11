@@ -17,7 +17,8 @@ namespace Bullytect.Core.OAuth.Services.Impl
 				clientId: oauth2Info.OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer,
 				scope: oauth2Info.OAuth2_Scope,
 				authorizeUrl: oauth2Info.OAuth_UriAuthorization,
-				redirectUrl: oauth2Info.OAuth_UriCallbackAKARedirect);
+				redirectUrl: oauth2Info.OAuth_UriCallbackAKARedirect,
+                isUsingNativeUI: true);
 
 			IObservable<string> observable = Observable.FromEventPattern<EventHandler<AuthenticatorCompletedEventArgs>, AuthenticatorCompletedEventArgs>(
 				h => auth.Completed += h,
@@ -33,6 +34,8 @@ namespace Bullytect.Core.OAuth.Services.Impl
 					return accessToken;
 
 				});
+
+            AuthenticationState.Authenticator = auth;
 
 			var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
 			presenter.Login(auth);

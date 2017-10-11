@@ -114,7 +114,8 @@ namespace Bullytect.Core.ViewModels
             Payload = AlertEntity.Payload,
             CreateAt = AlertEntity.CreateAt,
             SonFullName = AlertEntity.Son.FullName,
-            SonIdentity = AlertEntity.Son.Identity
+            SonIdentity = AlertEntity.Son.Identity,
+            ProfileImage = AlertEntity.Son.ProfileImage
                                      
         }));
 

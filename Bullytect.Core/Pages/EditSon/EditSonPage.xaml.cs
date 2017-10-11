@@ -35,6 +35,7 @@ namespace Bullytect.Core.Pages.EditSon
             ViewModel.SchoolAdded += ViewModel_OnSchoolAddedAsync;
             ViewModel.SonUpdated += ViewModel_OnOnSonUpdatedAsync;
 
+
 		}
 
 		protected override void OnDisappearing()
@@ -61,12 +62,12 @@ namespace Bullytect.Core.Pages.EditSon
 			profileImage.ReloadImage();
 		}
 
+
         async void OnSocialMediaInfoAsync(object sender, EventArgs args)
         {
             var page = new SocialMediaInfoPopup();
             page.BindingContext = ViewModel;
             await PopupNavigation.PushAsync(page);
-
         }
 
     }

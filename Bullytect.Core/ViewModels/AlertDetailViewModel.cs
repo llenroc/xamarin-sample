@@ -41,6 +41,7 @@ namespace Bullytect.Core.ViewModels
             public DateTime CreateAt { get; set; }
             public string SonFullName { get; set; }
             public string SonIdentity { get; set; }
+            public string ProfileImage { get; set; }
         }
 
 
@@ -53,6 +54,7 @@ namespace Bullytect.Core.ViewModels
             CreateAt = alertParameter.CreateAt;
             SonFullName = alertParameter.SonFullName;
             SonIdentity = alertParameter.SonIdentity;
+            ProfileImage = alertParameter.ProfileImage;
         }
 
         #region properties
@@ -119,6 +121,16 @@ namespace Bullytect.Core.ViewModels
             get => _sonIdentity;
             set => SetProperty(ref _sonIdentity, value);
         }
+
+
+        string _profileImage;
+
+        public string ProfileImage
+		{
+
+			get => _profileImage;
+			set => SetProperty(ref _profileImage, value);
+		}
 
 
         #endregion

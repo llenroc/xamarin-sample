@@ -23,6 +23,7 @@ namespace Bullytect.Core.ViewModels
             public string FullName { get; set; }
             public DateTime Birthdate { get; set; }
             public string School { get; set; }
+            public string ProfileImage { get; set; }
         }
 
 
@@ -60,12 +61,21 @@ namespace Bullytect.Core.ViewModels
             set => SetProperty(ref _school, value);
         }
 
+        string _profileImage;
+
+        public string ProfileImage 
+        {
+            get => _profileImage;
+            set => SetProperty(ref _profileImage, value);
+        }
+
         public void Init(SonParameter sonParameter)
         {
             Identity = sonParameter.Identity;
             FullName = sonParameter.FullName;
             Birthdate = sonParameter.Birthdate;
             School = sonParameter.School;
+            ProfileImage = sonParameter.ProfileImage;
         }
 
 

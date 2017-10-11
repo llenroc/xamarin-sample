@@ -15,7 +15,7 @@
 
             <Label 
                 HorizontalOptions="Start"
-                VerticalOptions="Center"
+                VerticalOptions="CenterAndExpand"
                 Margin="20,0"
                 Text="{ x:Static helper:FontAwesomeFont.ArrowLeft }"
                 FontSize="22"
@@ -62,7 +62,7 @@
                     HorizontalOptions="End"
                     TranslationY="0"
                     Margin="20,0"
-                    VerticalOptions="Center"
+                    VerticalOptions="CenterAndExpand"
                     Text="{ x:Static helper:FontAwesomeFont.Refresh } " 
                     FontSize="22"
                     TextColor="{ DynamicResource CustomNavBarTextColor }" 
@@ -99,7 +99,7 @@
                     HorizontalOptions="End"
                     TranslationY="0"
                     Margin="20,0"
-                    VerticalOptions="Center"
+                    VerticalOptions="CenterAndExpand"
                     Text="{ x:Static helper:FontAwesomeFont.UserPlus } " 
                     FontSize="22"
                     TextColor="{ DynamicResource CustomNavBarTextColor }" 

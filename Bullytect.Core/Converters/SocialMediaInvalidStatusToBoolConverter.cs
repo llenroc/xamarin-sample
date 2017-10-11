@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Bullytect.Core.Converters
 {
-    public class SocialMediaStatusToColorConverter : IValueConverter
+    public class SocialMediaInvalidStatusToBoolConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -21,13 +21,7 @@ namespace Bullytect.Core.Converters
 
 				var socialMedia = SocialMedias.SingleOrDefault(social => social.Type.Equals((string)parameter));
 
-                if(socialMedia != null) {
-                    return socialMedia.InvalidToken ? 
-                                      (Color)Application.Current.Resources["ErrorColor"] : 
-                                      (Color)Application.Current.Resources["OkColor"];
-                } else {
-                    return (Color)Application.Current.Resources["WarningColor"];
-                }
+                return socialMedia != null && socialMedia.InvalidToken;
 
 			}
 			catch (Exception ex)
@@ -35,7 +29,7 @@ namespace Bullytect.Core.Converters
 				Debug.WriteLine("Unable to convert: " + ex);
 			}
 
-			return (Color)Application.Current.Resources["WarningColor"];
+            return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

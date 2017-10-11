@@ -20,6 +20,7 @@ namespace Bullytect.Core.ViewModels
     using System.Reactive.Linq;
     using Bullytect.Core.Helpers;
     using System.Reactive;
+    using Bullytect.Core.Config;
 
     public abstract class BaseViewModel : MvxReactiveViewModel
     {
@@ -99,13 +100,13 @@ namespace Bullytect.Core.ViewModels
 
         protected virtual void HandleExceptions(Exception ex)
         {
-            
+
 
             _userDialogs.HideLoading();
 
             if (ex is TimeoutOperationException)
             {
-               _appHelper.Toast(AppResources.Common_Timeout_Operation, System.Drawing.Color.FromArgb(255, 0, 0));
+                _appHelper.Toast(AppResources.Common_Timeout_Operation, System.Drawing.Color.FromArgb(255, 0, 0));
 
             }
             else if (ex is HttpRequestException)
@@ -113,16 +114,25 @@ namespace Bullytect.Core.ViewModels
                 ErrorOccurred = true;
                 _appHelper.Toast(AppResources.Common_Server_Connection_Error, System.Drawing.Color.FromArgb(255, 0, 0));
 
-			}
-            else if (ex is GenericErrorException) {
+            }
+            else if (ex is GenericErrorException)
+            {
                 ErrorOccurred = true;
                 _appHelper.Toast(AppResources.Common_Server_Error, System.Drawing.Color.FromArgb(255, 0, 0));
             }
-			else if (ex is DataInvalidException)
-			{
-				var dataInvalidEx = (DataInvalidException)ex;
-				FieldErrors = dataInvalidEx.FieldErrors;
-			}
+            else if (ex is DataInvalidException)
+            {
+                var dataInvalidEx = (DataInvalidException)ex;
+                FieldErrors = dataInvalidEx.FieldErrors;
+            }
+            else if (ex is ApiUnauthorizedAccessException) {
+
+                Settings.AccessToken = null;
+                ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter() {
+                    ReasonForAuthentication = AuthenticationViewModel.SESSION_EXPIRED
+                });
+
+            }
             else
             {
                 ErrorOccurred = true;

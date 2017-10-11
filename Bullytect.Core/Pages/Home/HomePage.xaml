@@ -17,6 +17,7 @@
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
     xmlns:rest="clr-namespace:Bullytect.Core.Rest.Utils"
+    xmlns:config="clr-namespace:Bullytect.Core.Config"
     x:Class="Bullytect.Core.Pages.Home.HomePage"
     x:TypeArguments="viewModels:HomeViewModel"
     Title="{i18n:Translate Page.Common.Title}">
@@ -28,7 +29,7 @@
             <converters:ValueEqualToZeroConverter x:Key="ValueEqualToZeroConverter" />
             <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
             <converters:ValueGreaterThanZeroConverter x:Key="ValueGreaterThanZeroConverter" />
-
+            <converters:ParentProfileImageURLConverter x:Key="ParentProfileImageURLConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -110,7 +111,7 @@
                                             FadeAnimationEnabled="true"
                                             ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
                                             LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
-                                            Source="{ x:Static rest:ApiEndpoints.GET_SELF_PARENT_PROFILE_IMAGE }">
+                                            Source="{ Binding SelfParent.ProfileImage , Converter={ StaticResource ParentProfileImageURLConverter } }">
                                             <ffimageloading:CachedImage.Transformations>
                                                 <fftransformations:CircleTransformation BorderSize="5" BorderHexColor="#FFFFFF" />
                                             </ffimageloading:CachedImage.Transformations>
@@ -119,12 +120,17 @@
                                         <!-- BADGE -->
                                         <common:Badge
                                             IsVisible="{ Binding  AlertsPage.Remaining, Converter={ StaticResource ValueGreaterThanZeroConverter }"
-                                            BadgeText="{ Binding  AlertsPage.Remaining, StringFormat='{0}'}"
+                                            BadgeText="{ Binding  AlertsPage.Remaining, StringFormat='+ {0}'}"
                                             BadgeTextColor="{ DynamicResource InverseTextColor }"
                                             BadgeBackgroundColor="#22c064"
                                             HorizontalOptions="Center"
                                             VerticalOptions="Start"
-                                            TranslationX="40"/>
+                                            TranslationX="40">
+
+                                            <common:Badge.GestureRecognizers>
+                                                   <TapGestureRecognizer Command="{ Binding GoToAlertsCommand }" NumberOfTapsRequired="1" /> 
+                                            </common:Badge.GestureRecognizers>
+                                        </common:Badge>
 
                                         <Grid.GestureRecognizers>
                                             <TapGestureRecognizer Command="{ Binding TakePhotoCommand }"  NumberOfTapsRequired="1" />
@@ -133,10 +139,12 @@
 
                                     <!-- Parent FullName -->
                                     <StackLayout
-                                            Padding="20">
+                                        Orientation="Horizontal"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Padding="20">
 
                                             <Label 
-                                                    IsVisible="{Binding SelfParent, Converter={StaticResource NullToVisibilityConverter}}"
+                                                    HorizontalOptions="CenterAndExpand"
                                                     Text="{Binding SelfParent.FullName}" 
                                                     TextColor="{ DynamicResource OverImageTextColor }"
                                                     HorizontalTextAlignment="Center"
@@ -146,7 +154,7 @@
                                                                 LandscapePhone=22,
                                                                 PortraitTablet=24,
                                                                 LandscapeTablet=24 }"  />
-                                            </StackLayout>
+                                   </StackLayout>
 
                                     </StackLayout>
                                             
@@ -320,7 +328,7 @@
                                 
                                                 <Label
                                                     Style="{ StaticResource CommonHeaderStyle }"
-                                                    Text="{ i18n:Translate Home.Alerts.List.Title }"/>
+                                                    Text="{ Binding ListAlertTitle }"/>
 
                                             </StackLayout>
                             
@@ -383,8 +391,8 @@
                                             </DataTrigger>
                                             <DataTrigger 
                                                 TargetType="StackLayout"
-                                                Binding="{Binding NoAlertsFound }"
-                                                Value="True">
+                                                Binding="{Binding AlertsFound }"
+                                                Value="False">
                                                 <Setter Property="IsVisible" Value="False" />
                                             </DataTrigger>
                                             <DataTrigger
@@ -465,15 +473,22 @@
 
                                 <!-- No Alerts Found -->
                                 <common:NoDataFound 
+                                    IsVisible="false"
                                     Grid.Row="1"
                                     MainText="{i18n:Translate Home.Alerts.Not.Found.MainText }"
                                     DetailText="{i18n:Translate Home.Alerts.Not.Found.SecondText }">
 
                                     <common:NoDataFound.Triggers>
                                         <DataTrigger 
+                                            TargetType="common:NoDataFound"
+                                            Binding="{ Binding  SelfParent.Children, Converter={ StaticResource ValueEqualToZeroConverter } }"
+                                            Value="True">
+                                            <Setter Property="IsVisible" Value="False" />
+                                         </DataTrigger>
+                                        <DataTrigger 
                                              TargetType="common:NoDataFound"
-                                             Binding="{ Binding  NoAlertsFound }"
-                                             Value="True">
+                                             Binding="{ Binding AlertsFound }"
+                                             Value="False">
                                             <Setter Property="IsVisible" Value="True" />
                                         </DataTrigger>
                                         <DataTrigger
@@ -484,8 +499,8 @@
                                         </DataTrigger>
                                          <DataTrigger 
                                              TargetType="common:NoDataFound"
-                                             Binding="{ Binding  NoAlertsFound }"
-                                             Value="False">
+                                             Binding="{ Binding  AlertsFound }"
+                                             Value="True">
                                             <Setter Property="IsVisible" Value="False" />
                                         </DataTrigger>
                                     </common:NoDataFound.Triggers>

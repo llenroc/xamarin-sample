@@ -29,6 +29,7 @@
                 <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
                 <converters:TailStringConverter x:Key="TailStringConverter"/>
                 <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
+                <converters:ParentProfileImageURLConverter x:Key="ParentProfileImageURLConverter" />
           
                 <x:String x:Key="firstNameKey">firstName</x:String>
                 <x:String x:Key="lastNameKey">lastName</x:String>
@@ -107,7 +108,7 @@
                                     CacheDuration="30"
                                     ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
                                     LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
-                                    Source="{ x:Static rest:ApiEndpoints.GET_SELF_PARENT_PROFILE_IMAGE }">
+                                    Source="{ Binding SelfParent.ProfileImage , Converter={ StaticResource ParentProfileImageURLConverter } }">
                                     <ffimageloading:CachedImage.Transformations>
                                         <fftransformations:CircleTransformation BorderSize="5" BorderHexColor="#6BC7E0" />
                                     </ffimageloading:CachedImage.Transformations>

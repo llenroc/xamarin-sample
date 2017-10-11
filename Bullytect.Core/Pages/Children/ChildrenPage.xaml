@@ -83,24 +83,26 @@
                                         <ColumnDefinition Width="*" />
                                       </Grid.ColumnDefinitions>
 
+                                        
+
                                       <!---Left Column Content -->
                                       <ffimageloading:CachedImage
                                                 Margin="5"
                                                 Grid.Column="0"
                                                 CacheType="Disk"
                                                 CacheDuration="30"
-                                                VerticalOptions="CenterAndExpand"
+                                                VerticalOptions="FillAndExpand"
                                                 FadeAnimationEnabled="true"
                                                 ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
                                                 LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
-                                                Source="{ Binding Identity, Converter={ StaticResource SonProfileImageURLConverter }}"
+                                                Source="{ Binding ProfileImage, Converter={ StaticResource SonProfileImageURLConverter }}"
                                                 Aspect="AspectFill"/>
 
                                       <!-- Right Column Content-->
                                       <StackLayout
                                            Grid.Column="1"
                                            Padding="10"
-                                           VerticalOptions="CenterAndExpand"
+                                           VerticalOptions="FillAndExpand"
                                            Spacing="0">
 
 

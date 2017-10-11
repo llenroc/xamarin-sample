@@ -76,7 +76,8 @@ namespace Bullytect.Core.ViewModels
                     Identity = SonEntity.Identity,
                     FullName = SonEntity.FullName,
                     Birthdate = SonEntity.Birthdate,
-                    School = SonEntity.SchoolName
+                    School = SonEntity.SchoolName,
+                    ProfileImage = SonEntity.ProfileImage
                 }));
 			}
 		}

@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Windows.Input;
 using Acr.UserDialogs;
@@ -43,54 +44,14 @@ namespace Bullytect.Core.ViewModels
             _oauthService = oauthService;
 
 
-            RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, PageModel>((param) => {
+            RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, PageModel>((param) => LoadPageModel());
 
-
-                if (!string.IsNullOrEmpty(SonToEdit))
-                {
-
-                    return Observable.Zip(GetSonInformation(), GetSchoolNames(), (SonInformation, Schools) => new PageModel()
-                    {
-                        SonInformation = SonInformation,
-                        Schools = Schools
-                    });
-                } else {
-
-					return GetSchoolNames().Select((Schools) => new PageModel()
-					{
-						Schools = Schools
-					});
-                }
-            
-            });
-
-            RefreshCommand.Subscribe((PageModel) =>
-            {
-
-                if (PageModel?.Schools?.Count() > 0) {
-                    Schools.ReplaceRange(PageModel.Schools);
-                }
-                    
-                
-                if(PageModel.SonInformation != null) {
-					CurrentSon = PageModel.SonInformation.Son;
-					CurrentSocialMedia.ReplaceRange(PageModel.SonInformation.SocialMedia);
-                }
-
-                if (PageModel?.Schools?.Count() > 0 && PageModel.SonInformation != null) {
-
-					var index = Schools.Select((SchoolItem, SchoolIndex) => new { SchoolItem, SchoolIndex })
-                                       .First(i => i.SchoolItem.Identity.Equals(CurrentSon.SchoolIdentity)).SchoolIndex;
-
-                    if(index >= 0)
-					    SchoolSelectedIndex = index;
-                }
-
-            });
+            RefreshCommand.Subscribe(OnPageModelLoaded);
 
 			RefreshCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
 
-            RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
+			RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
+
 
             TakePhotoCommand = ReactiveCommand.CreateFromObservable<Unit, MediaFile>((param) => _appHelper.PickPhotoStream());
 
@@ -112,7 +73,7 @@ namespace Bullytect.Core.ViewModels
                     return (CurrentSon.Identity == null ?
                                 _parentService.AddSonToSelfParent(CurrentSon.FirstName, CurrentSon.LastName, CurrentSon.Birthdate, CurrentSon.SchoolIdentity) :
                                 _parentService.UpdateSonInformation(CurrentSon.Identity, CurrentSon.FirstName, CurrentSon.LastName, CurrentSon.Birthdate, CurrentSon.SchoolIdentity))
-                                .Do((SonEntity) => CurrentSon = SonEntity)
+                                .Do((SonEntity) => CurrentSon.HydrateWith(SonEntity))
                                 .SelectMany((SonEntity) => _socialMediaService.SaveAllSocialMedia(CurrentSon.Identity, CurrentSocialMedia.Select(s => { s.Son = CurrentSon.Identity; return s; }).ToList()))
                                 .Do((SocialMediaEntities) => CurrentSocialMedia.ReplaceRange(SocialMediaEntities))
                                 .SelectMany((_) =>
@@ -215,7 +176,7 @@ namespace Bullytect.Core.ViewModels
             get => _schoolSelectedIndex;
             set
             {
-                if(Schools != null && value > 0 && value < Schools.Count()) {
+                if(Schools != null && value >= 0 && value < Schools.Count()) {
 					CurrentSon.SchoolIdentity = Schools[value]?.Identity;
 					CurrentSon.SchoolName = Schools[value]?.Name;
                 }
@@ -254,8 +215,6 @@ namespace Bullytect.Core.ViewModels
 
         #endregion
 
-
-
         public void Init(string SonIdentity)
         {
             if (!string.IsNullOrEmpty(SonIdentity))
@@ -265,6 +224,7 @@ namespace Bullytect.Core.ViewModels
         public override void Start()
         {
 
+            LoadPageModel().ObserveOn(Scheduler.Default).Subscribe(OnPageModelLoaded);
             CurrentSocialMedia.CollectionChanged += CurrentSocialMediaCollectionChanged;
             Schools.CollectionChanged += SchoolsCollectionChanged;
         }
@@ -288,21 +248,26 @@ namespace Bullytect.Core.ViewModels
         public ReactiveCommand<Unit, PageModel> RefreshCommand { get; protected set; }
 
         public ICommand ToggleFacebookSocialMediaCommand
-                        => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new FacebookOAuth2(), AppConstants.FACEBOOK));
+                        => new MvxCommand(() => ToggleSocialMediaHandler(new FacebookOAuth2(), AppConstants.FACEBOOK));
 
         public ICommand ToggleInstagramSocialMediaCommand
-                        => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new InstagramOAuth2(), AppConstants.INSTAGRAM));
+                        => new MvxCommand(() => ToggleSocialMediaHandler(new InstagramOAuth2(), AppConstants.INSTAGRAM));
 
         public ICommand ToggleYoutubeSocialMediaCommand
-                        => new MvxCommand<bool>((bool Enabled) => ToggleSocialMediaHandler(Enabled, new GoogleOAuth2(), AppConstants.YOUTUBE));
+                        => new MvxCommand(() => ToggleSocialMediaHandler(new GoogleOAuth2(), AppConstants.YOUTUBE));
 
         public ReactiveCommand<Unit, SchoolEntity> SaveSchoolCommand { get; set; }
+
+
+        public ICommand ResetSocialMediaCommand
+                        => new MvxCommand<string>((string Type) => ResetSocialMediaHandler(Type));
+
 
         #endregion
 
         #region methods
 
-        private IObservable<SonInformation> GetSonInformation()
+        IObservable<SonInformation> GetSonInformation()
         {
 
             return Observable.Zip(
@@ -316,7 +281,7 @@ namespace Bullytect.Core.ViewModels
                 });
         }
 
-        private IObservable<IEnumerable<SchoolPickerModel>> GetSchoolNames()
+        IObservable<IEnumerable<SchoolPickerModel>> GetSchoolNames()
         {
             return _schoolService.AllNames().Select(SchoolNamesDict => SchoolNamesDict.ToList()).Select((SchoolEntryList) => SchoolEntryList.Select((SchoolEntry) => new SchoolPickerModel()
             {
@@ -325,56 +290,121 @@ namespace Bullytect.Core.ViewModels
             })).OnErrorResumeNext(Observable.Return(new List<SchoolPickerModel>()));
         }
 
-        private void ToggleSocialMediaHandler(bool Enabled, OAuth2 Provider, string Type)
+        IObservable<PageModel> LoadPageModel() {
+            
+
+			if (!string.IsNullOrEmpty(SonToEdit))
+			{
+
+			    return Observable.Zip(GetSonInformation(), GetSchoolNames(), (sonInformation, schools) => new PageModel()
+				{
+					SonInformation = sonInformation,
+					Schools = schools
+
+				});
+			}
+			else
+			{
+
+				return GetSchoolNames().Select((schools) => new PageModel()
+				{
+					Schools = schools
+
+				});
+			}
+
+        }
+
+        void ResetSocialMediaHandler(string Type)
+        {
+			var index = CurrentSocialMedia.Select((SocialItem, SocialIndex)
+												  => new { SocialItem, SocialIndex }).FirstOrDefault(i => i.SocialItem.Type.Equals(Type))?.SocialIndex;
+
+            if(index.HasValue && index.Value >= 0) {
+
+				Debug.WriteLine(string.Format("Disable Social Media: {0}", Type));
+
+				CurrentSocialMedia.RemoveAt(index.Value);
+
+				_userDialogs.ShowSuccess(AppResources.EditSon_Social_Media_Deleted);
+            }
+			
+        }
+
+        void ToggleSocialMediaHandler(OAuth2 Provider, string Type)
         {
 
-            var index = CurrentSocialMedia.Select((SocialItem, SocialIndex) => new { SocialItem, SocialIndex }).First(i => i.SocialItem.Type.Equals(Type)).SocialIndex;
 
-            if (Enabled)
-            {
+            var index = CurrentSocialMedia.Select((SocialItem, SocialIndex) 
+                                                  => new { SocialItem, SocialIndex }).FirstOrDefault(i => i.SocialItem.Type.Equals(Type))?.SocialIndex;
+            
 
-                if (index < 0 || CurrentSocialMedia.ElementAt(index).InvalidToken)
-                {
+             if(!index.HasValue || (index.HasValue && CurrentSocialMedia.ElementAt(index.Value).InvalidToken)) {
 
-                    Debug.WriteLine(string.Format("Enable Social Media: {0}", Type));
+				Debug.WriteLine(string.Format("Enable Social Media: {0}", Type));
 
-                    _oauthService.Authenticate(Provider).Where(AccessToken => !string.IsNullOrWhiteSpace(AccessToken))
-                        .Subscribe(AccessToken =>
-                        {
-                            if (index >= 0)
-                            {
+				_oauthService.Authenticate(Provider)
+							 .Where(AccessToken => !string.IsNullOrWhiteSpace(AccessToken))
+					.Subscribe(AccessToken =>
+					{
 
-                                var SocialMedia = CurrentSocialMedia.ElementAt(index);
-                                SocialMedia.AccessToken = AccessToken;
-                                SocialMedia.InvalidToken = false;
-                                RaisePropertyChanged(nameof(CurrentSocialMedia));
-                            }
-                            else
-                            {
-                                CurrentSocialMedia.Add(new SocialMediaEntity()
-                                {
-                                    AccessToken = AccessToken,
-                                    InvalidToken = false,
-                                    Type = Type
-                                });
-                            }
+						if (index.HasValue)
+						{
 
-                            //_userDialogs.ShowSuccess(AppResources.EditSon_Social_Media_Added);
-                        });
+							var SocialMedia = CurrentSocialMedia.ElementAt(index.Value);
+							SocialMedia.AccessToken = AccessToken;
+							SocialMedia.InvalidToken = false;
+							RaisePropertyChanged(nameof(CurrentSocialMedia));
+						}
+						else
+						{
+							CurrentSocialMedia.Add(new SocialMediaEntity()
+							{
+								AccessToken = AccessToken,
+								InvalidToken = false,
+								Type = Type
+							});
+						}
 
-                }
+							//_userDialogs.ShowSuccess(AppResources.EditSon_Social_Media_Added);
+					});
 
+
+            } else {
+
+				Debug.WriteLine(string.Format("Disable Social Media: {0}", Type));
+
+				CurrentSocialMedia.RemoveAt(index.Value);
+
+				_userDialogs.ShowSuccess(AppResources.EditSon_Social_Media_Deleted);
             }
-            else
-            {
+        }
 
-                Debug.WriteLine(string.Format("Disable Social Media: {0}", Type));
 
-                CurrentSocialMedia.RemoveAt(index);
+        void OnPageModelLoaded(PageModel Page) {
 
-                _userDialogs.ShowSuccess(AppResources.EditSon_Social_Media_Deleted);
+			if (Page?.Schools?.Count() > 0)
+			{
+				Schools.ReplaceRange(Page.Schools);
+			}
 
-            }
+
+			if (Page.SonInformation != null)
+			{
+                CurrentSon.HydrateWith(Page.SonInformation.Son);
+				CurrentSocialMedia.ReplaceRange(Page.SonInformation.SocialMedia);
+			}
+
+			if (Page?.Schools?.Count() > 0 && Page.SonInformation != null)
+			{
+
+				var index = Schools.Select((SchoolItem, SchoolIndex) => new { SchoolItem, SchoolIndex })
+								   .FirstOrDefault(i => i.SchoolItem.Identity.Equals(CurrentSon.SchoolIdentity))?.SchoolIndex;
+
+                if (index.HasValue && index.Value >= 0)
+                    SchoolSelectedIndex = index.Value;
+			}
+
         }
 
         #endregion

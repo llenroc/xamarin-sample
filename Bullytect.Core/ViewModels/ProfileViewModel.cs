@@ -4,16 +4,12 @@ using System.Diagnostics;
 using System.Reactive.Linq;
 using Acr.UserDialogs;
 using Bullytect.Core.I18N;
-using Bullytect.Core.Messages;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
-using Bullytect.Core.Utils;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 using Bullytect.Core.Rest.Models.Exceptions;
-using Bullytect.Core.Config;
 using Bullytect.Core.Exceptions;
-using System.IO;
 using Plugin.Media.Abstractions;
 using System.Reactive;
 using Bullytect.Core.Helpers;
@@ -52,7 +48,7 @@ namespace Bullytect.Core.ViewModels
 
             LoadProfileCommand = ReactiveCommand.CreateFromObservable<Unit, ParentEntity>((param) => _parentService.GetProfileInformation());
 
-            LoadProfileCommand.ToProperty(this, x => x.SelfParent, out _selfParent);
+            LoadProfileCommand.Subscribe((ParentEntity) => SelfParent.HydrateWith(ParentEntity));
 
             LoadProfileCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
 
@@ -103,10 +99,11 @@ namespace Bullytect.Core.ViewModels
             set => SetProperty(ref _newProfileImage, value);
         }
 
-        protected ObservableAsPropertyHelper<ParentEntity> _selfParent;
+        protected ParentEntity _selfParent = new ParentEntity();
 		public ParentEntity SelfParent
 		{
-			get { return _selfParent.Value; }
+			get => _selfParent;
+			set => SetProperty(ref _selfParent, value);
 		}
 
 
@@ -156,11 +153,12 @@ namespace Bullytect.Core.ViewModels
 
 		#endregion
 
-		void AccountUpdatedHandler(ParentEntity parent)
+		void AccountUpdatedHandler(ParentEntity Parent)
 		{
-			Debug.WriteLine(String.Format("Parent: {0}", parent.ToString()));
+			Debug.WriteLine(String.Format("Parent: {0}", Parent.ToString()));
+            SelfParent.HydrateWith(Parent);
             _appHelper.Toast(AppResources.Profile_Account_Updated, System.Drawing.Color.FromArgb(12, 131, 193));
-            OnAccountUpdated(parent);
+            OnAccountUpdated(Parent);
 		}
 
 		protected override void HandleExceptions(Exception ex)

@@ -20,7 +20,7 @@ namespace Bullytect.Core.OAuth.Providers.Facebook
 			OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer = "341732922916068";
 			OAuth2_Scope = "email, user_birthday, user_hometown, user_location, user_about_me";
 			OAuth_UriAuthorization = new Uri("https://m.facebook.com/dialog/oauth/");
-			OAuth_UriCallbackAKARedirect = new Uri("http://www.facebook.com/connect/login_success.html");
+            OAuth_UriCallbackAKARedirect = new Uri("com.usal.bisite.bulltect://oauth2redirect");
 			AllowCancel = true;
 			HowToMarkDown =
 @"

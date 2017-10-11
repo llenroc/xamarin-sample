@@ -46,7 +46,7 @@
             FadeAnimationEnabled="true"
             ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
             LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
-            Source="{ Binding Son.Identity , Converter={ StaticResource SonProfileImageURLConverter }}">
+            Source="{ Binding Son.ProfileImage, Converter={ StaticResource SonProfileImageURLConverter }}">
             <ffimageloading:CachedImage.Transformations>
                 <fftransformations:CircleTransformation BorderSize="3" BorderHexColor="#6BC7E0" />
             </ffimageloading:CachedImage.Transformations>

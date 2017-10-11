@@ -1,19 +1,96 @@
 ﻿using System;
 using System.Collections.Generic;
+using MvvmHelpers;
 
 namespace Bullytect.Core.Models.Domain
 {
-    public class SonEntity
+    public class SonEntity: ObservableObject
     {
-        public string Identity { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime Birthdate { get; set; } = new DateTime();
-        public int Age { get; set; }
-        public string SchoolIdentity { get; set; }
-		public string SchoolName { get; set; }
+
+
+		string _identity;
+
+		public string Identity
+		{
+			get { return _identity; }
+			set { SetProperty(ref _identity, value); }
+		}
+
+        string _firstName;
+
+		public string FirstName
+		{
+			get { return _firstName; }
+			set { SetProperty(ref _firstName, value); }
+		}
+
+        string _lastName;
+		public string LastName
+		{
+			get { return _lastName; }
+            set { SetProperty(ref _lastName, value); }
+            
+        }
+
+        DateTime _birthdate = new DateTime();
+
+		public DateTime Birthdate
+		{
+			get { return _birthdate; }
+			set { SetProperty(ref _birthdate, value); }
+
+		}
+
+		string _age;
+		public string Age
+		{
+			get { return _age; }
+			set { SetProperty(ref _age, value); }
+
+		}
+
+		string _schoolIdentity;
+		public string SchoolIdentity
+		{
+			get { return _schoolIdentity; }
+			set { SetProperty(ref _schoolIdentity, value); }
+
+		}
+
+		string _schoolName;
+		public string SchoolName
+		{
+			get { return _schoolName; }
+			set { SetProperty(ref _schoolName, value); }
+
+		}
+
+
+		string _profileImage;
+		public string ProfileImage
+		{
+			get { return _profileImage; }
+			set { SetProperty(ref _profileImage, value); }
+
+		}
+
 
         public string FullName => string.Format("{0} {1}", FirstName, LastName);
+
+
+        public void HydrateWith(SonEntity OtherSonEntity) {
+
+
+            Identity = OtherSonEntity.Identity;
+            FirstName = OtherSonEntity.FirstName;
+            LastName = OtherSonEntity.LastName;
+            Birthdate = OtherSonEntity.Birthdate;
+            Age = OtherSonEntity.Age;
+            SchoolIdentity = OtherSonEntity.SchoolIdentity;
+            SchoolName = OtherSonEntity.SchoolName;
+            ProfileImage = OtherSonEntity.ProfileImage;
+        }
+
 
 		public override string ToString()
 		{

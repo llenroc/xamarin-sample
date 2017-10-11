@@ -498,6 +498,10 @@
       <DependentUpon>AlertDetailHeader.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\ValueGreaterThanZeroConverter.cs" />
+    <Compile Include="Converters\ParentProfileImageURLConverter.cs" />
+    <Compile Include="Rest\Models\Exceptions\ApiUnauthorizedAccessException.cs" />
+    <Compile Include="Converters\SocialMediaInvalidStatusToBoolConverter.cs" />
+    <Compile Include="OAuth\Models\AuthenticationState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">

@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Bullytect.Core.Rest.Models.Exceptions;
 
 namespace Bullytect.Core.Rest.Handlers
 {
@@ -15,10 +16,9 @@ namespace Bullytect.Core.Rest.Handlers
     {
 
         readonly Action _onUnauthorizedError;
-		public UnauthorizedHttpClientHandler(Action onUnauthorizedError, HttpMessageHandler innerHandler = null)
+		public UnauthorizedHttpClientHandler(HttpMessageHandler innerHandler = null)
             : base(innerHandler ?? new HttpClientHandler())
         {
-            _onUnauthorizedError = onUnauthorizedError;
         }
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -27,7 +27,7 @@ namespace Bullytect.Core.Rest.Handlers
             var response =  await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
             Debug.WriteLine("Check if authorized ..."+ response.StatusCode);
             if (response.StatusCode.Equals(HttpStatusCode.Unauthorized))
-                _onUnauthorizedError();
+                throw new ApiUnauthorizedAccessException();
 
             return response;
 

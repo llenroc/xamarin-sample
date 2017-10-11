@@ -71,14 +71,7 @@ namespace Bullytect.Core
         {
 
 			var httpClient = new HttpClient(new HttpLoggingHandler(
-				new UnauthorizedHttpClientHandler(
-					() => {
-						Debug.WriteLine("Session Expired ....");
-						var navigationService = Mvx.Resolve<IMvxNavigationService>();
-						Config.Settings.AccessToken = null;
-						navigationService?.Navigate<AuthenticationViewModel>();
-
-					}, new AuthenticatedHttpClientHandler(() => Config.Settings.AccessToken))))
+				new UnauthorizedHttpClientHandler(new AuthenticatedHttpClientHandler(() => Config.Settings.AccessToken))))
 			{
 				BaseAddress = new Uri(SharedConfig.BASE_API_URL),
 				Timeout = TimeSpan.FromMinutes(SharedConfig.TIMEOUT_OPERATION_MINUTES)

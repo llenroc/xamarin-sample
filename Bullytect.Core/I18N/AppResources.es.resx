@@ -289,7 +289,7 @@ pleasures of the demo.</value>
     <comment>Home Loading Failed</comment>
   </data>
   <data name="Home.Alerts.List.Title" xml:space="preserve">
-    <value> Últimas Alertas </value>
+    <value> Últimas Alertas ( hace {0} minutos ) </value>
     <comment>Home Alerts List Title</comment>
   </data>
   <data name="Home.Show.Alerts" xml:space="preserve">
