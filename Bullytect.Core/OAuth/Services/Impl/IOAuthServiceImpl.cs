@@ -14,18 +14,35 @@ namespace Bullytect.Core.OAuth.Services.Impl
 
         public IObservable<string> Authenticate(OAuth2 oauth2Info)
         {
-			var auth = new OAuth2Authenticator(
-				clientId: oauth2Info.OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer,
-                clientSecret: string.Empty,
-				scope: oauth2Info.OAuth2_Scope,
-				authorizeUrl: oauth2Info.OAuth_UriAuthorization,
-				redirectUrl: oauth2Info.OAuth_UriCallbackAKARedirect,
-				accessTokenUrl: oauth2Info.OAuth_UriAccessToken_UriRequestToken,
-                isUsingNativeUI: true
-            ) {
-                AllowCancel = oauth2Info.AllowCancel
-            };
 
+            OAuth2Authenticator auth;
+
+            if(oauth2Info.OAuth_UriAccessToken_UriRequestToken != null){
+                auth = new OAuth2Authenticator(
+                    clientId: oauth2Info.OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer,
+                    clientSecret: string.Empty,
+                    scope: oauth2Info.OAuth2_Scope,
+                    authorizeUrl: oauth2Info.OAuth_UriAuthorization,
+                    redirectUrl: oauth2Info.OAuth_UriCallbackAKARedirect,
+                    accessTokenUrl: oauth2Info.OAuth_UriAccessToken_UriRequestToken,
+                    isUsingNativeUI: true
+                );
+
+            } else {
+
+				auth = new OAuth2Authenticator(
+					clientId: oauth2Info.OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer,
+					scope: oauth2Info.OAuth2_Scope,
+					authorizeUrl: oauth2Info.OAuth_UriAuthorization,
+					redirectUrl: oauth2Info.OAuth_UriCallbackAKARedirect,
+					isUsingNativeUI: true
+				);
+            }
+
+
+            auth.AllowCancel = oauth2Info.AllowCancel;
+
+            AuthenticationState.Authenticator = auth;
 
             IObservable<string> observable = Observable.Merge(
 				Observable.FromEventPattern<EventHandler<AuthenticatorCompletedEventArgs>, AuthenticatorCompletedEventArgs>(
@@ -41,12 +58,12 @@ namespace Bullytect.Core.OAuth.Services.Impl
 
                 if(string.IsNullOrEmpty(AccessToken))
                     Observable.Throw<OAuthAuthenticationErrorException>(new OAuthAuthenticationErrorException());
+
+                AuthenticationState.Authenticator = null;
+
                 return AccessToken;
             });
 
-
-
-            AuthenticationState.Authenticator = auth;
 
 			var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
 			presenter.Login(auth);

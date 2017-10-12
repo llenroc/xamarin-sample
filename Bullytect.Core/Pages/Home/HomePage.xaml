@@ -43,8 +43,6 @@
     </ContentPage.Behaviors>
     
 	<ContentPage.Content>
-
-       
         <!-- MAIN CONTAINER -->
         <Grid RowSpacing="0">
             <Grid.RowDefinitions>
@@ -81,7 +79,6 @@
                             HeightRequest="250"
                             BackgroundColor="Black"
                             Padding="0">
-
 
                             <!-- BACKGROUND IMAGE -->
                             <Image 
@@ -156,86 +153,82 @@
                                                                 LandscapeTablet=24 }"  />
                                    </StackLayout>
 
-                                    </StackLayout>
+                               </StackLayout>
                                             
-                                        <!-- TOOLBAR -->
-                                        <Grid
-                                            VerticalOptions="End"
-                                            Style="{ StaticResource ToolbarStyle }"
-                                            BackgroundColor="{ DynamicResource TranslucidWhite }">
+                               <!-- TOOLBAR -->
+                               <Grid
+                                    VerticalOptions="End"
+                                    Style="{ StaticResource ToolbarStyle }"
+                                    BackgroundColor="{ DynamicResource TranslucidWhite }">
 
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
 
+                                    <!-- Children Action -->
+                                    <StackLayout
+                                        Grid.Column="0"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Spacing="0">
 
-                                            <!-- Children Action -->
+                                            <Label
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{ x:Static helper:FontAwesomeFont.Users }"
+                                                FontFamily="{ StaticResource IconsFontFamily }"
+                                                TextColor="{ DynamicResource InverseTextColor }">
 
-                                            <StackLayout
-                                                Grid.Column="0"
-                                                Orientation="Horizontal"
-                                                VerticalOptions="Center"
-                                                HorizontalOptions="Center"
-                                                Spacing="0">
-                                                
-                                                    <Label
-                                                        VerticalTextAlignment="Center"
-                                                        HorizontalTextAlignment="Center"
-                                                        Text="{ x:Static helper:FontAwesomeFont.Users }"
-                                                        FontFamily="{ StaticResource IconsFontFamily }"
-                                                        TextColor="{ DynamicResource InverseTextColor }">
+                                                <Label.FontSize>
+                                                    <OnIdiom 
+                                                        x:TypeArguments="x:Double" 
+                                                        Phone="15" 
+                                                        Tablet="20" />
+                                                 </Label.FontSize>
+                                            </Label>
 
-                                                        <Label.FontSize>
-                                                            <OnIdiom 
-                                                                x:TypeArguments="x:Double" 
-                                                                Phone="15" 
-                                                                Tablet="20" />
-                                                        </Label.FontSize> 
+                                            <Label
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding SelfParent.Children, StringFormat={i18n:Translate Home.Toolbar.Children} }"
+                                                TextColor="{ DynamicResource OverImageTextColor }">
+                                                <Label.FontSize>
+                                                    <OnIdiom 
+                                                        x:TypeArguments="x:Double" 
+                                                        Phone="15" 
+                                                        Tablet="20" />
+                                                </Label.FontSize> 
+                                            </Label>
 
-                                                    </Label>
-                                                    <Label
-                                                        VerticalTextAlignment="Center"
-                                                        HorizontalTextAlignment="Center"
-                                                        Text="{Binding SelfParent.Children, StringFormat={i18n:Translate Home.Toolbar.Children} }"
-                                                        TextColor="{ DynamicResource OverImageTextColor }">
-                                                        <Label.FontSize>
-                                                            <OnIdiom 
-                                                                x:TypeArguments="x:Double" 
-                                                                Phone="15" 
-                                                                Tablet="20" />
-                                                        </Label.FontSize> 
-                                                    </Label>
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{ Binding GoToChildrenCommand }" NumberOfTapsRequired="1" /> 
+                                            </StackLayout.GestureRecognizers>
+                                    </StackLayout>
 
-                                                    <StackLayout.GestureRecognizers>
-                                                          <TapGestureRecognizer Command="{ Binding GoToChildrenCommand }" NumberOfTapsRequired="1" /> 
-                                                    </StackLayout.GestureRecognizers>
-                                                
-                                              </StackLayout>
+                                    <!-- Results Action -->
+                                    <StackLayout
+                                        Grid.Column="1"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Spacing="0">
 
-
-                                              <!-- Results Action -->
-                                              <StackLayout
-                                                    Grid.Column="1"
-                                                    Orientation="Horizontal"
-                                                    VerticalOptions="Center"
-                                                    HorizontalOptions="Center"
-                                                    Spacing="0">
-
-                                                <Label
-                                                     VerticalTextAlignment="Center" 
-                                                     HorizontalTextAlignment="Center"
-                                                     Text="{ x:Static helper:FontAwesomeFont.AreaChart }"
-                                                     FontFamily="{ StaticResource IconsFontFamily }"
-                                                     TextColor="{ DynamicResource InverseTextColor }">
-                                                     <Label.FontSize>
-                                                        <OnIdiom 
-                                                            x:TypeArguments="x:Double" 
-                                                            Phone="15" 
-                                                            Tablet="20" />
-                                                    </Label.FontSize> 
-                                                </Label>
+                                        <Label
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{ x:Static helper:FontAwesomeFont.AreaChart }"
+                                            FontFamily="{ StaticResource IconsFontFamily }"
+                                            TextColor="{ DynamicResource InverseTextColor }">
+                                            <Label.FontSize>
+                                                 <OnIdiom 
+                                                     x:TypeArguments="x:Double" 
+                                                     Phone="15" 
+                                                     Tablet="20" />
+                                           </Label.FontSize> 
+                                       </Label>
 
                                                 <Label
                                                     VerticalTextAlignment="Center" 
@@ -357,35 +350,33 @@
                             
                                         </StackLayout>
 
-                   
+                                        <!-- Last Alerts LIST -->
+                                        <ListView
+                                             ItemsSource="{Binding AlertsPage.Alerts}"
+                                             RowHeight="90">
 
-                                            <!-- Last Alerts LIST -->
-                                            <ListView
-                                                ItemsSource="{Binding AlertsPage.Alerts}"
-                                                RowHeight="90">
+                                            <ListView.Behaviors>
+                                                 <utils:EventToCommandBehavior 
+                                                     EventName="ItemTapped" 
+                                                     Command="{Binding ShowAlertDetailCommand}" 
+                                                     EventArgsConverter="{ StaticResource ItemTappedEventArgsConverter }" />
+                                            </ListView.Behaviors>
 
-                                                <ListView.Behaviors>
-                                                    <utils:EventToCommandBehavior 
-                                                        EventName="ItemTapped" 
-                                                        Command="{Binding ShowAlertDetailCommand}" 
-                                                        EventArgsConverter="{ StaticResource ItemTappedEventArgsConverter }" />
-                                                </ListView.Behaviors>
-
-                                                <ListView.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <ViewCell>
-                                                            <templates:AlertItemTemplate/>
-                                                        </ViewCell>
-                                                    </DataTemplate>
-                                                </ListView.ItemTemplate>
-                                            </ListView>
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                       <templates:AlertItemTemplate/>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                       </ListView>
 
 
 
                                         <StackLayout.Triggers>
                                             <DataTrigger 
                                                 TargetType="StackLayout"
-                                                Binding="{Binding AlertsFound.Returned, Converter={ StaticResource ValueEqualToZeroConverter } }"
+                                                Binding="{Binding AlertsPage.Returned, Converter={ StaticResource ValueEqualToZeroConverter } }"
                                                 Value="True">
                                                 <Setter Property="IsVisible" Value="False" />
                                             </DataTrigger>
@@ -397,11 +388,11 @@
                                             </DataTrigger>
                                         </StackLayout.Triggers>
                                 
-                                    </StackLayout>
+                                </StackLayout>
 
-                                  <StackLayout
+                                <StackLayout
                                         Grid.Row="1"
-                                        IsVisible="False"
+                                        IsVisible="{ Binding ShouldShowNoChildrenFound}"
                                         VerticalOptions="EndAndExpand"
                                         Padding="20">
 
@@ -424,23 +415,6 @@
                                             Text="{i18n:Translate Home.Add.Son}" />
 
 
-                                          <StackLayout.Triggers>
-                                                <MultiTrigger TargetType="StackLayout">
-                                                    <MultiTrigger.Conditions>
-                                                        <BindingCondition 
-                                                            Binding="{ Binding  SelfParent.Children,
-                                                                Converter={ StaticResource ValueEqualToZeroConverter } }"
-                                                            Value="True" />
-                                                        <BindingCondition 
-                                                            Binding="{Binding IsBusy}"
-                                                            Value="False" />
-                                                    </MultiTrigger.Conditions>
-
-                                                    <Setter Property="IsVisible" Value="True" />
-                                                </MultiTrigger>
-                                        </StackLayout.Triggers>
-                            
-                                      
                                    </StackLayout>
 
                                    <Grid
@@ -468,29 +442,11 @@
 
                                 <!-- No Alerts Found -->
                                 <common:NoDataFound 
-                                    IsVisible="false"
                                     Grid.Row="1"
+                                    IsVisible="{ Binding ShouldShowNoAlertsFound }"
                                     MainText="{i18n:Translate Home.Alerts.Not.Found.MainText }"
                                     DetailText="{i18n:Translate Home.Alerts.Not.Found.SecondText }">
-                                    <common:NoDataFound.Triggers>
-                                        <MultiTrigger TargetType="common:NoDataFound">
-                                            <MultiTrigger.Conditions>
-                                                <BindingCondition 
-                                                    Binding="{ Binding  SelfParent.Children, 
-                                                        Converter={ StaticResource ValueGreaterThanZeroConverter } }"
-                                                    Value="True" />
-                                                <BindingCondition 
-                                                    Binding="{Binding AlertsFound.Returned, Converter={ StaticResource ValueEqualToZeroConverter } }"
-                                                    Value="True" />
-                                                <BindingCondition 
-                                                    Binding="{Binding IsBusy}"
-                                                    Value="False" />
-                                            </MultiTrigger.Conditions>
-
-                                            <Setter Property="IsVisible" Value="True" />
-                                        </MultiTrigger>
-                                    </common:NoDataFound.Triggers>
-
+                                  
                                 </common:NoDataFound>
                                     
                             </Grid>

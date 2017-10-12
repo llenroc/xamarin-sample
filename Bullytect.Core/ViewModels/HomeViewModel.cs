@@ -33,6 +33,7 @@ namespace Bullytect.Core.ViewModels
 
             RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, PageModel>((param) =>
             {
+                RefreshBindings();
 
                 return Observable.Zip(
                     _parentService.GetProfileInformation(),
@@ -94,6 +95,16 @@ namespace Bullytect.Core.ViewModels
         {
             get => string.Format(AppResources.Home_Alerts_List_Title, Settings.Current.AntiquityOfAlerts);
 
+        }
+
+		public bool ShouldShowNoAlertsFound
+		{
+            get => SelfParent?.Children > 0 && AlertsPage?.Returned == 0 && !IsBusy && !ErrorOccurred;
+		}
+
+        public bool ShouldShowNoChildrenFound
+        {
+            get => SelfParent?.Children == 0 && !IsBusy && !ErrorOccurred;
         }
 
         #endregion
@@ -211,11 +222,17 @@ namespace Bullytect.Core.ViewModels
 
         void OnPageModelLoadedHandler(PageModel pageModel)
         {
-            AlertsPage = pageModel.AlertsPage;
             DataFound = true;
             ErrorOccurred = false;
+            AlertsPage.HydrateWith(pageModel.AlertsPage);
             SelfParent.HydrateWith(pageModel.SelfParent);
-            RaisePropertyChanged(nameof(ListAlertTitle));
+            RefreshBindings();
+        }
+
+        void RefreshBindings() {
+			RaisePropertyChanged(nameof(ListAlertTitle));
+			RaisePropertyChanged(nameof(ShouldShowNoAlertsFound));
+			RaisePropertyChanged(nameof(ShouldShowNoChildrenFound));
         }
 
 		#region models
