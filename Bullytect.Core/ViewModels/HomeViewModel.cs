@@ -89,14 +89,6 @@ namespace Bullytect.Core.ViewModels
             set => SetProperty(ref _alertsPage, value);
         }
 
-        bool _alertsFound = false;
-
-        public bool AlertsFound
-        {
-            get => _alertsFound;
-            set => SetProperty(ref _alertsFound, value);
-        }
-
 
         public string ListAlertTitle
         {
@@ -201,10 +193,6 @@ namespace Bullytect.Core.ViewModels
             {
                 _userDialogs.ShowError(AppResources.Home_Loading_Failed);
             }
-            else if (ex is NoNewAlertsFoundException)
-            {
-                AlertsFound = false;
-            }
             else if (ex is UploadImageFailException)
             {
                 _appHelper.Toast(AppResources.Profile_Updating_Profile_Image_Failed, System.Drawing.Color.FromArgb(255, 0, 0));
@@ -226,7 +214,6 @@ namespace Bullytect.Core.ViewModels
             AlertsPage = pageModel.AlertsPage;
             DataFound = true;
             ErrorOccurred = false;
-            AlertsFound = pageModel.AlertsPage?.Alerts?.Count > 0;
             SelfParent.HydrateWith(pageModel.SelfParent);
             RaisePropertyChanged(nameof(ListAlertTitle));
         }

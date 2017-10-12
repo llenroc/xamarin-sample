@@ -112,6 +112,12 @@ namespace Bullytect.Core.Rest.Utils
 								Response = ex.GetContentAs<APIResponse<string>>()
 							};
                             break;
+                        case ResponseNames.SOCIAL_MEDIA_BY_CHILD_NOT_FOUND_RESPONSE:
+							exResponse = new NoSocialMediaFoundException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
+							break;
 							// Parse Generic Error
                         case ResponseNames.GENERIC_ERROR_RESPONSE:
 							exResponse = new GenericErrorException()

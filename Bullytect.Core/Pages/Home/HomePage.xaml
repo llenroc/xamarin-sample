@@ -44,7 +44,6 @@
     
 	<ContentPage.Content>
 
-        
        
         <!-- MAIN CONTAINER -->
         <Grid RowSpacing="0">
@@ -60,6 +59,7 @@
             <controls:PullToRefreshLayout
                     Grid.Row="1"
                     x:Name="RefreshLayout"
+                    IsVisible="{ Binding ErrorOccurred , Converter = { StaticResource InverseBoolConverter }  }"
                     IsPullToRefreshEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
                     RefreshCommand="{Binding RefreshCommand}"
                     IsRefreshing="{Binding IsBusy}"
@@ -119,7 +119,7 @@
 
                                         <!-- BADGE -->
                                         <common:Badge
-                                            IsVisible="{ Binding  AlertsPage.Remaining, Converter={ StaticResource ValueGreaterThanZeroConverter }"
+                                            IsVisible="{ Binding  AlertsPage.Remaining, Converter={ StaticResource ValueGreaterThanZeroConverter }}"
                                             BadgeText="{ Binding  AlertsPage.Remaining, StringFormat='+ {0}'}"
                                             BadgeTextColor="{ DynamicResource InverseTextColor }"
                                             BadgeBackgroundColor="#22c064"
@@ -385,14 +385,8 @@
                                         <StackLayout.Triggers>
                                             <DataTrigger 
                                                 TargetType="StackLayout"
-                                                Binding="{Binding SelfParent, Converter={StaticResource NullToVisibilityConverter} }"
-                                                Value="False">
-                                                <Setter Property="IsVisible" Value="False" />
-                                            </DataTrigger>
-                                            <DataTrigger 
-                                                TargetType="StackLayout"
-                                                Binding="{Binding AlertsFound }"
-                                                Value="False">
+                                                Binding="{Binding AlertsFound.Returned, Converter={ StaticResource ValueEqualToZeroConverter } }"
+                                                Value="True">
                                                 <Setter Property="IsVisible" Value="False" />
                                             </DataTrigger>
                                             <DataTrigger
@@ -431,18 +425,19 @@
 
 
                                           <StackLayout.Triggers>
-                                            <DataTrigger 
-                                                TargetType="StackLayout"
-                                                Binding="{ Binding  SelfParent.Children, Converter={ StaticResource ValueEqualToZeroConverter } }"
-                                                Value="True">
-                                                <Setter Property="IsVisible" Value="True" />
-                                            </DataTrigger>
-                                            <DataTrigger
-                                                TargetType="StackLayout"
-                                                Binding="{Binding IsBusy}"
-                                                Value="True">
-                                                <Setter Property="IsVisible" Value="False" />
-                                            </DataTrigger>
+                                                <MultiTrigger TargetType="StackLayout">
+                                                    <MultiTrigger.Conditions>
+                                                        <BindingCondition 
+                                                            Binding="{ Binding  SelfParent.Children,
+                                                                Converter={ StaticResource ValueEqualToZeroConverter } }"
+                                                            Value="True" />
+                                                        <BindingCondition 
+                                                            Binding="{Binding IsBusy}"
+                                                            Value="False" />
+                                                    </MultiTrigger.Conditions>
+
+                                                    <Setter Property="IsVisible" Value="True" />
+                                                </MultiTrigger>
                                         </StackLayout.Triggers>
                             
                                       
@@ -477,58 +472,28 @@
                                     Grid.Row="1"
                                     MainText="{i18n:Translate Home.Alerts.Not.Found.MainText }"
                                     DetailText="{i18n:Translate Home.Alerts.Not.Found.SecondText }">
-
                                     <common:NoDataFound.Triggers>
-                                        <DataTrigger 
-                                            TargetType="common:NoDataFound"
-                                            Binding="{ Binding  SelfParent.Children, Converter={ StaticResource ValueEqualToZeroConverter } }"
-                                            Value="True">
-                                            <Setter Property="IsVisible" Value="False" />
-                                         </DataTrigger>
-                                        <DataTrigger 
-                                             TargetType="common:NoDataFound"
-                                             Binding="{ Binding AlertsFound }"
-                                             Value="False">
+                                        <MultiTrigger TargetType="common:NoDataFound">
+                                            <MultiTrigger.Conditions>
+                                                <BindingCondition 
+                                                    Binding="{ Binding  SelfParent.Children, 
+                                                        Converter={ StaticResource ValueGreaterThanZeroConverter } }"
+                                                    Value="True" />
+                                                <BindingCondition 
+                                                    Binding="{Binding AlertsFound.Returned, Converter={ StaticResource ValueEqualToZeroConverter } }"
+                                                    Value="True" />
+                                                <BindingCondition 
+                                                    Binding="{Binding IsBusy}"
+                                                    Value="False" />
+                                            </MultiTrigger.Conditions>
+
                                             <Setter Property="IsVisible" Value="True" />
-                                        </DataTrigger>
-                                        <DataTrigger
-                                             TargetType="common:NoDataFound"
-                                             Binding="{Binding IsBusy}"
-                                             Value="True">
-                                            <Setter Property="IsVisible" Value="False" />
-                                        </DataTrigger>
-                                         <DataTrigger 
-                                             TargetType="common:NoDataFound"
-                                             Binding="{ Binding  AlertsFound }"
-                                             Value="True">
-                                            <Setter Property="IsVisible" Value="False" />
-                                        </DataTrigger>
+                                        </MultiTrigger>
                                     </common:NoDataFound.Triggers>
 
                                 </common:NoDataFound>
                                     
                             </Grid>
-
-                        <controls:PullToRefreshLayout.Triggers>
-                            <DataTrigger 
-                                TargetType="controls:PullToRefreshLayout"
-                                Binding="{Binding DataFound}"
-                                Value="False">
-                                <Setter Property="IsVisible" Value="False" />
-                            </DataTrigger>
-                            <DataTrigger
-                                TargetType="controls:PullToRefreshLayout"
-                                Binding="{Binding ErrorOccurred}"
-                                Value="True">
-                                <Setter Property="IsVisible" Value="False" />
-                            </DataTrigger>
-                            <DataTrigger
-                                TargetType="controls:PullToRefreshLayout"
-                                Binding="{Binding ErrorOccurred}"
-                                Value="False">
-                                <Setter Property="IsVisible" Value="True" />
-                            </DataTrigger>
-                        </controls:PullToRefreshLayout.Triggers>
 
                 </controls:PullToRefreshLayout>
 

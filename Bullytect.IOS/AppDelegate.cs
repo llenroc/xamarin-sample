@@ -1,5 +1,6 @@
 ﻿
 using System;
+using Bullytect.Core.OAuth.Models;
 using FFImageLoading.Forms.Touch;
 using Foundation;
 using Lottie.Forms.iOS.Renderers;
@@ -87,11 +88,33 @@ namespace Bullytect.iOS
 			base.OnActivated(uiApplication);
 
 		}
+
 		public override void DidEnterBackground(UIApplication application)
 		{
 			// Use this method to release shared resources, save user data, invalidate timers and store the application state.
 			// If your application supports background exection this method is called instead of WillTerminate when the user quits.
 			FirebasePushNotificationManager.Disconnect();
+		}
+
+		public override bool OpenUrl ( UIApplication application, NSUrl url, 
+                                      string sourceApplication, NSObject annotation)
+		{
+            #if DEBUG
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
+			sb.AppendLine("OpenURL Called");
+			sb.Append("     url         = ").AppendLine(url.AbsoluteUrl.ToString());
+			sb.Append("     application = ").AppendLine(sourceApplication);
+			sb.Append("     annotation  = ").AppendLine(annotation?.ToString());
+			System.Diagnostics.Debug.WriteLine(sb.ToString());
+            #endif
+
+			// Convert iOS NSUrl to C#/netxf/BCL System.Uri - common API
+			Uri uri_netfx = new Uri(url.AbsoluteString);
+
+			// load redirect_url Page
+			AuthenticationState.Authenticator.OnPageLoading(uri_netfx);
+
+			return true;
 		}
     }
 }

@@ -188,6 +188,9 @@
     <EmbeddedResource Include="Pages\AlertDetail\Templates\AlertDetailHeader.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\SonProfile\Templates\SonProfileHeader.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\CanNotTakePhotoFromCameraException.cs" />
@@ -502,6 +505,11 @@
     <Compile Include="Rest\Models\Exceptions\ApiUnauthorizedAccessException.cs" />
     <Compile Include="Converters\SocialMediaInvalidStatusToBoolConverter.cs" />
     <Compile Include="OAuth\Models\AuthenticationState.cs" />
+    <Compile Include="Rest\Models\Exceptions\NoSocialMediaFoundException.cs" />
+    <Compile Include="Pages\SonProfile\Templates\SonProfileHeader.xaml.cs">
+      <DependentUpon>SonProfileHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Exceptions\OAuthInvalidAccessTokenException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -703,6 +711,7 @@
     <Folder Include="Pages\Settings\Templates\" />
     <Folder Include="Pages\Results\Templates\" />
     <Folder Include="Pages\AlertDetail\Templates\" />
+    <Folder Include="Pages\SonProfile\Templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />

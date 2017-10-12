@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Bullytect.Core.OAuth.Exceptions;
@@ -15,74 +16,44 @@ namespace Bullytect.Core.OAuth.Services.Impl
         {
 			var auth = new OAuth2Authenticator(
 				clientId: oauth2Info.OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer,
+                clientSecret: string.Empty,
 				scope: oauth2Info.OAuth2_Scope,
 				authorizeUrl: oauth2Info.OAuth_UriAuthorization,
 				redirectUrl: oauth2Info.OAuth_UriCallbackAKARedirect,
-                isUsingNativeUI: true);
+				accessTokenUrl: oauth2Info.OAuth_UriAccessToken_UriRequestToken,
+                isUsingNativeUI: true
+            ) {
+                AllowCancel = oauth2Info.AllowCancel
+            };
 
-			IObservable<string> observable = Observable.FromEventPattern<EventHandler<AuthenticatorCompletedEventArgs>, AuthenticatorCompletedEventArgs>(
-				h => auth.Completed += h,
-				h => auth.Completed -= h)
-				.Select(eventPattern =>
-				{
 
-                    if (!eventPattern.EventArgs.IsAuthenticated)
-						Observable.Throw<OAuthAuthenticationErrorException>(new OAuthAuthenticationErrorException());
+            IObservable<string> observable = Observable.Merge(
+				Observable.FromEventPattern<EventHandler<AuthenticatorCompletedEventArgs>, AuthenticatorCompletedEventArgs>(
+				    h => auth.Completed += h,
+                    h => auth.Completed -= h)
+                .Select(eventPattern => 
+                      eventPattern.EventArgs.IsAuthenticated ? 
+                        eventPattern?.EventArgs?.Account?.Properties["access_token"]?.ToString() : string.Empty),
+				Observable.FromEventPattern<EventHandler<AuthenticatorErrorEventArgs>, AuthenticatorErrorEventArgs>(
+				h => auth.Error += h,
+				h => auth.Error -= h).Select(eventPattern => string.Empty)
+            ).Select((AccessToken) => {
 
-					var accessToken = eventPattern?.EventArgs?.Account?.Properties["access_token"]?.ToString();
+                if(string.IsNullOrEmpty(AccessToken))
+                    Observable.Throw<OAuthAuthenticationErrorException>(new OAuthAuthenticationErrorException());
+                return AccessToken;
+            });
 
-					return accessToken;
 
-				});
 
             AuthenticationState.Authenticator = auth;
 
 			var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
 			presenter.Login(auth);
 
-			return observable;
+            return observable;
         }
 
-        public async Task<string> AuthenticateAsync(OAuth2 oauth2Info)
-        {
-            var auth = new OAuth2Authenticator(
-                         clientId: oauth2Info.OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer,
-                         scope: oauth2Info.OAuth2_Scope,
-                         authorizeUrl: oauth2Info.OAuth_UriAuthorization,
-                         redirectUrl: oauth2Info.OAuth_UriCallbackAKARedirect);
 
-            var tcs1 = new TaskCompletionSource<AuthenticatorCompletedEventArgs>();
-            EventHandler<AuthenticatorCompletedEventArgs> d1 =
-                (o, e) =>
-                {
-                    try
-                    {
-                        tcs1.TrySetResult(e);
-                    }
-                    catch (Exception ex)
-                    {
-                        tcs1.TrySetResult(new AuthenticatorCompletedEventArgs(null));
-                    }
-                };
-
-            try
-            {
-                auth.Completed += d1;
-                var presenter = new Xamarin.Auth.Presenters.OAuthLoginPresenter();
-                presenter.Login(auth);
-                var result = await tcs1.Task;
-                return result.IsAuthenticated ?
-                             result?.Account?.Properties["access_token"]?.ToString() : null;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-            finally
-            {
-                auth.Completed -= d1;
-            }
-
-        }
     }
 }

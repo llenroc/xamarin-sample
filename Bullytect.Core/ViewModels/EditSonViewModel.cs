@@ -16,6 +16,8 @@ using Bullytect.Core.OAuth.Providers.Facebook;
 using Bullytect.Core.OAuth.Providers.Google;
 using Bullytect.Core.OAuth.Providers.Instagram;
 using Bullytect.Core.OAuth.Services;
+using Bullytect.Core.Rest.Models.Exceptions;
+using Bullytect.Core.Rest.Utils;
 using Bullytect.Core.Services;
 using Bullytect.Core.Utils;
 using MvvmCross.Core.ViewModels;
@@ -74,20 +76,27 @@ namespace Bullytect.Core.ViewModels
                                 _parentService.AddSonToSelfParent(CurrentSon.FirstName, CurrentSon.LastName, CurrentSon.Birthdate, CurrentSon.SchoolIdentity) :
                                 _parentService.UpdateSonInformation(CurrentSon.Identity, CurrentSon.FirstName, CurrentSon.LastName, CurrentSon.Birthdate, CurrentSon.SchoolIdentity))
                                 .Do((SonEntity) => CurrentSon.HydrateWith(SonEntity))
-                                .SelectMany((SonEntity) => _socialMediaService.SaveAllSocialMedia(CurrentSon.Identity, CurrentSocialMedia.Select(s => { s.Son = CurrentSon.Identity; return s; }).ToList()))
+                                .SelectMany((SonEntity) => _socialMediaService
+                                            .SaveAllSocialMedia(
+                                                CurrentSon.Identity,
+                                                CurrentSocialMedia.Select(s => { s.Son = CurrentSon.Identity; return s; }).ToList()
+                                               ).Catch<IList<SocialMediaEntity>, NoSocialMediaFoundException>(ex => Observable.Return(new List<SocialMediaEntity>()))
+                                           )
                                 .Do((SocialMediaEntities) => CurrentSocialMedia.ReplaceRange(SocialMediaEntities))
+
                                 .SelectMany((_) =>
                                 {
                                     return NewProfileImage != null ?
                                             _parentService.UploadSonProfileImage(CurrentSon.Identity, NewProfileImage.GetStream()) :
-                                            Observable.Empty<ImageEntity>();
+                                                          Observable.Empty<ImageEntity>();
                                 })
                                 .Select((_) => true)
-                                .Finally(() => NewProfileImage = null);
+                                .DefaultIfEmpty(true);
                 });
 
             SaveChangesCommand.Subscribe((_) =>
             {
+                NewProfileImage = null;
                 OnSonUpdated(CurrentSon);
                 _userDialogs.ShowSuccess(AppResources.EditSon_Saved_Changes_Successfully);
             });
@@ -179,9 +188,9 @@ namespace Bullytect.Core.ViewModels
                 if(Schools != null && value >= 0 && value < Schools.Count()) {
 					CurrentSon.SchoolIdentity = Schools[value]?.Identity;
 					CurrentSon.SchoolName = Schools[value]?.Name;
+                    SetProperty(ref _schoolSelectedIndex, value);
                 }
 
-                SetProperty(ref _schoolSelectedIndex, value);
             }
         }
 
@@ -272,7 +281,8 @@ namespace Bullytect.Core.ViewModels
 
             return Observable.Zip(
                 _parentService.GetSonById(SonToEdit),
-                _socialMediaService.GetAllSocialMediaBySon(SonToEdit),
+                _socialMediaService.GetAllSocialMediaBySon(SonToEdit)
+                    .Catch<IList<SocialMediaEntity>, NoSocialMediaFoundException>(ex => Observable.Return(new List<SocialMediaEntity>())),
                 (SonEntity SonEntity, IList<SocialMediaEntity> SocialMedia) =>
                 new SonInformation()
                 {

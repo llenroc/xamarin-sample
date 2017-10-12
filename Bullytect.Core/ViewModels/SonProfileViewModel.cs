@@ -1,11 +1,14 @@
 ﻿
 using System;
+using System.Reactive.Linq;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.Helpers;
+using Bullytect.Core.I18N;
 using Bullytect.Core.Services;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
+using ReactiveUI;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -15,6 +18,15 @@ namespace Bullytect.Core.ViewModels
         public SonProfileViewModel(IUserDialogs userDialogs, 
                                    IMvxMessenger mvxMessenger, AppHelper appHelper) : base(userDialogs, mvxMessenger, appHelper)
         {
+
+			DeleteSonCommand = ReactiveCommand
+                .CreateFromObservable(() => _appHelper.RequestConfirmation(AppResources.Son_Profile_Delete_Confirm)
+                                      .Do((_) => Close(this)));
+
+			DeleteSonCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Common_Loading));
+
+			DeleteSonCommand.ThrownExceptions.Subscribe(HandleExceptions);
+
         }
 
         public class SonParameter
@@ -81,10 +93,12 @@ namespace Bullytect.Core.ViewModels
 
         #region commands
 
-         public ICommand EditSonCommand => new MvxCommand<string>((string Id) => ShowViewModel<EditSonViewModel>(new { SonIdentity = Id }));
+            public ICommand EditSonCommand => new MvxCommand<string>((string Id) => ShowViewModel<EditSonViewModel>(new { SonIdentity = Id }));
+            
+            public ReactiveCommand DeleteSonCommand { get; protected set; }
 
-        #endregion
+		#endregion
 
 
-    }
+	}
 }

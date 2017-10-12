@@ -44,15 +44,6 @@
 	</array>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<string>No</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb341732922916068</string>
-			</array>
-		</dict>
-	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>grialshapes.ttf</string>
@@ -73,5 +64,20 @@
 	<string>es</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>Xamarin.Auth Google OAuth</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.usal.bisite.bulltect</string>
+				<string>fb341732922916068</string>
+				<string>ig08a463d96c5149a8beaf00c1d911fb67</string>
+			</array>
+			<key>CFBundleURLTypes</key>
+			<string>Viewer</string>
+		</dict>
+	</array>
 </dict>
 </plist>

@@ -18,7 +18,7 @@ namespace Bullytect.Core.Converters
 				IList<SocialMediaEntity> SocialMedias = (IList<SocialMediaEntity>)value;
 
 				if (SocialMedias == null || SocialMedias.Count() == 0)
-					return false;
+					return AppResources.EditSon_Social_Media_Unconfigured_Access_Token;
 
 				var socialMedia = SocialMedias.SingleOrDefault(social => social.Type.Equals((string)parameter));
 

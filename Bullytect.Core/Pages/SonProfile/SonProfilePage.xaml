@@ -6,6 +6,7 @@
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:templates="clr-namespace:Bullytect.Core.Pages.SonProfile.Templates"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
@@ -19,112 +20,127 @@
             <converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-	<ContentPage.Content>
 
-        <Grid 
-            RowSpacing="0"
-            VerticalOptions="Fill">
+
+    <ContentPage.Content>
+
+       
+        <!-- MAIN CONTAINER -->
+        <Grid RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="60*" />
-                <RowDefinition Height="40*" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <!--Son Profile Image -->
-            <ffimageloading:CachedImage 
-                Grid.Row="0"
-                CacheType="Disk"
-                CacheDuration="30"
-                FadeAnimationEnabled="true"
-                ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
-                LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
-                Source="{ Binding ProfileImage, Converter={ StaticResource SonProfileImageURLConverter }}"
-                Aspect="AspectFill" >
-                <ffimageloading:CachedImage.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnImageTapped" />
-                </ffimageloading:CachedImage.GestureRecognizers>
-            </ffimageloading:CachedImage>
+            <!-- CUSTOM NAVBAR -->
+            <templates:SonProfileHeader Grid.Row="0"/>
 
-            <!-- Son Data  -->
-            <Grid
+
+            <Grid 
                 Grid.Row="1"
-                Padding="20,15,20,0"
-                VerticalOptions="StartAndExpand"
-                RowSpacing="5">
-
+                RowSpacing="0"
+                VerticalOptions="Fill">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="60*" />
+                    <RowDefinition Height="40*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <!-- FULLNAME NAME -->
-                <Label
+                <!--Son Profile Image -->
+                <ffimageloading:CachedImage 
                     Grid.Row="0"
-                    Margin="0,0,0,15"
-                    Text="{Binding FullName}"
-                    FontSize="{ artina:OnOrientationDouble 
-                        PortraitPhone=28,
-                        LandscapePhone=28,
-                        PortraitTablet=38,
-                        LandscapeTablet=38 }"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Start"/>
+                    CacheType="Disk"
+                    CacheDuration="30"
+                    FadeAnimationEnabled="true"
+                    ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+                    LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
+                    Source="{ Binding ProfileImage, Converter={ StaticResource SonProfileImageURLConverter }}"
+                    Aspect="AspectFill" >
+                    <ffimageloading:CachedImage.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnImageTapped" />
+                    </ffimageloading:CachedImage.GestureRecognizers>
+                </ffimageloading:CachedImage>
 
-              <BoxView
-                Style="{StaticResource BrandNameOrnamentStyle}"
-                BackgroundColor="{DynamicResource AccentColor}"
-               />
-                
-               <!-- Birthdate -->
-
-               <Label
+                <!-- Son Data  -->
+                <Grid
                     Grid.Row="1"
-                    Text="{Binding Birthdate, 
-                        Converter={ StaticResource DateTimeToStringConverter }, 
-                        StringFormat={i18n:Translate Son.Profile.Birthday}}"
-                    FontSize="{ artina:OnOrientationDouble 
-                        PortraitPhone=18,
-                        LandscapePhone=18,
-                        PortraitTablet=28,
-                        LandscapeTablet=28 }"
-                    HorizontalTextAlignment="Start"/>
+                    Padding="20,15,20,0"
+                    VerticalOptions="StartAndExpand"
+                    RowSpacing="5">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!-- FULLNAME NAME -->
+                    <Label
+                        Grid.Row="0"
+                        Margin="0,0,0,15"
+                        Text="{Binding FullName}"
+                        FontSize="{ artina:OnOrientationDouble 
+                            PortraitPhone=28,
+                            LandscapePhone=28,
+                            PortraitTablet=38,
+                            LandscapeTablet=38 }"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Start"/>
+
+                  <BoxView
+                    Style="{StaticResource BrandNameOrnamentStyle}"
+                    BackgroundColor="{DynamicResource AccentColor}"
+                   />
+                    
+                   <!-- Birthdate -->
+
+                   <Label
+                        Grid.Row="1"
+                        Text="{Binding Birthdate, 
+                            Converter={ StaticResource DateTimeToStringConverter }, 
+                            StringFormat={i18n:Translate Son.Profile.Birthday}}"
+                        FontSize="{ artina:OnOrientationDouble 
+                            PortraitPhone=18,
+                            LandscapePhone=18,
+                            PortraitTablet=28,
+                            LandscapeTablet=28 }"
+                        HorizontalTextAlignment="Start"/>
 
 
-                <!-- School -->
+                    <!-- School -->
 
-                <Label
+                    <Label
+                        Grid.Row="2"
+                        Text="{Binding School, StringFormat={i18n:Translate Son.Profile.School}}"
+                        FontSize="{ artina:OnOrientationDouble 
+                            PortraitPhone=18,
+                            LandscapePhone=18,
+                            PortraitTablet=28,
+                            LandscapeTablet=28 }"
+                        HorizontalTextAlignment="Start"
+                        TextColor="{ DynamicResource BaseTextColor }"/>
+                    
+
+                </Grid>
+
+                <!-- Edit Action -->
+                <artina:Button
                     Grid.Row="2"
-                    Text="{Binding School, StringFormat={i18n:Translate Son.Profile.School}}"
-                    FontSize="{ artina:OnOrientationDouble 
-                        PortraitPhone=18,
-                        LandscapePhone=18,
-                        PortraitTablet=28,
-                        LandscapeTablet=28 }"
-                    HorizontalTextAlignment="Start"
-                    TextColor="{ DynamicResource BaseTextColor }"/>
-                
-
-            </Grid>
-
-            <!-- Edit Action -->
-            <artina:Button
-                Grid.Row="2"
-                Command="{ Binding EditSonCommand }"
-                CommandParameter="{ Binding Identity }"
-                Margin="20,10,20,20"
-                Style="{StaticResource PrimaryActionButtonStyle}" 
-                Text="Edit"
-                WidthRequest="{ artina:OnOrientationDouble
-                    LandscapePhone=200,
-                    LandscapeTablet=400 }"
-                HorizontalOptions="{ artina:OnOrientationLayoutOptions
-                    PortraitPhone=Fill,
-                    LandscapePhone=Center,
-                    PortraitTablet=Fill,
-                    LandscapeTablet=Center }"/>
-        
-        </Grid> 
-        
+                    Command="{ Binding EditSonCommand }"
+                    CommandParameter="{ Binding Identity }"
+                    Margin="20,10,20,20"
+                    Style="{StaticResource PrimaryActionButtonStyle}" 
+                    Text="Edit"
+                    WidthRequest="{ artina:OnOrientationDouble
+                        LandscapePhone=200,
+                        LandscapeTablet=400 }"
+                    HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                        PortraitPhone=Fill,
+                        LandscapePhone=Center,
+                        PortraitTablet=Fill,
+                        LandscapeTablet=Center }"/>
+            
+            </Grid> 
+        </Grid>
 	</ContentPage.Content>
 </d:MvxContentPage>

@@ -107,6 +107,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Page_Son_Profile_Title {
+            get {
+                return ResourceManager.GetString("Page.Son.Profile.Title", resourceCulture);
+            }
+        }
+        
         internal static string Common_Loading {
             get {
                 return ResourceManager.GetString("Common.Loading", resourceCulture);
@@ -494,6 +500,12 @@ namespace Bullytect.Core.I18N {
         internal static string Son_Profile_School {
             get {
                 return ResourceManager.GetString("Son.Profile.School", resourceCulture);
+            }
+        }
+        
+        internal static string Son_Profile_Delete_Confirm {
+            get {
+                return ResourceManager.GetString("Son.Profile.Delete.Confirm", resourceCulture);
             }
         }
         

@@ -33,6 +33,7 @@ namespace Bullytect.Core.ViewModels
             {
                 Debug.WriteLine("Children Count " + children?.Count);
                 Children = children;
+                DataFound = children?.Count > 0;
             });
 
             LoadChildrenCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);

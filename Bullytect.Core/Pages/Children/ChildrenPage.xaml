@@ -304,9 +304,24 @@
 
         <common:NoDataFound 
             Grid.Row="1"
-            IsVisible="{ Binding DataFound, Converter={StaticResource InverseBoolConverter}}"
+            IsVisible="false"
             MainText="{i18n:Translate Children.Not.Found.MainText}"
-            DetailText="{i18n:Translate Children.Not.Found.SecondText}"/>
+            DetailText="{i18n:Translate Children.Not.Found.SecondText}">
+
+            <common:NoDataFound.Triggers>
+                <MultiTrigger TargetType="common:NoDataFound">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition 
+                            Binding="{ Binding DataFound }"
+                            Value="False" />
+                        <BindingCondition 
+                            Binding="{ Binding ErrorOccurred }"
+                            Value="False" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="True" />
+               </MultiTrigger>
+             </common:NoDataFound.Triggers>
+         </common:NoDataFound>   
 
         <common:ErrorOcurred 
             Grid.Row="1"

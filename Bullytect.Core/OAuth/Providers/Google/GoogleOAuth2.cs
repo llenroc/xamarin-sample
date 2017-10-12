@@ -1,29 +1,38 @@
 ﻿using System;
 using Bullytect.Core.OAuth.Models;
+using Xamarin.Forms;
 
 namespace Bullytect.Core.OAuth.Providers.Google
 {
-    public partial class GoogleOAuth2: OAuth2
+    public partial class GoogleOAuth2 : OAuth2
     {
-		partial void SetPublicNonSensitiveData();
-		partial void SetPrivateSensitiveData();
+        partial void SetPublicNonSensitiveData();
+        partial void SetPrivateSensitiveData();
 
-		public GoogleOAuth2()
-		{
-			SetPublicNonSensitiveData();
-			SetPrivateSensitiveData();
+        public GoogleOAuth2()
+        {
+            SetPublicNonSensitiveData();
+            SetPrivateSensitiveData();
 
-			return;
-		}
+            return;
+        }
 
-		partial void SetPublicNonSensitiveData()
-		{
+        partial void SetPublicNonSensitiveData()
+        {
 
             Description = "Google OAuth2";
-			OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer = "828612093094-6mqb97f44nkl9ann8rtdm2dnmeh28apk.apps.googleusercontent.com";
+
+            if (Device.RuntimePlatform == Device.Android)
+                OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer = "828612093094-v7t95tanpgjgd68b5vnebn08d7fta524.apps.googleusercontent.com";
+            else if (Device.RuntimePlatform == Device.iOS)
+                OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer = "828612093094-9ge6q8aklgpt86id6lof9o9j3iqj8oqs.apps.googleusercontent.com";
+            else
+                OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer = "";
+
 			OAuth2_Scope = "https://www.googleapis.com/auth/youtube";
 			OAuth_UriAuthorization = new Uri("https://accounts.google.com/o/oauth2/auth");
-			OAuth_UriCallbackAKARedirect = new Uri("http://xamarin.com");
+            OAuth_UriAccessToken_UriRequestToken = new Uri("https://www.googleapis.com/oauth2/v4/token");
+            OAuth_UriCallbackAKARedirect = new Uri("com.usal.bisite.bulltect:/oauth2redirect");
 			AllowCancel = true;
 			HowToMarkDown =
 @"

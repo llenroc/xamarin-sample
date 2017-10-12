@@ -3,6 +3,7 @@ using System;
 using Bullytect.Core.Pages.SonProfileFullScreen;
 using Bullytect.Core.ViewModels;
 using MvvmCross.Forms.Core;
+using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.SonProfile
 {
@@ -11,6 +12,7 @@ namespace Bullytect.Core.Pages.SonProfile
         public SonProfilePage()
         {
             InitializeComponent();
+			NavigationPage.SetHasNavigationBar(this, false);
         }
 
         protected override void OnAppearing(){

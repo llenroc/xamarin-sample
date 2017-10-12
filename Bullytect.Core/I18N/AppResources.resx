@@ -157,6 +157,10 @@
     <value>Edit Son</value>
     <comment>Page Edit Son Title</comment>
   </data>
+  <data name="Page.Son.Profile.Title" xml:space="preserve">
+    <value>Detail {0}</value>
+    <comment>Page Son Profile Title</comment>
+  </data>
   <data name="Common.Loading" xml:space="preserve">
     <value>Operation in progress</value>
     <comment>Common Loading</comment>
@@ -420,6 +424,10 @@ and we will recover it for you. </value>
   <data name="Son.Profile.School" xml:space="preserve">
     <value> School: {0} </value>
     <comment>Son Profile School</comment>
+  </data>
+  <data name="Son.Profile.Delete.Confirm" xml:space="preserve">
+    <value> Delete child? </value>
+    <comment>Son Profile Delete Confirm</comment>
   </data>
   <data name="Children.Not.Found.MainText" xml:space="preserve">
     <value> No children found </value>

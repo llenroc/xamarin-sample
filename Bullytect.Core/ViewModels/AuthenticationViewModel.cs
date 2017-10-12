@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using Bullytect.Core.Helpers;
 using Bullytect.Core.OAuth.Models;
 using Xamarin.Auth;
+using Bullytect.Core.Exceptions;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -57,9 +58,13 @@ namespace Bullytect.Core.ViewModels
                             
                     return oauthService
                         .Authenticate(new FacebookOAuth2())
-                        .Where(AccessToken => !string.IsNullOrEmpty(AccessToken))
+                        .Do(AccessToken =>
+                        {
+                            if (string.IsNullOrEmpty(AccessToken))
+                                throw new OAuthInvalidAccessTokenException();
+                        })
 						.SelectMany(accessToken => authenticationService.LoginWithFacebook(accessToken))
-						.Do(_ => _userDialogs.HideLoading());
+                        .Do((_) => _userDialogs.HideLoading());
                     
 				});
 

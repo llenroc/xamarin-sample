@@ -22,7 +22,7 @@ namespace Bullytect.Core.OAuth.Providers.Instagram
 			OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer = "08a463d96c5149a8beaf00c1d911fb67";
 			OAuth2_Scope = "basic, comments, public_content, relationships, likes, follower_list";
 			OAuth_UriAuthorization = new Uri("https://api.instagram.com/oauth/authorize/");
-			OAuth_UriCallbackAKARedirect = new Uri("https://bisite.usal.es/es");
+			OAuth_UriCallbackAKARedirect = new Uri("ig08a463d96c5149a8beaf00c1d911fb67://authorize");
 			AllowCancel = true;
 			HowToMarkDown =
 @"
