@@ -54,14 +54,20 @@ namespace Bullytect.Core.ViewModels
 			LoginWithFacebookCommand = ReactiveCommand.CreateFromObservable<Unit, string>(
 				(param) => {
 
+                if(Device.RuntimePlatform == Device.Android)
                     _userDialogs.ShowLoading(AppResources.Login_Authenticating);
+                
                             
-                    return oauthService
+                return oauthService
                         .Authenticate(new FacebookOAuth2())
                         .Do(AccessToken =>
                         {
                             if (string.IsNullOrEmpty(AccessToken))
                                 throw new OAuthInvalidAccessTokenException();
+
+
+                            if(Device.RuntimePlatform == Device.iOS)
+                                _userDialogs.ShowLoading(AppResources.Login_Authenticating);
                         })
 						.SelectMany(accessToken => authenticationService.LoginWithFacebook(accessToken))
                         .Do((_) => _userDialogs.HideLoading());

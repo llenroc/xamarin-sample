@@ -4,10 +4,6 @@ using MvvmCross.Platform.Platform;
 using Bullytect.Core;
 using MvvmCross.Forms.Core;
 using MvvmCross.Forms.Droid;
-using MvvmCross.Platform;
-using MvvmCross.Droid.Views;
-using Bullytect.Droid.Presenters;
-using MvvmCross.Core.Views;
 
 namespace Bullytect.Droid
 {

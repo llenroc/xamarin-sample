@@ -191,6 +191,9 @@
     <EmbeddedResource Include="Pages\SonProfile\Templates\SonProfileHeader.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Home\Templates\NoChildrenFound.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\CanNotTakePhotoFromCameraException.cs" />
@@ -510,6 +513,9 @@
       <DependentUpon>SonProfileHeader.xaml</DependentUpon>
     </Compile>
     <Compile Include="Exceptions\OAuthInvalidAccessTokenException.cs" />
+    <Compile Include="Pages\Home\Templates\NoChildrenFound.xaml.cs">
+      <DependentUpon>NoChildrenFound.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -517,18 +523,6 @@
     </Reference>
     <Reference Include="Behaviors, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Behaviors.Forms.1.2.0\lib\portable45-net45+win8+wp8+wpa81\Behaviors.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.18\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.18\lib\portable-net45+win8+wpa81+wp8+netstandard1.0\FFImageLoading.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.18\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Transformations, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.18\lib\portable-net45+win8+wpa81+wp8+netstandard1.0\FFImageLoading.Transformations.dll</HintPath>
     </Reference>
     <Reference Include="ImageCircle.Forms.Plugin.Abstractions, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.1.8.1\lib\portable-net45+wp80+win8+wpa81\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>
@@ -691,6 +685,18 @@
     </Reference>
     <Reference Include="Microcharts.Forms">
       <HintPath>..\packages\Microcharts.Forms.0.7.0\lib\portable-net45+win8+wpa81+wp8\Microcharts.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.20\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.20\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.20\lib\portable-net45+win8+wpa81+wp8+netstandard1.0\FFImageLoading.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Transformations">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.20\lib\portable-net45+win8+wpa81+wp8+netstandard1.0\FFImageLoading.Transformations.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

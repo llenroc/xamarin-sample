@@ -390,32 +390,12 @@
                                 
                                 </StackLayout>
 
-                                <StackLayout
-                                        Grid.Row="1"
-                                        IsVisible="{ Binding ShouldShowNoChildrenFound}"
-                                        VerticalOptions="EndAndExpand"
-                                        Padding="20">
+                                <templates:NoChildrenFound
+                                    Grid.Row="1"
+                                    IsVisible="{ Binding ShouldShowNoChildrenFound}"
+                                    VerticalOptions="CenterAndExpand"
+                                    Padding="20" />
 
-                                        <Label
-                                            LineBreakMode="WordWrap"
-                                            Text="{i18n:Translate Home.Not.Children.Found}"
-                                            TextColor="{ DynamicResource AccentColor }"
-                                            HorizontalTextAlignment="Center"
-                                            VerticalTextAlignment="Center"
-                                            FontSize="19">
-                                            <Label.FontSize>
-                                              <OnIdiom
-                                                x:TypeArguments="x:Double" Phone="19" Tablet="22"/>
-                                            </Label.FontSize>
-                                        </Label>
-
-                                        <artina:Button
-                                            Style="{StaticResource SaveButtonStyle}"
-                                            Command="{ Binding AddSonCommand }"
-                                            Text="{i18n:Translate Home.Add.Son}" />
-
-
-                                   </StackLayout>
 
                                    <Grid
                                         IsVisible="{ Binding IsBusy }"
@@ -429,7 +409,7 @@
 
                                         <common:CustomActivityIndicator
                                             Grid.Row="0"
-                                            x:Name="Indicator"
+                                            x:Name="LoadingIndicator"
                                             HorizontalOptions="Center"
                                             VerticalOptions="CenterAndExpand"/>
                                         <Label

@@ -43,75 +43,73 @@
         <!-- CUSTOM NAVBAR -->
         <templates:AlertsPageHeader Grid.Row="0"/>
 
-        <StackLayout Grid.Row="1">
+        <ListView 
+            Grid.Row="1" 
+            ItemsSource="{ Binding Alerts }"
+            HasUnevenRows = "true"
+            IsPullToRefreshEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter} }"
+            RefreshCommand="{ Binding LoadAlertsCommand }"
+            IsRefreshing="{Binding IsBusy}">
 
-            <ListView 
-                
-                ItemsSource="{ Binding Alerts }"
-                HasUnevenRows = "true"
-                IsPullToRefreshEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter} }"
-                RefreshCommand="{ Binding LoadAlertsCommand }"
-                IsRefreshing="{Binding IsBusy}">
-                <ListView.RowHeight>
-                    <OnIdiom x:TypeArguments="x:Int32"
-                        Phone="80"
-                        Tablet="120"/>
-                </ListView.RowHeight>
+            <ListView.RowHeight>
+                <OnIdiom 
+                    x:TypeArguments="x:Int32"
+                    Phone="80"
+                    Tablet="120"/>
+            </ListView.RowHeight>
 
-                <ListView.Behaviors>
-                    <utils:EventToCommandBehavior 
-                        EventName="ItemTapped"
-                        Command="{Binding ShowAlertDetailCommand }" 
-                        EventArgsConverter="{ StaticResource ItemTappedEventArgsConverter }" />
-                </ListView.Behaviors>
+            <ListView.Behaviors>
+                <utils:EventToCommandBehavior 
+                    EventName="ItemTapped"
+                    Command="{Binding ShowAlertDetailCommand }" 
+                    EventArgsConverter="{ StaticResource ItemTappedEventArgsConverter }" />
+            </ListView.Behaviors>
                     
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.ContextActions>
-                                <MenuItem Text="Action" Command="{Binding DeleteAlertCommand }" CommandParameter="{Binding .}"/>
-                            </ViewCell.ContextActions>
-                            <templates:AlertItemTemplate/>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+            <ListView.ItemTemplate>
+                 <DataTemplate>
+                     <ViewCell>
+                         <ViewCell.ContextActions>
+                             <MenuItem Text="{i18n:Translate Alerts.Delete.Alert}" Command="{Binding DeleteAlertCommand }" CommandParameter="{Binding .}"/>
+                         </ViewCell.ContextActions>
+                         <templates:AlertItemTemplate/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
 
-                <ListView.Triggers>
-                    <DataTrigger 
-                        TargetType="ListView" 
-                        Binding="{Binding IsBusy}"
-                        Value="True">
-                        <Setter Property="IsVisible" Value="False" />
-                    </DataTrigger>
-                    <DataTrigger 
-                        TargetType="ListView"
-                        Binding="{Binding DataFound}"
-                        Value="False">
-                        <Setter Property="IsVisible" Value="False" />
-                    </DataTrigger>
-                    <DataTrigger 
-                        TargetType="ListView"
-                        Binding="{Binding ErrorOccurred}"
-                        Value="True">
-                        <Setter Property="IsVisible" Value="False" />
-                    </DataTrigger>
-                </ListView.Triggers>
-
-
-            </ListView>
-
-            <common:NoDataFound 
-                Grid.Row="1"
-                IsVisible="{ Binding DataFound, Converter={StaticResource InverseBoolConverter}}"
-                MainText="{i18n:Translate Alerts.Not.Found.MainText}"
-                DetailText="{i18n:Translate Alerts.Not.Found.SecondText}"/>
-
-            <common:ErrorOcurred 
-                Grid.Row="1"
-                IsVisible="{ Binding ErrorOccurred }"
-                MainText="{i18n:Translate Alerts.Error.Ocurred}"/>
+            <ListView.Triggers>
+                <DataTrigger 
+                     TargetType="ListView" 
+                     Binding="{Binding IsBusy}"
+                     Value="True">
+                     <Setter Property="IsVisible" Value="False" />
+                </DataTrigger>
+                <DataTrigger 
+                     TargetType="ListView"
+                     Binding="{Binding DataFound}"
+                     Value="False">
+                     <Setter Property="IsVisible" Value="False" />
+                </DataTrigger>
+                <DataTrigger 
+                     TargetType="ListView"
+                     Binding="{Binding ErrorOccurred}"
+                     Value="True">
+                     <Setter Property="IsVisible" Value="False" />
+                </DataTrigger>
+            </ListView.Triggers>
 
 
-        </StackLayout>
+         </ListView>
+
+         <common:NoDataFound 
+             Grid.Row="1"
+             IsVisible="{ Binding DataFound, Converter={StaticResource InverseBoolConverter}}"
+             MainText="{i18n:Translate Alerts.Not.Found.MainText}"
+             DetailText="{i18n:Translate Alerts.Not.Found.SecondText}"/>
+
+         <common:ErrorOcurred 
+             Grid.Row="1"
+             IsVisible="{ Binding ErrorOccurred }"
+             MainText="{i18n:Translate Alerts.Error.Ocurred}"/>
+
    </Grid>
 </d:MvxContentPage>

@@ -651,7 +651,7 @@ and we will recover it for you. </value>
   </data>
   <data name="Home.Not.Children.Found" xml:space="preserve">
     <value>No child to analyze</value>
-    <comment>Home Not Children Found</comment>
+    <comment>Home Not Children Found MainText</comment>
   </data>
   <data name="Profile.Can.Not.Take.Photo.From.Camera" xml:space="preserve">
     <value>Can not take Photo From Camera</value>

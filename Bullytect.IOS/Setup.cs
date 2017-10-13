@@ -7,7 +7,6 @@ using MvvmCross.iOS.Platform;
 using MvvmCross.iOS.Views.Presenters;
 using MvvmCross.Platform.Platform;
 using UIKit;
-using Xamarin.Forms;
 
 namespace Bullytect.iOS
 {

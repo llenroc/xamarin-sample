@@ -8,7 +8,7 @@ using Bullytect;
 [assembly: AssemblyProduct (AssemblyGlobal.ProductLine + " - " + "Grial Xamarin.Forms UIKit (iOS)")]
 [assembly: AssemblyCopyright (AssemblyGlobal.Copyright)]
 
-[assembly: UXDivers.Artina.Shared.GrialVersion("2.0.60.0")]
+[assembly: UXDivers.Artina.Shared.GrialVersion("2.5.2")]
 
 // Custom renderer definition
 

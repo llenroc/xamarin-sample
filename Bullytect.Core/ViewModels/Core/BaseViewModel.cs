@@ -155,6 +155,12 @@ namespace Bullytect.Core.ViewModels
             }
         }
 
+        protected void ResetCommonProps(){
+            ErrorOccurred = false;
+            DataFound = true;
+            FieldErrors = new Dictionary<string, string>();
+        }
+
 		
         #region commmands 
 

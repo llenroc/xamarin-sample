@@ -5,9 +5,7 @@ using MvvmCross.Platform;
 using MvvmCross.Platform.IoC;
 using AutoMapper;
 using Bullytect.Core.Models.Domain;
-using MvvmCross.Plugins.Validation;
 using Acr.UserDialogs;
-using System.Diagnostics;
 using Bullytect.Core.Rest.Utils.Logging;
 using Bullytect.Core.Rest.Handlers;
 using Bullytect.Core.Rest.Services;
@@ -16,14 +14,11 @@ using Bullytect.Core.Rest.Services.Impl;
 using FFImageLoading;
 using FFImageLoading.Config;
 using Bullytect.Core.Models.Domain.Converter;
-using MvvmCross.Core.Navigation;
-using Bullytect.Core.ViewModels;
 using Bullytect.Utils.Helpers;
 using Bullytect.Core.Helpers;
 using Bullytect.Core.OAuth.Services.Impl;
 using Bullytect.Core.OAuth.Services;
 using Bullytect.Core.Rest.Models.Request;
-using System.Collections.Generic;
 
 namespace Bullytect.Core
 {
@@ -88,8 +83,6 @@ namespace Bullytect.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-
-            Mvx.RegisterType<IValidator, Validator>();
 
             Mvx.RegisterSingleton<IUserDialogs>(() => UserDialogs.Instance);
 

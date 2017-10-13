@@ -415,6 +415,8 @@ namespace Bullytect.Core.ViewModels
                     SchoolSelectedIndex = index.Value;
 			}
 
+            ResetCommonProps();
+
         }
 
         #endregion

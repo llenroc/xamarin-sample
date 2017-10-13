@@ -297,21 +297,6 @@
     <Reference Include="Behaviors">
       <HintPath>..\packages\Behaviors.Forms.1.2.0\lib\portable45-net45+win8+wp8+wpa81\Behaviors.dll</HintPath>
     </Reference>
-    <Reference Include="FFImageLoading">
-      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.18\lib\MonoAndroid10\FFImageLoading.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Platform">
-      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.18\lib\MonoAndroid10\FFImageLoading.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Forms">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.18\lib\MonoAndroid10\FFImageLoading.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Forms.Droid">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.18\lib\MonoAndroid10\FFImageLoading.Forms.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Transformations">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.18\lib\MonoAndroid10\FFImageLoading.Transformations.dll</HintPath>
-    </Reference>
     <Reference Include="UXDivers.Artina.Shared.Base">
       <HintPath>..\packages\UXDivers.Artina.Shared.Base.2.0.60\lib\MonoAndroid10\UXDivers.Artina.Shared.Base.dll</HintPath>
     </Reference>
@@ -466,6 +451,21 @@
     </Reference>
     <Reference Include="SkiaSharp.Views.Android">
       <HintPath>..\packages\SkiaSharp.Views.1.59.1\lib\MonoAndroid\SkiaSharp.Views.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.20\lib\MonoAndroid10\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.20\lib\MonoAndroid10\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.20\lib\MonoAndroid10\FFImageLoading.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms.Droid">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.20\lib\MonoAndroid10\FFImageLoading.Forms.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Transformations">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.20\lib\MonoAndroid10\FFImageLoading.Transformations.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

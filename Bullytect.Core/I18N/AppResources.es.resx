@@ -534,12 +534,12 @@ pleasures of the demo.</value>
     <comment>EditSon Add School Title</comment>
   </data>
   <data name="Home.Add.Son" xml:space="preserve">
-    <value>Add Son</value>
+    <value>Añadir Hijo</value>
     <comment>Home Add Son</comment>
   </data>
   <data name="Home.Not.Children.Found" xml:space="preserve">
-    <value>No child to analyze</value>
-    <comment>Home Not Children Found</comment>
+    <value>No se han encontrado hijos para el análisis</value>
+    <comment>Home Not Children Found MainText</comment>
   </data>
   <data name="Profile.Can.Not.Take.Photo.From.Camera" xml:space="preserve">
     <value>Can not take Photo From Camera</value>

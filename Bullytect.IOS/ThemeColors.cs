@@ -39,6 +39,7 @@ namespace Bullytect.iOS
 			{ "WarningColor", Color.FromHex("#dbc66e") },
 			{ "NotificationColor", Color.FromHex("#6781c0") },
 			{ "SaveButtonColor", Color.FromHex("#6bdd9b") },
+			{ "InfoButtonColor", Color.FromHex("#6BC7E0") },
 			{ "DeleteButtonColor", Color.FromHex("#dd6a6b") },
 			{ "LabelButtonColor", Color.FromHex("#ffffff") },
 			{ "PlaceholderColor", Color.FromHex("#22ffffff") },

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    x:Class="Bullytect.Core.Pages.Home.Templates.NoChildrenFound">
+    <ContentView.Content>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                 <RowDefinition Height="60*"/>
+                 <RowDefinition Height="40*"/>
+            </Grid.RowDefinitions>
+
+            <!--ICON BACKGROUND-->
+            <Label
+                 Grid.Row="0"
+                 Style="{StaticResource RoundShape}"
+                 TextColor="{DynamicResource ComplementColor}"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Center"
+                 FontSize="160"
+                 Opacity="0.1"/>
+
+            <!--ICON BACKGROUND-->
+            <Label
+                Grid.Row="0"
+                Style="{StaticResource RoundShape}" 
+                TextColor="{DynamicResource ComplementColor}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                FontSize="110"
+                Opacity="0.1"/> 
+
+            <!--ICON-->
+            <Label
+                Grid.Row="0"
+                Text="{ x:Static helper:FontAwesomeFont.Child }"
+                Style="{StaticResource FontIcon}"
+                FontSize="70"
+                HorizontalTextAlignment="Center"
+                TextColor="{ DynamicResource ComplementColor }"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+
+            <!--TEXT -->
+            <StackLayout 
+                 Grid.Row="1" 
+                 VerticalOptions="Center"
+                 Spacing="10">
+
+                    <Label 
+                        Text="{i18n:Translate Home.Not.Children.Found}"
+                        HorizontalTextAlignment="Center" 
+                        FontSize="19" 
+                        FontAttributes="Bold" 
+                        TextColor="{ DynamicResource BaseTextColor }"/>
+
+                    <artina:Button
+                        Style="{StaticResource SaveButtonStyle}"
+                        Command="{ Binding AddSonCommand }"
+                        Text="{i18n:Translate Home.Add.Son}" />
+
+            </StackLayout>
+           
+        </Grid>
+        
+    </ContentView.Content>
+</ContentView>
