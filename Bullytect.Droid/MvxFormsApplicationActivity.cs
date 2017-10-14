@@ -16,6 +16,7 @@ using MvvmCross.Droid.Views;
 using Xamarin.Forms.Platform.Android;
 using MvvmCross.Droid.Platform;
 using Plugin.Permissions;
+using CarouselView.FormsPlugin.Android;
 
 namespace Bullytect.Droid
 {
@@ -102,6 +103,7 @@ namespace Bullytect.Droid
     			XFGloss.Droid.Library.Init(this, bundle);
     			//Initializing FFImageLoading
     			CachedImageRenderer.Init();
+                CarouselViewRenderer.Init();
     			FormsHelper.ForceLoadingAssemblyContainingType(typeof(UXDivers.Effects.Effects));
 
                 LoadApplication(FormsApplication);

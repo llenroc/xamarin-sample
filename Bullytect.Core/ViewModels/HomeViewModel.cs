@@ -173,7 +173,7 @@ namespace Bullytect.Core.ViewModels
         {
             get
             {
-                return new MvxCommand(() => ShowViewModel<SettingsViewModel>());
+                return new MvxCommand(() => ShowViewModel<HomeSettingsViewModel>());
             }
         }
 

@@ -118,6 +118,12 @@ namespace Bullytect.Core.Rest.Utils
 								Response = ex.GetContentAs<APIResponse<string>>()
 							};
 							break;
+                        case ResponseNames.NO_ITERATIONS_FOUND_FOR_SELF_PARENT_RESPONSE:
+							exResponse = new NoIterationsFoundForSelfParentException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
+							break;
 							// Parse Generic Error
                         case ResponseNames.GENERIC_ERROR_RESPONSE:
 							exResponse = new GenericErrorException()

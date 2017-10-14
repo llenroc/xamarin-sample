@@ -30,6 +30,7 @@ namespace Bullytect.Core.Rest.Utils
         public const int NO_ALERTS_BY_SON_FOUNDED_CODE = 107;
         public const string SOCIAL_MEDIA_BY_CHILD_NOT_FOUND_RESPONSE = "SOCIAL_MEDIA_BY_CHILD_NOT_FOUND";
         public const int SOCIAL_MEDIA_BY_CHILD_NOT_FOUND_CODE = 302;
-
+        public const string NO_ITERATIONS_FOUND_FOR_SELF_PARENT_RESPONSE = "NO_ITERATIONS_FOUND_FOR_SELF_PARENT";
+        public const int NO_ITERATIONS_FOUND_FOR_SELF_PARENT_CODE = 430;
 	}
 }

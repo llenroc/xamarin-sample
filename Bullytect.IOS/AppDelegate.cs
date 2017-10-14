@@ -1,6 +1,7 @@
 ﻿
 using System;
 using Bullytect.Core.OAuth.Models;
+using CarouselView.FormsPlugin.iOS;
 using FFImageLoading.Forms.Touch;
 using Foundation;
 using Lottie.Forms.iOS.Renderers;
@@ -28,6 +29,7 @@ namespace Bullytect.iOS
 			AnimationViewRenderer.Init(); // Initializing Lottie
 			PullToRefreshLayoutRenderer.Init();
 			XFGloss.iOS.Library.Init();
+            CarouselViewRenderer.Init();
 			// Presenters Initialization
 			global::Xamarin.Auth.Presenters.XamarinIOS.AuthenticationConfiguration.Init();
 

@@ -15,6 +15,7 @@ namespace Bullytect.Core.Services.Impl
     using Bullytect.Core.Rest.Services;
     using Bullytect.Core.Rest.Models.Response;
     using Bullytect.Core.Rest.Models.Request;
+    using Bullytect.Core.Config;
 
     public class ParentServiceImpl: BaseService, IParentService
     {
@@ -253,13 +254,13 @@ namespace Bullytect.Core.Services.Impl
 
         }
 
-        public IObservable<List<IterationEntity>> GetLastIterations(int count)
+        public IObservable<List<IterationEntity>> GetLastIterations()
         {
 
             Debug.WriteLine("Get Last Iterations ...");
 
             var observable = _parentsRestService
-                .GetLastIterations(count)
+                .GetLastIterations(Settings.Current.IterationsCountToShow)
                 .Select((response) => response.Data)
                 .Select(iterations => Mapper.Map<List<IterationDTO>, List<IterationEntity>>(iterations))
 				.Finally(() =>

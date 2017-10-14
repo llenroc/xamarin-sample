@@ -994,5 +994,35 @@ namespace Bullytect.Core.I18N {
                 return ResourceManager.GetString("Results.Last.Iterations", resourceCulture);
             }
         }
+        
+        internal static string Results_Settings_Iterations_Count {
+            get {
+                return ResourceManager.GetString("Results.Settings.Iterations.Count", resourceCulture);
+            }
+        }
+        
+        internal static string Results_Iterations_Not_Found_Title {
+            get {
+                return ResourceManager.GetString("Results.Iterations.Not.Found.Title", resourceCulture);
+            }
+        }
+        
+        internal static string Results_Iterations_Not_Found_Description {
+            get {
+                return ResourceManager.GetString("Results.Iterations.Not.Found.Description", resourceCulture);
+            }
+        }
+        
+        internal static string Results_Settings_Iterations_Count_Description {
+            get {
+                return ResourceManager.GetString("Results.Settings.Iterations.Count.Description", resourceCulture);
+            }
+        }
+        
+        internal static string Results_Settings_Iterations_Count_Option {
+            get {
+                return ResourceManager.GetString("Results.Settings.Iterations.Count.Option", resourceCulture);
+            }
+        }
     }
 }

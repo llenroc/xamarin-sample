@@ -92,6 +92,18 @@ namespace Bullytect.Core.Config
 			}
 		}
 
+		static readonly int IterationsCountToShowDefaultDefault = 10;
+
+		public int IterationsCountToShow
+		{
+			get { return AppSettings.GetValueOrDefault(nameof(IterationsCountToShow), IterationsCountToShowDefaultDefault); }
+			set
+			{
+				if (AppSettings.AddOrUpdateValue(nameof(IterationsCountToShow), value))
+					OnPropertyChanged();
+			}
+		}
+
 		public static string AccessTokenAndType
 		{
 			get => AccessToken == null ? null : $"Bearer {AccessToken}";

@@ -1,14 +1,20 @@
 ﻿
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reactive;
 using System.Reactive.Linq;
+using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.Helpers;
+using Bullytect.Core.Models.Domain;
+using Bullytect.Core.Rest.Models.Exceptions;
 using Bullytect.Core.Services;
-using Microcharts;
+using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
+using MvvmHelpers;
 using ReactiveUI;
-using SkiaSharp;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -25,11 +31,13 @@ namespace Bullytect.Core.ViewModels
             _parentService = parentService;
 
 
-            RefreshCommand = ReactiveCommand.CreateFromObservable(() => CreateCommentsBySonChart().Do((DonutChart Chart) =>
-            {
-                CommentsBySonChart = Chart;
-                OnGenerateCommentsBySonChart(Chart);
-            }));
+            RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, IList<IterationEntity>>((param) => _parentService.GetLastIterations());
+
+            RefreshCommand.Subscribe((IterationEntities) => {
+                LastIteration = IterationEntities.FirstOrDefault();
+                LastIterations.ReplaceRange(IterationEntities);
+                NoIterationsFound = false;
+            });
 
 			RefreshCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
 
@@ -38,38 +46,67 @@ namespace Bullytect.Core.ViewModels
 
         #region properties
 
+            public ObservableRangeCollection<IterationEntity> LastIterations { get; } = new ObservableRangeCollection<IterationEntity>();
 
-        DonutChart _commentsBySonChart;
-        public DonutChart CommentsBySonChart {
-            get => _commentsBySonChart;
-            set => SetProperty(ref _commentsBySonChart, value);
-        }
+            IterationEntity _lastIteration;
 
+            public IterationEntity LastIteration {
+                get => _lastIteration;
+                set => SetProperty(ref _lastIteration, value);
+            }
+
+        bool _noIterationsFound = false;
+
+            public bool NoIterationsFound {
+                get => _noIterationsFound;
+                set => SetProperty(ref _noIterationsFound, value);
+            }
 
         #endregion
 
 
         #region delegates
 
-        public delegate void GenerateCommentsBySonChartEvent(object sender, DonutChart Chart);
+        /*public delegate void GenerateCommentsBySonChartEvent(object sender, DonutChart Chart);
 		public event GenerateCommentsBySonChartEvent GenerateCommentsBySonChart;
 
 		protected virtual void OnGenerateCommentsBySonChart(DonutChart Chart)
 		{
 			GenerateCommentsBySonChart?.Invoke(this, Chart);
-		}
+		}*/
 
         #endregion
 
 
         #region commands
 
-            public ReactiveCommand RefreshCommand { get; protected set; }
+            public ReactiveCommand<Unit, IList<IterationEntity>> RefreshCommand { get; protected set; }
 
-        #endregion
+    		public ICommand GoToSettingsCommand
+    		{
+    			get
+    			{
+    				return new MvxCommand(() => ShowViewModel<ResultsSettingsViewModel>());
+    			}
+    		}
+
+		#endregion
+
+		protected override void HandleExceptions(Exception ex)
+		{
+
+			if (ex is NoIterationsFoundForSelfParentException)
+			{
+                NoIterationsFound = true;
+			}
+			else
+			{
+				base.HandleExceptions(ex);
+			}
+		}
 
 
-        IObservable<DonutChart> CreateCommentsBySonChart() {
+        /*IObservable<DonutChart> CreateCommentsBySonChart() {
 
             return _parentService.GetCommentsBySonForLastIteration().Select((CommentsBySonDict) => CommentsBySonDict.ToList()).Select((CommentsBySonList) => CommentsBySonList.Select((CommentsBySon) => new Entry(float.Parse(CommentsBySon.Value))
 			{
@@ -81,6 +118,6 @@ namespace Bullytect.Core.ViewModels
                 var chart = new DonutChart() { Entries = Entries };
                 return chart;
             });
-        }
+        }*/
     }
 }

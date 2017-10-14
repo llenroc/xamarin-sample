@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<utils:MvxCarouselPage  
+<d:MvxContentPage  
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
-    xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
@@ -13,37 +12,58 @@
     xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:carouselTemplate="clr-namespace:Bullytect.Core.Pages.Results.Templates"
+    xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
     x:Class="Bullytect.Core.Pages.Results.ResultsPage"
     x:TypeArguments="viewModels:ResultsViewModel"
     BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
     Title="{i18n:Translate Home.Toolbar.Results}">
-    <CarouselPage.Resources>
+    <ContentPage.Resources>
         <ResourceDictionary>
             <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
         </ResourceDictionary>
-    </CarouselPage.Resources>
+    </ContentPage.Resources>
 
     <!-- Refresh On Appearing Event -->
-    <CarouselPage.Behaviors>
+    <ContentPage.Behaviors>
         <behaviors:EventHandlerBehavior EventName="Appearing" >
             <behaviors:InvokeCommandAction 
                     Command="{Binding RefreshCommand}" 
                     Converter="{ StaticResource DefaultReactiveUnitConverter}" />
         </behaviors:EventHandlerBehavior>
-    </CarouselPage.Behaviors>
+    </ContentPage.Behaviors>
 
 
+    <ContentPage.Content>
 
+        <!-- MAIN CONTAINER -->
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-    <CarouselPage.Children>
+            <!-- CUSTOM NAVBAR -->
+            <carouselTemplate:ResultsHeader Grid.Row="0"/>
 
-        <carouselTemplate:CommentsBySon />
+            <controls:CarouselViewControl 
+                Grid.Row="1"
+                Orientation="Horizontal" 
+                InterPageSpacing="10" 
+                VerticalOptions="FillAndExpand" 
+                HorizontalOptions="FillAndExpand"
+                ShowIndicators="true"
+                IndicatorsTintColor="{ DynamicResource AccentColor }">
+                <controls:CarouselViewControl.ItemsSource>
+                    <x:Array Type="{x:Type View}">
+                        <carouselTemplate:LastIterationsPage />
+                        <carouselTemplate:LastIterationsPage />
+                        <carouselTemplate:LastIterationsPage />
+                    </x:Array>
+                </controls:CarouselViewControl.ItemsSource>
+            </controls:CarouselViewControl>
 
-    
-        <carouselTemplate:CommentsBySon />
+        </Grid>
 
-    </CarouselPage.Children>
+    </ContentPage.Content>
 
-        
-
-</utils:MvxCarouselPage>
+</d:MvxContentPage>

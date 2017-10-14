@@ -171,7 +171,7 @@
                                     <StackLayout
                                         Grid.Column="0"
                                         Orientation="Horizontal"
-                                        VerticalOptions="Center"
+                                        VerticalOptions="CenterAndExpand"
                                         HorizontalOptions="Center"
                                         Spacing="0">
 
@@ -212,7 +212,7 @@
                                     <StackLayout
                                         Grid.Column="1"
                                         Orientation="Horizontal"
-                                        VerticalOptions="Center"
+                                        VerticalOptions="CenterAndExpand"
                                         HorizontalOptions="Center"
                                         Spacing="0">
 
@@ -257,7 +257,7 @@
                                               <StackLayout
                                                     Grid.Column="2"
                                                     Orientation="Horizontal"
-                                                    VerticalOptions="Center"
+                                                    VerticalOptions="CenterAndExpand"
                                                     HorizontalOptions="Center"
                                                     Spacing="0">
 

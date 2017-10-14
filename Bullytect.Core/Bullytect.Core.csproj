@@ -164,18 +164,6 @@
     <EmbeddedResource Include="Pages\EditSon\Popup\SocialMediaInfoPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Settings\SettingsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Settings\Templates\AlertCategoryCellView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Settings\Templates\SettingsHeader.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Results\Templates\CommentsBySon.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\Results\Templates\ResultsHeader.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -192,6 +180,18 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Home\Templates\NoChildrenFound.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Home\Settings\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Home\Settings\Templates\AlertCategoryCellView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Results\Settings\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\Templates\SettingsHeader.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -472,22 +472,10 @@
     <Compile Include="Converters\SocialMediaStatusToColorConverter.cs" />
     <Compile Include="Converters\SocialMediaStatusToTextConverter.cs" />
     <Compile Include="Models\Domain\AlertCategoryEntity.cs" />
-    <Compile Include="Pages\Settings\SettingsPage.xaml.cs">
-      <DependentUpon>SettingsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\SettingsViewModel.cs" />
-    <Compile Include="Pages\Settings\Templates\AlertCategoryCellView.xaml.cs">
-      <DependentUpon>AlertCategoryCellView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Settings\Templates\SettingsHeader.xaml.cs">
-      <DependentUpon>SettingsHeader.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="ViewModels\HomeSettingsViewModel.cs" />
     <Compile Include="Rest\Models\Response\SchoolNameDTO.cs" />
     <Compile Include="Rest\Models\Response\CommentsBySonDTO.cs" />
     <Compile Include="ViewModels\ResultsViewModel.cs" />
-    <Compile Include="Pages\Results\Templates\CommentsBySon.xaml.cs">
-      <DependentUpon>CommentsBySon.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Rest\Models\Response\IterationDTO.cs" />
     <Compile Include="Models\Domain\IterationEntity.cs" />
     <Compile Include="Pages\Results\Templates\ResultsHeader.xaml.cs">
@@ -516,8 +504,26 @@
     <Compile Include="Pages\Home\Templates\NoChildrenFound.xaml.cs">
       <DependentUpon>NoChildrenFound.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Home\Settings\SettingsPage.xaml.cs">
+      <DependentUpon>..\..\Settings\SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Home\Settings\Templates\AlertCategoryCellView.xaml.cs">
+      <DependentUpon>..\..\..\Settings\Templates\AlertCategoryCellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Results\Settings\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ResultsSettingsViewModel.cs" />
+    <Compile Include="Pages\Common\Templates\SettingsHeader.xaml.cs">
+      <DependentUpon>..\..\Settings\Templates\SettingsHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Core\Models\PickerOptionModel.cs" />
+    <Compile Include="Rest\Models\Exceptions\NoIterationsFoundForSelfParentException.cs" />
   </ItemGroup>
   <ItemGroup>
+  	<Reference Include="Syncfusion.SfChart.XForms">
+      <HintPath>..\lib\SyncFusion\pcl\Syncfusion.SfChart.XForms.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.6.1.1\lib\netstandard1.1\AutoMapper.dll</HintPath>
     </Reference>
@@ -668,9 +674,6 @@
     <Reference Include="MvvmHelpers">
       <HintPath>..\packages\Refractored.MvvmHelpers.1.3.0\lib\netstandard1.0\MvvmHelpers.dll</HintPath>
     </Reference>
-    <Reference Include="SkiaSharp">
-      <HintPath>..\packages\SkiaSharp.1.59.1\lib\portable-net45+win8+wpa81+wp8\SkiaSharp.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Forms.Core">
       <HintPath>..\packages\Xamarin.Forms.2.3.4.247\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
@@ -679,12 +682,6 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.3.4.247\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
-    </Reference>
-    <Reference Include="SkiaSharp.Views.Forms">
-      <HintPath>..\packages\SkiaSharp.Views.Forms.1.59.1\lib\portable-net45+win8+wpa81+wp8\SkiaSharp.Views.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="Microcharts.Forms">
-      <HintPath>..\packages\Microcharts.Forms.0.7.0\lib\portable-net45+win8+wpa81+wp8\Microcharts.Forms.dll</HintPath>
     </Reference>
     <Reference Include="FFImageLoading">
       <HintPath>..\packages\Xamarin.FFImageLoading.2.2.20\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.dll</HintPath>
@@ -697,6 +694,9 @@
     </Reference>
     <Reference Include="FFImageLoading.Transformations">
       <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.20\lib\portable-net45+win8+wpa81+wp8+netstandard1.0\FFImageLoading.Transformations.dll</HintPath>
+    </Reference>
+    <Reference Include="CarouselView.FormsPlugin.Abstractions">
+      <HintPath>..\packages\CarouselView.FormsPlugin.4.4.2\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\CarouselView.FormsPlugin.Abstractions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -713,11 +713,12 @@
     <Folder Include="Pages\Results\" />
     <Folder Include="Pages\EditSon\Popup\" />
     <Folder Include="OAuth\Services\Impl\" />
-    <Folder Include="Pages\Settings\" />
-    <Folder Include="Pages\Settings\Templates\" />
     <Folder Include="Pages\Results\Templates\" />
     <Folder Include="Pages\AlertDetail\Templates\" />
     <Folder Include="Pages\SonProfile\Templates\" />
+    <Folder Include="Pages\Home\Settings\" />
+    <Folder Include="Pages\Results\Settings\" />
+    <Folder Include="ViewModels\Core\Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />

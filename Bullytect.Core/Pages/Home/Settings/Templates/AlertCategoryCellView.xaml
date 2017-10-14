@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    x:Class="Bullytect.Core.Pages.Home.Settings.Templates.AlertCategoryCellView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:AlertLevelToFontIconConverter x:Key="AlertLevelToFontIconConverter" />
+            <converters:AlertLevelToColorConverter x:Key="AlertLevelToColorConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid Padding="16,6,16,6" ColumnSpacing="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+             <Label 
+                Grid.Column="0"
+                Text="{ Binding Level , Converter={ StaticResource AlertLevelToFontIconConverter}}" 
+                TextColor="{ Binding Level, Converter={ StaticResource AlertLevelToColorConverter }}"
+                Style="{StaticResource FontIcon}"
+                FontSize ="12"
+                WidthRequest="12" HeightRequest="12" 
+                VerticalOptions="Center"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"/>
+            
+            <Label Grid.Column="1" 
+                   x:Name="LabelName"
+                   Text="{Binding Name}" 
+                   VerticalTextAlignment="Center" 
+                   HorizontalOptions="StartAndExpand"
+                   />
+
+             <Label
+                Grid.Column="2" 
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="End"
+                VerticalOptions="CenterAndExpand"
+                Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                FontFamily="{ StaticResource IconsFontFamily }"
+                TextColor="{ DynamicResource AccentColor }">
+                <Label.FontSize>
+                    <OnIdiom 
+                        x:TypeArguments="x:Double"
+                        Phone="20" 
+                        Tablet="20" />
+                </Label.FontSize> 
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Tapped="OnAlertCategoryInfo"
+                        NumberOfTapsRequired="1" /> 
+                </Label.GestureRecognizers>
+            </Label>
+
+            
+            <Switch Grid.Column="3" 
+                    VerticalOptions="Center"
+                    IsEnabled="{Binding IsEnabled}"
+                    IsToggled="{Binding IsFiltered}"/>
+            
+        </Grid>
+    </ContentView.Content>
+</ContentView>

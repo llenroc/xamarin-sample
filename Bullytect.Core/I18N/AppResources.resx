@@ -753,7 +753,26 @@ and we will recover it for you. </value>
     <value>Last Iterations</value>
     <comment>Results Last Iterations</comment>
   </data> 
-	
+  <data name="Results.Settings.Iterations.Count" xml:space="preserve">
+    <value>Number of Iterations</value>
+    <comment>Results Settings Iterations Count</comment>
+  </data>
+  <data name="Results.Iterations.Not.Found.MainText" xml:space="preserve">
+    <value>No Iterations Found</value>
+    <comment>Results Iterations Not Found Title</comment>
+  </data>
+  <data name="Results.Iterations.Not.Found.SecondText" xml:space="preserve">
+    <value>No Iterations Found</value>
+    <comment>Results Iterations Not Found Title</comment>
+  </data>
+   <data name="Results.Settings.Iterations.Count.Description" xml:space="preserve">
+    <value>Select the maximum number of iterations you want to appear on the chart</value>
+    <comment>Results Settings Iterations Count Description</comment>
+  </data>
+	<data name="Results.Settings.Iterations.Count.Option" xml:space="preserve">
+    <value>{0} Iterations</value>
+    <comment>Results Settings Iterations Count Option</comment>
+  </data>
 
 
 	
