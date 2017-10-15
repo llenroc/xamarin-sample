@@ -345,7 +345,9 @@
                                             HorizontalOptions="Start"
                                             Text="{ x:Static helper:FontAwesomeFont.Facebook }"
                                             FontFamily="{ StaticResource IconsFontFamily }"
-                                            TextColor="{ DynamicResource AccentColor }">
+                                            TextColor="{ Binding Path=CurrentSocialMedia,
+                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
+                                                    ConverterParameter={StaticResource facebookKey}}">
 
                                             <Label.FontSize>
                                                 <OnIdiom 
@@ -362,7 +364,9 @@
                                                 HorizontalOptions="StartAndExpand"
                                                 Text="{i18n:Translate Common.RRSS.Facebook}"
                                                 Margin="0,0,10,0"
-                                                 TextColor="{ DynamicResource AccentColor }">
+                                                TextColor="{ Binding Path=CurrentSocialMedia,
+                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
+                                                    ConverterParameter={StaticResource facebookKey}}">
                                                 <Label.FontSize>
                                                     <OnIdiom 
                                                         x:TypeArguments="x:Double"
@@ -371,8 +375,33 @@
                                                  </Label.FontSize> 
                                            </Label>
 
-
                                             <Label
+                                                Grid.Column="2" 
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="Center"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="CenterAndExpand"
+                                                Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                                                FontFamily="{ StaticResource IconsFontFamily }"
+                                                TextColor="{ Binding Path=CurrentSocialMedia,
+                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
+                                                    ConverterParameter={StaticResource facebookKey}}">
+                                                <Label.FontSize>
+                                                    <OnIdiom 
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="20" 
+                                                        Tablet="20" />
+                                                </Label.FontSize> 
+
+                                                <!--<Label.GestureRecognizers>
+                                                    <TapGestureRecognizer 
+                                                        Tapped="OnCountNewAlertsInfo"
+                                                        NumberOfTapsRequired="1" /> 
+                                                </Label.GestureRecognizers>-->
+                                            </Label>
+
+
+                                            <!--<Label
                                                 VerticalTextAlignment="Center"
                                                 HorizontalTextAlignment="End"
                                                 HorizontalOptions="EndAndExpand"
@@ -389,7 +418,7 @@
                                                         Phone="15" 
                                                         Tablet="20" />
                                                  </Label.FontSize> 
-                                           </Label>
+                                           </Label>-->
 
 
                                             
@@ -468,7 +497,9 @@
                                                 HorizontalOptions="Start"
                                                 Text="{ x:Static helper:FontAwesomeFont.Instagram }"
                                                 FontFamily="{ StaticResource IconsFontFamily }"
-                                                TextColor="{ DynamicResource AccentColor }">
+                                                TextColor="{ Binding Path=CurrentSocialMedia,
+                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
+                                                    ConverterParameter={StaticResource instagramKey}}">
 
                                                 <Label.FontSize>
                                                     <OnIdiom 
@@ -483,7 +514,9 @@
                                                 HorizontalOptions="StartAndExpand"
                                                 Text="{i18n:Translate Common.RRSS.Instagram}"
                                                 Margin="0,0,10,0"
-                                                TextColor="{ DynamicResource AccentColor }">
+                                                TextColor="{ Binding Path=CurrentSocialMedia,
+                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
+                                                    ConverterParameter={StaticResource instagramKey}}">
                                                 <Label.FontSize>
                                                     <OnIdiom 
                                                         x:TypeArguments="x:Double"
@@ -493,6 +526,31 @@
                                             </Label>
 
                                             <Label
+                                                Grid.Column="2" 
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="Center"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="CenterAndExpand"
+                                                Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                                                FontFamily="{ StaticResource IconsFontFamily }"
+                                                TextColor="{ Binding Path=CurrentSocialMedia,
+                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
+                                                    ConverterParameter={StaticResource instagramKey}}">
+                                                <Label.FontSize>
+                                                    <OnIdiom 
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="20" 
+                                                        Tablet="20" />
+                                                </Label.FontSize> 
+
+                                                <!--<Label.GestureRecognizers>
+                                                    <TapGestureRecognizer 
+                                                        Tapped="OnCountNewAlertsInfo"
+                                                        NumberOfTapsRequired="1" /> 
+                                                </Label.GestureRecognizers>-->
+                                            </Label>
+
+                                            <!--<Label
                                                 VerticalTextAlignment="Center"
                                                 HorizontalTextAlignment="End"
                                                 HorizontalOptions="EndAndExpand"
@@ -509,7 +567,7 @@
                                                         Phone="15" 
                                                         Tablet="20" />
                                                  </Label.FontSize> 
-                                           </Label>
+                                           </Label>-->
 
                                 
                                     </StackLayout>
@@ -587,7 +645,9 @@
                                             HorizontalOptions="Start"
                                             Text="{ x:Static helper:FontAwesomeFont.Youtube }"
                                             FontFamily="{ StaticResource IconsFontFamily }"
-                                            TextColor="{ DynamicResource AccentColor }">
+                                            TextColor="{ Binding Path=CurrentSocialMedia,
+                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
+                                                    ConverterParameter={StaticResource youtubeKey}}">
 
                                             <Label.FontSize>
                                                 <OnIdiom 
@@ -603,7 +663,9 @@
                                             HorizontalOptions="StartAndExpand"
                                             Text="{i18n:Translate Common.RRSS.Youtube}"
                                             Margin="0,0,10,0"
-                                            TextColor="{ DynamicResource AccentColor }">
+                                            TextColor="{ Binding Path=CurrentSocialMedia,
+                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
+                                                    ConverterParameter={StaticResource youtubeKey}}">
 
                                             <Label.FontSize>
                                                 <OnIdiom 
@@ -614,6 +676,31 @@
                                         </Label>
 
                                         <Label
+                                            Grid.Column="2" 
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="Center"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="CenterAndExpand"
+                                            Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                                            FontFamily="{ StaticResource IconsFontFamily }"
+                                            TextColor="{ Binding Path=CurrentSocialMedia,
+                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
+                                                    ConverterParameter={StaticResource youtubeKey}}">
+                                            <Label.FontSize>
+                                                <OnIdiom 
+                                                    x:TypeArguments="x:Double"
+                                                    Phone="20" 
+                                                    Tablet="20" />
+                                            </Label.FontSize> 
+
+                                            <!--<Label.GestureRecognizers>
+                                                <TapGestureRecognizer 
+                                                    Tapped="OnCountNewAlertsInfo"
+                                                    NumberOfTapsRequired="1" /> 
+                                            </Label.GestureRecognizers>-->
+                                        </Label>
+
+                                        <!--<Label
                                                 VerticalTextAlignment="Center"
                                                 HorizontalTextAlignment="End"
                                                 HorizontalOptions="EndAndExpand"
@@ -630,7 +717,7 @@
                                                         Phone="15" 
                                                         Tablet="20" />
                                                  </Label.FontSize> 
-                                           </Label>
+                                           </Label>-->
 
                                             
                                     </StackLayout>

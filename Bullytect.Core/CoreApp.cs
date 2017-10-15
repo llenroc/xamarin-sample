@@ -19,6 +19,7 @@ using Bullytect.Core.Helpers;
 using Bullytect.Core.OAuth.Services.Impl;
 using Bullytect.Core.OAuth.Services;
 using Bullytect.Core.Rest.Models.Request;
+using Bullytect.Core.ViewModels.Core.Models;
 
 namespace Bullytect.Core
 {
@@ -57,6 +58,17 @@ namespace Bullytect.Core
                 cfg.CreateMap<SchoolDTO, SchoolEntity>();
                 cfg.CreateMap<AlertsPageDTO, AlertsPageEntity>();
 
+                // Mapper for SonEntity to SonCategoryModel
+                cfg.CreateMap<SonEntity, SonCategoryModel>()
+                .ForMember(s => s.Name, (obj) =>
+                           obj.MapFrom((Son) => Son.FullName))
+                .ForMember(s => s.Description, (obj) =>
+                           obj.MapFrom((Son) => Son.FullName))
+                .ForMember(s => s.IsFiltered, (obj) =>
+                           obj.ResolveUsing(o => Settings.Current.ShowResultsForAllChildren || Settings.Current.FilteredSonCategories.Contains(o.Identity)))
+                .ForMember(s => s.IsEnabled, (obj) =>
+                           obj.UseValue<bool>(!Settings.Current.ShowResultsForAllChildren));
+                    
 
 			});
         }

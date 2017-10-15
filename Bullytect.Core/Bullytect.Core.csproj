@@ -194,6 +194,12 @@
     <EmbeddedResource Include="Pages\Common\Templates\SettingsHeader.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\Templates\CommonCategoryCellView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Results\Settings\Templates\SonCategoryCellView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\CanNotTakePhotoFromCameraException.cs" />
@@ -471,7 +477,6 @@
     <Compile Include="OAuth\Services\Impl\IOAuthServiceImpl.cs" />
     <Compile Include="Converters\SocialMediaStatusToColorConverter.cs" />
     <Compile Include="Converters\SocialMediaStatusToTextConverter.cs" />
-    <Compile Include="Models\Domain\AlertCategoryEntity.cs" />
     <Compile Include="ViewModels\HomeSettingsViewModel.cs" />
     <Compile Include="Rest\Models\Response\SchoolNameDTO.cs" />
     <Compile Include="Rest\Models\Response\CommentsBySonDTO.cs" />
@@ -519,6 +524,15 @@
     </Compile>
     <Compile Include="ViewModels\Core\Models\PickerOptionModel.cs" />
     <Compile Include="Rest\Models\Exceptions\NoIterationsFoundForSelfParentException.cs" />
+    <Compile Include="ViewModels\Core\Models\CategoryModel.cs" />
+    <Compile Include="ViewModels\Core\Models\AlertCategoryModel.cs" />
+    <Compile Include="Pages\Common\Templates\CommonCategoryCellView.xaml.cs">
+      <DependentUpon>CommonCategoryCellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Core\Models\SonCategoryModel.cs" />
+    <Compile Include="Pages\Results\Settings\Templates\SonCategoryCellView.xaml.cs">
+      <DependentUpon>SonCategoryCellView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
   	<Reference Include="Syncfusion.SfChart.XForms">
@@ -719,6 +733,7 @@
     <Folder Include="Pages\Home\Settings\" />
     <Folder Include="Pages\Results\Settings\" />
     <Folder Include="ViewModels\Core\Models\" />
+    <Folder Include="Pages\Results\Settings\Templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />

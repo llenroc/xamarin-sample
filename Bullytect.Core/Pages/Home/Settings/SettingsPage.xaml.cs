@@ -5,6 +5,7 @@ using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Pages.Common.Templates;
 using Bullytect.Core.Pages.Home.Settings.Templates;
 using Bullytect.Core.ViewModels;
+using Bullytect.Core.ViewModels.Core.Models;
 using MvvmCross.Forms.Core;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -48,14 +49,14 @@ namespace Bullytect.Core.Pages.Home.Settings
 		}
 		
 
-        void ViewModel_OnAlertsCategoriesLoaded(Object sender, List<AlertCategoryEntity> AlertsCategories)
+        void ViewModel_OnAlertsCategoriesLoaded(Object sender, List<AlertCategoryModel> AlertsCategories)
 		{
-			var allCell = new AlertCategoryCell
-			{
-                BindingContext = ViewModel.AllCategory
-			};
+            TableSectionCategories.Clear();
 
-			TableSectionCategories.Add(allCell);
+			TableSectionCategories.Add(new CommonCategoryCell
+			{
+				BindingContext = ViewModel.AllCategory
+			});
 
 			foreach (var item in AlertsCategories)
 			{

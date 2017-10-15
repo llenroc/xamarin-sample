@@ -614,7 +614,7 @@ pleasures of the demo.</value>
     <comment>Settings Antiquity Of Alerts</comment>
   </data>
   <data name="Settings.Antiquity.Of.Alerts.Description" xml:space="preserve">
-    <value>Show alerts for the last {0} minutes</value>
+    <value>{0} minutes</value>
     <comment>Settings Antiquity Of Alerts Description</comment>
   </data>
   <data name="Settings.Alerts.Count.New.Alerts" xml:space="preserve">

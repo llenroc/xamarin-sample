@@ -1001,15 +1001,15 @@ namespace Bullytect.Core.I18N {
             }
         }
         
-        internal static string Results_Iterations_Not_Found_Title {
+        internal static string Results_Iterations_Not_Found_MainText {
             get {
-                return ResourceManager.GetString("Results.Iterations.Not.Found.Title", resourceCulture);
+                return ResourceManager.GetString("Results.Iterations.Not.Found.MainText", resourceCulture);
             }
         }
         
-        internal static string Results_Iterations_Not_Found_Description {
+        internal static string Results_Iterations_Not_Found_SecondText {
             get {
-                return ResourceManager.GetString("Results.Iterations.Not.Found.Description", resourceCulture);
+                return ResourceManager.GetString("Results.Iterations.Not.Found.SecondText", resourceCulture);
             }
         }
         
@@ -1022,6 +1022,12 @@ namespace Bullytect.Core.I18N {
         internal static string Results_Settings_Iterations_Count_Option {
             get {
                 return ResourceManager.GetString("Results.Settings.Iterations.Count.Option", resourceCulture);
+            }
+        }
+        
+        internal static string Results_Settings_Show_Results_For {
+            get {
+                return ResourceManager.GetString("Results.Settings.Show.Results.For", resourceCulture);
             }
         }
     }

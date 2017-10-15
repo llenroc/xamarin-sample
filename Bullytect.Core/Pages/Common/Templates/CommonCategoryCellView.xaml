@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    x:Class="Bullytect.Core.Pages.Common.Templates.CommonCategoryCellView">
+    <ContentView.Content>
+        <Grid Padding="16,6,16,6" ColumnSpacing="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            
+            <Label Grid.Column="0" 
+                   x:Name="LabelName"
+                   Text="{Binding Name}" 
+                   VerticalTextAlignment="Center" 
+                   HorizontalOptions="StartAndExpand"
+                   />
+
+             <Label
+                Grid.Column="1" 
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="End"
+                VerticalOptions="CenterAndExpand"
+                Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                FontFamily="{ StaticResource IconsFontFamily }"
+                TextColor="{ DynamicResource AccentColor }">
+                <Label.FontSize>
+                    <OnIdiom 
+                        x:TypeArguments="x:Double"
+                        Phone="20" 
+                        Tablet="20" />
+                </Label.FontSize> 
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Tapped="OnCategoryInfo"
+                        NumberOfTapsRequired="1" /> 
+                </Label.GestureRecognizers>
+            </Label>
+
+            
+            <Switch Grid.Column="2" 
+                    VerticalOptions="Center"
+                    IsEnabled="{Binding IsEnabled}"
+                    IsToggled="{Binding IsFiltered}"/>
+            
+        </Grid>
+    </ContentView.Content>
+</ContentView>

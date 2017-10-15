@@ -58,6 +58,7 @@
                     HorizontalOptions="End"
                     VerticalOptions="CenterAndExpand"
                     Margin="0,0,15,0"
+                    BackgroundColor="Black"
                     Text="{ x:Static helper:FontAwesomeFont.Gear } " 
                     FontSize="22"
                     TextColor="{ DynamicResource CustomNavBarTextColor }" 

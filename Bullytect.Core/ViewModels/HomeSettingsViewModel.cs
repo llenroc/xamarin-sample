@@ -28,22 +28,13 @@ namespace Bullytect.Core.ViewModels
             _alertsService = alertsService;
 
 
-            AllCategory = new AlertCategoryEntity()
-            {
-                Name = "All Alerts",
-                Description = "Todas las alertas de cualquier nivel",
-                Level = AlertLevelEnum.ALL,
-				IsEnabled = true,
-                IsFiltered = Settings.Current.ShowAllCategories
-            };
-
             AllCategory.PropertyChanged += (sender, e) =>
             {
                 if (e.PropertyName == "IsFiltered")
-                    SetShowAllCategories(AllCategory.IsFiltered);
+                   FilteredAllCategories(AllCategory.IsFiltered);
             };
 
-			RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, IList<AlertCategoryEntity>>((_) => _alertsService.GetAllAlertsCategories());
+			RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, IList<AlertCategoryModel>>((_) => _alertsService.GetAllAlertsCategories());
 
 			RefreshCommand.Subscribe((AlertCategories) =>
 			{
@@ -51,12 +42,12 @@ namespace Bullytect.Core.ViewModels
 				Categories.Clear();
 				foreach (var category in AlertCategories.OrderBy(c => c.Level))
 				{
-                    category.IsFiltered = Settings.Current.ShowAllCategories || Settings.Current.FilteredCategories.Contains(category.Level.ToString());
+                    category.IsFiltered = Settings.Current.ShowAllCategories || Settings.Current.FilteredAlertCategories.Contains(category.Level.ToString());
 					category.IsEnabled = !Settings.Current.ShowAllCategories;
 					Categories.Add(category);
 				}
 
-				Save();
+				SaveChanges();
 
 				OnAlertsCategoriesLoaded(Categories);
 			});
@@ -69,8 +60,18 @@ namespace Bullytect.Core.ViewModels
 
         #region properties
 
-        public AlertCategoryEntity AllCategory { get; }
-        public List<AlertCategoryEntity> Categories { get; } = new List<AlertCategoryEntity>();
+        CategoryModel _allCategory;
+        public CategoryModel AllCategory {
+            get => _allCategory ?? ( _allCategory = new CategoryModel()
+            {
+                Name = "All Alerts",
+                Description = "Todas las alertas de cualquier nivel",
+                IsEnabled = true,
+                IsFiltered = Settings.Current.ShowAllCategories
+            });
+            set => SetProperty(ref _allCategory, value);
+        }
+        public List<AlertCategoryModel> Categories { get; } = new List<AlertCategoryModel>();
 
  
 		public List<PickerOptionModel> AlertsOptionsList { get; set; } = new List<PickerOptionModel>()
@@ -111,21 +112,22 @@ namespace Bullytect.Core.ViewModels
 
 		#region methods
 
-    		private void SetShowAllCategories(bool showAll)
+    		private void FilteredAllCategories(bool showAll)
     		{
-                Settings.Current.ShowAllCategories = showAll;
+                
     			foreach (var category in Categories)
     			{
-    				category.IsEnabled = !Settings.Current.ShowAllCategories;
-                    category.IsFiltered = Settings.Current.ShowAllCategories || Settings.Current.FilteredCategories.Contains(category.Level.ToString());
+    				category.IsEnabled = !showAll;
+                    category.IsFiltered = showAll || Settings.Current.FilteredAlertCategories.Contains(category.Level.ToString());
     			}
     		}
 
-    	    void Save()
+    	    void SaveChanges()
     		{
+                Settings.Current.ShowAllCategories = AllCategory.IsFiltered;
                 Settings.Current.LastAlertsCount = AlertsOption.Value;
                 Settings.Current.AntiquityOfAlerts = AntiquityOfAlertsOption.Value;
-                Settings.Current.FilteredCategories = string.Join(",", Categories?.Where(c => c.IsFiltered).Select(c => c.Level.ToString()));
+                Settings.Current.FilteredAlertCategories = string.Join(",", Categories?.Where(c => c.IsFiltered).Select(c => c.Level.ToString()));
     		}
 
 
@@ -133,10 +135,10 @@ namespace Bullytect.Core.ViewModels
 
 		#region delegates
 
-		public delegate void AlertsCategoriesLoadedEvent(object sender, List<AlertCategoryEntity> Categories);
+		public delegate void AlertsCategoriesLoadedEvent(object sender, List<AlertCategoryModel> Categories);
 		public event AlertsCategoriesLoadedEvent AlertsCategoriesLoaded;
 
-		protected virtual void OnAlertsCategoriesLoaded(List<AlertCategoryEntity> Categories)
+		protected virtual void OnAlertsCategoriesLoaded(List<AlertCategoryModel> Categories)
 		{
 			AlertsCategoriesLoaded?.Invoke(this, Categories);
 		}
@@ -151,7 +153,7 @@ namespace Bullytect.Core.ViewModels
     			{
                     return new MvxCommand(() =>
                     {
-                        Save();
+                        SaveChanges();
                         _userDialogs.ShowSuccess(AppResources.Settings_Changes_Saved);
                         Close(this);
                     });
@@ -159,7 +161,7 @@ namespace Bullytect.Core.ViewModels
     		}
 
 
-            public ReactiveCommand<Unit, IList<AlertCategoryEntity>> RefreshCommand{ get; protected set; }
+            public ReactiveCommand<Unit, IList<AlertCategoryModel>> RefreshCommand{ get; protected set; }
 
 
 		#endregion

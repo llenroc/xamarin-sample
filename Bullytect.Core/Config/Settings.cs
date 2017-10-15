@@ -78,16 +78,15 @@ namespace Bullytect.Core.Config
 
 
 
-		const string FilteredCategoriesKey = "filtered_categories";
-		static readonly string FilteredCategoriesDefault = string.Empty;
+		static readonly string FilteredAlertCategoriesDefault = string.Empty;
 
 
-		public string FilteredCategories
+		public string FilteredAlertCategories
 		{
-			get { return AppSettings.GetValueOrDefault(FilteredCategoriesKey, FilteredCategoriesDefault); }
+			get { return AppSettings.GetValueOrDefault(nameof(FilteredAlertCategories), FilteredAlertCategoriesDefault); }
 			set
 			{
-				if (AppSettings.AddOrUpdateValue(FilteredCategoriesKey, value))
+				if (AppSettings.AddOrUpdateValue(nameof(FilteredAlertCategories), value))
 					OnPropertyChanged();
 			}
 		}
@@ -100,6 +99,32 @@ namespace Bullytect.Core.Config
 			set
 			{
 				if (AppSettings.AddOrUpdateValue(nameof(IterationsCountToShow), value))
+					OnPropertyChanged();
+			}
+		}
+
+		static readonly bool ShowResultsForAllChildrenDefault = true;
+
+		
+		public bool ShowResultsForAllChildren
+		{
+			get { return AppSettings.GetValueOrDefault(nameof(ShowResultsForAllChildren), ShowResultsForAllChildrenDefault); }
+			set
+			{
+				if (AppSettings.AddOrUpdateValue(nameof(ShowResultsForAllChildren), value))
+					OnPropertyChanged();
+			}
+		}
+
+		static readonly string FilteredSonCategoriesDefault = string.Empty;
+
+
+		public string FilteredSonCategories
+		{
+			get { return AppSettings.GetValueOrDefault(nameof(FilteredSonCategories), FilteredSonCategoriesDefault); }
+			set
+			{
+				if (AppSettings.AddOrUpdateValue(nameof(FilteredSonCategories), value))
 					OnPropertyChanged();
 			}
 		}

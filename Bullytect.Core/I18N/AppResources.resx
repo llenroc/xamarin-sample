@@ -726,7 +726,7 @@ and we will recover it for you. </value>
     <comment>Settings Antiquity Of Alerts</comment>
   </data>
   <data name="Settings.Antiquity.Of.Alerts.Description" xml:space="preserve">
-    <value>Show alerts for the last {0} minutes</value>
+    <value> {0} minutes</value>
     <comment>Settings Antiquity Of Alerts Description</comment>
   </data>
   <data name="Settings.Alerts.Count.New.Alerts" xml:space="preserve">
@@ -772,6 +772,10 @@ and we will recover it for you. </value>
 	<data name="Results.Settings.Iterations.Count.Option" xml:space="preserve">
     <value>{0} Iterations</value>
     <comment>Results Settings Iterations Count Option</comment>
+  </data>
+  <data name="Results.Settings.Show.Results.For" xml:space="preserve">
+    <value>Show Results For</value>
+    <comment>Results Settings Show Results For</comment>
   </data>
 
 

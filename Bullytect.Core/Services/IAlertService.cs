@@ -5,6 +5,7 @@ namespace Bullytect.Core.Services
     using System;
     using System.Collections.Generic;
     using Bullytect.Core.Models.Domain;
+    using Bullytect.Core.ViewModels.Core.Models;
 
     public interface IAlertService
     {
@@ -14,6 +15,6 @@ namespace Bullytect.Core.Services
         IObservable<string> DeleteAlertOfSon(string SonId, string AlertId);
         IObservable<IList<AlertEntity>> GetAlertsBySon(string SonId);
         IObservable<int> ClearSelfAlerts();
-        IObservable<IList<AlertCategoryEntity>> GetAllAlertsCategories();
+        IObservable<IList<AlertCategoryModel>> GetAllAlertsCategories();
     }
 }

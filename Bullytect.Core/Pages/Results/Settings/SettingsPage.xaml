@@ -15,8 +15,20 @@
     x:Class="Bullytect.Core.Pages.Results.Settings.SettingsPage"
     x:TypeArguments="viewModels:ResultsSettingsViewModel"
     BackgroundColor="{DynamicResource BasePageColor}">
-
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
   
+    <!-- Refresh On Appearing Event -->
+    <ContentPage.Behaviors>
+        <behaviors:EventHandlerBehavior EventName="Appearing" >
+            <behaviors:InvokeCommandAction 
+                    Command="{Binding RefreshCommand}" 
+                    Converter="{ StaticResource DefaultReactiveUnitConverter}" />
+        </behaviors:EventHandlerBehavior>
+    </ContentPage.Behaviors>
     
     <ContentPage.Content>
 
@@ -32,68 +44,75 @@
 
             <TableView  Grid.Row="1" Intent="Settings" HasUnevenRows="true">
 
-                <extended:ExtendedViewCell SeparatorColor="{DynamicResource AccentColor}" SeparatorPadding="5">
+                <TableSection Title="{i18n:Translate Settings.Alerts.General}">
+
+                    <extended:ExtendedViewCell SeparatorColor="{DynamicResource AccentColor}" SeparatorPadding="5">
 
                         <Grid Padding="16,6,16,6" ColumnSpacing="16">
 
-                        <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
 
-                             <Label 
-                                Grid.Column="0"
-                                Text="{ x:Static helper:FontAwesomeFont.SortAmountDesc }"
-                                Style="{StaticResource FontIcon}"
-                                FontSize ="12"
-                                WidthRequest="12" HeightRequest="12" 
-                                VerticalOptions="Center"
-                                HorizontalTextAlignment="Center"
-                                VerticalTextAlignment="Center"/>
+                                 <Label 
+                                    Grid.Column="0"
+                                    Text="{ x:Static helper:FontAwesomeFont.SortAmountDesc }"
+                                    Style="{StaticResource FontIcon}"
+                                    FontSize ="12"
+                                    WidthRequest="12" 
+                                    HeightRequest="12" 
+                                    VerticalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"/>
                             
-                            <Label Grid.Column="1" 
-                                   Text="{i18n:Translate Results.Settings.Iterations.Count }"
-                                   VerticalTextAlignment="Center" 
-                                   HorizontalOptions="StartAndExpand"/>
+                                <Label Grid.Column="1" 
+                                       Text="{i18n:Translate Results.Settings.Iterations.Count }"
+                                       VerticalTextAlignment="Center" 
+                                       HorizontalOptions="StartAndExpand"/>
 
 
-                            <Label
-                                Grid.Column="2" 
-                                VerticalTextAlignment="Center"
-                                HorizontalTextAlignment="Center"
-                                HorizontalOptions="End"
-                                VerticalOptions="CenterAndExpand"
-                                Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
-                                FontFamily="{ StaticResource IconsFontFamily }"
-                                TextColor="{ DynamicResource AccentColor }">
-                                <Label.FontSize>
-                                    <OnIdiom 
-                                        x:TypeArguments="x:Double"
-                                        Phone="20" 
-                                        Tablet="20" />
-                                </Label.FontSize> 
+                                <Label
+                                    Grid.Column="2" 
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="CenterAndExpand"
+                                    Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                                    FontFamily="{ StaticResource IconsFontFamily }"
+                                    TextColor="{ DynamicResource AccentColor }">
+                                    <Label.FontSize>
+                                        <OnIdiom 
+                                            x:TypeArguments="x:Double"
+                                            Phone="20" 
+                                            Tablet="20" />
+                                    </Label.FontSize> 
 
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer 
-                                        Tapped="OnIterationsCountInfo"
-                                        NumberOfTapsRequired="1" /> 
-                                </Label.GestureRecognizers>
-                            </Label>
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Tapped="OnIterationsCountInfo"
+                                            NumberOfTapsRequired="1" /> 
+                                    </Label.GestureRecognizers>
+                                </Label>
 
-                            <!--<Picker Grid.Column="3"
-                                WidthRequest="100"
-                                VerticalOptions="Center"
-                                ItemsSource="{Binding IterationsOptionsList }"
-                                SelectedItem="{Binding IterationsOption }"
-                                ItemDisplayBinding="{Binding Description}"/>-->
-
-                           
+                                <Picker Grid.Column="3"
+                                    WidthRequest="100"
+                                    VerticalOptions="Center"
+                                    ItemsSource="{Binding IterationsOptionsList }"
+                                    SelectedItem="{Binding IterationsOption}"
+                                    ItemDisplayBinding="{Binding Description}"/>
+                               
                         </Grid>
 
 
                      </extended:ExtendedViewCell> 
+
+
+                </TableSection>
+
+                <TableSection Title="{i18n:Translate Results.Settings.Show.Results.For}" x:Name="TableSectionChildren"></TableSection>
 
             </TableView>
         </Grid>

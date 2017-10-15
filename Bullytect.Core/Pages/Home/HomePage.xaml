@@ -208,9 +208,11 @@
                                             </StackLayout.GestureRecognizers>
                                     </StackLayout>
 
+                            <!-- IsEnabled="{ Binding SelfParent.Children, Converter={ StaticResource ValueGreaterThanZeroConverter }}" -->
                                     <!-- Results Action -->
                                     <StackLayout
                                         Grid.Column="1"
+
                                         Orientation="Horizontal"
                                         VerticalOptions="CenterAndExpand"
                                         HorizontalOptions="Center"
@@ -230,25 +232,24 @@
                                            </Label.FontSize> 
                                        </Label>
 
-                                                <Label
-                                                    VerticalTextAlignment="Center" 
-                                                    HorizontalTextAlignment="Center"
-                                                    Text="{i18n:Translate Home.Toolbar.Results}"
-                                                    TextColor="{ DynamicResource OverImageTextColor }">
-                                                    <Label.FontSize>
-                                                       <OnIdiom 
-                                                            x:TypeArguments="x:Double" 
-                                                            Phone="15" 
-                                                            Tablet="20" />
-                                                     </Label.FontSize> 
-                                                 </Label>
+                                       <Label
+                                            VerticalTextAlignment="Center" 
+                                            HorizontalTextAlignment="Center"
+                                            Text="{i18n:Translate Home.Toolbar.Results}"
+                                            TextColor="{ DynamicResource OverImageTextColor }">
 
-                                                 <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{ Binding GoToResultsCommand}" NumberOfTapsRequired="1" /> 
-                                                  </StackLayout.GestureRecognizers>
+                                            <Label.FontSize>
+                                                <OnIdiom 
+                                                    x:TypeArguments="x:Double" 
+                                                    Phone="15"
+                                                    Tablet="20" />
+                                            </Label.FontSize> 
+                                        </Label>
 
-                                                
-                                              </StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{ Binding GoToResultsCommand}" NumberOfTapsRequired="1" /> 
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
 
                                             
                                                

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Collections;
 using Bullytect.Core.Config;
 using Bullytect.Core.I18N;
+using Bullytect.Core.ViewModels.Core.Models;
 
 namespace Bullytect.Core.Services.Impl
 {
@@ -77,27 +78,27 @@ namespace Bullytect.Core.Services.Impl
 			return operationDecorator(observable);
         }
 
-        public IObservable<IList<AlertCategoryEntity>> GetAllAlertsCategories()
+        public IObservable<IList<AlertCategoryModel>> GetAllAlertsCategories()
         {
             Debug.WriteLine("Get All Alerts Categories");
 
-			var list = new List<AlertCategoryEntity>() {
-                new AlertCategoryEntity() {
+			var list = new List<AlertCategoryModel>() {
+                new AlertCategoryModel() {
                     Name = AppResources.Settings_Alerts_Categories_Success_Alerts_Name,
                     Description = AppResources.Settings_Alerts_Categories_Success_Alerts_Description,
 					Level = AlertLevelEnum.SUCCESS
                 },
-                new AlertCategoryEntity() {
+                new AlertCategoryModel() {
 					Name = AppResources.Settings_Alerts_Categories_Info_Alerts_Name,
                     Description = AppResources.Settings_Alerts_Categories_Info_Alerts_Description,
 					Level = AlertLevelEnum.INFO
                 },
-                new AlertCategoryEntity() {
+                new AlertCategoryModel() {
                     Name = AppResources.Settings_Alerts_Categories_Warning_Alerts_Name,
                     Description = AppResources.Settings_Alerts_Categories_Warning_Alerts_Description,
 					Level = AlertLevelEnum.WARNING
                 },
-				new AlertCategoryEntity() {
+				new AlertCategoryModel() {
                     Name = AppResources.Settings_Alerts_Categories_Danger_Alerts_Name,
                     Description = AppResources.Settings_Alerts_Categories_Danger_Alerts_Description,
 					Level = AlertLevelEnum.DANGER
@@ -116,8 +117,8 @@ namespace Bullytect.Core.Services.Impl
                 .GetLastSelfAlerts(
                     Count: Settings.Current.LastAlertsCount,
                     LastMinutes: Settings.Current.AntiquityOfAlerts, 
-                    Levels: String.IsNullOrEmpty(Settings.Current.FilteredCategories) ? 
-                        new string[] {} : Settings.Current.FilteredCategories.Split(','))
+                    Levels: String.IsNullOrEmpty(Settings.Current.FilteredAlertCategories) ? 
+                        new string[] {} : Settings.Current.FilteredAlertCategories.Split(','))
 				.Select((APIResponse<AlertsPageDTO> response) => response.Data)
 				.Select((AlertsPage) => Mapper.Map<AlertsPageDTO, AlertsPageEntity>(AlertsPage))
 				.Finally(() => {
