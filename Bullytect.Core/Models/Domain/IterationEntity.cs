@@ -7,6 +7,11 @@ namespace Bullytect.Core.Models.Domain
 		public DateTime FinishDate { get; set; }
 		public int TotalTasks { get; set; }
 		public int TotalFailedTasks { get; set; }
-		public int TotalComments { get; set; }
+		public double TotalComments { get; set; }
+
+        public string FinishDateAsString {
+            get => String.Format("{0:d/M/yyyy HH:mm:ss}", FinishDate);
+        }
+
     }
 }

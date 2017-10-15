@@ -42,8 +42,18 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <!-- CUSTOM NAVBAR -->
-            <carouselTemplate:ResultsHeader Grid.Row="0"/>
+            <!-- APP Header -->
+            <common:AppHeader 
+                Grid.Row="0"
+                Title="{i18n:Translate Page.Results.Title}">
+                <common:AppHeader.Options>
+                    <x:Array Type="{x:Type View}">
+                        <common:RefreshOptionMenu />
+                        <common:SettingsOptionMenu />
+                    </x:Array>
+                </common:AppHeader.Options>
+
+            </common:AppHeader>
 
             <controls:CarouselViewControl 
                 Grid.Row="1"
@@ -56,8 +66,7 @@
                 <controls:CarouselViewControl.ItemsSource>
                     <x:Array Type="{x:Type View}">
                         <carouselTemplate:LastIterationsPage />
-                        <carouselTemplate:LastIterationsPage />
-                        <carouselTemplate:LastIterationsPage />
+                        <carouselTemplate:AlertsBySon />
                     </x:Array>
                 </controls:CarouselViewControl.ItemsSource>
             </controls:CarouselViewControl>

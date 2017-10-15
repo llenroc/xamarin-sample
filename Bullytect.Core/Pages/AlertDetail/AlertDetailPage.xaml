@@ -8,8 +8,8 @@
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
-    xmlns:templates="clr-namespace:Bullytect.Core.Pages.AlertDetail.Templates"
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     x:TypeArguments="viewModels:AlertDetailViewModel"
     BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
@@ -32,8 +32,56 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <!-- CUSTOM NAVBAR -->
-            <templates:AlertDetailHeader Grid.Row="0"/>
+            <!-- APP Header -->
+            <common:AppHeader 
+                Grid.Row="0"
+                Title="{i18n:Translate Page.Alert.Detail.Title}">
+                <common:AppHeader.Options>
+                    <x:Array Type="{x:Type View}">
+
+                        <common:RefreshOptionMenu />
+
+                        <!-- Delete Alert -->
+                        <Label 
+                            HorizontalOptions="End"
+                            Margin="0,0,10,0"
+                            Text="{ x:Static helper:FontAwesomeFont.Trash } " 
+                            FontSize="22"
+                            TextColor="{ DynamicResource CustomNavBarTextColor }" 
+                            Style="{ StaticResource FontIcon }">
+                            <Label.TranslationY>
+                                <OnPlatform 
+                                    x:TypeArguments="x:Double" 
+                                    iOS="10" 
+                                    Android="0" />
+                            </Label.TranslationY>
+                            <Label.GestureRecognizers>
+                                 <TapGestureRecognizer Command="{ Binding DeleteAlertCommand }" NumberOfTapsRequired="1" /> 
+                            </Label.GestureRecognizers>
+
+
+                            <Label.Triggers>
+                                <DataTrigger 
+                                    TargetType="Label"
+                                    Binding="{Binding HaveInternet}"
+                                    Value="False">
+                                    <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    TargetType="Label"
+                                    Binding="{Binding DataFound}"
+                                    Value="False">
+                                    <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                           
+                            
+                        </Label>
+                        
+                    </x:Array>
+                </common:AppHeader.Options>
+
+            </common:AppHeader>
 
             <ScrollView 
                 Grid.Row="1"

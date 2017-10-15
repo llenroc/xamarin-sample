@@ -24,16 +24,14 @@ namespace Bullytect.Core.Pages.EditSon
 		protected override void OnAppearing()
 		{
 
-            Header.AddSchoolAction = async () =>  {
-                var page = new AddSchoolPopup();
-                page.BindingContext = ViewModel;
-                await PopupNavigation.PushAsync(page);
-            };
-
             ViewModel.NewSelectedImage += ViewModel_OnNewSelectedImage;
 
             ViewModel.SchoolAdded += ViewModel_OnSchoolAddedAsync;
             ViewModel.SonUpdated += ViewModel_OnOnSonUpdatedAsync;
+
+			var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += OnAddSchoolTappedAsync;
+			AddSchool.GestureRecognizers.Add(tapGestureRecognizer);
 
 
 		}
@@ -68,6 +66,14 @@ namespace Bullytect.Core.Pages.EditSon
             var page = new SocialMediaInfoPopup();
             page.BindingContext = ViewModel;
             await PopupNavigation.PushAsync(page);
+        }
+
+        async void OnAddSchoolTappedAsync(object sender, EventArgs args)
+        {
+            var page = new AddSchoolPopup();
+            page.BindingContext = ViewModel;
+            await PopupNavigation.PushAsync(page);
+
         }
 
     }

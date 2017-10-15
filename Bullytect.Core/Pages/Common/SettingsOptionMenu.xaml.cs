@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace Bullytect.Core.Pages.Alerts.Templates
+namespace Bullytect.Core.Pages.Common
 {
-    public partial class AlertsPageHeader : ContentView
+    public partial class SettingsOptionMenu : ContentView
     {
-        public AlertsPageHeader()
+        public SettingsOptionMenu()
         {
             InitializeComponent();
         }

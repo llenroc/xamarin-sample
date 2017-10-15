@@ -116,9 +116,6 @@
     <EmbeddedResource Include="Pages\Children\Templates\ChildrenItemTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Children\Templates\ChildrenHeader.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\EditSon\EditSonPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -134,22 +131,10 @@
     <EmbeddedResource Include="Pages\AlertDetail\AlertDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Profile\Template\ProfileHeader.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Home\Templates\HomeHeader.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\EditSon\Templates\EditSonHeader.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\AddSchool\AddSchoolPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\SonProfileFullScreen\SonProfileFullScreenPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Alerts\Templates\AlertsPageHeader.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Home\Templates\AlertItemTemplate.xaml">
@@ -164,19 +149,10 @@
     <EmbeddedResource Include="Pages\EditSon\Popup\SocialMediaInfoPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Results\Templates\ResultsHeader.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\Results\Templates\LastIterationsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Common\Templates\CommonInfoPopup.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\AlertDetail\Templates\AlertDetailHeader.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\SonProfile\Templates\SonProfileHeader.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Home\Templates\NoChildrenFound.xaml">
@@ -191,13 +167,25 @@
     <EmbeddedResource Include="Pages\Results\Settings\SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Common\Templates\SettingsHeader.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\Common\Templates\CommonCategoryCellView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Results\Settings\Templates\SonCategoryCellView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\AppHeader.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\RefreshOptionMenu.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\SettingsOptionMenu.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\SignOutOptionMenu.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Results\Templates\AlertsBySon.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -372,9 +360,6 @@
     <Compile Include="Pages\Children\Templates\ChildrenItemTemplate.xaml.cs">
       <DependentUpon>ChildrenItemTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Children\Templates\ChildrenHeader.xaml.cs">
-      <DependentUpon>ChildrenHeader.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\FontAwesomeFont.cs" />
     <Compile Include="ViewModels\EditSonViewModel.cs" />
     <Compile Include="Pages\EditSon\EditSonPage.xaml.cs">
@@ -394,9 +379,6 @@
       <DependentUpon>AlertDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AlertDetailViewModel.cs" />
-    <Compile Include="Pages\Profile\Template\ProfileHeader.xaml.cs">
-      <DependentUpon>ProfileHeader.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Messages\SignOutMessage.cs" />
     <Compile Include="Properties\AssemblyGlobal.cs" />
     <Compile Include="Pages\Common\Extended\ExtendedViewCell.cs" />
@@ -410,13 +392,7 @@
     <Compile Include="Converters\SwitchChangeEventArgsConverter.cs" />
     <Compile Include="OAuth\Providers\Instagram\InstagramOAuth2.cs" />
     <Compile Include="Pages\Common\Extended\TableViewWithoutBorders.cs" />
-    <Compile Include="Pages\Home\Templates\HomeHeader.xaml.cs">
-      <DependentUpon>HomeHeader.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Utils\AppConstants.cs" />
-    <Compile Include="Pages\EditSon\Templates\EditSonHeader.xaml.cs">
-      <DependentUpon>EditSonHeader.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\AddSchool\AddSchoolPopup.xaml.cs">
       <DependentUpon>AddSchoolPopup.xaml</DependentUpon>
     </Compile>
@@ -450,9 +426,6 @@
     <Compile Include="Converters\ValueEqualToZeroConverter.cs" />
     <Compile Include="Models\Domain\AlertsPageEntity.cs" />
     <Compile Include="Converters\DefaultReactiveUnitConverter.cs" />
-    <Compile Include="Pages\Alerts\Templates\AlertsPageHeader.xaml.cs">
-      <DependentUpon>AlertsPageHeader.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Home\Templates\AlertItemTemplate.xaml.cs">
       <DependentUpon>AlertItemTemplate.xaml</DependentUpon>
     </Compile>
@@ -483,9 +456,6 @@
     <Compile Include="ViewModels\ResultsViewModel.cs" />
     <Compile Include="Rest\Models\Response\IterationDTO.cs" />
     <Compile Include="Models\Domain\IterationEntity.cs" />
-    <Compile Include="Pages\Results\Templates\ResultsHeader.xaml.cs">
-      <DependentUpon>ResultsHeader.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Results\Templates\LastIterationsPage.xaml.cs">
       <DependentUpon>LastIterationsPage.xaml</DependentUpon>
     </Compile>
@@ -493,18 +463,12 @@
     <Compile Include="Pages\Common\Templates\CommonInfoPopup.xaml.cs">
       <DependentUpon>CommonInfoPopup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AlertDetail\Templates\AlertDetailHeader.xaml.cs">
-      <DependentUpon>AlertDetailHeader.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Converters\ValueGreaterThanZeroConverter.cs" />
     <Compile Include="Converters\ParentProfileImageURLConverter.cs" />
     <Compile Include="Rest\Models\Exceptions\ApiUnauthorizedAccessException.cs" />
     <Compile Include="Converters\SocialMediaInvalidStatusToBoolConverter.cs" />
     <Compile Include="OAuth\Models\AuthenticationState.cs" />
     <Compile Include="Rest\Models\Exceptions\NoSocialMediaFoundException.cs" />
-    <Compile Include="Pages\SonProfile\Templates\SonProfileHeader.xaml.cs">
-      <DependentUpon>SonProfileHeader.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Exceptions\OAuthInvalidAccessTokenException.cs" />
     <Compile Include="Pages\Home\Templates\NoChildrenFound.xaml.cs">
       <DependentUpon>NoChildrenFound.xaml</DependentUpon>
@@ -519,9 +483,6 @@
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ResultsSettingsViewModel.cs" />
-    <Compile Include="Pages\Common\Templates\SettingsHeader.xaml.cs">
-      <DependentUpon>..\..\Settings\Templates\SettingsHeader.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\Core\Models\PickerOptionModel.cs" />
     <Compile Include="Rest\Models\Exceptions\NoIterationsFoundForSelfParentException.cs" />
     <Compile Include="ViewModels\Core\Models\CategoryModel.cs" />
@@ -532,6 +493,21 @@
     <Compile Include="ViewModels\Core\Models\SonCategoryModel.cs" />
     <Compile Include="Pages\Results\Settings\Templates\SonCategoryCellView.xaml.cs">
       <DependentUpon>SonCategoryCellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\AppHeader.xaml.cs">
+      <DependentUpon>AppHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\RefreshOptionMenu.xaml.cs">
+      <DependentUpon>RefreshOptionMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\SettingsOptionMenu.xaml.cs">
+      <DependentUpon>SettingsOptionMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\SignOutOptionMenu.xaml.cs">
+      <DependentUpon>SignOutOptionMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Results\Templates\AlertsBySon.xaml.cs">
+      <DependentUpon>AlertsBySon.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -728,8 +704,6 @@
     <Folder Include="Pages\EditSon\Popup\" />
     <Folder Include="OAuth\Services\Impl\" />
     <Folder Include="Pages\Results\Templates\" />
-    <Folder Include="Pages\AlertDetail\Templates\" />
-    <Folder Include="Pages\SonProfile\Templates\" />
     <Folder Include="Pages\Home\Settings\" />
     <Folder Include="Pages\Results\Settings\" />
     <Folder Include="ViewModels\Core\Models\" />

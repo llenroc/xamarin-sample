@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:templates="clr-namespace:Bullytect.Core.Pages.Results.Templates"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:sf="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+    BackgroundColor="{ DynamicResource BasePageColor }"
+    x:Class="Bullytect.Core.Pages.Results.Templates.AlertsBySon">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+	<ContentView.Content>
+        <StackLayout>
+
+             <StackLayout 
+                VerticalOptions="Fill">
+                
+                    <StackLayout 
+                        VerticalOptions="Start"
+                        Margin="10"
+                        Spacing="10">
+
+
+                        <Label
+                            LineBreakMode="WordWrap"
+                            Text="{i18n:Translate Results.Last.Iterations }"
+                            TextColor="{ DynamicResource AccentColor }"
+                            VerticalTextAlignment="Center"
+                            FontSize="20">
+
+                            <Label.FontSize>
+                                <OnIdiom
+                                    x:TypeArguments="x:Double"
+                                    Phone="20"
+                                    Tablet="27"/>
+                            </Label.FontSize>
+                        </Label>
+
+                        <BoxView
+                            Style="{StaticResource LargeBrandNameOrnamentStyle}"
+                            BackgroundColor="{DynamicResource AccentColor}"
+                            Margin="10, 0"/>
+                    
+                    </StackLayout>
+
+                    <sf:SfChart
+                          HorizontalOptions="End"
+                          Margin="20, 0"
+                          x:Name="chart"
+                          IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
+                          IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}">
+                            
+                    </sf:SfChart>
+                
+                </StackLayout>
+
+                <common:NoDataFound
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand"
+                    IsVisible="{ Binding NoIterationsFound }"
+                    MainText="{i18n:Translate Results.Iterations.Not.Found.MainText }"
+                    DetailText="{i18n:Translate Results.Iterations.Not.Found.SecondText }"/>
+
+         </StackLayout>
+	</ContentView.Content>
+</ContentView>

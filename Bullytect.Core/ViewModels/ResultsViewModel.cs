@@ -35,7 +35,7 @@ namespace Bullytect.Core.ViewModels
 
             RefreshCommand.Subscribe((IterationEntities) => {
                 LastIteration = IterationEntities.FirstOrDefault();
-                LastIterations.ReplaceRange(IterationEntities);
+                //LastIterations.ReplaceRange(IterationEntities);
                 NoIterationsFound = false;
             });
 
@@ -46,7 +46,29 @@ namespace Bullytect.Core.ViewModels
 
         #region properties
 
-            public ObservableRangeCollection<IterationEntity> LastIterations { get; } = new ObservableRangeCollection<IterationEntity>();
+        public ObservableRangeCollection<IterationEntity> LastIterations { get; } = new ObservableRangeCollection<IterationEntity>(){
+            new IterationEntity() {
+                FinishDate = new DateTime(),
+                TotalComments = 45.0
+            },
+            new IterationEntity() {
+                FinishDate = new DateTime().AddMinutes(10),
+                TotalComments = 36.0
+            },
+            new IterationEntity() {
+                FinishDate = new DateTime().AddMinutes(20),
+                TotalComments = 67.0
+            },
+            new IterationEntity() {
+                FinishDate = new DateTime().AddMinutes(30),
+                TotalComments = 45.0
+            },
+			new IterationEntity() {
+				FinishDate = new DateTime().AddMinutes(40),
+				TotalComments = 45.0
+			}
+
+        };
 
             IterationEntity _lastIteration;
 

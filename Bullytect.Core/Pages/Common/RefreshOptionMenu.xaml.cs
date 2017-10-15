@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace Bullytect.Core.Pages.Children.Templates
+namespace Bullytect.Core.Pages.Common
 {
-    public partial class ChildrenHeader : ContentView
+    public partial class RefreshOptionMenu : ContentView
     {
-        public ChildrenHeader()
+        public RefreshOptionMenu()
         {
             InitializeComponent();
         }

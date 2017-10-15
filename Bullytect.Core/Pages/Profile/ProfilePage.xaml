@@ -10,7 +10,6 @@
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:extended="clr-namespace:Bullytect.Core.Pages.Common.Extended"
-    xmlns:templates="clr-namespace:Bullytect.Core.Pages.Profile.Template"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
@@ -57,8 +56,16 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <!-- CUSTOM NAVBAR -->
-            <templates:ProfileHeader Grid.Row="0"/>
+            <!-- APP Header -->
+            <common:AppHeader 
+                Grid.Row="0"
+                Title="{i18n:Translate Page.Profile.Title}">
+                <common:AppHeader.Options>
+                    <x:Array Type="{x:Type View}">
+                        <common:SignOutOptionMenu />
+                    </x:Array>
+                </common:AppHeader.Options>
+            </common:AppHeader>
 
             <StackLayout
                     Grid.Row="1"

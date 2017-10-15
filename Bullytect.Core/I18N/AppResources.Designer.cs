@@ -113,6 +113,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Page_Results_Title {
+            get {
+                return ResourceManager.GetString("Page.Results.Title", resourceCulture);
+            }
+        }
+        
         internal static string Common_Loading {
             get {
                 return ResourceManager.GetString("Common.Loading", resourceCulture);

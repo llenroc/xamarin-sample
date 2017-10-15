@@ -7,6 +7,7 @@
     xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
     xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
@@ -40,8 +41,31 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <!-- CUSTOM NAVBAR -->
-            <commonTemplates:SettingsHeader Grid.Row="0"/>
+            <common:AppHeader 
+                Grid.Row="0"
+                Title="{i18n:Translate Page.Settings.Title}">
+                <common:AppHeader.Options>
+                    <x:Array Type="{x:Type View}">
+                        <Label 
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            Text="{ x:Static helper:FontAwesomeFont.Save } " 
+                            FontSize="22"
+                            TextColor="{ DynamicResource CustomNavBarTextColor }" 
+                            Style="{ StaticResource FontIcon }">
+                            <Label.TranslationY>
+                                <OnPlatform 
+                                    x:TypeArguments="x:Double" 
+                                    iOS="10" 
+                                    Android="0" />
+                            </Label.TranslationY>
+                            <Label.GestureRecognizers>
+                                 <TapGestureRecognizer Command="{ Binding SaveCommand }" NumberOfTapsRequired="1" /> 
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </x:Array>
+                </common:AppHeader.Options>
+            </common:AppHeader>
 
             <TableView  Grid.Row="1" Intent="Settings" HasUnevenRows="true">
                 

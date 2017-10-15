@@ -57,7 +57,7 @@ namespace Bullytect.Core
 				cfg.CreateMap<SocialMediaEntity, SaveSocialMediaDTO>();
                 cfg.CreateMap<SchoolDTO, SchoolEntity>();
                 cfg.CreateMap<AlertsPageDTO, AlertsPageEntity>();
-
+                cfg.CreateMap<IterationDTO, IterationEntity>();
                 // Mapper for SonEntity to SonCategoryModel
                 cfg.CreateMap<SonEntity, SonCategoryModel>()
                 .ForMember(s => s.Name, (obj) =>

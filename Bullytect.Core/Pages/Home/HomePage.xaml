@@ -50,8 +50,20 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <!-- CUSTOM NAVBAR -->
-            <templates:HomeHeader Grid.Row="0"/>
+            <!-- APP Header -->
+            <common:AppHeader 
+                Grid.Row="0"
+                Title="{i18n:Translate Page.Home.Title}"
+                BackEnable="false">
+                <common:AppHeader.Options>
+                    <x:Array Type="{x:Type View}">
+                        <common:RefreshOptionMenu />
+                        <common:SettingsOptionMenu />
+                        <common:SignOutOptionMenu />
+                    </x:Array>
+                </common:AppHeader.Options>
+
+            </common:AppHeader>
 
 
             <controls:PullToRefreshLayout

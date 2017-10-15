@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace Bullytect.Core.Pages.Common.Templates
+namespace Bullytect.Core.Pages.Common
 {
-    public partial class SettingsHeader : ContentView
+    public partial class SignOutOptionMenu : ContentView
     {
-        public SettingsHeader()
+        public SignOutOptionMenu()
         {
             InitializeComponent();
         }
