@@ -15,6 +15,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Bullytect.Core.Helpers;
 using System.Linq;
+using MvvmHelpers;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -29,7 +30,7 @@ namespace Bullytect.Core.ViewModels
             _alertService = alertService;
 
 			ClearAlertsCommand = ReactiveCommand
-				.CreateFromObservable<Unit, int>((param) =>
+				.CreateFromObservable<Unit, string>((param) =>
 				{
                     return _appHelper.RequestConfirmation(AppResources.Alerts_Confirm_Clear)
                                      .Do((_) => _userDialogs.ShowLoading(AppResources.Alerts_Deleting_Alerts))
@@ -40,22 +41,22 @@ namespace Bullytect.Core.ViewModels
 
             ClearAlertsCommand.Subscribe((alertsDeleted) => {
                 Debug.WriteLine("Alerts Deleted -> " + alertsDeleted);
-                Alerts = null;
+                Alerts.Clear();
                 DataFound = false;
             });
 
             ClearAlertsCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
-            LoadAlertsCommand = ReactiveCommand
+            RefreshCommand = ReactiveCommand
                 .CreateFromObservable<Unit, IList<AlertEntity>>((param) => string.IsNullOrEmpty(SonIdentity) ? alertService.GetSelfAlerts() : _alertService.GetAlertsBySon(SonIdentity));
 
-            LoadAlertsCommand.Subscribe((AlertsEntities) => {
-                Alerts = new ObservableCollection<AlertEntity>(AlertsEntities);
+            RefreshCommand.Subscribe((AlertsEntities) => {
+                Alerts.ReplaceRange(AlertsEntities);
             });
 
-            LoadAlertsCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
+            RefreshCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
 
-			LoadAlertsCommand.ThrownExceptions.Subscribe(HandleExceptions);
+			RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
             DeleteAlertCommand = ReactiveCommand
                 .CreateFromObservable<AlertEntity, string>((AlertEntity) => 
@@ -90,22 +91,17 @@ namespace Bullytect.Core.ViewModels
 			set => SetProperty(ref _sonIdentity, value);
         }
 
-        ObservableCollection<AlertEntity> _alerts;
+        public ObservableRangeCollection<AlertEntity> Alerts { get; } = new ObservableRangeCollection<AlertEntity>();
 
-		public ObservableCollection<AlertEntity> Alerts
-		{
-			get => _alerts;
-			set => SetProperty(ref _alerts, value);
-		}
 
         #endregion
 
 
         #region commands
 
-        public ReactiveCommand<Unit, IList<AlertEntity>> LoadAlertsCommand { get; protected set; }
+        public ReactiveCommand<Unit, IList<AlertEntity>> RefreshCommand { get; protected set; }
 
-        public ReactiveCommand<Unit, int> ClearAlertsCommand { get; protected set; }
+        public ReactiveCommand<Unit, string> ClearAlertsCommand { get; protected set; }
 
         public ICommand ShowAlertDetailCommand => new MvxCommand<AlertEntity>((AlertEntity AlertEntity) => ShowViewModel<AlertDetailViewModel>(new AlertDetailViewModel.AlertParameter() {
             Identity = AlertEntity.Identity,

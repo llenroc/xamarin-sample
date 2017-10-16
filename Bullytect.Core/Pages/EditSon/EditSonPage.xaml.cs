@@ -29,11 +29,6 @@ namespace Bullytect.Core.Pages.EditSon
             ViewModel.SchoolAdded += ViewModel_OnSchoolAddedAsync;
             ViewModel.SonUpdated += ViewModel_OnOnSonUpdatedAsync;
 
-			var tapGestureRecognizer = new TapGestureRecognizer();
-            tapGestureRecognizer.Tapped += OnAddSchoolTappedAsync;
-			AddSchool.GestureRecognizers.Add(tapGestureRecognizer);
-
-
 		}
 
 		protected override void OnDisappearing()
@@ -45,6 +40,7 @@ namespace Bullytect.Core.Pages.EditSon
 
 		void ViewModel_OnNewSelectedImage(Object sender, MediaFile NewProfileImage)
 		{
+
 			profileImage.Source = ImageSource.FromStream(() => NewProfileImage.GetStream());
 		}
 
@@ -54,9 +50,8 @@ namespace Bullytect.Core.Pages.EditSon
         }
 
 
-        async void ViewModel_OnOnSonUpdatedAsync(Object sender, SonEntity SonEntity)
+        void ViewModel_OnOnSonUpdatedAsync(Object sender, SonEntity SonEntity)
 		{
-			await CachedImage.InvalidateCache(profileImage.Source, CacheType.All, true);
 			profileImage.ReloadImage();
 		}
 
@@ -68,13 +63,6 @@ namespace Bullytect.Core.Pages.EditSon
             await PopupNavigation.PushAsync(page);
         }
 
-        async void OnAddSchoolTappedAsync(object sender, EventArgs args)
-        {
-            var page = new AddSchoolPopup();
-            page.BindingContext = ViewModel;
-            await PopupNavigation.PushAsync(page);
-
-        }
 
     }
 }

@@ -49,5 +49,10 @@ namespace Bullytect.Core.Rest.Services.Impl
         {
             return Observable.FromAsync(() => PostStreamData<APIResponse<ImageDTO>>(ApiEndpoints.UPLOAD_SON_PROFILE_IMAGE.Replace(":id", id), "profile_image", stream));
         }
+
+		public IObservable<APIResponse<string>> DeleteSonById(string id)
+		{
+            return Observable.FromAsync(() => DeleteData<APIResponse<string>>(ApiEndpoints.DELETE_SON_BY_ID.Replace(":id", id)));
+		}
     }
 }

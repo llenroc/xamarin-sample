@@ -16,6 +16,7 @@ using Bullytect.Core.OAuth.Providers.Facebook;
 using Bullytect.Core.OAuth.Providers.Google;
 using Bullytect.Core.OAuth.Providers.Instagram;
 using Bullytect.Core.OAuth.Services;
+using Bullytect.Core.Pages.AddSchool;
 using Bullytect.Core.Rest.Models.Exceptions;
 using Bullytect.Core.Rest.Utils;
 using Bullytect.Core.Services;
@@ -25,6 +26,7 @@ using MvvmCross.Plugins.Messenger;
 using MvvmHelpers;
 using Plugin.Media.Abstractions;
 using ReactiveUI;
+using Rg.Plugins.Popup.Services;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -46,14 +48,21 @@ namespace Bullytect.Core.ViewModels
             _oauthService = oauthService;
 
 
-            RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, PageModel>((param) => LoadPageModel());
+            RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, PageModel>((param) => !PageLoaded ? LoadPageModel(): Observable.Empty<PageModel>());
 
             RefreshCommand.Subscribe(OnPageModelLoaded);
 
-			RefreshCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
+            RefreshCommand.IsExecuting.Subscribe((isExecuting) => HandleIsExecuting(isExecuting, AppResources.Common_Loading));
 
 			RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
+            ForceRefreshCommand = ReactiveCommand.CreateFromObservable<Unit, PageModel>((param) => LoadPageModel());
+
+			ForceRefreshCommand.Subscribe(OnPageModelLoaded);
+
+            ForceRefreshCommand.IsExecuting.Subscribe((isExecuting) => HandleIsExecuting(isExecuting, AppResources.Common_Loading));
+
+			ForceRefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
             TakePhotoCommand = ReactiveCommand.CreateFromObservable<Unit, MediaFile>((param) => _appHelper.PickPhotoStream());
 
@@ -63,7 +72,6 @@ namespace Bullytect.Core.ViewModels
                 NewProfileImage = ImageFile;
                 OnNewSelectedImage(ImageFile);
             });
-
 
             TakePhotoCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
@@ -194,6 +202,13 @@ namespace Bullytect.Core.ViewModels
             }
         }
 
+        bool _pageLoaded = false;
+
+        public bool PageLoaded {
+            get => _pageLoaded;
+            set => SetProperty(ref _pageLoaded, value);
+        }
+
         #endregion
 
         #region delegates
@@ -232,8 +247,6 @@ namespace Bullytect.Core.ViewModels
 
         public override void Start()
         {
-
-            LoadPageModel().ObserveOn(Scheduler.Default).Subscribe(OnPageModelLoaded);
             CurrentSocialMedia.CollectionChanged += CurrentSocialMediaCollectionChanged;
             Schools.CollectionChanged += SchoolsCollectionChanged;
         }
@@ -256,6 +269,8 @@ namespace Bullytect.Core.ViewModels
 
         public ReactiveCommand<Unit, PageModel> RefreshCommand { get; protected set; }
 
+        public ReactiveCommand<Unit, PageModel> ForceRefreshCommand { get; protected set;  }
+
         public ICommand ToggleFacebookSocialMediaCommand
                         => new MvxCommand(() => ToggleSocialMediaHandler(new FacebookOAuth2(), AppConstants.FACEBOOK));
 
@@ -271,6 +286,13 @@ namespace Bullytect.Core.ViewModels
         public ICommand ResetSocialMediaCommand
                         => new MvxCommand<string>((string Type) => ResetSocialMediaHandler(Type));
 
+        public ICommand ShowAddSchoolPopupCommand
+                        => new MvxCommand(async () =>
+                        {
+                            var page = new AddSchoolPopup();
+                            page.BindingContext = this;
+                            await PopupNavigation.PushAsync(page);
+                        });
 
         #endregion
 
@@ -288,7 +310,7 @@ namespace Bullytect.Core.ViewModels
                 {
                     Son = SonEntity,
                     SocialMedia = SocialMedia
-                });
+                }).ObserveOn(Scheduler.Default);
         }
 
         IObservable<IEnumerable<SchoolPickerModel>> GetSchoolNames()
@@ -297,7 +319,7 @@ namespace Bullytect.Core.ViewModels
             {
                 Identity = SchoolEntry.Key,
                 Name = SchoolEntry.Value
-            })).OnErrorResumeNext(Observable.Return(new List<SchoolPickerModel>()));
+            })).OnErrorResumeNext(Observable.Return(new List<SchoolPickerModel>())).ObserveOn(Scheduler.Default);
         }
 
         IObservable<PageModel> LoadPageModel() {
@@ -311,7 +333,7 @@ namespace Bullytect.Core.ViewModels
 					SonInformation = sonInformation,
 					Schools = schools
 
-				});
+				}).ObserveOn(Scheduler.Default);
 			}
 			else
 			{
@@ -393,6 +415,8 @@ namespace Bullytect.Core.ViewModels
 
         void OnPageModelLoaded(PageModel Page) {
 
+
+
 			if (Page?.Schools?.Count() > 0)
 			{
 				Schools.ReplaceRange(Page.Schools);
@@ -416,6 +440,8 @@ namespace Bullytect.Core.ViewModels
 			}
 
             ResetCommonProps();
+
+            PageLoaded = true;
 
         }
 

@@ -14,19 +14,19 @@ namespace Bullytect.Core.Rest.Services.Impl
         {
         }
 
-        public IObservable<int> ClearAlertsOfSon(string SonId)
+        public IObservable<APIResponse<string>> ClearAlertsOfSon(string SonId)
         {
-            return Observable.FromAsync(() => DeleteData<int>(ApiEndpoints.CLEAR_ALERTS_FOR_SON.Replace(":id", SonId)));
+            return Observable.FromAsync(() => DeleteData<APIResponse<string>>(ApiEndpoints.CLEAR_ALERTS_FOR_SON.Replace(":id", SonId)));
         }
 
-        public IObservable<int> ClearSelfAlerts()
+        public IObservable<APIResponse<string>> ClearSelfAlerts()
         {
-            return Observable.FromAsync(() => DeleteData<int>(ApiEndpoints.CLEAR_SELF_ALERTS));
+            return Observable.FromAsync(() => DeleteData<APIResponse<string>>(ApiEndpoints.CLEAR_SELF_ALERTS));
         }
 
-        public IObservable<string> DeleteAlertOfSon(string SonId, string AlertId)
+        public IObservable<APIResponse<string>> DeleteAlertOfSon(string SonId, string AlertId)
         {
-            return Observable.FromAsync(() => DeleteData<string>(ApiEndpoints.DELETE_ALERT.Replace(":son", SonId).Replace(":alert", AlertId)));
+            return Observable.FromAsync(() => DeleteData<APIResponse<string>>(ApiEndpoints.DELETE_ALERT.Replace(":son", SonId).Replace(":alert", AlertId)));
         }
 
         public IObservable<APIResponse<IList<AlertDTO>>> GetAlertsBySon(string SonId)

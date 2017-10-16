@@ -35,8 +35,7 @@
             <!-- APP Header -->
             <common:AppHeader 
                 Grid.Row="0"
-                Title="{ Binding FullName, StringFormat={i18n:Translate Page.Son.Profile.Title}}"
-                BackEnable="false">
+                Title="{ Binding FullName, StringFormat={i18n:Translate Page.Son.Profile.Title}}">
                 <common:AppHeader.Options>
                     <x:Array Type="{x:Type View}">
                         <!-- Delete Son -->

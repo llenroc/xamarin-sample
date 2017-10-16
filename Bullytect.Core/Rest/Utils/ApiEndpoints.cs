@@ -10,6 +10,7 @@ namespace Bullytect.Core.Rest.Utils
         public static string GET_AUTHORIZATION_TOKEN = string.Concat(SharedConfig.BASE_API_URL, "/parents/auth/");
         public static string GET_AUTHORIZATION_TOKEN_BY_FACEBOOK = string.Concat(SharedConfig.BASE_API_URL, "/parents/auth/facebook");
         public static string GET_SON_BY_ID = string.Concat(SharedConfig.BASE_API_URL, "/children/:id");
+        public static string DELETE_SON_BY_ID = string.Concat(SharedConfig.BASE_API_URL, "/children/:id");
         public static string GET_ALL_SOCIAL_MEDIA_BY_SON_ID = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/social");
         public static string GET_INVALID_SOCIAL_MEDIA_BY_SON_ID = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/social/invalid");
         public static string SAVE_SOCIAL_MEDIA = string.Concat(SharedConfig.BASE_API_URL, "/children/social/save");

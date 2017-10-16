@@ -13,9 +13,9 @@ namespace Bullytect.Core.Rest.Services
         IObservable<APIResponse<AlertsPageDTO>> GetLastSelfAlerts(int Count, int LastMinutes, String[] Levels);
         IObservable<APIResponse<IList<AlertDTO>>> GetSelfAlerts();
         IObservable<APIResponse<IList<AlertDTO>>> GetAlertsBySon(string SonId);
-        IObservable<int> ClearAlertsOfSon(string SonId);
-        IObservable<string> DeleteAlertOfSon(string SonId, string AlertId);
-        IObservable<int> ClearSelfAlerts();
+        IObservable<APIResponse<string>> ClearAlertsOfSon(string SonId);
+        IObservable<APIResponse<string>> DeleteAlertOfSon(string SonId, string AlertId);
+        IObservable<APIResponse<string>> ClearSelfAlerts();
 
     }
 }

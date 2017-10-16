@@ -173,7 +173,7 @@ namespace Bullytect.Core.Services.Impl
                 .Select(son => Mapper.Map<SonDTO, SonEntity>(son))
 				.Finally(() =>
 				{
-					Debug.WriteLine("Get Son By Id ....");
+					Debug.WriteLine("Get Son By Id Finished ....");
 				});
 
             return operationDecorator(observable);
@@ -266,6 +266,21 @@ namespace Bullytect.Core.Services.Impl
 				.Finally(() =>
 				{
 					Debug.WriteLine("Get Last Finished ...");
+				});
+
+			return operationDecorator(observable);
+        }
+
+        public IObservable<string> DeleteSonById(string Id)
+        {
+			Debug.WriteLine(string.Format("Delete Son With id: {0}", Id));
+
+			var observable = _childrenRestService
+                .DeleteSonById(Id)
+				.Select((response) => response.Data)
+				.Finally(() =>
+				{
+					Debug.WriteLine("Delete Son By Id ....");
 				});
 
 			return operationDecorator(observable);

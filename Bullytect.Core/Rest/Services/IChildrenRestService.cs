@@ -24,6 +24,8 @@ namespace Bullytect.Core.Rest.Services
 		IObservable<APIResponse<SocialMediaDTO>> DeleteSocialMedia(string idson, string idsocial);
 
         IObservable<APIResponse<ImageDTO>> UploadProfileImage(string id, Stream stream);
+
+        IObservable<APIResponse<String>> DeleteSonById(string id);
  
     }
 }

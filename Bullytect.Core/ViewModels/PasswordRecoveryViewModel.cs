@@ -23,9 +23,7 @@ namespace Bullytect.Core.ViewModels
             ResetPasswordCommand = ReactiveCommand.CreateFromObservable<Unit, string>((_) => _parentService.ResetPassword(_email));
 
             ResetPasswordCommand.Subscribe((_) => {
-				Debug.WriteLine(String.Format("Password Reset Request"));
                 _appHelper.Toast(AppResources.Password_Recovery_Request_Completed, System.Drawing.Color.FromArgb(12, 131, 193));
-				ShowViewModel<AuthenticationViewModel>();
             });
 
 

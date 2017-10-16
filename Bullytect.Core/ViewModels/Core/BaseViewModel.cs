@@ -98,6 +98,7 @@ namespace Bullytect.Core.ViewModels
             get { return _isBusy != null ? _isBusy.Value : false; }
         }
 
+
         protected virtual void HandleExceptions(Exception ex)
         {
 

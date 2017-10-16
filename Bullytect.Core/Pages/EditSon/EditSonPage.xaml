@@ -36,6 +36,7 @@
                 <converters:PickerSelectedIndexChangedArgsConverter x:Key="PickerSelectedIndexChangedArgsConverter" />
                 <converters:NullVisibilityConverter x:Key="NullVisibilityConverter" />
                 <converters:SocialMediaInvalidStatusToBoolConverter x:Key="SocialMediaInvalidStatusToBoolConverter" />
+                <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
                 <x:String x:Key="firstNameKey">firstName</x:String>
                 <x:String x:Key="lastNameKey">lastName</x:String>
                 <x:String x:Key="schoolKey">school</x:String>
@@ -45,6 +46,14 @@
                 <x:String x:Key="youtubeKey">YOUTUBE</x:String>
             </ResourceDictionary>
     </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <behaviors:EventHandlerBehavior EventName="Appearing" >
+            <behaviors:InvokeCommandAction 
+                    Command="{Binding RefreshCommand}" 
+                    Converter="{ StaticResource DefaultReactiveUnitConverter}" />
+        </behaviors:EventHandlerBehavior>
+    </ContentPage.Behaviors>
 
 	<ContentPage.Content>
 
@@ -81,26 +90,14 @@
                                     Android="0" />
                             </Label.TranslationY>
                             <Label.GestureRecognizers>
-                                 <TapGestureRecognizer Command="{ Binding RefreshCommand }" NumberOfTapsRequired="1" /> 
+                                 <TapGestureRecognizer Command="{ Binding ForceRefreshCommand }" NumberOfTapsRequired="1" /> 
                             </Label.GestureRecognizers>
 
                             <Label.Triggers>
                                 <DataTrigger
                                     TargetType="Label"
-                                    Binding="{Binding IsBusy}"
-                                    Value="True">
-                                    <Setter Property="IsVisible" Value="False" />
-                                </DataTrigger>
-                                <DataTrigger 
-                                    TargetType="Label"
-                                    Binding="{ Binding SonToEdit, Converter={ x:Static converters:IsNullToBoolConverter.Instance }}"
-                                    Value="True">
-                                    <Setter Property="IsVisible" Value="False" />
-                                </DataTrigger>
-                                <DataTrigger
-                                    TargetType="Label"
                                     Binding="{Binding ErrorOccurred}"
-                                    Value="False">
+                                    Value="True">
                                     <Setter Property="IsVisible" Value="False" />
                                 </DataTrigger>
                             </Label.Triggers>
@@ -108,7 +105,6 @@
                         </Label>
 
                         <Label 
-                            x:Name="AddSchool"
                             HorizontalOptions="End"
                             TranslationY="0"
                             VerticalOptions="Center"
@@ -122,7 +118,11 @@
                                     iOS="10" 
                                     Android="0" />
                             </Label.TranslationY>
-                            
+                            <Label.GestureRecognizers>
+                                 <TapGestureRecognizer 
+                                    Command="{ Binding ShowAddSchoolPopupCommand }" 
+                                    NumberOfTapsRequired="1" /> 
+                            </Label.GestureRecognizers>
                         </Label>
                     </x:Array>
                 </common:AppHeader.Options>

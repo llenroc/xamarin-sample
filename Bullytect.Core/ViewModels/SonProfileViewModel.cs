@@ -15,12 +15,17 @@ namespace Bullytect.Core.ViewModels
     public class SonProfileViewModel : BaseViewModel
     {
 
+        readonly IParentService _parentService;
+
         public SonProfileViewModel(IUserDialogs userDialogs, 
-                                   IMvxMessenger mvxMessenger, AppHelper appHelper) : base(userDialogs, mvxMessenger, appHelper)
+                                   IMvxMessenger mvxMessenger, AppHelper appHelper, IParentService parentService) : base(userDialogs, mvxMessenger, appHelper)
         {
+
+            _parentService = parentService;
 
 			DeleteSonCommand = ReactiveCommand
                 .CreateFromObservable(() => _appHelper.RequestConfirmation(AppResources.Son_Profile_Delete_Confirm)
+                                      .SelectMany((confirmed) => confirmed ? _parentService.DeleteSonById(Identity) : Observable.Empty<string>())
                                       .Do((_) => Close(this)));
 
 			DeleteSonCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Common_Loading));

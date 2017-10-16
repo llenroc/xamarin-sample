@@ -23,13 +23,14 @@ namespace Bullytect.Core.Services.Impl
             _alertRestService = alertRestService;
         }
 
-        public IObservable<int> ClearAlertsOfSon(string SonId)
+        public IObservable<string> ClearAlertsOfSon(string SonId)
         {
 
             Debug.WriteLine("Clear Alerts Of Son with id : " + SonId);
 
 			var observable = _alertRestService
                 .ClearAlertsOfSon(SonId)
+                .Select((response) => response.Data)
 				.Finally(() => {
 					Debug.WriteLine("Clear Alerts Of Son finished ...");
 				});
@@ -37,12 +38,13 @@ namespace Bullytect.Core.Services.Impl
 			return operationDecorator(observable);
         }
 
-        public IObservable<int> ClearSelfAlerts()
+        public IObservable<string> ClearSelfAlerts()
         {
             Debug.WriteLine("Clear Self Alerts");
 
 			var observable = _alertRestService
                 .ClearSelfAlerts()
+                .Select((response) => response.Data)
 				.Finally(() => {
 					Debug.WriteLine("Clear Self Alerts Finished ");
 				});
@@ -56,6 +58,7 @@ namespace Bullytect.Core.Services.Impl
 
 			var observable = _alertRestService
 				.DeleteAlertOfSon(SonId, AlertId)
+                .Select((response) => response.Data)
 				.Finally(() => {
 					Debug.WriteLine("Delete Alerts Of Son finished ...");
 				});

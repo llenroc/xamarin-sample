@@ -15,7 +15,8 @@
     xmlns:templates="clr-namespace:Bullytect.Core.Pages.Alerts.Templates"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     Title="{i18n:Translate Page.Alerts.Title}"
-    BackgroundColor="{ DynamicResource BasePageColor }">
+    BackgroundColor="{ DynamicResource BasePageColor }"
+    x:Name="Root">
     <ContentPage.Resources>
            <ResourceDictionary>
                 <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
@@ -28,7 +29,7 @@
     <ContentPage.Behaviors>
         <behaviors:EventHandlerBehavior EventName="Appearing">
             <behaviors:InvokeCommandAction 
-                    Command="{ Binding LoadAlertsCommand }" 
+                    Command="{ Binding RefreshCommand }" 
                     Converter="{ StaticResource DefaultReactiveUnitConverter}" />
         </behaviors:EventHandlerBehavior>
     </ContentPage.Behaviors>
@@ -82,6 +83,12 @@
                                 Value="False">
                                 <Setter Property="IsVisible" Value="False" />
                             </DataTrigger>
+                            <DataTrigger
+                                TargetType="Label"
+                                Binding="{Binding ErrorOccurred}"
+                                Value="True">
+                                <Setter Property="IsVisible" Value="False" />
+                            </DataTrigger>
                         </Label.Triggers>
                         
                     </Label>
@@ -115,7 +122,10 @@
                  <DataTemplate>
                      <ViewCell>
                          <ViewCell.ContextActions>
-                             <MenuItem Text="{i18n:Translate Alerts.Delete.Alert}" Command="{Binding DeleteAlertCommand }" CommandParameter="{Binding .}"/>
+                             <MenuItem 
+                                Text="{i18n:Translate Alerts.Delete.Alert}" 
+                                Command="{ Binding Path=BindingContext.DeleteAlertCommand, Source={x:Reference Root} }"
+                                CommandParameter="{Binding .}"/>
                          </ViewCell.ContextActions>
                          <templates:AlertItemTemplate/>
                     </ViewCell>

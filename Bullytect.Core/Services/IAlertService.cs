@@ -11,10 +11,10 @@ namespace Bullytect.Core.Services
     {
         IObservable<AlertsPageEntity> GetLastAlertsForSelfParent();
         IObservable<IList<AlertEntity>> GetSelfAlerts();
-        IObservable<int> ClearAlertsOfSon(string SonId);
+        IObservable<string> ClearAlertsOfSon(string SonId);
         IObservable<string> DeleteAlertOfSon(string SonId, string AlertId);
         IObservable<IList<AlertEntity>> GetAlertsBySon(string SonId);
-        IObservable<int> ClearSelfAlerts();
+        IObservable<string> ClearSelfAlerts();
         IObservable<IList<AlertCategoryModel>> GetAllAlertsCategories();
     }
 }

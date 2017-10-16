@@ -45,10 +45,10 @@ namespace Bullytect.Core.Helpers
 		{
 
 			return Observable.FromAsync<string>((_) => _userDialogs.ActionSheetAsync(
-				AppResources.Profile_Select_Profile_Image,
-				AppResources.Common_Cancel_Operation, null, null,
+                AppResources.Profile_Select_Profile_Image,
+                AppResources.Common_Cancel_Operation, null, null,
 				new string[] { AppResources.Profile_Select_Profile_Image_From_Camera, AppResources.Profile_Select_Profile_Image_From_Galery }))
-							 .Where((action => !action.Equals(AppResources.Common_Cancel_Operation)))
+							 .Select((action => !action.Equals(AppResources.Common_Cancel_Operation)))
 							 .SelectMany((action) =>
 							 {
 
