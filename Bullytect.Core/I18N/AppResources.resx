@@ -756,6 +756,10 @@ and we will recover it for you. </value>
   <data name="Results.Last.Iterations" xml:space="preserve">
     <value>Last Iterations</value>
     <comment>Results Last Iterations</comment>
+  </data>
+  <data name="Results.Alerts.by.Son" xml:space="preserve">
+    <value>Alerts By Son</value>
+    <comment>Results Alerts by son</comment>
   </data> 
   <data name="Results.Settings.Iterations.Count" xml:space="preserve">
     <value>Number of Iterations</value>

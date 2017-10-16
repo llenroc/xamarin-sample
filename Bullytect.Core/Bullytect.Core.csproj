@@ -185,7 +185,7 @@
     <EmbeddedResource Include="Pages\Common\SignOutOptionMenu.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Results\Templates\AlertsBySon.xaml">
+    <EmbeddedResource Include="Pages\Results\Templates\AlertsBySonPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -506,9 +506,10 @@
     <Compile Include="Pages\Common\SignOutOptionMenu.xaml.cs">
       <DependentUpon>SignOutOptionMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Results\Templates\AlertsBySon.xaml.cs">
-      <DependentUpon>AlertsBySon.xaml</DependentUpon>
+    <Compile Include="Pages\Results\Templates\AlertsBySonPage.xaml.cs">
+      <DependentUpon>AlertsBySonPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Core\Models\AlertsBySon.cs" />
   </ItemGroup>
   <ItemGroup>
   	<Reference Include="Syncfusion.SfChart.XForms">

@@ -1001,6 +1001,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Results_Alerts_by_Son {
+            get {
+                return ResourceManager.GetString("Results.Alerts.by.Son", resourceCulture);
+            }
+        }
+        
         internal static string Results_Settings_Iterations_Count {
             get {
                 return ResourceManager.GetString("Results.Settings.Iterations.Count", resourceCulture);

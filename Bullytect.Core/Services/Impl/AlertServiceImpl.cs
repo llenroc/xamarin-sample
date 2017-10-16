@@ -10,6 +10,7 @@ using System.Collections;
 using Bullytect.Core.Config;
 using Bullytect.Core.I18N;
 using Bullytect.Core.ViewModels.Core.Models;
+using Syncfusion.SfChart.XForms;
 
 namespace Bullytect.Core.Services.Impl
 {
@@ -79,6 +80,41 @@ namespace Bullytect.Core.Services.Impl
 				});
 
 			return operationDecorator(observable);
+        }
+
+        public IObservable<IList<AlertsBySon>> GetAlertsBySon()
+        {
+            var alertsBySon = new List<AlertsBySon>()
+            {
+                new AlertsBySon() {
+                    FullName = "Sergio Martín",
+                    Alerts = new List<ChartDataPoint>(){
+                        new ChartDataPoint("INFO", 23),
+                        new ChartDataPoint("WARNING", 12),
+                        new ChartDataPoint("ERROR", 21)
+                    }
+                },
+				new AlertsBySon() {
+					FullName = "Pedro Martín",
+					Alerts = new List<ChartDataPoint>(){
+						new ChartDataPoint("INFO", 23),
+						new ChartDataPoint("WARNING", 12),
+						new ChartDataPoint("ERROR", 21)
+					}
+				},
+				new AlertsBySon() {
+					FullName = "María Martín",
+					Alerts = new List<ChartDataPoint>(){
+						new ChartDataPoint("INFO", 23),
+						new ChartDataPoint("WARNING", 12),
+						new ChartDataPoint("ERROR", 21)
+					}
+				}
+
+            };
+
+            return Observable.Return(alertsBySon);
+
         }
 
         public IObservable<IList<AlertCategoryModel>> GetAllAlertsCategories()
