@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using Bullytect.Core.ViewModels;
 using Bullytect.Core.ViewModels.Core.Models;
-using Syncfusion.SfChart.XForms;
+using Microcharts;
+using Microcharts.Forms;
 using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.Results.Templates
 {
     public partial class AlertsBySonPage : ContentView
     {
-        const int CHART_HEIGHT = 400;
-        const int CHART_WIDTH = 400;
+        const int CHART_HEIGHT = 250;
+        const int CHART_WIDTH = 250;
 
 		public static readonly BindableProperty AlertsBySonProperty = BindableProperty.Create(
 			nameof(AlertsBySon),
@@ -30,7 +31,6 @@ namespace Bullytect.Core.Pages.Results.Templates
 
 		}
 
-
         static void OnAlertsBySonPropertyChanging(BindableObject bindable, object oldValue, object newValue){
 			var page = bindable as AlertsBySonPage;
 			var charts = newValue as IList<AlertsBySon>;
@@ -42,23 +42,28 @@ namespace Bullytect.Core.Pages.Results.Templates
 			foreach (var chart in charts)
 			{
 
-				SfChart sfChart = new SfChart()
+				ChartView MCChart = new ChartView()
 				{
 					HeightRequest = CHART_HEIGHT,
-					WidthRequest = CHART_WIDTH,
-					Legend = new ChartLegend(),
+					WidthRequest = CHART_WIDTH
 
 				};
+				//sfChart.Title.Text = chart.FullName;
 
-				sfChart.Title.Text = chart.FullName;
+                var ChartContainer = new StackLayout();
 
-				sfChart.Series.Add(new DoughnutSeries()
-				{
-					ItemsSource = chart.Alerts,
-					DataMarker = new ChartDataMarker()
-				});
+                ChartContainer.Children.Add(new Label() {
+                    Text = chart.FullName
+                });
 
-				page.AlertsBySonChart.Children.Add(sfChart);
+
+				MCChart.Chart = new DonutChart() { Entries = chart.Alerts };
+
+				MCChart.Chart.LabelTextSize = 20.45f;
+
+                ChartContainer.Children.Add(MCChart);
+
+				page.AlertsBySonChart.Children.Add(ChartContainer);
 			}
         }
 

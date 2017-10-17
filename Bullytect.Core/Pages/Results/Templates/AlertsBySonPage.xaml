@@ -6,7 +6,6 @@
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
-    xmlns:sf="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
     BackgroundColor="{ DynamicResource BasePageColor }"
     x:Class="Bullytect.Core.Pages.Results.Templates.AlertsBySonPage">
     <ContentPage.Resources>

@@ -5,8 +5,8 @@
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
-    xmlns:sf="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
     BackgroundColor="{ DynamicResource BasePageColor }"
+    xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" 
     x:Class="Bullytect.Core.Pages.Results.Templates.LastIterationsPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -50,69 +50,11 @@
                 
                 </StackLayout>
 
-                <sf:SfChart
-                      HorizontalOptions="End"
-                      Margin="20, 0"
-                      x:Name="chart"
-                      IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
-                      IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}">
-                        <sf:SfChart.Legend>
-                            <sf:ChartLegend DockPosition="Top" />
-                        </sf:SfChart.Legend>
-                        <sf:SfChart.HeightRequest>
-                            <OnPlatform x:TypeArguments="x:Double" iOS="450" Android="450" />
-                        </sf:SfChart.HeightRequest>
-                        <sf:SfChart.PrimaryAxis>
-                            <sf:CategoryAxis
-                                LabelRotationAngle="-45"
-                                EdgeLabelsDrawingMode="Center"
-                                LabelPlacement="BetweenTicks"
-                                TickPosition="Inside"
-                                ShowMajorGridLines="false">
-                                <sf:CategoryAxis.Title>
-                                    <sf:ChartAxisTitle 
-                                        Text="Titulo" 
-                                        TextColor="{ DynamicResource AccentColor }" />
-                                </sf:CategoryAxis.Title>    
-                                <sf:CategoryAxis.LabelStyle>
-                                    <sf:ChartAxisLabelStyle 
-                                    TextColor="{ DynamicResource AccentColor }"  />
-                                </sf:CategoryAxis.LabelStyle>
-                            </sf:CategoryAxis>
-                        </sf:SfChart.PrimaryAxis>
-                        <sf:SfChart.SecondaryAxis>
-                            <sf:NumericalAxis RangePadding="Normal"/>
-                        </sf:SfChart.SecondaryAxis>
-                        <sf:SfChart.Series>
-                            <sf:SplineAreaSeries 
-                                ItemsSource ="{ Binding LastIterations }" 
-                                Color="{ DynamicResource AccentColor }"
-                                YBindingPath="TotalComments"
-                                XBindingPath="FinishDateAsString"
-                                >
-                                <sf:SplineAreaSeries.DataMarker>
 
-                                    <sf:ChartDataMarker ShowLabel="True">
-
-                                        <sf:ChartDataMarker.LabelStyle>
-
-                                            <sf:DataMarkerLabelStyle 
-                                                TextColor="Blue"
-                                                BorderColor="Red" 
-                                                BorderThickness="2"
-                                                BackgroundColor="Aqua"
-                                                Margin="5"
-                                                Font="Italic,18"/>
-
-                                        </sf:ChartDataMarker.LabelStyle>
-
-                                    </sf:ChartDataMarker>
-
-                                </sf:SplineAreaSeries.DataMarker>
-
-                            </sf:SplineAreaSeries>
-                       </sf:SfChart.Series>
-                </sf:SfChart>
+                <microcharts:ChartView
+                    HeightRequest="300"
+                    WidthRequest="300"
+                    x:Name="chartView" />
             
             </StackLayout>
 

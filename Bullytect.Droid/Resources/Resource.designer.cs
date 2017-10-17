@@ -3388,6 +3388,7 @@ namespace Bullytect.Droid
 			global::Lottie.Forms.Droid.Resource.Styleable.ViewStubCompat_android_id = global::Bullytect.Droid.Resource.Styleable.ViewStubCompat_android_id;
 			global::Lottie.Forms.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId = global::Bullytect.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
 			global::Lottie.Forms.Droid.Resource.Styleable.ViewStubCompat_android_layout = global::Bullytect.Droid.Resource.Styleable.ViewStubCompat_android_layout;
+			global::Microcharts.Droid.Resource.String.library_name = global::Bullytect.Droid.Resource.String.library_name;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxBind = global::Bullytect.Droid.Resource.Attribute.MvxBind;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxDropDownItemTemplate = global::Bullytect.Droid.Resource.Attribute.MvxDropDownItemTemplate;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxGroupItemTemplate = global::Bullytect.Droid.Resource.Attribute.MvxGroupItemTemplate;
@@ -3410,1642 +3411,6 @@ namespace Bullytect.Droid
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate = global::Bullytect.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate;
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView_MvxItemTemplate = global::Bullytect.Droid.Resource.Styleable.MvxListView_MvxItemTemplate;
 			global::Splat.Resource.String.library_name = global::Bullytect.Droid.Resource.String.library_name;
-			global::UXDivers.Effects.Droid.Resource.Animation.abc_fade_in = global::Bullytect.Droid.Resource.Animation.abc_fade_in;
-			global::UXDivers.Effects.Droid.Resource.Animation.abc_fade_out = global::Bullytect.Droid.Resource.Animation.abc_fade_out;
-			global::UXDivers.Effects.Droid.Resource.Animation.abc_grow_fade_in_from_bottom = global::Bullytect.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
-			global::UXDivers.Effects.Droid.Resource.Animation.abc_popup_enter = global::Bullytect.Droid.Resource.Animation.abc_popup_enter;
-			global::UXDivers.Effects.Droid.Resource.Animation.abc_popup_exit = global::Bullytect.Droid.Resource.Animation.abc_popup_exit;
-			global::UXDivers.Effects.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom = global::Bullytect.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom;
-			global::UXDivers.Effects.Droid.Resource.Animation.abc_slide_in_bottom = global::Bullytect.Droid.Resource.Animation.abc_slide_in_bottom;
-			global::UXDivers.Effects.Droid.Resource.Animation.abc_slide_in_top = global::Bullytect.Droid.Resource.Animation.abc_slide_in_top;
-			global::UXDivers.Effects.Droid.Resource.Animation.abc_slide_out_bottom = global::Bullytect.Droid.Resource.Animation.abc_slide_out_bottom;
-			global::UXDivers.Effects.Droid.Resource.Animation.abc_slide_out_top = global::Bullytect.Droid.Resource.Animation.abc_slide_out_top;
-			global::UXDivers.Effects.Droid.Resource.Animation.design_bottom_sheet_slide_in = global::Bullytect.Droid.Resource.Animation.design_bottom_sheet_slide_in;
-			global::UXDivers.Effects.Droid.Resource.Animation.design_bottom_sheet_slide_out = global::Bullytect.Droid.Resource.Animation.design_bottom_sheet_slide_out;
-			global::UXDivers.Effects.Droid.Resource.Animation.design_fab_in = global::Bullytect.Droid.Resource.Animation.design_fab_in;
-			global::UXDivers.Effects.Droid.Resource.Animation.design_fab_out = global::Bullytect.Droid.Resource.Animation.design_fab_out;
-			global::UXDivers.Effects.Droid.Resource.Animation.design_snackbar_in = global::Bullytect.Droid.Resource.Animation.design_snackbar_in;
-			global::UXDivers.Effects.Droid.Resource.Animation.design_snackbar_out = global::Bullytect.Droid.Resource.Animation.design_snackbar_out;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionBarDivider = global::Bullytect.Droid.Resource.Attribute.actionBarDivider;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionBarItemBackground = global::Bullytect.Droid.Resource.Attribute.actionBarItemBackground;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionBarPopupTheme = global::Bullytect.Droid.Resource.Attribute.actionBarPopupTheme;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionBarSize = global::Bullytect.Droid.Resource.Attribute.actionBarSize;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionBarSplitStyle = global::Bullytect.Droid.Resource.Attribute.actionBarSplitStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionBarStyle = global::Bullytect.Droid.Resource.Attribute.actionBarStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionBarTabBarStyle = global::Bullytect.Droid.Resource.Attribute.actionBarTabBarStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionBarTabStyle = global::Bullytect.Droid.Resource.Attribute.actionBarTabStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionBarTabTextStyle = global::Bullytect.Droid.Resource.Attribute.actionBarTabTextStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionBarTheme = global::Bullytect.Droid.Resource.Attribute.actionBarTheme;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionBarWidgetTheme = global::Bullytect.Droid.Resource.Attribute.actionBarWidgetTheme;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionButtonStyle = global::Bullytect.Droid.Resource.Attribute.actionButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionDropDownStyle = global::Bullytect.Droid.Resource.Attribute.actionDropDownStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionLayout = global::Bullytect.Droid.Resource.Attribute.actionLayout;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionMenuTextAppearance = global::Bullytect.Droid.Resource.Attribute.actionMenuTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionMenuTextColor = global::Bullytect.Droid.Resource.Attribute.actionMenuTextColor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionModeBackground = global::Bullytect.Droid.Resource.Attribute.actionModeBackground;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionModeCloseButtonStyle = global::Bullytect.Droid.Resource.Attribute.actionModeCloseButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionModeCloseDrawable = global::Bullytect.Droid.Resource.Attribute.actionModeCloseDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionModeCopyDrawable = global::Bullytect.Droid.Resource.Attribute.actionModeCopyDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionModeCutDrawable = global::Bullytect.Droid.Resource.Attribute.actionModeCutDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionModeFindDrawable = global::Bullytect.Droid.Resource.Attribute.actionModeFindDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionModePasteDrawable = global::Bullytect.Droid.Resource.Attribute.actionModePasteDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionModePopupWindowStyle = global::Bullytect.Droid.Resource.Attribute.actionModePopupWindowStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionModeSelectAllDrawable = global::Bullytect.Droid.Resource.Attribute.actionModeSelectAllDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionModeShareDrawable = global::Bullytect.Droid.Resource.Attribute.actionModeShareDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionModeSplitBackground = global::Bullytect.Droid.Resource.Attribute.actionModeSplitBackground;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionModeStyle = global::Bullytect.Droid.Resource.Attribute.actionModeStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionModeWebSearchDrawable = global::Bullytect.Droid.Resource.Attribute.actionModeWebSearchDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionOverflowButtonStyle = global::Bullytect.Droid.Resource.Attribute.actionOverflowButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionOverflowMenuStyle = global::Bullytect.Droid.Resource.Attribute.actionOverflowMenuStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionProviderClass = global::Bullytect.Droid.Resource.Attribute.actionProviderClass;
-			global::UXDivers.Effects.Droid.Resource.Attribute.actionViewClass = global::Bullytect.Droid.Resource.Attribute.actionViewClass;
-			global::UXDivers.Effects.Droid.Resource.Attribute.activityChooserViewStyle = global::Bullytect.Droid.Resource.Attribute.activityChooserViewStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.alertDialogButtonGroupStyle = global::Bullytect.Droid.Resource.Attribute.alertDialogButtonGroupStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.alertDialogCenterButtons = global::Bullytect.Droid.Resource.Attribute.alertDialogCenterButtons;
-			global::UXDivers.Effects.Droid.Resource.Attribute.alertDialogStyle = global::Bullytect.Droid.Resource.Attribute.alertDialogStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.alertDialogTheme = global::Bullytect.Droid.Resource.Attribute.alertDialogTheme;
-			global::UXDivers.Effects.Droid.Resource.Attribute.allowStacking = global::Bullytect.Droid.Resource.Attribute.allowStacking;
-			global::UXDivers.Effects.Droid.Resource.Attribute.arrowHeadLength = global::Bullytect.Droid.Resource.Attribute.arrowHeadLength;
-			global::UXDivers.Effects.Droid.Resource.Attribute.arrowShaftLength = global::Bullytect.Droid.Resource.Attribute.arrowShaftLength;
-			global::UXDivers.Effects.Droid.Resource.Attribute.autoCompleteTextViewStyle = global::Bullytect.Droid.Resource.Attribute.autoCompleteTextViewStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.background = global::Bullytect.Droid.Resource.Attribute.background;
-			global::UXDivers.Effects.Droid.Resource.Attribute.backgroundSplit = global::Bullytect.Droid.Resource.Attribute.backgroundSplit;
-			global::UXDivers.Effects.Droid.Resource.Attribute.backgroundStacked = global::Bullytect.Droid.Resource.Attribute.backgroundStacked;
-			global::UXDivers.Effects.Droid.Resource.Attribute.backgroundTint = global::Bullytect.Droid.Resource.Attribute.backgroundTint;
-			global::UXDivers.Effects.Droid.Resource.Attribute.backgroundTintMode = global::Bullytect.Droid.Resource.Attribute.backgroundTintMode;
-			global::UXDivers.Effects.Droid.Resource.Attribute.barLength = global::Bullytect.Droid.Resource.Attribute.barLength;
-			global::UXDivers.Effects.Droid.Resource.Attribute.behavior_hideable = global::Bullytect.Droid.Resource.Attribute.behavior_hideable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.behavior_overlapTop = global::Bullytect.Droid.Resource.Attribute.behavior_overlapTop;
-			global::UXDivers.Effects.Droid.Resource.Attribute.behavior_peekHeight = global::Bullytect.Droid.Resource.Attribute.behavior_peekHeight;
-			global::UXDivers.Effects.Droid.Resource.Attribute.borderWidth = global::Bullytect.Droid.Resource.Attribute.borderWidth;
-			global::UXDivers.Effects.Droid.Resource.Attribute.borderlessButtonStyle = global::Bullytect.Droid.Resource.Attribute.borderlessButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.bottomSheetDialogTheme = global::Bullytect.Droid.Resource.Attribute.bottomSheetDialogTheme;
-			global::UXDivers.Effects.Droid.Resource.Attribute.bottomSheetStyle = global::Bullytect.Droid.Resource.Attribute.bottomSheetStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.buttonBarButtonStyle = global::Bullytect.Droid.Resource.Attribute.buttonBarButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.buttonBarNegativeButtonStyle = global::Bullytect.Droid.Resource.Attribute.buttonBarNegativeButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.buttonBarNeutralButtonStyle = global::Bullytect.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.buttonBarPositiveButtonStyle = global::Bullytect.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.buttonBarStyle = global::Bullytect.Droid.Resource.Attribute.buttonBarStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.buttonPanelSideLayout = global::Bullytect.Droid.Resource.Attribute.buttonPanelSideLayout;
-			global::UXDivers.Effects.Droid.Resource.Attribute.buttonStyle = global::Bullytect.Droid.Resource.Attribute.buttonStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.buttonStyleSmall = global::Bullytect.Droid.Resource.Attribute.buttonStyleSmall;
-			global::UXDivers.Effects.Droid.Resource.Attribute.buttonTint = global::Bullytect.Droid.Resource.Attribute.buttonTint;
-			global::UXDivers.Effects.Droid.Resource.Attribute.buttonTintMode = global::Bullytect.Droid.Resource.Attribute.buttonTintMode;
-			global::UXDivers.Effects.Droid.Resource.Attribute.cardBackgroundColor = global::Bullytect.Droid.Resource.Attribute.cardBackgroundColor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.cardCornerRadius = global::Bullytect.Droid.Resource.Attribute.cardCornerRadius;
-			global::UXDivers.Effects.Droid.Resource.Attribute.cardElevation = global::Bullytect.Droid.Resource.Attribute.cardElevation;
-			global::UXDivers.Effects.Droid.Resource.Attribute.cardMaxElevation = global::Bullytect.Droid.Resource.Attribute.cardMaxElevation;
-			global::UXDivers.Effects.Droid.Resource.Attribute.cardPreventCornerOverlap = global::Bullytect.Droid.Resource.Attribute.cardPreventCornerOverlap;
-			global::UXDivers.Effects.Droid.Resource.Attribute.cardUseCompatPadding = global::Bullytect.Droid.Resource.Attribute.cardUseCompatPadding;
-			global::UXDivers.Effects.Droid.Resource.Attribute.checkboxStyle = global::Bullytect.Droid.Resource.Attribute.checkboxStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.checkedTextViewStyle = global::Bullytect.Droid.Resource.Attribute.checkedTextViewStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.closeIcon = global::Bullytect.Droid.Resource.Attribute.closeIcon;
-			global::UXDivers.Effects.Droid.Resource.Attribute.closeItemLayout = global::Bullytect.Droid.Resource.Attribute.closeItemLayout;
-			global::UXDivers.Effects.Droid.Resource.Attribute.collapseContentDescription = global::Bullytect.Droid.Resource.Attribute.collapseContentDescription;
-			global::UXDivers.Effects.Droid.Resource.Attribute.collapseIcon = global::Bullytect.Droid.Resource.Attribute.collapseIcon;
-			global::UXDivers.Effects.Droid.Resource.Attribute.collapsedTitleGravity = global::Bullytect.Droid.Resource.Attribute.collapsedTitleGravity;
-			global::UXDivers.Effects.Droid.Resource.Attribute.collapsedTitleTextAppearance = global::Bullytect.Droid.Resource.Attribute.collapsedTitleTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Attribute.color = global::Bullytect.Droid.Resource.Attribute.color;
-			global::UXDivers.Effects.Droid.Resource.Attribute.colorAccent = global::Bullytect.Droid.Resource.Attribute.colorAccent;
-			global::UXDivers.Effects.Droid.Resource.Attribute.colorButtonNormal = global::Bullytect.Droid.Resource.Attribute.colorButtonNormal;
-			global::UXDivers.Effects.Droid.Resource.Attribute.colorControlActivated = global::Bullytect.Droid.Resource.Attribute.colorControlActivated;
-			global::UXDivers.Effects.Droid.Resource.Attribute.colorControlHighlight = global::Bullytect.Droid.Resource.Attribute.colorControlHighlight;
-			global::UXDivers.Effects.Droid.Resource.Attribute.colorControlNormal = global::Bullytect.Droid.Resource.Attribute.colorControlNormal;
-			global::UXDivers.Effects.Droid.Resource.Attribute.colorPrimary = global::Bullytect.Droid.Resource.Attribute.colorPrimary;
-			global::UXDivers.Effects.Droid.Resource.Attribute.colorPrimaryDark = global::Bullytect.Droid.Resource.Attribute.colorPrimaryDark;
-			global::UXDivers.Effects.Droid.Resource.Attribute.colorSwitchThumbNormal = global::Bullytect.Droid.Resource.Attribute.colorSwitchThumbNormal;
-			global::UXDivers.Effects.Droid.Resource.Attribute.commitIcon = global::Bullytect.Droid.Resource.Attribute.commitIcon;
-			global::UXDivers.Effects.Droid.Resource.Attribute.contentInsetEnd = global::Bullytect.Droid.Resource.Attribute.contentInsetEnd;
-			global::UXDivers.Effects.Droid.Resource.Attribute.contentInsetLeft = global::Bullytect.Droid.Resource.Attribute.contentInsetLeft;
-			global::UXDivers.Effects.Droid.Resource.Attribute.contentInsetRight = global::Bullytect.Droid.Resource.Attribute.contentInsetRight;
-			global::UXDivers.Effects.Droid.Resource.Attribute.contentInsetStart = global::Bullytect.Droid.Resource.Attribute.contentInsetStart;
-			global::UXDivers.Effects.Droid.Resource.Attribute.contentPadding = global::Bullytect.Droid.Resource.Attribute.contentPadding;
-			global::UXDivers.Effects.Droid.Resource.Attribute.contentPaddingBottom = global::Bullytect.Droid.Resource.Attribute.contentPaddingBottom;
-			global::UXDivers.Effects.Droid.Resource.Attribute.contentPaddingLeft = global::Bullytect.Droid.Resource.Attribute.contentPaddingLeft;
-			global::UXDivers.Effects.Droid.Resource.Attribute.contentPaddingRight = global::Bullytect.Droid.Resource.Attribute.contentPaddingRight;
-			global::UXDivers.Effects.Droid.Resource.Attribute.contentPaddingTop = global::Bullytect.Droid.Resource.Attribute.contentPaddingTop;
-			global::UXDivers.Effects.Droid.Resource.Attribute.contentScrim = global::Bullytect.Droid.Resource.Attribute.contentScrim;
-			global::UXDivers.Effects.Droid.Resource.Attribute.controlBackground = global::Bullytect.Droid.Resource.Attribute.controlBackground;
-			global::UXDivers.Effects.Droid.Resource.Attribute.counterEnabled = global::Bullytect.Droid.Resource.Attribute.counterEnabled;
-			global::UXDivers.Effects.Droid.Resource.Attribute.counterMaxLength = global::Bullytect.Droid.Resource.Attribute.counterMaxLength;
-			global::UXDivers.Effects.Droid.Resource.Attribute.counterOverflowTextAppearance = global::Bullytect.Droid.Resource.Attribute.counterOverflowTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Attribute.counterTextAppearance = global::Bullytect.Droid.Resource.Attribute.counterTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Attribute.customNavigationLayout = global::Bullytect.Droid.Resource.Attribute.customNavigationLayout;
-			global::UXDivers.Effects.Droid.Resource.Attribute.defaultQueryHint = global::Bullytect.Droid.Resource.Attribute.defaultQueryHint;
-			global::UXDivers.Effects.Droid.Resource.Attribute.dialogPreferredPadding = global::Bullytect.Droid.Resource.Attribute.dialogPreferredPadding;
-			global::UXDivers.Effects.Droid.Resource.Attribute.dialogTheme = global::Bullytect.Droid.Resource.Attribute.dialogTheme;
-			global::UXDivers.Effects.Droid.Resource.Attribute.displayOptions = global::Bullytect.Droid.Resource.Attribute.displayOptions;
-			global::UXDivers.Effects.Droid.Resource.Attribute.divider = global::Bullytect.Droid.Resource.Attribute.divider;
-			global::UXDivers.Effects.Droid.Resource.Attribute.dividerHorizontal = global::Bullytect.Droid.Resource.Attribute.dividerHorizontal;
-			global::UXDivers.Effects.Droid.Resource.Attribute.dividerPadding = global::Bullytect.Droid.Resource.Attribute.dividerPadding;
-			global::UXDivers.Effects.Droid.Resource.Attribute.dividerVertical = global::Bullytect.Droid.Resource.Attribute.dividerVertical;
-			global::UXDivers.Effects.Droid.Resource.Attribute.drawableSize = global::Bullytect.Droid.Resource.Attribute.drawableSize;
-			global::UXDivers.Effects.Droid.Resource.Attribute.drawerArrowStyle = global::Bullytect.Droid.Resource.Attribute.drawerArrowStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.dropDownListViewStyle = global::Bullytect.Droid.Resource.Attribute.dropDownListViewStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.dropdownListPreferredItemHeight = global::Bullytect.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
-			global::UXDivers.Effects.Droid.Resource.Attribute.editTextBackground = global::Bullytect.Droid.Resource.Attribute.editTextBackground;
-			global::UXDivers.Effects.Droid.Resource.Attribute.editTextColor = global::Bullytect.Droid.Resource.Attribute.editTextColor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.editTextStyle = global::Bullytect.Droid.Resource.Attribute.editTextStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.elevation = global::Bullytect.Droid.Resource.Attribute.elevation;
-			global::UXDivers.Effects.Droid.Resource.Attribute.errorEnabled = global::Bullytect.Droid.Resource.Attribute.errorEnabled;
-			global::UXDivers.Effects.Droid.Resource.Attribute.errorTextAppearance = global::Bullytect.Droid.Resource.Attribute.errorTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable = global::Bullytect.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.expanded = global::Bullytect.Droid.Resource.Attribute.expanded;
-			global::UXDivers.Effects.Droid.Resource.Attribute.expandedTitleGravity = global::Bullytect.Droid.Resource.Attribute.expandedTitleGravity;
-			global::UXDivers.Effects.Droid.Resource.Attribute.expandedTitleMargin = global::Bullytect.Droid.Resource.Attribute.expandedTitleMargin;
-			global::UXDivers.Effects.Droid.Resource.Attribute.expandedTitleMarginBottom = global::Bullytect.Droid.Resource.Attribute.expandedTitleMarginBottom;
-			global::UXDivers.Effects.Droid.Resource.Attribute.expandedTitleMarginEnd = global::Bullytect.Droid.Resource.Attribute.expandedTitleMarginEnd;
-			global::UXDivers.Effects.Droid.Resource.Attribute.expandedTitleMarginStart = global::Bullytect.Droid.Resource.Attribute.expandedTitleMarginStart;
-			global::UXDivers.Effects.Droid.Resource.Attribute.expandedTitleMarginTop = global::Bullytect.Droid.Resource.Attribute.expandedTitleMarginTop;
-			global::UXDivers.Effects.Droid.Resource.Attribute.expandedTitleTextAppearance = global::Bullytect.Droid.Resource.Attribute.expandedTitleTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Attribute.externalRouteEnabledDrawable = global::Bullytect.Droid.Resource.Attribute.externalRouteEnabledDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.fabSize = global::Bullytect.Droid.Resource.Attribute.fabSize;
-			global::UXDivers.Effects.Droid.Resource.Attribute.foregroundInsidePadding = global::Bullytect.Droid.Resource.Attribute.foregroundInsidePadding;
-			global::UXDivers.Effects.Droid.Resource.Attribute.gapBetweenBars = global::Bullytect.Droid.Resource.Attribute.gapBetweenBars;
-			global::UXDivers.Effects.Droid.Resource.Attribute.goIcon = global::Bullytect.Droid.Resource.Attribute.goIcon;
-			global::UXDivers.Effects.Droid.Resource.Attribute.headerLayout = global::Bullytect.Droid.Resource.Attribute.headerLayout;
-			global::UXDivers.Effects.Droid.Resource.Attribute.height = global::Bullytect.Droid.Resource.Attribute.height;
-			global::UXDivers.Effects.Droid.Resource.Attribute.hideOnContentScroll = global::Bullytect.Droid.Resource.Attribute.hideOnContentScroll;
-			global::UXDivers.Effects.Droid.Resource.Attribute.hintAnimationEnabled = global::Bullytect.Droid.Resource.Attribute.hintAnimationEnabled;
-			global::UXDivers.Effects.Droid.Resource.Attribute.hintEnabled = global::Bullytect.Droid.Resource.Attribute.hintEnabled;
-			global::UXDivers.Effects.Droid.Resource.Attribute.hintTextAppearance = global::Bullytect.Droid.Resource.Attribute.hintTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Attribute.homeAsUpIndicator = global::Bullytect.Droid.Resource.Attribute.homeAsUpIndicator;
-			global::UXDivers.Effects.Droid.Resource.Attribute.homeLayout = global::Bullytect.Droid.Resource.Attribute.homeLayout;
-			global::UXDivers.Effects.Droid.Resource.Attribute.icon = global::Bullytect.Droid.Resource.Attribute.icon;
-			global::UXDivers.Effects.Droid.Resource.Attribute.iconifiedByDefault = global::Bullytect.Droid.Resource.Attribute.iconifiedByDefault;
-			global::UXDivers.Effects.Droid.Resource.Attribute.imageButtonStyle = global::Bullytect.Droid.Resource.Attribute.imageButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.indeterminateProgressStyle = global::Bullytect.Droid.Resource.Attribute.indeterminateProgressStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.initialActivityCount = global::Bullytect.Droid.Resource.Attribute.initialActivityCount;
-			global::UXDivers.Effects.Droid.Resource.Attribute.insetForeground = global::Bullytect.Droid.Resource.Attribute.insetForeground;
-			global::UXDivers.Effects.Droid.Resource.Attribute.isLightTheme = global::Bullytect.Droid.Resource.Attribute.isLightTheme;
-			global::UXDivers.Effects.Droid.Resource.Attribute.itemBackground = global::Bullytect.Droid.Resource.Attribute.itemBackground;
-			global::UXDivers.Effects.Droid.Resource.Attribute.itemIconTint = global::Bullytect.Droid.Resource.Attribute.itemIconTint;
-			global::UXDivers.Effects.Droid.Resource.Attribute.itemPadding = global::Bullytect.Droid.Resource.Attribute.itemPadding;
-			global::UXDivers.Effects.Droid.Resource.Attribute.itemTextAppearance = global::Bullytect.Droid.Resource.Attribute.itemTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Attribute.itemTextColor = global::Bullytect.Droid.Resource.Attribute.itemTextColor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.keylines = global::Bullytect.Droid.Resource.Attribute.keylines;
-			global::UXDivers.Effects.Droid.Resource.Attribute.layout = global::Bullytect.Droid.Resource.Attribute.layout;
-			global::UXDivers.Effects.Droid.Resource.Attribute.layoutManager = global::Bullytect.Droid.Resource.Attribute.layoutManager;
-			global::UXDivers.Effects.Droid.Resource.Attribute.layout_anchor = global::Bullytect.Droid.Resource.Attribute.layout_anchor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.layout_anchorGravity = global::Bullytect.Droid.Resource.Attribute.layout_anchorGravity;
-			global::UXDivers.Effects.Droid.Resource.Attribute.layout_behavior = global::Bullytect.Droid.Resource.Attribute.layout_behavior;
-			global::UXDivers.Effects.Droid.Resource.Attribute.layout_collapseMode = global::Bullytect.Droid.Resource.Attribute.layout_collapseMode;
-			global::UXDivers.Effects.Droid.Resource.Attribute.layout_collapseParallaxMultiplier = global::Bullytect.Droid.Resource.Attribute.layout_collapseParallaxMultiplier;
-			global::UXDivers.Effects.Droid.Resource.Attribute.layout_keyline = global::Bullytect.Droid.Resource.Attribute.layout_keyline;
-			global::UXDivers.Effects.Droid.Resource.Attribute.layout_scrollFlags = global::Bullytect.Droid.Resource.Attribute.layout_scrollFlags;
-			global::UXDivers.Effects.Droid.Resource.Attribute.layout_scrollInterpolator = global::Bullytect.Droid.Resource.Attribute.layout_scrollInterpolator;
-			global::UXDivers.Effects.Droid.Resource.Attribute.listChoiceBackgroundIndicator = global::Bullytect.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
-			global::UXDivers.Effects.Droid.Resource.Attribute.listDividerAlertDialog = global::Bullytect.Droid.Resource.Attribute.listDividerAlertDialog;
-			global::UXDivers.Effects.Droid.Resource.Attribute.listItemLayout = global::Bullytect.Droid.Resource.Attribute.listItemLayout;
-			global::UXDivers.Effects.Droid.Resource.Attribute.listLayout = global::Bullytect.Droid.Resource.Attribute.listLayout;
-			global::UXDivers.Effects.Droid.Resource.Attribute.listPopupWindowStyle = global::Bullytect.Droid.Resource.Attribute.listPopupWindowStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.listPreferredItemHeight = global::Bullytect.Droid.Resource.Attribute.listPreferredItemHeight;
-			global::UXDivers.Effects.Droid.Resource.Attribute.listPreferredItemHeightLarge = global::Bullytect.Droid.Resource.Attribute.listPreferredItemHeightLarge;
-			global::UXDivers.Effects.Droid.Resource.Attribute.listPreferredItemHeightSmall = global::Bullytect.Droid.Resource.Attribute.listPreferredItemHeightSmall;
-			global::UXDivers.Effects.Droid.Resource.Attribute.listPreferredItemPaddingLeft = global::Bullytect.Droid.Resource.Attribute.listPreferredItemPaddingLeft;
-			global::UXDivers.Effects.Droid.Resource.Attribute.listPreferredItemPaddingRight = global::Bullytect.Droid.Resource.Attribute.listPreferredItemPaddingRight;
-			global::UXDivers.Effects.Droid.Resource.Attribute.logo = global::Bullytect.Droid.Resource.Attribute.logo;
-			global::UXDivers.Effects.Droid.Resource.Attribute.logoDescription = global::Bullytect.Droid.Resource.Attribute.logoDescription;
-			global::UXDivers.Effects.Droid.Resource.Attribute.maxActionInlineWidth = global::Bullytect.Droid.Resource.Attribute.maxActionInlineWidth;
-			global::UXDivers.Effects.Droid.Resource.Attribute.maxButtonHeight = global::Bullytect.Droid.Resource.Attribute.maxButtonHeight;
-			global::UXDivers.Effects.Droid.Resource.Attribute.measureWithLargestChild = global::Bullytect.Droid.Resource.Attribute.measureWithLargestChild;
-			global::UXDivers.Effects.Droid.Resource.Attribute.mediaRouteAudioTrackDrawable = global::Bullytect.Droid.Resource.Attribute.mediaRouteAudioTrackDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.mediaRouteButtonStyle = global::Bullytect.Droid.Resource.Attribute.mediaRouteButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.mediaRouteCloseDrawable = global::Bullytect.Droid.Resource.Attribute.mediaRouteCloseDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.mediaRouteDefaultIconDrawable = global::Bullytect.Droid.Resource.Attribute.mediaRouteDefaultIconDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.mediaRoutePauseDrawable = global::Bullytect.Droid.Resource.Attribute.mediaRoutePauseDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.mediaRoutePlayDrawable = global::Bullytect.Droid.Resource.Attribute.mediaRoutePlayDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable = global::Bullytect.Droid.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.mediaRouteSpeakerIconDrawable = global::Bullytect.Droid.Resource.Attribute.mediaRouteSpeakerIconDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.mediaRouteTvIconDrawable = global::Bullytect.Droid.Resource.Attribute.mediaRouteTvIconDrawable;
-			global::UXDivers.Effects.Droid.Resource.Attribute.menu = global::Bullytect.Droid.Resource.Attribute.menu;
-			global::UXDivers.Effects.Droid.Resource.Attribute.multiChoiceItemLayout = global::Bullytect.Droid.Resource.Attribute.multiChoiceItemLayout;
-			global::UXDivers.Effects.Droid.Resource.Attribute.navigationContentDescription = global::Bullytect.Droid.Resource.Attribute.navigationContentDescription;
-			global::UXDivers.Effects.Droid.Resource.Attribute.navigationIcon = global::Bullytect.Droid.Resource.Attribute.navigationIcon;
-			global::UXDivers.Effects.Droid.Resource.Attribute.navigationMode = global::Bullytect.Droid.Resource.Attribute.navigationMode;
-			global::UXDivers.Effects.Droid.Resource.Attribute.overlapAnchor = global::Bullytect.Droid.Resource.Attribute.overlapAnchor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.paddingEnd = global::Bullytect.Droid.Resource.Attribute.paddingEnd;
-			global::UXDivers.Effects.Droid.Resource.Attribute.paddingStart = global::Bullytect.Droid.Resource.Attribute.paddingStart;
-			global::UXDivers.Effects.Droid.Resource.Attribute.panelBackground = global::Bullytect.Droid.Resource.Attribute.panelBackground;
-			global::UXDivers.Effects.Droid.Resource.Attribute.panelMenuListTheme = global::Bullytect.Droid.Resource.Attribute.panelMenuListTheme;
-			global::UXDivers.Effects.Droid.Resource.Attribute.panelMenuListWidth = global::Bullytect.Droid.Resource.Attribute.panelMenuListWidth;
-			global::UXDivers.Effects.Droid.Resource.Attribute.popupMenuStyle = global::Bullytect.Droid.Resource.Attribute.popupMenuStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.popupTheme = global::Bullytect.Droid.Resource.Attribute.popupTheme;
-			global::UXDivers.Effects.Droid.Resource.Attribute.popupWindowStyle = global::Bullytect.Droid.Resource.Attribute.popupWindowStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.preserveIconSpacing = global::Bullytect.Droid.Resource.Attribute.preserveIconSpacing;
-			global::UXDivers.Effects.Droid.Resource.Attribute.pressedTranslationZ = global::Bullytect.Droid.Resource.Attribute.pressedTranslationZ;
-			global::UXDivers.Effects.Droid.Resource.Attribute.progressBarPadding = global::Bullytect.Droid.Resource.Attribute.progressBarPadding;
-			global::UXDivers.Effects.Droid.Resource.Attribute.progressBarStyle = global::Bullytect.Droid.Resource.Attribute.progressBarStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.queryBackground = global::Bullytect.Droid.Resource.Attribute.queryBackground;
-			global::UXDivers.Effects.Droid.Resource.Attribute.queryHint = global::Bullytect.Droid.Resource.Attribute.queryHint;
-			global::UXDivers.Effects.Droid.Resource.Attribute.radioButtonStyle = global::Bullytect.Droid.Resource.Attribute.radioButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.ratingBarStyle = global::Bullytect.Droid.Resource.Attribute.ratingBarStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.ratingBarStyleIndicator = global::Bullytect.Droid.Resource.Attribute.ratingBarStyleIndicator;
-			global::UXDivers.Effects.Droid.Resource.Attribute.ratingBarStyleSmall = global::Bullytect.Droid.Resource.Attribute.ratingBarStyleSmall;
-			global::UXDivers.Effects.Droid.Resource.Attribute.reverseLayout = global::Bullytect.Droid.Resource.Attribute.reverseLayout;
-			global::UXDivers.Effects.Droid.Resource.Attribute.rippleColor = global::Bullytect.Droid.Resource.Attribute.rippleColor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.searchHintIcon = global::Bullytect.Droid.Resource.Attribute.searchHintIcon;
-			global::UXDivers.Effects.Droid.Resource.Attribute.searchIcon = global::Bullytect.Droid.Resource.Attribute.searchIcon;
-			global::UXDivers.Effects.Droid.Resource.Attribute.searchViewStyle = global::Bullytect.Droid.Resource.Attribute.searchViewStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.seekBarStyle = global::Bullytect.Droid.Resource.Attribute.seekBarStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.selectableItemBackground = global::Bullytect.Droid.Resource.Attribute.selectableItemBackground;
-			global::UXDivers.Effects.Droid.Resource.Attribute.selectableItemBackgroundBorderless = global::Bullytect.Droid.Resource.Attribute.selectableItemBackgroundBorderless;
-			global::UXDivers.Effects.Droid.Resource.Attribute.showAsAction = global::Bullytect.Droid.Resource.Attribute.showAsAction;
-			global::UXDivers.Effects.Droid.Resource.Attribute.showDividers = global::Bullytect.Droid.Resource.Attribute.showDividers;
-			global::UXDivers.Effects.Droid.Resource.Attribute.showText = global::Bullytect.Droid.Resource.Attribute.showText;
-			global::UXDivers.Effects.Droid.Resource.Attribute.singleChoiceItemLayout = global::Bullytect.Droid.Resource.Attribute.singleChoiceItemLayout;
-			global::UXDivers.Effects.Droid.Resource.Attribute.spanCount = global::Bullytect.Droid.Resource.Attribute.spanCount;
-			global::UXDivers.Effects.Droid.Resource.Attribute.spinBars = global::Bullytect.Droid.Resource.Attribute.spinBars;
-			global::UXDivers.Effects.Droid.Resource.Attribute.spinnerDropDownItemStyle = global::Bullytect.Droid.Resource.Attribute.spinnerDropDownItemStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.spinnerStyle = global::Bullytect.Droid.Resource.Attribute.spinnerStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.splitTrack = global::Bullytect.Droid.Resource.Attribute.splitTrack;
-			global::UXDivers.Effects.Droid.Resource.Attribute.srcCompat = global::Bullytect.Droid.Resource.Attribute.srcCompat;
-			global::UXDivers.Effects.Droid.Resource.Attribute.stackFromEnd = global::Bullytect.Droid.Resource.Attribute.stackFromEnd;
-			global::UXDivers.Effects.Droid.Resource.Attribute.state_above_anchor = global::Bullytect.Droid.Resource.Attribute.state_above_anchor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.statusBarBackground = global::Bullytect.Droid.Resource.Attribute.statusBarBackground;
-			global::UXDivers.Effects.Droid.Resource.Attribute.statusBarScrim = global::Bullytect.Droid.Resource.Attribute.statusBarScrim;
-			global::UXDivers.Effects.Droid.Resource.Attribute.submitBackground = global::Bullytect.Droid.Resource.Attribute.submitBackground;
-			global::UXDivers.Effects.Droid.Resource.Attribute.subtitle = global::Bullytect.Droid.Resource.Attribute.subtitle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.subtitleTextAppearance = global::Bullytect.Droid.Resource.Attribute.subtitleTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Attribute.subtitleTextColor = global::Bullytect.Droid.Resource.Attribute.subtitleTextColor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.subtitleTextStyle = global::Bullytect.Droid.Resource.Attribute.subtitleTextStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.suggestionRowLayout = global::Bullytect.Droid.Resource.Attribute.suggestionRowLayout;
-			global::UXDivers.Effects.Droid.Resource.Attribute.switchMinWidth = global::Bullytect.Droid.Resource.Attribute.switchMinWidth;
-			global::UXDivers.Effects.Droid.Resource.Attribute.switchPadding = global::Bullytect.Droid.Resource.Attribute.switchPadding;
-			global::UXDivers.Effects.Droid.Resource.Attribute.switchStyle = global::Bullytect.Droid.Resource.Attribute.switchStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.switchTextAppearance = global::Bullytect.Droid.Resource.Attribute.switchTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Attribute.tabBackground = global::Bullytect.Droid.Resource.Attribute.tabBackground;
-			global::UXDivers.Effects.Droid.Resource.Attribute.tabContentStart = global::Bullytect.Droid.Resource.Attribute.tabContentStart;
-			global::UXDivers.Effects.Droid.Resource.Attribute.tabGravity = global::Bullytect.Droid.Resource.Attribute.tabGravity;
-			global::UXDivers.Effects.Droid.Resource.Attribute.tabIndicatorColor = global::Bullytect.Droid.Resource.Attribute.tabIndicatorColor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.tabIndicatorHeight = global::Bullytect.Droid.Resource.Attribute.tabIndicatorHeight;
-			global::UXDivers.Effects.Droid.Resource.Attribute.tabMaxWidth = global::Bullytect.Droid.Resource.Attribute.tabMaxWidth;
-			global::UXDivers.Effects.Droid.Resource.Attribute.tabMinWidth = global::Bullytect.Droid.Resource.Attribute.tabMinWidth;
-			global::UXDivers.Effects.Droid.Resource.Attribute.tabMode = global::Bullytect.Droid.Resource.Attribute.tabMode;
-			global::UXDivers.Effects.Droid.Resource.Attribute.tabPadding = global::Bullytect.Droid.Resource.Attribute.tabPadding;
-			global::UXDivers.Effects.Droid.Resource.Attribute.tabPaddingBottom = global::Bullytect.Droid.Resource.Attribute.tabPaddingBottom;
-			global::UXDivers.Effects.Droid.Resource.Attribute.tabPaddingEnd = global::Bullytect.Droid.Resource.Attribute.tabPaddingEnd;
-			global::UXDivers.Effects.Droid.Resource.Attribute.tabPaddingStart = global::Bullytect.Droid.Resource.Attribute.tabPaddingStart;
-			global::UXDivers.Effects.Droid.Resource.Attribute.tabPaddingTop = global::Bullytect.Droid.Resource.Attribute.tabPaddingTop;
-			global::UXDivers.Effects.Droid.Resource.Attribute.tabSelectedTextColor = global::Bullytect.Droid.Resource.Attribute.tabSelectedTextColor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.tabTextAppearance = global::Bullytect.Droid.Resource.Attribute.tabTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Attribute.tabTextColor = global::Bullytect.Droid.Resource.Attribute.tabTextColor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.textAllCaps = global::Bullytect.Droid.Resource.Attribute.textAllCaps;
-			global::UXDivers.Effects.Droid.Resource.Attribute.textAppearanceLargePopupMenu = global::Bullytect.Droid.Resource.Attribute.textAppearanceLargePopupMenu;
-			global::UXDivers.Effects.Droid.Resource.Attribute.textAppearanceListItem = global::Bullytect.Droid.Resource.Attribute.textAppearanceListItem;
-			global::UXDivers.Effects.Droid.Resource.Attribute.textAppearanceListItemSmall = global::Bullytect.Droid.Resource.Attribute.textAppearanceListItemSmall;
-			global::UXDivers.Effects.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle = global::Bullytect.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.textAppearanceSearchResultTitle = global::Bullytect.Droid.Resource.Attribute.textAppearanceSearchResultTitle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.textAppearanceSmallPopupMenu = global::Bullytect.Droid.Resource.Attribute.textAppearanceSmallPopupMenu;
-			global::UXDivers.Effects.Droid.Resource.Attribute.textColorAlertDialogListItem = global::Bullytect.Droid.Resource.Attribute.textColorAlertDialogListItem;
-			global::UXDivers.Effects.Droid.Resource.Attribute.textColorError = global::Bullytect.Droid.Resource.Attribute.textColorError;
-			global::UXDivers.Effects.Droid.Resource.Attribute.textColorSearchUrl = global::Bullytect.Droid.Resource.Attribute.textColorSearchUrl;
-			global::UXDivers.Effects.Droid.Resource.Attribute.theme = global::Bullytect.Droid.Resource.Attribute.theme;
-			global::UXDivers.Effects.Droid.Resource.Attribute.thickness = global::Bullytect.Droid.Resource.Attribute.thickness;
-			global::UXDivers.Effects.Droid.Resource.Attribute.thumbTextPadding = global::Bullytect.Droid.Resource.Attribute.thumbTextPadding;
-			global::UXDivers.Effects.Droid.Resource.Attribute.title = global::Bullytect.Droid.Resource.Attribute.title;
-			global::UXDivers.Effects.Droid.Resource.Attribute.titleEnabled = global::Bullytect.Droid.Resource.Attribute.titleEnabled;
-			global::UXDivers.Effects.Droid.Resource.Attribute.titleMarginBottom = global::Bullytect.Droid.Resource.Attribute.titleMarginBottom;
-			global::UXDivers.Effects.Droid.Resource.Attribute.titleMarginEnd = global::Bullytect.Droid.Resource.Attribute.titleMarginEnd;
-			global::UXDivers.Effects.Droid.Resource.Attribute.titleMarginStart = global::Bullytect.Droid.Resource.Attribute.titleMarginStart;
-			global::UXDivers.Effects.Droid.Resource.Attribute.titleMarginTop = global::Bullytect.Droid.Resource.Attribute.titleMarginTop;
-			global::UXDivers.Effects.Droid.Resource.Attribute.titleMargins = global::Bullytect.Droid.Resource.Attribute.titleMargins;
-			global::UXDivers.Effects.Droid.Resource.Attribute.titleTextAppearance = global::Bullytect.Droid.Resource.Attribute.titleTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Attribute.titleTextColor = global::Bullytect.Droid.Resource.Attribute.titleTextColor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.titleTextStyle = global::Bullytect.Droid.Resource.Attribute.titleTextStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.toolbarId = global::Bullytect.Droid.Resource.Attribute.toolbarId;
-			global::UXDivers.Effects.Droid.Resource.Attribute.toolbarNavigationButtonStyle = global::Bullytect.Droid.Resource.Attribute.toolbarNavigationButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.toolbarStyle = global::Bullytect.Droid.Resource.Attribute.toolbarStyle;
-			global::UXDivers.Effects.Droid.Resource.Attribute.track = global::Bullytect.Droid.Resource.Attribute.track;
-			global::UXDivers.Effects.Droid.Resource.Attribute.useCompatPadding = global::Bullytect.Droid.Resource.Attribute.useCompatPadding;
-			global::UXDivers.Effects.Droid.Resource.Attribute.voiceIcon = global::Bullytect.Droid.Resource.Attribute.voiceIcon;
-			global::UXDivers.Effects.Droid.Resource.Attribute.windowActionBar = global::Bullytect.Droid.Resource.Attribute.windowActionBar;
-			global::UXDivers.Effects.Droid.Resource.Attribute.windowActionBarOverlay = global::Bullytect.Droid.Resource.Attribute.windowActionBarOverlay;
-			global::UXDivers.Effects.Droid.Resource.Attribute.windowActionModeOverlay = global::Bullytect.Droid.Resource.Attribute.windowActionModeOverlay;
-			global::UXDivers.Effects.Droid.Resource.Attribute.windowFixedHeightMajor = global::Bullytect.Droid.Resource.Attribute.windowFixedHeightMajor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.windowFixedHeightMinor = global::Bullytect.Droid.Resource.Attribute.windowFixedHeightMinor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.windowFixedWidthMajor = global::Bullytect.Droid.Resource.Attribute.windowFixedWidthMajor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.windowFixedWidthMinor = global::Bullytect.Droid.Resource.Attribute.windowFixedWidthMinor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.windowMinWidthMajor = global::Bullytect.Droid.Resource.Attribute.windowMinWidthMajor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.windowMinWidthMinor = global::Bullytect.Droid.Resource.Attribute.windowMinWidthMinor;
-			global::UXDivers.Effects.Droid.Resource.Attribute.windowNoTitle = global::Bullytect.Droid.Resource.Attribute.windowNoTitle;
-			global::UXDivers.Effects.Droid.Resource.Boolean.abc_action_bar_embed_tabs = global::Bullytect.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
-			global::UXDivers.Effects.Droid.Resource.Boolean.abc_allow_stacked_button_bar = global::Bullytect.Droid.Resource.Boolean.abc_allow_stacked_button_bar;
-			global::UXDivers.Effects.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::Bullytect.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
-			global::UXDivers.Effects.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside = global::Bullytect.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside;
-			global::UXDivers.Effects.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent = global::Bullytect.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent;
-			global::UXDivers.Effects.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark = global::Bullytect.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.abc_background_cache_hint_selector_material_light = global::Bullytect.Droid.Resource.Color.abc_background_cache_hint_selector_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.abc_color_highlight_material = global::Bullytect.Droid.Resource.Color.abc_color_highlight_material;
-			global::UXDivers.Effects.Droid.Resource.Color.abc_input_method_navigation_guard = global::Bullytect.Droid.Resource.Color.abc_input_method_navigation_guard;
-			global::UXDivers.Effects.Droid.Resource.Color.abc_primary_text_disable_only_material_dark = global::Bullytect.Droid.Resource.Color.abc_primary_text_disable_only_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.abc_primary_text_disable_only_material_light = global::Bullytect.Droid.Resource.Color.abc_primary_text_disable_only_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.abc_primary_text_material_dark = global::Bullytect.Droid.Resource.Color.abc_primary_text_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.abc_primary_text_material_light = global::Bullytect.Droid.Resource.Color.abc_primary_text_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.abc_search_url_text = global::Bullytect.Droid.Resource.Color.abc_search_url_text;
-			global::UXDivers.Effects.Droid.Resource.Color.abc_search_url_text_normal = global::Bullytect.Droid.Resource.Color.abc_search_url_text_normal;
-			global::UXDivers.Effects.Droid.Resource.Color.abc_search_url_text_pressed = global::Bullytect.Droid.Resource.Color.abc_search_url_text_pressed;
-			global::UXDivers.Effects.Droid.Resource.Color.abc_search_url_text_selected = global::Bullytect.Droid.Resource.Color.abc_search_url_text_selected;
-			global::UXDivers.Effects.Droid.Resource.Color.abc_secondary_text_material_dark = global::Bullytect.Droid.Resource.Color.abc_secondary_text_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.abc_secondary_text_material_light = global::Bullytect.Droid.Resource.Color.abc_secondary_text_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.accent_material_dark = global::Bullytect.Droid.Resource.Color.accent_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.accent_material_light = global::Bullytect.Droid.Resource.Color.accent_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.background_floating_material_dark = global::Bullytect.Droid.Resource.Color.background_floating_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.background_floating_material_light = global::Bullytect.Droid.Resource.Color.background_floating_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.background_material_dark = global::Bullytect.Droid.Resource.Color.background_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.background_material_light = global::Bullytect.Droid.Resource.Color.background_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.bright_foreground_disabled_material_dark = global::Bullytect.Droid.Resource.Color.bright_foreground_disabled_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.bright_foreground_disabled_material_light = global::Bullytect.Droid.Resource.Color.bright_foreground_disabled_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.bright_foreground_inverse_material_dark = global::Bullytect.Droid.Resource.Color.bright_foreground_inverse_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.bright_foreground_inverse_material_light = global::Bullytect.Droid.Resource.Color.bright_foreground_inverse_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.bright_foreground_material_dark = global::Bullytect.Droid.Resource.Color.bright_foreground_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.bright_foreground_material_light = global::Bullytect.Droid.Resource.Color.bright_foreground_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.button_material_dark = global::Bullytect.Droid.Resource.Color.button_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.button_material_light = global::Bullytect.Droid.Resource.Color.button_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.cardview_dark_background = global::Bullytect.Droid.Resource.Color.cardview_dark_background;
-			global::UXDivers.Effects.Droid.Resource.Color.cardview_light_background = global::Bullytect.Droid.Resource.Color.cardview_light_background;
-			global::UXDivers.Effects.Droid.Resource.Color.cardview_shadow_end_color = global::Bullytect.Droid.Resource.Color.cardview_shadow_end_color;
-			global::UXDivers.Effects.Droid.Resource.Color.cardview_shadow_start_color = global::Bullytect.Droid.Resource.Color.cardview_shadow_start_color;
-			global::UXDivers.Effects.Droid.Resource.Color.design_fab_shadow_end_color = global::Bullytect.Droid.Resource.Color.design_fab_shadow_end_color;
-			global::UXDivers.Effects.Droid.Resource.Color.design_fab_shadow_mid_color = global::Bullytect.Droid.Resource.Color.design_fab_shadow_mid_color;
-			global::UXDivers.Effects.Droid.Resource.Color.design_fab_shadow_start_color = global::Bullytect.Droid.Resource.Color.design_fab_shadow_start_color;
-			global::UXDivers.Effects.Droid.Resource.Color.design_fab_stroke_end_inner_color = global::Bullytect.Droid.Resource.Color.design_fab_stroke_end_inner_color;
-			global::UXDivers.Effects.Droid.Resource.Color.design_fab_stroke_end_outer_color = global::Bullytect.Droid.Resource.Color.design_fab_stroke_end_outer_color;
-			global::UXDivers.Effects.Droid.Resource.Color.design_fab_stroke_top_inner_color = global::Bullytect.Droid.Resource.Color.design_fab_stroke_top_inner_color;
-			global::UXDivers.Effects.Droid.Resource.Color.design_fab_stroke_top_outer_color = global::Bullytect.Droid.Resource.Color.design_fab_stroke_top_outer_color;
-			global::UXDivers.Effects.Droid.Resource.Color.design_snackbar_background_color = global::Bullytect.Droid.Resource.Color.design_snackbar_background_color;
-			global::UXDivers.Effects.Droid.Resource.Color.design_textinput_error_color_dark = global::Bullytect.Droid.Resource.Color.design_textinput_error_color_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.design_textinput_error_color_light = global::Bullytect.Droid.Resource.Color.design_textinput_error_color_light;
-			global::UXDivers.Effects.Droid.Resource.Color.dim_foreground_disabled_material_dark = global::Bullytect.Droid.Resource.Color.dim_foreground_disabled_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.dim_foreground_disabled_material_light = global::Bullytect.Droid.Resource.Color.dim_foreground_disabled_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.dim_foreground_material_dark = global::Bullytect.Droid.Resource.Color.dim_foreground_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.dim_foreground_material_light = global::Bullytect.Droid.Resource.Color.dim_foreground_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.foreground_material_dark = global::Bullytect.Droid.Resource.Color.foreground_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.foreground_material_light = global::Bullytect.Droid.Resource.Color.foreground_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.highlighted_text_material_dark = global::Bullytect.Droid.Resource.Color.highlighted_text_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.highlighted_text_material_light = global::Bullytect.Droid.Resource.Color.highlighted_text_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.material_blue_grey_800 = global::Bullytect.Droid.Resource.Color.material_blue_grey_800;
-			global::UXDivers.Effects.Droid.Resource.Color.material_blue_grey_900 = global::Bullytect.Droid.Resource.Color.material_blue_grey_900;
-			global::UXDivers.Effects.Droid.Resource.Color.material_blue_grey_950 = global::Bullytect.Droid.Resource.Color.material_blue_grey_950;
-			global::UXDivers.Effects.Droid.Resource.Color.material_deep_teal_200 = global::Bullytect.Droid.Resource.Color.material_deep_teal_200;
-			global::UXDivers.Effects.Droid.Resource.Color.material_deep_teal_500 = global::Bullytect.Droid.Resource.Color.material_deep_teal_500;
-			global::UXDivers.Effects.Droid.Resource.Color.material_grey_100 = global::Bullytect.Droid.Resource.Color.material_grey_100;
-			global::UXDivers.Effects.Droid.Resource.Color.material_grey_300 = global::Bullytect.Droid.Resource.Color.material_grey_300;
-			global::UXDivers.Effects.Droid.Resource.Color.material_grey_50 = global::Bullytect.Droid.Resource.Color.material_grey_50;
-			global::UXDivers.Effects.Droid.Resource.Color.material_grey_600 = global::Bullytect.Droid.Resource.Color.material_grey_600;
-			global::UXDivers.Effects.Droid.Resource.Color.material_grey_800 = global::Bullytect.Droid.Resource.Color.material_grey_800;
-			global::UXDivers.Effects.Droid.Resource.Color.material_grey_850 = global::Bullytect.Droid.Resource.Color.material_grey_850;
-			global::UXDivers.Effects.Droid.Resource.Color.material_grey_900 = global::Bullytect.Droid.Resource.Color.material_grey_900;
-			global::UXDivers.Effects.Droid.Resource.Color.primary_dark_material_dark = global::Bullytect.Droid.Resource.Color.primary_dark_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.primary_dark_material_light = global::Bullytect.Droid.Resource.Color.primary_dark_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.primary_material_dark = global::Bullytect.Droid.Resource.Color.primary_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.primary_material_light = global::Bullytect.Droid.Resource.Color.primary_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.primary_text_default_material_dark = global::Bullytect.Droid.Resource.Color.primary_text_default_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.primary_text_default_material_light = global::Bullytect.Droid.Resource.Color.primary_text_default_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.primary_text_disabled_material_dark = global::Bullytect.Droid.Resource.Color.primary_text_disabled_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.primary_text_disabled_material_light = global::Bullytect.Droid.Resource.Color.primary_text_disabled_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.ripple_material_dark = global::Bullytect.Droid.Resource.Color.ripple_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.ripple_material_light = global::Bullytect.Droid.Resource.Color.ripple_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.secondary_text_default_material_dark = global::Bullytect.Droid.Resource.Color.secondary_text_default_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.secondary_text_default_material_light = global::Bullytect.Droid.Resource.Color.secondary_text_default_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.secondary_text_disabled_material_dark = global::Bullytect.Droid.Resource.Color.secondary_text_disabled_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.secondary_text_disabled_material_light = global::Bullytect.Droid.Resource.Color.secondary_text_disabled_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.switch_thumb_disabled_material_dark = global::Bullytect.Droid.Resource.Color.switch_thumb_disabled_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.switch_thumb_disabled_material_light = global::Bullytect.Droid.Resource.Color.switch_thumb_disabled_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.switch_thumb_material_dark = global::Bullytect.Droid.Resource.Color.switch_thumb_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.switch_thumb_material_light = global::Bullytect.Droid.Resource.Color.switch_thumb_material_light;
-			global::UXDivers.Effects.Droid.Resource.Color.switch_thumb_normal_material_dark = global::Bullytect.Droid.Resource.Color.switch_thumb_normal_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Color.switch_thumb_normal_material_light = global::Bullytect.Droid.Resource.Color.switch_thumb_normal_material_light;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_action_bar_content_inset_material = global::Bullytect.Droid.Resource.Dimension.abc_action_bar_content_inset_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_action_bar_default_height_material = global::Bullytect.Droid.Resource.Dimension.abc_action_bar_default_height_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material = global::Bullytect.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material = global::Bullytect.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::Bullytect.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::Bullytect.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::Bullytect.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_action_bar_progress_bar_size = global::Bullytect.Droid.Resource.Dimension.abc_action_bar_progress_bar_size;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_action_bar_stacked_max_height = global::Bullytect.Droid.Resource.Dimension.abc_action_bar_stacked_max_height;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::Bullytect.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::Bullytect.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::Bullytect.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_action_button_min_height_material = global::Bullytect.Droid.Resource.Dimension.abc_action_button_min_height_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_action_button_min_width_material = global::Bullytect.Droid.Resource.Dimension.abc_action_button_min_width_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material = global::Bullytect.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height = global::Bullytect.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_button_inset_horizontal_material = global::Bullytect.Droid.Resource.Dimension.abc_button_inset_horizontal_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_button_inset_vertical_material = global::Bullytect.Droid.Resource.Dimension.abc_button_inset_vertical_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_button_padding_horizontal_material = global::Bullytect.Droid.Resource.Dimension.abc_button_padding_horizontal_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_button_padding_vertical_material = global::Bullytect.Droid.Resource.Dimension.abc_button_padding_vertical_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_config_prefDialogWidth = global::Bullytect.Droid.Resource.Dimension.abc_config_prefDialogWidth;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_control_corner_material = global::Bullytect.Droid.Resource.Dimension.abc_control_corner_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_control_inset_material = global::Bullytect.Droid.Resource.Dimension.abc_control_inset_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_control_padding_material = global::Bullytect.Droid.Resource.Dimension.abc_control_padding_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_dialog_fixed_height_major = global::Bullytect.Droid.Resource.Dimension.abc_dialog_fixed_height_major;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_dialog_fixed_height_minor = global::Bullytect.Droid.Resource.Dimension.abc_dialog_fixed_height_minor;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_dialog_fixed_width_major = global::Bullytect.Droid.Resource.Dimension.abc_dialog_fixed_width_major;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_dialog_fixed_width_minor = global::Bullytect.Droid.Resource.Dimension.abc_dialog_fixed_width_minor;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_dialog_min_width_major = global::Bullytect.Droid.Resource.Dimension.abc_dialog_min_width_major;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_dialog_min_width_minor = global::Bullytect.Droid.Resource.Dimension.abc_dialog_min_width_minor;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_dialog_padding_material = global::Bullytect.Droid.Resource.Dimension.abc_dialog_padding_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_dialog_padding_top_material = global::Bullytect.Droid.Resource.Dimension.abc_dialog_padding_top_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_disabled_alpha_material_dark = global::Bullytect.Droid.Resource.Dimension.abc_disabled_alpha_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_disabled_alpha_material_light = global::Bullytect.Droid.Resource.Dimension.abc_disabled_alpha_material_light;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_dropdownitem_icon_width = global::Bullytect.Droid.Resource.Dimension.abc_dropdownitem_icon_width;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left = global::Bullytect.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right = global::Bullytect.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material = global::Bullytect.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::Bullytect.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_edit_text_inset_top_material = global::Bullytect.Droid.Resource.Dimension.abc_edit_text_inset_top_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_floating_window_z = global::Bullytect.Droid.Resource.Dimension.abc_floating_window_z;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material = global::Bullytect.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_panel_menu_list_width = global::Bullytect.Droid.Resource.Dimension.abc_panel_menu_list_width;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_search_view_preferred_width = global::Bullytect.Droid.Resource.Dimension.abc_search_view_preferred_width;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_seekbar_track_background_height_material = global::Bullytect.Droid.Resource.Dimension.abc_seekbar_track_background_height_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_seekbar_track_progress_height_material = global::Bullytect.Droid.Resource.Dimension.abc_seekbar_track_progress_height_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_select_dialog_padding_start_material = global::Bullytect.Droid.Resource.Dimension.abc_select_dialog_padding_start_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_switch_padding = global::Bullytect.Droid.Resource.Dimension.abc_switch_padding;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_body_1_material = global::Bullytect.Droid.Resource.Dimension.abc_text_size_body_1_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_body_2_material = global::Bullytect.Droid.Resource.Dimension.abc_text_size_body_2_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_button_material = global::Bullytect.Droid.Resource.Dimension.abc_text_size_button_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_caption_material = global::Bullytect.Droid.Resource.Dimension.abc_text_size_caption_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_display_1_material = global::Bullytect.Droid.Resource.Dimension.abc_text_size_display_1_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_display_2_material = global::Bullytect.Droid.Resource.Dimension.abc_text_size_display_2_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_display_3_material = global::Bullytect.Droid.Resource.Dimension.abc_text_size_display_3_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_display_4_material = global::Bullytect.Droid.Resource.Dimension.abc_text_size_display_4_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_headline_material = global::Bullytect.Droid.Resource.Dimension.abc_text_size_headline_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_large_material = global::Bullytect.Droid.Resource.Dimension.abc_text_size_large_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_medium_material = global::Bullytect.Droid.Resource.Dimension.abc_text_size_medium_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_menu_material = global::Bullytect.Droid.Resource.Dimension.abc_text_size_menu_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_small_material = global::Bullytect.Droid.Resource.Dimension.abc_text_size_small_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_subhead_material = global::Bullytect.Droid.Resource.Dimension.abc_text_size_subhead_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::Bullytect.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_title_material = global::Bullytect.Droid.Resource.Dimension.abc_text_size_title_material;
-			global::UXDivers.Effects.Droid.Resource.Dimension.abc_text_size_title_material_toolbar = global::Bullytect.Droid.Resource.Dimension.abc_text_size_title_material_toolbar;
-			global::UXDivers.Effects.Droid.Resource.Dimension.cardview_compat_inset_shadow = global::Bullytect.Droid.Resource.Dimension.cardview_compat_inset_shadow;
-			global::UXDivers.Effects.Droid.Resource.Dimension.cardview_default_elevation = global::Bullytect.Droid.Resource.Dimension.cardview_default_elevation;
-			global::UXDivers.Effects.Droid.Resource.Dimension.cardview_default_radius = global::Bullytect.Droid.Resource.Dimension.cardview_default_radius;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_appbar_elevation = global::Bullytect.Droid.Resource.Dimension.design_appbar_elevation;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_bottom_sheet_modal_elevation = global::Bullytect.Droid.Resource.Dimension.design_bottom_sheet_modal_elevation;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_fab_border_width = global::Bullytect.Droid.Resource.Dimension.design_fab_border_width;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_fab_elevation = global::Bullytect.Droid.Resource.Dimension.design_fab_elevation;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_fab_image_size = global::Bullytect.Droid.Resource.Dimension.design_fab_image_size;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_fab_size_mini = global::Bullytect.Droid.Resource.Dimension.design_fab_size_mini;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_fab_size_normal = global::Bullytect.Droid.Resource.Dimension.design_fab_size_normal;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_fab_translation_z_pressed = global::Bullytect.Droid.Resource.Dimension.design_fab_translation_z_pressed;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_navigation_elevation = global::Bullytect.Droid.Resource.Dimension.design_navigation_elevation;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_navigation_icon_padding = global::Bullytect.Droid.Resource.Dimension.design_navigation_icon_padding;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_navigation_icon_size = global::Bullytect.Droid.Resource.Dimension.design_navigation_icon_size;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_navigation_max_width = global::Bullytect.Droid.Resource.Dimension.design_navigation_max_width;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_navigation_padding_bottom = global::Bullytect.Droid.Resource.Dimension.design_navigation_padding_bottom;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_navigation_separator_vertical_padding = global::Bullytect.Droid.Resource.Dimension.design_navigation_separator_vertical_padding;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_snackbar_action_inline_max_width = global::Bullytect.Droid.Resource.Dimension.design_snackbar_action_inline_max_width;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_snackbar_background_corner_radius = global::Bullytect.Droid.Resource.Dimension.design_snackbar_background_corner_radius;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_snackbar_elevation = global::Bullytect.Droid.Resource.Dimension.design_snackbar_elevation;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal = global::Bullytect.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_snackbar_max_width = global::Bullytect.Droid.Resource.Dimension.design_snackbar_max_width;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_snackbar_min_width = global::Bullytect.Droid.Resource.Dimension.design_snackbar_min_width;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_snackbar_padding_horizontal = global::Bullytect.Droid.Resource.Dimension.design_snackbar_padding_horizontal;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_snackbar_padding_vertical = global::Bullytect.Droid.Resource.Dimension.design_snackbar_padding_vertical;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines = global::Bullytect.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_snackbar_text_size = global::Bullytect.Droid.Resource.Dimension.design_snackbar_text_size;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_tab_max_width = global::Bullytect.Droid.Resource.Dimension.design_tab_max_width;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_tab_scrollable_min_width = global::Bullytect.Droid.Resource.Dimension.design_tab_scrollable_min_width;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_tab_text_size = global::Bullytect.Droid.Resource.Dimension.design_tab_text_size;
-			global::UXDivers.Effects.Droid.Resource.Dimension.design_tab_text_size_2line = global::Bullytect.Droid.Resource.Dimension.design_tab_text_size_2line;
-			global::UXDivers.Effects.Droid.Resource.Dimension.disabled_alpha_material_dark = global::Bullytect.Droid.Resource.Dimension.disabled_alpha_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Dimension.disabled_alpha_material_light = global::Bullytect.Droid.Resource.Dimension.disabled_alpha_material_light;
-			global::UXDivers.Effects.Droid.Resource.Dimension.highlight_alpha_material_colored = global::Bullytect.Droid.Resource.Dimension.highlight_alpha_material_colored;
-			global::UXDivers.Effects.Droid.Resource.Dimension.highlight_alpha_material_dark = global::Bullytect.Droid.Resource.Dimension.highlight_alpha_material_dark;
-			global::UXDivers.Effects.Droid.Resource.Dimension.highlight_alpha_material_light = global::Bullytect.Droid.Resource.Dimension.highlight_alpha_material_light;
-			global::UXDivers.Effects.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::Bullytect.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
-			global::UXDivers.Effects.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::Bullytect.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
-			global::UXDivers.Effects.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::Bullytect.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
-			global::UXDivers.Effects.Droid.Resource.Dimension.mr_controller_volume_group_list_item_height = global::Bullytect.Droid.Resource.Dimension.mr_controller_volume_group_list_item_height;
-			global::UXDivers.Effects.Droid.Resource.Dimension.mr_controller_volume_group_list_item_icon_size = global::Bullytect.Droid.Resource.Dimension.mr_controller_volume_group_list_item_icon_size;
-			global::UXDivers.Effects.Droid.Resource.Dimension.mr_controller_volume_group_list_max_height = global::Bullytect.Droid.Resource.Dimension.mr_controller_volume_group_list_max_height;
-			global::UXDivers.Effects.Droid.Resource.Dimension.mr_controller_volume_group_list_padding_top = global::Bullytect.Droid.Resource.Dimension.mr_controller_volume_group_list_padding_top;
-			global::UXDivers.Effects.Droid.Resource.Dimension.mr_dialog_fixed_width_major = global::Bullytect.Droid.Resource.Dimension.mr_dialog_fixed_width_major;
-			global::UXDivers.Effects.Droid.Resource.Dimension.mr_dialog_fixed_width_minor = global::Bullytect.Droid.Resource.Dimension.mr_dialog_fixed_width_minor;
-			global::UXDivers.Effects.Droid.Resource.Dimension.notification_large_icon_height = global::Bullytect.Droid.Resource.Dimension.notification_large_icon_height;
-			global::UXDivers.Effects.Droid.Resource.Dimension.notification_large_icon_width = global::Bullytect.Droid.Resource.Dimension.notification_large_icon_width;
-			global::UXDivers.Effects.Droid.Resource.Dimension.notification_subtext_size = global::Bullytect.Droid.Resource.Dimension.notification_subtext_size;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::Bullytect.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_action_bar_item_background_material = global::Bullytect.Droid.Resource.Drawable.abc_action_bar_item_background_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_btn_borderless_material = global::Bullytect.Droid.Resource.Drawable.abc_btn_borderless_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_btn_check_material = global::Bullytect.Droid.Resource.Drawable.abc_btn_check_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::Bullytect.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::Bullytect.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_btn_colored_material = global::Bullytect.Droid.Resource.Drawable.abc_btn_colored_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_btn_default_mtrl_shape = global::Bullytect.Droid.Resource.Drawable.abc_btn_default_mtrl_shape;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_btn_radio_material = global::Bullytect.Droid.Resource.Drawable.abc_btn_radio_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::Bullytect.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::Bullytect.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::Bullytect.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::Bullytect.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_cab_background_internal_bg = global::Bullytect.Droid.Resource.Drawable.abc_cab_background_internal_bg;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_cab_background_top_material = global::Bullytect.Droid.Resource.Drawable.abc_cab_background_top_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::Bullytect.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_control_background_material = global::Bullytect.Droid.Resource.Drawable.abc_control_background_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_edit_text_material = global::Bullytect.Droid.Resource.Drawable.abc_edit_text_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::Bullytect.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::Bullytect.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::Bullytect.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::Bullytect.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::Bullytect.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::Bullytect.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_ic_star_black_16dp = global::Bullytect.Droid.Resource.Drawable.abc_ic_star_black_16dp;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_ic_star_black_36dp = global::Bullytect.Droid.Resource.Drawable.abc_ic_star_black_36dp;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_ic_star_half_black_16dp = global::Bullytect.Droid.Resource.Drawable.abc_ic_star_half_black_16dp;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_ic_star_half_black_36dp = global::Bullytect.Droid.Resource.Drawable.abc_ic_star_half_black_36dp;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_item_background_holo_dark = global::Bullytect.Droid.Resource.Drawable.abc_item_background_holo_dark;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_item_background_holo_light = global::Bullytect.Droid.Resource.Drawable.abc_item_background_holo_light;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha = global::Bullytect.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_list_focused_holo = global::Bullytect.Droid.Resource.Drawable.abc_list_focused_holo;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_list_longpressed_holo = global::Bullytect.Droid.Resource.Drawable.abc_list_longpressed_holo;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_list_pressed_holo_dark = global::Bullytect.Droid.Resource.Drawable.abc_list_pressed_holo_dark;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_list_pressed_holo_light = global::Bullytect.Droid.Resource.Drawable.abc_list_pressed_holo_light;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::Bullytect.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::Bullytect.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::Bullytect.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light = global::Bullytect.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_list_selector_holo_dark = global::Bullytect.Droid.Resource.Drawable.abc_list_selector_holo_dark;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_list_selector_holo_light = global::Bullytect.Droid.Resource.Drawable.abc_list_selector_holo_light;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::Bullytect.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_popup_background_mtrl_mult = global::Bullytect.Droid.Resource.Drawable.abc_popup_background_mtrl_mult;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_ratingbar_indicator_material = global::Bullytect.Droid.Resource.Drawable.abc_ratingbar_indicator_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_ratingbar_small_material = global::Bullytect.Droid.Resource.Drawable.abc_ratingbar_small_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha = global::Bullytect.Droid.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000 = global::Bullytect.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005 = global::Bullytect.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_scrubber_primary_mtrl_alpha = global::Bullytect.Droid.Resource.Drawable.abc_scrubber_primary_mtrl_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_scrubber_track_mtrl_alpha = global::Bullytect.Droid.Resource.Drawable.abc_scrubber_track_mtrl_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_seekbar_thumb_material = global::Bullytect.Droid.Resource.Drawable.abc_seekbar_thumb_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_seekbar_track_material = global::Bullytect.Droid.Resource.Drawable.abc_seekbar_track_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::Bullytect.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_spinner_textfield_background_material = global::Bullytect.Droid.Resource.Drawable.abc_spinner_textfield_background_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_switch_thumb_material = global::Bullytect.Droid.Resource.Drawable.abc_switch_thumb_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha = global::Bullytect.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_tab_indicator_material = global::Bullytect.Droid.Resource.Drawable.abc_tab_indicator_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::Bullytect.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_text_cursor_material = global::Bullytect.Droid.Resource.Drawable.abc_text_cursor_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::Bullytect.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::Bullytect.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::Bullytect.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::Bullytect.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
-			global::UXDivers.Effects.Droid.Resource.Drawable.abc_textfield_search_material = global::Bullytect.Droid.Resource.Drawable.abc_textfield_search_material;
-			global::UXDivers.Effects.Droid.Resource.Drawable.design_fab_background = global::Bullytect.Droid.Resource.Drawable.design_fab_background;
-			global::UXDivers.Effects.Droid.Resource.Drawable.design_snackbar_background = global::Bullytect.Droid.Resource.Drawable.design_snackbar_background;
-			global::UXDivers.Effects.Droid.Resource.Drawable.ic_audiotrack_light = global::Bullytect.Droid.Resource.Drawable.ic_audiotrack_light;
-			global::UXDivers.Effects.Droid.Resource.Drawable.mr_dialog_material_background_dark = global::Bullytect.Droid.Resource.Drawable.mr_dialog_material_background_dark;
-			global::UXDivers.Effects.Droid.Resource.Drawable.mr_dialog_material_background_light = global::Bullytect.Droid.Resource.Drawable.mr_dialog_material_background_light;
-			global::UXDivers.Effects.Droid.Resource.Drawable.notification_template_icon_bg = global::Bullytect.Droid.Resource.Drawable.notification_template_icon_bg;
-			global::UXDivers.Effects.Droid.Resource.Id.action0 = global::Bullytect.Droid.Resource.Id.action0;
-			global::UXDivers.Effects.Droid.Resource.Id.action_bar = global::Bullytect.Droid.Resource.Id.action_bar;
-			global::UXDivers.Effects.Droid.Resource.Id.action_bar_activity_content = global::Bullytect.Droid.Resource.Id.action_bar_activity_content;
-			global::UXDivers.Effects.Droid.Resource.Id.action_bar_container = global::Bullytect.Droid.Resource.Id.action_bar_container;
-			global::UXDivers.Effects.Droid.Resource.Id.action_bar_root = global::Bullytect.Droid.Resource.Id.action_bar_root;
-			global::UXDivers.Effects.Droid.Resource.Id.action_bar_spinner = global::Bullytect.Droid.Resource.Id.action_bar_spinner;
-			global::UXDivers.Effects.Droid.Resource.Id.action_bar_subtitle = global::Bullytect.Droid.Resource.Id.action_bar_subtitle;
-			global::UXDivers.Effects.Droid.Resource.Id.action_bar_title = global::Bullytect.Droid.Resource.Id.action_bar_title;
-			global::UXDivers.Effects.Droid.Resource.Id.action_context_bar = global::Bullytect.Droid.Resource.Id.action_context_bar;
-			global::UXDivers.Effects.Droid.Resource.Id.action_divider = global::Bullytect.Droid.Resource.Id.action_divider;
-			global::UXDivers.Effects.Droid.Resource.Id.action_menu_divider = global::Bullytect.Droid.Resource.Id.action_menu_divider;
-			global::UXDivers.Effects.Droid.Resource.Id.action_menu_presenter = global::Bullytect.Droid.Resource.Id.action_menu_presenter;
-			global::UXDivers.Effects.Droid.Resource.Id.action_mode_bar = global::Bullytect.Droid.Resource.Id.action_mode_bar;
-			global::UXDivers.Effects.Droid.Resource.Id.action_mode_bar_stub = global::Bullytect.Droid.Resource.Id.action_mode_bar_stub;
-			global::UXDivers.Effects.Droid.Resource.Id.action_mode_close_button = global::Bullytect.Droid.Resource.Id.action_mode_close_button;
-			global::UXDivers.Effects.Droid.Resource.Id.activity_chooser_view_content = global::Bullytect.Droid.Resource.Id.activity_chooser_view_content;
-			global::UXDivers.Effects.Droid.Resource.Id.alertTitle = global::Bullytect.Droid.Resource.Id.alertTitle;
-			global::UXDivers.Effects.Droid.Resource.Id.always = global::Bullytect.Droid.Resource.Id.always;
-			global::UXDivers.Effects.Droid.Resource.Id.beginning = global::Bullytect.Droid.Resource.Id.beginning;
-			global::UXDivers.Effects.Droid.Resource.Id.bottom = global::Bullytect.Droid.Resource.Id.bottom;
-			global::UXDivers.Effects.Droid.Resource.Id.buttonPanel = global::Bullytect.Droid.Resource.Id.buttonPanel;
-			global::UXDivers.Effects.Droid.Resource.Id.cancel_action = global::Bullytect.Droid.Resource.Id.cancel_action;
-			global::UXDivers.Effects.Droid.Resource.Id.center = global::Bullytect.Droid.Resource.Id.center;
-			global::UXDivers.Effects.Droid.Resource.Id.center_horizontal = global::Bullytect.Droid.Resource.Id.center_horizontal;
-			global::UXDivers.Effects.Droid.Resource.Id.center_vertical = global::Bullytect.Droid.Resource.Id.center_vertical;
-			global::UXDivers.Effects.Droid.Resource.Id.checkbox = global::Bullytect.Droid.Resource.Id.checkbox;
-			global::UXDivers.Effects.Droid.Resource.Id.chronometer = global::Bullytect.Droid.Resource.Id.chronometer;
-			global::UXDivers.Effects.Droid.Resource.Id.clip_horizontal = global::Bullytect.Droid.Resource.Id.clip_horizontal;
-			global::UXDivers.Effects.Droid.Resource.Id.clip_vertical = global::Bullytect.Droid.Resource.Id.clip_vertical;
-			global::UXDivers.Effects.Droid.Resource.Id.collapseActionView = global::Bullytect.Droid.Resource.Id.collapseActionView;
-			global::UXDivers.Effects.Droid.Resource.Id.contentPanel = global::Bullytect.Droid.Resource.Id.contentPanel;
-			global::UXDivers.Effects.Droid.Resource.Id.custom = global::Bullytect.Droid.Resource.Id.custom;
-			global::UXDivers.Effects.Droid.Resource.Id.customPanel = global::Bullytect.Droid.Resource.Id.customPanel;
-			global::UXDivers.Effects.Droid.Resource.Id.decor_content_parent = global::Bullytect.Droid.Resource.Id.decor_content_parent;
-			global::UXDivers.Effects.Droid.Resource.Id.default_activity_button = global::Bullytect.Droid.Resource.Id.default_activity_button;
-			global::UXDivers.Effects.Droid.Resource.Id.design_bottom_sheet = global::Bullytect.Droid.Resource.Id.design_bottom_sheet;
-			global::UXDivers.Effects.Droid.Resource.Id.design_menu_item_action_area = global::Bullytect.Droid.Resource.Id.design_menu_item_action_area;
-			global::UXDivers.Effects.Droid.Resource.Id.design_menu_item_action_area_stub = global::Bullytect.Droid.Resource.Id.design_menu_item_action_area_stub;
-			global::UXDivers.Effects.Droid.Resource.Id.design_menu_item_text = global::Bullytect.Droid.Resource.Id.design_menu_item_text;
-			global::UXDivers.Effects.Droid.Resource.Id.design_navigation_view = global::Bullytect.Droid.Resource.Id.design_navigation_view;
-			global::UXDivers.Effects.Droid.Resource.Id.disableHome = global::Bullytect.Droid.Resource.Id.disableHome;
-			global::UXDivers.Effects.Droid.Resource.Id.edit_query = global::Bullytect.Droid.Resource.Id.edit_query;
-			global::UXDivers.Effects.Droid.Resource.Id.end = global::Bullytect.Droid.Resource.Id.end;
-			global::UXDivers.Effects.Droid.Resource.Id.end_padder = global::Bullytect.Droid.Resource.Id.end_padder;
-			global::UXDivers.Effects.Droid.Resource.Id.enterAlways = global::Bullytect.Droid.Resource.Id.enterAlways;
-			global::UXDivers.Effects.Droid.Resource.Id.enterAlwaysCollapsed = global::Bullytect.Droid.Resource.Id.enterAlwaysCollapsed;
-			global::UXDivers.Effects.Droid.Resource.Id.exitUntilCollapsed = global::Bullytect.Droid.Resource.Id.exitUntilCollapsed;
-			global::UXDivers.Effects.Droid.Resource.Id.expand_activities_button = global::Bullytect.Droid.Resource.Id.expand_activities_button;
-			global::UXDivers.Effects.Droid.Resource.Id.expanded_menu = global::Bullytect.Droid.Resource.Id.expanded_menu;
-			global::UXDivers.Effects.Droid.Resource.Id.fill = global::Bullytect.Droid.Resource.Id.fill;
-			global::UXDivers.Effects.Droid.Resource.Id.fill_horizontal = global::Bullytect.Droid.Resource.Id.fill_horizontal;
-			global::UXDivers.Effects.Droid.Resource.Id.fill_vertical = global::Bullytect.Droid.Resource.Id.fill_vertical;
-			global::UXDivers.Effects.Droid.Resource.Id.@fixed = global::Bullytect.Droid.Resource.Id.@fixed;
-			global::UXDivers.Effects.Droid.Resource.Id.home = global::Bullytect.Droid.Resource.Id.home;
-			global::UXDivers.Effects.Droid.Resource.Id.homeAsUp = global::Bullytect.Droid.Resource.Id.homeAsUp;
-			global::UXDivers.Effects.Droid.Resource.Id.icon = global::Bullytect.Droid.Resource.Id.icon;
-			global::UXDivers.Effects.Droid.Resource.Id.ifRoom = global::Bullytect.Droid.Resource.Id.ifRoom;
-			global::UXDivers.Effects.Droid.Resource.Id.image = global::Bullytect.Droid.Resource.Id.image;
-			global::UXDivers.Effects.Droid.Resource.Id.info = global::Bullytect.Droid.Resource.Id.info;
-			global::UXDivers.Effects.Droid.Resource.Id.item_touch_helper_previous_elevation = global::Bullytect.Droid.Resource.Id.item_touch_helper_previous_elevation;
-			global::UXDivers.Effects.Droid.Resource.Id.left = global::Bullytect.Droid.Resource.Id.left;
-			global::UXDivers.Effects.Droid.Resource.Id.line1 = global::Bullytect.Droid.Resource.Id.line1;
-			global::UXDivers.Effects.Droid.Resource.Id.line3 = global::Bullytect.Droid.Resource.Id.line3;
-			global::UXDivers.Effects.Droid.Resource.Id.listMode = global::Bullytect.Droid.Resource.Id.listMode;
-			global::UXDivers.Effects.Droid.Resource.Id.list_item = global::Bullytect.Droid.Resource.Id.list_item;
-			global::UXDivers.Effects.Droid.Resource.Id.media_actions = global::Bullytect.Droid.Resource.Id.media_actions;
-			global::UXDivers.Effects.Droid.Resource.Id.middle = global::Bullytect.Droid.Resource.Id.middle;
-			global::UXDivers.Effects.Droid.Resource.Id.mini = global::Bullytect.Droid.Resource.Id.mini;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_art = global::Bullytect.Droid.Resource.Id.mr_art;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_chooser_list = global::Bullytect.Droid.Resource.Id.mr_chooser_list;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_chooser_route_desc = global::Bullytect.Droid.Resource.Id.mr_chooser_route_desc;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_chooser_route_icon = global::Bullytect.Droid.Resource.Id.mr_chooser_route_icon;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_chooser_route_name = global::Bullytect.Droid.Resource.Id.mr_chooser_route_name;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_close = global::Bullytect.Droid.Resource.Id.mr_close;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_control_divider = global::Bullytect.Droid.Resource.Id.mr_control_divider;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_control_subtitle = global::Bullytect.Droid.Resource.Id.mr_control_subtitle;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_control_title = global::Bullytect.Droid.Resource.Id.mr_control_title;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_control_title_container = global::Bullytect.Droid.Resource.Id.mr_control_title_container;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_custom_control = global::Bullytect.Droid.Resource.Id.mr_custom_control;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_default_control = global::Bullytect.Droid.Resource.Id.mr_default_control;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_dialog_area = global::Bullytect.Droid.Resource.Id.mr_dialog_area;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_expandable_area = global::Bullytect.Droid.Resource.Id.mr_expandable_area;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_group_expand_collapse = global::Bullytect.Droid.Resource.Id.mr_group_expand_collapse;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_media_main_control = global::Bullytect.Droid.Resource.Id.mr_media_main_control;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_name = global::Bullytect.Droid.Resource.Id.mr_name;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_playback_control = global::Bullytect.Droid.Resource.Id.mr_playback_control;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_title_bar = global::Bullytect.Droid.Resource.Id.mr_title_bar;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_volume_control = global::Bullytect.Droid.Resource.Id.mr_volume_control;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_volume_group_list = global::Bullytect.Droid.Resource.Id.mr_volume_group_list;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_volume_item_icon = global::Bullytect.Droid.Resource.Id.mr_volume_item_icon;
-			global::UXDivers.Effects.Droid.Resource.Id.mr_volume_slider = global::Bullytect.Droid.Resource.Id.mr_volume_slider;
-			global::UXDivers.Effects.Droid.Resource.Id.multiply = global::Bullytect.Droid.Resource.Id.multiply;
-			global::UXDivers.Effects.Droid.Resource.Id.navigation_header_container = global::Bullytect.Droid.Resource.Id.navigation_header_container;
-			global::UXDivers.Effects.Droid.Resource.Id.never = global::Bullytect.Droid.Resource.Id.never;
-			global::UXDivers.Effects.Droid.Resource.Id.none = global::Bullytect.Droid.Resource.Id.none;
-			global::UXDivers.Effects.Droid.Resource.Id.normal = global::Bullytect.Droid.Resource.Id.normal;
-			global::UXDivers.Effects.Droid.Resource.Id.parallax = global::Bullytect.Droid.Resource.Id.parallax;
-			global::UXDivers.Effects.Droid.Resource.Id.parentPanel = global::Bullytect.Droid.Resource.Id.parentPanel;
-			global::UXDivers.Effects.Droid.Resource.Id.pin = global::Bullytect.Droid.Resource.Id.pin;
-			global::UXDivers.Effects.Droid.Resource.Id.progress_circular = global::Bullytect.Droid.Resource.Id.progress_circular;
-			global::UXDivers.Effects.Droid.Resource.Id.progress_horizontal = global::Bullytect.Droid.Resource.Id.progress_horizontal;
-			global::UXDivers.Effects.Droid.Resource.Id.radio = global::Bullytect.Droid.Resource.Id.radio;
-			global::UXDivers.Effects.Droid.Resource.Id.right = global::Bullytect.Droid.Resource.Id.right;
-			global::UXDivers.Effects.Droid.Resource.Id.screen = global::Bullytect.Droid.Resource.Id.screen;
-			global::UXDivers.Effects.Droid.Resource.Id.scroll = global::Bullytect.Droid.Resource.Id.scroll;
-			global::UXDivers.Effects.Droid.Resource.Id.scrollIndicatorDown = global::Bullytect.Droid.Resource.Id.scrollIndicatorDown;
-			global::UXDivers.Effects.Droid.Resource.Id.scrollIndicatorUp = global::Bullytect.Droid.Resource.Id.scrollIndicatorUp;
-			global::UXDivers.Effects.Droid.Resource.Id.scrollView = global::Bullytect.Droid.Resource.Id.scrollView;
-			global::UXDivers.Effects.Droid.Resource.Id.scrollable = global::Bullytect.Droid.Resource.Id.scrollable;
-			global::UXDivers.Effects.Droid.Resource.Id.search_badge = global::Bullytect.Droid.Resource.Id.search_badge;
-			global::UXDivers.Effects.Droid.Resource.Id.search_bar = global::Bullytect.Droid.Resource.Id.search_bar;
-			global::UXDivers.Effects.Droid.Resource.Id.search_button = global::Bullytect.Droid.Resource.Id.search_button;
-			global::UXDivers.Effects.Droid.Resource.Id.search_close_btn = global::Bullytect.Droid.Resource.Id.search_close_btn;
-			global::UXDivers.Effects.Droid.Resource.Id.search_edit_frame = global::Bullytect.Droid.Resource.Id.search_edit_frame;
-			global::UXDivers.Effects.Droid.Resource.Id.search_go_btn = global::Bullytect.Droid.Resource.Id.search_go_btn;
-			global::UXDivers.Effects.Droid.Resource.Id.search_mag_icon = global::Bullytect.Droid.Resource.Id.search_mag_icon;
-			global::UXDivers.Effects.Droid.Resource.Id.search_plate = global::Bullytect.Droid.Resource.Id.search_plate;
-			global::UXDivers.Effects.Droid.Resource.Id.search_src_text = global::Bullytect.Droid.Resource.Id.search_src_text;
-			global::UXDivers.Effects.Droid.Resource.Id.search_voice_btn = global::Bullytect.Droid.Resource.Id.search_voice_btn;
-			global::UXDivers.Effects.Droid.Resource.Id.select_dialog_listview = global::Bullytect.Droid.Resource.Id.select_dialog_listview;
-			global::UXDivers.Effects.Droid.Resource.Id.shortcut = global::Bullytect.Droid.Resource.Id.shortcut;
-			global::UXDivers.Effects.Droid.Resource.Id.showCustom = global::Bullytect.Droid.Resource.Id.showCustom;
-			global::UXDivers.Effects.Droid.Resource.Id.showHome = global::Bullytect.Droid.Resource.Id.showHome;
-			global::UXDivers.Effects.Droid.Resource.Id.showTitle = global::Bullytect.Droid.Resource.Id.showTitle;
-			global::UXDivers.Effects.Droid.Resource.Id.snackbar_action = global::Bullytect.Droid.Resource.Id.snackbar_action;
-			global::UXDivers.Effects.Droid.Resource.Id.snackbar_text = global::Bullytect.Droid.Resource.Id.snackbar_text;
-			global::UXDivers.Effects.Droid.Resource.Id.snap = global::Bullytect.Droid.Resource.Id.snap;
-			global::UXDivers.Effects.Droid.Resource.Id.spacer = global::Bullytect.Droid.Resource.Id.spacer;
-			global::UXDivers.Effects.Droid.Resource.Id.split_action_bar = global::Bullytect.Droid.Resource.Id.split_action_bar;
-			global::UXDivers.Effects.Droid.Resource.Id.src_atop = global::Bullytect.Droid.Resource.Id.src_atop;
-			global::UXDivers.Effects.Droid.Resource.Id.src_in = global::Bullytect.Droid.Resource.Id.src_in;
-			global::UXDivers.Effects.Droid.Resource.Id.src_over = global::Bullytect.Droid.Resource.Id.src_over;
-			global::UXDivers.Effects.Droid.Resource.Id.start = global::Bullytect.Droid.Resource.Id.start;
-			global::UXDivers.Effects.Droid.Resource.Id.status_bar_latest_event_content = global::Bullytect.Droid.Resource.Id.status_bar_latest_event_content;
-			global::UXDivers.Effects.Droid.Resource.Id.submit_area = global::Bullytect.Droid.Resource.Id.submit_area;
-			global::UXDivers.Effects.Droid.Resource.Id.tabMode = global::Bullytect.Droid.Resource.Id.tabMode;
-			global::UXDivers.Effects.Droid.Resource.Id.text = global::Bullytect.Droid.Resource.Id.text;
-			global::UXDivers.Effects.Droid.Resource.Id.text2 = global::Bullytect.Droid.Resource.Id.text2;
-			global::UXDivers.Effects.Droid.Resource.Id.textSpacerNoButtons = global::Bullytect.Droid.Resource.Id.textSpacerNoButtons;
-			global::UXDivers.Effects.Droid.Resource.Id.time = global::Bullytect.Droid.Resource.Id.time;
-			global::UXDivers.Effects.Droid.Resource.Id.title = global::Bullytect.Droid.Resource.Id.title;
-			global::UXDivers.Effects.Droid.Resource.Id.title_template = global::Bullytect.Droid.Resource.Id.title_template;
-			global::UXDivers.Effects.Droid.Resource.Id.top = global::Bullytect.Droid.Resource.Id.top;
-			global::UXDivers.Effects.Droid.Resource.Id.topPanel = global::Bullytect.Droid.Resource.Id.topPanel;
-			global::UXDivers.Effects.Droid.Resource.Id.touch_outside = global::Bullytect.Droid.Resource.Id.touch_outside;
-			global::UXDivers.Effects.Droid.Resource.Id.up = global::Bullytect.Droid.Resource.Id.up;
-			global::UXDivers.Effects.Droid.Resource.Id.useLogo = global::Bullytect.Droid.Resource.Id.useLogo;
-			global::UXDivers.Effects.Droid.Resource.Id.view_offset_helper = global::Bullytect.Droid.Resource.Id.view_offset_helper;
-			global::UXDivers.Effects.Droid.Resource.Id.volume_item_container = global::Bullytect.Droid.Resource.Id.volume_item_container;
-			global::UXDivers.Effects.Droid.Resource.Id.withText = global::Bullytect.Droid.Resource.Id.withText;
-			global::UXDivers.Effects.Droid.Resource.Id.wrap_content = global::Bullytect.Droid.Resource.Id.wrap_content;
-			global::UXDivers.Effects.Droid.Resource.Integer.abc_config_activityDefaultDur = global::Bullytect.Droid.Resource.Integer.abc_config_activityDefaultDur;
-			global::UXDivers.Effects.Droid.Resource.Integer.abc_config_activityShortDur = global::Bullytect.Droid.Resource.Integer.abc_config_activityShortDur;
-			global::UXDivers.Effects.Droid.Resource.Integer.bottom_sheet_slide_duration = global::Bullytect.Droid.Resource.Integer.bottom_sheet_slide_duration;
-			global::UXDivers.Effects.Droid.Resource.Integer.cancel_button_image_alpha = global::Bullytect.Droid.Resource.Integer.cancel_button_image_alpha;
-			global::UXDivers.Effects.Droid.Resource.Integer.design_snackbar_text_max_lines = global::Bullytect.Droid.Resource.Integer.design_snackbar_text_max_lines;
-			global::UXDivers.Effects.Droid.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms = global::Bullytect.Droid.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms;
-			global::UXDivers.Effects.Droid.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms = global::Bullytect.Droid.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms;
-			global::UXDivers.Effects.Droid.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms = global::Bullytect.Droid.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms;
-			global::UXDivers.Effects.Droid.Resource.Integer.status_bar_notification_info_maxnum = global::Bullytect.Droid.Resource.Integer.status_bar_notification_info_maxnum;
-			global::UXDivers.Effects.Droid.Resource.Interpolator.mr_fast_out_slow_in = global::Bullytect.Droid.Resource.Interpolator.mr_fast_out_slow_in;
-			global::UXDivers.Effects.Droid.Resource.Interpolator.mr_linear_out_slow_in = global::Bullytect.Droid.Resource.Interpolator.mr_linear_out_slow_in;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_action_bar_title_item = global::Bullytect.Droid.Resource.Layout.abc_action_bar_title_item;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_action_bar_up_container = global::Bullytect.Droid.Resource.Layout.abc_action_bar_up_container;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_action_bar_view_list_nav_layout = global::Bullytect.Droid.Resource.Layout.abc_action_bar_view_list_nav_layout;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_action_menu_item_layout = global::Bullytect.Droid.Resource.Layout.abc_action_menu_item_layout;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_action_menu_layout = global::Bullytect.Droid.Resource.Layout.abc_action_menu_layout;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_action_mode_bar = global::Bullytect.Droid.Resource.Layout.abc_action_mode_bar;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_action_mode_close_item_material = global::Bullytect.Droid.Resource.Layout.abc_action_mode_close_item_material;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_activity_chooser_view = global::Bullytect.Droid.Resource.Layout.abc_activity_chooser_view;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_activity_chooser_view_list_item = global::Bullytect.Droid.Resource.Layout.abc_activity_chooser_view_list_item;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_alert_dialog_button_bar_material = global::Bullytect.Droid.Resource.Layout.abc_alert_dialog_button_bar_material;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_alert_dialog_material = global::Bullytect.Droid.Resource.Layout.abc_alert_dialog_material;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_dialog_title_material = global::Bullytect.Droid.Resource.Layout.abc_dialog_title_material;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_expanded_menu_layout = global::Bullytect.Droid.Resource.Layout.abc_expanded_menu_layout;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_list_menu_item_checkbox = global::Bullytect.Droid.Resource.Layout.abc_list_menu_item_checkbox;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_list_menu_item_icon = global::Bullytect.Droid.Resource.Layout.abc_list_menu_item_icon;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_list_menu_item_layout = global::Bullytect.Droid.Resource.Layout.abc_list_menu_item_layout;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_list_menu_item_radio = global::Bullytect.Droid.Resource.Layout.abc_list_menu_item_radio;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_popup_menu_item_layout = global::Bullytect.Droid.Resource.Layout.abc_popup_menu_item_layout;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_screen_content_include = global::Bullytect.Droid.Resource.Layout.abc_screen_content_include;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_screen_simple = global::Bullytect.Droid.Resource.Layout.abc_screen_simple;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode = global::Bullytect.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_screen_toolbar = global::Bullytect.Droid.Resource.Layout.abc_screen_toolbar;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line = global::Bullytect.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_search_view = global::Bullytect.Droid.Resource.Layout.abc_search_view;
-			global::UXDivers.Effects.Droid.Resource.Layout.abc_select_dialog_material = global::Bullytect.Droid.Resource.Layout.abc_select_dialog_material;
-			global::UXDivers.Effects.Droid.Resource.Layout.design_bottom_sheet_dialog = global::Bullytect.Droid.Resource.Layout.design_bottom_sheet_dialog;
-			global::UXDivers.Effects.Droid.Resource.Layout.design_layout_snackbar = global::Bullytect.Droid.Resource.Layout.design_layout_snackbar;
-			global::UXDivers.Effects.Droid.Resource.Layout.design_layout_snackbar_include = global::Bullytect.Droid.Resource.Layout.design_layout_snackbar_include;
-			global::UXDivers.Effects.Droid.Resource.Layout.design_layout_tab_icon = global::Bullytect.Droid.Resource.Layout.design_layout_tab_icon;
-			global::UXDivers.Effects.Droid.Resource.Layout.design_layout_tab_text = global::Bullytect.Droid.Resource.Layout.design_layout_tab_text;
-			global::UXDivers.Effects.Droid.Resource.Layout.design_menu_item_action_area = global::Bullytect.Droid.Resource.Layout.design_menu_item_action_area;
-			global::UXDivers.Effects.Droid.Resource.Layout.design_navigation_item = global::Bullytect.Droid.Resource.Layout.design_navigation_item;
-			global::UXDivers.Effects.Droid.Resource.Layout.design_navigation_item_header = global::Bullytect.Droid.Resource.Layout.design_navigation_item_header;
-			global::UXDivers.Effects.Droid.Resource.Layout.design_navigation_item_separator = global::Bullytect.Droid.Resource.Layout.design_navigation_item_separator;
-			global::UXDivers.Effects.Droid.Resource.Layout.design_navigation_item_subheader = global::Bullytect.Droid.Resource.Layout.design_navigation_item_subheader;
-			global::UXDivers.Effects.Droid.Resource.Layout.design_navigation_menu = global::Bullytect.Droid.Resource.Layout.design_navigation_menu;
-			global::UXDivers.Effects.Droid.Resource.Layout.design_navigation_menu_item = global::Bullytect.Droid.Resource.Layout.design_navigation_menu_item;
-			global::UXDivers.Effects.Droid.Resource.Layout.mr_chooser_dialog = global::Bullytect.Droid.Resource.Layout.mr_chooser_dialog;
-			global::UXDivers.Effects.Droid.Resource.Layout.mr_chooser_list_item = global::Bullytect.Droid.Resource.Layout.mr_chooser_list_item;
-			global::UXDivers.Effects.Droid.Resource.Layout.mr_controller_material_dialog_b = global::Bullytect.Droid.Resource.Layout.mr_controller_material_dialog_b;
-			global::UXDivers.Effects.Droid.Resource.Layout.mr_controller_volume_item = global::Bullytect.Droid.Resource.Layout.mr_controller_volume_item;
-			global::UXDivers.Effects.Droid.Resource.Layout.mr_playback_control = global::Bullytect.Droid.Resource.Layout.mr_playback_control;
-			global::UXDivers.Effects.Droid.Resource.Layout.mr_volume_control = global::Bullytect.Droid.Resource.Layout.mr_volume_control;
-			global::UXDivers.Effects.Droid.Resource.Layout.notification_media_action = global::Bullytect.Droid.Resource.Layout.notification_media_action;
-			global::UXDivers.Effects.Droid.Resource.Layout.notification_media_cancel_action = global::Bullytect.Droid.Resource.Layout.notification_media_cancel_action;
-			global::UXDivers.Effects.Droid.Resource.Layout.notification_template_big_media = global::Bullytect.Droid.Resource.Layout.notification_template_big_media;
-			global::UXDivers.Effects.Droid.Resource.Layout.notification_template_big_media_narrow = global::Bullytect.Droid.Resource.Layout.notification_template_big_media_narrow;
-			global::UXDivers.Effects.Droid.Resource.Layout.notification_template_media = global::Bullytect.Droid.Resource.Layout.notification_template_media;
-			global::UXDivers.Effects.Droid.Resource.Layout.notification_template_part_chronometer = global::Bullytect.Droid.Resource.Layout.notification_template_part_chronometer;
-			global::UXDivers.Effects.Droid.Resource.Layout.notification_template_part_time = global::Bullytect.Droid.Resource.Layout.notification_template_part_time;
-			global::UXDivers.Effects.Droid.Resource.Layout.select_dialog_item_material = global::Bullytect.Droid.Resource.Layout.select_dialog_item_material;
-			global::UXDivers.Effects.Droid.Resource.Layout.select_dialog_multichoice_material = global::Bullytect.Droid.Resource.Layout.select_dialog_multichoice_material;
-			global::UXDivers.Effects.Droid.Resource.Layout.select_dialog_singlechoice_material = global::Bullytect.Droid.Resource.Layout.select_dialog_singlechoice_material;
-			global::UXDivers.Effects.Droid.Resource.Layout.support_simple_spinner_dropdown_item = global::Bullytect.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::UXDivers.Effects.Droid.Resource.String.abc_action_bar_home_description = global::Bullytect.Droid.Resource.String.abc_action_bar_home_description;
-			global::UXDivers.Effects.Droid.Resource.String.abc_action_bar_home_description_format = global::Bullytect.Droid.Resource.String.abc_action_bar_home_description_format;
-			global::UXDivers.Effects.Droid.Resource.String.abc_action_bar_home_subtitle_description_format = global::Bullytect.Droid.Resource.String.abc_action_bar_home_subtitle_description_format;
-			global::UXDivers.Effects.Droid.Resource.String.abc_action_bar_up_description = global::Bullytect.Droid.Resource.String.abc_action_bar_up_description;
-			global::UXDivers.Effects.Droid.Resource.String.abc_action_menu_overflow_description = global::Bullytect.Droid.Resource.String.abc_action_menu_overflow_description;
-			global::UXDivers.Effects.Droid.Resource.String.abc_action_mode_done = global::Bullytect.Droid.Resource.String.abc_action_mode_done;
-			global::UXDivers.Effects.Droid.Resource.String.abc_activity_chooser_view_see_all = global::Bullytect.Droid.Resource.String.abc_activity_chooser_view_see_all;
-			global::UXDivers.Effects.Droid.Resource.String.abc_activitychooserview_choose_application = global::Bullytect.Droid.Resource.String.abc_activitychooserview_choose_application;
-			global::UXDivers.Effects.Droid.Resource.String.abc_capital_off = global::Bullytect.Droid.Resource.String.abc_capital_off;
-			global::UXDivers.Effects.Droid.Resource.String.abc_capital_on = global::Bullytect.Droid.Resource.String.abc_capital_on;
-			global::UXDivers.Effects.Droid.Resource.String.abc_search_hint = global::Bullytect.Droid.Resource.String.abc_search_hint;
-			global::UXDivers.Effects.Droid.Resource.String.abc_searchview_description_clear = global::Bullytect.Droid.Resource.String.abc_searchview_description_clear;
-			global::UXDivers.Effects.Droid.Resource.String.abc_searchview_description_query = global::Bullytect.Droid.Resource.String.abc_searchview_description_query;
-			global::UXDivers.Effects.Droid.Resource.String.abc_searchview_description_search = global::Bullytect.Droid.Resource.String.abc_searchview_description_search;
-			global::UXDivers.Effects.Droid.Resource.String.abc_searchview_description_submit = global::Bullytect.Droid.Resource.String.abc_searchview_description_submit;
-			global::UXDivers.Effects.Droid.Resource.String.abc_searchview_description_voice = global::Bullytect.Droid.Resource.String.abc_searchview_description_voice;
-			global::UXDivers.Effects.Droid.Resource.String.abc_shareactionprovider_share_with = global::Bullytect.Droid.Resource.String.abc_shareactionprovider_share_with;
-			global::UXDivers.Effects.Droid.Resource.String.abc_shareactionprovider_share_with_application = global::Bullytect.Droid.Resource.String.abc_shareactionprovider_share_with_application;
-			global::UXDivers.Effects.Droid.Resource.String.abc_toolbar_collapse_description = global::Bullytect.Droid.Resource.String.abc_toolbar_collapse_description;
-			global::UXDivers.Effects.Droid.Resource.String.appbar_scrolling_view_behavior = global::Bullytect.Droid.Resource.String.appbar_scrolling_view_behavior;
-			global::UXDivers.Effects.Droid.Resource.String.bottom_sheet_behavior = global::Bullytect.Droid.Resource.String.bottom_sheet_behavior;
-			global::UXDivers.Effects.Droid.Resource.String.character_counter_pattern = global::Bullytect.Droid.Resource.String.character_counter_pattern;
-			global::UXDivers.Effects.Droid.Resource.String.library_name = global::Bullytect.Droid.Resource.String.library_name;
-			global::UXDivers.Effects.Droid.Resource.String.mr_button_content_description = global::Bullytect.Droid.Resource.String.mr_button_content_description;
-			global::UXDivers.Effects.Droid.Resource.String.mr_chooser_searching = global::Bullytect.Droid.Resource.String.mr_chooser_searching;
-			global::UXDivers.Effects.Droid.Resource.String.mr_chooser_title = global::Bullytect.Droid.Resource.String.mr_chooser_title;
-			global::UXDivers.Effects.Droid.Resource.String.mr_controller_casting_screen = global::Bullytect.Droid.Resource.String.mr_controller_casting_screen;
-			global::UXDivers.Effects.Droid.Resource.String.mr_controller_close_description = global::Bullytect.Droid.Resource.String.mr_controller_close_description;
-			global::UXDivers.Effects.Droid.Resource.String.mr_controller_collapse_group = global::Bullytect.Droid.Resource.String.mr_controller_collapse_group;
-			global::UXDivers.Effects.Droid.Resource.String.mr_controller_disconnect = global::Bullytect.Droid.Resource.String.mr_controller_disconnect;
-			global::UXDivers.Effects.Droid.Resource.String.mr_controller_expand_group = global::Bullytect.Droid.Resource.String.mr_controller_expand_group;
-			global::UXDivers.Effects.Droid.Resource.String.mr_controller_no_info_available = global::Bullytect.Droid.Resource.String.mr_controller_no_info_available;
-			global::UXDivers.Effects.Droid.Resource.String.mr_controller_no_media_selected = global::Bullytect.Droid.Resource.String.mr_controller_no_media_selected;
-			global::UXDivers.Effects.Droid.Resource.String.mr_controller_pause = global::Bullytect.Droid.Resource.String.mr_controller_pause;
-			global::UXDivers.Effects.Droid.Resource.String.mr_controller_play = global::Bullytect.Droid.Resource.String.mr_controller_play;
-			global::UXDivers.Effects.Droid.Resource.String.mr_controller_stop = global::Bullytect.Droid.Resource.String.mr_controller_stop;
-			global::UXDivers.Effects.Droid.Resource.String.mr_system_route_name = global::Bullytect.Droid.Resource.String.mr_system_route_name;
-			global::UXDivers.Effects.Droid.Resource.String.mr_user_route_category_name = global::Bullytect.Droid.Resource.String.mr_user_route_category_name;
-			global::UXDivers.Effects.Droid.Resource.String.status_bar_notification_info_overflow = global::Bullytect.Droid.Resource.String.status_bar_notification_info_overflow;
-			global::UXDivers.Effects.Droid.Resource.Style.AlertDialog_AppCompat = global::Bullytect.Droid.Resource.Style.AlertDialog_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.AlertDialog_AppCompat_Light = global::Bullytect.Droid.Resource.Style.AlertDialog_AppCompat_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Animation_AppCompat_Dialog = global::Bullytect.Droid.Resource.Style.Animation_AppCompat_Dialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Animation_AppCompat_DropDownUp = global::Bullytect.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
-			global::UXDivers.Effects.Droid.Resource.Style.Animation_Design_BottomSheetDialog = global::Bullytect.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_AlertDialog_AppCompat = global::Bullytect.Droid.Resource.Style.Base_AlertDialog_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light = global::Bullytect.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Animation_AppCompat_Dialog = global::Bullytect.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::Bullytect.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_CardView = global::Bullytect.Droid.Resource.Style.Base_CardView;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat = global::Bullytect.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::Bullytect.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::Bullytect.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Theme_AppCompat = global::Bullytect.Droid.Resource.Style.Base_Theme_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::Bullytect.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Theme_AppCompat_Dialog = global::Bullytect.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::Bullytect.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::Bullytect.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::Bullytect.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::Bullytect.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Theme_AppCompat_Light = global::Bullytect.Droid.Resource.Style.Base_Theme_AppCompat_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::Bullytect.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::Bullytect.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::Bullytect.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::Bullytect.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::Bullytect.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::Bullytect.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_ThemeOverlay_AppCompat = global::Bullytect.Droid.Resource.Style.Base_ThemeOverlay_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::Bullytect.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::Bullytect.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::Bullytect.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::Bullytect.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog = global::Bullytect.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog = global::Bullytect.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::Bullytect.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::Bullytect.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V21_Theme_AppCompat = global::Bullytect.Droid.Resource.Style.Base_V21_Theme_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::Bullytect.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light = global::Bullytect.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::Bullytect.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V22_Theme_AppCompat = global::Bullytect.Droid.Resource.Style.Base_V22_Theme_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light = global::Bullytect.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V23_Theme_AppCompat = global::Bullytect.Droid.Resource.Style.Base_V23_Theme_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light = global::Bullytect.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V7_Theme_AppCompat = global::Bullytect.Droid.Resource.Style.Base_V7_Theme_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::Bullytect.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light = global::Bullytect.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::Bullytect.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::Bullytect.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::Bullytect.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Button = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Button;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_EditText = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_EditText;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ImageButton = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ImageButton;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ListView = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ListView;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Small = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Small;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_SearchView = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_SearchView;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Spinner = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Spinner;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::Bullytect.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
-			global::UXDivers.Effects.Droid.Resource.Style.Base_Widget_Design_TabLayout = global::Bullytect.Droid.Resource.Style.Base_Widget_Design_TabLayout;
-			global::UXDivers.Effects.Droid.Resource.Style.CardView = global::Bullytect.Droid.Resource.Style.CardView;
-			global::UXDivers.Effects.Droid.Resource.Style.CardView_Dark = global::Bullytect.Droid.Resource.Style.CardView_Dark;
-			global::UXDivers.Effects.Droid.Resource.Style.CardView_Light = global::Bullytect.Droid.Resource.Style.CardView_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Platform_AppCompat = global::Bullytect.Droid.Resource.Style.Platform_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.Platform_AppCompat_Light = global::Bullytect.Droid.Resource.Style.Platform_AppCompat_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat = global::Bullytect.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::Bullytect.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
-			global::UXDivers.Effects.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::Bullytect.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Platform_V11_AppCompat = global::Bullytect.Droid.Resource.Style.Platform_V11_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.Platform_V11_AppCompat_Light = global::Bullytect.Droid.Resource.Style.Platform_V11_AppCompat_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Platform_V14_AppCompat = global::Bullytect.Droid.Resource.Style.Platform_V14_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.Platform_V14_AppCompat_Light = global::Bullytect.Droid.Resource.Style.Platform_V14_AppCompat_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner = global::Bullytect.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner;
-			global::UXDivers.Effects.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::Bullytect.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::Bullytect.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
-			global::UXDivers.Effects.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::Bullytect.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
-			global::UXDivers.Effects.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::Bullytect.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
-			global::UXDivers.Effects.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::Bullytect.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
-			global::UXDivers.Effects.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::Bullytect.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
-			global::UXDivers.Effects.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::Bullytect.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
-			global::UXDivers.Effects.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::Bullytect.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
-			global::UXDivers.Effects.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::Bullytect.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
-			global::UXDivers.Effects.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::Bullytect.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
-			global::UXDivers.Effects.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::Bullytect.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
-			global::UXDivers.Effects.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::Bullytect.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
-			global::UXDivers.Effects.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::Bullytect.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
-			global::UXDivers.Effects.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::Bullytect.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Body1 = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Body1;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Body2 = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Body2;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Button = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Button;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Caption = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Caption;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Display1 = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Display1;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Display2 = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Display2;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Display3 = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Display3;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Display4 = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Display4;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Headline = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Headline;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Inverse = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Large = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Large;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Medium = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Medium;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Menu = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Menu;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Small = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Small;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Subhead = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Subhead;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Title = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Title;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::Bullytect.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::Bullytect.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_Design_Counter = global::Bullytect.Droid.Resource.Style.TextAppearance_Design_Counter;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow = global::Bullytect.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_Design_Error = global::Bullytect.Droid.Resource.Style.TextAppearance_Design_Error;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_Design_Hint = global::Bullytect.Droid.Resource.Style.TextAppearance_Design_Hint;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message = global::Bullytect.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_Design_Tab = global::Bullytect.Droid.Resource.Style.TextAppearance_Design_Tab;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_StatusBar_EventContent = global::Bullytect.Droid.Resource.Style.TextAppearance_StatusBar_EventContent;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Info = global::Bullytect.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Info;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Line2 = global::Bullytect.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Line2;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Time = global::Bullytect.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Time;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Title = global::Bullytect.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Title;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::Bullytect.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::Bullytect.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
-			global::UXDivers.Effects.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::Bullytect.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat = global::Bullytect.Droid.Resource.Style.Theme_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_CompactMenu = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_DayNight = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_DayNight;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_Dialog = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_Dialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_Light = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_Light_Dialog = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_AppCompat_NoActionBar = global::Bullytect.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_Design = global::Bullytect.Droid.Resource.Style.Theme_Design;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_Design_BottomSheetDialog = global::Bullytect.Droid.Resource.Style.Theme_Design_BottomSheetDialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_Design_Light = global::Bullytect.Droid.Resource.Style.Theme_Design_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog = global::Bullytect.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_Design_Light_NoActionBar = global::Bullytect.Droid.Resource.Style.Theme_Design_Light_NoActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_Design_NoActionBar = global::Bullytect.Droid.Resource.Style.Theme_Design_NoActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_MediaRouter = global::Bullytect.Droid.Resource.Style.Theme_MediaRouter;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_MediaRouter_Light = global::Bullytect.Droid.Resource.Style.Theme_MediaRouter_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel = global::Bullytect.Droid.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel;
-			global::UXDivers.Effects.Droid.Resource.Style.Theme_MediaRouter_LightControlPanel = global::Bullytect.Droid.Resource.Style.Theme_MediaRouter_LightControlPanel;
-			global::UXDivers.Effects.Droid.Resource.Style.ThemeOverlay_AppCompat = global::Bullytect.Droid.Resource.Style.ThemeOverlay_AppCompat;
-			global::UXDivers.Effects.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::Bullytect.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark = global::Bullytect.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
-			global::UXDivers.Effects.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::Bullytect.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.ThemeOverlay_AppCompat_Light = global::Bullytect.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ActionBar = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ActionButton = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ActionButton;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ActionMode = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ActionMode;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Button = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Button;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Button_Borderless = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Button_Borderless;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Button_Colored = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Button_Colored;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Button_Small = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Button_Small;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ButtonBar = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_EditText = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_EditText;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ImageButton = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ImageButton;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_SearchView = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_SearchView;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ListView = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ListView;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ListView_Menu = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ListView_Menu;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_PopupMenu = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_PopupMenu;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_PopupWindow = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_PopupWindow;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ProgressBar = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ProgressBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_RatingBar = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_RatingBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_RatingBar_Indicator = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_RatingBar_Indicator;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_RatingBar_Small = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_RatingBar_Small;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_SearchView = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_SearchView;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_SeekBar = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_SeekBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Spinner = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Spinner;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Toolbar = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Toolbar;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::Bullytect.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_Design_AppBarLayout = global::Bullytect.Droid.Resource.Style.Widget_Design_AppBarLayout;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_Design_BottomSheet_Modal = global::Bullytect.Droid.Resource.Style.Widget_Design_BottomSheet_Modal;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_Design_CollapsingToolbar = global::Bullytect.Droid.Resource.Style.Widget_Design_CollapsingToolbar;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_Design_CoordinatorLayout = global::Bullytect.Droid.Resource.Style.Widget_Design_CoordinatorLayout;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_Design_FloatingActionButton = global::Bullytect.Droid.Resource.Style.Widget_Design_FloatingActionButton;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_Design_NavigationView = global::Bullytect.Droid.Resource.Style.Widget_Design_NavigationView;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::Bullytect.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_Design_Snackbar = global::Bullytect.Droid.Resource.Style.Widget_Design_Snackbar;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_Design_TabLayout = global::Bullytect.Droid.Resource.Style.Widget_Design_TabLayout;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_Design_TextInputLayout = global::Bullytect.Droid.Resource.Style.Widget_Design_TextInputLayout;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton = global::Bullytect.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton;
-			global::UXDivers.Effects.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton = global::Bullytect.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar = global::Bullytect.Droid.Resource.Styleable.ActionBar;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_background = global::Bullytect.Droid.Resource.Styleable.ActionBar_background;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_backgroundSplit = global::Bullytect.Droid.Resource.Styleable.ActionBar_backgroundSplit;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_backgroundStacked = global::Bullytect.Droid.Resource.Styleable.ActionBar_backgroundStacked;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_contentInsetEnd = global::Bullytect.Droid.Resource.Styleable.ActionBar_contentInsetEnd;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_contentInsetLeft = global::Bullytect.Droid.Resource.Styleable.ActionBar_contentInsetLeft;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_contentInsetRight = global::Bullytect.Droid.Resource.Styleable.ActionBar_contentInsetRight;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_contentInsetStart = global::Bullytect.Droid.Resource.Styleable.ActionBar_contentInsetStart;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_customNavigationLayout = global::Bullytect.Droid.Resource.Styleable.ActionBar_customNavigationLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_displayOptions = global::Bullytect.Droid.Resource.Styleable.ActionBar_displayOptions;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_divider = global::Bullytect.Droid.Resource.Styleable.ActionBar_divider;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_elevation = global::Bullytect.Droid.Resource.Styleable.ActionBar_elevation;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_height = global::Bullytect.Droid.Resource.Styleable.ActionBar_height;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_hideOnContentScroll = global::Bullytect.Droid.Resource.Styleable.ActionBar_hideOnContentScroll;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator = global::Bullytect.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_homeLayout = global::Bullytect.Droid.Resource.Styleable.ActionBar_homeLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_icon = global::Bullytect.Droid.Resource.Styleable.ActionBar_icon;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::Bullytect.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_itemPadding = global::Bullytect.Droid.Resource.Styleable.ActionBar_itemPadding;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_logo = global::Bullytect.Droid.Resource.Styleable.ActionBar_logo;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_navigationMode = global::Bullytect.Droid.Resource.Styleable.ActionBar_navigationMode;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_popupTheme = global::Bullytect.Droid.Resource.Styleable.ActionBar_popupTheme;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_progressBarPadding = global::Bullytect.Droid.Resource.Styleable.ActionBar_progressBarPadding;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_progressBarStyle = global::Bullytect.Droid.Resource.Styleable.ActionBar_progressBarStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_subtitle = global::Bullytect.Droid.Resource.Styleable.ActionBar_subtitle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_subtitleTextStyle = global::Bullytect.Droid.Resource.Styleable.ActionBar_subtitleTextStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_title = global::Bullytect.Droid.Resource.Styleable.ActionBar_title;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBar_titleTextStyle = global::Bullytect.Droid.Resource.Styleable.ActionBar_titleTextStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBarLayout = global::Bullytect.Droid.Resource.Styleable.ActionBarLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::Bullytect.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionMenuItemView = global::Bullytect.Droid.Resource.Styleable.ActionMenuItemView;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth = global::Bullytect.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionMenuView = global::Bullytect.Droid.Resource.Styleable.ActionMenuView;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionMode = global::Bullytect.Droid.Resource.Styleable.ActionMode;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionMode_background = global::Bullytect.Droid.Resource.Styleable.ActionMode_background;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionMode_backgroundSplit = global::Bullytect.Droid.Resource.Styleable.ActionMode_backgroundSplit;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionMode_closeItemLayout = global::Bullytect.Droid.Resource.Styleable.ActionMode_closeItemLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionMode_height = global::Bullytect.Droid.Resource.Styleable.ActionMode_height;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionMode_subtitleTextStyle = global::Bullytect.Droid.Resource.Styleable.ActionMode_subtitleTextStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActionMode_titleTextStyle = global::Bullytect.Droid.Resource.Styleable.ActionMode_titleTextStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActivityChooserView = global::Bullytect.Droid.Resource.Styleable.ActivityChooserView;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::Bullytect.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount = global::Bullytect.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AlertDialog = global::Bullytect.Droid.Resource.Styleable.AlertDialog;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AlertDialog_android_layout = global::Bullytect.Droid.Resource.Styleable.AlertDialog_android_layout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::Bullytect.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AlertDialog_listItemLayout = global::Bullytect.Droid.Resource.Styleable.AlertDialog_listItemLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AlertDialog_listLayout = global::Bullytect.Droid.Resource.Styleable.AlertDialog_listLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::Bullytect.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::Bullytect.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppBarLayout = global::Bullytect.Droid.Resource.Styleable.AppBarLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppBarLayout_android_background = global::Bullytect.Droid.Resource.Styleable.AppBarLayout_android_background;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppBarLayout_elevation = global::Bullytect.Droid.Resource.Styleable.AppBarLayout_elevation;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppBarLayout_expanded = global::Bullytect.Droid.Resource.Styleable.AppBarLayout_expanded;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatImageView = global::Bullytect.Droid.Resource.Styleable.AppCompatImageView;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatImageView_android_src = global::Bullytect.Droid.Resource.Styleable.AppCompatImageView_android_src;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatImageView_srcCompat = global::Bullytect.Droid.Resource.Styleable.AppCompatImageView_srcCompat;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTextView = global::Bullytect.Droid.Resource.Styleable.AppCompatTextView;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance = global::Bullytect.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTextView_textAllCaps = global::Bullytect.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionBarPopupTheme = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionBarPopupTheme;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionBarSize = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionBarSize;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionBarSplitStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionBarSplitStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionBarStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionBarStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionBarTabStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionBarTabStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionBarTheme = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionBarTheme;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionButtonStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionDropDownStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionDropDownStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextColor = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextColor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionModeBackground = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionModeBackground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionModeCutDrawable = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionModeCutDrawable;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionModeFindDrawable = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionModeFindDrawable;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionModePasteDrawable = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionModePasteDrawable;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionModeShareDrawable = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionModeShareDrawable;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionModeSplitBackground = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionModeSplitBackground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionModeStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionModeStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_activityChooserViewStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_activityChooserViewStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_alertDialogStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_alertDialogStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_alertDialogTheme = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_alertDialogTheme;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_android_windowIsFloating = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_android_windowIsFloating;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_borderlessButtonStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_borderlessButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_buttonBarStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_buttonBarStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_buttonStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_buttonStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_buttonStyleSmall = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_buttonStyleSmall;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_checkboxStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_checkboxStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_checkedTextViewStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_checkedTextViewStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_colorAccent = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_colorAccent;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_colorButtonNormal = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_colorButtonNormal;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_colorPrimary = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_colorPrimary;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_controlBackground = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_controlBackground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_dialogTheme = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_dialogTheme;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_dividerVertical = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_dividerVertical;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_editTextBackground = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_editTextBackground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_editTextColor = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_editTextColor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_editTextStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_editTextStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_panelBackground = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_panelBackground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_popupMenuStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_popupMenuStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_popupWindowStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_popupWindowStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_radioButtonStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_radioButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_searchViewStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_searchViewStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_seekBarStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_seekBarStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackground = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_spinnerStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_spinnerStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_switchStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_switchStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItem = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItem;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_windowActionBar = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_windowActionBar;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle = global::Bullytect.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ButtonBarLayout = global::Bullytect.Droid.Resource.Styleable.ButtonBarLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ButtonBarLayout_allowStacking = global::Bullytect.Droid.Resource.Styleable.ButtonBarLayout_allowStacking;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CardView = global::Bullytect.Droid.Resource.Styleable.CardView;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CardView_android_minHeight = global::Bullytect.Droid.Resource.Styleable.CardView_android_minHeight;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CardView_android_minWidth = global::Bullytect.Droid.Resource.Styleable.CardView_android_minWidth;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CardView_cardBackgroundColor = global::Bullytect.Droid.Resource.Styleable.CardView_cardBackgroundColor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CardView_cardCornerRadius = global::Bullytect.Droid.Resource.Styleable.CardView_cardCornerRadius;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CardView_cardElevation = global::Bullytect.Droid.Resource.Styleable.CardView_cardElevation;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CardView_cardMaxElevation = global::Bullytect.Droid.Resource.Styleable.CardView_cardMaxElevation;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap = global::Bullytect.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CardView_cardUseCompatPadding = global::Bullytect.Droid.Resource.Styleable.CardView_cardUseCompatPadding;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CardView_contentPadding = global::Bullytect.Droid.Resource.Styleable.CardView_contentPadding;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CardView_contentPaddingBottom = global::Bullytect.Droid.Resource.Styleable.CardView_contentPaddingBottom;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CardView_contentPaddingLeft = global::Bullytect.Droid.Resource.Styleable.CardView_contentPaddingLeft;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CardView_contentPaddingRight = global::Bullytect.Droid.Resource.Styleable.CardView_contentPaddingRight;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CardView_contentPaddingTop = global::Bullytect.Droid.Resource.Styleable.CardView_contentPaddingTop;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CollapsingToolbarLayout = global::Bullytect.Droid.Resource.Styleable.CollapsingToolbarLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::Bullytect.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::Bullytect.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim = global::Bullytect.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity = global::Bullytect.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin = global::Bullytect.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom = global::Bullytect.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd = global::Bullytect.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::Bullytect.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::Bullytect.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::Bullytect.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::Bullytect.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CollapsingToolbarLayout_title = global::Bullytect.Droid.Resource.Styleable.CollapsingToolbarLayout_title;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::Bullytect.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::Bullytect.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CompoundButton = global::Bullytect.Droid.Resource.Styleable.CompoundButton;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CompoundButton_android_button = global::Bullytect.Droid.Resource.Styleable.CompoundButton_android_button;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CompoundButton_buttonTint = global::Bullytect.Droid.Resource.Styleable.CompoundButton_buttonTint;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CompoundButton_buttonTintMode = global::Bullytect.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CoordinatorLayout = global::Bullytect.Droid.Resource.Styleable.CoordinatorLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CoordinatorLayout_keylines = global::Bullytect.Droid.Resource.Styleable.CoordinatorLayout_keylines;
-			global::UXDivers.Effects.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::Bullytect.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.DesignTheme = global::Bullytect.Droid.Resource.Styleable.DesignTheme;
-			global::UXDivers.Effects.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme = global::Bullytect.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme;
-			global::UXDivers.Effects.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle = global::Bullytect.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.DesignTheme_textColorError = global::Bullytect.Droid.Resource.Styleable.DesignTheme_textColorError;
-			global::UXDivers.Effects.Droid.Resource.Styleable.DrawerArrowToggle = global::Bullytect.Droid.Resource.Styleable.DrawerArrowToggle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::Bullytect.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
-			global::UXDivers.Effects.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::Bullytect.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
-			global::UXDivers.Effects.Droid.Resource.Styleable.DrawerArrowToggle_barLength = global::Bullytect.Droid.Resource.Styleable.DrawerArrowToggle_barLength;
-			global::UXDivers.Effects.Droid.Resource.Styleable.DrawerArrowToggle_color = global::Bullytect.Droid.Resource.Styleable.DrawerArrowToggle_color;
-			global::UXDivers.Effects.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize = global::Bullytect.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize;
-			global::UXDivers.Effects.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::Bullytect.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
-			global::UXDivers.Effects.Droid.Resource.Styleable.DrawerArrowToggle_spinBars = global::Bullytect.Droid.Resource.Styleable.DrawerArrowToggle_spinBars;
-			global::UXDivers.Effects.Droid.Resource.Styleable.DrawerArrowToggle_thickness = global::Bullytect.Droid.Resource.Styleable.DrawerArrowToggle_thickness;
-			global::UXDivers.Effects.Droid.Resource.Styleable.FloatingActionButton = global::Bullytect.Droid.Resource.Styleable.FloatingActionButton;
-			global::UXDivers.Effects.Droid.Resource.Styleable.FloatingActionButton_backgroundTint = global::Bullytect.Droid.Resource.Styleable.FloatingActionButton_backgroundTint;
-			global::UXDivers.Effects.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::Bullytect.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode;
-			global::UXDivers.Effects.Droid.Resource.Styleable.FloatingActionButton_borderWidth = global::Bullytect.Droid.Resource.Styleable.FloatingActionButton_borderWidth;
-			global::UXDivers.Effects.Droid.Resource.Styleable.FloatingActionButton_elevation = global::Bullytect.Droid.Resource.Styleable.FloatingActionButton_elevation;
-			global::UXDivers.Effects.Droid.Resource.Styleable.FloatingActionButton_fabSize = global::Bullytect.Droid.Resource.Styleable.FloatingActionButton_fabSize;
-			global::UXDivers.Effects.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::Bullytect.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
-			global::UXDivers.Effects.Droid.Resource.Styleable.FloatingActionButton_rippleColor = global::Bullytect.Droid.Resource.Styleable.FloatingActionButton_rippleColor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding = global::Bullytect.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ForegroundLinearLayout = global::Bullytect.Droid.Resource.Styleable.ForegroundLinearLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground = global::Bullytect.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity = global::Bullytect.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding = global::Bullytect.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding;
-			global::UXDivers.Effects.Droid.Resource.Styleable.LinearLayoutCompat = global::Bullytect.Droid.Resource.Styleable.LinearLayoutCompat;
-			global::UXDivers.Effects.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::Bullytect.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
-			global::UXDivers.Effects.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::Bullytect.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
-			global::UXDivers.Effects.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity = global::Bullytect.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity;
-			global::UXDivers.Effects.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation = global::Bullytect.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation;
-			global::UXDivers.Effects.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::Bullytect.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
-			global::UXDivers.Effects.Droid.Resource.Styleable.LinearLayoutCompat_divider = global::Bullytect.Droid.Resource.Styleable.LinearLayoutCompat_divider;
-			global::UXDivers.Effects.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::Bullytect.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
-			global::UXDivers.Effects.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::Bullytect.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
-			global::UXDivers.Effects.Droid.Resource.Styleable.LinearLayoutCompat_showDividers = global::Bullytect.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
-			global::UXDivers.Effects.Droid.Resource.Styleable.LinearLayoutCompat_Layout = global::Bullytect.Droid.Resource.Styleable.LinearLayoutCompat_Layout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::Bullytect.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
-			global::UXDivers.Effects.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::Bullytect.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
-			global::UXDivers.Effects.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::Bullytect.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
-			global::UXDivers.Effects.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::Bullytect.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ListPopupWindow = global::Bullytect.Droid.Resource.Styleable.ListPopupWindow;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::Bullytect.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::Bullytect.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MediaRouteButton = global::Bullytect.Droid.Resource.Styleable.MediaRouteButton;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MediaRouteButton_android_minHeight = global::Bullytect.Droid.Resource.Styleable.MediaRouteButton_android_minHeight;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MediaRouteButton_android_minWidth = global::Bullytect.Droid.Resource.Styleable.MediaRouteButton_android_minWidth;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable = global::Bullytect.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuGroup = global::Bullytect.Droid.Resource.Styleable.MenuGroup;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior = global::Bullytect.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuGroup_android_enabled = global::Bullytect.Droid.Resource.Styleable.MenuGroup_android_enabled;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuGroup_android_id = global::Bullytect.Droid.Resource.Styleable.MenuGroup_android_id;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuGroup_android_menuCategory = global::Bullytect.Droid.Resource.Styleable.MenuGroup_android_menuCategory;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuGroup_android_orderInCategory = global::Bullytect.Droid.Resource.Styleable.MenuGroup_android_orderInCategory;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuGroup_android_visible = global::Bullytect.Droid.Resource.Styleable.MenuGroup_android_visible;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem = global::Bullytect.Droid.Resource.Styleable.MenuItem;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_actionLayout = global::Bullytect.Droid.Resource.Styleable.MenuItem_actionLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_actionProviderClass = global::Bullytect.Droid.Resource.Styleable.MenuItem_actionProviderClass;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_actionViewClass = global::Bullytect.Droid.Resource.Styleable.MenuItem_actionViewClass;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::Bullytect.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_android_checkable = global::Bullytect.Droid.Resource.Styleable.MenuItem_android_checkable;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_android_checked = global::Bullytect.Droid.Resource.Styleable.MenuItem_android_checked;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_android_enabled = global::Bullytect.Droid.Resource.Styleable.MenuItem_android_enabled;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_android_icon = global::Bullytect.Droid.Resource.Styleable.MenuItem_android_icon;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_android_id = global::Bullytect.Droid.Resource.Styleable.MenuItem_android_id;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_android_menuCategory = global::Bullytect.Droid.Resource.Styleable.MenuItem_android_menuCategory;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_android_numericShortcut = global::Bullytect.Droid.Resource.Styleable.MenuItem_android_numericShortcut;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_android_onClick = global::Bullytect.Droid.Resource.Styleable.MenuItem_android_onClick;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_android_orderInCategory = global::Bullytect.Droid.Resource.Styleable.MenuItem_android_orderInCategory;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_android_title = global::Bullytect.Droid.Resource.Styleable.MenuItem_android_title;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_android_titleCondensed = global::Bullytect.Droid.Resource.Styleable.MenuItem_android_titleCondensed;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_android_visible = global::Bullytect.Droid.Resource.Styleable.MenuItem_android_visible;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuItem_showAsAction = global::Bullytect.Droid.Resource.Styleable.MenuItem_showAsAction;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuView = global::Bullytect.Droid.Resource.Styleable.MenuView;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuView_android_headerBackground = global::Bullytect.Droid.Resource.Styleable.MenuView_android_headerBackground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuView_android_horizontalDivider = global::Bullytect.Droid.Resource.Styleable.MenuView_android_horizontalDivider;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuView_android_itemBackground = global::Bullytect.Droid.Resource.Styleable.MenuView_android_itemBackground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::Bullytect.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuView_android_itemTextAppearance = global::Bullytect.Droid.Resource.Styleable.MenuView_android_itemTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuView_android_verticalDivider = global::Bullytect.Droid.Resource.Styleable.MenuView_android_verticalDivider;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle = global::Bullytect.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.MenuView_preserveIconSpacing = global::Bullytect.Droid.Resource.Styleable.MenuView_preserveIconSpacing;
-			global::UXDivers.Effects.Droid.Resource.Styleable.NavigationView = global::Bullytect.Droid.Resource.Styleable.NavigationView;
-			global::UXDivers.Effects.Droid.Resource.Styleable.NavigationView_android_background = global::Bullytect.Droid.Resource.Styleable.NavigationView_android_background;
-			global::UXDivers.Effects.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows = global::Bullytect.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows;
-			global::UXDivers.Effects.Droid.Resource.Styleable.NavigationView_android_maxWidth = global::Bullytect.Droid.Resource.Styleable.NavigationView_android_maxWidth;
-			global::UXDivers.Effects.Droid.Resource.Styleable.NavigationView_elevation = global::Bullytect.Droid.Resource.Styleable.NavigationView_elevation;
-			global::UXDivers.Effects.Droid.Resource.Styleable.NavigationView_headerLayout = global::Bullytect.Droid.Resource.Styleable.NavigationView_headerLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.NavigationView_itemBackground = global::Bullytect.Droid.Resource.Styleable.NavigationView_itemBackground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.NavigationView_itemIconTint = global::Bullytect.Droid.Resource.Styleable.NavigationView_itemIconTint;
-			global::UXDivers.Effects.Droid.Resource.Styleable.NavigationView_itemTextAppearance = global::Bullytect.Droid.Resource.Styleable.NavigationView_itemTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Styleable.NavigationView_itemTextColor = global::Bullytect.Droid.Resource.Styleable.NavigationView_itemTextColor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.NavigationView_menu = global::Bullytect.Droid.Resource.Styleable.NavigationView_menu;
-			global::UXDivers.Effects.Droid.Resource.Styleable.PopupWindow = global::Bullytect.Droid.Resource.Styleable.PopupWindow;
-			global::UXDivers.Effects.Droid.Resource.Styleable.PopupWindow_android_popupBackground = global::Bullytect.Droid.Resource.Styleable.PopupWindow_android_popupBackground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.PopupWindow_overlapAnchor = global::Bullytect.Droid.Resource.Styleable.PopupWindow_overlapAnchor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.PopupWindowBackgroundState = global::Bullytect.Droid.Resource.Styleable.PopupWindowBackgroundState;
-			global::UXDivers.Effects.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::Bullytect.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.RecyclerView = global::Bullytect.Droid.Resource.Styleable.RecyclerView;
-			global::UXDivers.Effects.Droid.Resource.Styleable.RecyclerView_android_orientation = global::Bullytect.Droid.Resource.Styleable.RecyclerView_android_orientation;
-			global::UXDivers.Effects.Droid.Resource.Styleable.RecyclerView_layoutManager = global::Bullytect.Droid.Resource.Styleable.RecyclerView_layoutManager;
-			global::UXDivers.Effects.Droid.Resource.Styleable.RecyclerView_reverseLayout = global::Bullytect.Droid.Resource.Styleable.RecyclerView_reverseLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.RecyclerView_spanCount = global::Bullytect.Droid.Resource.Styleable.RecyclerView_spanCount;
-			global::UXDivers.Effects.Droid.Resource.Styleable.RecyclerView_stackFromEnd = global::Bullytect.Droid.Resource.Styleable.RecyclerView_stackFromEnd;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ScrimInsetsFrameLayout = global::Bullytect.Droid.Resource.Styleable.ScrimInsetsFrameLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground = global::Bullytect.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView = global::Bullytect.Droid.Resource.Styleable.SearchView;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_android_focusable = global::Bullytect.Droid.Resource.Styleable.SearchView_android_focusable;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_android_imeOptions = global::Bullytect.Droid.Resource.Styleable.SearchView_android_imeOptions;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_android_inputType = global::Bullytect.Droid.Resource.Styleable.SearchView_android_inputType;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_android_maxWidth = global::Bullytect.Droid.Resource.Styleable.SearchView_android_maxWidth;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_closeIcon = global::Bullytect.Droid.Resource.Styleable.SearchView_closeIcon;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_commitIcon = global::Bullytect.Droid.Resource.Styleable.SearchView_commitIcon;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_defaultQueryHint = global::Bullytect.Droid.Resource.Styleable.SearchView_defaultQueryHint;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_goIcon = global::Bullytect.Droid.Resource.Styleable.SearchView_goIcon;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_iconifiedByDefault = global::Bullytect.Droid.Resource.Styleable.SearchView_iconifiedByDefault;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_layout = global::Bullytect.Droid.Resource.Styleable.SearchView_layout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_queryBackground = global::Bullytect.Droid.Resource.Styleable.SearchView_queryBackground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_queryHint = global::Bullytect.Droid.Resource.Styleable.SearchView_queryHint;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_searchHintIcon = global::Bullytect.Droid.Resource.Styleable.SearchView_searchHintIcon;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_searchIcon = global::Bullytect.Droid.Resource.Styleable.SearchView_searchIcon;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_submitBackground = global::Bullytect.Droid.Resource.Styleable.SearchView_submitBackground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_suggestionRowLayout = global::Bullytect.Droid.Resource.Styleable.SearchView_suggestionRowLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SearchView_voiceIcon = global::Bullytect.Droid.Resource.Styleable.SearchView_voiceIcon;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SnackbarLayout = global::Bullytect.Droid.Resource.Styleable.SnackbarLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth = global::Bullytect.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SnackbarLayout_elevation = global::Bullytect.Droid.Resource.Styleable.SnackbarLayout_elevation;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::Bullytect.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Spinner = global::Bullytect.Droid.Resource.Styleable.Spinner;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Spinner_android_dropDownWidth = global::Bullytect.Droid.Resource.Styleable.Spinner_android_dropDownWidth;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Spinner_android_entries = global::Bullytect.Droid.Resource.Styleable.Spinner_android_entries;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Spinner_android_popupBackground = global::Bullytect.Droid.Resource.Styleable.Spinner_android_popupBackground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Spinner_android_prompt = global::Bullytect.Droid.Resource.Styleable.Spinner_android_prompt;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Spinner_popupTheme = global::Bullytect.Droid.Resource.Styleable.Spinner_popupTheme;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SwitchCompat = global::Bullytect.Droid.Resource.Styleable.SwitchCompat;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SwitchCompat_android_textOff = global::Bullytect.Droid.Resource.Styleable.SwitchCompat_android_textOff;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SwitchCompat_android_textOn = global::Bullytect.Droid.Resource.Styleable.SwitchCompat_android_textOn;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SwitchCompat_android_thumb = global::Bullytect.Droid.Resource.Styleable.SwitchCompat_android_thumb;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SwitchCompat_showText = global::Bullytect.Droid.Resource.Styleable.SwitchCompat_showText;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SwitchCompat_splitTrack = global::Bullytect.Droid.Resource.Styleable.SwitchCompat_splitTrack;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SwitchCompat_switchMinWidth = global::Bullytect.Droid.Resource.Styleable.SwitchCompat_switchMinWidth;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SwitchCompat_switchPadding = global::Bullytect.Droid.Resource.Styleable.SwitchCompat_switchPadding;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance = global::Bullytect.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding = global::Bullytect.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding;
-			global::UXDivers.Effects.Droid.Resource.Styleable.SwitchCompat_track = global::Bullytect.Droid.Resource.Styleable.SwitchCompat_track;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabItem = global::Bullytect.Droid.Resource.Styleable.TabItem;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabItem_android_icon = global::Bullytect.Droid.Resource.Styleable.TabItem_android_icon;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabItem_android_layout = global::Bullytect.Droid.Resource.Styleable.TabItem_android_layout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabItem_android_text = global::Bullytect.Droid.Resource.Styleable.TabItem_android_text;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout = global::Bullytect.Droid.Resource.Styleable.TabLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout_tabBackground = global::Bullytect.Droid.Resource.Styleable.TabLayout_tabBackground;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout_tabContentStart = global::Bullytect.Droid.Resource.Styleable.TabLayout_tabContentStart;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout_tabGravity = global::Bullytect.Droid.Resource.Styleable.TabLayout_tabGravity;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout_tabIndicatorColor = global::Bullytect.Droid.Resource.Styleable.TabLayout_tabIndicatorColor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight = global::Bullytect.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout_tabMaxWidth = global::Bullytect.Droid.Resource.Styleable.TabLayout_tabMaxWidth;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout_tabMinWidth = global::Bullytect.Droid.Resource.Styleable.TabLayout_tabMinWidth;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout_tabMode = global::Bullytect.Droid.Resource.Styleable.TabLayout_tabMode;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout_tabPadding = global::Bullytect.Droid.Resource.Styleable.TabLayout_tabPadding;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout_tabPaddingBottom = global::Bullytect.Droid.Resource.Styleable.TabLayout_tabPaddingBottom;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout_tabPaddingEnd = global::Bullytect.Droid.Resource.Styleable.TabLayout_tabPaddingEnd;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout_tabPaddingStart = global::Bullytect.Droid.Resource.Styleable.TabLayout_tabPaddingStart;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout_tabPaddingTop = global::Bullytect.Droid.Resource.Styleable.TabLayout_tabPaddingTop;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor = global::Bullytect.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout_tabTextAppearance = global::Bullytect.Droid.Resource.Styleable.TabLayout_tabTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TabLayout_tabTextColor = global::Bullytect.Droid.Resource.Styleable.TabLayout_tabTextColor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextAppearance = global::Bullytect.Droid.Resource.Styleable.TextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextAppearance_android_shadowColor = global::Bullytect.Droid.Resource.Styleable.TextAppearance_android_shadowColor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextAppearance_android_shadowDx = global::Bullytect.Droid.Resource.Styleable.TextAppearance_android_shadowDx;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextAppearance_android_shadowDy = global::Bullytect.Droid.Resource.Styleable.TextAppearance_android_shadowDy;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextAppearance_android_shadowRadius = global::Bullytect.Droid.Resource.Styleable.TextAppearance_android_shadowRadius;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextAppearance_android_textColor = global::Bullytect.Droid.Resource.Styleable.TextAppearance_android_textColor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextAppearance_android_textSize = global::Bullytect.Droid.Resource.Styleable.TextAppearance_android_textSize;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextAppearance_android_textStyle = global::Bullytect.Droid.Resource.Styleable.TextAppearance_android_textStyle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextAppearance_android_typeface = global::Bullytect.Droid.Resource.Styleable.TextAppearance_android_typeface;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextAppearance_textAllCaps = global::Bullytect.Droid.Resource.Styleable.TextAppearance_textAllCaps;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextInputLayout = global::Bullytect.Droid.Resource.Styleable.TextInputLayout;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextInputLayout_android_hint = global::Bullytect.Droid.Resource.Styleable.TextInputLayout_android_hint;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextInputLayout_android_textColorHint = global::Bullytect.Droid.Resource.Styleable.TextInputLayout_android_textColorHint;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextInputLayout_counterEnabled = global::Bullytect.Droid.Resource.Styleable.TextInputLayout_counterEnabled;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextInputLayout_counterMaxLength = global::Bullytect.Droid.Resource.Styleable.TextInputLayout_counterMaxLength;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance = global::Bullytect.Droid.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextInputLayout_counterTextAppearance = global::Bullytect.Droid.Resource.Styleable.TextInputLayout_counterTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextInputLayout_errorEnabled = global::Bullytect.Droid.Resource.Styleable.TextInputLayout_errorEnabled;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance = global::Bullytect.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled = global::Bullytect.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextInputLayout_hintEnabled = global::Bullytect.Droid.Resource.Styleable.TextInputLayout_hintEnabled;
-			global::UXDivers.Effects.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance = global::Bullytect.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar = global::Bullytect.Droid.Resource.Styleable.Toolbar;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_android_gravity = global::Bullytect.Droid.Resource.Styleable.Toolbar_android_gravity;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_android_minHeight = global::Bullytect.Droid.Resource.Styleable.Toolbar_android_minHeight;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_collapseContentDescription = global::Bullytect.Droid.Resource.Styleable.Toolbar_collapseContentDescription;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_collapseIcon = global::Bullytect.Droid.Resource.Styleable.Toolbar_collapseIcon;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_contentInsetEnd = global::Bullytect.Droid.Resource.Styleable.Toolbar_contentInsetEnd;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_contentInsetLeft = global::Bullytect.Droid.Resource.Styleable.Toolbar_contentInsetLeft;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_contentInsetRight = global::Bullytect.Droid.Resource.Styleable.Toolbar_contentInsetRight;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_contentInsetStart = global::Bullytect.Droid.Resource.Styleable.Toolbar_contentInsetStart;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_logo = global::Bullytect.Droid.Resource.Styleable.Toolbar_logo;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_logoDescription = global::Bullytect.Droid.Resource.Styleable.Toolbar_logoDescription;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_maxButtonHeight = global::Bullytect.Droid.Resource.Styleable.Toolbar_maxButtonHeight;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_navigationContentDescription = global::Bullytect.Droid.Resource.Styleable.Toolbar_navigationContentDescription;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_navigationIcon = global::Bullytect.Droid.Resource.Styleable.Toolbar_navigationIcon;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_popupTheme = global::Bullytect.Droid.Resource.Styleable.Toolbar_popupTheme;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_subtitle = global::Bullytect.Droid.Resource.Styleable.Toolbar_subtitle;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance = global::Bullytect.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_subtitleTextColor = global::Bullytect.Droid.Resource.Styleable.Toolbar_subtitleTextColor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_title = global::Bullytect.Droid.Resource.Styleable.Toolbar_title;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_titleMarginBottom = global::Bullytect.Droid.Resource.Styleable.Toolbar_titleMarginBottom;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_titleMarginEnd = global::Bullytect.Droid.Resource.Styleable.Toolbar_titleMarginEnd;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_titleMarginStart = global::Bullytect.Droid.Resource.Styleable.Toolbar_titleMarginStart;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_titleMarginTop = global::Bullytect.Droid.Resource.Styleable.Toolbar_titleMarginTop;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_titleMargins = global::Bullytect.Droid.Resource.Styleable.Toolbar_titleMargins;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_titleTextAppearance = global::Bullytect.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
-			global::UXDivers.Effects.Droid.Resource.Styleable.Toolbar_titleTextColor = global::Bullytect.Droid.Resource.Styleable.Toolbar_titleTextColor;
-			global::UXDivers.Effects.Droid.Resource.Styleable.View = global::Bullytect.Droid.Resource.Styleable.View;
-			global::UXDivers.Effects.Droid.Resource.Styleable.View_android_focusable = global::Bullytect.Droid.Resource.Styleable.View_android_focusable;
-			global::UXDivers.Effects.Droid.Resource.Styleable.View_android_theme = global::Bullytect.Droid.Resource.Styleable.View_android_theme;
-			global::UXDivers.Effects.Droid.Resource.Styleable.View_paddingEnd = global::Bullytect.Droid.Resource.Styleable.View_paddingEnd;
-			global::UXDivers.Effects.Droid.Resource.Styleable.View_paddingStart = global::Bullytect.Droid.Resource.Styleable.View_paddingStart;
-			global::UXDivers.Effects.Droid.Resource.Styleable.View_theme = global::Bullytect.Droid.Resource.Styleable.View_theme;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ViewBackgroundHelper = global::Bullytect.Droid.Resource.Styleable.ViewBackgroundHelper;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ViewBackgroundHelper_android_background = global::Bullytect.Droid.Resource.Styleable.ViewBackgroundHelper_android_background;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::Bullytect.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::Bullytect.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ViewStubCompat = global::Bullytect.Droid.Resource.Styleable.ViewStubCompat;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ViewStubCompat_android_id = global::Bullytect.Droid.Resource.Styleable.ViewStubCompat_android_id;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId = global::Bullytect.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
-			global::UXDivers.Effects.Droid.Resource.Styleable.ViewStubCompat_android_layout = global::Bullytect.Droid.Resource.Styleable.ViewStubCompat_android_layout;
 			global::Xamarin.Auth.Resource.Animation.slide_in_right = global::Bullytect.Droid.Resource.Animation.slide_in_right;
 			global::Xamarin.Auth.Resource.Animation.slide_out_left = global::Bullytect.Droid.Resource.Animation.slide_out_left;
 			global::Xamarin.Auth.Resource.Drawable.ic_arrow_back = global::Bullytect.Droid.Resource.Drawable.ic_arrow_back;
@@ -9728,8 +8093,8 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a0010
 			public const int MvxBindingTagUnique = 2131361808;
 			
-			// aapt resource value: 0x7f0a00b6
-			public const int action0 = 2131361974;
+			// aapt resource value: 0x7f0a00a8
+			public const int action0 = 2131361960;
 			
 			// aapt resource value: 0x7f0a0069
 			public const int action_bar = 2131361897;
@@ -9752,17 +8117,17 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a0046
 			public const int action_bar_title = 2131361862;
 			
-			// aapt resource value: 0x7f0a00b3
-			public const int action_container = 2131361971;
+			// aapt resource value: 0x7f0a00a5
+			public const int action_container = 2131361957;
 			
 			// aapt resource value: 0x7f0a006a
 			public const int action_context_bar = 2131361898;
 			
-			// aapt resource value: 0x7f0a00ba
-			public const int action_divider = 2131361978;
+			// aapt resource value: 0x7f0a00ac
+			public const int action_divider = 2131361964;
 			
-			// aapt resource value: 0x7f0a00b4
-			public const int action_image = 2131361972;
+			// aapt resource value: 0x7f0a00a6
+			public const int action_image = 2131361958;
 			
 			// aapt resource value: 0x7f0a0003
 			public const int action_menu_divider = 2131361795;
@@ -9779,11 +8144,11 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a0048
 			public const int action_mode_close_button = 2131361864;
 			
-			// aapt resource value: 0x7f0a00b5
-			public const int action_text = 2131361973;
+			// aapt resource value: 0x7f0a00a7
+			public const int action_text = 2131361959;
 			
-			// aapt resource value: 0x7f0a00c3
-			public const int actions = 2131361987;
+			// aapt resource value: 0x7f0a00b5
+			public const int actions = 2131361973;
 			
 			// aapt resource value: 0x7f0a0049
 			public const int activity_chooser_view_content = 2131361865;
@@ -9803,9 +8168,6 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a0032
 			public const int auto = 2131361842;
 			
-			// aapt resource value: 0x7f0a0080
-			public const int axisLayout = 2131361920;
-			
 			// aapt resource value: 0x7f0a0023
 			public const int beginning = 2131361827;
 			
@@ -9815,8 +8177,8 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a0050
 			public const int buttonPanel = 2131361872;
 			
-			// aapt resource value: 0x7f0a00b7
-			public const int cancel_action = 2131361975;
+			// aapt resource value: 0x7f0a00a9
+			public const int cancel_action = 2131361961;
 			
 			// aapt resource value: 0x7f0a0033
 			public const int center = 2131361843;
@@ -9827,17 +8189,11 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a0035
 			public const int center_vertical = 2131361845;
 			
-			// aapt resource value: 0x7f0a007b
-			public const int chartAreaLayout = 2131361915;
-			
-			// aapt resource value: 0x7f0a007a
-			public const int chartTitle = 2131361914;
-			
 			// aapt resource value: 0x7f0a0060
 			public const int checkbox = 2131361888;
 			
-			// aapt resource value: 0x7f0a00bf
-			public const int chronometer = 2131361983;
+			// aapt resource value: 0x7f0a00b1
+			public const int chronometer = 2131361969;
 			
 			// aapt resource value: 0x7f0a003c
 			public const int clip_horizontal = 2131361852;
@@ -9857,29 +8213,26 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a0059
 			public const int customPanel = 2131361881;
 			
-			// aapt resource value: 0x7f0a007f
-			public const int dataMarkerLayout = 2131361919;
-			
 			// aapt resource value: 0x7f0a0067
 			public const int decor_content_parent = 2131361895;
 			
 			// aapt resource value: 0x7f0a004c
 			public const int default_activity_button = 2131361868;
 			
-			// aapt resource value: 0x7f0a008a
-			public const int design_bottom_sheet = 2131361930;
+			// aapt resource value: 0x7f0a007c
+			public const int design_bottom_sheet = 2131361916;
 			
-			// aapt resource value: 0x7f0a0091
-			public const int design_menu_item_action_area = 2131361937;
+			// aapt resource value: 0x7f0a0083
+			public const int design_menu_item_action_area = 2131361923;
 			
-			// aapt resource value: 0x7f0a0090
-			public const int design_menu_item_action_area_stub = 2131361936;
+			// aapt resource value: 0x7f0a0082
+			public const int design_menu_item_action_area_stub = 2131361922;
 			
-			// aapt resource value: 0x7f0a008f
-			public const int design_menu_item_text = 2131361935;
+			// aapt resource value: 0x7f0a0081
+			public const int design_menu_item_text = 2131361921;
 			
-			// aapt resource value: 0x7f0a008e
-			public const int design_navigation_view = 2131361934;
+			// aapt resource value: 0x7f0a0080
+			public const int design_navigation_view = 2131361920;
 			
 			// aapt resource value: 0x7f0a0015
 			public const int disableHome = 2131361813;
@@ -9890,8 +8243,8 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a0024
 			public const int end = 2131361828;
 			
-			// aapt resource value: 0x7f0a00c9
-			public const int end_padder = 2131361993;
+			// aapt resource value: 0x7f0a00bb
+			public const int end_padder = 2131361979;
 			
 			// aapt resource value: 0x7f0a002d
 			public const int enterAlways = 2131361837;
@@ -9920,9 +8273,6 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a0042
 			public const int @fixed = 2131361858;
 			
-			// aapt resource value: 0x7f0a007c
-			public const int gridLineLayout = 2131361916;
-			
 			// aapt resource value: 0x7f0a0005
 			public const int home = 2131361797;
 			
@@ -9935,11 +8285,8 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a004e
 			public const int icon = 2131361870;
 			
-			// aapt resource value: 0x7f0a0085
-			public const int iconView = 2131361925;
-			
-			// aapt resource value: 0x7f0a00c4
-			public const int icon_group = 2131361988;
+			// aapt resource value: 0x7f0a00b6
+			public const int icon_group = 2131361974;
 			
 			// aapt resource value: 0x7f0a0028
 			public const int ifRoom = 2131361832;
@@ -9947,41 +8294,26 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a004b
 			public const int image = 2131361867;
 			
-			// aapt resource value: 0x7f0a0094
-			public const int indicator = 2131361940;
+			// aapt resource value: 0x7f0a0086
+			public const int indicator = 2131361926;
 			
-			// aapt resource value: 0x7f0a00c0
-			public const int info = 2131361984;
+			// aapt resource value: 0x7f0a00b2
+			public const int info = 2131361970;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int item_touch_helper_previous_elevation = 2131361792;
 			
-			// aapt resource value: 0x7f0a0086
-			public const int label = 2131361926;
-			
-			// aapt resource value: 0x7f0a0088
-			public const int largeLabel = 2131361928;
+			// aapt resource value: 0x7f0a007a
+			public const int largeLabel = 2131361914;
 			
 			// aapt resource value: 0x7f0a0037
 			public const int left = 2131361847;
 			
-			// aapt resource value: 0x7f0a0082
-			public const int legendHeader = 2131361922;
+			// aapt resource value: 0x7f0a00b7
+			public const int line1 = 2131361975;
 			
-			// aapt resource value: 0x7f0a0084
-			public const int legendItemsLayout = 2131361924;
-			
-			// aapt resource value: 0x7f0a0083
-			public const int legendScrollView = 2131361923;
-			
-			// aapt resource value: 0x7f0a0081
-			public const int legendViewGroup = 2131361921;
-			
-			// aapt resource value: 0x7f0a00c5
-			public const int line1 = 2131361989;
-			
-			// aapt resource value: 0x7f0a00c7
-			public const int line3 = 2131361991;
+			// aapt resource value: 0x7f0a00b9
+			public const int line3 = 2131361977;
 			
 			// aapt resource value: 0x7f0a0012
 			public const int listMode = 2131361810;
@@ -9989,23 +8321,23 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a004d
 			public const int list_item = 2131361869;
 			
-			// aapt resource value: 0x7f0a0097
-			public const int loadingImage = 2131361943;
+			// aapt resource value: 0x7f0a0089
+			public const int loadingImage = 2131361929;
 			
-			// aapt resource value: 0x7f0a0095
-			public const int loadingProgressBar = 2131361941;
+			// aapt resource value: 0x7f0a0087
+			public const int loadingProgressBar = 2131361927;
 			
-			// aapt resource value: 0x7f0a0098
-			public const int loadingProgressWheel = 2131361944;
+			// aapt resource value: 0x7f0a008a
+			public const int loadingProgressWheel = 2131361930;
 			
 			// aapt resource value: 0x7f0a0011
 			public const int lottie_layer_name = 2131361809;
 			
-			// aapt resource value: 0x7f0a00cd
-			public const int masked = 2131361997;
+			// aapt resource value: 0x7f0a00bf
+			public const int masked = 2131361983;
 			
-			// aapt resource value: 0x7f0a00b9
-			public const int media_actions = 2131361977;
+			// aapt resource value: 0x7f0a00ab
+			public const int media_actions = 2131361963;
 			
 			// aapt resource value: 0x7f0a0025
 			public const int middle = 2131361829;
@@ -10013,86 +8345,86 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a0041
 			public const int mini = 2131361857;
 			
-			// aapt resource value: 0x7f0a00a5
-			public const int mr_art = 2131361957;
+			// aapt resource value: 0x7f0a0097
+			public const int mr_art = 2131361943;
+			
+			// aapt resource value: 0x7f0a008c
+			public const int mr_chooser_list = 2131361932;
+			
+			// aapt resource value: 0x7f0a008f
+			public const int mr_chooser_route_desc = 2131361935;
+			
+			// aapt resource value: 0x7f0a008d
+			public const int mr_chooser_route_icon = 2131361933;
+			
+			// aapt resource value: 0x7f0a008e
+			public const int mr_chooser_route_name = 2131361934;
+			
+			// aapt resource value: 0x7f0a008b
+			public const int mr_chooser_title = 2131361931;
+			
+			// aapt resource value: 0x7f0a0094
+			public const int mr_close = 2131361940;
 			
 			// aapt resource value: 0x7f0a009a
-			public const int mr_chooser_list = 2131361946;
-			
-			// aapt resource value: 0x7f0a009d
-			public const int mr_chooser_route_desc = 2131361949;
-			
-			// aapt resource value: 0x7f0a009b
-			public const int mr_chooser_route_icon = 2131361947;
-			
-			// aapt resource value: 0x7f0a009c
-			public const int mr_chooser_route_name = 2131361948;
-			
-			// aapt resource value: 0x7f0a0099
-			public const int mr_chooser_title = 2131361945;
-			
-			// aapt resource value: 0x7f0a00a2
-			public const int mr_close = 2131361954;
-			
-			// aapt resource value: 0x7f0a00a8
-			public const int mr_control_divider = 2131361960;
-			
-			// aapt resource value: 0x7f0a00ae
-			public const int mr_control_playback_ctrl = 2131361966;
-			
-			// aapt resource value: 0x7f0a00b1
-			public const int mr_control_subtitle = 2131361969;
-			
-			// aapt resource value: 0x7f0a00b0
-			public const int mr_control_title = 2131361968;
-			
-			// aapt resource value: 0x7f0a00af
-			public const int mr_control_title_container = 2131361967;
-			
-			// aapt resource value: 0x7f0a00a3
-			public const int mr_custom_control = 2131361955;
-			
-			// aapt resource value: 0x7f0a00a4
-			public const int mr_default_control = 2131361956;
-			
-			// aapt resource value: 0x7f0a009f
-			public const int mr_dialog_area = 2131361951;
-			
-			// aapt resource value: 0x7f0a009e
-			public const int mr_expandable_area = 2131361950;
-			
-			// aapt resource value: 0x7f0a00b2
-			public const int mr_group_expand_collapse = 2131361970;
-			
-			// aapt resource value: 0x7f0a00a6
-			public const int mr_media_main_control = 2131361958;
-			
-			// aapt resource value: 0x7f0a00a1
-			public const int mr_name = 2131361953;
-			
-			// aapt resource value: 0x7f0a00a7
-			public const int mr_playback_control = 2131361959;
+			public const int mr_control_divider = 2131361946;
 			
 			// aapt resource value: 0x7f0a00a0
-			public const int mr_title_bar = 2131361952;
+			public const int mr_control_playback_ctrl = 2131361952;
 			
-			// aapt resource value: 0x7f0a00a9
-			public const int mr_volume_control = 2131361961;
+			// aapt resource value: 0x7f0a00a3
+			public const int mr_control_subtitle = 2131361955;
 			
-			// aapt resource value: 0x7f0a00aa
-			public const int mr_volume_group_list = 2131361962;
+			// aapt resource value: 0x7f0a00a2
+			public const int mr_control_title = 2131361954;
 			
-			// aapt resource value: 0x7f0a00ac
-			public const int mr_volume_item_icon = 2131361964;
+			// aapt resource value: 0x7f0a00a1
+			public const int mr_control_title_container = 2131361953;
 			
-			// aapt resource value: 0x7f0a00ad
-			public const int mr_volume_slider = 2131361965;
+			// aapt resource value: 0x7f0a0095
+			public const int mr_custom_control = 2131361941;
+			
+			// aapt resource value: 0x7f0a0096
+			public const int mr_default_control = 2131361942;
+			
+			// aapt resource value: 0x7f0a0091
+			public const int mr_dialog_area = 2131361937;
+			
+			// aapt resource value: 0x7f0a0090
+			public const int mr_expandable_area = 2131361936;
+			
+			// aapt resource value: 0x7f0a00a4
+			public const int mr_group_expand_collapse = 2131361956;
+			
+			// aapt resource value: 0x7f0a0098
+			public const int mr_media_main_control = 2131361944;
+			
+			// aapt resource value: 0x7f0a0093
+			public const int mr_name = 2131361939;
+			
+			// aapt resource value: 0x7f0a0099
+			public const int mr_playback_control = 2131361945;
+			
+			// aapt resource value: 0x7f0a0092
+			public const int mr_title_bar = 2131361938;
+			
+			// aapt resource value: 0x7f0a009b
+			public const int mr_volume_control = 2131361947;
+			
+			// aapt resource value: 0x7f0a009c
+			public const int mr_volume_group_list = 2131361948;
+			
+			// aapt resource value: 0x7f0a009e
+			public const int mr_volume_item_icon = 2131361950;
+			
+			// aapt resource value: 0x7f0a009f
+			public const int mr_volume_slider = 2131361951;
 			
 			// aapt resource value: 0x7f0a001d
 			public const int multiply = 2131361821;
 			
-			// aapt resource value: 0x7f0a008d
-			public const int navigation_header_container = 2131361933;
+			// aapt resource value: 0x7f0a007f
+			public const int navigation_header_container = 2131361919;
 			
 			// aapt resource value: 0x7f0a0029
 			public const int never = 2131361833;
@@ -10103,17 +8435,17 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a0013
 			public const int normal = 2131361811;
 			
-			// aapt resource value: 0x7f0a00c2
-			public const int notification_background = 2131361986;
+			// aapt resource value: 0x7f0a00b4
+			public const int notification_background = 2131361972;
 			
-			// aapt resource value: 0x7f0a00bc
-			public const int notification_main_column = 2131361980;
+			// aapt resource value: 0x7f0a00ae
+			public const int notification_main_column = 2131361966;
 			
-			// aapt resource value: 0x7f0a00bb
-			public const int notification_main_column_container = 2131361979;
+			// aapt resource value: 0x7f0a00ad
+			public const int notification_main_column_container = 2131361965;
 			
-			// aapt resource value: 0x7f0a0093
-			public const int pager = 2131361939;
+			// aapt resource value: 0x7f0a0085
+			public const int pager = 2131361925;
 			
 			// aapt resource value: 0x7f0a003a
 			public const int parallax = 2131361850;
@@ -10136,14 +8468,11 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a0038
 			public const int right = 2131361848;
 			
-			// aapt resource value: 0x7f0a00c1
-			public const int right_icon = 2131361985;
+			// aapt resource value: 0x7f0a00b3
+			public const int right_icon = 2131361971;
 			
-			// aapt resource value: 0x7f0a00bd
-			public const int right_side = 2131361981;
-			
-			// aapt resource value: 0x7f0a0079
-			public const int rootLayout = 2131361913;
+			// aapt resource value: 0x7f0a00af
+			public const int right_side = 2131361967;
 			
 			// aapt resource value: 0x7f0a001e
 			public const int screen = 2131361822;
@@ -10196,9 +8525,6 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a0077
 			public const int select_dialog_listview = 2131361911;
 			
-			// aapt resource value: 0x7f0a007e
-			public const int seriesLayout = 2131361918;
-			
 			// aapt resource value: 0x7f0a0061
 			public const int shortcut = 2131361889;
 			
@@ -10211,17 +8537,17 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a001a
 			public const int showTitle = 2131361818;
 			
-			// aapt resource value: 0x7f0a00ca
-			public const int sliding_tabs = 2131361994;
+			// aapt resource value: 0x7f0a00bc
+			public const int sliding_tabs = 2131361980;
 			
-			// aapt resource value: 0x7f0a0087
-			public const int smallLabel = 2131361927;
+			// aapt resource value: 0x7f0a0079
+			public const int smallLabel = 2131361913;
 			
-			// aapt resource value: 0x7f0a008c
-			public const int snackbar_action = 2131361932;
+			// aapt resource value: 0x7f0a007e
+			public const int snackbar_action = 2131361918;
 			
-			// aapt resource value: 0x7f0a008b
-			public const int snackbar_text = 2131361931;
+			// aapt resource value: 0x7f0a007d
+			public const int snackbar_text = 2131361917;
 			
 			// aapt resource value: 0x7f0a0031
 			public const int snap = 2131361841;
@@ -10244,11 +8570,8 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a0039
 			public const int start = 2131361849;
 			
-			// aapt resource value: 0x7f0a00b8
-			public const int status_bar_latest_event_content = 2131361976;
-			
-			// aapt resource value: 0x7f0a007d
-			public const int stripLinesLayout = 2131361917;
+			// aapt resource value: 0x7f0a00aa
+			public const int status_bar_latest_event_content = 2131361962;
 			
 			// aapt resource value: 0x7f0a0063
 			public const int submenuarrow = 2131361891;
@@ -10259,11 +8582,11 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a0014
 			public const int tabMode = 2131361812;
 			
-			// aapt resource value: 0x7f0a00c8
-			public const int text = 2131361992;
+			// aapt resource value: 0x7f0a00ba
+			public const int text = 2131361978;
 			
-			// aapt resource value: 0x7f0a00c6
-			public const int text2 = 2131361990;
+			// aapt resource value: 0x7f0a00b8
+			public const int text2 = 2131361976;
 			
 			// aapt resource value: 0x7f0a0057
 			public const int textSpacerNoButtons = 2131361879;
@@ -10271,11 +8594,11 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a0056
 			public const int textSpacerNoTitle = 2131361878;
 			
-			// aapt resource value: 0x7f0a0096
-			public const int textViewStatus = 2131361942;
+			// aapt resource value: 0x7f0a0088
+			public const int textViewStatus = 2131361928;
 			
-			// aapt resource value: 0x7f0a0092
-			public const int text_input_password_toggle = 2131361938;
+			// aapt resource value: 0x7f0a0084
+			public const int text_input_password_toggle = 2131361924;
 			
 			// aapt resource value: 0x7f0a000c
 			public const int textinput_counter = 2131361804;
@@ -10283,8 +8606,8 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a000d
 			public const int textinput_error = 2131361805;
 			
-			// aapt resource value: 0x7f0a00be
-			public const int time = 2131361982;
+			// aapt resource value: 0x7f0a00b0
+			public const int time = 2131361968;
 			
 			// aapt resource value: 0x7f0a004f
 			public const int title = 2131361871;
@@ -10295,8 +8618,8 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a005c
 			public const int title_template = 2131361884;
 			
-			// aapt resource value: 0x7f0a00cb
-			public const int toolbar = 2131361995;
+			// aapt resource value: 0x7f0a00bd
+			public const int toolbar = 2131361981;
 			
 			// aapt resource value: 0x7f0a002c
 			public const int top = 2131361836;
@@ -10304,8 +8627,8 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a005b
 			public const int topPanel = 2131361883;
 			
-			// aapt resource value: 0x7f0a0089
-			public const int touch_outside = 2131361929;
+			// aapt resource value: 0x7f0a007b
+			public const int touch_outside = 2131361915;
 			
 			// aapt resource value: 0x7f0a000a
 			public const int transition_current_scene = 2131361802;
@@ -10325,11 +8648,11 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0a000e
 			public const int view_offset_helper = 2131361806;
 			
-			// aapt resource value: 0x7f0a00cc
-			public const int visible = 2131361996;
+			// aapt resource value: 0x7f0a00be
+			public const int visible = 2131361982;
 			
-			// aapt resource value: 0x7f0a00ab
-			public const int volume_item_container = 2131361963;
+			// aapt resource value: 0x7f0a009d
+			public const int volume_item_container = 2131361949;
 			
 			// aapt resource value: 0x7f0a0078
 			public const int webview = 2131361912;
@@ -10509,160 +8832,151 @@ namespace Bullytect.Droid
 			public const int activity_webview = 2130968603;
 			
 			// aapt resource value: 0x7f04001c
-			public const int chart_layout = 2130968604;
+			public const int design_bottom_navigation_item = 2130968604;
 			
 			// aapt resource value: 0x7f04001d
-			public const int chart_legend = 2130968605;
+			public const int design_bottom_sheet_dialog = 2130968605;
 			
 			// aapt resource value: 0x7f04001e
-			public const int chart_legend_item = 2130968606;
+			public const int design_layout_snackbar = 2130968606;
 			
 			// aapt resource value: 0x7f04001f
-			public const int design_bottom_navigation_item = 2130968607;
+			public const int design_layout_snackbar_include = 2130968607;
 			
 			// aapt resource value: 0x7f040020
-			public const int design_bottom_sheet_dialog = 2130968608;
+			public const int design_layout_tab_icon = 2130968608;
 			
 			// aapt resource value: 0x7f040021
-			public const int design_layout_snackbar = 2130968609;
+			public const int design_layout_tab_text = 2130968609;
 			
 			// aapt resource value: 0x7f040022
-			public const int design_layout_snackbar_include = 2130968610;
+			public const int design_menu_item_action_area = 2130968610;
 			
 			// aapt resource value: 0x7f040023
-			public const int design_layout_tab_icon = 2130968611;
+			public const int design_navigation_item = 2130968611;
 			
 			// aapt resource value: 0x7f040024
-			public const int design_layout_tab_text = 2130968612;
+			public const int design_navigation_item_header = 2130968612;
 			
 			// aapt resource value: 0x7f040025
-			public const int design_menu_item_action_area = 2130968613;
+			public const int design_navigation_item_separator = 2130968613;
 			
 			// aapt resource value: 0x7f040026
-			public const int design_navigation_item = 2130968614;
+			public const int design_navigation_item_subheader = 2130968614;
 			
 			// aapt resource value: 0x7f040027
-			public const int design_navigation_item_header = 2130968615;
+			public const int design_navigation_menu = 2130968615;
 			
 			// aapt resource value: 0x7f040028
-			public const int design_navigation_item_separator = 2130968616;
+			public const int design_navigation_menu_item = 2130968616;
 			
 			// aapt resource value: 0x7f040029
-			public const int design_navigation_item_subheader = 2130968617;
+			public const int design_text_input_password_icon = 2130968617;
 			
 			// aapt resource value: 0x7f04002a
-			public const int design_navigation_menu = 2130968618;
+			public const int horizontal_viewpager = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int design_navigation_menu_item = 2130968619;
+			public const int loading = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
-			public const int design_text_input_password_icon = 2130968620;
+			public const int loadingimage = 2130968620;
 			
 			// aapt resource value: 0x7f04002d
-			public const int horizontal_viewpager = 2130968621;
+			public const int loadingprogress = 2130968621;
 			
 			// aapt resource value: 0x7f04002e
-			public const int loading = 2130968622;
+			public const int MainView = 2130968622;
 			
 			// aapt resource value: 0x7f04002f
-			public const int loadingimage = 2130968623;
+			public const int mr_chooser_dialog = 2130968623;
 			
 			// aapt resource value: 0x7f040030
-			public const int loadingprogress = 2130968624;
+			public const int mr_chooser_list_item = 2130968624;
 			
 			// aapt resource value: 0x7f040031
-			public const int MainView = 2130968625;
+			public const int mr_controller_material_dialog_b = 2130968625;
 			
 			// aapt resource value: 0x7f040032
-			public const int mr_chooser_dialog = 2130968626;
+			public const int mr_controller_volume_item = 2130968626;
 			
 			// aapt resource value: 0x7f040033
-			public const int mr_chooser_list_item = 2130968627;
+			public const int mr_playback_control = 2130968627;
 			
 			// aapt resource value: 0x7f040034
-			public const int mr_controller_material_dialog_b = 2130968628;
+			public const int mr_volume_control = 2130968628;
 			
 			// aapt resource value: 0x7f040035
-			public const int mr_controller_volume_item = 2130968629;
+			public const int notification_action = 2130968629;
 			
 			// aapt resource value: 0x7f040036
-			public const int mr_playback_control = 2130968630;
+			public const int notification_action_tombstone = 2130968630;
 			
 			// aapt resource value: 0x7f040037
-			public const int mr_volume_control = 2130968631;
+			public const int notification_media_action = 2130968631;
 			
 			// aapt resource value: 0x7f040038
-			public const int notification_action = 2130968632;
+			public const int notification_media_cancel_action = 2130968632;
 			
 			// aapt resource value: 0x7f040039
-			public const int notification_action_tombstone = 2130968633;
+			public const int notification_template_big_media = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int notification_media_action = 2130968634;
+			public const int notification_template_big_media_custom = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int notification_media_cancel_action = 2130968635;
+			public const int notification_template_big_media_narrow = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int notification_template_big_media = 2130968636;
+			public const int notification_template_big_media_narrow_custom = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int notification_template_big_media_custom = 2130968637;
+			public const int notification_template_custom_big = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int notification_template_big_media_narrow = 2130968638;
+			public const int notification_template_icon_group = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int notification_template_big_media_narrow_custom = 2130968639;
+			public const int notification_template_lines_media = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int notification_template_custom_big = 2130968640;
+			public const int notification_template_media = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int notification_template_icon_group = 2130968641;
+			public const int notification_template_media_custom = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int notification_template_lines_media = 2130968642;
+			public const int notification_template_part_chronometer = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int notification_template_media = 2130968643;
+			public const int notification_template_part_time = 2130968643;
 			
 			// aapt resource value: 0x7f040044
-			public const int notification_template_media_custom = 2130968644;
+			public const int select_dialog_item_material = 2130968644;
 			
 			// aapt resource value: 0x7f040045
-			public const int notification_template_part_chronometer = 2130968645;
+			public const int select_dialog_multichoice_material = 2130968645;
 			
 			// aapt resource value: 0x7f040046
-			public const int notification_template_part_time = 2130968646;
+			public const int select_dialog_singlechoice_material = 2130968646;
 			
 			// aapt resource value: 0x7f040047
-			public const int select_dialog_item_material = 2130968647;
+			public const int SplashScreen = 2130968647;
 			
 			// aapt resource value: 0x7f040048
-			public const int select_dialog_multichoice_material = 2130968648;
+			public const int support_simple_spinner_dropdown_item = 2130968648;
 			
 			// aapt resource value: 0x7f040049
-			public const int select_dialog_singlechoice_material = 2130968649;
+			public const int Tabbar = 2130968649;
 			
 			// aapt resource value: 0x7f04004a
-			public const int SplashScreen = 2130968650;
+			public const int Tabs = 2130968650;
 			
 			// aapt resource value: 0x7f04004b
-			public const int support_simple_spinner_dropdown_item = 2130968651;
+			public const int Toolbar = 2130968651;
 			
 			// aapt resource value: 0x7f04004c
-			public const int Tabbar = 2130968652;
-			
-			// aapt resource value: 0x7f04004d
-			public const int Tabs = 2130968653;
-			
-			// aapt resource value: 0x7f04004e
-			public const int Toolbar = 2130968654;
-			
-			// aapt resource value: 0x7f04004f
-			public const int vertical_viewpager = 2130968655;
+			public const int vertical_viewpager = 2130968652;
 			
 			static Layout()
 			{
@@ -10693,11 +9007,11 @@ namespace Bullytect.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f080042
-			public const int ApplicationName = 2131230786;
-			
 			// aapt resource value: 0x7f080041
-			public const int Hello = 2131230785;
+			public const int ApplicationName = 2131230785;
+			
+			// aapt resource value: 0x7f080040
+			public const int Hello = 2131230784;
 			
 			// aapt resource value: 0x7f080017
 			public const int abc_action_bar_home_description = 2131230743;
@@ -10791,9 +9105,6 @@ namespace Bullytect.Droid
 			
 			// aapt resource value: 0x7f080029
 			public const int abc_toolbar_collapse_description = 2131230761;
-			
-			// aapt resource value: 0x7f080040
-			public const int app_name = 2131230784;
 			
 			// aapt resource value: 0x7f080038
 			public const int appbar_scrolling_view_behavior = 2131230776;
@@ -10922,8 +9233,8 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0c0170
 			public const int Animation_Design_BottomSheetDialog = 2131493232;
 			
-			// aapt resource value: 0x7f0c0189
-			public const int AppTheme = 2131493257;
+			// aapt resource value: 0x7f0c018d
+			public const int AppTheme = 2131493261;
 			
 			// aapt resource value: 0x7f0c0191
 			public const int AppTheme_AlertDialog = 2131493265;
@@ -11816,11 +10127,11 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0c0006
 			public const int Theme_MediaRouter_LightControlPanel = 2131492870;
 			
-			// aapt resource value: 0x7f0c018a
-			public const int Theme_PageIndicatorDefaults = 2131493258;
+			// aapt resource value: 0x7f0c0189
+			public const int Theme_PageIndicatorDefaults = 2131493257;
 			
-			// aapt resource value: 0x7f0c018d
-			public const int Theme_Splash = 2131493261;
+			// aapt resource value: 0x7f0c018c
+			public const int Theme_Splash = 2131493260;
 			
 			// aapt resource value: 0x7f0c011f
 			public const int ThemeOverlay_AppCompat = 2131493151;
@@ -11849,8 +10160,8 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0c0008
 			public const int ThemeOverlay_MediaRouter_Light = 2131492872;
 			
-			// aapt resource value: 0x7f0c018b
-			public const int Widget = 2131493259;
+			// aapt resource value: 0x7f0c018a
+			public const int Widget = 2131493258;
 			
 			// aapt resource value: 0x7f0c0126
 			public const int Widget_AppCompat_ActionBar = 2131493158;
@@ -12083,8 +10394,8 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f0c0193
 			public const int Widget_AppTheme_TabLayout = 2131493267;
 			
-			// aapt resource value: 0x7f0c018c
-			public const int Widget_CirclePageIndicator = 2131493260;
+			// aapt resource value: 0x7f0c018b
+			public const int Widget_CirclePageIndicator = 2131493259;
 			
 			// aapt resource value: 0x7f0c016f
 			public const int Widget_Design_AppBarLayout = 2131493231;

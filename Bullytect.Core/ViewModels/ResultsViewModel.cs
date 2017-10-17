@@ -12,11 +12,12 @@ using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Rest.Models.Exceptions;
 using Bullytect.Core.Services;
 using Bullytect.Core.ViewModels.Core.Models;
+using Microcharts;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using MvvmHelpers;
 using ReactiveUI;
-using Syncfusion.SfChart.XForms;
+using SkiaSharp;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -80,30 +81,77 @@ namespace Bullytect.Core.ViewModels
         };
 
         public ObservableRangeCollection<AlertsBySon> AlertsBySon { get; } = new ObservableRangeCollection<AlertsBySon>() {
-                new AlertsBySon() {
-                    FullName = "Sergio Martín",
-                    Alerts = new List<ChartDataPoint>(){
-                        new ChartDataPoint("INFO", 23),
-                        new ChartDataPoint("WARNING", 12),
-                        new ChartDataPoint("ERROR", 21)
-                    }
-                },
-                new AlertsBySon() {
-                    FullName = "Pedro Martín",
-                    Alerts = new List<ChartDataPoint>(){
-                        new ChartDataPoint("INFO", 23),
-                        new ChartDataPoint("WARNING", 12),
-                        new ChartDataPoint("ERROR", 21)
-                    }
-                },
-                new AlertsBySon() {
-                    FullName = "María Martín",
-                    Alerts = new List<ChartDataPoint>(){
-                        new ChartDataPoint("INFO", 23),
-                        new ChartDataPoint("WARNING", 12),
-                        new ChartDataPoint("ERROR", 21)
-                    }
-                }
+
+            new AlertsBySon () {
+                FullName = "Sergio Martín",
+                Alerts = new List<Entry> () {
+					new Entry(34)
+                    {
+                        Label = "INFO",
+                        ValueLabel = "34",
+                        Color = SKColor.Parse("#2C8DA9")
+                    },
+					new Entry(23)
+					{
+						Label = "WARNING",
+						ValueLabel = "23",
+						Color = SKColor.Parse("#FFA700")
+					},
+					new Entry(10)
+					{
+						Label = "DANGER",
+						ValueLabel = "10",
+						Color = SKColor.Parse("#D93028")
+					}
+				}
+            },
+			new AlertsBySon () {
+				FullName = "Alberto Lopez",
+				Alerts = new List<Entry> () {
+					new Entry(34)
+					{
+						Label = "INFO",
+						ValueLabel = "34",
+						Color = SKColor.Parse("#2C8DA9")
+					},
+					new Entry(23)
+					{
+						Label = "WARNING",
+						ValueLabel = "23",
+						Color = SKColor.Parse("#FFA700")
+					},
+					new Entry(10)
+					{
+						Label = "DANGER",
+						ValueLabel = "10",
+						Color = SKColor.Parse("#D93028")
+					}
+				}
+			},
+			new AlertsBySon () {
+				FullName = "Alberto Lopez",
+				Alerts = new List<Entry> () {
+					new Entry(34)
+					{
+						Label = "INFO",
+						ValueLabel = "34",
+						Color = SKColor.Parse("#2C8DA9")
+					},
+					new Entry(23)
+					{
+						Label = "WARNING",
+						ValueLabel = "23",
+						Color = SKColor.Parse("#FFA700")
+					},
+					new Entry(10)
+					{
+						Label = "DANGER",
+						ValueLabel = "10",
+						Color = SKColor.Parse("#D93028")
+					}
+				}
+			}
+
         };
 
 
