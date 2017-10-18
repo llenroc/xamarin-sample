@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Reactive.Linq;
 using Bullytect.Core.Rest.Models.Request;
@@ -16,6 +17,9 @@ namespace Bullytect.Core.Rest.Services.Impl
 
         public IObservable<APIResponse<DeviceDTO>> save(SaveDeviceDTO saveDevice)
         {
+            Debug.WriteLine("Device Id" + saveDevice.DeviceId);
+            Debug.WriteLine("Registration Token" + saveDevice.RegistrationToken);
+
             return Observable.FromAsync(() => PostData<APIResponse<DeviceDTO>, SaveDeviceDTO>(ApiEndpoints.SAVE_DEVICE, saveDevice));
         }
     }

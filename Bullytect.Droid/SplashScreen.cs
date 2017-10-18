@@ -1,7 +1,9 @@
 ﻿
 using Android.App;
 using Android.Content.PM;
+using Android.OS;
 using MvvmCross.Droid.Views;
+using Plugin.PushNotification;
 
 namespace Bullytect.Droid
 {
@@ -15,6 +17,14 @@ namespace Bullytect.Droid
 		, ScreenOrientation = ScreenOrientation.Portrait)]
 	public class SplashScreen : MvxSplashScreenActivity
 	{
+
+        protected override void OnCreate(Bundle bundle)
+        {
+            base.OnCreate(bundle);
+
+            PushNotificationManager.ProcessIntent(Intent);
+        }
+
 		protected override void TriggerFirstNavigate()
 		{
 			StartActivity(typeof(MvxFormsApplicationActivity));

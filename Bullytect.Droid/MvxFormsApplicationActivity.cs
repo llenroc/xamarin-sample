@@ -17,6 +17,7 @@ using Xamarin.Forms.Platform.Android;
 using MvvmCross.Droid.Platform;
 using Plugin.Permissions;
 using CarouselView.FormsPlugin.Android;
+using Plugin.PushNotification;
 
 namespace Bullytect.Droid
 {

@@ -18,6 +18,7 @@ namespace Bullytect.Core
     using Bullytect.Utils.Helpers;
     using MvvmCross.Core.Navigation;
     using Bullytect.Core.ViewModels;
+    using Plugin.PushNotification;
 
     public partial class App : MvxFormsApplication
     {
@@ -40,19 +41,6 @@ namespace Bullytect.Core
             ConfigLocale();
             InitializeComponent();
         }
-
-		void OnAuthenticatedUserMessage(AuthenticatedUserMessage authenticatedUserMessage)
-		{
-
-            Debug.WriteLine("OnAuthenticatedUserMessage ...");
-
-            /*var deviceGroupsService = Mvx.Resolve<IDeviceGroupsService>();
-            // save token
-            deviceGroupsService.saveDevice(CrossDeviceInfo.Current.Id, Settings.FcmToken).Subscribe(device => {
-                Debug.WriteLine(String.Format("Device Saved: {0}", device.ToString()));
-            });*/
-
-		}
 
 
         void OnExceptionOcurredMessage(ExceptionOcurredMessage exceptionOcurredMessage) 
@@ -100,8 +88,6 @@ namespace Bullytect.Core
 
             Debug.WriteLine("Forms App OnStart ...");
             var messenger = Mvx.Resolve<IMvxMessenger>();
-            // subscribe to Authenticated User Message
-            messenger.Subscribe<AuthenticatedUserMessage>(OnAuthenticatedUserMessage);
             // subscribe to Exception Ocurred Message
             messenger.Subscribe<ExceptionOcurredMessage>(OnExceptionOcurredMessage);
 			// subscribe to SessionExpiredMessage
@@ -110,17 +96,38 @@ namespace Bullytect.Core
 			messenger.Subscribe<SignOutMessage>(OnSignOutMessage);
 
 
-
-
-
-            //Handling FCM Token
-			/*CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
+			// Handle when your app starts
+			CrossPushNotification.Current.OnTokenRefresh += (s, p) =>
 			{
 				Debug.WriteLine($"TOKEN REC: {p.Token}");
 				Settings.FcmToken = p.Token;
 			};
-			Debug.WriteLine($"TOKEN: {CrossFirebasePushNotification.Current.Token}");
-			Settings.FcmToken = CrossFirebasePushNotification.Current.Token;*/
+
+            Debug.WriteLine($"TOKEN: {CrossPushNotification.Current.Token}");
+            Settings.FcmToken = CrossPushNotification.Current.Token;
+
+			CrossPushNotification.Current.OnNotificationReceived += (s, p) =>
+			{
+
+				System.Diagnostics.Debug.WriteLine("Received");
+
+			};
+
+			CrossPushNotification.Current.OnNotificationOpened += (s, p) =>
+			{
+				System.Diagnostics.Debug.WriteLine("Opened");
+				foreach (var data in p.Data)
+				{
+					System.Diagnostics.Debug.WriteLine($"{data.Key} : {data.Value}");
+				}
+
+				if (!string.IsNullOrEmpty(p.Identifier))
+				{
+					System.Diagnostics.Debug.WriteLine($"ActionId: {p.Identifier}");
+				}
+
+			};
+
 
 		}
 
