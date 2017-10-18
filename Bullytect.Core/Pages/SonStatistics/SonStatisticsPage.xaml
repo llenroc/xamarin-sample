@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<d:MvxContentPage  
+<d:MvxContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
-    xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
-    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
-    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
-    xmlns:carouselTemplate="clr-namespace:Bullytect.Core.Pages.Results.Templates"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
     xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
-    x:Class="Bullytect.Core.Pages.Results.ResultsPage"
-    x:TypeArguments="viewModels:ResultsViewModel"
-    BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
-    Title="{i18n:Translate Home.Toolbar.Results}">
+    x:TypeArguments="viewModels:SonStatisticsViewModel"
+    x:Class="Bullytect.Core.Pages.SonStatistics.SonStatisticsPage"
+    x:Name="root">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
+            <converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter" />
             <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -32,9 +34,7 @@
         </behaviors:EventHandlerBehavior>
     </ContentPage.Behaviors>
 
-
     <ContentPage.Content>
-
         <!-- MAIN CONTAINER -->
         <Grid RowSpacing="0">
             <Grid.RowDefinitions>
@@ -45,14 +45,13 @@
             <!-- APP Header -->
             <common:AppHeader 
                 Grid.Row="0"
-                Title="{i18n:Translate Page.Results.Title}">
+                Title="{ Binding FullName, StringFormat={i18n:Translate Page.Statistics.Title }}">
                 <common:AppHeader.Options>
                     <x:Array Type="{x:Type View}">
                         <common:RefreshOptionMenu />
                         <common:SettingsOptionMenu />
                     </x:Array>
                 </common:AppHeader.Options>
-
             </common:AppHeader>
 
             <controls:CarouselViewControl 
@@ -66,22 +65,33 @@
                 <controls:CarouselViewControl.ItemsSource>
                     <x:Array Type="{x:Type View}">
                         <commonTemplates:ChartPageTemplate 
-                            Title="{i18n:Translate Results.Last.Iterations}"
-                            Chart="{ Binding LastIterationsChart }"
+                            Title="{i18n:Translate Statistics.Son.Social.Media.Activities}"
+                            Chart="{ Binding SocialMediaActivitiesChart }"
                             ChartWidth="350"
                             ChartHeight="350"
                         />
-
                         <commonTemplates:ChartPageTemplate 
-                            Title="{i18n:Translate Results.Alerts.by.Son}"
-                            ChartList="{ Binding AlertsBySonChartList }"
+                            Title="{i18n:Translate Statistics.Son.Four.Dimensions}"
+                            Chart="{ Binding FourDimensionsChart }"
+                            ChartWidth="350"
+                            ChartHeight="350"
+                        />
+                        <commonTemplates:ChartPageTemplate 
+                            Title="{i18n:Translate Statistics.Son.Social.Sentiment.Analysis}"
+                            Chart="{ Binding SentimentAnalysisChart }"
+                            ChartWidth="350"
+                            ChartHeight="350"
+                        />
+                        <commonTemplates:ChartPageTemplate 
+                            Title="{i18n:Translate Statistics.Son.Communities}"
+                            Chart="{ Binding CommunitiesCharts }"
+                            ChartWidth="350"
+                            ChartHeight="350"
                         />
                     </x:Array>
                 </controls:CarouselViewControl.ItemsSource>
             </controls:CarouselViewControl>
 
         </Grid>
-
     </ContentPage.Content>
-
 </d:MvxContentPage>

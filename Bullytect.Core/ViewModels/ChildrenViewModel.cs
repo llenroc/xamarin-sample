@@ -83,6 +83,18 @@ namespace Bullytect.Core.ViewModels
 			}
 		}
 
+		public ICommand ShowSonStatisticsCommand
+        {
+            get
+            {
+                return new MvxCommand<SonEntity>((SonEntity) => ShowViewModel<SonStatisticsViewModel>(new SonStatisticsViewModel.SonStatisticsParameter(){
+                    Identity = SonEntity.Identity,
+                    FullName = SonEntity.FullName
+                }));
+            }
+        }
+
+
         public ICommand EditSonCommand => new MvxCommand<string>((string Id) => ShowViewModel<EditSonViewModel>(new { SonIdentity = Id }));
 
 

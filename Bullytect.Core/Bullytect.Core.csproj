@@ -185,7 +185,13 @@
     <EmbeddedResource Include="Pages\Common\SignOutOptionMenu.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Results\Templates\AlertsBySonPage.xaml">
+    <EmbeddedResource Include="Pages\SonStatistics\SonStatisticsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\SonStatistics\Settings\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\Templates\ChartPageTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -506,10 +512,19 @@
     <Compile Include="Pages\Common\SignOutOptionMenu.xaml.cs">
       <DependentUpon>SignOutOptionMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Results\Templates\AlertsBySonPage.xaml.cs">
-      <DependentUpon>AlertsBySonPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\Core\Models\AlertsBySon.cs" />
+    <Compile Include="Pages\SonStatistics\SonStatisticsPage.xaml.cs">
+      <DependentUpon>SonStatisticsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\SonStatisticsViewModel.cs" />
+    <Compile Include="Pages\SonStatistics\Settings\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\SonStatisticsSettingsViewModel.cs" />
+    <Compile Include="Pages\Common\Templates\ChartPageTemplate.xaml.cs">
+      <DependentUpon>ChartPageTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Core\Models\ChartModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -721,6 +736,8 @@
     <Folder Include="Pages\Results\Settings\" />
     <Folder Include="ViewModels\Core\Models\" />
     <Folder Include="Pages\Results\Settings\Templates\" />
+    <Folder Include="Pages\SonStatistics\" />
+    <Folder Include="Pages\SonStatistics\Settings\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />

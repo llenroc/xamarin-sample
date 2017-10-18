@@ -119,6 +119,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Page_Statistics_Title {
+            get {
+                return ResourceManager.GetString("Page.Statistics.Title", resourceCulture);
+            }
+        }
+        
         internal static string Common_Loading {
             get {
                 return ResourceManager.GetString("Common.Loading", resourceCulture);
@@ -533,9 +539,9 @@ namespace Bullytect.Core.I18N {
             }
         }
         
-        internal static string Children_Toolbar_Profile {
+        internal static string Children_Toolbar_Statistics {
             get {
-                return ResourceManager.GetString("Children.Toolbar.Profile", resourceCulture);
+                return ResourceManager.GetString("Children.Toolbar.Statistics", resourceCulture);
             }
         }
         
@@ -1040,6 +1046,54 @@ namespace Bullytect.Core.I18N {
         internal static string Results_Settings_Show_Results_For {
             get {
                 return ResourceManager.GetString("Results.Settings.Show.Results.For", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Statistics_Son_General {
+            get {
+                return ResourceManager.GetString("Settings.Statistics.Son.General", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Statistics_Son_General_Interval {
+            get {
+                return ResourceManager.GetString("Settings.Statistics.Son.General.Interval", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Statistics_Son_General_Interval_Description {
+            get {
+                return ResourceManager.GetString("Settings.Statistics.Son.General.Interval.Description", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Statistics_Son_General_Interval_Option {
+            get {
+                return ResourceManager.GetString("Settings.Statistics.Son.General.Interval.Option", resourceCulture);
+            }
+        }
+        
+        internal static string Statistics_Son_Social_Sentiment_Analysis {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Social.Sentiment.Analysis", resourceCulture);
+            }
+        }
+        
+        internal static string Statistics_Son_Social_Media_Activities {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Social.Media.Activities", resourceCulture);
+            }
+        }
+        
+        internal static string Statistics_Son_Four_Dimensions {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Four.Dimensions", resourceCulture);
+            }
+        }
+        
+        internal static string Statistics_Son_Communities {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Communities", resourceCulture);
             }
         }
     }

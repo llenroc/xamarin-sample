@@ -7,13 +7,13 @@
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     BackgroundColor="{ DynamicResource BasePageColor }"
-    x:Class="Bullytect.Core.Pages.Results.Templates.AlertsBySonPage">
-    <ContentPage.Resources>
+    x:Class="Bullytect.Core.Pages.Common.Templates.ChartPageTemplate">
+    <ContentView.Resources>
         <ResourceDictionary>
             <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
         </ResourceDictionary>
-    </ContentPage.Resources>
-	<ContentView.Content>
+    </ContentView.Resources>
+    <ContentView.Content>
         <StackLayout>
 
              <StackLayout 
@@ -26,8 +26,8 @@
 
 
                         <Label
+                            x:Name="ChartTitle"
                             LineBreakMode="WordWrap"
-                            Text="{i18n:Translate Results.Alerts.by.Son }"
                             TextColor="{ DynamicResource AccentColor }"
                             VerticalTextAlignment="Center"
                             FontSize="20">
@@ -49,7 +49,8 @@
                 
                     <ScrollView>
                           <StackLayout 
-                            x:Name="AlertsBySonChart"
+                            x:Name="ChartsContainer"
+                            Padding="10"
                             WidthRequest="800"
                             VerticalOptions="CenterAndExpand"
                             Margin="20, 0"></StackLayout>
@@ -60,10 +61,10 @@
                 <common:NoDataFound
                     HorizontalOptions="FillAndExpand" 
                     VerticalOptions="FillAndExpand"
-                    IsVisible="{ Binding NoIterationsFound }"
+                    IsVisible="false"
                     MainText="{i18n:Translate Results.Iterations.Not.Found.MainText }"
                     DetailText="{i18n:Translate Results.Iterations.Not.Found.SecondText }"/>
 
          </StackLayout>
-	</ContentView.Content>
+    </ContentView.Content>
 </ContentView>

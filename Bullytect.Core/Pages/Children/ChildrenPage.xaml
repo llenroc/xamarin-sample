@@ -25,6 +25,7 @@
             <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
             <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
             <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
+            <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -86,6 +87,13 @@
             RefreshCommand="{Binding LoadChildrenCommand}"
             IsRefreshing="{Binding IsBusy, Mode=OneWay}">
 
+           
+            <ListView.Behaviors>
+                <utils:EventToCommandBehavior 
+                    EventName="ItemTapped"
+                    Command="{Binding ShowSonProfileCommand }" 
+                    EventArgsConverter="{ StaticResource ItemTappedEventArgsConverter }" />
+            </ListView.Behaviors>
 
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -116,7 +124,6 @@
                                       </Grid.ColumnDefinitions>
 
                                         
-
                                       <!---Left Column Content -->
                                       <ffimageloading:CachedImage
                                         Grid.Column="0"
@@ -175,7 +182,7 @@
                                     HeightRequest="60">
 
 
-                                     <!-- User Detail Action -->
+                                     <!-- User charts Action -->
                                       <StackLayout
                                           Orientation="Horizontal"
                                           HorizontalOptions="Start"
@@ -185,32 +192,32 @@
                                             <Label
                                                 HorizontalOptions="Center"
                                                 VerticalOptions="Center"
-                                                Text="{ x:Static helper:FontAwesomeFont.User }"
+                                                Text="{ x:Static helper:FontAwesomeFont.BarChart }"
                                                 FontFamily="{ StaticResource IconsFontFamily }"
                                                 TextColor="{ DynamicResource AccentColor }">
 
                                               <Label.FontSize>
                                                 <OnIdiom
                                                      x:TypeArguments="x:Double"
-                                                     Phone="20"
-                                                     Tablet="25" />
+                                                     Phone="15"
+                                                     Tablet="15" />
                                               </Label.FontSize>
                                             </Label>
 
                                             <Label
                                                 HorizontalOptions="Center"
                                                 VerticalOptions="Center"
-                                                Text="{i18n:Translate Children.Toolbar.Profile}">
+                                                Text="{i18n:Translate Children.Toolbar.Statistics}">
                                               <Label.FontSize>
                                                 <OnIdiom
                                                     x:TypeArguments="x:Double"
-                                                    Phone="20"
-                                                    Tablet="25" />
+                                                    Phone="15"
+                                                    Tablet="15" />
                                               </Label.FontSize>
                                             </Label>
 
                                             <StackLayout.GestureRecognizers>
-                                              <TapGestureRecognizer Command="{ Binding Path=BindingContext.ShowSonProfileCommand, Source={x:Reference Root} }"
+                                              <TapGestureRecognizer Command="{ Binding Path=BindingContext.ShowSonStatisticsCommand, Source={x:Reference Root} }"
                                                   CommandParameter="{Binding .}" NumberOfTapsRequired="1" />
                                             </StackLayout.GestureRecognizers>
                                       </StackLayout>
@@ -232,8 +239,8 @@
                                           <Label.FontSize>
                                             <OnIdiom
                                                  x:TypeArguments="x:Double"
-                                                 Phone="20"
-                                                 Tablet="25" />
+                                                 Phone="15"
+                                                 Tablet="15" />
                                           </Label.FontSize>
                                         </Label>
 
@@ -244,8 +251,8 @@
                                           <Label.FontSize>
                                             <OnIdiom
                                                 x:TypeArguments="x:Double"
-                                                Phone="20"
-                                                Tablet="25" />
+                                                Phone="15"
+                                                Tablet="15" />
                                           </Label.FontSize>
                                         </Label>
 
@@ -271,8 +278,8 @@
                                               <Label.FontSize>
                                                 <OnIdiom
                                                      x:TypeArguments="x:Double"
-                                                     Phone="20"
-                                                     Tablet="25" />
+                                                     Phone="15"
+                                                     Tablet="15" />
                                               </Label.FontSize>
                                             </Label>
 
@@ -283,8 +290,8 @@
                                               <Label.FontSize>
                                                 <OnIdiom
                                                     x:TypeArguments="x:Double"
-                                                    Phone="20"
-                                                    Tablet="25" />
+                                                    Phone="15"
+                                                    Tablet="15" />
                                               </Label.FontSize>
                                             </Label>
 

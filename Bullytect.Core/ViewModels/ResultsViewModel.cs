@@ -56,35 +56,58 @@ namespace Bullytect.Core.ViewModels
 
         #region properties
 
-        public ObservableRangeCollection<IterationEntity> LastIterations { get; } = new ObservableRangeCollection<IterationEntity>(){
-            new IterationEntity() {
-                FinishDate = new DateTime(),
-                TotalComments = 45.0
-            },
-            new IterationEntity() {
-                FinishDate = new DateTime().AddMinutes(10),
-                TotalComments = 36.0
-            },
-            new IterationEntity() {
-                FinishDate = new DateTime().AddMinutes(20),
-                TotalComments = 67.0
-            },
-            new IterationEntity() {
-                FinishDate = new DateTime().AddMinutes(30),
-                TotalComments = 45.0
-            },
-            new IterationEntity() {
-                FinishDate = new DateTime().AddMinutes(40),
-                TotalComments = 45.0
-            }
+        ChartModel _lastIterationsChart;
+        public ChartModel LastIterationsChart {
 
-        };
+            get => _lastIterationsChart ?? (_lastIterationsChart = new ChartModel(){
+                Title = "Las Iterations",
+                Entries = new List<Entry>() {
+					new Entry(45)
+					{
+						Label = String.Format("{0:d/M/yyyy HH:mm:ss}", new DateTime()),
+						ValueLabel = "45",
+						Color = SKColor.Parse("#6BC7E0")
+					},
+					new Entry(36)
+					{
+						Label = String.Format("{0:d/M/yyyy HH:mm:ss}", new DateTime().AddMinutes(10)),
+						ValueLabel = "36",
+						Color = SKColor.Parse("#6BC7E0")
+					},
+					new Entry(67)
+					{
+						Label = String.Format("{0:d/M/yyyy HH:mm:ss}", new DateTime().AddMinutes(20)),
+						ValueLabel = "67",
+						Color = SKColor.Parse("#6BC7E0")
+					},
+					new Entry(45)
+					{
+						Label = String.Format("{0:d/M/yyyy HH:mm:ss}", new DateTime().AddMinutes(30)),
+						ValueLabel = "45",
+						Color = SKColor.Parse("#6BC7E0")
+					},
+					new Entry(45)
+					{
+						Label = String.Format("{0:d/M/yyyy HH:mm:ss}", new DateTime().AddMinutes(40)),
+						ValueLabel = "45",
+						Color = SKColor.Parse("#6BC7E0")
+					}
+                },
+                Type = typeof(LineChart)
 
-        public ObservableRangeCollection<AlertsBySon> AlertsBySon { get; } = new ObservableRangeCollection<AlertsBySon>() {
+            });
 
-            new AlertsBySon () {
-                FullName = "Sergio Martín",
-                Alerts = new List<Entry> () {
+            set => SetProperty(ref _lastIterationsChart, value);
+
+        }
+
+
+
+        public ObservableRangeCollection<ChartModel> AlertsBySonChartList { get; } = new ObservableRangeCollection<ChartModel>() {
+
+            new ChartModel () {
+                Title = "Sergio Martín",
+                Entries = new List<Entry> () {
 					new Entry(34)
                     {
                         Label = "INFO",
@@ -103,11 +126,12 @@ namespace Bullytect.Core.ViewModels
 						ValueLabel = "10",
 						Color = SKColor.Parse("#D93028")
 					}
-				}
+				},
+                Type = typeof(DonutChart)
             },
-			new AlertsBySon () {
-				FullName = "Alberto Lopez",
-				Alerts = new List<Entry> () {
+			new ChartModel () {
+                Title = "Alberto Lopez",
+				Entries = new List<Entry> () {
 					new Entry(34)
 					{
 						Label = "INFO",
@@ -126,11 +150,12 @@ namespace Bullytect.Core.ViewModels
 						ValueLabel = "10",
 						Color = SKColor.Parse("#D93028")
 					}
-				}
+				},
+                Type = typeof(DonutChart)
 			},
-			new AlertsBySon () {
-				FullName = "Alberto Lopez",
-				Alerts = new List<Entry> () {
+			new ChartModel () {
+				Title = "Alberto Lopez",
+				Entries = new List<Entry> () {
 					new Entry(34)
 					{
 						Label = "INFO",
@@ -149,7 +174,8 @@ namespace Bullytect.Core.ViewModels
 						ValueLabel = "10",
 						Color = SKColor.Parse("#D93028")
 					}
-				}
+				},
+                Type = typeof(DonutChart)
 			}
 
         };

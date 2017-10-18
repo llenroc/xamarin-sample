@@ -129,6 +129,21 @@ namespace Bullytect.Core.Config
 			}
 		}
 
+		static readonly int SonStatisticsTimeIntervalDefault = 7;
+
+		public int SonStatisticsTimeInterval
+		{
+			get { return AppSettings.GetValueOrDefault(nameof(SonStatisticsTimeInterval), SonStatisticsTimeIntervalDefault); }
+			set
+			{
+				if (AppSettings.AddOrUpdateValue(nameof(SonStatisticsTimeInterval), value))
+					OnPropertyChanged();
+			}
+		}
+
+
+
+
 		public static string AccessTokenAndType
 		{
 			get => AccessToken == null ? null : $"Bearer {AccessToken}";

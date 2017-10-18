@@ -165,6 +165,10 @@
     <value>Results</value>
     <comment>Page Results Title</comment>
   </data>
+  <data name="Page.Statistics.Title" xml:space="preserve">
+    <value>Statistics for {0}</value>
+    <comment>Page Statistics Title</comment>
+  </data>
   <data name="Common.Loading" xml:space="preserve">
     <value>Operation in progress</value>
     <comment>Common Loading</comment>
@@ -445,9 +449,9 @@ and we will recover it for you. </value>
     <value> An error occurred while loading children's information </value>
     <comment>Children Error Ocurred</comment>
   </data>
-  <data name="Children.Toolbar.Profile" xml:space="preserve">
-    <value> Profile </value>
-    <comment>Children Toolbar Profile</comment>
+  <data name="Children.Toolbar.Statistics" xml:space="preserve">
+    <value> Statistics </value>
+    <comment>Children Toolbar Statistics</comment>
   </data>
   <data name="Children.Toolbar.Alerts" xml:space="preserve">
     <value>  Alerts </value>
@@ -786,6 +790,47 @@ and we will recover it for you. </value>
     <comment>Results Settings Show Results For</comment>
   </data>
 
+  <!-- Statistics son -->
+  <data name="Settings.Statistics.Son.General" xml:space="preserve">
+    <value>General configuration</value>
+    <comment>Settings Statistics Son General</comment>
+  </data>
 
+  <data name="Settings.Statistics.Son.General.Interval" xml:space="preserve">
+    <value>Time interval</value>
+    <comment>Settings Statistics Son General Interval</comment>
+  </data>  
+
+  <data name="Settings.Statistics.Son.General.Interval.Description" xml:space="preserve">
+    <value>You can set the time interval for which the results will be displayed</value>
+    <comment>Settings Statistics Son General Interval Description</comment>
+  </data>  
+
+   <data name="Settings.Statistics.Son.General.Interval.Option" xml:space="preserve">
+    <value>The last {0} days</value>
+    <comment>Settings Statistics Son General Interval Description</comment>
+  </data>  
+
+  <data name="Statistics.Son.Social.Sentiment.Analysis" xml:space="preserve">
+    <value>Social Sentiment Analysis</value>
+    <comment>Statistics Son Social Sentiment Analysis</comment>
+  </data> 
+
+  <data name="Statistics.Son.Social.Media.Activities" xml:space="preserve">
+    <value>Social Media Activities</value>
+    <comment>Statistics Son Social Media Activities</comment>
+  </data>
+
+  <data name="Statistics.Son.Four.Dimensions" xml:space="preserve">
+    <value>Four Dimensions</value>
+    <comment>Statistics Son Four Dimensions</comment>
+  </data>
+
+  <data name="Statistics.Son.Communities" xml:space="preserve">
+    <value>Communities</value>
+    <comment>Statistics Son Communities</comment>
+  </data> 
+
+	
 	
 </root>

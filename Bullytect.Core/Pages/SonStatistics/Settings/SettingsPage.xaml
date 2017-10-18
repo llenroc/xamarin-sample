@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:MvxContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
+    xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
+    xmlns:templates="clr-namespace:Bullytect.Core.Pages.Settings.Templates"
+    xmlns:extended="clr-namespace:Bullytect.Core.Pages.Common.Extended"
+    x:Class="Bullytect.Core.Pages.SonStatistics.Settings.SettingsPage"
+    x:TypeArguments="viewModels:SonStatisticsSettingsViewModel"
+    BackgroundColor="{DynamicResource BasePageColor}">
+    
+    <ContentPage.Content>
+
+         <!-- MAIN CONTAINER -->
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- APP Header -->
+            <common:AppHeader 
+                Grid.Row="0"
+                Title="{i18n:Translate Page.Settings.Title}">
+                <common:AppHeader.Options>
+                    <x:Array Type="{x:Type View}">
+                        <Label 
+                            HorizontalOptions="End"
+                            VerticalOptions="CenterAndExpand"
+                            Text="{ x:Static helper:FontAwesomeFont.Save } " 
+                            FontSize="22"
+                            TextColor="{ DynamicResource CustomNavBarTextColor }" 
+                            Style="{ StaticResource FontIcon }">
+                            <Label.TranslationY>
+                                <OnPlatform 
+                                    x:TypeArguments="x:Double" 
+                                    iOS="10" 
+                                    Android="0" />
+                            </Label.TranslationY>
+                            <Label.GestureRecognizers>
+                                 <TapGestureRecognizer Command="{ Binding SaveCommand }" NumberOfTapsRequired="1" /> 
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </x:Array>
+                </common:AppHeader.Options>
+             
+            </common:AppHeader>
+
+            <TableView  Grid.Row="1" Intent="Settings" HasUnevenRows="true">
+
+                <TableSection Title="{i18n:Translate Settings.Statistics.Son.General}">
+
+                    <extended:ExtendedViewCell SeparatorColor="{DynamicResource AccentColor}" SeparatorPadding="5">
+
+                        <Grid Padding="16,6,16,6" ColumnSpacing="16">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                 <Label 
+                                    Grid.Column="0"
+                                    Text="{ x:Static helper:FontAwesomeFont.Calendar }"
+                                    Style="{StaticResource FontIcon}"
+                                    FontSize ="12"
+                                    WidthRequest="12" 
+                                    HeightRequest="12" 
+                                    VerticalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"/>
+                            
+                                <Label Grid.Column="1" 
+                                       Text="{i18n:Translate Settings.Statistics.Son.General.Interval }"
+                                       VerticalTextAlignment="Center" 
+                                       HorizontalOptions="StartAndExpand"/>
+
+
+                                <Label
+                                    Grid.Column="2" 
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="CenterAndExpand"
+                                    Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                                    FontFamily="{ StaticResource IconsFontFamily }"
+                                    TextColor="{ DynamicResource AccentColor }">
+                                    <Label.FontSize>
+                                        <OnIdiom 
+                                            x:TypeArguments="x:Double"
+                                            Phone="20" 
+                                            Tablet="20" />
+                                    </Label.FontSize> 
+
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Tapped="OnTimeIntervalInfo"
+                                            NumberOfTapsRequired="1" /> 
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <Picker Grid.Column="3"
+                                    WidthRequest="100"
+                                    VerticalOptions="Center"
+                                    ItemsSource="{Binding TimeIntervalsOptionsList }"
+                                    SelectedItem="{Binding TimeIntervalOption}"
+                                    ItemDisplayBinding="{Binding Description}"/>
+                               
+                        </Grid>
+
+
+                     </extended:ExtendedViewCell> 
+
+
+                </TableSection>
+
+               
+
+            </TableView>
+        </Grid>
+     </ContentPage.Content>
+ </d:MvxContentPage>
