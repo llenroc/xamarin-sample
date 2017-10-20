@@ -25,6 +25,7 @@ using Bullytect;
 [assembly: ExportRenderer(typeof(DatePicker), typeof(UXDivers.Artina.Shared.ArtinaDatePickerRenderer))]
 [assembly: ExportRenderer(typeof(TimePicker), typeof(UXDivers.Artina.Shared.ArtinaTimePickerRenderer))]
 
+
 #pragma warning disable 219
 internal static class WorkaroundLoadingCustomRenderersFromExternalAssemblies {
 	static WorkaroundLoadingCustomRenderersFromExternalAssemblies()
@@ -33,3 +34,4 @@ internal static class WorkaroundLoadingCustomRenderersFromExternalAssemblies {
 	}
 }
 #pragma warning restore 219
+

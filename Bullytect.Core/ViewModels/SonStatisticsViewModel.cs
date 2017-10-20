@@ -1,23 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Reactive;
+using System.Reactive.Linq;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.Helpers;
+using Bullytect.Core.Services;
 using Bullytect.Core.ViewModels.Core.Models;
-using Microcharts;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
-using MvvmHelpers;
 using ReactiveUI;
-using SkiaSharp;
 
 namespace Bullytect.Core.ViewModels
 {
     public class SonStatisticsViewModel : BaseViewModel
     {
-        public SonStatisticsViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger, AppHelper appHelper) : base(userDialogs, mvxMessenger, appHelper)
+
+        readonly IStatisticsService _statisticsService;
+
+
+        const int SOCIAL_MEDIA_ACTIVITIES_CHART_POS = 0;
+        const int FOUR_DIMENSIONS_CHART = 1;
+        const int SENTIMENT_ANALYSIS_CHART = 2;
+        const int COMMUNITIES_CHART = 3;
+
+
+        public SonStatisticsViewModel(IUserDialogs userDialogs,
+                                      IMvxMessenger mvxMessenger, AppHelper appHelper, IStatisticsService statisticsService) : base(userDialogs, mvxMessenger, appHelper)
         {
+            _statisticsService = statisticsService;
+
+
+            RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, ChartModel>((_) => RefreshCurrentChart(force: true));
+
+            RefreshCommand.Subscribe(HandlerRefreshCurrentChart);
+
+			RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
+
         }
 
 
@@ -54,12 +72,24 @@ namespace Bullytect.Core.ViewModels
         }
 
 
-        #endregion
+		#endregion
 
 
-        #region commands
+		#region commands
 
-        public ReactiveCommand<Unit, PageModel> RefreshCommand { get; protected set; }
+		public ReactiveCommand<Unit, ChartModel> RefreshCommand { get; protected set; }
+
+		public ICommand RefreshChartCommand
+        {
+            get
+            {
+                return new MvxCommand<int>((pos) =>
+                {
+                    RefreshCurrentChart().Subscribe(HandlerRefreshCurrentChart);
+
+                });
+            }
+        }
 
         public ICommand GoToSettingsCommand
         {
@@ -73,148 +103,54 @@ namespace Bullytect.Core.ViewModels
 
         #region properties
 
+        int _position;
+
+        public int Position {
+
+            get => _position;
+            set => SetProperty(ref _position, value);
+
+        }
+
+        new bool _isBusy;
+
+        public new bool IsBusy {
+            get => _isBusy;
+            set => SetProperty(ref _isBusy, value);
+        }
+
         ChartModel _socialMediaActivitiesChart;
 
         public ChartModel SocialMediaActivitiesChart
         {
-            get => _socialMediaActivitiesChart ?? (_socialMediaActivitiesChart = new ChartModel()
-            {
-                Title = "Social Data",
-                Entries = new List<Entry>(){
-                    new Entry(34)
-                    {
-                        Label = "Facebook",
-                        ValueLabel = "34%",
-                        Color = SKColor.Parse("#3b5998")
-                    },
-                    new Entry(23)
-                    {
-                        Label = "Instagram",
-                        ValueLabel = "23",
-                        Color = SKColor.Parse("#E03867")
-                    },
-                    new Entry(10)
-                    {
-                        Label = "Youtube",
-                        ValueLabel = "10",
-                        Color = SKColor.Parse("#cc181e")
-                    }
-
-                },
-                Type = typeof(DonutChart),
-
-            });
+            get => _socialMediaActivitiesChart;
 
             set => SetProperty(ref _socialMediaActivitiesChart, value);
         }
 
-
         ChartModel _fourDimensionsChart;
 
-        public ChartModel FourDimensionsChart {
-			get => _fourDimensionsChart ?? (_fourDimensionsChart = new ChartModel()
-			{
-				Title = "Four Dimensions",
-				Entries = new List<Entry>(){
-					new Entry(6)
-					{
-						Label = "Sexo",
-						ValueLabel = "6",
-						Color = SKColor.Parse("#6BC7E0")
-					},
-                    new Entry(2)
-					{
-						Label = "Droga",
-						ValueLabel = "2",
-						Color = SKColor.Parse("#6BC7E0")
-					},
-					new Entry(6)
-					{
-						Label = "Violencia",
-						ValueLabel = "6",
-						Color = SKColor.Parse("#6BC7E0")
-					},
-					new Entry(4)
-					{
-						Label = "Bulling",
-						ValueLabel = "4",
-						Color = SKColor.Parse("#6BC7E0")
-					}
-
-				},
-                Type = typeof(BarChart),
-
-			});
+        public ChartModel FourDimensionsChart
+        {
+            get => _fourDimensionsChart;
             set => SetProperty(ref _fourDimensionsChart, value);
 
         }
 
-		ChartModel _sentimentAnalysisChart;
+        ChartModel _sentimentAnalysisChart;
 
-		public ChartModel SentimentAnalysisChart
+        public ChartModel SentimentAnalysisChart
         {
-			get => _sentimentAnalysisChart ?? (_sentimentAnalysisChart = new ChartModel()
-			{
-				Title = "Sentiment Analysis",
-				Entries = new List<Entry>(){
-					new Entry(50)
-					{
-						Label = "Positive",
-						ValueLabel = "50%",
-						Color = SKColor.Parse("#00FF00")
-					},
-					new Entry(45)
-					{
-						Label = "Negative",
-						ValueLabel = "45%",
-						Color = SKColor.Parse("#FF0000")
-					},
-					new Entry(5)
-					{
-						Label = "Neutro",
-						ValueLabel = "5%",
-						Color = SKColor.Parse("#9c9c9c")
-					}
-
-				},
-                Type = typeof(DonutChart),
-
-			});
+            get => _sentimentAnalysisChart;
             set => SetProperty(ref _sentimentAnalysisChart, value);
         }
 
 
-		ChartModel _communitiesCharts;
+        ChartModel _communitiesCharts;
 
-		public ChartModel CommunitiesCharts
+        public ChartModel CommunitiesCharts
         {
-			get => _communitiesCharts ?? (_communitiesCharts = new ChartModel()
-			{
-				Title = "Communities",
-				Entries = new List<Entry>(){
-					new Entry(50)
-					{
-						Label = "Sex",
-						ValueLabel = "50",
-						Color = SKColor.Parse("#6BC7E0")
-					},
-					new Entry(4)
-					{
-						Label = "Violence",
-						ValueLabel = "4",
-						Color = SKColor.Parse("#6BC7E0")
-					},
-					new Entry(23)
-					{
-						Label = "Drugs",
-						ValueLabel = "23",
-						Color = SKColor.Parse("#6BC7E0")
-					}
-
-				},
-                Type = typeof(LineChart),
-
-			});
+            get => _communitiesCharts;
             set => SetProperty(ref _communitiesCharts, value);
         }
 
@@ -222,10 +158,74 @@ namespace Bullytect.Core.ViewModels
         #endregion
 
 
-        #region models
+        #region methods
 
-        public class PageModel
-        {
+
+        void HandlerRefreshCurrentChart(ChartModel Chart) {
+
+            IsBusy = false;
+
+			switch (Position)
+			{
+
+				case SOCIAL_MEDIA_ACTIVITIES_CHART_POS:
+					SocialMediaActivitiesChart = Chart;
+					break;
+
+				case FOUR_DIMENSIONS_CHART:
+					FourDimensionsChart = Chart;
+					break;
+
+				case SENTIMENT_ANALYSIS_CHART:
+					SentimentAnalysisChart = Chart;
+					break;
+
+				default:
+					CommunitiesCharts = Chart;
+					break;
+			}
+        }
+
+        IObservable<ChartModel> RefreshCurrentChart(bool force = false){
+
+            IObservable<ChartModel> observable = Observable.Empty<ChartModel>(); ;
+
+            switch(Position){
+
+                case SOCIAL_MEDIA_ACTIVITIES_CHART_POS:
+                    if(force || SocialMediaActivitiesChart == null) {
+                        IsBusy = true;
+                        observable = _statisticsService.GetSocialMediaActivityStatistics(Identity);
+                    }
+                    break;
+
+                case FOUR_DIMENSIONS_CHART:
+					if (force || FourDimensionsChart == null)
+					{
+						IsBusy = true;
+                        observable = _statisticsService.GetDimensionsStatistics(Identity);
+					}
+                    break;
+
+                case SENTIMENT_ANALYSIS_CHART:
+					if (force || SentimentAnalysisChart == null)
+					{
+						IsBusy = true;
+                        observable = _statisticsService.GetSentimentAnalysisStatistics(Identity);
+                    }
+                    break;
+
+                default:
+					if (force || CommunitiesCharts == null)
+					{
+						IsBusy = true;
+                        observable = _statisticsService.GetCommunitiesStatistics(Identity);
+                    }
+                    break;
+            }
+
+            return observable.DefaultIfEmpty();
+
         }
 
         #endregion

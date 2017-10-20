@@ -20,6 +20,12 @@ using Bullytect.Core.OAuth.Services.Impl;
 using Bullytect.Core.OAuth.Services;
 using Bullytect.Core.Rest.Models.Request;
 using Bullytect.Core.ViewModels.Core.Models;
+using Microcharts;
+using static Bullytect.Core.Rest.Models.Response.SentimentAnalysisStatisticsDTO;
+using SkiaSharp;
+using static Bullytect.Core.Rest.Models.Response.DimensionsStatisticsDTO;
+using static Bullytect.Core.Rest.Models.Response.CommunitiesStatisticsDTO;
+using static Bullytect.Core.Rest.Models.Response.SocialMediaActivityStatisticsDTO;
 
 namespace Bullytect.Core
 {
@@ -42,6 +48,7 @@ namespace Bullytect.Core
             
 			Mapper.Initialize(cfg => {
                 cfg.CreateMap<string, DateTime>().ConvertUsing<StringToDateTimeConverter>();
+
 				cfg.CreateMap<ParentDTO, ParentEntity>();
 				cfg.CreateMap<SonDTO, SonEntity>()
                 .ForMember(s => s.SchoolIdentity, (obj) => 
@@ -68,9 +75,85 @@ namespace Bullytect.Core
                            obj.ResolveUsing(o => Settings.Current.ShowResultsForAllChildren || Settings.Current.FilteredSonCategories.Contains(o.Identity)))
                 .ForMember(s => s.IsEnabled, (obj) =>
                            obj.UseValue<bool>(!Settings.Current.ShowResultsForAllChildren));
-                    
 
-			});
+				//Mapper for SentimentDTO to Microchart Entry
+				cfg.CreateMap<SentimentDTO, Entry>()
+                    .ConstructUsing(s => new Entry(s.Score))
+					.ForMember(s => s.Label, (obj) => obj.ResolveUsing(o => o.Type))
+					.ForMember(s => s.Value, (obj) => obj.ResolveUsing(o => o.Score))
+                    .ForMember(s => s.ValueLabel, (obj) => obj.ResolveUsing(o => o.Label))
+                    .ForMember(s => s.Color, (obj) => obj.ResolveUsing(o =>
+                    {
+                        SkiaSharp.SKColor Color;
+                        SentimentEnum sentiment = o.Type.ToEnum<SentimentEnum>();
+                        if(sentiment.Equals(SentimentEnum.POSITIVE)) {
+                            Color = SKColor.Parse("#00FF00");
+                        } else if(sentiment.Equals(SentimentEnum.NEGATIVE)) {
+                            Color = SKColor.Parse("#FF0000");
+                        } else {
+                            Color = SKColor.Parse("#9c9c9c");
+                        }
+                        return Color;
+
+                     }));
+
+                //Mapper for SentimentAnalysisStatisticsDTO to ChartModel
+                cfg.CreateMap<SentimentAnalysisStatisticsDTO, ChartModel>()
+                    .ForMember(s => s.Entries, (obj) => obj.MapFrom((o) => o.SentimentData))
+                    .ForMember(s => s.Type , (obj) => obj.UseValue(typeof(DonutChart)));
+
+
+				//Mapper for DimensionDTO to Microchart Entry
+				cfg.CreateMap<DimensionDTO, Entry>()
+                    .ConstructUsing(s => new Entry(s.Value))
+                    .ForMember(s => s.Label, (obj) => obj.ResolveUsing(o => o.Type))
+                    .ForMember(s => s.Value, (obj) => obj.ResolveUsing(o => o.Value))
+                    .ForMember(s => s.ValueLabel, (obj) => obj.ResolveUsing(o => o.Label))
+                    .ForMember(s => s.Color, (obj) => obj.UseValue(SKColor.Parse("#6BC7E0")));
+
+				//Mapper for DimensionsStatisticsDTO to ChartModel
+				cfg.CreateMap<DimensionsStatisticsDTO, ChartModel>()
+                    .ForMember(s => s.Entries, (obj) => obj.MapFrom((o) => o.Dimensions))
+					.ForMember(s => s.Type, (obj) => obj.UseValue(typeof(BarChart)));
+
+				//Mapper for CommunityDTO to Microchart Entry
+				cfg.CreateMap<CommunityDTO, Entry>()
+                    .ConstructUsing(s => new Entry(s.Value))
+                    .ForMember(s => s.Label, (obj) => obj.ResolveUsing(o => o.Type))
+					.ForMember(s => s.Value, (obj) => obj.ResolveUsing(o => o.Value))
+                    .ForMember(s => s.ValueLabel, (obj) => obj.ResolveUsing(o => o.Label))
+					.ForMember(s => s.Color, (obj) => obj.UseValue(SKColor.Parse("#6BC7E0")));
+
+				//Mapper for DimensionsStatisticsDTO to ChartModel
+				cfg.CreateMap<CommunitiesStatisticsDTO, ChartModel>()
+                    .ForMember(s => s.Entries, (obj) => obj.MapFrom((o) => o.Communities))
+					.ForMember(s => s.Type, (obj) => obj.UseValue(typeof(LineChart)));
+
+				//Mapper for CommunityDTO to Microchart Entry
+				cfg.CreateMap<ActivityDTO, Entry>()
+                    .ConstructUsing(s => new Entry(s.Value))
+					.ForMember(s => s.Label, (obj) => obj.ResolveUsing(o => o.Type))
+					.ForMember(s => s.Value, (obj) => obj.ResolveUsing(o => o.Value))
+                    .ForMember(s => s.ValueLabel, (obj) => obj.ResolveUsing(o => o.Label))
+                    .ForMember(s => s.Color, (obj) => obj.ResolveUsing(o => {
+						SkiaSharp.SKColor Color;
+						SocialMediaTypeEnum socialMedia = o.Type.ToEnum<SocialMediaTypeEnum>();
+                        if(socialMedia.Equals(SocialMediaTypeEnum.FACEBOOK)) {
+                            Color = SKColor.Parse("#3b5998");
+                        } else if(socialMedia.Equals(SocialMediaTypeEnum.INSTAGRAM)) {
+                            Color = SKColor.Parse("#E03867");
+                        } else {
+                            Color = SKColor.Parse("#cc181e");
+                        }
+                        return Color;
+                    }));
+
+				//Mapper for DimensionsStatisticsDTO to ChartModel
+				cfg.CreateMap<SocialMediaActivityStatisticsDTO, ChartModel>()
+                    .ForMember(s => s.Entries, (obj) => obj.MapFrom((o) => o.Activities))
+					.ForMember(s => s.Type, (obj) => obj.UseValue(typeof(DonutChart)));
+
+			 });
         }
 
 

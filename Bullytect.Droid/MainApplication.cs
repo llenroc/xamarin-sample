@@ -29,7 +29,7 @@ namespace Bullytect.Droid
 			//Handle notification when app is closed here
 			CrossPushNotification.Current.OnNotificationReceived += (s, p) =>
 			{
-
+                Debug.WriteLine("Notification Received");
 
 			};
 		}

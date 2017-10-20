@@ -108,6 +108,7 @@ namespace Bullytect.Droid
     			FormsHelper.ForceLoadingAssemblyContainingType(typeof(UXDivers.Effects.Effects));
 
                 LoadApplication(FormsApplication);
+                PushNotificationManager.ProcessIntent(Intent);
 
     			var starter = Mvx.Resolve<IMvxAppStart>();
     			starter.Start();

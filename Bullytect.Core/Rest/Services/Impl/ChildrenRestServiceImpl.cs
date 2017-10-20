@@ -54,5 +54,37 @@ namespace Bullytect.Core.Rest.Services.Impl
 		{
             return Observable.FromAsync(() => DeleteData<APIResponse<string>>(ApiEndpoints.DELETE_SON_BY_ID.Replace(":id", id)));
 		}
+
+        public IObservable<APIResponse<SocialMediaActivityStatisticsDTO>> GetSocialMediaActivityStatistics(string id, int daysLimit)
+        {
+            return Observable.FromAsync(() => GetData<APIResponse<SocialMediaActivityStatisticsDTO>>(new Uri(ApiEndpoints.SOCIAL_ACTIVITY_STATISTICS.Replace(":id", id)).AttachParameters(new Dictionary<string, string>()
+			{
+                { "days-limit", daysLimit.ToString()}
+			})));
+        }
+
+        public IObservable<APIResponse<SentimentAnalysisStatisticsDTO>> GetSentimentAnalysisStatistics(string id, int daysLimit)
+        {
+            return Observable.FromAsync(() => GetData<APIResponse<SentimentAnalysisStatisticsDTO>>(new Uri(ApiEndpoints.SENTIMENT_ANALYSIS_STATISTICS.Replace(":id", id)).AttachParameters(new Dictionary<string, string>()
+			{
+				{ "days-limit", daysLimit.ToString()}
+			})));
+        }
+
+        public IObservable<APIResponse<CommunitiesStatisticsDTO>> GetCommunitiesStatistics(string id, int daysLimit)
+        {
+            return Observable.FromAsync(() => GetData<APIResponse<CommunitiesStatisticsDTO>>(new Uri(ApiEndpoints.COMMUNITIES_STATISTICS.Replace(":id", id)).AttachParameters(new Dictionary<string, string>()
+			{
+				{ "days-limit", daysLimit.ToString()}
+			})));
+        }
+
+        public IObservable<APIResponse<DimensionsStatisticsDTO>> GetDimensionsStatistics(string id, int daysLimit)
+        {
+            return Observable.FromAsync(() => GetData<APIResponse<DimensionsStatisticsDTO>>(new Uri(ApiEndpoints.DIMENSIONS_STATISTICS.Replace(":id", id)).AttachParameters(new Dictionary<string, string>()
+			{
+				{ "days-limit", daysLimit.ToString()}
+			})));
+        }
     }
 }

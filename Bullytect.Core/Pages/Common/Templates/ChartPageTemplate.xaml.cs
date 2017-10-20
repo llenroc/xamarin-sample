@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Bullytect.Core.I18N;
 using Bullytect.Core.ViewModels.Core.Models;
 using Microcharts;
 using Microcharts.Forms;
@@ -14,6 +15,33 @@ namespace Bullytect.Core.Pages.Common.Templates
         static int CHART_WIDTH_DEFAULT = 250;
         static Type DEFAULT_CHART_TYPE = typeof(BarChart);
 
+
+		public static readonly BindableProperty IsLoadingProperty = BindableProperty.Create(
+            nameof(IsLoading),
+            typeof(bool),
+            typeof(ChartPageTemplate),
+            defaultValue: true,
+			propertyChanging: (bindable, oldValue, newValue) =>
+			{
+				var chartPage = bindable as ChartPageTemplate;
+				var isLoading = (bool)newValue;
+                chartPage.LoadingData.IsVisible = isLoading;
+                chartPage.ChartPageContainer.IsVisible = !isLoading;
+			});
+
+		public static readonly BindableProperty DataFoundProperty = BindableProperty.Create(
+			nameof(DataFound),
+			typeof(bool),
+			typeof(ChartPageTemplate),
+			defaultValue: true,
+			propertyChanging: (bindable, oldValue, newValue) =>
+			{
+				var chartPage = bindable as ChartPageTemplate;
+				var DataFound = (bool)newValue;
+                chartPage.NoDataFound.IsVisible = !DataFound;
+                chartPage.ChartPageContainer.IsVisible = DataFound;
+			});
+
         public static readonly BindableProperty TitleProperty = BindableProperty.Create(
             nameof(Title),
             typeof(string),
@@ -25,6 +53,18 @@ namespace Bullytect.Core.Pages.Common.Templates
                 var newTitle = newValue as string;
                 chartPage.ChartTitle.Text = newTitle;
             });
+
+		public static readonly BindableProperty LoadingTextProperty = BindableProperty.Create(
+		   nameof(LoadingText),
+		   typeof(string),
+		   typeof(ChartPageTemplate),
+            defaultValue: AppResources.Common_Loading,
+		   propertyChanging: (bindable, oldValue, newValue) =>
+		   {
+			   var chartPage = bindable as ChartPageTemplate;
+			   var newLoadingText = newValue as string;
+			   chartPage.LoadingLabel.Text = newLoadingText;
+		   });
 
 
         public static readonly BindableProperty ChartWidthProperty = BindableProperty.Create(
@@ -68,10 +108,30 @@ namespace Bullytect.Core.Pages.Common.Templates
 
         #region properties
 
+        public bool IsLoading
+        {
+			get { return (bool)GetValue(IsLoadingProperty); }
+			set { SetValue(IsLoadingProperty, value); }
+        }
+
+        public bool DataFound
+        {
+			get { return (bool)GetValue(DataFoundProperty); }
+			set { SetValue(DataFoundProperty, value); }
+
+        }
+
         public string Title
         {
             get { return (string)GetValue(TitleProperty); }
             set { SetValue(TitleProperty, value); }
+        }
+
+        public string LoadingText
+        {
+			get { return (string)GetValue(LoadingTextProperty); }
+			set { SetValue(LoadingTextProperty, value); }
+
         }
 
         public int ChartWidth
@@ -113,7 +173,7 @@ namespace Bullytect.Core.Pages.Common.Templates
 			ChartView MCChart = new ChartView()
 			{
 				HeightRequest = chartHeight,
-				WidthRequest = chart.Width != 0 ? chart.Width : page.ChartWidth
+				WidthRequest = chart?.Width != 0 ? chart.Width : page.ChartWidth
 
 			};
 
@@ -162,10 +222,6 @@ namespace Bullytect.Core.Pages.Common.Templates
 
                 page.ChartsContainer.HeightRequest += 10;
 
-            } else {
-
-
-
             }
 		}
 
@@ -173,11 +229,15 @@ namespace Bullytect.Core.Pages.Common.Templates
         {
             var page = bindable as ChartPageTemplate;
             var chart = newValue as ChartModel;
-            page.ChartsContainer.HeightRequest = 0;
-            page.ChartsContainer.Children.Clear();
-			var chartContainer = createChart(page, chart);
-			page.ChartsContainer.HeightRequest += chartContainer.Height;
-			page.ChartsContainer.Children.Add(chartContainer);
+            if(chart != null) {
+
+				page.ChartsContainer.HeightRequest = 0;
+				page.ChartsContainer.Children.Clear();
+				var chartContainer = createChart(page, chart);
+				page.ChartsContainer.HeightRequest += chartContainer.Height;
+				page.ChartsContainer.Children.Add(chartContainer);
+            }
+
         }
 
 

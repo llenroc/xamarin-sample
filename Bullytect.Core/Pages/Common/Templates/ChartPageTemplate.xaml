@@ -2,6 +2,7 @@
 <ContentView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:templates="clr-namespace:Bullytect.Core.Pages.Results.Templates"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
@@ -17,6 +18,7 @@
         <StackLayout>
 
              <StackLayout 
+                x:Name="ChartPageContainer"
                 VerticalOptions="Fill">
                 
                     <StackLayout 
@@ -59,11 +61,43 @@
                 </StackLayout>
 
                 <common:NoDataFound
+                    x:Name="NoDataFound"
                     HorizontalOptions="FillAndExpand" 
                     VerticalOptions="FillAndExpand"
                     IsVisible="false"
                     MainText="{i18n:Translate Results.Iterations.Not.Found.MainText }"
                     DetailText="{i18n:Translate Results.Iterations.Not.Found.SecondText }"/>
+
+
+                <StackLayout
+                    x:Name="LoadingData"
+                    IsVisible="false"
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center">
+
+                     <Grid
+                        VerticalOptions="CenterAndExpand">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <common:ActivityLoading
+                            Grid.Row="0"
+                            x:Name="LoadingIndicator"
+                            Icon="{ x:Static helper:FontAwesomeFont.BarChart }"
+                            HorizontalOptions="Center"
+                            VerticalOptions="CenterAndExpand"/>
+
+                        <Label
+                            x:Name="LoadingLabel"
+                            Grid.Row="1"
+                            Margin="4"
+                            TextColor="{DynamicResource AccentColor}"
+                            HorizontalTextAlignment="Center" />
+                    </Grid>
+                </StackLayout> 
 
          </StackLayout>
     </ContentView.Content>

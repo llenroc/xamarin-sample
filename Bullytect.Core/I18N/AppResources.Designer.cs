@@ -1079,9 +1079,21 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Statistics_Son_Social_Sentiment_Analysis_Loading {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Social.Sentiment.Analysis.Loading", resourceCulture);
+            }
+        }
+        
         internal static string Statistics_Son_Social_Media_Activities {
             get {
                 return ResourceManager.GetString("Statistics.Son.Social.Media.Activities", resourceCulture);
+            }
+        }
+        
+        internal static string Statistics_Son_Social_Media_Activities_Loading {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Social.Media.Activities.Loading", resourceCulture);
             }
         }
         
@@ -1091,9 +1103,21 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Statistics_Son_Four_Dimensions_Loading {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Four.Dimensions.Loading", resourceCulture);
+            }
+        }
+        
         internal static string Statistics_Son_Communities {
             get {
                 return ResourceManager.GetString("Statistics.Son.Communities", resourceCulture);
+            }
+        }
+        
+        internal static string Statistics_Son_Communities_Loading {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Communities.Loading", resourceCulture);
             }
         }
     }

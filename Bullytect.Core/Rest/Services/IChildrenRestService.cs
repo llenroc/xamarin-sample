@@ -26,6 +26,14 @@ namespace Bullytect.Core.Rest.Services
         IObservable<APIResponse<ImageDTO>> UploadProfileImage(string id, Stream stream);
 
         IObservable<APIResponse<String>> DeleteSonById(string id);
- 
+
+        IObservable<APIResponse<SocialMediaActivityStatisticsDTO>> GetSocialMediaActivityStatistics(string id, int daysLimit);
+
+        IObservable<APIResponse<SentimentAnalysisStatisticsDTO>> GetSentimentAnalysisStatistics(string id, int daysLimit);
+
+        IObservable<APIResponse<CommunitiesStatisticsDTO>> GetCommunitiesStatistics(string id, int daysLimit);
+
+        IObservable<APIResponse<DimensionsStatisticsDTO>> GetDimensionsStatistics(string id, int daysLimit);
+
     }
 }

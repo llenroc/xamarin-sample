@@ -816,9 +816,19 @@ and we will recover it for you. </value>
     <comment>Statistics Son Social Sentiment Analysis</comment>
   </data> 
 
+  <data name="Statistics.Son.Social.Sentiment.Analysis.Loading" xml:space="preserve">
+    <value>Loading Sentiment Analysis ...</value>
+    <comment>Statistics Son Social Sentiment Analysis Loading</comment>
+  </data>
+
   <data name="Statistics.Son.Social.Media.Activities" xml:space="preserve">
     <value>Social Media Activities</value>
     <comment>Statistics Son Social Media Activities</comment>
+  </data>
+
+	<data name="Statistics.Son.Social.Media.Activities.Loading" xml:space="preserve">
+    <value>Loading Activities Statistics</value>
+    <comment>Statistics Son Social Media Activities Loading</comment>
   </data>
 
   <data name="Statistics.Son.Four.Dimensions" xml:space="preserve">
@@ -826,9 +836,19 @@ and we will recover it for you. </value>
     <comment>Statistics Son Four Dimensions</comment>
   </data>
 
+  <data name="Statistics.Son.Four.Dimensions.Loading" xml:space="preserve">
+    <value>Loading Dimensions ...</value>
+    <comment>Statistics Son Four Dimensions Loading </comment>
+  </data>
+
   <data name="Statistics.Son.Communities" xml:space="preserve">
     <value>Communities</value>
     <comment>Statistics Son Communities</comment>
+  </data> 
+
+  <data name="Statistics.Son.Communities.Loading" xml:space="preserve">
+    <value>Communities</value>
+    <comment>Statistics Son Communities Loading</comment>
   </data> 
 
 	

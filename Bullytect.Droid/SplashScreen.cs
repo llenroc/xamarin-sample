@@ -18,12 +18,6 @@ namespace Bullytect.Droid
 	public class SplashScreen : MvxSplashScreenActivity
 	{
 
-        protected override void OnCreate(Bundle bundle)
-        {
-            base.OnCreate(bundle);
-
-            PushNotificationManager.ProcessIntent(Intent);
-        }
 
 		protected override void TriggerFirstNavigate()
 		{

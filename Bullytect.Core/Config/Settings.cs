@@ -129,7 +129,7 @@ namespace Bullytect.Core.Config
 			}
 		}
 
-		static readonly int SonStatisticsTimeIntervalDefault = 7;
+		static readonly int SonStatisticsTimeIntervalDefault = 1;
 
 		public int SonStatisticsTimeInterval
 		{

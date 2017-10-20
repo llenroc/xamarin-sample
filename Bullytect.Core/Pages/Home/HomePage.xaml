@@ -420,15 +420,18 @@
                                             <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
 
-                                        <common:CustomActivityIndicator
+                                        <common:ActivityLoading
                                             Grid.Row="0"
                                             x:Name="LoadingIndicator"
+                                            Icon="{ x:Static helper:FontAwesomeFont.Bell }"
                                             HorizontalOptions="Center"
                                             VerticalOptions="CenterAndExpand"/>
                                         <Label
                                             Grid.Row="1"
+                                            Margin="4"
+                                            TextColor="{DynamicResource AccentColor}"
                                             HorizontalTextAlignment="Center"
-                                            Text="Loading..." />
+                                            Text="{i18n:Translate Common.Loading}" />
                                 </Grid>
 
 
