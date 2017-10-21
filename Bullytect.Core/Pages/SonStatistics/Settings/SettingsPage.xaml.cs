@@ -1,20 +1,18 @@
 ﻿
 using System;
 using Bullytect.Core.I18N;
+using Bullytect.Core.Pages.Common;
 using Bullytect.Core.Pages.Common.Templates;
 using Bullytect.Core.ViewModels;
-using MvvmCross.Forms.Core;
 using Rg.Plugins.Popup.Services;
-using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.SonStatistics.Settings
 {
-    public partial class SettingsPage : MvxContentPage<SonStatisticsSettingsViewModel>
+    public partial class SettingsPage : BaseContentPage<SonStatisticsSettingsViewModel>
     {
         public SettingsPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
 
 		async void OnTimeIntervalInfo(object sender, EventArgs args)

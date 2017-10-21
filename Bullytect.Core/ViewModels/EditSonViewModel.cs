@@ -294,9 +294,16 @@ namespace Bullytect.Core.ViewModels
                             await PopupNavigation.PushAsync(page);
                         });
 
-        #endregion
+		#endregion
 
-        #region methods
+		#region methods
+
+		protected override void OnBackPressed()
+		{
+
+			_appHelper.RequestConfirmation(AppResources.Signup_Cancel)
+					  .Subscribe((_) => base.OnBackPressed());
+		}
 
         IObservable<SonInformation> GetSonInformation()
         {

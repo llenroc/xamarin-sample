@@ -1,18 +1,18 @@
 ﻿
 
 using System;
+using Bullytect.Core.Pages.Common;
 using Bullytect.Core.ViewModels;
 using MvvmCross.Forms.Core;
 using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.Login
 {
-    public partial class LoginPage : MvxContentPage<AuthenticationViewModel>
+    public partial class LoginPage : BaseContentPage<AuthenticationViewModel>
     {
         public LoginPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
 
 

@@ -36,7 +36,7 @@
                  </Label>
 
                     <ContentView.GestureRecognizers>
-                         <TapGestureRecognizer Command="{ Binding CloseCommand }" NumberOfTapsRequired="1" /> 
+                         <TapGestureRecognizer Command="{ Binding BackPressedCommand }" NumberOfTapsRequired="1" /> 
                     </ContentView.GestureRecognizers>
 
                </ContentView>

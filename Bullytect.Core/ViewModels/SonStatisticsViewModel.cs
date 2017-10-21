@@ -85,7 +85,12 @@ namespace Bullytect.Core.ViewModels
             {
                 return new MvxCommand<int>((pos) =>
                 {
-                    RefreshCurrentChart().Subscribe(HandlerRefreshCurrentChart);
+                    RefreshCurrentChart().Catch<ChartModel, Exception>(ex => {
+                        HandleExceptions(ex);
+                        IsBusy = false;
+                        return Observable.Empty<ChartModel>();
+
+                    }).Subscribe(HandlerRefreshCurrentChart);
 
                 });
             }

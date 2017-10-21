@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<d:MvxContentPage 
+<common:BaseContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
@@ -94,10 +93,12 @@
                                     HorizontalTextAlignment="Center"
                                     VerticalTextAlignment="Center"/>
                             
-                                <Label Grid.Column="1" 
-                                       Text="{i18n:Translate Results.Settings.Iterations.Count }"
-                                       VerticalTextAlignment="Center" 
-                                       HorizontalOptions="StartAndExpand"/>
+                                <Label 
+                                    Grid.Column="1"
+                                    Text="{i18n:Translate Results.Settings.Iterations.Count }"
+                                    VerticalTextAlignment="Center" 
+                                    LineBreakMode="TailTruncation"
+                                    HorizontalOptions="StartAndExpand"/>
 
 
                                 <Label
@@ -143,5 +144,5 @@
             </TableView>
         </Grid>
      </ContentPage.Content>
- </d:MvxContentPage>
+ </common:BaseContentPage>
 

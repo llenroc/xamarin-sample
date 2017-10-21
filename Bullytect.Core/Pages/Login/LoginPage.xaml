@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<d:MvxContentPage 
+<common:BaseContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+	xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     x:Class="Bullytect.Core.Pages.Login.LoginPage"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
@@ -54,7 +54,9 @@
                                 TranslationX="-20"
                                 TranslationY="35">
                                 <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{ Binding CloseCommand }" NumberOfTapsRequired="1"/>
+                                    <TapGestureRecognizer 
+                                        Command="{ Binding BackPressedCommand }" 
+                                        NumberOfTapsRequired="1"/>
                                 </Label.GestureRecognizers>
                             </Label>
 
@@ -203,4 +205,4 @@
             </Grid>
         
 	</ContentView.Content>
-</d:MvxContentPage>
+</common:BaseContentPage>

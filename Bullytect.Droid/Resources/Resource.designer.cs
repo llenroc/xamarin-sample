@@ -3410,6 +3410,8 @@ namespace Bullytect.Droid
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView = global::Bullytect.Droid.Resource.Styleable.MvxListView;
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate = global::Bullytect.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate;
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView_MvxItemTemplate = global::Bullytect.Droid.Resource.Styleable.MvxListView_MvxItemTemplate;
+			global::PCLCrypto.Resource.String.ApplicationName = global::Bullytect.Droid.Resource.String.ApplicationName;
+			global::PCLCrypto.Resource.String.Hello = global::Bullytect.Droid.Resource.String.Hello;
 			global::Splat.Resource.String.library_name = global::Bullytect.Droid.Resource.String.library_name;
 			global::Xamarin.Auth.Resource.Animation.slide_in_right = global::Bullytect.Droid.Resource.Animation.slide_in_right;
 			global::Xamarin.Auth.Resource.Animation.slide_out_left = global::Bullytect.Droid.Resource.Animation.slide_out_left;

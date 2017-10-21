@@ -34,7 +34,6 @@ namespace Bullytect.Core.ViewModels
             RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, PageModel>((param) =>
             {
                 RefreshBindings();
-                OnRefreshPageStart();
 
                 return Observable.Zip(
                     _parentService.GetProfileInformation(),
@@ -118,22 +117,6 @@ namespace Bullytect.Core.ViewModels
         protected virtual void OnNewSelectedImage(ImageEntity NewProfileImage)
         {
             NewSelectedImage?.Invoke(this, NewProfileImage);
-        }
-
-        public delegate void RefreshPageStartEvent(object sender);
-		public event RefreshPageStartEvent RefreshPageStart;
-
-		protected virtual void OnRefreshPageStart()
-		{
-			RefreshPageStart?.Invoke(this);
-		}
-
-		public delegate void RefreshPageFinishedEvent(object sender);
-		public event RefreshPageFinishedEvent RefreshPageFinished;
-
-        protected virtual void OnRefreshPageFinished()
-        {
-            RefreshPageFinished?.Invoke(this);
         }
 
         #endregion
@@ -244,7 +227,6 @@ namespace Bullytect.Core.ViewModels
             AlertsPage.HydrateWith(pageModel.AlertsPage);
             SelfParent.HydrateWith(pageModel.SelfParent);
             RefreshBindings();
-            OnRefreshPageFinished();
         }
 
         void RefreshBindings() {

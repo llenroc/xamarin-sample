@@ -25,8 +25,8 @@ namespace Bullytect.Core.Pages.Common.Templates
 			{
 				var chartPage = bindable as ChartPageTemplate;
 				var isLoading = (bool)newValue;
-                chartPage.LoadingData.IsVisible = isLoading;
-                chartPage.ChartPageContainer.IsVisible = !isLoading;
+                chartPage.LoadingIndicator.IsLoading = isLoading;
+                chartPage.ChartsContainerScroll.IsVisible = !isLoading;
 			});
 
 		public static readonly BindableProperty DataFoundProperty = BindableProperty.Create(
@@ -40,6 +40,33 @@ namespace Bullytect.Core.Pages.Common.Templates
 				var DataFound = (bool)newValue;
                 chartPage.NoDataFound.IsVisible = !DataFound;
                 chartPage.ChartPageContainer.IsVisible = DataFound;
+			});
+
+
+		public static readonly BindableProperty ErrorProperty = BindableProperty.Create(
+            nameof(Error),
+            typeof(bool),
+            typeof(ChartPageTemplate),
+            defaultValue: false,
+			propertyChanging: (bindable, oldValue, newValue) =>
+			{
+				var chartPage = bindable as ChartPageTemplate;
+				var Error = (bool)newValue;
+				chartPage.ErrorOcurred.IsVisible = Error;
+                chartPage.ChartPageContainer.IsVisible = !Error;
+			});
+
+
+		public static readonly BindableProperty ErrorTextProperty = BindableProperty.Create(
+			nameof(ErrorText),
+			typeof(string),
+			typeof(ChartPageTemplate),
+            defaultValue: string.Empty,
+			propertyChanging: (bindable, oldValue, newValue) =>
+			{
+				var chartPage = bindable as ChartPageTemplate;
+				var newErrorText = (string)newValue;
+                chartPage.ErrorOcurred.MainText = newErrorText;
 			});
 
         public static readonly BindableProperty TitleProperty = BindableProperty.Create(
@@ -63,7 +90,7 @@ namespace Bullytect.Core.Pages.Common.Templates
 		   {
 			   var chartPage = bindable as ChartPageTemplate;
 			   var newLoadingText = newValue as string;
-			   chartPage.LoadingLabel.Text = newLoadingText;
+                chartPage.LoadingIndicator.LoadingText = newLoadingText;
 		   });
 
 
@@ -120,6 +147,18 @@ namespace Bullytect.Core.Pages.Common.Templates
 			set { SetValue(DataFoundProperty, value); }
 
         }
+
+		public bool Error
+		{
+			get { return (bool)GetValue(IsLoadingProperty); }
+			set { SetValue(IsLoadingProperty, value); }
+		}
+
+		public string ErrorText
+		{
+			get { return (string)GetValue(ErrorTextProperty); }
+			set { SetValue(ErrorTextProperty, value); }
+		}
 
         public string Title
         {
@@ -229,13 +268,14 @@ namespace Bullytect.Core.Pages.Common.Templates
         {
             var page = bindable as ChartPageTemplate;
             var chart = newValue as ChartModel;
-            if(chart != null) {
 
+            if(chart != null) {
 				page.ChartsContainer.HeightRequest = 0;
 				page.ChartsContainer.Children.Clear();
 				var chartContainer = createChart(page, chart);
 				page.ChartsContainer.HeightRequest += chartContainer.Height;
 				page.ChartsContainer.Children.Add(chartContainer);
+				
             }
 
         }

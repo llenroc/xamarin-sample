@@ -413,6 +413,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Signup_Cancel {
+            get {
+                return ResourceManager.GetString("Signup.Cancel", resourceCulture);
+            }
+        }
+        
         internal static string Password_Recovery_Main_Text {
             get {
                 return ResourceManager.GetString("Password.Recovery.Main.Text", resourceCulture);
@@ -1085,6 +1091,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Statistics_Son_Social_Sentiment_Analysis_Error {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Social.Sentiment.Analysis.Error", resourceCulture);
+            }
+        }
+        
         internal static string Statistics_Son_Social_Media_Activities {
             get {
                 return ResourceManager.GetString("Statistics.Son.Social.Media.Activities", resourceCulture);
@@ -1094,6 +1106,12 @@ namespace Bullytect.Core.I18N {
         internal static string Statistics_Son_Social_Media_Activities_Loading {
             get {
                 return ResourceManager.GetString("Statistics.Son.Social.Media.Activities.Loading", resourceCulture);
+            }
+        }
+        
+        internal static string Statistics_Son_Social_Media_Activities_Error {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Social.Media.Activities.Error", resourceCulture);
             }
         }
         
@@ -1109,6 +1127,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Statistics_Son_Four_Dimensions_Error {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Four.Dimensions.Error", resourceCulture);
+            }
+        }
+        
         internal static string Statistics_Son_Communities {
             get {
                 return ResourceManager.GetString("Statistics.Son.Communities", resourceCulture);
@@ -1118,6 +1142,12 @@ namespace Bullytect.Core.I18N {
         internal static string Statistics_Son_Communities_Loading {
             get {
                 return ResourceManager.GetString("Statistics.Son.Communities.Loading", resourceCulture);
+            }
+        }
+        
+        internal static string Statistics_Son_Communities_Error {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Communities.Error", resourceCulture);
             }
         }
     }

@@ -130,10 +130,9 @@ namespace Bullytect.Core.ViewModels
         public override void Start()
         {
 
-
             if (ReasonForAuthentication.Equals(SIGN_OUT))
             {
-                _appHelper.Toast(AppResources.Common_SignOut, System.Drawing.Color.FromArgb(255, 0, 0));
+                _appHelper.Toast(AppResources.Common_SignOut, System.Drawing.Color.FromArgb(12, 131, 193));
             }
             else if (ReasonForAuthentication.Equals(SESSION_EXPIRED)) {
                 _appHelper.Toast(AppResources.Common_Invalid_Session, System.Drawing.Color.FromArgb(255, 0, 0));
@@ -142,6 +141,8 @@ namespace Bullytect.Core.ViewModels
                 _appHelper.Toast(AppResources.Signup_Account_Created, System.Drawing.Color.FromArgb(12, 131, 193));
             }
         }
+
+        protected override void OnBackPressed() => ShowViewModel<WelcomeViewModel>();
 
         #region commands
 

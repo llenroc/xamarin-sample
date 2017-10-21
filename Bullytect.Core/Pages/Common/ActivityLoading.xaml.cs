@@ -20,36 +20,79 @@ namespace Bullytect.Core.Pages.Common
                 activityLoading.IconLabel.Text = newIcon;
             });
 
+		public static readonly BindableProperty IsLoadingProperty = BindableProperty.Create(
+            nameof(IsLoading),
+            typeof(bool),
+            typeof(ActivityLoading),
+            defaultValue: false,
+			propertyChanging: (bindable, oldValue, newValue) =>
+			{
+				var activityLoading = bindable as ActivityLoading;
+                var isLoading = (bool)newValue;
+
+                activityLoading.Container.IsVisible = isLoading;
+
+                if(isLoading) {
+
+    					activityLoading._animation = new Animation(
+    					callback: d => activityLoading.LoadingIndicator.RotationY = d,
+    					start: 0,
+    					end: 360,
+    					easing: Easing.Linear);
+
+    					activityLoading._playing = true;
+    					activityLoading._animation.Commit(activityLoading.LoadingIndicator, "Loop", length: 1000, repeat: () => activityLoading._playing);
+
+
+                } else {
+
+    					activityLoading._playing = false;
+    					activityLoading._animation = null;
+                }
+
+			});
+
+		public static readonly BindableProperty LoadingTextProperty = BindableProperty.Create(
+			nameof(LoadingText),
+			typeof(string),
+			typeof(ActivityLoading),
+			defaultValue: string.Empty,
+			propertyChanging: (bindable, oldValue, newValue) =>
+			{
+				var activityLoading = bindable as ActivityLoading;
+				var newLoadingText = newValue as string;
+				activityLoading.LoadingTextLabel.Text = newLoadingText;
+			});
+
+
         public ActivityLoading()
         {
             InitializeComponent();
         }
 
-        public void Start()
-        {
-            _animation = new Animation(
-                callback: d => Wrapper.RotationY = d,
-                start: 0,
-                end: 360,
-                easing: Easing.Linear);
-
-            _playing = true;
-            _animation.Commit(Wrapper, "Loop", length: 1000, repeat: () => _playing);
-        }
-
-        public void Stop()
-        {
-            _playing = false;
-            _animation = null;
-        }
 
 		#region properties
 
 		public string Icon
 		{
-			get { return (string)GetValue(IconProperty); }
-			set { SetValue(IconProperty, value); }
+			get => (string)GetValue(IconProperty);
+			set => SetValue(IconProperty, value);
 		}
+
+        public bool IsLoading
+        {
+            get => (bool)GetValue(IsLoadingProperty);
+            set => SetValue(IsLoadingProperty, value);
+
+		 }
+
+        public string LoadingText
+        {
+
+			get => (string)GetValue(LoadingTextProperty);
+			set => SetValue(LoadingTextProperty, value);
+
+        }
 
         #endregion
 

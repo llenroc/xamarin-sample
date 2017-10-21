@@ -1,22 +1,20 @@
 ﻿
-using MvvmCross.Forms.Core;
 using Bullytect.Core.ViewModels;
 using Xamarin.Forms;
 using System;
-using System.IO;
 using Plugin.Media.Abstractions;
 using Bullytect.Core.Models.Domain;
 using FFImageLoading.Forms;
 using FFImageLoading.Cache;
+using Bullytect.Core.Pages.Common;
 
 namespace Bullytect.Core.Pages.Profile
 {
-    public partial class ProfilePage : MvxContentPage<ProfileViewModel>
+    public partial class ProfilePage : BaseContentPage<ProfileViewModel>
     {
         public ProfilePage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
 
 		protected override void OnAppearing()

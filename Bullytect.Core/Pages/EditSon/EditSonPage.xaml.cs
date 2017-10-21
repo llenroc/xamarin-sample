@@ -1,24 +1,20 @@
 ﻿
 using System;
 using Bullytect.Core.Models.Domain;
-using Bullytect.Core.Pages.AddSchool;
+using Bullytect.Core.Pages.Common;
 using Bullytect.Core.Pages.EditSon.Popup;
 using Bullytect.Core.ViewModels;
-using FFImageLoading.Cache;
-using FFImageLoading.Forms;
-using MvvmCross.Forms.Core;
 using Plugin.Media.Abstractions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.EditSon
 {
-    public partial class EditSonPage : MvxContentPage<EditSonViewModel>
+    public partial class EditSonPage : BaseContentPage<EditSonViewModel>
     {
         public EditSonPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
 
 		protected override void OnAppearing()

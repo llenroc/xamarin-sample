@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<d:MvxContentPage 
+<common:BaseContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
-    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:controls="clr-namespace:Bullytect.Core.Controls"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
@@ -15,7 +15,8 @@
     <ContentPage.Content>
 
         <!-- MAIN CONTAINER-->
-        <Grid 
+        
+        <Grid
             HorizontalOptions="FillAndExpand" 
             VerticalOptions="FillAndExpand">
 
@@ -23,119 +24,120 @@
             <Image 
                 Style="{StaticResource WelcomeBackgroundImage}"/>
 
+                <ScrollView>
+                    <Grid 
+                        Padding="20">
 
-                <Grid 
-                    Padding="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
-                    <!-- LOGO -->
-                    <Image 
-                        Grid.Column="0"
-                        Source="Icon_76.png"
-                        WidthRequest="76"
-                        HeightRequest="76"
-                        Margin="20"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center" />
+                        <!-- LOGO -->
+                        <Image 
+                            Grid.Column="0"
+                            Source="Icon_76.png"
+                            WidthRequest="76"
+                            HeightRequest="76"
+                            Margin="20"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center" />
 
 
-                    <!--CLAIM TEXT-->
-                    <StackLayout
-                        Grid.Row="1"
-                        Spacing="10"
-                        Padding="20,10"
-                        Orientation="Vertical"
-                        VerticalOptions="Center">
+                        <!--CLAIM TEXT-->
+                        <StackLayout
+                            Grid.Row="1"
+                            Spacing="10"
+                            Padding="20,10"
+                            Orientation="Vertical"
+                            VerticalOptions="Center">
 
-                        <Label
-                            LineBreakMode="WordWrap"
-                            Text="{i18n:Translate WelcomePage.SecondLabel}" 
-                            TextColor="{ DynamicResource OverImageTextColor }"
-                            VerticalTextAlignment="Center"
-                            FontAttributes="Bold">
-                                <Label.FontSize>
-                                    <OnIdiom x:TypeArguments="x:Double"
-                                        Phone="26"
-                                        Tablet="36"/>
+                            <Label
+                                LineBreakMode="WordWrap"
+                                Text="{i18n:Translate WelcomePage.SecondLabel}" 
+                                TextColor="{ DynamicResource OverImageTextColor }"
+                                VerticalTextAlignment="Center"
+                                FontAttributes="Bold">
+                                    <Label.FontSize>
+                                        <OnIdiom x:TypeArguments="x:Double"
+                                            Phone="26"
+                                            Tablet="36"/>
+                                    </Label.FontSize>
+                            </Label>
+
+                            <Label
+                                LineBreakMode="WordWrap"
+                                Text="{i18n:Translate WelcomePage.ClaimTextSecond}"
+                                TextColor="{ DynamicResource OverImageTextColor }"
+                                VerticalTextAlignment="Center">
+                                <Label.FontSize> 
+                                    <OnIdiom 
+                                        x:TypeArguments="x:Double"
+                                        Phone="17"
+                                        Tablet="27"/>
                                 </Label.FontSize>
-                        </Label>
+                            </Label>
 
-                        <Label
-                            LineBreakMode="WordWrap"
-                            Text="{i18n:Translate WelcomePage.ClaimTextSecond}"
-                            TextColor="{ DynamicResource OverImageTextColor }"
-                            VerticalTextAlignment="Center">
-                            <Label.FontSize> 
-                                <OnIdiom 
-                                    x:TypeArguments="x:Double"
-                                    Phone="17"
-                                    Tablet="27"/>
-                            </Label.FontSize>
-                        </Label>
-
-                        <BoxView 
-                            Style="{StaticResource BrandNameOrnamentStyle}"
-                            BackgroundColor="{ DynamicResource OverImageTextColor }"/>
+                            <BoxView 
+                                Style="{StaticResource BrandNameOrnamentStyle}"
+                                BackgroundColor="{ DynamicResource OverImageTextColor }"/>
 
 
-                   </StackLayout>
-                    
-                
-                    <!--BUTTONS-->
-                    <StackLayout
-                        Grid.Row="2"
-                        VerticalOptions="End" 
-                        HorizontalOptions="FillAndExpand" 
-                        Spacing="10">
-
-                        <artina:Button 
-                            Style="{StaticResource SecondaryActionButtonStyle}" 
-                            Text="{i18n:Translate WelcomePage.Walkthrough.Btn}"
-                            Command="{ Binding GoToWalkthroughCommand }"
-                            VerticalOptions="EndAndExpand"
-                            WidthRequest="{ artina:OnOrientationDouble
-                                LandscapeTablet=600 }"
-                            HorizontalOptions="{ artina:OnOrientationLayoutOptions
-                                PortraitPhone=Fill,
-                                LandscapePhone=Fill,
-                                PortraitTablet=Fill,
-                                LandscapeTablet=Center }"/>
-                    
-                        <artina:Button 
-                            Style="{StaticResource SecondaryActionButtonStyle}" 
-                            Text="{i18n:Translate WelcomePage.Login.Btn}"
-                            Command="{ Binding GoToLoginCommand }"
-                            VerticalOptions="EndAndExpand"
-                            WidthRequest="{ artina:OnOrientationDouble
-                                LandscapeTablet=600 }"
-                            HorizontalOptions="{ artina:OnOrientationLayoutOptions
-                                PortraitPhone=Fill,
-                                LandscapePhone=Fill,
-                                PortraitTablet=Fill,
-                                LandscapeTablet=Center }"/>
+                       </StackLayout>
                         
-                        <artina:Button 
-                            Style="{StaticResource PrimaryActionButtonStyle}" 
-                            Text="{i18n:Translate WelcomePage.Signup.Btn}"
-                            Command="{ Binding GoToSignupCommand }"
-                            VerticalOptions="EndAndExpand"
-                            WidthRequest="{ artina:OnOrientationDouble
-                                LandscapeTablet=600 }"
-                            HorizontalOptions="{ artina:OnOrientationLayoutOptions
-                                PortraitPhone=Fill,
-                                LandscapePhone=Fill,
-                                PortraitTablet=Fill,
-                                LandscapeTablet=Center }"/>
                     
-                    </StackLayout>
-                </Grid>
+                        <!--BUTTONS-->
+                        <StackLayout
+                            Grid.Row="2"
+                            VerticalOptions="End" 
+                            HorizontalOptions="FillAndExpand" 
+                            Spacing="10">
+
+                            <artina:Button 
+                                Style="{StaticResource SecondaryActionButtonStyle}" 
+                                Text="{i18n:Translate WelcomePage.Walkthrough.Btn}"
+                                Command="{ Binding GoToWalkthroughCommand }"
+                                VerticalOptions="EndAndExpand"
+                                WidthRequest="{ artina:OnOrientationDouble
+                                    LandscapeTablet=600 }"
+                                HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                                    PortraitPhone=Fill,
+                                    LandscapePhone=Fill,
+                                    PortraitTablet=Fill,
+                                    LandscapeTablet=Center }"/>
+                        
+                            <artina:Button 
+                                Style="{StaticResource SecondaryActionButtonStyle}" 
+                                Text="{i18n:Translate WelcomePage.Login.Btn}"
+                                Command="{ Binding GoToLoginCommand }"
+                                VerticalOptions="EndAndExpand"
+                                WidthRequest="{ artina:OnOrientationDouble
+                                    LandscapeTablet=600 }"
+                                HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                                    PortraitPhone=Fill,
+                                    LandscapePhone=Fill,
+                                    PortraitTablet=Fill,
+                                    LandscapeTablet=Center }"/>
+                            
+                            <artina:Button 
+                                Style="{StaticResource PrimaryActionButtonStyle}" 
+                                Text="{i18n:Translate WelcomePage.Signup.Btn}"
+                                Command="{ Binding GoToSignupCommand }"
+                                VerticalOptions="EndAndExpand"
+                                WidthRequest="{ artina:OnOrientationDouble
+                                    LandscapeTablet=600 }"
+                                HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                                    PortraitPhone=Fill,
+                                    LandscapePhone=Fill,
+                                    PortraitTablet=Fill,
+                                    LandscapeTablet=Center }"/>
+                        
+                        </StackLayout>
+                    </Grid>
+               </ScrollView>
             </Grid>
     </ContentPage.Content>
-</d:MvxContentPage>
+</common:BaseContentPage>
     
 

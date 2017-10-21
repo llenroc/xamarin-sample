@@ -363,6 +363,10 @@ pleasures of the demo.</value>
     <value> Passwords do not match </value>
     <comment>Signup Account Password Not Match</comment>
   </data>
+  <data name="Signup.Cancel" xml:space="preserve">
+    <value>Cancel Signup ?</value>
+    <comment>Signup Cancel</comment>
+  </data>
   <data name="Password.Recovery.Main.Text" xml:space="preserve">
     <value> Forgot your password? </value>
     <comment>Password Recovery Main Text</comment>
@@ -821,6 +825,11 @@ and we will recover it for you. </value>
     <comment>Statistics Son Social Sentiment Analysis Loading</comment>
   </data>
 
+  <data name="Statistics.Son.Social.Sentiment.Analysis.Error" xml:space="preserve">
+    <value>Sentiment Analysis graph could not be loaded</value>
+    <comment>Statistics Son Social Sentiment Analysis Error </comment>
+  </data>
+
   <data name="Statistics.Son.Social.Media.Activities" xml:space="preserve">
     <value>Social Media Activities</value>
     <comment>Statistics Son Social Media Activities</comment>
@@ -829,6 +838,11 @@ and we will recover it for you. </value>
 	<data name="Statistics.Son.Social.Media.Activities.Loading" xml:space="preserve">
     <value>Loading Activities Statistics</value>
     <comment>Statistics Son Social Media Activities Loading</comment>
+  </data>
+
+   <data name="Statistics.Son.Social.Media.Activities.Error" xml:space="preserve">
+    <value>Activities graph could not be loaded</value>
+    <comment>Statistics Son Social Media Activitie Error </comment>
   </data>
 
   <data name="Statistics.Son.Four.Dimensions" xml:space="preserve">
@@ -841,6 +855,11 @@ and we will recover it for you. </value>
     <comment>Statistics Son Four Dimensions Loading </comment>
   </data>
 
+  <data name="Statistics.Son.Four.Dimensions.Error" xml:space="preserve">
+    <value>Dimensions graph could not be loaded</value>
+    <comment>Statistics Son Four Dimensions Error </comment>
+  </data>
+
   <data name="Statistics.Son.Communities" xml:space="preserve">
     <value>Communities</value>
     <comment>Statistics Son Communities</comment>
@@ -849,6 +868,11 @@ and we will recover it for you. </value>
   <data name="Statistics.Son.Communities.Loading" xml:space="preserve">
     <value>Communities</value>
     <comment>Statistics Son Communities Loading</comment>
+  </data>
+
+  <data name="Statistics.Son.Communities.Error" xml:space="preserve">
+    <value>Community graph could not be loaded</value>
+    <comment>Statistics Son Communities Error</comment>
   </data> 
 
 	

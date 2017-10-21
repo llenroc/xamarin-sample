@@ -533,6 +533,9 @@
     <Compile Include="Services\Impl\StatisticsServiceImpl.cs" />
     <Compile Include="ViewModels\Core\Models\SentimentEnum.cs" />
     <Compile Include="ViewModels\Core\Models\SocialMediaTypeEnum.cs" />
+    <Compile Include="Pages\Common\BaseContentPage.cs" />
+    <Compile Include="Utils\IsDirtyMonitoringAttribute.cs" />
+    <Compile Include="Utils\IsDirtyViewModelJsonContractResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
