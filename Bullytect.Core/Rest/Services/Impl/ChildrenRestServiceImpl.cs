@@ -86,5 +86,46 @@ namespace Bullytect.Core.Rest.Services.Impl
 				{ "days-limit", daysLimit.ToString()}
 			})));
         }
+
+        public IObservable<APIResponse<CommentsAnalyzedStatisticsDTO>> GetCommentsAnalyzedStatistics(String[] Ids, int daysLimit)
+        {
+
+			var queryParams = new Dictionary<string, string>()
+			{
+				{ "days-limit", daysLimit.ToString()}
+			};
+
+            if (Ids?.Length > 0)
+				queryParams.Add("identities", string.Join(",", Ids));
+
+			return Observable.FromAsync(() => GetData<APIResponse<CommentsAnalyzedStatisticsDTO>>(new Uri(ApiEndpoints.COMMENTS_ANALYZED).AttachParameters(queryParams)));
+        }
+
+        public IObservable<APIResponse<SocialMediaLikesStatisticsDTO>> GetSocialMediaLikesStatistics(string[] Ids, int daysLimit)
+        {
+			var queryParams = new Dictionary<string, string>()
+			{
+				{ "days-limit", daysLimit.ToString()}
+			};
+
+			if (Ids?.Length > 0)
+				queryParams.Add("identities", string.Join(",", Ids));
+
+			return Observable.FromAsync(() => GetData<APIResponse<SocialMediaLikesStatisticsDTO>>(new Uri(ApiEndpoints.SOCIAL_MEDIA_LIKES).AttachParameters(queryParams)));
+            
+        }
+
+        public IObservable<APIResponse<AlertsStatisticsDTO>> GetAlertsStatistics(string[] Ids, int daysLimit)
+        {
+			var queryParams = new Dictionary<string, string>()
+			{
+				{ "days-limit", daysLimit.ToString()}
+			};
+
+			if (Ids?.Length > 0)
+				queryParams.Add("identities", string.Join(",", Ids));
+
+            return Observable.FromAsync(() => GetData<APIResponse<AlertsStatisticsDTO>>(new Uri(ApiEndpoints.ALERTS_STATISTICS).AttachParameters(queryParams)));
+        }
     }
 }

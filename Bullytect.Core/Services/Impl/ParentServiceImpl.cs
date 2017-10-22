@@ -254,22 +254,6 @@ namespace Bullytect.Core.Services.Impl
 
         }
 
-        public IObservable<List<IterationEntity>> GetLastIterations()
-        {
-
-            Debug.WriteLine("Get Last Iterations ...");
-
-            var observable = _parentsRestService
-                .GetLastIterations(Settings.Current.IterationsCountToShow)
-                .Select((response) => response.Data)
-                .Select(iterations => Mapper.Map<List<IterationDTO>, List<IterationEntity>>(iterations))
-				.Finally(() =>
-				{
-					Debug.WriteLine("Get Last Finished ...");
-				});
-
-			return operationDecorator(observable);
-        }
 
         public IObservable<string> DeleteSonById(string Id)
         {

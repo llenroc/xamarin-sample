@@ -19,10 +19,10 @@ namespace Bullytect.Core.Pages.Results.Settings
             InitializeComponent();
         }
 
-		async void OnIterationsCountInfo(object sender, EventArgs args)
+		async void OnTimeIntervalInfo(object sender, EventArgs args)
 		{
 
-            var page = new CommonInfoPopup(AppResources.Results_Settings_Iterations_Count, AppResources.Results_Settings_Iterations_Count_Description);
+			var page = new CommonInfoPopup(AppResources.Settings_Statistics_General_Interval, AppResources.Settings_Statistics_General_Interval_Description);
 			await PopupNavigation.PushAsync(page);
 
 		}

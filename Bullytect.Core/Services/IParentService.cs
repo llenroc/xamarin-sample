@@ -24,7 +24,6 @@ namespace Bullytect.Core.Services
         IObservable<SonEntity> GetSonById(string Id);
         IObservable<ImageEntity> UploadSonProfileImage(string identity, Stream stream);
         IObservable<Dictionary<string, string>> GetCommentsBySonForLastIteration();
-        IObservable<List<IterationEntity>> GetLastIterations();
         IObservable<string> DeleteSonById(string Id);
     }
 }

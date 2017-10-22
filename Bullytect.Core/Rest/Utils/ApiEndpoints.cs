@@ -42,8 +42,10 @@ namespace Bullytect.Core.Rest.Utils
         public static string DIMENSIONS_STATISTICS = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/statistics/dimensions");
         public static string COMMUNITIES_STATISTICS = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/statistics/communities");
         public static string SENTIMENT_ANALYSIS_STATISTICS = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/statistics/sentiment-analysis");
-        public static string SOCIAL_ACTIVITY_STATISTICS = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/statistics/social-activity");                                         
-
+        public static string SOCIAL_ACTIVITY_STATISTICS = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/statistics/social-activity");
+        public static string COMMENTS_ANALYZED = string.Concat(SharedConfig.BASE_API_URL, "/comments/analyzed");
+        public static string SOCIAL_MEDIA_LIKES = string.Concat(SharedConfig.BASE_API_URL, "/comments/social-media-Likes");
+        public static string ALERTS_STATISTICS = string.Concat(SharedConfig.BASE_API_URL, "/alerts/statistics/alerts");
 
     }
 }

@@ -169,6 +169,7 @@ namespace Bullytect.Core.ViewModels
         void HandlerRefreshCurrentChart(ChartModel Chart) {
 
             IsBusy = false;
+            ErrorOccurred = false;
 
 			switch (Position)
 			{

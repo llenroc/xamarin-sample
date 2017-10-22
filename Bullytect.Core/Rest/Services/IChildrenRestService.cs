@@ -35,5 +35,10 @@ namespace Bullytect.Core.Rest.Services
 
         IObservable<APIResponse<DimensionsStatisticsDTO>> GetDimensionsStatistics(string id, int daysLimit);
 
+        IObservable<APIResponse<CommentsAnalyzedStatisticsDTO>> GetCommentsAnalyzedStatistics(String[] Ids, int daysLimit);
+
+        IObservable<APIResponse<SocialMediaLikesStatisticsDTO>> GetSocialMediaLikesStatistics(String[] Ids, int daysLimit);
+
+        IObservable<APIResponse<AlertsStatisticsDTO>> GetAlertsStatistics(String[] Ids, int daysLimit);
     }
 }

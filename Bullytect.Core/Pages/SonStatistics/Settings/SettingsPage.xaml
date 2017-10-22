@@ -78,7 +78,7 @@
                                     VerticalTextAlignment="Center"/>
                             
                                 <Label Grid.Column="1" 
-                                       Text="{i18n:Translate Settings.Statistics.Son.General.Interval }"
+                                       Text="{i18n:Translate Settings.Statistics.General.Interval }"
                                        VerticalTextAlignment="Center" 
                                        HorizontalOptions="StartAndExpand"/>
 

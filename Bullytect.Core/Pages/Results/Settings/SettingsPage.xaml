@@ -84,7 +84,7 @@
 
                                  <Label 
                                     Grid.Column="0"
-                                    Text="{ x:Static helper:FontAwesomeFont.SortAmountDesc }"
+                                    Text="{ x:Static helper:FontAwesomeFont.Calendar }"
                                     Style="{StaticResource FontIcon}"
                                     FontSize ="12"
                                     WidthRequest="12" 
@@ -93,12 +93,10 @@
                                     HorizontalTextAlignment="Center"
                                     VerticalTextAlignment="Center"/>
                             
-                                <Label 
-                                    Grid.Column="1"
-                                    Text="{i18n:Translate Results.Settings.Iterations.Count }"
-                                    VerticalTextAlignment="Center" 
-                                    LineBreakMode="TailTruncation"
-                                    HorizontalOptions="StartAndExpand"/>
+                                <Label Grid.Column="1" 
+                                       Text="{i18n:Translate Settings.Statistics.General.Interval }"
+                                       VerticalTextAlignment="Center" 
+                                       HorizontalOptions="StartAndExpand"/>
 
 
                                 <Label
@@ -119,7 +117,7 @@
 
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer 
-                                            Tapped="OnIterationsCountInfo"
+                                            Tapped="OnTimeIntervalInfo"
                                             NumberOfTapsRequired="1" /> 
                                     </Label.GestureRecognizers>
                                 </Label>
@@ -127,8 +125,8 @@
                                 <Picker Grid.Column="3"
                                     WidthRequest="100"
                                     VerticalOptions="Center"
-                                    ItemsSource="{Binding IterationsOptionsList }"
-                                    SelectedItem="{Binding IterationsOption}"
+                                    ItemsSource="{Binding TimeIntervalsOptionsList }"
+                                    SelectedItem="{Binding TimeIntervalOption}"
                                     ItemDisplayBinding="{Binding Description}"/>
                                
                         </Grid>

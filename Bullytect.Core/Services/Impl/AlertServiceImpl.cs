@@ -82,13 +82,6 @@ namespace Bullytect.Core.Services.Impl
 			return operationDecorator(observable);
         }
 
-        public IObservable<IList<AlertsBySon>> GetAlertsBySon()
-        {
-            var alertsBySon = new List<AlertsBySon>();
-
-            return Observable.Return(alertsBySon);
-
-        }
 
         public IObservable<IList<AlertCategoryModel>> GetAllAlertsCategories()
         {

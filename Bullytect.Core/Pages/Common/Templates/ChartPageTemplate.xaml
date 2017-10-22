@@ -84,8 +84,8 @@
                     x:Name="NoDataFound"
                     HorizontalOptions="FillAndExpand" 
                     VerticalOptions="FillAndExpand"
-                    MainText="{i18n:Translate Results.Iterations.Not.Found.MainText }"
-                    DetailText="{i18n:Translate Results.Iterations.Not.Found.SecondText }"/>
+                    MainText="{i18n:Translate Common.No.Results.Found }"
+                    DetailText="{i18n:Translate Common.No.Results.Found.Detail }"/>
 
                <common:ErrorOcurred 
                     x:Name="ErrorOcurred"

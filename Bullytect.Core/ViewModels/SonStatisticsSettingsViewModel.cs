@@ -22,10 +22,10 @@ namespace Bullytect.Core.ViewModels
 
         public List<PickerOptionModel> TimeIntervalsOptionsList { get; private set; } = new List<PickerOptionModel>()
         {
-            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_Son_General_Interval_Option, 1), Value = 1 },
-            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_Son_General_Interval_Option, 7), Value = 7 },
-            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_Son_General_Interval_Option, 15), Value = 15 },
-            new PickerOptionModel(){ Description = String.Format(AppResources.Results_Settings_Iterations_Count_Option, 30), Value = 30 }
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_General_Interval_Option, 1), Value = 1 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_General_Interval_Option, 7), Value = 7 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_General_Interval_Option, 15), Value = 15 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_General_Interval_Option, 30), Value = 30 }
         };
 
         PickerOptionModel _timeIntervalOption;

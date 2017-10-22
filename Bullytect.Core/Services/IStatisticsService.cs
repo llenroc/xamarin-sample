@@ -13,5 +13,11 @@ namespace Bullytect.Core.Services
 		IObservable<ChartModel> GetCommunitiesStatistics(string id);
 
 		IObservable<ChartModel> GetDimensionsStatistics(string id);
+
+        IObservable<ChartModel> GetCommentsAnalyzedStatistics();
+
+        IObservable<ChartModel> GetSocialMediaLikesStatistics();
+
+        IObservable<ChartModel> GetAlertsStatistics();
     }
 }
