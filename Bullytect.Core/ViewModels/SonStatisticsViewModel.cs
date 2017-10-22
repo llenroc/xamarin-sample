@@ -117,13 +117,6 @@ namespace Bullytect.Core.ViewModels
 
         }
 
-        new bool _isBusy;
-
-        public new bool IsBusy {
-            get => _isBusy;
-            set => SetProperty(ref _isBusy, value);
-        }
-
         ChartModel _socialMediaActivitiesChart;
 
         public ChartModel SocialMediaActivitiesChart

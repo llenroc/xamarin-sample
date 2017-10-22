@@ -13,6 +13,7 @@ using Bullytect.Core.Exceptions;
 using Plugin.Media.Abstractions;
 using System.Reactive;
 using Bullytect.Core.Helpers;
+using Bullytect.Core.Utils;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -32,9 +33,9 @@ namespace Bullytect.Core.ViewModels
 
                 return NewProfileImage != null ?
                     _parentService.UploadProfileImage(NewProfileImage.GetStream())
-                                  .SelectMany((_) => _parentService.Update(SelfParent.FirstName, SelfParent.LastName, SelfParent.Birthdate, SelfParent.Email, SelfParent.Telephone)) :
+                                  .SelectMany((_) => _parentService.Update(SelfParent.FirstName, SelfParent.LastName, SelfParent.Birthdate, SelfParent.Email, string.Concat(SelfParent.PhonePrefix, SelfParent.PhoneNumber))) :
 
-                    _parentService.Update(SelfParent.FirstName, SelfParent.LastName, SelfParent.Birthdate, SelfParent.Email, SelfParent.Telephone);
+                    _parentService.Update(SelfParent.FirstName, SelfParent.LastName, SelfParent.Birthdate, SelfParent.Email, string.Concat(SelfParent.PhonePrefix, SelfParent.PhoneNumber));
                     
                 
             });
@@ -42,17 +43,21 @@ namespace Bullytect.Core.ViewModels
 
             SaveChangesCommand.Subscribe(AccountUpdatedHandler);
 
-            SaveChangesCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
+            SaveChangesCommand.IsExecuting.Subscribe((IsLoading) => HandleIsExecuting(IsLoading, AppResources.Profile_Save_Changes));
 
 			SaveChangesCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
-            LoadProfileCommand = ReactiveCommand.CreateFromObservable<Unit, ParentEntity>((param) => _parentService.GetProfileInformation());
+            RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, ParentEntity>((param) => _parentService.GetProfileInformation());
 
-            LoadProfileCommand.Subscribe((ParentEntity) => SelfParent.HydrateWith(ParentEntity));
+            RefreshCommand.Subscribe((ParentEntity) => {
+                SelfParent.HydrateWith(ParentEntity);
+                ResetCommonProps();
+                IsDirtyMonitoring = true;
+            });
 
-            LoadProfileCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
+            RefreshCommand.IsExecuting.Subscribe((IsLoading) => HandleIsExecuting(IsLoading, AppResources.Profile_Loading_Data));
 
-			LoadProfileCommand.ThrownExceptions.Subscribe(HandleExceptions);
+			RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
             DeleteAccountCommand = ReactiveCommand
                 .CreateFromObservable<Unit, string>((param) =>
@@ -61,9 +66,9 @@ namespace Bullytect.Core.ViewModels
                     {
                         Title = AppResources.Profile_Confirm_Account_Deleting
 
-                    })).Where((confirmed) => confirmed).Do((_) => _userDialogs.ShowLoading(AppResources.Profile_Account_Deleting))
+                })).Where((confirmed) => confirmed).Do((_) => HandleIsExecuting(true, AppResources.Profile_Account_Deleting))
 						.SelectMany((_) => _parentService.DeleteAccount())
-                                     .Do((_) => _userDialogs.HideLoading());
+                                     .Do((_) => HandleIsExecuting(false, AppResources.Profile_Account_Deleting));
                 });
 
 
@@ -93,6 +98,7 @@ namespace Bullytect.Core.ViewModels
 
         protected MediaFile _newProfileImage;
 
+        [IsDirtyMonitoring]
         public MediaFile NewProfileImage
         {
             get => _newProfileImage;
@@ -100,18 +106,12 @@ namespace Bullytect.Core.ViewModels
         }
 
         protected ParentEntity _selfParent = new ParentEntity();
+
+        [IsDirtyMonitoring]
 		public ParentEntity SelfParent
 		{
 			get => _selfParent;
 			set => SetProperty(ref _selfParent, value);
-		}
-
-
-		readonly string _prefix = "+34";
-
-		public string Prefix
-		{
-			get => _prefix;
 		}
 
 		#endregion
@@ -146,7 +146,7 @@ namespace Bullytect.Core.ViewModels
 
         public ReactiveCommand<Unit, string> DeleteAccountCommand { get; protected set; }
 
-        public ReactiveCommand<Unit, ParentEntity> LoadProfileCommand { get; protected set; }
+        public ReactiveCommand<Unit, ParentEntity> RefreshCommand { get; protected set; }
 
         public ReactiveCommand<Unit, MediaFile> TakePhotoCommand { get; set; }
 
@@ -157,8 +157,10 @@ namespace Bullytect.Core.ViewModels
 		{
 			Debug.WriteLine(String.Format("Parent: {0}", Parent.ToString()));
             SelfParent.HydrateWith(Parent);
-            _appHelper.Toast(AppResources.Profile_Account_Updated, System.Drawing.Color.FromArgb(12, 131, 193));
+            _userDialogs.ShowSuccess(AppResources.Profile_Account_Updated);
             OnAccountUpdated(Parent);
+            ResetCommonProps();
+            IsDirtyMonitoring = true;
 		}
 
 		protected override void HandleExceptions(Exception ex)
@@ -175,6 +177,25 @@ namespace Bullytect.Core.ViewModels
             {
                 base.HandleExceptions(ex);
             }
+		}
+
+		protected override void OnBackPressed()
+		{
+
+
+			if (IsDirty)
+			{
+
+                _appHelper.RequestConfirmation(AppResources.Profile_Cancel_Changes)
+					  .Subscribe((_) => base.OnBackPressed());
+			}
+			else
+			{
+
+				base.OnBackPressed();
+			}
+
+
 		}
 
     }

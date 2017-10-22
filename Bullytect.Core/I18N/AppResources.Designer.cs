@@ -581,6 +581,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Profile_Cancel_Changes {
+            get {
+                return ResourceManager.GetString("Profile.Cancel.Changes", resourceCulture);
+            }
+        }
+        
         internal static string Profile_Saving_Changes {
             get {
                 return ResourceManager.GetString("Profile.Saving.Changes", resourceCulture);
@@ -770,6 +776,12 @@ namespace Bullytect.Core.I18N {
         internal static string EditSon_General_Section_Title {
             get {
                 return ResourceManager.GetString("EditSon.General.Section.Title", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Cancel {
+            get {
+                return ResourceManager.GetString("EditSon.Cancel", resourceCulture);
             }
         }
         

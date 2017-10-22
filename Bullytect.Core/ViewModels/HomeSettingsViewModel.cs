@@ -53,7 +53,7 @@ namespace Bullytect.Core.ViewModels
 			});
 
 
-			RefreshCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
+			RefreshCommand.IsExecuting.Subscribe((IsLoading) => IsBusy = IsLoading);
 
 			RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }

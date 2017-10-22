@@ -448,7 +448,6 @@
     <Compile Include="Pages\Results\ResultsPage.xaml.cs">
       <DependentUpon>ResultsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\CommentsBySonViewModel.cs" />
     <Compile Include="Helpers\AppHelper.cs" />
     <Compile Include="Pages\EditSon\Popup\SocialMediaInfoPopup.xaml.cs">
       <DependentUpon>SocialMediaInfoPopup.xaml</DependentUpon>
@@ -538,6 +537,9 @@
     <Compile Include="Rest\Models\Response\CommentsAnalyzedStatisticsDTO.cs" />
     <Compile Include="Rest\Models\Response\SocialMediaLikesStatisticsDTO.cs" />
     <Compile Include="Rest\Models\Response\AlertsStatisticsDTO.cs" />
+    <Compile Include="Pages\Common\Controls\LayoutTouchListner.cs" />
+    <Compile Include="Pages\Common\Controls\SearchPageViewCellWithId.cs" />
+    <Compile Include="Converters\ItemToIndexConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -763,6 +765,7 @@
     <Folder Include="Pages\Results\Settings\Templates\" />
     <Folder Include="Pages\SonStatistics\" />
     <Folder Include="Pages\SonStatistics\Settings\" />
+    <Folder Include="Pages\Common\Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />

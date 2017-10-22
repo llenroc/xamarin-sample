@@ -18,6 +18,7 @@ using MvvmCross.Droid.Platform;
 using Plugin.Permissions;
 using CarouselView.FormsPlugin.Android;
 using Plugin.PushNotification;
+using Bullytect.Core;
 
 namespace Bullytect.Droid
 {
@@ -59,8 +60,11 @@ namespace Bullytect.Droid
 
     			base.OnCreate(bundle);
 
-    			// Required for proper Push notifications handling
-    			var setupSingleton = MvxAndroidSetupSingleton.EnsureSingletonAvailable(ApplicationContext);
+				App.ScreenWidth = (int)((int)Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density); // real pixels
+				App.ScreenHeight = (int)((int)Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density); // real pixels
+
+				// Required for proper Push notifications handling
+				var setupSingleton = MvxAndroidSetupSingleton.EnsureSingletonAvailable(ApplicationContext);
     			setupSingleton.EnsureInitialized();
 
                 global::Xamarin.Forms.Forms.Init(this, bundle);

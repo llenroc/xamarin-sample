@@ -72,6 +72,7 @@
     <Compile Include="Renderers\CustomFontLabelRenderer.cs" />
     <Compile Include="SplashScreen.cs" />
     <Compile Include="OAuth\OAuthAuthInterceptor.cs" />
+    <Compile Include="Renderers\LayoutTouchListnerRender.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

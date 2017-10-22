@@ -36,7 +36,7 @@ namespace Bullytect.Core.ViewModels
                 DataFound = children?.Count > 0;
             });
 
-            LoadChildrenCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
+            LoadChildrenCommand.IsExecuting.Subscribe((IsLoading) => IsBusy = IsLoading);
 
             LoadChildrenCommand.ThrownExceptions.Subscribe(HandleExceptions);
 

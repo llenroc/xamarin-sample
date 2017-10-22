@@ -107,6 +107,7 @@ namespace Bullytect.Core.ViewModels
                 NewProfileImage = null;
                 OnSonUpdated(CurrentSon);
                 _userDialogs.ShowSuccess(AppResources.EditSon_Saved_Changes_Successfully);
+                IsDirtyMonitoring = true;
             });
 
             SaveChangesCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.EditSon_Saving_Changes));
@@ -149,6 +150,7 @@ namespace Bullytect.Core.ViewModels
 
         SonEntity _currentSon = new SonEntity();
 
+        [IsDirtyMonitoring]
         public SonEntity CurrentSon
         {
             get => _currentSon;
@@ -301,8 +303,17 @@ namespace Bullytect.Core.ViewModels
 		protected override void OnBackPressed()
 		{
 
-			_appHelper.RequestConfirmation(AppResources.Signup_Cancel)
+			if (IsDirty)
+			{
+
+                _appHelper.RequestConfirmation(AppResources.EditSon_Cancel)
 					  .Subscribe((_) => base.OnBackPressed());
+			}
+			else
+			{
+
+				base.OnBackPressed();
+			}
 		}
 
         IObservable<SonInformation> GetSonInformation()
@@ -449,6 +460,8 @@ namespace Bullytect.Core.ViewModels
             ResetCommonProps();
 
             PageLoaded = true;
+
+			IsDirtyMonitoring = true;
 
         }
 

@@ -17,6 +17,7 @@
     BackgroundColor="{DynamicResource BasePageColor}">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
             <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -67,7 +68,19 @@
              
             </common:AppHeader>
 
-            <TableView  Grid.Row="1" Intent="Settings" HasUnevenRows="true">
+            <common:ActivityLoading
+                Grid.Row="1"
+                IsLoading="{ Binding IsBusy }"
+                LoadingText="{ Binding LoadingText }"
+                Icon="{ x:Static helper:FontAwesomeFont.UserO }"
+                HorizontalOptions="Center" 
+                VerticalOptions="FillAndExpand" />
+
+            <TableView  
+                Grid.Row="1"
+                IsVisible="{ Binding IsBusy , Converter = { StaticResource InverseBoolConverter }}"
+                Intent="Settings" 
+                HasUnevenRows="true">
 
                 <TableSection Title="{i18n:Translate Settings.Alerts.General}">
 

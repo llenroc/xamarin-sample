@@ -98,12 +98,23 @@ namespace Bullytect.Core.ViewModels
             }
         }
 
-        protected ObservableAsPropertyHelper<bool> _isBusy;
-        public bool IsBusy
-        {
-            get { return _isBusy != null ? _isBusy.Value : false; }
-        }
+		bool _isBusy;
 
+		public bool IsBusy
+		{
+			get => _isBusy;
+			set => SetProperty(ref _isBusy, value);
+		}
+
+		string _loadingText = AppResources.Profile_Saving_Changes;
+
+		public string LoadingText
+		{
+			get => _loadingText;
+			set => SetProperty(ref _loadingText, value);
+		}
+
+       
 		#region IsDirty
 
 		private string _cleanHash;
@@ -267,7 +278,7 @@ namespace Bullytect.Core.ViewModels
         }
 
 
-        protected void HandleIsExecuting(bool isLoading, string Text)
+		protected void HandleIsExecutingWithDialogs(bool isLoading, string Text)
         {
             if (isLoading)
             {
@@ -280,7 +291,14 @@ namespace Bullytect.Core.ViewModels
             }
         }
 
-        protected void ResetCommonProps(){
+		protected void HandleIsExecuting(bool isLoading, string Text)
+        {
+            IsBusy = isLoading;
+            LoadingText = Text;
+        }
+
+
+		protected void ResetCommonProps(){
             ErrorOccurred = false;
             DataFound = true;
             FieldErrors = new Dictionary<string, string>();

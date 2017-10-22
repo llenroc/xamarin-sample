@@ -477,6 +477,10 @@ and we will recover it for you. </value>
     <value> Save Changes </value>
     <comment>Profile Save Changes</comment>
   </data>
+  <data name="Profile.Cancel.Changes" xml:space="preserve">
+    <value> Cancel Changes?</value>
+    <comment>Profile Cancel Changes</comment>
+  </data>
   <data name="Profile.Saving.Changes" xml:space="preserve">
     <value> Saving Changes ...</value>
     <comment>Profile Saving Changes</comment>
@@ -604,6 +608,10 @@ and we will recover it for you. </value>
   <data name="EditSon.General.Section.Title" xml:space="preserve">
     <value> General Information </value>
     <comment>EditSon General Section Title</comment>
+  </data>
+  <data name="EditSon.Cancel" xml:space="preserve">
+    <value> Cancel Changes? </value>
+    <comment>EditSon Cancel</comment>
   </data>
   <data name="EditSon.General.Change.Profile.Image" xml:space="preserve">
     <value> Change Profile Image </value>

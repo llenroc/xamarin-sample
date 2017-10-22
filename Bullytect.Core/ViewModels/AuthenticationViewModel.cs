@@ -44,7 +44,7 @@ namespace Bullytect.Core.ViewModels
             LoginCommand.Subscribe(HandleAuthSuccess);
 
 
-            LoginCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Login_Authenticating));
+            LoginCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecutingWithDialogs(isLoading, AppResources.Login_Authenticating));
 
 
             LoginCommand.ThrownExceptions.Subscribe(HandleExceptions);

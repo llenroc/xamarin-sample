@@ -23,6 +23,9 @@ namespace Bullytect.Core
     public partial class App : MvxFormsApplication
     {
 
+		public static int ScreenWidth;
+		public static int ScreenHeight;
+
 		private void ConfigLocale()
 		{
 
@@ -40,6 +43,15 @@ namespace Bullytect.Core
         {
             ConfigLocale();
             InitializeComponent();
+
+			if (ScreenHeight == 0)
+			{
+				ScreenHeight = 1000;
+			}
+			if (ScreenWidth == 0)
+			{
+				ScreenWidth = 600;
+			}
         }
 
 
