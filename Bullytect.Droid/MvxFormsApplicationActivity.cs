@@ -17,7 +17,6 @@ using Xamarin.Forms.Platform.Android;
 using MvvmCross.Droid.Platform;
 using Plugin.Permissions;
 using CarouselView.FormsPlugin.Android;
-using Plugin.PushNotification;
 using Bullytect.Core;
 
 namespace Bullytect.Droid
@@ -112,7 +111,7 @@ namespace Bullytect.Droid
     			FormsHelper.ForceLoadingAssemblyContainingType(typeof(UXDivers.Effects.Effects));
 
                 LoadApplication(FormsApplication);
-                PushNotificationManager.ProcessIntent(Intent);
+                //PushNotificationManager.ProcessIntent(Intent);
 
     			var starter = Mvx.Resolve<IMvxAppStart>();
     			starter.Start();

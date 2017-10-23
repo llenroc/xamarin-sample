@@ -3,7 +3,6 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using MvvmCross.Droid.Views;
-using Plugin.PushNotification;
 
 namespace Bullytect.Droid
 {

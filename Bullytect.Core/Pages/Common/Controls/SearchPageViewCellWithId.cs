@@ -14,7 +14,7 @@ namespace Bullytect.Core.Pages.Common.Controls
 		{
 			base.OnAppearing();
 
-			if (ItemId == 1)
+			if (ItemId == 0)
 			{
 				DoFirstApper();
 
@@ -37,7 +37,7 @@ namespace Bullytect.Core.Pages.Common.Controls
 		{
 			base.OnDisappearing();
 
-			if (ItemId == 1)
+			if (ItemId == 0)
 			{
 				DoFirstDisapp();
 			}

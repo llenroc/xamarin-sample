@@ -74,14 +74,14 @@
                  IsVisible="{ Binding ErrorOccurred , Converter = { StaticResource InverseBoolConverter }  }">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="250" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <!-- PROFILE HEADER-->
                     <Grid 
                         Grid.Row="0"
-                        BackgroundColor="Black"
+                        HeightRequest="250"
                         Padding="0">
 
                         <!-- BACKGROUND IMAGE -->
@@ -307,8 +307,7 @@
                                 Grid.Row="1"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="StartAndExpand"
-                                Padding="0"
-                                Spacing="0">
+                                Padding="0">
 
                                 <StackLayout
                                     Orientation="Horizontal">

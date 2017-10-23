@@ -99,7 +99,7 @@ namespace Bullytect.Core.Services.Impl
                     LastName = LastName,
                     Birthdate = Birthdate,
                     Email = Email,
-                    Telephone = Telephone ?? string.Empty
+                    Telephone = Telephone
                 })
                 .Select((APIResponse<ParentDTO> response) => response.Data)
                 .Select(parent => Mapper.Map<ParentDTO, ParentEntity>(parent))

@@ -20,7 +20,6 @@ using Bullytect.Core.OAuth.Services.Impl;
 using Bullytect.Core.OAuth.Services;
 using Bullytect.Core.Rest.Models.Request;
 using Bullytect.Core.ViewModels.Core.Models;
-using Microcharts;
 using static Bullytect.Core.Rest.Models.Response.SentimentAnalysisStatisticsDTO;
 using SkiaSharp;
 using static Bullytect.Core.Rest.Models.Response.DimensionsStatisticsDTO;
@@ -29,6 +28,10 @@ using static Bullytect.Core.Rest.Models.Response.SocialMediaActivityStatisticsDT
 using static Bullytect.Core.Rest.Models.Response.CommentsAnalyzedStatisticsDTO;
 using static Bullytect.Core.Rest.Models.Response.SocialMediaLikesStatisticsDTO;
 using static Bullytect.Core.Rest.Models.Response.AlertsStatisticsDTO;
+using Xamarin.Forms;
+using Bullytect.Core.I18N.Services;
+using Microcharts;
+using Bullytect.Core.Rest.Utils;
 
 namespace Bullytect.Core
 {
@@ -86,8 +89,8 @@ namespace Bullytect.Core
 			// Sentiment Analysis Chart
 
 			//Mapper for SentimentDTO to Microchart Entry
-			cfg.CreateMap<SentimentDTO, Entry>()
-				.ConstructUsing(s => new Entry(s.Score))
+			cfg.CreateMap<SentimentDTO, Microcharts.Entry>()
+				.ConstructUsing(s => new Microcharts.Entry(s.Score))
 				.ForMember(s => s.Label, (obj) => obj.ResolveUsing(o => o.Type))
 				.ForMember(s => s.Value, (obj) => obj.ResolveUsing(o => o.Score))
 				.ForMember(s => s.ValueLabel, (obj) => obj.ResolveUsing(o => o.Label))
@@ -120,8 +123,8 @@ namespace Bullytect.Core
 			// Dimensions Chart
 
 			//Mapper for DimensionDTO to Microchart Entry
-			cfg.CreateMap<DimensionDTO, Entry>()
-				.ConstructUsing(s => new Entry(s.Value))
+			cfg.CreateMap<DimensionDTO, Microcharts.Entry>()
+				.ConstructUsing(s => new Microcharts.Entry(s.Value))
 				.ForMember(s => s.Label, (obj) => obj.ResolveUsing(o => o.Type))
 				.ForMember(s => s.Value, (obj) => obj.ResolveUsing(o => o.Value))
 				.ForMember(s => s.ValueLabel, (obj) => obj.ResolveUsing(o => o.Label))
@@ -136,8 +139,8 @@ namespace Bullytect.Core
 			// Communities Chart
 
 			//Mapper for CommunityDTO to Microchart Entry
-			cfg.CreateMap<CommunityDTO, Entry>()
-				.ConstructUsing(s => new Entry(s.Value))
+			cfg.CreateMap<CommunityDTO, Microcharts.Entry>()
+				.ConstructUsing(s => new Microcharts.Entry(s.Value))
 				.ForMember(s => s.Label, (obj) => obj.ResolveUsing(o => o.Type))
 				.ForMember(s => s.Value, (obj) => obj.ResolveUsing(o => o.Value))
 				.ForMember(s => s.ValueLabel, (obj) => obj.ResolveUsing(o => o.Label))
@@ -151,8 +154,8 @@ namespace Bullytect.Core
 			// Social Media Activities Chart
 
 			//Mapper for ActivityDTO to Microchart Entry
-			cfg.CreateMap<ActivityDTO, Entry>()
-				.ConstructUsing(s => new Entry(s.Value))
+			cfg.CreateMap<ActivityDTO, Microcharts.Entry>()
+				.ConstructUsing(s => new Microcharts.Entry(s.Value))
 				.ForMember(s => s.Label, (obj) => obj.ResolveUsing(o => o.Type))
 				.ForMember(s => s.Value, (obj) => obj.ResolveUsing(o => o.Value))
 				.ForMember(s => s.ValueLabel, (obj) => obj.ResolveUsing(o => o.Label))
@@ -183,8 +186,8 @@ namespace Bullytect.Core
 			// Comments Analyzed Chart
 
 			//Mapper for CommentAnalyzedDTO  to Microchart Entry
-			cfg.CreateMap<CommentAnalyzedDTO, Entry>()
-				.ConstructUsing(s => new Entry(s.Total))
+			cfg.CreateMap<CommentAnalyzedDTO, Microcharts.Entry>()
+				.ConstructUsing(s => new Microcharts.Entry(s.Total))
 				.ForMember(s => s.Label, (obj) => obj.ResolveUsing(o => String.Format("{0:d/M/yyyy HH:mm:ss}", o.Date)))
 				.ForMember(s => s.Value, (obj) => obj.ResolveUsing(o => o.Total))
 				.ForMember(s => s.ValueLabel, (obj) => obj.ResolveUsing(o => o.Label))
@@ -199,8 +202,8 @@ namespace Bullytect.Core
 			// Social Media Likes Chart
 
 			//Mapper for SocialMediaLikesDTO  to Microchart Entry
-			cfg.CreateMap<SocialMediaLikesDTO, Entry>()
-                .ConstructUsing(s => new Entry(s.Likes))
+			cfg.CreateMap<SocialMediaLikesDTO, Microcharts.Entry>()
+                .ConstructUsing(s => new Microcharts.Entry(s.Likes))
                 .ForMember(s => s.Label, (obj) => obj.ResolveUsing(o => o.Type))
                 .ForMember(s => s.Value, (obj) => obj.ResolveUsing(o => o.Likes))
                 .ForMember(s => s.ValueLabel, (obj) => obj.ResolveUsing(o => o.Label))
@@ -230,8 +233,8 @@ namespace Bullytect.Core
 			// Alerts Statistics Chart
 
 			//Mapper for AlertLevelDTO  to Microchart Entry
-			cfg.CreateMap<AlertLevelDTO, Entry>()
-                .ConstructUsing(s => new Entry(s.Total))
+			cfg.CreateMap<AlertLevelDTO, Microcharts.Entry>()
+                .ConstructUsing(s => new Microcharts.Entry(s.Total))
                 .ForMember(s => s.Label, (obj) => obj.ResolveUsing(o => o.Level))
 				.ForMember(s => s.Value, (obj) => obj.ResolveUsing(o => o.Total))
 				.ForMember(s => s.ValueLabel, (obj) => obj.ResolveUsing(o => o.Label))
@@ -275,15 +278,7 @@ namespace Bullytect.Core
         public override void Initialize()
         {
 
-			var httpClient = new HttpClient(new HttpLoggingHandler(
-				new UnauthorizedHttpClientHandler(new AuthenticatedHttpClientHandler(() => Config.Settings.AccessToken))))
-			{
-				BaseAddress = new Uri(SharedConfig.BASE_API_URL),
-				Timeout = TimeSpan.FromMinutes(SharedConfig.TIMEOUT_OPERATION_MINUTES)
-			};
-
-
-            prepareRestServices(httpClient);
+            prepareRestServices(HttpClientFactory.getHttpClient());
 
             prepareMappers();
 
@@ -302,7 +297,7 @@ namespace Bullytect.Core
 
 			ImageService.Instance.Initialize(new Configuration
 			{
-				HttpClient = httpClient
+				HttpClient = HttpClientFactory.getHttpClient()
 			});
 
             RegisterAppStart(new CustomAppStart());

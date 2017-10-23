@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using Android.App;
 using Android.Runtime;
-using Plugin.PushNotification;
+using Plugin.FirebasePushNotification;
 
 namespace Bullytect.Droid
 {
@@ -21,13 +21,13 @@ namespace Bullytect.Droid
 
 			// If debug you should reset the token each time.
             #if DEBUG
-			    PushNotificationManager.Initialize(this, true);
-            #else
-              PushNotificationManager.Initialize(this,false);
-            #endif
+			    FirebasePushNotificationManager.Initialize(this, true);
+#else
+              FirebasePushNotificationManager.Initialize(this,false);
+#endif
 
 			//Handle notification when app is closed here
-			CrossPushNotification.Current.OnNotificationReceived += (s, p) =>
+			CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
 			{
                 Debug.WriteLine("Notification Received");
 

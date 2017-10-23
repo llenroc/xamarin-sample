@@ -18,7 +18,8 @@ namespace Bullytect.Core
     using Bullytect.Utils.Helpers;
     using MvvmCross.Core.Navigation;
     using Bullytect.Core.ViewModels;
-    using Plugin.PushNotification;
+    using Plugin.FirebasePushNotification;
+    using Bullytect.Core.Rest.Utils;
 
     public partial class App : MvxFormsApplication
     {
@@ -32,8 +33,9 @@ namespace Bullytect.Core
             if (Device.RuntimePlatform == Device.iOS || Device.RuntimePlatform == Device.Android )
 			{
 				Debug.WriteLine("Get Culture Info ...");
-				var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
+                var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
 				Debug.WriteLine(ci.ToString());
+                HttpClientFactory.getHttpClient()?.DefaultRequestHeaders.TryAddWithoutValidation("Accept-Language", ci.Name);
 				AppResources.Culture = ci; // set the RESX for resource localization
 				DependencyService.Get<ILocalize>().SetLocale(ci); // set the Thread for locale-aware methods
 			}
@@ -109,23 +111,23 @@ namespace Bullytect.Core
 
 
 			// Handle when your app starts
-			CrossPushNotification.Current.OnTokenRefresh += (s, p) =>
+			CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
 			{
 				Debug.WriteLine($"TOKEN REC: {p.Token}");
 				Settings.FcmToken = p.Token;
 			};
 
-            Debug.WriteLine($"TOKEN: {CrossPushNotification.Current.Token}");
-            Settings.FcmToken = CrossPushNotification.Current.Token;
+            Debug.WriteLine($"TOKEN: {CrossFirebasePushNotification.Current.Token}");
+            Settings.FcmToken = CrossFirebasePushNotification.Current.Token;
 
-			CrossPushNotification.Current.OnNotificationReceived += (s, p) =>
+			CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
 			{
 
 				System.Diagnostics.Debug.WriteLine("Received");
 
 			};
 
-			CrossPushNotification.Current.OnNotificationOpened += (s, p) =>
+			CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
 			{
 				System.Diagnostics.Debug.WriteLine("Opened");
 				foreach (var data in p.Data)
