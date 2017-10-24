@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
@@ -12,7 +13,6 @@ using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using MvvmHelpers;
 using ReactiveUI;
-using SkiaSharp;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -24,6 +24,8 @@ namespace Bullytect.Core.ViewModels
 		const int COMMENTS_ANALYZED_CHART_POS = 0;
         const int SYSTEM_ALERTS_CHART_POS = 1;
         const int SOCIAL_MEDIA_LIKES_CHART_POS = 2;
+        const int MOST_ACTIVE_FRIENDS_POS = 3;
+        const int NEW_FRIENDS_POS = 4;
 
         public ResultsViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger,
                                 AppHelper appHelper, IStatisticsService statisticsService) : base(userDialogs, mvxMessenger, appHelper)
@@ -31,9 +33,9 @@ namespace Bullytect.Core.ViewModels
 
             _statisticsService = statisticsService;
 
-			RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, ChartModel>((_) => RefreshCurrentChart(force: true));
+            RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, object>((_) => RefreshCurrentPage(force: true));
 
-			RefreshCommand.Subscribe(HandlerRefreshCurrentChart);
+			RefreshCommand.Subscribe(HandlerRefreshCurrentPage);
 
 			RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
@@ -74,17 +76,19 @@ namespace Bullytect.Core.ViewModels
 
         public ChartModel SocialMediaLikesChart
         {
-
             get => _socialMediaLikesChart;
             set => SetProperty(ref _socialMediaLikesChart, value);
         }
 
+        public ObservableRangeCollection<UserListModel> MostActiveFriends { get; } = new ObservableRangeCollection<UserListModel>();
+
+        public ObservableRangeCollection<UserListModel> NewFriends { get; } = new ObservableRangeCollection<UserListModel>();
 
         #endregion
 
         #region commands
 
-        public ReactiveCommand<Unit, ChartModel> RefreshCommand { get; protected set; }
+        public ReactiveCommand<Unit, object> RefreshCommand { get; protected set; }
 
         public ICommand RefreshChartCommand
         {
@@ -92,13 +96,13 @@ namespace Bullytect.Core.ViewModels
             {
                 return new MvxCommand<int>((pos) =>
                 {
-                    RefreshCurrentChart().Catch<ChartModel, Exception>(ex =>
+                    RefreshCurrentPage().Catch<object, Exception>(ex =>
                     {
                         HandleExceptions(ex);
                         IsBusy = false;
-                        return Observable.Empty<ChartModel>();
+                        return Observable.Empty<object>();
 
-                    }).Subscribe(HandlerRefreshCurrentChart);
+                    }).Subscribe(HandlerRefreshCurrentPage);
 
                 });
             }
@@ -117,7 +121,7 @@ namespace Bullytect.Core.ViewModels
 		#region methods
 
 
-		void HandlerRefreshCurrentChart(ChartModel Chart)
+		void HandlerRefreshCurrentPage(object Data)
 		{
 
 			IsBusy = false;
@@ -127,24 +131,30 @@ namespace Bullytect.Core.ViewModels
 			{
 
 				case COMMENTS_ANALYZED_CHART_POS:
-					CommentsAnalyzedChart = Chart;
+                    CommentsAnalyzedChart = Data as ChartModel;
 					break;
 
 				case SYSTEM_ALERTS_CHART_POS:
-					SystemAlertsChart = Chart;
+					SystemAlertsChart = Data as ChartModel;
 					break;
 
 				case SOCIAL_MEDIA_LIKES_CHART_POS:
-					SocialMediaLikesChart = Chart;
+					SocialMediaLikesChart = Data as ChartModel;
+					break;
+                case MOST_ACTIVE_FRIENDS_POS:
+                    MostActiveFriends.ReplaceRange(Data as IList<UserListModel>);
+                    break;
+				case NEW_FRIENDS_POS:
+                    NewFriends.ReplaceRange(Data as IList<UserListModel>);
 					break;
 
 			}
 		}
 
-		IObservable<ChartModel> RefreshCurrentChart(bool force = false)
+		IObservable<object> RefreshCurrentPage(bool force = false)
 		{
 
-			IObservable<ChartModel> observable = Observable.Empty<ChartModel>(); ;
+            IObservable<object> observable = Observable.Empty<object>(); ;
 
 			switch (Position)
 			{
@@ -173,6 +183,15 @@ namespace Bullytect.Core.ViewModels
 					}
 					break;
 
+                case MOST_ACTIVE_FRIENDS_POS:
+                    IsBusy = true;
+                    observable = _statisticsService.GetMostActiveFriends();
+                    break;
+
+                case NEW_FRIENDS_POS:
+                    IsBusy = true;
+                    observable = _statisticsService.GetNewFriends();
+                    break;
 				default:
 					if (force || SocialMediaLikesChart == null)
 					{

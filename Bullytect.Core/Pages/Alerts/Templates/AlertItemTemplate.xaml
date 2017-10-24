@@ -12,7 +12,6 @@
     xmlns:converter="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared.Base">
     <ContentView.Resources>
         <ResourceDictionary>
-            <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
             <converters:DateTimeToElapsedTimeConverter x:Key="DateTimeToElapsedTimeConverter" />
             <converters:AlertLevelToFontIconConverter x:Key="AlertLevelToFontIconConverter" />
             <converters:AlertLevelToColorConverter x:Key="AlertLevelToColorConverter" />
@@ -25,8 +24,6 @@
         Padding="10, 5, 10, 5"
         HorizontalOptions="FillAndExpand"
         VerticalOptions="Center">
-
-
 
         <Label 
             Grid.Column="0"

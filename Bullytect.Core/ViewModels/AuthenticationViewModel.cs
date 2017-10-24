@@ -114,6 +114,7 @@ namespace Bullytect.Core.ViewModels
         public const string SIGN_OUT = "SIGN_OUT";
         public const string SESSION_EXPIRED = "SESSION_EXPIRED";
         public const string SIGN_UP = "SIGN_UP";
+        public const string ACCOUNT_DELETED = "ACCOUNT_DELETED";
 
 		public class AuthenticationParameter
 		{
@@ -139,6 +140,8 @@ namespace Bullytect.Core.ViewModels
 
             } else if(ReasonForAuthentication.Equals(SIGN_UP)) {
                 _appHelper.Toast(AppResources.Signup_Account_Created, System.Drawing.Color.FromArgb(12, 131, 193));
+            } else if(ReasonForAuthentication.Equals(ACCOUNT_DELETED)) {
+                _appHelper.Toast(AppResources.Profile_Account_Deleted, System.Drawing.Color.FromArgb(12, 131, 193));
             }
         }
 

@@ -20,6 +20,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
             <converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter" />
             <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
         </ResourceDictionary>
@@ -63,6 +64,7 @@
                 VerticalOptions="FillAndExpand" 
                 HorizontalOptions="FillAndExpand"
                 ShowIndicators="true"
+                IsSwipingEnabled="{ Binding IsBusy, Converter = { StaticResource InverseBoolConverter } }"
                 Position="{Binding Position}"
                 IndicatorsTintColor="{ DynamicResource AccentColor }">
                

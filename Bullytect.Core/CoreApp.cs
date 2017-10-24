@@ -81,7 +81,16 @@ namespace Bullytect.Core
 			.ForMember(s => s.IsEnabled, (obj) =>
 					   obj.UseValue<bool>(!Settings.Current.ShowResultsForAllChildren));
 
-        }
+			// Mapper for MostActiveFriendsDTO.UserDTO to UserListModel
+
+            cfg.CreateMap<MostActiveFriendsDTO.UserDTO, UserListModel>();
+
+			// Mapper for NewFriendsDTO.UserDTO to UserListModel
+
+            cfg.CreateMap<NewFriendsDTO.UserDTO, UserListModel>();
+
+
+		}
 
 
         void prepareMappersForCharts(IMapperConfigurationExpression cfg){

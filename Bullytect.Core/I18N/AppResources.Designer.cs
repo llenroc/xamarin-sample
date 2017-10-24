@@ -1085,6 +1085,42 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Results_Most_Active_Friends {
+            get {
+                return ResourceManager.GetString("Results.Most.Active.Friends", resourceCulture);
+            }
+        }
+        
+        internal static string Results_Most_Active_Friends_Loading {
+            get {
+                return ResourceManager.GetString("Results.Most.Active.Friends.Loading", resourceCulture);
+            }
+        }
+        
+        internal static string Results_Most_Active_Friends_Error {
+            get {
+                return ResourceManager.GetString("Results.Most.Active.Friends.Error", resourceCulture);
+            }
+        }
+        
+        internal static string Results_New_Friends {
+            get {
+                return ResourceManager.GetString("Results.New.Friends", resourceCulture);
+            }
+        }
+        
+        internal static string Results_New_Friends_Loading {
+            get {
+                return ResourceManager.GetString("Results.New.Friends.Loading", resourceCulture);
+            }
+        }
+        
+        internal static string Results_New_Friends_Error {
+            get {
+                return ResourceManager.GetString("Results.New.Friends.Error", resourceCulture);
+            }
+        }
+        
         internal static string Settings_Statistics_Son_General {
             get {
                 return ResourceManager.GetString("Settings.Statistics.Son.General", resourceCulture);

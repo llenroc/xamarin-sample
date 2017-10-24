@@ -18,6 +18,9 @@ using MvvmCross.Droid.Platform;
 using Plugin.Permissions;
 using CarouselView.FormsPlugin.Android;
 using Bullytect.Core;
+using Firebase.Messaging;
+using Firebase.Iid;
+using Plugin.PushNotification;
 
 namespace Bullytect.Droid
 {
@@ -111,7 +114,9 @@ namespace Bullytect.Droid
     			FormsHelper.ForceLoadingAssemblyContainingType(typeof(UXDivers.Effects.Effects));
 
                 LoadApplication(FormsApplication);
-                //PushNotificationManager.ProcessIntent(Intent);
+                PushNotificationManager.ProcessIntent(Intent);
+
+                System.Diagnostics.Debug.WriteLine("Token: " + FirebaseInstanceId.Instance.Token);
 
     			var starter = Mvx.Resolve<IMvxAppStart>();
     			starter.Start();
@@ -119,7 +124,6 @@ namespace Bullytect.Droid
             }
             catch (Exception e)
 			{
-
 				System.Diagnostics.Debug.WriteLine("**BullTect LAUNCH EXCEPTION**\n\n" + e);
 			}
 

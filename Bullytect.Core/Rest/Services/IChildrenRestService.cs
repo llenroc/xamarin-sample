@@ -40,5 +40,9 @@ namespace Bullytect.Core.Rest.Services
         IObservable<APIResponse<SocialMediaLikesStatisticsDTO>> GetSocialMediaLikesStatistics(String[] Ids, int daysLimit);
 
         IObservable<APIResponse<AlertsStatisticsDTO>> GetAlertsStatistics(String[] Ids, int daysLimit);
+
+        IObservable<APIResponse<MostActiveFriendsDTO>> GetMostActiveFriends(String[] Ids, int daysLimit);
+
+        IObservable<APIResponse<NewFriendsDTO>> GetNewFriends(String[] Ids, int daysLimit);
     }
 }

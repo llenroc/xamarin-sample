@@ -19,6 +19,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -62,6 +63,7 @@
                 VerticalOptions="FillAndExpand" 
                 HorizontalOptions="FillAndExpand"
                 ShowIndicators="true"
+                IsSwipingEnabled="{ Binding IsBusy, Converter = { StaticResource InverseBoolConverter } }"
                 Position="{Binding Position}"
                 IndicatorsTintColor="{ DynamicResource AccentColor }">
                 <controls:CarouselViewControl.ItemsSource>
@@ -99,7 +101,26 @@
                             Error="{ Binding ErrorOccurred }"
                             ErrorText="{i18n:Translate Results.Social.Media.Likes.Error}"
                         />
+                        <!-- Most Active Friends -->
+                        <carouselTemplate:UserListPage 
+                            Title="{i18n:Translate Results.Most.Active.Friends}"
+                            IsLoading="{ Binding IsBusy }"
+                            LoadingText="{i18n:Translate Results.Most.Active.Friends.Loading }"
+                            Error="{ Binding ErrorOccurred }"
+                            ErrorText="{i18n:Translate Results.Most.Active.Friends.Error }"
+                            Source="{ Binding MostActiveFriends }"
+                        />
 
+                        <!-- New Friends -->
+                        <carouselTemplate:UserListPage 
+                            Title="{i18n:Translate Results.New.Friends}"
+                            IsLoading="{ Binding IsBusy }"
+                            LoadingText="{i18n:Translate Results.New.Friends.Loading }"
+                            Error="{ Binding ErrorOccurred }"
+                            ErrorText="{i18n:Translate Results.New.Friends.Error}"
+                            Source="{ Binding NewFriends }"
+                        />
+                        
                     </x:Array>
                 </controls:CarouselViewControl.ItemsSource>
             </controls:CarouselViewControl>

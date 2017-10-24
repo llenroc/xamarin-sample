@@ -519,11 +519,11 @@
     <Reference Include="PCLCrypto">
       <HintPath>..\packages\PCLCrypto.2.0.147\lib\MonoAndroid23\PCLCrypto.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.FirebasePushNotification.Abstractions">
-      <HintPath>..\packages\Plugin.FirebasePushNotification.1.0.7\lib\MonoAndroid10\Plugin.FirebasePushNotification.Abstractions.dll</HintPath>
+    <Reference Include="Plugin.PushNotification.Abstractions">
+      <HintPath>..\packages\Plugin.PushNotification.1.0.0\lib\MonoAndroid10\Plugin.PushNotification.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.FirebasePushNotification">
-      <HintPath>..\packages\Plugin.FirebasePushNotification.1.0.7\lib\MonoAndroid10\Plugin.FirebasePushNotification.dll</HintPath>
+    <Reference Include="Plugin.PushNotification">
+      <HintPath>..\packages\Plugin.PushNotification.1.0.0\lib\MonoAndroid10\Plugin.PushNotification.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

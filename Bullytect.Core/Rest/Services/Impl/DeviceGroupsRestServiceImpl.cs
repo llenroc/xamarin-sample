@@ -15,6 +15,11 @@ namespace Bullytect.Core.Rest.Services.Impl
         {
         }
 
+        public IObservable<APIResponse<string>> Delete(string DeviceId)
+        {
+            return Observable.FromAsync(() => DeleteData<APIResponse<string>>(ApiEndpoints.DELETE_DEVICE_FROM_GROUP.Replace(":id", DeviceId)));
+        }
+
         public IObservable<APIResponse<DeviceDTO>> save(SaveDeviceDTO saveDevice)
         {
             Debug.WriteLine("Device Id" + saveDevice.DeviceId);

@@ -149,9 +149,6 @@
     <EmbeddedResource Include="Pages\EditSon\Popup\SocialMediaInfoPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Results\Templates\LastIterationsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\Common\Templates\CommonInfoPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -192,6 +189,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Common\Templates\ChartPageTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Results\Templates\UserListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Results\Templates\UserItemTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -385,7 +388,6 @@
       <DependentUpon>AlertDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AlertDetailViewModel.cs" />
-    <Compile Include="Messages\SignOutMessage.cs" />
     <Compile Include="Properties\AssemblyGlobal.cs" />
     <Compile Include="Pages\Common\Extended\ExtendedViewCell.cs" />
     <Compile Include="Models\Domain\ImageEntity.cs" />
@@ -461,9 +463,6 @@
     <Compile Include="ViewModels\ResultsViewModel.cs" />
     <Compile Include="Rest\Models\Response\IterationDTO.cs" />
     <Compile Include="Models\Domain\IterationEntity.cs" />
-    <Compile Include="Pages\Results\Templates\LastIterationsPage.xaml.cs">
-      <DependentUpon>LastIterationsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Converters\PickerSelectedIndexChangedArgsConverter.cs" />
     <Compile Include="Pages\Common\Templates\CommonInfoPopup.xaml.cs">
       <DependentUpon>CommonInfoPopup.xaml</DependentUpon>
@@ -541,6 +540,15 @@
     <Compile Include="Pages\Common\Controls\SearchPageViewCellWithId.cs" />
     <Compile Include="Converters\ItemToIndexConverter.cs" />
     <Compile Include="Rest\Utils\HttpClientFactory.cs" />
+    <Compile Include="Pages\Results\Templates\UserListPage.xaml.cs">
+      <DependentUpon>UserListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Results\Templates\UserItemTemplate.xaml.cs">
+      <DependentUpon>UserItemTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Core\Models\UserListModel.cs" />
+    <Compile Include="Rest\Models\Response\MostActiveFriendsDTO.cs" />
+    <Compile Include="Rest\Models\Response\NewFriendsDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -732,11 +740,11 @@
     <Reference Include="Refractored.XamForms.PullToRefresh">
       <HintPath>..\packages\Refractored.XamForms.PullToRefresh.2.0.0.13\lib\netstandard1.0\Refractored.XamForms.PullToRefresh.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.FirebasePushNotification.Abstractions">
-      <HintPath>..\packages\Plugin.FirebasePushNotification.1.0.7\lib\netstandard1.0\Plugin.FirebasePushNotification.Abstractions.dll</HintPath>
+    <Reference Include="Plugin.PushNotification.Abstractions">
+      <HintPath>..\packages\Plugin.PushNotification.1.0.0\lib\netstandard1.0\Plugin.PushNotification.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.FirebasePushNotification">
-      <HintPath>..\packages\Plugin.FirebasePushNotification.1.0.7\lib\netstandard1.0\Plugin.FirebasePushNotification.dll</HintPath>
+    <Reference Include="Plugin.PushNotification">
+      <HintPath>..\packages\Plugin.PushNotification.1.0.0\lib\netstandard1.0\Plugin.PushNotification.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

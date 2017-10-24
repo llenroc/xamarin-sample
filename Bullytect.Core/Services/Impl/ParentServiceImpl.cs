@@ -136,7 +136,6 @@ namespace Bullytect.Core.Services.Impl
             var observable = _parentsRestService
                 .DeleteAccount()
                 .Select((APIResponse<string> response) => response.Data)
-                .Do((_) => _mvxMessenger.Publish(new AccountDeletedMessage(this){}))
                 .Finally(() =>
                 {
                     Debug.WriteLine("Delete Account Finished ...");

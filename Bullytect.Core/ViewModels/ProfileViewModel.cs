@@ -36,7 +36,6 @@ namespace Bullytect.Core.ViewModels
                                   .SelectMany((_) => _parentService.Update(SelfParent.FirstName, SelfParent.LastName, SelfParent.Birthdate, SelfParent.Email, string.Concat(SelfParent.PhonePrefix, SelfParent.PhoneNumber))) :
 
                     _parentService.Update(SelfParent.FirstName, SelfParent.LastName, SelfParent.Birthdate, SelfParent.Email, string.Concat(SelfParent.PhonePrefix, SelfParent.PhoneNumber));
-                    
                 
             });
 
@@ -72,7 +71,15 @@ namespace Bullytect.Core.ViewModels
                 });
 
 
-            DeleteAccountCommand.Subscribe((_) => _appHelper.Toast(AppResources.Profile_Account_Deleted, System.Drawing.Color.FromArgb(12, 131, 193)));
+            DeleteAccountCommand.Subscribe((_) =>
+            {
+				Bullytect.Core.Config.Settings.AccessToken = null;
+				ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter()
+				{
+                    ReasonForAuthentication = AuthenticationViewModel.ACCOUNT_DELETED
+				});
+
+             });
 
 
 			DeleteAccountCommand.ThrownExceptions.Subscribe(HandleExceptions);

@@ -46,6 +46,8 @@ namespace Bullytect.Core.Rest.Utils
         public static string COMMENTS_ANALYZED = string.Concat(SharedConfig.BASE_API_URL, "/comments/analyzed");
         public static string SOCIAL_MEDIA_LIKES = string.Concat(SharedConfig.BASE_API_URL, "/comments/social-media-Likes");
         public static string ALERTS_STATISTICS = string.Concat(SharedConfig.BASE_API_URL, "/alerts/statistics/alerts");
-
+        public static string MOST_ACTIVE_FRIENDS = string.Concat(SharedConfig.BASE_API_URL, "/comments/most-active-friends");
+        public static string NEW_FRIENDS = string.Concat(SharedConfig.BASE_API_URL, "/comments/new-friends");
+        public static string DELETE_DEVICE_FROM_GROUP = string.Concat(SharedConfig.BASE_API_URL, "/devices/:id/delete");
     }
 }

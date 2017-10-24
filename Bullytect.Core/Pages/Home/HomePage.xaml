@@ -84,20 +84,23 @@
                         HeightRequest="250"
                         Padding="0">
 
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
                         <!-- BACKGROUND IMAGE -->
                         <Image 
+                            Grid.Row="0"
+                            Grid.RowSpan="2"
                             Source="{ StaticResource HomeBackground }"
                             IsOpaque="false"
                             Aspect="AspectFill"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"/>
+                            HorizontalOptions="FillAndExpand"/>
 
                         <StackLayout
-                            
-                            HorizontalOptions="FillAndExpand" 
-                            VerticalOptions="StartAndExpand"
-                            Orientation="Vertical"
-                            Spacing="20">
+                            Grid.Row="0"
+                            HorizontalOptions="FillAndExpand">
 
                             <Grid 
                                 HorizontalOptions="Center"
@@ -164,7 +167,7 @@
                         <!-- TOOLBAR -->
                         <Grid
                             x:Name="MenuGrid"
-                            VerticalOptions="End"
+                            Grid.Row="1"
                             Style="{ StaticResource ToolbarStyle }"
                             BackgroundColor="{ DynamicResource TranslucidWhite }">
 

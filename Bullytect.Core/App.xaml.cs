@@ -2,24 +2,21 @@
 
 namespace Bullytect.Core
 {
-    using System;
     using System.Diagnostics;
     using Acr.UserDialogs;
     using Bullytect.Core.Config;
     using Bullytect.Core.I18N;
     using Bullytect.Core.I18N.Services;
     using Bullytect.Core.Messages;
-    using Bullytect.Core.Services;
     using MvvmCross.Forms.Core;
     using MvvmCross.Platform;
     using MvvmCross.Plugins.Messenger;
-    using Plugin.DeviceInfo;
     using Xamarin.Forms;
     using Bullytect.Utils.Helpers;
+    using Bullytect.Core.Rest.Utils;
+    using Plugin.PushNotification;
     using MvvmCross.Core.Navigation;
     using Bullytect.Core.ViewModels;
-    using Plugin.FirebasePushNotification;
-    using Bullytect.Core.Rest.Utils;
 
     public partial class App : MvxFormsApplication
     {
@@ -70,32 +67,6 @@ namespace Bullytect.Core
             
         }
 
-		void OnSessionExpiredMessage(SessionExpiredMessage sessionExpiredMessage)
-		{
-			Debug.WriteLine("OnSessionExpiredMessage ...");
-
-            var userDialogs = Mvx.Resolve<IUserDialogs>();
-            var navigationService = Mvx.Resolve<IMvxNavigationService>();
-
-            userDialogs.ShowError(AppResources.Common_Invalid_Session);
-
-            Settings.AccessToken = null;
-
-            navigationService?.Navigate<AuthenticationViewModel>();
-
-		}
-
-		void OnSignOutMessage(SignOutMessage signOutMessage)
-		{
-			Debug.WriteLine("OnSignOutMessage ...");
-
-			var navigationService = Mvx.Resolve<IMvxNavigationService>();
-
-			Settings.AccessToken = null;
-
-            navigationService?.Navigate<AuthenticationViewModel>();
-
-		}
 
 		protected override void OnStart()
 		{
@@ -104,45 +75,32 @@ namespace Bullytect.Core
             var messenger = Mvx.Resolve<IMvxMessenger>();
             // subscribe to Exception Ocurred Message
             messenger.Subscribe<ExceptionOcurredMessage>(OnExceptionOcurredMessage);
-			// subscribe to SessionExpiredMessage
-			messenger.Subscribe<SessionExpiredMessage>(OnSessionExpiredMessage);
-			// subscribe to SessionExpiredMessage
-			messenger.Subscribe<SignOutMessage>(OnSignOutMessage);
 
-
-			// Handle when your app starts
-			CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
+			CrossPushNotification.Current.OnTokenRefresh += (s, p) =>
 			{
 				Debug.WriteLine($"TOKEN REC: {p.Token}");
 				Settings.FcmToken = p.Token;
 			};
 
-            Debug.WriteLine($"TOKEN: {CrossFirebasePushNotification.Current.Token}");
-            Settings.FcmToken = CrossFirebasePushNotification.Current.Token;
+            Debug.WriteLine($"TOKEN: {CrossPushNotification.Current.Token}");
+            Settings.FcmToken = CrossPushNotification.Current.Token;
 
-			CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
+			CrossPushNotification.Current.OnNotificationReceived += (s, p) =>
 			{
+
 
 				System.Diagnostics.Debug.WriteLine("Received");
-
+                System.Diagnostics.Debug.WriteLine(p.Data);
 			};
 
-			CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
+			CrossPushNotification.Current.OnNotificationOpened += (s, p) =>
 			{
 				System.Diagnostics.Debug.WriteLine("Opened");
-				foreach (var data in p.Data)
-				{
-					System.Diagnostics.Debug.WriteLine($"{data.Key} : {data.Value}");
-				}
-
-				if (!string.IsNullOrEmpty(p.Identifier))
-				{
-					System.Diagnostics.Debug.WriteLine($"ActionId: {p.Identifier}");
-				}
+                if(Settings.AccessToken != null){
+                    Mvx.Resolve<IMvxNavigationService>()?.Navigate<AlertsViewModel>();
+                }
 
 			};
-
-
 		}
 
 	}

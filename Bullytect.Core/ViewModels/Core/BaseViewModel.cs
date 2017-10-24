@@ -27,6 +27,9 @@ namespace Bullytect.Core.ViewModels
     using MvvmCross.Platform.Core;
     using PCLCrypto;
     using System.Text;
+    using MvvmCross.Platform;
+    using Bullytect.Core.Services;
+    using Plugin.DeviceInfo;
 
     public abstract class BaseViewModel : MvxReactiveViewModel
     {
@@ -35,20 +38,22 @@ namespace Bullytect.Core.ViewModels
         protected readonly IMvxMessenger _mvxMessenger;
         protected readonly AppHelper _appHelper;
 
-        public BaseViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger, AppHelper appHelper)
+        public BaseViewModel(IUserDialogs userDialogs, 
+                             IMvxMessenger mvxMessenger, AppHelper appHelper)
         {
             _userDialogs = userDialogs;
             _mvxMessenger = mvxMessenger;
             _appHelper = appHelper;
-
+            {}
 
 			SignOutCommand = ReactiveCommand
-                .CreateFromObservable<Unit, bool>((_) => _appHelper.RequestConfirmation(AppResources.Profile_Confirm_SignOut));
+                .CreateFromObservable<Unit, string>((_) => 
+                                                  _appHelper.RequestConfirmation(AppResources.Profile_Confirm_SignOut)
+                                                    .Where((confirmed) => confirmed).SelectMany((confirmed) => Mvx.Resolve<IDeviceGroupsService>()?.Delete(CrossDeviceInfo.Current.Id)));
 
 			SignOutCommand.Subscribe((_) =>
 			{
                 Bullytect.Core.Config.Settings.AccessToken = null;
-				//var mvxBundle = new MvxBundle(new Dictionary<string, string> { { "NavigationCommand", "StackClear" } });
 				ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter()
 				{
 					ReasonForAuthentication = AuthenticationViewModel.SIGN_OUT
@@ -310,7 +315,7 @@ namespace Bullytect.Core.ViewModels
 
             public ICommand CloseCommand => new MvxCommand(() => Close(this));
 
-		    public ReactiveCommand<Unit, bool> SignOutCommand { get; protected set; }
+		    public ReactiveCommand<Unit, string> SignOutCommand { get; protected set; }
 
             public ICommand BackPressedCommand => new MvxCommand(() => OnBackPressed());
 

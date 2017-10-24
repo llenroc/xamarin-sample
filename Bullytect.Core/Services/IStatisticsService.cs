@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Bullytect.Core.ViewModels.Core.Models;
 
 namespace Bullytect.Core.Services
@@ -19,5 +20,10 @@ namespace Bullytect.Core.Services
         IObservable<ChartModel> GetSocialMediaLikesStatistics();
 
         IObservable<ChartModel> GetAlertsStatistics();
+
+        IObservable<IList<UserListModel>> GetMostActiveFriends();
+
+        IObservable<IList<UserListModel>> GetNewFriends();
+
     }
 }

@@ -127,5 +127,31 @@ namespace Bullytect.Core.Rest.Services.Impl
 
             return Observable.FromAsync(() => GetData<APIResponse<AlertsStatisticsDTO>>(new Uri(ApiEndpoints.ALERTS_STATISTICS).AttachParameters(queryParams)));
         }
+
+        public IObservable<APIResponse<MostActiveFriendsDTO>> GetMostActiveFriends(string[] Ids, int daysLimit)
+        {
+			var queryParams = new Dictionary<string, string>()
+			{
+				{ "days-limit", daysLimit.ToString()}
+			};
+
+			if (Ids?.Length > 0)
+				queryParams.Add("identities", string.Join(",", Ids));
+
+            return Observable.FromAsync(() => GetData<APIResponse<MostActiveFriendsDTO>>(new Uri(ApiEndpoints.MOST_ACTIVE_FRIENDS).AttachParameters(queryParams)));
+        }
+
+        public IObservable<APIResponse<NewFriendsDTO>> GetNewFriends(string[] Ids, int daysLimit)
+        {
+			var queryParams = new Dictionary<string, string>()
+			{
+				{ "days-limit", daysLimit.ToString()}
+			};
+
+			if (Ids?.Length > 0)
+				queryParams.Add("identities", string.Join(",", Ids));
+
+            return Observable.FromAsync(() => GetData<APIResponse<NewFriendsDTO>>(new Uri(ApiEndpoints.NEW_FRIENDS).AttachParameters(queryParams)));
+        }
     }
 }

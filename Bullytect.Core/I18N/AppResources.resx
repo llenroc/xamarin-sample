@@ -819,6 +819,38 @@ and we will recover it for you. </value>
     <comment>Results Settings Show Results For</comment>
   </data>
 
+  <data name="Results.Most.Active.Friends" xml:space="preserve">
+    <value>Most Active Friends</value>
+    <comment>Results.Most.Active.Friends</comment>
+  </data>
+
+   <data name="Results.Most.Active.Friends.Loading" xml:space="preserve">
+    <value>Loading New Friends</value>
+    <comment>Results.New.Friends.Loading</comment>
+  </data>
+
+  <data name="Results.Most.Active.Friends.Error" xml:space="preserve">
+    <value>Error Loading New Friends</value>
+    <comment>Results.New.Friends.Error</comment>
+  </data>
+
+  <data name="Results.New.Friends" xml:space="preserve">
+    <value>New Friends</value>
+    <comment>Results.New.Friends</comment>
+  </data>
+
+  <data name="Results.New.Friends.Loading" xml:space="preserve">
+    <value>Loading New Friends</value>
+    <comment>Results.New.Friends.Loading</comment>
+  </data>
+
+  <data name="Results.New.Friends.Error" xml:space="preserve">
+    <value>Error Loading New Friends</value>
+    <comment>Results.New.Friends.Error</comment>
+  </data>
+
+	
+
   <!-- Statistics son -->
   <data name="Settings.Statistics.Son.General" xml:space="preserve">
     <value>General configuration</value>
