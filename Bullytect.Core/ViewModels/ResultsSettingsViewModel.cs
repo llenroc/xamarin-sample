@@ -11,6 +11,7 @@ using Bullytect.Core.Helpers;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
+using Bullytect.Core.Utils;
 using Bullytect.Core.ViewModels.Core.Models;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
@@ -43,6 +44,7 @@ namespace Bullytect.Core.ViewModels
                 Categories.AddRange(SonCategoryModels);
                 SaveChanges();
 				OnSonCategoriesLoaded(Categories);
+                IsDirtyMonitoring = true;
 			});
 
 
@@ -57,6 +59,7 @@ namespace Bullytect.Core.ViewModels
 
         CategoryModel _allCategory;
 
+        [IsDirtyMonitoring]
         public CategoryModel AllCategory {
 			get => _allCategory ?? ( _allCategory = new CategoryModel()
 			{
@@ -80,6 +83,7 @@ namespace Bullytect.Core.ViewModels
 
 		PickerOptionModel _timeIntervalOption;
 
+        [IsDirtyMonitoring]
 		public PickerOptionModel TimeIntervalOption
 		{
 			get => _timeIntervalOption ?? TimeIntervalsOptionsList.First((TimeIntervalOption) => TimeIntervalOption.Value.Equals(Settings.Current.TimeInterval));
@@ -137,6 +141,22 @@ namespace Bullytect.Core.ViewModels
             Settings.Current.TimeInterval = TimeIntervalOption.Value;
             Settings.Current.FilteredSonCategories = string.Join(",", Categories?.Where(c => c.IsFiltered).Select(c => c.Identity));
         }
+
+		protected override void OnBackPressed()
+		{
+
+			if (IsDirty)
+			{
+
+				_appHelper.RequestConfirmation(AppResources.Common_Cancel_Changes)
+					  .Subscribe((_) => base.OnBackPressed());
+			}
+			else
+			{
+
+				base.OnBackPressed();
+			}
+		}
 
         #endregion
     }

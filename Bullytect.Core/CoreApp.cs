@@ -6,8 +6,6 @@ using MvvmCross.Platform.IoC;
 using AutoMapper;
 using Bullytect.Core.Models.Domain;
 using Acr.UserDialogs;
-using Bullytect.Core.Rest.Utils.Logging;
-using Bullytect.Core.Rest.Handlers;
 using Bullytect.Core.Rest.Services;
 using Bullytect.Core.Rest.Models.Response;
 using Bullytect.Core.Rest.Services.Impl;
@@ -70,6 +68,8 @@ namespace Bullytect.Core
 			cfg.CreateMap<SchoolDTO, SchoolEntity>();
 			cfg.CreateMap<AlertsPageDTO, AlertsPageEntity>();
 			cfg.CreateMap<IterationDTO, IterationEntity>();
+            cfg.CreateMap<UserSystemPreferencesDTO, UserSystemPreferencesEntity>();
+
 			// Mapper for SonEntity to SonCategoryModel
 			cfg.CreateMap<SonEntity, SonCategoryModel>()
 			.ForMember(s => s.Name, (obj) =>

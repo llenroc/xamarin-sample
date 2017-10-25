@@ -10,12 +10,10 @@ namespace Bullytect.Core.Services.Impl
     using Bullytect.Core.Models.Domain;
     using System.Linq;
     using MvvmCross.Plugins.Messenger;
-    using Bullytect.Core.Messages;
     using System.IO;
     using Bullytect.Core.Rest.Services;
     using Bullytect.Core.Rest.Models.Response;
     using Bullytect.Core.Rest.Models.Request;
-    using Bullytect.Core.Config;
 
     public class ParentServiceImpl: BaseService, IParentService
     {
@@ -236,23 +234,6 @@ namespace Bullytect.Core.Services.Impl
 			return operationDecorator(observable);
         }
 
-        public IObservable<Dictionary<string, string>> GetCommentsBySonForLastIteration()
-        {
-
-            var commentsBySon = new Dictionary<string, string>() {
-
-                { "Sergio Sánchez", "30" },
-                { "David Martín", "20" }
-
-            };
-
-
-            return Observable.Return(commentsBySon);
-
-
-
-        }
-
 
         public IObservable<string> DeleteSonById(string Id)
         {
@@ -264,6 +245,40 @@ namespace Bullytect.Core.Services.Impl
 				.Finally(() =>
 				{
 					Debug.WriteLine("Delete Son By Id ....");
+				});
+
+			return operationDecorator(observable);
+        }
+
+        public IObservable<UserSystemPreferencesEntity> SavePreferences(bool PushNotificationsEnabled)
+        {
+			Debug.WriteLine(string.Format("Save Preferences"));
+
+			var observable = _parentsRestService
+                .SavePreferences(new SaveUserSystemPreferencesDTO() {
+                    PushNotificationsEnabled = PushNotificationsEnabled
+                })
+				.Select((response) => response.Data)
+                .Select((UserSystemPreferencesDTO preferences) => Mapper.Map<UserSystemPreferencesDTO, UserSystemPreferencesEntity>(preferences))
+				.Finally(() =>
+				{
+					Debug.WriteLine("Save Preferences finished ....");
+				});
+
+			return operationDecorator(observable);
+        }
+
+        public IObservable<UserSystemPreferencesEntity> GetPreferences()
+        {
+			Debug.WriteLine(string.Format("Get Preferences"));
+
+			var observable = _parentsRestService
+                .GetPreferences()
+				.Select((response) => response.Data)
+				.Select((UserSystemPreferencesDTO preferences) => Mapper.Map<UserSystemPreferencesDTO, UserSystemPreferencesEntity>(preferences))
+				.Finally(() =>
+				{
+					Debug.WriteLine("Get Preferences finished ....");
 				});
 
 			return operationDecorator(observable);

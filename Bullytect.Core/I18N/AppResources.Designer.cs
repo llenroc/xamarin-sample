@@ -173,6 +173,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Common_Cancel_Changes {
+            get {
+                return ResourceManager.GetString("Common.Cancel.Changes", resourceCulture);
+            }
+        }
+        
         internal static string Common_Btn_Save_Changes {
             get {
                 return ResourceManager.GetString("Common.Btn.Save.Changes", resourceCulture);
@@ -998,6 +1004,18 @@ namespace Bullytect.Core.I18N {
         internal static string Settings_Antiquity_Of_Alerts_Description {
             get {
                 return ResourceManager.GetString("Settings.Antiquity.Of.Alerts.Description", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Push_Notifications {
+            get {
+                return ResourceManager.GetString("Settings.Push.Notifications", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Push_Notifications_Description {
+            get {
+                return ResourceManager.GetString("Settings.Push.Notifications.Description", resourceCulture);
             }
         }
         

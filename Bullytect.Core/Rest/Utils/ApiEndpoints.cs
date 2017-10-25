@@ -49,5 +49,7 @@ namespace Bullytect.Core.Rest.Utils
         public static string MOST_ACTIVE_FRIENDS = string.Concat(SharedConfig.BASE_API_URL, "/comments/most-active-friends");
         public static string NEW_FRIENDS = string.Concat(SharedConfig.BASE_API_URL, "/comments/new-friends");
         public static string DELETE_DEVICE_FROM_GROUP = string.Concat(SharedConfig.BASE_API_URL, "/devices/:id/delete");
+        public static string SAVE_SELF_PREFERENCES = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/preferences");
+        public static string GET_SELF_PREFERENCES = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/preferences");
     }
 }

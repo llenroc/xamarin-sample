@@ -6,6 +6,7 @@ using Acr.UserDialogs;
 using Bullytect.Core.Config;
 using Bullytect.Core.Helpers;
 using Bullytect.Core.I18N;
+using Bullytect.Core.Utils;
 using Bullytect.Core.ViewModels.Core.Models;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
@@ -17,6 +18,11 @@ namespace Bullytect.Core.ViewModels
         public SonStatisticsSettingsViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger, AppHelper appHelper) : base(userDialogs, mvxMessenger, appHelper)
         {
         }
+
+		public void Init()
+		{
+            IsDirtyMonitoring = true;
+		}
 
         #region properties
 
@@ -30,6 +36,7 @@ namespace Bullytect.Core.ViewModels
 
         PickerOptionModel _timeIntervalOption;
 
+        [IsDirtyMonitoring]
         public PickerOptionModel TimeIntervalOption
         {
             get => _timeIntervalOption ?? TimeIntervalsOptionsList.First((TimeIntervalOption) => TimeIntervalOption.Value.Equals(Settings.Current.SonStatisticsTimeInterval));
@@ -63,6 +70,22 @@ namespace Bullytect.Core.ViewModels
 		{
             Settings.Current.SonStatisticsTimeInterval = TimeIntervalOption.Value;
 			
+		}
+
+		protected override void OnBackPressed()
+		{
+
+			if (IsDirty)
+			{
+
+				_appHelper.RequestConfirmation(AppResources.Common_Cancel_Changes)
+					  .Subscribe((_) => base.OnBackPressed());
+			}
+			else
+			{
+
+				base.OnBackPressed();
+			}
 		}
 
         #endregion

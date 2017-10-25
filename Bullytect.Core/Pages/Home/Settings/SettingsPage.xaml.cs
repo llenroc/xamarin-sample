@@ -48,7 +48,15 @@ namespace Bullytect.Core.Pages.Home.Settings
 
 		}
 
-		
+		async void OnPushNotificationsInfo(object sender, EventArgs args)
+		{
+
+            var page = new CommonInfoPopup(AppResources.Settings_Push_Notifications, 
+                                           AppResources.Settings_Push_Notifications_Description);
+			await PopupNavigation.PushAsync(page);
+
+		}
+
 
         void ViewModel_OnAlertsCategoriesLoaded(Object sender, List<AlertCategoryModel> AlertsCategories)
 		{

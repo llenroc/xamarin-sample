@@ -201,6 +201,10 @@
     <value> Cancel Operation</value>
     <comment>Common Cancel Operation</comment>
   </data>
+  <data name="Common.Cancel.Changes" xml:space="preserve">
+    <value> Cancel Changes? </value>
+    <comment>Common Cancel Changes</comment>
+  </data>
   <data name="Common.Btn.Save.Changes" xml:space="preserve">
     <value> Save Changes</value>
     <comment>Common Btn Save Changes</comment>
@@ -756,6 +760,14 @@ and we will recover it for you. </value>
   <data name="Settings.Antiquity.Of.Alerts.Description" xml:space="preserve">
     <value> {0} minutes</value>
     <comment>Settings Antiquity Of Alerts Description</comment>
+  </data>
+  <data name="Settings.Push.Notifications" xml:space="preserve">
+    <value>Enable Push Notifications</value>
+    <comment>Settings Push Notifications</comment>
+  </data>
+  <data name="Settings.Push.Notifications.Description" xml:space="preserve">
+    <value> Enabling push notifications will allow you to receive notifications without having the app open. </value>
+    <comment>Settings Push Notifications Description</comment>
   </data>
   <data name="Settings.Alerts.Count.New.Alerts" xml:space="preserve">
     <value>Number of Alerts</value>

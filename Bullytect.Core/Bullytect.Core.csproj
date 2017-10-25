@@ -549,6 +549,9 @@
     <Compile Include="ViewModels\Core\Models\UserListModel.cs" />
     <Compile Include="Rest\Models\Response\MostActiveFriendsDTO.cs" />
     <Compile Include="Rest\Models\Response\NewFriendsDTO.cs" />
+    <Compile Include="Rest\Models\Response\UserSystemPreferencesDTO.cs" />
+    <Compile Include="Rest\Models\Request\SaveUserSystemPreferencesDTO.cs" />
+    <Compile Include="Models\Domain\UserSystemPreferencesEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
