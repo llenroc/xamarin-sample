@@ -100,6 +100,12 @@ namespace Bullytect.Core.Rest.Utils
 								Response = ex.GetContentAs<APIResponse<string>>()
 							};
                             break;
+                        case ResponseNames.ACCOUNT_LOCKED_RESPONSE:
+							exResponse = new AccountLockedException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
+                            break;
 						case ResponseNames.NO_NEW_ALERTS_FOUND_RESPONSE:
 							exResponse = new NoNewAlertsFoundException()
 							{
@@ -124,6 +130,12 @@ namespace Bullytect.Core.Rest.Utils
 								Response = ex.GetContentAs<APIResponse<string>>()
 							};
 							break;
+                        case ResponseNames.EMAIL_ALREADY_EXISTS_RESPONSE:
+							exResponse = new EmailAlreadyExistsException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
+                            break;
 							// Parse Generic Error
                         case ResponseNames.GENERIC_ERROR_RESPONSE:
 							exResponse = new GenericErrorException()

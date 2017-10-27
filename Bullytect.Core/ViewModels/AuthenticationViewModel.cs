@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Reactive;
 using System.Reactive.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.Config;
@@ -15,10 +14,7 @@ using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 using Xamarin.Forms;
 using Bullytect.Core.Rest.Models.Exceptions;
-using System.Collections.Generic;
 using Bullytect.Core.Helpers;
-using Bullytect.Core.OAuth.Models;
-using Xamarin.Auth;
 using Bullytect.Core.Exceptions;
 
 namespace Bullytect.Core.ViewModels
@@ -27,12 +23,14 @@ namespace Bullytect.Core.ViewModels
     public class AuthenticationViewModel : BaseViewModel
     {
         readonly IAuthenticationService _authenticationService;
+		readonly INotificationService _notificationService;
 
         public AuthenticationViewModel(IAuthenticationService authenticationService,
-                                       IUserDialogs userDialogs, IMvxMessenger mvxMessenger, IOAuthService oauthService,  AppHelper appHelper): base(userDialogs, mvxMessenger, appHelper)
+                                       IUserDialogs userDialogs, IMvxMessenger mvxMessenger,
+                                       IOAuthService oauthService,  AppHelper appHelper, INotificationService notificationService): base(userDialogs, mvxMessenger, appHelper)
         {
             _authenticationService = authenticationService;
-
+            _notificationService = notificationService;
 
             // Create Reactive Commands
             LoginCommand = ReactiveCommand.CreateFromObservable<Unit, string>(
@@ -59,7 +57,7 @@ namespace Bullytect.Core.ViewModels
                 
                             
                 return oauthService
-                        .Authenticate(new FacebookOAuth2())
+                        .Authenticate(new ParentFacebookOAuth2())
                         .Do(AccessToken =>
                         {
                             if (string.IsNullOrEmpty(AccessToken))
@@ -130,16 +128,18 @@ namespace Bullytect.Core.ViewModels
 
         public override void Start()
         {
-
             if (ReasonForAuthentication.Equals(SIGN_OUT))
             {
                 _appHelper.Toast(AppResources.Common_SignOut, System.Drawing.Color.FromArgb(12, 131, 193));
             }
-            else if (ReasonForAuthentication.Equals(SESSION_EXPIRED)) {
+            else if (ReasonForAuthentication.Equals(SESSION_EXPIRED))
+            {
                 _appHelper.Toast(AppResources.Common_Invalid_Session, System.Drawing.Color.FromArgb(255, 0, 0));
+            }
+            else if (ReasonForAuthentication.Equals(SIGN_UP)) { 
+            
+                _appHelper.ShowAlert(AppResources.Signup_Account_Created);
 
-            } else if(ReasonForAuthentication.Equals(SIGN_UP)) {
-                _appHelper.Toast(AppResources.Signup_Account_Created, System.Drawing.Color.FromArgb(12, 131, 193));
             } else if(ReasonForAuthentication.Equals(ACCOUNT_DELETED)) {
                 _appHelper.Toast(AppResources.Profile_Account_Deleted, System.Drawing.Color.FromArgb(12, 131, 193));
             }
@@ -155,20 +155,29 @@ namespace Bullytect.Core.ViewModels
 
         public ICommand GoToPasswordRecoveryCommand => new MvxCommand(() => ShowViewModel<PasswordRecoveryViewModel>());
 
-		#endregion
+        #endregion
 
-		protected override void HandleExceptions(Exception ex)
-		{
+        protected override void HandleExceptions(Exception ex)
+        {
 
-			if (ex is AuthenticationFailedException)
-			{
+            if (ex is AuthenticationFailedException)
+            {
                 _appHelper.Toast(AppResources.Login_Failed, System.Drawing.Color.FromArgb(255, 0, 0));
 
-			} else if(ex is AccountDisabledException)
+            }
+            else if (ex is AccountDisabledException)
             {
                 _appHelper.Toast(AppResources.Account_Disabled, System.Drawing.Color.FromArgb(255, 0, 0));
 
+            } else if (ex is AccountLockedException) {
 
+                _appHelper.Toast(AppResources.Account_Locked, System.Drawing.Color.FromArgb(255, 0, 0));
+
+            } else if(ex is EmailAlreadyExistsException) {
+
+                _userDialogs.HideLoading();
+
+                _appHelper.Toast(AppResources.Authentication_Email_Already_Exists, System.Drawing.Color.FromArgb(255, 0, 0));
             }
 			else
 			{
@@ -178,8 +187,13 @@ namespace Bullytect.Core.ViewModels
 
         void HandleAuthSuccess(string jwtToken) {
 			Debug.WriteLine("JWT Token -> " + jwtToken);
-			_userDialogs.ShowSuccess(AppResources.Login_Success);
-            //var mvxBundle = new MvxBundle(new Dictionary<string, string> { { "NavigationCommand", "StackClear" } });
+            Settings.AccessToken = jwtToken;
+            // Subscribe Device For Push Notifications
+			_notificationService.subscribeDevice().Subscribe(device => {
+                Settings.Current.DeviceRegistered = true;
+				Debug.WriteLine(String.Format("Device Saved: {0}", device.ToString()));
+			});
+            _userDialogs.ShowSuccess(AppResources.Login_Success);
             ShowViewModel<HomeViewModel>();
         }
        

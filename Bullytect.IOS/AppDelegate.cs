@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Diagnostics;
 using Bullytect.Core.OAuth.Models;
 using CarouselView.FormsPlugin.iOS;
 using FFImageLoading.Forms.Touch;
@@ -8,9 +9,10 @@ using Lottie.Forms.iOS.Renderers;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Forms.iOS;
 using MvvmCross.Platform;
-using Plugin.PushNotification;
+using Plugin.FirebasePushNotification;
 using Refractored.XamForms.PullToRefresh.iOS;
 using UIKit;
+using UserNotifications;
 using UXDivers.Artina.Shared;
 
 namespace Bullytect.iOS
@@ -48,7 +50,10 @@ namespace Bullytect.iOS
 
 			Window.MakeKeyAndVisible();
 
-            PushNotificationManager.Initialize(options, true);
+
+            FirebasePushNotificationManager.Initialize(options, true);
+            // Presentation Options
+            FirebasePushNotificationManager.CurrentNotificationPresentationOption = UNNotificationPresentationOptions.Alert | UNNotificationPresentationOptions.Badge;
 
 			return true;
 		}
@@ -56,20 +61,36 @@ namespace Bullytect.iOS
 
 		public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
 		{
-			PushNotificationManager.DidRegisterRemoteNotifications(deviceToken);
+#if DEBUG
+			FirebasePushNotificationManager.DidRegisterRemoteNotifications(deviceToken, FirebaseTokenType.Sandbox);
+#endif
+#if RELEASE
+                    FirebasePushNotificationManager.DidRegisterRemoteNotifications(deviceToken,FirebaseTokenType.Production);
+#endif
+
 		}
 
 		public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
 		{
-			PushNotificationManager.RemoteNotificationRegistrationFailed(error);
+			FirebasePushNotificationManager.RemoteNotificationRegistrationFailed(error);
 
 		}
 		// To receive notifications in foregroung on iOS 9 and below.
 		// To receive notifications in background in any iOS version
 		public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
 		{
+			FirebasePushNotificationManager.DidReceiveMessage(userInfo);
+			System.Console.WriteLine(userInfo);
+		}
 
-			PushNotificationManager.DidReceiveMessage(userInfo);
+		public override void OnActivated(UIApplication uiApplication)
+		{
+			FirebasePushNotificationManager.Connect();
+
+		}
+		public override void DidEnterBackground(UIApplication application)
+		{
+			FirebasePushNotificationManager.Disconnect();
 		}
 
 		public override bool OpenUrl ( UIApplication application, NSUrl url, 

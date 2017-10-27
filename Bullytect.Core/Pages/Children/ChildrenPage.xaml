@@ -178,14 +178,14 @@
                                 <StackLayout
                                     Orientation="Horizontal"
                                     HorizontalOptions="Center"
-                                    HeightRequest="60">
+                                    HeightRequest="60"
+                                    Spacing="10">
 
 
                                      <!-- User charts Action -->
                                       <StackLayout
                                           Orientation="Horizontal"
                                           HorizontalOptions="Start"
-                                          Margin="0,0,25,0"
                                           VerticalOptions="CenterAndExpand">
 
                                             <Label

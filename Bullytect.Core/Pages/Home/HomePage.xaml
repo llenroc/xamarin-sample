@@ -319,12 +319,6 @@
 
                     <!-- ALTERNATES BODIES -->
 
-                    <templates:NoChildrenFound
-                        Grid.Row="1"
-                        IsVisible="{ Binding ShouldShowNoChildrenFound}"
-                        VerticalOptions="CenterAndExpand"
-                        Padding="20" />
-
                     <common:ActivityLoading
                         Grid.Row="1"
                         Icon="{ x:Static helper:FontAwesomeFont.Bell }"
@@ -338,6 +332,14 @@
                         MainText="{i18n:Translate Home.Alerts.Not.Found.MainText }"
                         DetailText="{i18n:Translate Home.Alerts.Not.Found.SecondText }">
                     </common:NoDataFound>
+
+                     <!-- No Children Found -->
+
+                    <templates:NoChildrenFound
+                        Grid.Row="1"
+                        IsVisible="{ Binding ShouldShowNoChildrenFound}"
+                        VerticalOptions="CenterAndExpand"
+                        Padding="20" />
 
                     <!-- END ALTERNATES BODIES -->
 

@@ -26,7 +26,6 @@ namespace Bullytect.Core.Config
 
 
         const string ACCESS_TOKEN_KEY = "ACCESS_TOKEN";
-        const string FCM_TOKEN = "FCM_TOKEN";
 
 		public static string AccessToken
 		{
@@ -147,12 +146,17 @@ namespace Bullytect.Core.Config
 			get => AccessToken == null ? null : $"Bearer {AccessToken}";
 		}
 
-        public static string FcmToken
-        {
-            get => AppSettings.GetValueOrDefault(FCM_TOKEN, null);
-            set => AppSettings.AddOrUpdateValue(FCM_TOKEN, value);
-        }
+        static readonly bool DeviceRegisteredDefault = false;
 
+		public bool DeviceRegistered
+		{
+			get { return AppSettings.GetValueOrDefault(nameof(DeviceRegistered), DeviceRegisteredDefault); }
+			set
+			{
+				if (AppSettings.AddOrUpdateValue(nameof(DeviceRegistered), value))
+					OnPropertyChanged();
+			}
+		}
 
 		#region INotifyPropertyChanged implementation
 		public event PropertyChangedEventHandler PropertyChanged;

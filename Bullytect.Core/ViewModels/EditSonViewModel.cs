@@ -274,7 +274,7 @@ namespace Bullytect.Core.ViewModels
         public ReactiveCommand<Unit, PageModel> ForceRefreshCommand { get; protected set;  }
 
         public ICommand ToggleFacebookSocialMediaCommand
-                        => new MvxCommand(() => ToggleSocialMediaHandler(new FacebookOAuth2(), AppConstants.FACEBOOK));
+                        => new MvxCommand(() => ToggleSocialMediaHandler(new SonFacebookOAuth2(), AppConstants.FACEBOOK));
 
         public ICommand ToggleInstagramSocialMediaCommand
                         => new MvxCommand(() => ToggleSocialMediaHandler(new InstagramOAuth2(), AppConstants.INSTAGRAM));

@@ -4,8 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Bullytect.Utils.Helpers;
 
 namespace Bullytect.Core.Rest.Utils.Logging
 {
@@ -22,26 +24,29 @@ namespace Bullytect.Core.Rest.Utils.Logging
         {
 			var req = request;
 			var id = Guid.NewGuid().ToString();
+
+            StringBuilder Data = new StringBuilder();
+
 			var msg = $"[{id} -   Request]";
 
-			Debug.WriteLine($"{msg}========Start==========");
-			Debug.WriteLine($"{msg} {req.Method} {req.RequestUri.PathAndQuery} {req.RequestUri.Scheme}/{req.Version}");
-			Debug.WriteLine($"{msg} Host: {req.RequestUri.Scheme}://{req.RequestUri.Host}");
+            Data.Append($"{msg}========Start==========");
+			Data.Append($"{msg} {req.Method} {req.RequestUri.PathAndQuery} {req.RequestUri.Scheme}/{req.Version}");
+			Data.Append($"{msg} Host: {req.RequestUri.Scheme}://{req.RequestUri.Host}");
 
 			foreach (var header in req.Headers)
-				Debug.WriteLine($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
+				Data.Append($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
 
 			if (req.Content != null)
 			{
 				foreach (var header in req.Content.Headers)
-					Debug.WriteLine($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
+					Data.Append($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
 
 				if (req.Content is StringContent || this.IsTextBasedContentType(req.Headers) || this.IsTextBasedContentType(req.Content.Headers))
 				{
 					var result = await req.Content.ReadAsStringAsync();
 
-					Debug.WriteLine($"{msg} Content:");
-					Debug.WriteLine($"{msg} {string.Join("", result.Cast<char>().Take(255))}...");
+					Data.Append($"{msg} Content:");
+					Data.Append($"{msg} {string.Join("", result.Cast<char>().Take(255))}...");
 
 				}
 			}
@@ -52,23 +57,23 @@ namespace Bullytect.Core.Rest.Utils.Logging
 
 			var end = DateTime.Now;
 
-			Debug.WriteLine($"{msg} Duration: {end - start}");
-			Debug.WriteLine($"{msg}==========End==========");
+			Data.Append($"{msg} Duration: {end - start}");
+			Data.Append($"{msg}==========End==========");
 
 			msg = $"[{id} - Response]";
-			Debug.WriteLine($"{msg}=========Start=========");
+			Data.Append($"{msg}=========Start=========");
 
 			var resp = response;
 
-			Debug.WriteLine($"{msg} {req.RequestUri.Scheme.ToUpper()}/{resp.Version} {(int)resp.StatusCode} {resp.ReasonPhrase}");
+			Data.Append($"{msg} {req.RequestUri.Scheme.ToUpper()}/{resp.Version} {(int)resp.StatusCode} {resp.ReasonPhrase}");
 
 			foreach (var header in resp.Headers)
-				Debug.WriteLine($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
+				Data.Append($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
 
 			if (resp.Content != null)
 			{
 				foreach (var header in resp.Content.Headers)
-					Debug.WriteLine($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
+					Data.Append($"{msg} {header.Key}: {string.Join(", ", header.Value)}");
 
 				if (resp.Content is StringContent || this.IsTextBasedContentType(resp.Headers) || this.IsTextBasedContentType(resp.Content.Headers))
 				{
@@ -76,13 +81,16 @@ namespace Bullytect.Core.Rest.Utils.Logging
 					var result = await resp.Content.ReadAsStringAsync();
 					end = DateTime.Now;
 
-					Debug.WriteLine($"{msg} Content:");
-					Debug.WriteLine($"{msg} {string.Join("", result.Cast<char>().Take(255))}...");
-					Debug.WriteLine($"{msg} Duration: {end - start}");
+					Data.Append($"{msg} Content:");
+					Data.Append($"{msg} {string.Join("", result.Cast<char>().Take(255))}...");
+					Data.Append($"{msg} Duration: {end - start}");
 				}
 			}
 
-			Debug.WriteLine($"{msg}==========End==========");
+			Data.Append($"{msg}==========End==========");
+
+            Data.TrackToConsole();
+            Data.TrackToFile();
 			return response;
 		}
 

@@ -4,7 +4,6 @@ namespace Bullytect.Core
 {
     using System.Diagnostics;
     using Acr.UserDialogs;
-    using Bullytect.Core.Config;
     using Bullytect.Core.I18N;
     using Bullytect.Core.I18N.Services;
     using Bullytect.Core.Messages;
@@ -14,9 +13,6 @@ namespace Bullytect.Core
     using Xamarin.Forms;
     using Bullytect.Utils.Helpers;
     using Bullytect.Core.Rest.Utils;
-    using Plugin.PushNotification;
-    using MvvmCross.Core.Navigation;
-    using Bullytect.Core.ViewModels;
 
     public partial class App : MvxFormsApplication
     {
@@ -51,6 +47,8 @@ namespace Bullytect.Core
 			{
 				ScreenWidth = 600;
 			}
+
+			
         }
 
 
@@ -64,8 +62,8 @@ namespace Bullytect.Core
 
             if (exceptionOcurredMessage.Ex != null)
 			    exceptionOcurredMessage.Ex.Track();
-            
         }
+
 
 
 		protected override void OnStart()
@@ -75,32 +73,6 @@ namespace Bullytect.Core
             var messenger = Mvx.Resolve<IMvxMessenger>();
             // subscribe to Exception Ocurred Message
             messenger.Subscribe<ExceptionOcurredMessage>(OnExceptionOcurredMessage);
-
-			CrossPushNotification.Current.OnTokenRefresh += (s, p) =>
-			{
-				Debug.WriteLine($"TOKEN REC: {p.Token}");
-				Settings.FcmToken = p.Token;
-			};
-
-            Debug.WriteLine($"TOKEN: {CrossPushNotification.Current.Token}");
-            Settings.FcmToken = CrossPushNotification.Current.Token;
-
-			CrossPushNotification.Current.OnNotificationReceived += (s, p) =>
-			{
-
-
-				System.Diagnostics.Debug.WriteLine("Received");
-                System.Diagnostics.Debug.WriteLine(p.Data);
-			};
-
-			CrossPushNotification.Current.OnNotificationOpened += (s, p) =>
-			{
-				System.Diagnostics.Debug.WriteLine("Opened");
-                if(Settings.AccessToken != null){
-                    Mvx.Resolve<IMvxNavigationService>()?.Navigate<AlertsViewModel>();
-                }
-
-			};
 		}
 
 	}

@@ -24,6 +24,7 @@
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,7 +35,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -420,12 +420,6 @@
     <Reference Include="FFImageLoading.Transformations">
       <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.20\lib\MonoAndroid10\FFImageLoading.Transformations.dll</HintPath>
     </Reference>
-    <Reference Include="CarouselView.FormsPlugin.Abstractions">
-      <HintPath>..\packages\CarouselView.FormsPlugin.4.4.2\lib\MonoAndroid\CarouselView.FormsPlugin.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="CarouselView.FormsPlugin.Android">
-      <HintPath>..\packages\CarouselView.FormsPlugin.4.4.2\lib\MonoAndroid\CarouselView.FormsPlugin.Android.dll</HintPath>
-    </Reference>
     <Reference Include="SkiaSharp">
       <HintPath>..\packages\SkiaSharp.1.59.1\lib\MonoAndroid\SkiaSharp.dll</HintPath>
     </Reference>
@@ -519,11 +513,35 @@
     <Reference Include="PCLCrypto">
       <HintPath>..\packages\PCLCrypto.2.0.147\lib\MonoAndroid23\PCLCrypto.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.PushNotification.Abstractions">
-      <HintPath>..\packages\Plugin.PushNotification.1.0.0\lib\MonoAndroid10\Plugin.PushNotification.Abstractions.dll</HintPath>
+    <Reference Include="CarouselView.FormsPlugin.Abstractions">
+      <HintPath>..\packages\CarouselView.FormsPlugin.4.4.6\lib\MonoAndroid\CarouselView.FormsPlugin.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.PushNotification">
-      <HintPath>..\packages\Plugin.PushNotification.1.0.0\lib\MonoAndroid10\Plugin.PushNotification.dll</HintPath>
+    <Reference Include="CarouselView.FormsPlugin.Android">
+      <HintPath>..\packages\CarouselView.FormsPlugin.4.4.6\lib\MonoAndroid\CarouselView.FormsPlugin.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.FirebasePushNotification.Abstractions">
+      <HintPath>..\packages\Plugin.FirebasePushNotification.1.0.7\lib\MonoAndroid10\Plugin.FirebasePushNotification.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.FirebasePushNotification">
+      <HintPath>..\packages\Plugin.FirebasePushNotification.1.0.7\lib\MonoAndroid10\Plugin.FirebasePushNotification.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLStorage.Abstractions">
+      <HintPath>..\packages\PCLStorage.1.0.2\lib\monoandroid\PCLStorage.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLStorage">
+      <HintPath>..\packages\PCLStorage.1.0.2\lib\monoandroid\PCLStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="FolderPath.Abstractions">
+      <HintPath>..\packages\FolderPath.1.1.0\lib\MonoAndroid\FolderPath.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="FolderPath">
+      <HintPath>..\packages\FolderPath.1.1.0\lib\MonoAndroid\FolderPath.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLSpecialFolder.Abstractions">
+      <HintPath>..\packages\PCLSpecialFolder.1.1.0\lib\MonoAndroid\PCLSpecialFolder.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLSpecialFolder">
+      <HintPath>..\packages\PCLSpecialFolder.1.1.0\lib\MonoAndroid\PCLSpecialFolder.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

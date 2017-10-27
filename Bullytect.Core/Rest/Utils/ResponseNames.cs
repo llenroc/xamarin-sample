@@ -24,6 +24,8 @@ namespace Bullytect.Core.Rest.Utils
         public const int BAD_CREDENTIALS_CODE = 416;
 		public const string ACCOUNT_DISABLED_RESPONSE = "ACCOUNT_DISABLED";
 		public const int ACCOUNT_DISABLED_CODE = 417;
+		public const string ACCOUNT_LOCKED_RESPONSE = "ACCOUNT_LOCKED";
+		public const int ACCOUNT_LOCKED_CODE = 505;
 		public const string NO_NEW_ALERTS_FOUND_RESPONSE = "NO_NEW_ALERTS_FOUND";
 		public const int NO_NEW_ALERTS_FOUND_CODE = 709;
         public const string NO_ALERTS_BY_SON_FOUNDED_RESPONSE = "NO_ALERTS_BY_SON_FOUNDED";
@@ -32,5 +34,7 @@ namespace Bullytect.Core.Rest.Utils
         public const int SOCIAL_MEDIA_BY_CHILD_NOT_FOUND_CODE = 302;
         public const string NO_ITERATIONS_FOUND_FOR_SELF_PARENT_RESPONSE = "NO_ITERATIONS_FOUND_FOR_SELF_PARENT";
         public const int NO_ITERATIONS_FOUND_FOR_SELF_PARENT_CODE = 430;
+        public const string EMAIL_ALREADY_EXISTS_RESPONSE = "EMAIL_ALREADY_EXISTS";
+        public const int EMAIL_ALREADY_EXISTS_CODE = 437;
 	}
 }

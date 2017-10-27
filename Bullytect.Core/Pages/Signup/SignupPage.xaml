@@ -344,7 +344,6 @@
                         Grid.Row="3" >
 
                         <artina:Button
-                            IsEnabled="{Binding HaveInternet}"
                             Style="{StaticResource PrimaryActionButtonStyle}"
                             VerticalOptions="End"
                             Text="{i18n:Translate Signup.Create}"
@@ -356,7 +355,18 @@
                                     PortraitPhone=Fill,
                                     LandscapePhone=Center,
                                     PortraitTablet=Fill,
-                                    LandscapeTablet=Center }"/>
+                                    LandscapeTablet=Center }">
+
+                                    <Button.Triggers>
+                                        <DataTrigger 
+                                            TargetType="Button"
+                                            Binding="{Binding HaveInternet}"
+                                            Value="False">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                </Button.Triggers>
+
+                        </artina:Button>
 
                         <artina:Button
                             Style="{StaticResource TransparentButtonStyle}"

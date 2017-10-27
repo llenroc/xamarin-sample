@@ -371,6 +371,18 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Account_Locked {
+            get {
+                return ResourceManager.GetString("Account.Locked", resourceCulture);
+            }
+        }
+        
+        internal static string Authentication_Email_Already_Exists {
+            get {
+                return ResourceManager.GetString("Authentication.Email.Already.Exists", resourceCulture);
+            }
+        }
+        
         internal static string Login_Forget_Password {
             get {
                 return ResourceManager.GetString("Login.Forget.Password", resourceCulture);
@@ -524,6 +536,12 @@ namespace Bullytect.Core.I18N {
         internal static string Home_Profile_Load_Error {
             get {
                 return ResourceManager.GetString("Home.Profile.Load.Error", resourceCulture);
+            }
+        }
+        
+        internal static string Home_Results_No_Children {
+            get {
+                return ResourceManager.GetString("Home.Results.No.Children", resourceCulture);
             }
         }
         

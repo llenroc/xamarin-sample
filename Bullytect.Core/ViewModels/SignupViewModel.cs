@@ -27,7 +27,8 @@ namespace Bullytect.Core.ViewModels
 			_parentService = parentService;
 
             SignupCommand = ReactiveCommand
-                .CreateFromObservable<Unit, ParentEntity>((_) => _parentService.Register(FirstName, LastName, Birthdate, Email, PasswordClear, ConfirmPassword, String.Concat(Prefix, Telephone)));
+                .CreateFromObservable<Unit, ParentEntity>(
+                    (_) => _parentService.Register(FirstName, LastName, Birthdate, Email, PasswordClear, ConfirmPassword, String.Concat(Prefix, Telephone)));
 
             SignupCommand.Subscribe(AccountCreated);
 
@@ -132,8 +133,9 @@ namespace Bullytect.Core.ViewModels
 			Debug.WriteLine(String.Format("Parent: {0}", parent.ToString()));
 			ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter()
 			{
-                ReasonForAuthentication = AuthenticationViewModel.SIGN_UP
+				ReasonForAuthentication = AuthenticationViewModel.SIGN_UP
 			});
+
         }
 
         protected override void OnBackPressed() {

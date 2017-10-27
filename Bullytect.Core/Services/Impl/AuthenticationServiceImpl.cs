@@ -5,24 +5,22 @@ namespace Bullytect.Core.Services.Impl
     using System.Diagnostics;
     using System.Reactive.Linq;
     using Bullytect.Core.Config;
-    using Bullytect.Core.Messages;
     using MvvmCross.Plugins.Messenger;
     using Bullytect.Core.Rest.Services;
     using Bullytect.Core.Rest.Models.Request;
-    using Plugin.DeviceInfo;
 
     public class AuthenticationServiceImpl: BaseService, IAuthenticationService
     {
         readonly IAuthenticationRestService _authenticationRestService;
         readonly IMvxMessenger _mvxMessenger;
-        readonly IDeviceGroupsService _deviceGroupsService;
+        readonly INotificationService _notificationService;
 
         public AuthenticationServiceImpl(IAuthenticationRestService authenticationRestService, 
-                                         IMvxMessenger mvxMessenger, IDeviceGroupsService deviceGroupsService)
+                                         IMvxMessenger mvxMessenger, INotificationService notificationService)
         {
             _authenticationRestService = authenticationRestService;
             _mvxMessenger = mvxMessenger;
-            _deviceGroupsService = deviceGroupsService;
+            _notificationService = notificationService;
             Debug.WriteLine(GetType().Name + " was created on context");
         }
 
@@ -36,16 +34,7 @@ namespace Bullytect.Core.Services.Impl
                 Password = password
             })
             .Select(response => response.Data.Token)
-            .Do((jwtToken) => {
-                if (!String.IsNullOrEmpty(jwtToken))
-                {
-                    Debug.WriteLine(String.Format("Jwt Access Token: {0} ", jwtToken));
-                    Settings.AccessToken = jwtToken;
-					_deviceGroupsService.saveDevice(CrossDeviceInfo.Current.Id, Settings.FcmToken).Subscribe(device => {
-						Debug.WriteLine(String.Format("Device Saved: {0}", device.ToString()));
-					});
-				}
-			}).Finally(() => {
+            .Finally(() => {
                 Debug.WriteLine("Log in finished ...");
             });
 
@@ -59,17 +48,6 @@ namespace Bullytect.Core.Services.Impl
             var observable =  _authenticationRestService
                     .getAuthorizationTokenByFacebook(new JwtFacebookAuthenticationRequestDTO() { Token = accessToken })
                     .Select(response => response.Data.Token)
-					.Do((jwtToken) => {
-                        if (!String.IsNullOrEmpty(jwtToken))
-                        {
-                            Debug.WriteLine(String.Format("Jwt Access Token -> {0} ", jwtToken));
-							Debug.WriteLine("Notify Authentication Success");
-                            Settings.AccessToken = jwtToken;
-							_deviceGroupsService.saveDevice(CrossDeviceInfo.Current.Id, Settings.FcmToken).Subscribe(device => {
-								Debug.WriteLine(String.Format("Device Saved: {0}", device.ToString()));
-							});
-                        }
-                    })
                     .Finally(() => {
                         Debug.WriteLine("Log To Facebook finished ...");
                     });

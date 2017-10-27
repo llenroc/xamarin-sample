@@ -18,9 +18,8 @@ using MvvmCross.Droid.Platform;
 using Plugin.Permissions;
 using CarouselView.FormsPlugin.Android;
 using Bullytect.Core;
-using Firebase.Messaging;
 using Firebase.Iid;
-using Plugin.PushNotification;
+using Plugin.FirebasePushNotification;
 
 namespace Bullytect.Droid
 {
@@ -114,7 +113,7 @@ namespace Bullytect.Droid
     			FormsHelper.ForceLoadingAssemblyContainingType(typeof(UXDivers.Effects.Effects));
 
                 LoadApplication(FormsApplication);
-                PushNotificationManager.ProcessIntent(Intent);
+				FirebasePushNotificationManager.ProcessIntent(Intent);
 
                 System.Diagnostics.Debug.WriteLine("Token: " + FirebaseInstanceId.Instance.Token);
 

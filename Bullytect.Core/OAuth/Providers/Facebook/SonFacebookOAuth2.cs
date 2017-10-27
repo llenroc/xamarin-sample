@@ -3,12 +3,12 @@ using Bullytect.Core.OAuth.Models;
 
 namespace Bullytect.Core.OAuth.Providers.Facebook
 {
-    public partial class FacebookOAuth2: OAuth2
+    public partial class SonFacebookOAuth2: OAuth2
     {
 		partial void SetPublicNonSensitiveData();
 		partial void SetPrivateSensitiveData();
 
-		public FacebookOAuth2()
+		public SonFacebookOAuth2()
 		{
 			SetPublicNonSensitiveData();
 			SetPrivateSensitiveData();
@@ -18,7 +18,7 @@ namespace Bullytect.Core.OAuth.Providers.Facebook
 		{
 			Description = "Facebook OAuth2 WWW App Type Callbackurl http[s]://[www.]xamarin.com";
 			OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer = "341732922916068";
-			OAuth2_Scope = "email, user_birthday, user_hometown, user_location, user_about_me";
+			OAuth2_Scope = "user_likes, user_photos, user_posts, user_relationship_details, user_relationships, user_friends";
 			OAuth_UriAuthorization = new Uri("https://m.facebook.com/dialog/oauth/");
             OAuth_UriCallbackAKARedirect = new Uri("fb341732922916068://authorize");
 			AllowCancel = true;

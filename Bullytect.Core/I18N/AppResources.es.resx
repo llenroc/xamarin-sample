@@ -15,7 +15,7 @@
 
 
 <data name="Page.Common.Title" xml:space="preserve">
-    <value>BullTect</value>
+    <value>BullTec</value>
     <comment>Page Common Title</comment>
   </data>
   <data name="Page.Settings.Title" xml:space="preserve">
@@ -155,15 +155,15 @@
     <comment>Walkthrough Btn Finish</comment>
   </data>
   <data name="WelcomePage.MainLabel" xml:space="preserve">
-    <value>BullTect</value>
+    <value>BullTec</value>
     <comment>WelcomePage MainLabel</comment>
   </data>
   <data name="WelcomePage.SecondLabel" xml:space="preserve">
-    <value>BullTect - El primer anti-bullying en la historia de Internet. Diseñado para proteger a los jóvenes y preadolescentes del ataque a las redes sociales de otros grupos de su edad</value>
+    <value>BullTec - El primer anti-bullying en la historia de Internet. Diseñado para proteger a los jóvenes y preadolescentes del ataque a las redes sociales de otros grupos de su edad</value>
     <comment>WelcomePage SecondLabel</comment>
   </data>
   <data name="WelcomePage.ClaimText" xml:space="preserve">
-    <value>BullTect - El primer anti-bullying en la historia de Internet. Diseñado para proteger a los jóvenes y preadolescentes del ataque a las redes sociales de otros grupos de su edad</value>
+    <value>BullTec - El primer anti-bullying en la historia de Internet. Diseñado para proteger a los jóvenes y preadolescentes del ataque a las redes sociales de otros grupos de su edad</value>
     <comment>WelcomePage ClaimText</comment>
   </data>
   <data name="WelcomePage.ClaimTextSecond" xml:space="preserve">
@@ -204,8 +204,16 @@ correo electrónico y contraseña.</value>
     <comment>Login Failed</comment>
   </data>
   <data name="Account.Disabled" xml:space="preserve">
-    <value>Cuenta deshabilitada</value>
+    <value>Tu cuenta no está activada, debería comporbar su correo electrónico para obtener más información sobre como activarla</value>
     <comment>Account Disabled</comment>
+  </data>
+  <data name="Authentication.Email.Already.Exists" xml:space="preserve">
+    <value>Ya existe un usuario con este correo electrónico</value>
+    <comment>Authentication Email Already Exists</comment>
+  </data>
+  <data name="Account.Locked" xml:space="preserve">
+    <value>Tu cuenta está bloqueada,contacta con su administrador para obtener más detalles.</value>
+    <comment>Account Locked</comment>
   </data>
   <data name="Login.Forget.Password" xml:space="preserve">
     <value>¿Olvidaste tu contraseña?</value>
@@ -237,7 +245,7 @@ pleasures of the demo.</value>
     <comment>Creating Account</comment>
   </data>
   <data name="Signup.Account.Created" xml:space="preserve">
-    <value> Se ha registrado exitosamente </value>
+    <value> Tu cuenta fue creada con éxito, compruebe su email de registro para obtener más información sobre como activarla. </value>
     <comment>Account Created</comment>
   </data>
   <data name="Signup.Account.Email.Invalid" xml:space="preserve">
@@ -308,6 +316,10 @@ pleasures of the demo.</value>
   <data name="Home.Profile.Load.Error" xml:space="preserve">
     <value> Error cargando la información del perfil </value>
     <comment>Home Profile Load Error</comment>
+  </data>
+  <data name="Home.Results.No.Children" xml:space="preserve">
+    <value> There are no statistics to display, you need to add children for the analysis </value>
+    <comment>Home Results No Children</comment>
   </data>
   <data name="Son.Profile.Birthday" xml:space="preserve">
     <value> Fecha Nacimiento: {0} </value>

@@ -27,9 +27,8 @@ namespace Bullytect.Core.ViewModels
     using MvvmCross.Platform.Core;
     using PCLCrypto;
     using System.Text;
-    using MvvmCross.Platform;
     using Bullytect.Core.Services;
-    using Plugin.DeviceInfo;
+    using MvvmCross.Platform;
 
     public abstract class BaseViewModel : MvxReactiveViewModel
     {
@@ -47,12 +46,21 @@ namespace Bullytect.Core.ViewModels
             {}
 
 			SignOutCommand = ReactiveCommand
-                .CreateFromObservable<Unit, string>((_) => 
+                .CreateFromObservable<Unit, bool>((_) => 
                                                   _appHelper.RequestConfirmation(AppResources.Profile_Confirm_SignOut)
-                                                    .Where((confirmed) => confirmed).SelectMany((confirmed) => Mvx.Resolve<IDeviceGroupsService>()?.Delete(CrossDeviceInfo.Current.Id)));
+                                                    .Where((confirmed) => confirmed));
+
+            SignOutCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
 			SignOutCommand.Subscribe((_) =>
 			{
+                if(Settings.Current.DeviceRegistered) {
+                    Mvx.Resolve<INotificationService>()?.unsubscribeDevice().Subscribe((result) => {
+                        Settings.Current.DeviceRegistered = false;
+                        Debug.WriteLine("Device successfully removed from device group ");
+                    });
+                }
+
                 Bullytect.Core.Config.Settings.AccessToken = null;
 				ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter()
 				{
@@ -160,15 +168,6 @@ namespace Bullytect.Core.ViewModels
 			}
 		}
 
-		/// <summary>
-		/// Gets or sets a value indicating whether this instance is dirty.
-		/// </summary>
-		/// <value>
-		///   <c>true</c> if this instance is has changed; otherwise, <c>false</c>.
-		/// </value>
-		/// <remarks>
-		/// Monitoring an objects contents only starts when <seealso cref="IsDirtyMonitoring"></seealso> is explicitly set to true />.
-		/// </remarks>
 		public bool IsDirty
 		{
 			get
@@ -182,10 +181,7 @@ namespace Bullytect.Core.ViewModels
 			}
 		}
 
-		/// <summary>
 		/// Gets the object hash from the objects property values.
-		/// </summary>
-		/// <returns>An MD5 hash representing the object</returns>
 		private string GetObjectHash()
 		{
 			string md5;
@@ -315,7 +311,7 @@ namespace Bullytect.Core.ViewModels
 
             public ICommand CloseCommand => new MvxCommand(() => Close(this));
 
-		    public ReactiveCommand<Unit, string> SignOutCommand { get; protected set; }
+		    public ReactiveCommand<Unit, bool> SignOutCommand { get; protected set; }
 
             public ICommand BackPressedCommand => new MvxCommand(() => OnBackPressed());
 

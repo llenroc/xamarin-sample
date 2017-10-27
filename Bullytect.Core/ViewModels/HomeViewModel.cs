@@ -147,7 +147,15 @@ namespace Bullytect.Core.ViewModels
         {
             get
             {
-                return new MvxCommand(() => ShowViewModel<ResultsViewModel>());
+                return new MvxCommand(() => {
+
+                    if(SelfParent?.Children > 0){
+                        ShowViewModel<ResultsViewModel>();
+                    } else {
+                        _appHelper.ShowAlert(AppResources.Home_Results_No_Children);
+                    }
+
+                });
             }
         }
 
