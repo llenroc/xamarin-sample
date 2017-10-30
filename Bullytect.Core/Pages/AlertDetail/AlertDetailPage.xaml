@@ -43,7 +43,6 @@
                         <!-- Delete Alert -->
                         <Label 
                             HorizontalOptions="End"
-                            Margin="0,0,10,0"
                             Text="{ x:Static helper:FontAwesomeFont.Trash } " 
                             FontSize="22"
                             TextColor="{ DynamicResource CustomNavBarTextColor }" 

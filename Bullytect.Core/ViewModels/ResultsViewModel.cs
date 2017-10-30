@@ -7,6 +7,7 @@ using System.Reactive.Linq;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.Helpers;
+using Bullytect.Core.Rest.Models.Exceptions;
 using Bullytect.Core.Services;
 using Bullytect.Core.ViewModels.Core.Models;
 using MvvmCross.Core.ViewModels;
@@ -21,7 +22,7 @@ namespace Bullytect.Core.ViewModels
 
         readonly IStatisticsService _statisticsService;
 
-		const int COMMENTS_ANALYZED_CHART_POS = 0;
+		const int COMMENTS_CHART_POS = 0;
         const int SYSTEM_ALERTS_CHART_POS = 1;
         const int SOCIAL_MEDIA_LIKES_CHART_POS = 2;
         const int MOST_ACTIVE_FRIENDS_POS = 3;
@@ -53,13 +54,13 @@ namespace Bullytect.Core.ViewModels
 
         }
 
-        ChartModel _commentsAnalyzedChart;
+        ChartModel _commentsChart;
 
-        public ChartModel CommentsAnalyzedChart
+        public ChartModel CommentsChart
         {
 
-            get => _commentsAnalyzedChart;
-            set => SetProperty(ref _commentsAnalyzedChart, value);
+            get => _commentsChart;
+            set => SetProperty(ref _commentsChart, value);
         }
 
         ChartModel _systemAlertsChart;
@@ -99,7 +100,6 @@ namespace Bullytect.Core.ViewModels
                     RefreshCurrentPage().Catch<object, Exception>(ex =>
                     {
                         HandleExceptions(ex);
-                        IsBusy = false;
                         return Observable.Empty<object>();
 
                     }).Subscribe(HandlerRefreshCurrentPage);
@@ -125,13 +125,13 @@ namespace Bullytect.Core.ViewModels
 		{
 
 			IsBusy = false;
-            ErrorOccurred = false;
+
 
 			switch (Position)
 			{
 
-				case COMMENTS_ANALYZED_CHART_POS:
-                    CommentsAnalyzedChart = Data as ChartModel;
+				case COMMENTS_CHART_POS:
+                    CommentsChart = Data as ChartModel;
 					break;
 
 				case SYSTEM_ALERTS_CHART_POS:
@@ -154,16 +154,19 @@ namespace Bullytect.Core.ViewModels
 		IObservable<object> RefreshCurrentPage(bool force = false)
 		{
 
-            IObservable<object> observable = Observable.Empty<object>(); ;
+            IObservable<object> observable = Observable.Empty<object>();
+
+			ErrorOccurred = false;
+			DataFound = true;
 
 			switch (Position)
 			{
 
-				case COMMENTS_ANALYZED_CHART_POS:
-					if (force || CommentsAnalyzedChart == null)
+				case COMMENTS_CHART_POS:
+					if (force || CommentsChart == null)
 					{
 						IsBusy = true;
-                        observable = _statisticsService.GetCommentsAnalyzedStatistics();
+                        observable = _statisticsService.GetCommentsStatistics();
 					}
 					break;
 
@@ -204,6 +207,26 @@ namespace Bullytect.Core.ViewModels
 			return observable.DefaultIfEmpty();
 
 		}
+
+        protected override void HandleExceptions(Exception ex)
+        {
+            IsBusy = false;
+
+            if(
+                ex is NoCommentsExtractedException ||
+                ex is NoAlertsStatisticsForThisPeriodException ||
+                ex is NoLikesFoundInThisPeriodException || 
+                ex is NoActiveFriendsInThisPeriodException ||
+                ex is NoNewFriendsInThisPeriodException) {
+
+                DataFound = false;
+
+            } else {
+
+                base.HandleExceptions(ex);
+            }
+
+        }
 
         #endregion
     }

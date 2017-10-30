@@ -29,7 +29,7 @@ namespace Bullytect.Core.Services.Impl
                 .GetAlertsStatistics(
 					Ids: String.IsNullOrEmpty(Settings.Current.FilteredSonCategories) ?
 						new string[] { } : Settings.Current.FilteredSonCategories.Split(','),
-					daysLimit: Settings.Current.TimeInterval)
+					daysAgo: Settings.Current.TimeInterval)
 				.Select(response => response.Data)
 				.Select((AlertsStatisticsDTO data) => Mapper.Map<AlertsStatisticsDTO, ChartModel>(data))
 				.Finally(() => {
@@ -39,19 +39,19 @@ namespace Bullytect.Core.Services.Impl
 			return operationDecorator(observable);
         }
 
-        public IObservable<ChartModel> GetCommentsAnalyzedStatistics()
+        public IObservable<ChartModel> GetCommentsStatistics()
         {
-			Debug.WriteLine("Get Comments Analyzed Statistics");
+			Debug.WriteLine("Get Comments Statistics");
 			
 			var observable = _childrenRestService
-                .GetCommentsAnalyzedStatistics(
+                .GetCommentsStatistics(
 					Ids: String.IsNullOrEmpty(Settings.Current.FilteredSonCategories) ?
 						new string[] { } : Settings.Current.FilteredSonCategories.Split(','),
-                    daysLimit: Settings.Current.TimeInterval)
+                    daysAgo: Settings.Current.TimeInterval)
 				.Select(response => response.Data)
-                .Select((CommentsAnalyzedStatisticsDTO data) => Mapper.Map<CommentsAnalyzedStatisticsDTO, ChartModel>(data))
+                .Select((CommentsStatisticsDTO data) => Mapper.Map<CommentsStatisticsDTO, ChartModel>(data))
 				.Finally(() => {
-					Debug.WriteLine("Get Comments Analyzed Statistics finished ...");
+					Debug.WriteLine("Get Comments Statistics finished ...");
 				});
 
 			return operationDecorator(observable);
@@ -94,7 +94,7 @@ namespace Bullytect.Core.Services.Impl
 			var observable = _childrenRestService
 				.GetMostActiveFriends(Ids: String.IsNullOrEmpty(Settings.Current.FilteredSonCategories) ?
 						new string[] { } : Settings.Current.FilteredSonCategories.Split(','),
-					daysLimit: Settings.Current.TimeInterval)
+					daysAgo: Settings.Current.TimeInterval)
                 .Select(response => response.Data.Users)
                 .Select((IList<MostActiveFriendsDTO.UserDTO> data) => Mapper.Map<IList<MostActiveFriendsDTO.UserDTO>, IList<UserListModel>>(data))
 				.Finally(() => {
@@ -111,7 +111,7 @@ namespace Bullytect.Core.Services.Impl
 			var observable = _childrenRestService
                 .GetNewFriends(Ids: String.IsNullOrEmpty(Settings.Current.FilteredSonCategories) ?
 						new string[] { } : Settings.Current.FilteredSonCategories.Split(','),
-					daysLimit: Settings.Current.TimeInterval)
+                               daysAgo: Settings.Current.TimeInterval)
                 .Select(response => response.Data.Users)
                 .Select((IList<NewFriendsDTO.UserDTO> data) => Mapper.Map<IList<NewFriendsDTO.UserDTO>, IList<UserListModel>>(data))
 				.Finally(() => {
@@ -160,7 +160,7 @@ namespace Bullytect.Core.Services.Impl
                 .GetSocialMediaLikesStatistics(
 					Ids: String.IsNullOrEmpty(Settings.Current.FilteredSonCategories) ?
 						new string[] { } : Settings.Current.FilteredSonCategories.Split(','),
-					daysLimit: Settings.Current.TimeInterval)
+					daysAgo: Settings.Current.TimeInterval)
 				.Select(response => response.Data)
                 .Select((SocialMediaLikesStatisticsDTO data) => Mapper.Map<SocialMediaLikesStatisticsDTO, ChartModel>(data))
 				.Finally(() => {

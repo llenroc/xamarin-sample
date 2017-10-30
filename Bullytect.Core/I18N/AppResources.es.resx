@@ -458,19 +458,19 @@ pleasures of the demo.</value>
     <comment>Alerts Deleting Alerts</comment>
   </data>
   <data name="Alerts.Warning.Text" xml:space="preserve">
-    <value> Warning  </value>
+    <value> Datos de advertencia  </value>
     <comment>Alerts Warning Text</comment>
   </data>
-  <data name="Alerts.Error.Text" xml:space="preserve">
-    <value> Error  </value>
+  <data name="Alerts.Danger.Text" xml:space="preserve">
+    <value> Datos de peligro  </value>
     <comment>Alerts Error Text</comment>
   </data>
   <data name="Alerts.Info.Text" xml:space="preserve">
-    <value> Info  </value>
+    <value> Datos informativos  </value>
     <comment>Alerts Info Text</comment>
   </data>
   <data name="Alerts.Success.Text" xml:space="preserve">
-    <value> Success  </value>
+    <value> Datos de éxito </value>
     <comment>Alerts Success Text</comment>
   </data>
   <data name="Alerts.Deleted" xml:space="preserve">

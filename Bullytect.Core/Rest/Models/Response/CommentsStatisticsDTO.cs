@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace Bullytect.Core.Rest.Models.Response
 {
-    public class CommentsAnalyzedStatisticsDTO
+    public class CommentsStatisticsDTO
     {
         #pragma warning disable CS1701
 
@@ -12,10 +12,10 @@ namespace Bullytect.Core.Rest.Models.Response
 		public string Title { get; set; }
 
         [JsonProperty("comments")]
-        public IList<CommentAnalyzedDTO> Data { get; set; }
+        public IList<CommentsPerDateDTO> Data { get; set; }
 
 
-        public class CommentAnalyzedDTO {
+        public class CommentsPerDateDTO {
 
 			[JsonProperty("date")]
             public DateTime Date { get; set; }

@@ -118,6 +118,7 @@
                                     <Entry
                                         Placeholder="E-mail"
                                         Text="{ Binding Email }"
+                                        Keyboard="Email"
                                         TextColor="{ DynamicResource OverImageTextColor }"
                                         Style="{StaticResource ArtinaLoginEntryStyle}" />
                                 

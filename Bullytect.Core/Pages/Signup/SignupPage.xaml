@@ -207,6 +207,7 @@
                                 <Entry 
                                     Placeholder="{ i18n:Translate Common.Placeholder.Email }"
                                     Style="{StaticResource ArtinaLoginEntryStyle}"
+                                    Keyboard="Email"
                                     Text="{ Binding Email }">
                                     <Entry.Behaviors>
                                         <artina:EmailValidatorBehavior x:Name="emailValidator" />

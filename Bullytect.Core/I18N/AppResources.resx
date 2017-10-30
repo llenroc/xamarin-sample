@@ -477,9 +477,9 @@ and we will recover it for you. </value>
     <value> An error occurred while loading children's information </value>
     <comment>Children Error Ocurred</comment>
   </data>
-  <data name="Children.Toolbar.Statistics" xml:space="preserve">
-    <value> Statistics </value>
-    <comment>Children Toolbar Statistics</comment>
+  <data name="Children.Toolbar.Results" xml:space="preserve">
+    <value> Results </value>
+    <comment>Children Toolbar Results</comment>
   </data>
   <data name="Children.Toolbar.Alerts" xml:space="preserve">
     <value>  Alerts </value>
@@ -598,19 +598,19 @@ and we will recover it for you. </value>
     <comment>Alerts Deleting Alerts</comment>
   </data>
   <data name="Alerts.Warning.Text" xml:space="preserve">
-    <value> Warning  </value>
+    <value> Warning data  </value>
     <comment>Alerts Warning Text</comment>
   </data>
-  <data name="Alerts.Error.Text" xml:space="preserve">
-    <value> Error  </value>
+  <data name="Alerts.Danger.Text" xml:space="preserve">
+    <value> Danger Data  </value>
     <comment>Alerts Error Text</comment>
   </data>
   <data name="Alerts.Info.Text" xml:space="preserve">
-    <value> Info  </value>
+    <value> Informative data  </value>
     <comment>Alerts Info Text</comment>
   </data>
   <data name="Alerts.Success.Text" xml:space="preserve">
-    <value> Success  </value>
+    <value> Success Data </value>
     <comment>Alerts Success Text</comment>
   </data>
   <data name="Alerts.Deleted" xml:space="preserve">
@@ -797,17 +797,17 @@ and we will recover it for you. </value>
     <value>Changes saved</value>
     <comment>Settings Changes Saved</comment>
   </data>   
-  <data name="Results.Comments.Analyzed.Son" xml:space="preserve">
-    <value>Comments Analyzed by son </value>
-    <comment>Results Comments Analyzed Son</comment>
+  <data name="Results.Comments.Son" xml:space="preserve">
+    <value>Extracted Comments </value>
+    <comment>Results Comments Son</comment>
   </data>
-  <data name="Results.Comments.Analyzed.Son.Loading" xml:space="preserve">
-    <value>Loading comments analyzed </value>
-    <comment>Results Comments Analyzed Son Loading</comment>
+  <data name="Results.Comments.Son.Loading" xml:space="preserve">
+    <value>Loading extracted Comments </value>
+    <comment>Results Comments Son Loading</comment>
   </data>
-  <data name="Results.Comments.Analyzed.Son.Error" xml:space="preserve">
-    <value>Error Loading comments analyzed </value>
-    <comment>Results Comments Reviewed Son Error</comment>
+  <data name="Results.Comments.Son.Error" xml:space="preserve">
+    <value>Error Loading extracted comments </value>
+    <comment>Results Comments Son Error</comment>
   </data>
   <data name="Results.System.Alerts" xml:space="preserve">
     <value>System Alerts</value>

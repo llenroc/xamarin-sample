@@ -446,6 +446,11 @@
                 </Grid>
                 <!--END GRID WRAPPER-->
              </controls:PullToRefreshLayout>
+
+            <common:ErrorOcurred 
+                    Grid.Row="1"
+                    IsVisible="{ Binding ErrorOccurred }"
+                    MainText="{i18n:Translate Home.Profile.Load.Error}"/>
         </Grid>
        <!-- END MAIN CONTAINER -->
     </ContentPage.Content>

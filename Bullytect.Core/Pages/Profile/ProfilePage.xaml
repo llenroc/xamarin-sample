@@ -224,7 +224,8 @@
 
                                 <Entry 
                                     Placeholder="{ i18n:Translate Common.Placeholder.Email }"
-                                    Style="{StaticResource ArtinaProfileEntryStyle}" 
+                                    Style="{StaticResource ArtinaProfileEntryStyle}"
+                                    Keyboard="Email"
                                     Text="{ Binding SelfParent.Email }">
                                     <Entry.Behaviors>
                                         <artina:EmailValidatorBehavior x:Name="emailValidator" />

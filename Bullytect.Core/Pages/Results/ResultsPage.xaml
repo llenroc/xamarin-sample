@@ -70,14 +70,15 @@
                     <x:Array Type="{x:Type View}">
                         <!-- Comments Analyzed chart -->
                         <commonTemplates:ChartPageTemplate 
-                            Title="{i18n:Translate Results.Comments.Analyzed.Son}"
+                            Title="{i18n:Translate Results.Comments.Son}"
                             IsLoading="{ Binding IsBusy }"
-                            Chart="{ Binding CommentsAnalyzedChart }"
-                            LoadingText="{i18n:Translate Results.Comments.Analyzed.Son.Loading }"
+                            Chart="{ Binding CommentsChart }"
+                            LoadingText="{i18n:Translate Results.Comments.Son.Loading }"
                             ChartWidth="300"
                             ChartHeight="300"
+                            DataFound="{ Binding DataFound }"
                             Error="{ Binding ErrorOccurred }"
-                            ErrorText="{i18n:Translate Results.Comments.Analyzed.Son.Error}"
+                            ErrorText="{i18n:Translate Results.Comments.Son.Error}"
                         />
                         <!-- System Alerts Chart  -->
                         <commonTemplates:ChartPageTemplate 
@@ -85,8 +86,9 @@
                             IsLoading="{ Binding IsBusy }"
                             Chart="{ Binding SystemAlertsChart }"
                             LoadingText="{i18n:Translate Results.System.Alerts.Loading }"
-                            ChartWidth="300"
-                            ChartHeight="300"
+                            ChartWidth="250"
+                            ChartHeight="250"
+                            DataFound="{ Binding DataFound }"
                             Error="{ Binding ErrorOccurred }"
                             ErrorText="{i18n:Translate Results.System.Alerts.Error}"
                         />
@@ -98,6 +100,7 @@
                             LoadingText="{i18n:Translate Results.Social.Media.Likes.Loading }"
                             ChartWidth="300"
                             ChartHeight="300"
+                            DataFound="{ Binding DataFound }"
                             Error="{ Binding ErrorOccurred }"
                             ErrorText="{i18n:Translate Results.Social.Media.Likes.Error}"
                         />
@@ -106,6 +109,7 @@
                             Title="{i18n:Translate Results.Most.Active.Friends}"
                             IsLoading="{ Binding IsBusy }"
                             LoadingText="{i18n:Translate Results.Most.Active.Friends.Loading }"
+                            DataFound="{ Binding DataFound }"
                             Error="{ Binding ErrorOccurred }"
                             ErrorText="{i18n:Translate Results.Most.Active.Friends.Error }"
                             Source="{ Binding MostActiveFriends }"
@@ -116,6 +120,7 @@
                             Title="{i18n:Translate Results.New.Friends}"
                             IsLoading="{ Binding IsBusy }"
                             LoadingText="{i18n:Translate Results.New.Friends.Loading }"
+                            DataFound="{ Binding DataFound }"
                             Error="{ Binding ErrorOccurred }"
                             ErrorText="{i18n:Translate Results.New.Friends.Error}"
                             Source="{ Binding NewFriends }"

@@ -23,13 +23,13 @@ using SkiaSharp;
 using static Bullytect.Core.Rest.Models.Response.DimensionsStatisticsDTO;
 using static Bullytect.Core.Rest.Models.Response.CommunitiesStatisticsDTO;
 using static Bullytect.Core.Rest.Models.Response.SocialMediaActivityStatisticsDTO;
-using static Bullytect.Core.Rest.Models.Response.CommentsAnalyzedStatisticsDTO;
 using static Bullytect.Core.Rest.Models.Response.SocialMediaLikesStatisticsDTO;
 using static Bullytect.Core.Rest.Models.Response.AlertsStatisticsDTO;
 using Xamarin.Forms;
 using Bullytect.Core.I18N.Services;
 using Microcharts;
 using Bullytect.Core.Rest.Utils;
+using static Bullytect.Core.Rest.Models.Response.CommentsStatisticsDTO;
 
 namespace Bullytect.Core
 {
@@ -79,7 +79,7 @@ namespace Bullytect.Core
 			.ForMember(s => s.IsFiltered, (obj) =>
 					   obj.ResolveUsing(o => Settings.Current.ShowResultsForAllChildren || Settings.Current.FilteredSonCategories.Contains(o.Identity)))
 			.ForMember(s => s.IsEnabled, (obj) =>
-					   obj.UseValue<bool>(!Settings.Current.ShowResultsForAllChildren));
+					   obj.ResolveUsing(o => !Settings.Current.ShowResultsForAllChildren));
 
 			// Mapper for MostActiveFriendsDTO.UserDTO to UserListModel
 
@@ -195,7 +195,7 @@ namespace Bullytect.Core
 			// Comments Analyzed Chart
 
 			//Mapper for CommentAnalyzedDTO  to Microchart Entry
-			cfg.CreateMap<CommentAnalyzedDTO, Microcharts.Entry>()
+			cfg.CreateMap<CommentsPerDateDTO, Microcharts.Entry>()
 				.ConstructUsing(s => new Microcharts.Entry(s.Total))
 				.ForMember(s => s.Label, (obj) => obj.ResolveUsing(o => String.Format("{0:d/M/yyyy HH:mm:ss}", o.Date)))
 				.ForMember(s => s.Value, (obj) => obj.ResolveUsing(o => o.Total))
@@ -203,9 +203,9 @@ namespace Bullytect.Core
 				.ForMember(s => s.Color, (obj) => obj.UseValue(SKColor.Parse("#6BC7E0")));
 
 			//Mapper for CommentsAnalyzedStatisticsDTO to ChartModel
-			cfg.CreateMap<CommentsAnalyzedStatisticsDTO, ChartModel>()
+			cfg.CreateMap<CommentsStatisticsDTO, ChartModel>()
 				.ForMember(s => s.Entries, (obj) => obj.MapFrom((o) => o.Data))
-				.ForMember(s => s.Type, (obj) => obj.UseValue(typeof(LineChart)));
+                .ForMember(s => s.Type, (obj) => obj.UseValue(typeof(BarChart)));
 
 
 			// Social Media Likes Chart

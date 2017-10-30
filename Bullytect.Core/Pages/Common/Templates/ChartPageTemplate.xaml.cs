@@ -220,7 +220,8 @@ namespace Bullytect.Core.Pages.Common.Templates
 
 			ChartContainer.Children.Add(new Label()
 			{
-				Text = chart.Title
+				Text = chart.Title,
+                TextColor = (Color)Application.Current.Resources["AccentColor"]
 			});
 
 			var chartTypeObj = (Chart)Activator.CreateInstance(chart.Type ?? DEFAULT_CHART_TYPE);

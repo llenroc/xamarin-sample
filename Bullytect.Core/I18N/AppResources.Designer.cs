@@ -581,9 +581,9 @@ namespace Bullytect.Core.I18N {
             }
         }
         
-        internal static string Children_Toolbar_Statistics {
+        internal static string Children_Toolbar_Results {
             get {
-                return ResourceManager.GetString("Children.Toolbar.Statistics", resourceCulture);
+                return ResourceManager.GetString("Children.Toolbar.Results", resourceCulture);
             }
         }
         
@@ -767,9 +767,9 @@ namespace Bullytect.Core.I18N {
             }
         }
         
-        internal static string Alerts_Error_Text {
+        internal static string Alerts_Danger_Text {
             get {
-                return ResourceManager.GetString("Alerts.Error.Text", resourceCulture);
+                return ResourceManager.GetString("Alerts.Danger.Text", resourceCulture);
             }
         }
         
@@ -1061,21 +1061,21 @@ namespace Bullytect.Core.I18N {
             }
         }
         
-        internal static string Results_Comments_Analyzed_Son {
+        internal static string Results_Comments_Son {
             get {
-                return ResourceManager.GetString("Results.Comments.Analyzed.Son", resourceCulture);
+                return ResourceManager.GetString("Results.Comments.Son", resourceCulture);
             }
         }
         
-        internal static string Results_Comments_Analyzed_Son_Loading {
+        internal static string Results_Comments_Son_Loading {
             get {
-                return ResourceManager.GetString("Results.Comments.Analyzed.Son.Loading", resourceCulture);
+                return ResourceManager.GetString("Results.Comments.Son.Loading", resourceCulture);
             }
         }
         
-        internal static string Results_Comments_Analyzed_Son_Error {
+        internal static string Results_Comments_Son_Error {
             get {
-                return ResourceManager.GetString("Results.Comments.Analyzed.Son.Error", resourceCulture);
+                return ResourceManager.GetString("Results.Comments.Son.Error", resourceCulture);
             }
         }
         

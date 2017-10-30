@@ -27,7 +27,7 @@ namespace Bullytect.Core.Converters
 					case AlertLevelEnum.SUCCESS:
                         return AppResources.Alerts_Success_Text;
 					case AlertLevelEnum.DANGER:
-                        return AppResources.Alerts_Error_Text;
+                        return AppResources.Alerts_Danger_Text;
 				}
 			}
 			catch (Exception ex)

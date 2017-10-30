@@ -72,7 +72,7 @@
                 Grid.Row="1"
                 IsLoading="{ Binding IsBusy }"
                 LoadingText="{ Binding LoadingText }"
-                Icon="{ x:Static helper:FontAwesomeFont.UserO }"
+                Icon="{ x:Static helper:FontAwesomeFont.Gear }"
                 HorizontalOptions="Center" 
                 VerticalOptions="FillAndExpand" />
 

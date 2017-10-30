@@ -27,22 +27,22 @@ namespace Bullytect.Core.Rest.Services
 
         IObservable<APIResponse<String>> DeleteSonById(string id);
 
-        IObservable<APIResponse<SocialMediaActivityStatisticsDTO>> GetSocialMediaActivityStatistics(string id, int daysLimit);
+        IObservable<APIResponse<SocialMediaActivityStatisticsDTO>> GetSocialMediaActivityStatistics(string id, int daysAgo);
 
-        IObservable<APIResponse<SentimentAnalysisStatisticsDTO>> GetSentimentAnalysisStatistics(string id, int daysLimit);
+        IObservable<APIResponse<SentimentAnalysisStatisticsDTO>> GetSentimentAnalysisStatistics(string id, int daysAgo);
 
-        IObservable<APIResponse<CommunitiesStatisticsDTO>> GetCommunitiesStatistics(string id, int daysLimit);
+        IObservable<APIResponse<CommunitiesStatisticsDTO>> GetCommunitiesStatistics(string id, int daysAgo);
 
-        IObservable<APIResponse<DimensionsStatisticsDTO>> GetDimensionsStatistics(string id, int daysLimit);
+        IObservable<APIResponse<DimensionsStatisticsDTO>> GetDimensionsStatistics(string id, int daysAgo);
 
-        IObservable<APIResponse<CommentsAnalyzedStatisticsDTO>> GetCommentsAnalyzedStatistics(String[] Ids, int daysLimit);
+        IObservable<APIResponse<CommentsStatisticsDTO>> GetCommentsStatistics(String[] Ids, int daysAgo);
 
-        IObservable<APIResponse<SocialMediaLikesStatisticsDTO>> GetSocialMediaLikesStatistics(String[] Ids, int daysLimit);
+        IObservable<APIResponse<SocialMediaLikesStatisticsDTO>> GetSocialMediaLikesStatistics(String[] Ids, int daysAgo);
 
-        IObservable<APIResponse<AlertsStatisticsDTO>> GetAlertsStatistics(String[] Ids, int daysLimit);
+        IObservable<APIResponse<AlertsStatisticsDTO>> GetAlertsStatistics(String[] Ids, int daysAgo);
 
-        IObservable<APIResponse<MostActiveFriendsDTO>> GetMostActiveFriends(String[] Ids, int daysLimit);
+        IObservable<APIResponse<MostActiveFriendsDTO>> GetMostActiveFriends(String[] Ids, int daysAgo);
 
-        IObservable<APIResponse<NewFriendsDTO>> GetNewFriends(String[] Ids, int daysLimit);
+        IObservable<APIResponse<NewFriendsDTO>> GetNewFriends(String[] Ids, int daysAgo);
     }
 }

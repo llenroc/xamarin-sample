@@ -21,7 +21,7 @@
             VerticalOptions="FillAndExpand">
 
             <Grid
-                x:Name="ChartPageContainer"
+                x:Name="PageContainer"
                 VerticalOptions="FillAndExpand">
                 
                  <Grid.RowDefinitions>

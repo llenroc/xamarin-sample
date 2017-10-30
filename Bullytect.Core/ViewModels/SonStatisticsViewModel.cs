@@ -4,6 +4,7 @@ using System.Reactive.Linq;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.Helpers;
+using Bullytect.Core.Rest.Models.Exceptions;
 using Bullytect.Core.Services;
 using Bullytect.Core.ViewModels.Core.Models;
 using MvvmCross.Core.ViewModels;
@@ -87,7 +88,6 @@ namespace Bullytect.Core.ViewModels
                 {
                     RefreshCurrentChart().Catch<ChartModel, Exception>(ex => {
                         HandleExceptions(ex);
-                        IsBusy = false;
                         return Observable.Empty<ChartModel>();
 
                     }).Subscribe(HandlerRefreshCurrentChart);
@@ -162,7 +162,6 @@ namespace Bullytect.Core.ViewModels
         void HandlerRefreshCurrentChart(ChartModel Chart) {
 
             IsBusy = false;
-            ErrorOccurred = false;
 
 			switch (Position)
 			{
@@ -187,7 +186,10 @@ namespace Bullytect.Core.ViewModels
 
         IObservable<ChartModel> RefreshCurrentChart(bool force = false){
 
-            IObservable<ChartModel> observable = Observable.Empty<ChartModel>(); ;
+            IObservable<ChartModel> observable = Observable.Empty<ChartModel>();
+
+			ErrorOccurred = false;
+			DataFound = true;
 
             switch(Position){
 
@@ -226,6 +228,28 @@ namespace Bullytect.Core.ViewModels
             return observable.DefaultIfEmpty();
 
         }
+
+		protected override void HandleExceptions(Exception ex)
+		{
+            IsBusy = false;
+
+			if (
+				ex is SocialMediaActivityStatisticsNotFoundException ||
+				ex is NoDimensionsStatisticsForThisPeriodException ||
+				ex is NoSentimentAnalysisStatisticsForThisPeriodException ||
+				ex is NoCommunityStatisticsForThisPeriodException)
+			{
+
+				DataFound = false;
+
+			}
+			else
+			{
+
+				base.HandleExceptions(ex);
+			}
+
+		}
 
         #endregion
     }

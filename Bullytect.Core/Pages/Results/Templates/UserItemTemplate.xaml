@@ -12,7 +12,7 @@
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
     <ContentView.Resources>
         <ResourceDictionary>
-            <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
+            <converters:SocialMediaToIconConverter x:Key="SocialMediaToIconConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
 
@@ -23,6 +23,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
@@ -35,7 +36,7 @@
                 FadeAnimationEnabled="true"
                 ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
                 LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
-                Source="{ StaticResource ProfileImagePlaceholder }}">
+                Source="{ Binding ProfileImageUri }}">
                 <ffimageloading:CachedImage.Transformations>
                     <fftransformations:CircleTransformation BorderSize="3" BorderHexColor="#6BC7E0" />
                 </ffimageloading:CachedImage.Transformations>
@@ -59,12 +60,31 @@
                 </Label.FontSize> 
             </Label>
 
+            <Label
+                Grid.Column="2"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="End"
+                Text="{ Binding SocialMediaType, Converter = { StaticResource SocialMediaToIconConverter }}"
+                FontFamily="{ StaticResource IconsFontFamily }"
+                TextColor="{ DynamicResource AccentColor }">
 
-            <Label Grid.Column="2" 
-                   Text="{Binding Value }" 
-                   VerticalTextAlignment="Center" 
-                   HorizontalOptions="StartAndExpand"
-                   />
+                <Label.FontSize>
+                    <OnIdiom 
+                        x:TypeArguments="x:Double" 
+                        Phone="15" 
+                        Tablet="20" />
+                </Label.FontSize> 
+            </Label>
+
+
+            <Label 
+                Grid.Column="3" 
+                TextColor="{ DynamicResource AccentColor }"
+                Text="{Binding ValueLabel }"
+                VerticalTextAlignment="Center" 
+                HorizontalOptions="StartAndExpand"
+            />
             
         </Grid>
 

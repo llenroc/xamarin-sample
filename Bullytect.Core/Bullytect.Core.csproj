@@ -533,7 +533,7 @@
     <Compile Include="Pages\Common\BaseContentPage.cs" />
     <Compile Include="Utils\IsDirtyMonitoringAttribute.cs" />
     <Compile Include="Utils\IsDirtyViewModelJsonContractResolver.cs" />
-    <Compile Include="Rest\Models\Response\CommentsAnalyzedStatisticsDTO.cs" />
+    <Compile Include="Rest\Models\Response\CommentsStatisticsDTO.cs" />
     <Compile Include="Rest\Models\Response\SocialMediaLikesStatisticsDTO.cs" />
     <Compile Include="Rest\Models\Response\AlertsStatisticsDTO.cs" />
     <Compile Include="Pages\Common\Controls\LayoutTouchListner.cs" />
@@ -558,6 +558,16 @@
     <Compile Include="Rest\Models\Exceptions\EmailAlreadyExistsException.cs" />
     <Compile Include="Rest\Models\Exceptions\AccountLockedException.cs" />
     <Compile Include="OAuth\Providers\Facebook\SonFacebookOAuth2.cs" />
+    <Compile Include="Rest\Models\Exceptions\NoCommentsExtractedException.cs" />
+    <Compile Include="Rest\Models\Exceptions\NoLikesFoundInThisPeriodException.cs" />
+    <Compile Include="Rest\Models\Exceptions\NoActiveFriendsInThisPeriodException.cs" />
+    <Compile Include="Rest\Models\Exceptions\NoNewFriendsInThisPeriodException.cs" />
+    <Compile Include="Rest\Models\Exceptions\NoAlertsStatisticsForThisPeriodException.cs" />
+    <Compile Include="Rest\Models\Exceptions\SocialMediaActivityStatisticsNotFoundException.cs" />
+    <Compile Include="Rest\Models\Exceptions\NoSentimentAnalysisStatisticsForThisPeriodException.cs" />
+    <Compile Include="Rest\Models\Exceptions\NoCommunityStatisticsForThisPeriodException.cs" />
+    <Compile Include="Rest\Models\Exceptions\NoDimensionsStatisticsForThisPeriodException.cs" />
+    <Compile Include="Converters\SocialMediaToIconConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">

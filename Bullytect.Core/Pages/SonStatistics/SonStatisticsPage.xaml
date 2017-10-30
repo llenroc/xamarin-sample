@@ -77,6 +77,7 @@
                             LoadingText="{i18n:Translate Statistics.Son.Social.Media.Activities.Loading }"
                             ChartWidth="350"
                             ChartHeight="350"
+                            DataFound="{ Binding DataFound }"
                             Error="{ Binding ErrorOccurred }"
                             ErrorText="{i18n:Translate Statistics.Son.Social.Media.Activities.Error}"
                         />
@@ -87,6 +88,7 @@
                             LoadingText="{i18n:Translate Statistics.Son.Four.Dimensions.Loading }"
                             ChartWidth="350"
                             ChartHeight="350"
+                            DataFound="{ Binding DataFound }"
                             Error="{ Binding ErrorOccurred }"
                             ErrorText="{i18n:Translate Statistics.Son.Four.Dimensions.Error}"
                         />
@@ -97,6 +99,7 @@
                             LoadingText="{i18n:Translate Statistics.Son.Social.Sentiment.Analysis.Loading }"
                             ChartWidth="300"
                             ChartHeight="300"
+                            DataFound="{ Binding DataFound }"
                             Error="{ Binding ErrorOccurred }"
                             ErrorText="{i18n:Translate Statistics.Son.Social.Sentiment.Analysis.Error}"
                         />
@@ -107,6 +110,7 @@
                             LoadingText="{i18n:Translate Statistics.Son.Communities.Loading }"
                             ChartWidth="350"
                             ChartHeight="350"
+                            DataFound="{ Binding DataFound }"
                             Error="{ Binding ErrorOccurred }"
                             ErrorText="{i18n:Translate Statistics.Son.Communities.Error}"
                         />

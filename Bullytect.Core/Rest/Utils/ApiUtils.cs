@@ -136,6 +136,61 @@ namespace Bullytect.Core.Rest.Utils
 								Response = ex.GetContentAs<APIResponse<string>>()
 							};
                             break;
+                        case ResponseNames.NO_COMMENTS_EXTRACTED_RESPONSE:
+                            exResponse = new NoCommentsExtractedException()
+                            {
+                                Response = ex.GetContentAs<APIResponse<string>>()
+                            };
+                            break;
+                        case ResponseNames.NO_LIKES_FOUND_IN_THIS_PERIOD_RESPONSE:
+							exResponse = new NoLikesFoundInThisPeriodException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
+                            break;
+                        case ResponseNames.NO_ACTIVE_FRIENDS_IN_THIS_PERIOD_RESPONSE:
+							exResponse = new NoActiveFriendsInThisPeriodException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
+                            break;
+                        case ResponseNames.NO_NEW_FRIENDS_AT_THIS_TIME_RESPONSE:
+							exResponse = new NoNewFriendsInThisPeriodException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
+                            break;
+                        case ResponseNames.NO_ALERTS_STATISTICS_FOR_THIS_PERIOD_RESPONSE:
+							exResponse = new NoAlertsStatisticsForThisPeriodException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
+                            break;
+
+                        case ResponseNames.SOCIAL_MEDIA_ACTIVITY_STATISTICS_NOT_FOUND_RESPONSE:
+							exResponse = new SocialMediaActivityStatisticsNotFoundException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
+                            break;
+                        case ResponseNames.NO_SENTIMENT_ANALYSIS_STATISTICS_FOR_THIS_PERIOD_RESPONSE:
+							exResponse = new NoSentimentAnalysisStatisticsForThisPeriodException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
+                            break;
+                        case ResponseNames.NO_COMMUNITY_STATISTICS_FOR_THIS_PERIOD_RESPONSE:
+							exResponse = new NoCommunityStatisticsForThisPeriodException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
+                            break;
+                        case ResponseNames.NO_DIMENSIONS_STATISTICS_FOR_THIS_PERIOD_RESPONSE:
+							exResponse = new NoDimensionsStatisticsForThisPeriodException()
+							{
+								Response = ex.GetContentAs<APIResponse<string>>()
+							};
+                            break;
 							// Parse Generic Error
                         case ResponseNames.GENERIC_ERROR_RESPONSE:
 							exResponse = new GenericErrorException()
