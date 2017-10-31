@@ -36,8 +36,15 @@ namespace Bullytect.Core.Helpers
 			return Observable.FromAsync<bool>((_) => _userDialogs.ConfirmAsync(new ConfirmConfig()
 			{
 				Title = Message
+                 
 
 			})).Where((confirmed) => confirmed);
+
+        }
+
+        public void ShowAlert(string Message) {
+
+            _userDialogs.Alert(Message);
 
         }
 

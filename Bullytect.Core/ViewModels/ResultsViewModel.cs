@@ -1,221 +1,112 @@
 ﻿
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.Helpers;
-using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Rest.Models.Exceptions;
 using Bullytect.Core.Services;
 using Bullytect.Core.ViewModels.Core.Models;
-using Microcharts;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using MvvmHelpers;
 using ReactiveUI;
-using SkiaSharp;
 
 namespace Bullytect.Core.ViewModels
 {
     public class ResultsViewModel : BaseViewModel
     {
 
-        readonly IParentService _parentService;
-        readonly IAlertService _alertsService;
+        readonly IStatisticsService _statisticsService;
+
+		const int COMMENTS_CHART_POS = 0;
+        const int SYSTEM_ALERTS_CHART_POS = 1;
+        const int SOCIAL_MEDIA_LIKES_CHART_POS = 2;
+        const int MOST_ACTIVE_FRIENDS_POS = 3;
+        const int NEW_FRIENDS_POS = 4;
 
         public ResultsViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger,
-                                AppHelper appHelper, IParentService parentService, IAlertService alertsService) : base(userDialogs, mvxMessenger, appHelper)
+                                AppHelper appHelper, IStatisticsService statisticsService) : base(userDialogs, mvxMessenger, appHelper)
         {
 
-            _parentService = parentService;
-            _alertsService = alertsService;
+            _statisticsService = statisticsService;
 
+            RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, object>((_) => RefreshCurrentPage(force: true));
 
-            RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, PageModel>((param) => Observable.Zip(_parentService.GetLastIterations(), _alertsService.GetAlertsBySon(), (IterationEntities, AlertsBySon) => new PageModel()
-            {
-                IterationsEntities = IterationEntities,
-                AlertsBySon = AlertsBySon
-            }));
+			RefreshCommand.Subscribe(HandlerRefreshCurrentPage);
 
-            RefreshCommand.Subscribe((PageModel) =>
-            {
-                LastIteration = PageModel.IterationsEntities?.FirstOrDefault();
-                //AlertsBySon.ReplaceRange(PageModel.AlertsBySon);
-                //LastIterations.ReplaceRange(IterationEntities);
-                NoIterationsFound = false;
-            });
+			RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
-            RefreshCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
-
-            RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }
 
         #region properties
 
-        ChartModel _lastIterationsChart;
-        public ChartModel LastIterationsChart {
+        int _position;
 
-            get => _lastIterationsChart ?? (_lastIterationsChart = new ChartModel(){
-                Title = "Las Iterations",
-                Entries = new List<Entry>() {
-					new Entry(45)
-					{
-						Label = String.Format("{0:d/M/yyyy HH:mm:ss}", new DateTime()),
-						ValueLabel = "45",
-						Color = SKColor.Parse("#6BC7E0")
-					},
-					new Entry(36)
-					{
-						Label = String.Format("{0:d/M/yyyy HH:mm:ss}", new DateTime().AddMinutes(10)),
-						ValueLabel = "36",
-						Color = SKColor.Parse("#6BC7E0")
-					},
-					new Entry(67)
-					{
-						Label = String.Format("{0:d/M/yyyy HH:mm:ss}", new DateTime().AddMinutes(20)),
-						ValueLabel = "67",
-						Color = SKColor.Parse("#6BC7E0")
-					},
-					new Entry(45)
-					{
-						Label = String.Format("{0:d/M/yyyy HH:mm:ss}", new DateTime().AddMinutes(30)),
-						ValueLabel = "45",
-						Color = SKColor.Parse("#6BC7E0")
-					},
-					new Entry(45)
-					{
-						Label = String.Format("{0:d/M/yyyy HH:mm:ss}", new DateTime().AddMinutes(40)),
-						ValueLabel = "45",
-						Color = SKColor.Parse("#6BC7E0")
-					}
-                },
-                Type = typeof(LineChart)
-
-            });
-
-            set => SetProperty(ref _lastIterationsChart, value);
-
-        }
-
-
-
-        public ObservableRangeCollection<ChartModel> AlertsBySonChartList { get; } = new ObservableRangeCollection<ChartModel>() {
-
-            new ChartModel () {
-                Title = "Sergio Martín",
-                Entries = new List<Entry> () {
-					new Entry(34)
-                    {
-                        Label = "INFO",
-                        ValueLabel = "34",
-                        Color = SKColor.Parse("#2C8DA9")
-                    },
-					new Entry(23)
-					{
-						Label = "WARNING",
-						ValueLabel = "23",
-						Color = SKColor.Parse("#FFA700")
-					},
-					new Entry(10)
-					{
-						Label = "DANGER",
-						ValueLabel = "10",
-						Color = SKColor.Parse("#D93028")
-					}
-				},
-                Type = typeof(DonutChart)
-            },
-			new ChartModel () {
-                Title = "Alberto Lopez",
-				Entries = new List<Entry> () {
-					new Entry(34)
-					{
-						Label = "INFO",
-						ValueLabel = "34",
-						Color = SKColor.Parse("#2C8DA9")
-					},
-					new Entry(23)
-					{
-						Label = "WARNING",
-						ValueLabel = "23",
-						Color = SKColor.Parse("#FFA700")
-					},
-					new Entry(10)
-					{
-						Label = "DANGER",
-						ValueLabel = "10",
-						Color = SKColor.Parse("#D93028")
-					}
-				},
-                Type = typeof(DonutChart)
-			},
-			new ChartModel () {
-				Title = "Alberto Lopez",
-				Entries = new List<Entry> () {
-					new Entry(34)
-					{
-						Label = "INFO",
-						ValueLabel = "34",
-						Color = SKColor.Parse("#2C8DA9")
-					},
-					new Entry(23)
-					{
-						Label = "WARNING",
-						ValueLabel = "23",
-						Color = SKColor.Parse("#FFA700")
-					},
-					new Entry(10)
-					{
-						Label = "DANGER",
-						ValueLabel = "10",
-						Color = SKColor.Parse("#D93028")
-					}
-				},
-                Type = typeof(DonutChart)
-			}
-
-        };
-
-
-        IterationEntity _lastIteration;
-
-        public IterationEntity LastIteration
+        public int Position
         {
-            get => _lastIteration;
-            set => SetProperty(ref _lastIteration, value);
+
+            get => _position;
+            set => SetProperty(ref _position, value);
+
         }
 
-        bool _noIterationsFound = false;
+        ChartModel _commentsChart;
 
-        public bool NoIterationsFound
+        public ChartModel CommentsChart
         {
-            get => _noIterationsFound;
-            set => SetProperty(ref _noIterationsFound, value);
+
+            get => _commentsChart;
+            set => SetProperty(ref _commentsChart, value);
         }
+
+        ChartModel _systemAlertsChart;
+
+        public ChartModel SystemAlertsChart
+        {
+
+            get => _systemAlertsChart;
+            set => SetProperty(ref _systemAlertsChart, value);
+        }
+
+
+        ChartModel _socialMediaLikesChart;
+
+        public ChartModel SocialMediaLikesChart
+        {
+            get => _socialMediaLikesChart;
+            set => SetProperty(ref _socialMediaLikesChart, value);
+        }
+
+        public ObservableRangeCollection<UserListModel> MostActiveFriends { get; } = new ObservableRangeCollection<UserListModel>();
+
+        public ObservableRangeCollection<UserListModel> NewFriends { get; } = new ObservableRangeCollection<UserListModel>();
 
         #endregion
-
-
-        #region delegates
-
-        public delegate void AlertsBySonLoadedEvent(object sender, IList<AlertsBySon> AlertsBySon);
-        public event AlertsBySonLoadedEvent AlertsBySonLoaded;
-
-        protected virtual void OnAlertsBySonLoaded(IList<AlertsBySon> AlertsBySon)
-        {
-            AlertsBySonLoaded?.Invoke(this, AlertsBySon);
-        }
-
-        #endregion
-
 
         #region commands
 
-        public ReactiveCommand<Unit, PageModel> RefreshCommand { get; protected set; }
+        public ReactiveCommand<Unit, object> RefreshCommand { get; protected set; }
+
+        public ICommand RefreshChartCommand
+        {
+            get
+            {
+                return new MvxCommand<int>((pos) =>
+                {
+                    RefreshCurrentPage().Catch<object, Exception>(ex =>
+                    {
+                        HandleExceptions(ex);
+                        return Observable.Empty<object>();
+
+                    }).Subscribe(HandlerRefreshCurrentPage);
+
+                });
+            }
+        }
 
         public ICommand GoToSettingsCommand
         {
@@ -225,45 +116,118 @@ namespace Bullytect.Core.ViewModels
             }
         }
 
-        #endregion
+		#endregion
+
+		#region methods
+
+
+		void HandlerRefreshCurrentPage(object Data)
+		{
+
+			IsBusy = false;
+
+
+			switch (Position)
+			{
+
+				case COMMENTS_CHART_POS:
+                    CommentsChart = Data as ChartModel;
+					break;
+
+				case SYSTEM_ALERTS_CHART_POS:
+					SystemAlertsChart = Data as ChartModel;
+					break;
+
+				case SOCIAL_MEDIA_LIKES_CHART_POS:
+					SocialMediaLikesChart = Data as ChartModel;
+					break;
+                case MOST_ACTIVE_FRIENDS_POS:
+                    MostActiveFriends.ReplaceRange(Data as IList<UserListModel>);
+                    break;
+				case NEW_FRIENDS_POS:
+                    NewFriends.ReplaceRange(Data as IList<UserListModel>);
+					break;
+
+			}
+		}
+
+		IObservable<object> RefreshCurrentPage(bool force = false)
+		{
+
+            IObservable<object> observable = Observable.Empty<object>();
+
+			ErrorOccurred = false;
+			DataFound = true;
+
+			switch (Position)
+			{
+
+				case COMMENTS_CHART_POS:
+					if (force || CommentsChart == null)
+					{
+						IsBusy = true;
+                        observable = _statisticsService.GetCommentsStatistics();
+					}
+					break;
+
+				case SYSTEM_ALERTS_CHART_POS:
+					if (force || SystemAlertsChart == null)
+					{
+						IsBusy = true;
+                        observable = _statisticsService.GetAlertsStatistics();
+					}
+					break;
+
+				case SOCIAL_MEDIA_LIKES_CHART_POS:
+					if (force || SocialMediaLikesChart == null)
+					{
+						IsBusy = true;
+                        observable = _statisticsService.GetSocialMediaLikesStatistics();
+					}
+					break;
+
+                case MOST_ACTIVE_FRIENDS_POS:
+                    IsBusy = true;
+                    observable = _statisticsService.GetMostActiveFriends();
+                    break;
+
+                case NEW_FRIENDS_POS:
+                    IsBusy = true;
+                    observable = _statisticsService.GetNewFriends();
+                    break;
+				default:
+					if (force || SocialMediaLikesChart == null)
+					{
+						IsBusy = true;
+						observable = _statisticsService.GetSocialMediaLikesStatistics();
+					}
+					break;
+			}
+
+			return observable.DefaultIfEmpty();
+
+		}
 
         protected override void HandleExceptions(Exception ex)
         {
+            IsBusy = false;
 
-            if (ex is NoIterationsFoundForSelfParentException)
-            {
-                NoIterationsFound = true;
-            }
-            else
-            {
+            if(
+                ex is NoCommentsExtractedException ||
+                ex is NoAlertsStatisticsForThisPeriodException ||
+                ex is NoLikesFoundInThisPeriodException || 
+                ex is NoActiveFriendsInThisPeriodException ||
+                ex is NoNewFriendsInThisPeriodException) {
+
+                DataFound = false;
+
+            } else {
+
                 base.HandleExceptions(ex);
             }
-        }
 
-        #region models
-
-        public class PageModel
-        {
-
-            public IList<IterationEntity> IterationsEntities { get; set; }
-            public IList<AlertsBySon> AlertsBySon { get; set; }
         }
 
         #endregion
-
-
-        /*IObservable<DonutChart> CreateCommentsBySonChart() {
-
-            return _parentService.GetCommentsBySonForLastIteration().Select((CommentsBySonDict) => CommentsBySonDict.ToList()).Select((CommentsBySonList) => CommentsBySonList.Select((CommentsBySon) => new Entry(float.Parse(CommentsBySon.Value))
-			{
-                Label = CommentsBySon.Key,
-                ValueLabel = CommentsBySon.Value,
-                Color = SKColor.Parse("#266489")
-            })).Select((Entries) => {
-
-                var chart = new DonutChart() { Entries = Entries };
-                return chart;
-            });
-        }*/
     }
 }

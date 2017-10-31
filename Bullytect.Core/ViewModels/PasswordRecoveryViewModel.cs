@@ -27,7 +27,7 @@ namespace Bullytect.Core.ViewModels
             });
 
 
-            ResetPasswordCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Common_Loading));
+            ResetPasswordCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecutingWithDialogs(isLoading, AppResources.Common_Loading));
 
 			ResetPasswordCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }

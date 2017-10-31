@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<d:MvxContentPage 
+<common:BaseContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
@@ -18,6 +17,7 @@
     BackgroundColor="{DynamicResource BasePageColor}">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
             <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -68,7 +68,19 @@
              
             </common:AppHeader>
 
-            <TableView  Grid.Row="1" Intent="Settings" HasUnevenRows="true">
+            <common:ActivityLoading
+                Grid.Row="1"
+                IsLoading="{ Binding IsBusy }"
+                LoadingText="{ Binding LoadingText }"
+                Icon="{ x:Static helper:FontAwesomeFont.Gear }"
+                HorizontalOptions="Center" 
+                VerticalOptions="FillAndExpand" />
+
+            <TableView  
+                Grid.Row="1"
+                IsVisible="{ Binding IsBusy , Converter = { StaticResource InverseBoolConverter }}"
+                Intent="Settings" 
+                HasUnevenRows="true">
 
                 <TableSection Title="{i18n:Translate Settings.Alerts.General}">
 
@@ -85,7 +97,7 @@
 
                                  <Label 
                                     Grid.Column="0"
-                                    Text="{ x:Static helper:FontAwesomeFont.SortAmountDesc }"
+                                    Text="{ x:Static helper:FontAwesomeFont.Calendar }"
                                     Style="{StaticResource FontIcon}"
                                     FontSize ="12"
                                     WidthRequest="12" 
@@ -95,7 +107,7 @@
                                     VerticalTextAlignment="Center"/>
                             
                                 <Label Grid.Column="1" 
-                                       Text="{i18n:Translate Results.Settings.Iterations.Count }"
+                                       Text="{i18n:Translate Settings.Statistics.General.Interval }"
                                        VerticalTextAlignment="Center" 
                                        HorizontalOptions="StartAndExpand"/>
 
@@ -118,7 +130,7 @@
 
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer 
-                                            Tapped="OnIterationsCountInfo"
+                                            Tapped="OnTimeIntervalInfo"
                                             NumberOfTapsRequired="1" /> 
                                     </Label.GestureRecognizers>
                                 </Label>
@@ -126,8 +138,8 @@
                                 <Picker Grid.Column="3"
                                     WidthRequest="100"
                                     VerticalOptions="Center"
-                                    ItemsSource="{Binding IterationsOptionsList }"
-                                    SelectedItem="{Binding IterationsOption}"
+                                    ItemsSource="{Binding TimeIntervalsOptionsList }"
+                                    SelectedItem="{Binding TimeIntervalOption}"
                                     ItemDisplayBinding="{Binding Description}"/>
                                
                         </Grid>
@@ -143,5 +155,5 @@
             </TableView>
         </Grid>
      </ContentPage.Content>
- </d:MvxContentPage>
+ </common:BaseContentPage>
 

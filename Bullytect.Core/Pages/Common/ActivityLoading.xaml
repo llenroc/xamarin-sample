@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    x:Class="Bullytect.Core.Pages.Common.ActivityLoading">
+    <ContentView.Content>
+
+        <Grid
+            x:Name="Container"
+            IsVisible="false"
+            VerticalOptions="Center">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+
+            <Grid
+                Grid.Row="0"
+                x:Name="LoadingIndicator"
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand">
+                
+                <BoxView
+                    HeightRequest="64" 
+                    WidthRequest="64" 
+                    BackgroundColor="{DynamicResource AccentColor}" />
+
+                <Label
+                    x:Name="IconLabel"
+                    Style="{ StaticResource FontIcon }"
+                    TextColor="White"
+                    FontSize="45"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"/>
+            </Grid>
+
+            <Label
+                x:Name="LoadingTextLabel"
+                Grid.Row="1"
+                Margin="4"
+                TextColor="{DynamicResource AccentColor}"
+                HorizontalTextAlignment="Center"/>
+        </Grid>
+
+    </ContentView.Content>
+</ContentView>

@@ -5,22 +5,22 @@ namespace Bullytect.Core.Services.Impl
     using System.Diagnostics;
     using System.Reactive.Linq;
     using Bullytect.Core.Config;
-    using Bullytect.Core.Messages;
     using MvvmCross.Plugins.Messenger;
     using Bullytect.Core.Rest.Services;
     using Bullytect.Core.Rest.Models.Request;
-    using Bullytect.Core.Rest.Models.Exceptions;
-    using Bullytect.Core.Rest.Models.Response;
 
     public class AuthenticationServiceImpl: BaseService, IAuthenticationService
     {
         readonly IAuthenticationRestService _authenticationRestService;
         readonly IMvxMessenger _mvxMessenger;
+        readonly INotificationService _notificationService;
 
-        public AuthenticationServiceImpl(IAuthenticationRestService authenticationRestService, IMvxMessenger mvxMessenger)
+        public AuthenticationServiceImpl(IAuthenticationRestService authenticationRestService, 
+                                         IMvxMessenger mvxMessenger, INotificationService notificationService)
         {
             _authenticationRestService = authenticationRestService;
             _mvxMessenger = mvxMessenger;
+            _notificationService = notificationService;
             Debug.WriteLine(GetType().Name + " was created on context");
         }
 
@@ -34,16 +34,7 @@ namespace Bullytect.Core.Services.Impl
                 Password = password
             })
             .Select(response => response.Data.Token)
-            .Do((jwtToken) => {
-                if (!String.IsNullOrEmpty(jwtToken))
-                {
-                    Debug.WriteLine(String.Format("Jwt Access Token: {0} ", jwtToken));
-                    Settings.AccessToken = jwtToken;
-                    _mvxMessenger.Publish(new AuthenticatedUserMessage(this) {
-                        JwtToken = jwtToken
-                    });
-				}
-			}).Finally(() => {
+            .Finally(() => {
                 Debug.WriteLine("Log in finished ...");
             });
 
@@ -57,17 +48,6 @@ namespace Bullytect.Core.Services.Impl
             var observable =  _authenticationRestService
                     .getAuthorizationTokenByFacebook(new JwtFacebookAuthenticationRequestDTO() { Token = accessToken })
                     .Select(response => response.Data.Token)
-					.Do((jwtToken) => {
-                        if (!String.IsNullOrEmpty(jwtToken))
-                        {
-                            Debug.WriteLine(String.Format("Jwt Access Token -> {0} ", jwtToken));
-							Debug.WriteLine("Notify Authentication Success");
-                            Settings.AccessToken = jwtToken;
-                            _mvxMessenger.Publish(new AuthenticatedUserMessage(this) {
-                                JwtToken = jwtToken
-                            });
-                        }
-                    })
                     .Finally(() => {
                         Debug.WriteLine("Log To Facebook finished ...");
                     });

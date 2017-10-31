@@ -44,6 +44,11 @@ namespace Bullytect.Core.Rest.Services.Impl
 			})));
         }
 
+        public IObservable<APIResponse<UserSystemPreferencesDTO>> GetPreferences()
+        {
+            return Observable.FromAsync(() => GetData<APIResponse<UserSystemPreferencesDTO>>(ApiEndpoints.GET_SELF_PREFERENCES));
+        }
+
         public IObservable<APIResponse<ParentDTO>> GetSelfInformation()
         {
             return Observable.FromAsync(() => GetData<APIResponse<ParentDTO>>(ApiEndpoints.GET_SELF_PARENT_INFORMATION));
@@ -57,6 +62,11 @@ namespace Bullytect.Core.Rest.Services.Impl
         public IObservable<APIResponse<string>> resetPassword(ResetPasswordRequestDTO resetPasswordRequest)
         {
             return Observable.FromAsync(() => PostData<APIResponse<string>, ResetPasswordRequestDTO>(ApiEndpoints.RESET_PASSWORD, resetPasswordRequest));
+        }
+
+        public IObservable<APIResponse<UserSystemPreferencesDTO>> SavePreferences(SaveUserSystemPreferencesDTO preferences)
+        {
+            return Observable.FromAsync(() => PostData<APIResponse<UserSystemPreferencesDTO>, SaveUserSystemPreferencesDTO>(ApiEndpoints.SAVE_SELF_PREFERENCES, preferences));
         }
 
         public IObservable<APIResponse<ParentDTO>> updateSelfParent(UpdateParentDTO parent)

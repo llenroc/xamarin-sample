@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using Bullytect.Core.Services.Impl;
+using Bullytect.Core.Utils;
 
 namespace Bullytect.Utils.Helpers
 {
@@ -68,6 +72,31 @@ namespace Bullytect.Utils.Helpers
 
 			if (stack.Length > 101)
 				stack = stack.Substring(0, 100);
+		}
+
+
+
+		public static void TrackToFile(this string Data)
+		{
+            // Save data to file
+            TrackerService.getInstance().Save(Data);
+		}
+
+		public static void TrackToFile(this StringBuilder Data)
+		{
+			// Save data to file
+            TrackerService.getInstance().Save(Data.ToString());
+		}
+
+
+		public static void TrackToConsole(this string Data)
+		{
+            Debug.WriteLine(Data);
+		}
+
+		public static void TrackToConsole(this StringBuilder Data)
+		{
+			Debug.WriteLine(Data);
 		}
     
     }

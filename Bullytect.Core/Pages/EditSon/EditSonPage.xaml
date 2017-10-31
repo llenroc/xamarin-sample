@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<d:MvxContentPage
+<common:BaseContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
@@ -129,14 +128,30 @@
 
             </common:AppHeader>
 
-            <StackLayout
-                    Grid.Row="1"
-                    IsVisible="{ Binding ErrorOccurred, Converter = { StaticResource InverseBoolConverter }}"
-                    Padding="20"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand">
+            <Grid
+                Grid.Row="1"
+                IsVisible="{ Binding ErrorOccurred, Converter = { StaticResource InverseBoolConverter }}"
+                Padding="20"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
 
-                <ScrollView VerticalOptions="StartAndExpand" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <common:ActivityLoading
+                       Grid.Row="0"
+                       IsLoading="{ Binding IsBusy }"
+                       LoadingText="{ Binding LoadingText }"
+                       Icon="{ x:Static helper:FontAwesomeFont.Child }"
+                       HorizontalOptions="Center" 
+                       VerticalOptions="FillAndExpand"/>
+
+                <ScrollView 
+                    Grid.Row="0"
+                    IsVisible="{ Binding IsBusy, Converter = { StaticResource InverseBoolConverter }}"
+                    VerticalOptions="StartAndExpand" >
 
                     <StackLayout 
                         HorizontalOptions="FillAndExpand"
@@ -849,15 +864,33 @@
                     </ScrollView>
 
 
-                    <StackLayout Orientation="Vertical" VerticalOptions="End">
+                    <StackLayout
+                        Grid.Row="1"
+                        Orientation="Vertical" 
+                        VerticalOptions="End">
                         <artina:Button 
-                            IsEnabled="{Binding HaveInternet}"
                             Command="{ Binding SaveChangesCommand }"
                             Style="{StaticResource SaveButtonStyle}" 
-                            Text="{ i18n:Translate Common.Btn.Save.Changes }" />
+                            Text="{ i18n:Translate Common.Btn.Save.Changes }">
+
+                            <Button.Triggers>
+                                <DataTrigger
+                                    TargetType="Button"
+                                    Binding="{Binding IsBusy}"
+                                    Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    TargetType="Button"
+                                    Binding="{Binding HaveInternet}"
+                                    Value="False">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </artina:Button>
                     </StackLayout>
 
-            </StackLayout>
+            </Grid>
 
               
 
@@ -869,4 +902,4 @@
         </Grid>
 
 	</ContentPage.Content>
-</d:MvxContentPage>
+</common:BaseContentPage>

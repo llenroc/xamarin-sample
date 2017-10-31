@@ -2,28 +2,27 @@
 using System.Collections.Generic;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Models.Domain;
+using Bullytect.Core.Pages.Common;
 using Bullytect.Core.Pages.Common.Templates;
 using Bullytect.Core.Pages.Results.Settings.Templates;
 using Bullytect.Core.ViewModels;
 using Bullytect.Core.ViewModels.Core.Models;
-using MvvmCross.Forms.Core;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.Results.Settings
 {
-    public partial class SettingsPage : MvxContentPage<ResultsSettingsViewModel>
+    public partial class SettingsPage : BaseContentPage<ResultsSettingsViewModel>
     {
         public SettingsPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
 
-		async void OnIterationsCountInfo(object sender, EventArgs args)
+		async void OnTimeIntervalInfo(object sender, EventArgs args)
 		{
 
-            var page = new CommonInfoPopup(AppResources.Results_Settings_Iterations_Count, AppResources.Results_Settings_Iterations_Count_Description);
+			var page = new CommonInfoPopup(AppResources.Settings_Statistics_General_Interval, AppResources.Settings_Statistics_General_Interval_Description);
 			await PopupNavigation.PushAsync(page);
 
 		}

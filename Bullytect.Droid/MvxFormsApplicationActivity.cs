@@ -17,6 +17,9 @@ using Xamarin.Forms.Platform.Android;
 using MvvmCross.Droid.Platform;
 using Plugin.Permissions;
 using CarouselView.FormsPlugin.Android;
+using Bullytect.Core;
+using Firebase.Iid;
+using Plugin.FirebasePushNotification;
 
 namespace Bullytect.Droid
 {
@@ -58,8 +61,11 @@ namespace Bullytect.Droid
 
     			base.OnCreate(bundle);
 
-    			// Required for proper Push notifications handling
-    			var setupSingleton = MvxAndroidSetupSingleton.EnsureSingletonAvailable(ApplicationContext);
+				App.ScreenWidth = (int)((int)Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density); // real pixels
+				App.ScreenHeight = (int)((int)Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density); // real pixels
+
+				// Required for proper Push notifications handling
+				var setupSingleton = MvxAndroidSetupSingleton.EnsureSingletonAvailable(ApplicationContext);
     			setupSingleton.EnsureInitialized();
 
                 global::Xamarin.Forms.Forms.Init(this, bundle);
@@ -107,6 +113,9 @@ namespace Bullytect.Droid
     			FormsHelper.ForceLoadingAssemblyContainingType(typeof(UXDivers.Effects.Effects));
 
                 LoadApplication(FormsApplication);
+				FirebasePushNotificationManager.ProcessIntent(Intent);
+
+                System.Diagnostics.Debug.WriteLine("Token: " + FirebaseInstanceId.Instance.Token);
 
     			var starter = Mvx.Resolve<IMvxAppStart>();
     			starter.Start();
@@ -114,7 +123,6 @@ namespace Bullytect.Droid
             }
             catch (Exception e)
 			{
-
 				System.Diagnostics.Debug.WriteLine("**BullTect LAUNCH EXCEPTION**\n\n" + e);
 			}
 

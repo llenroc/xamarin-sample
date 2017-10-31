@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:templates="clr-namespace:Bullytect.Core.Pages.Results.Templates"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    BackgroundColor="{ DynamicResource BasePageColor }"
+    x:Class="Bullytect.Core.Pages.Results.Templates.UserListPage">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+	<ContentView.Content>
+
+        <StackLayout
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="FillAndExpand">
+
+            <Grid
+                x:Name="PageContainer"
+                VerticalOptions="FillAndExpand">
+                
+                 <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions> 
+
+                <StackLayout 
+                        Grid.Row="0"
+                        VerticalOptions="CenterAndExpand"
+                        Margin="10"
+                        Spacing="10">
+
+
+                        <Label
+                            x:Name="ListTitle"
+                            LineBreakMode="WordWrap"
+                            TextColor="{ DynamicResource AccentColor }"
+                            VerticalTextAlignment="Center"
+                            FontSize="20">
+
+                            <Label.FontSize>
+                                <OnIdiom
+                                    x:TypeArguments="x:Double"
+                                    Phone="20"
+                                    Tablet="27"/>
+                            </Label.FontSize>
+                        </Label>
+
+                        <BoxView
+                            Style="{StaticResource LargeBrandNameOrnamentStyle}"
+                            BackgroundColor="{DynamicResource AccentColor}"
+                            Margin="10, 0"/>
+                    
+                    </StackLayout>
+
+
+                    <common:ActivityLoading
+                        Grid.Row="1"
+                        x:Name="LoadingIndicator"
+                        Icon="{ x:Static helper:FontAwesomeFont.Users }"
+                        HorizontalOptions="Center" 
+                        VerticalOptions="FillAndExpand"/>
+
+                    <ListView 
+                        x:Name="UserListView"
+                        Grid.Row="1"
+                        HasUnevenRows = "true"
+                        IsPullToRefreshEnabled="false">
+
+                        <ListView.RowHeight>
+                            <OnIdiom 
+                                x:TypeArguments="x:Int32"
+                                Phone="80"
+                                Tablet="120"/>
+                        </ListView.RowHeight>
+
+                                
+                        <ListView.ItemTemplate>
+                             <DataTemplate>
+                                 <ViewCell>
+                                     <templates:UserItemTemplate />
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                     </ListView>
+           </Grid>
+
+            <common:NoDataFound
+                    IsVisible="false"
+                    x:Name="NoDataFound"
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand"
+                    MainText="{i18n:Translate Common.No.Results.Found }"
+                    DetailText="{i18n:Translate Common.No.Results.Found.Detail }"/>
+
+            <common:ErrorOcurred 
+                    x:Name="ErrorOcurred"
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand"
+                    IsVisible="{ Binding ErrorOccurred }"/>
+
+        </StackLayout>
+
+
+	</ContentView.Content>
+</ContentView>

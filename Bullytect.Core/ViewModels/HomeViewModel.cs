@@ -34,7 +34,6 @@ namespace Bullytect.Core.ViewModels
             RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, PageModel>((param) =>
             {
                 RefreshBindings();
-                OnRefreshPageStart();
 
                 return Observable.Zip(
                     _parentService.GetProfileInformation(),
@@ -49,7 +48,7 @@ namespace Bullytect.Core.ViewModels
 
             RefreshCommand.Subscribe(OnPageModelLoadedHandler);
 
-            RefreshCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
+            RefreshCommand.IsExecuting.Subscribe((IsLoading) => IsBusy = IsLoading);
 
             RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
@@ -120,22 +119,6 @@ namespace Bullytect.Core.ViewModels
             NewSelectedImage?.Invoke(this, NewProfileImage);
         }
 
-        public delegate void RefreshPageStartEvent(object sender);
-		public event RefreshPageStartEvent RefreshPageStart;
-
-		protected virtual void OnRefreshPageStart()
-		{
-			RefreshPageStart?.Invoke(this);
-		}
-
-		public delegate void RefreshPageFinishedEvent(object sender);
-		public event RefreshPageFinishedEvent RefreshPageFinished;
-
-        protected virtual void OnRefreshPageFinished()
-        {
-            RefreshPageFinished?.Invoke(this);
-        }
-
         #endregion
 
         #region commands
@@ -164,7 +147,15 @@ namespace Bullytect.Core.ViewModels
         {
             get
             {
-                return new MvxCommand(() => ShowViewModel<ResultsViewModel>());
+                return new MvxCommand(() => {
+
+                    if(SelfParent?.Children > 0){
+                        ShowViewModel<ResultsViewModel>();
+                    } else {
+                        _appHelper.ShowAlert(AppResources.Home_Results_No_Children);
+                    }
+
+                });
             }
         }
 
@@ -244,7 +235,6 @@ namespace Bullytect.Core.ViewModels
             AlertsPage.HydrateWith(pageModel.AlertsPage);
             SelfParent.HydrateWith(pageModel.SelfParent);
             RefreshBindings();
-            OnRefreshPageFinished();
         }
 
         void RefreshBindings() {

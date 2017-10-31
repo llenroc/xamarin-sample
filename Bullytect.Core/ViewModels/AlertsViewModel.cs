@@ -54,7 +54,7 @@ namespace Bullytect.Core.ViewModels
                 Alerts.ReplaceRange(AlertsEntities);
             });
 
-            RefreshCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
+            RefreshCommand.IsExecuting.Subscribe((IsLoading) => IsBusy = IsLoading);
 
 			RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
@@ -63,7 +63,7 @@ namespace Bullytect.Core.ViewModels
                                                            alertService.DeleteAlertOfSon(AlertEntity.Son.Identity, AlertEntity.Identity)
                                                            .Do((_) => Alerts.Remove(AlertEntity)));
 
-			DeleteAlertCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
+			DeleteAlertCommand.IsExecuting.Subscribe((IsLoading) => IsBusy = IsLoading);
 
             DeleteAlertCommand.Subscribe((_) => {
 

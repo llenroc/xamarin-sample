@@ -11,6 +11,7 @@ using Bullytect.Core.Helpers;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
+using Bullytect.Core.Utils;
 using Bullytect.Core.ViewModels.Core.Models;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
@@ -43,10 +44,11 @@ namespace Bullytect.Core.ViewModels
                 Categories.AddRange(SonCategoryModels);
                 SaveChanges();
 				OnSonCategoriesLoaded(Categories);
+                IsDirtyMonitoring = true;
 			});
 
 
-			RefreshCommand.IsExecuting.ToProperty(this, x => x.IsBusy, out _isBusy);
+			RefreshCommand.IsExecuting.Subscribe((IsLoading) => IsBusy = IsLoading);
 
 			RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
@@ -57,6 +59,7 @@ namespace Bullytect.Core.ViewModels
 
         CategoryModel _allCategory;
 
+        [IsDirtyMonitoring]
         public CategoryModel AllCategory {
 			get => _allCategory ?? ( _allCategory = new CategoryModel()
 			{
@@ -70,21 +73,22 @@ namespace Bullytect.Core.ViewModels
 
         public List<SonCategoryModel> Categories { get; } = new List<SonCategoryModel>();
 
-        public List<PickerOptionModel> IterationsOptionsList { get; private set; } = new List<PickerOptionModel>()
-            {
-                new PickerOptionModel(){ Description = String.Format(AppResources.Results_Settings_Iterations_Count_Option, 10), Value = 10 },
-                new PickerOptionModel(){ Description = String.Format(AppResources.Results_Settings_Iterations_Count_Option, 15), Value = 15 },
-                new PickerOptionModel(){ Description = String.Format(AppResources.Results_Settings_Iterations_Count_Option, 20), Value = 20 },
-                new PickerOptionModel(){ Description = String.Format(AppResources.Results_Settings_Iterations_Count_Option, 25), Value = 25 }
-            };
+		public List<PickerOptionModel> TimeIntervalsOptionsList { get; private set; } = new List<PickerOptionModel>()
+		{
+			new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_General_Interval_Option, 1), Value = 1 },
+			new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_General_Interval_Option, 7), Value = 7 },
+			new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_General_Interval_Option, 15), Value = 15 },
+			new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_General_Interval_Option, 30), Value = 30 }
+		};
 
-        PickerOptionModel _iterationsOption;
+		PickerOptionModel _timeIntervalOption;
 
-        public PickerOptionModel IterationsOption
-        {
-            get => _iterationsOption ?? IterationsOptionsList.First((IterationOption) => IterationOption.Value.Equals(Settings.Current.IterationsCountToShow));
-            set => SetProperty(ref _iterationsOption, value);
-        }
+        [IsDirtyMonitoring]
+		public PickerOptionModel TimeIntervalOption
+		{
+			get => _timeIntervalOption ?? TimeIntervalsOptionsList.First((TimeIntervalOption) => TimeIntervalOption.Value.Equals(Settings.Current.TimeInterval));
+			set => SetProperty(ref _timeIntervalOption, value);
+		}
 
 
 		#endregion
@@ -134,9 +138,25 @@ namespace Bullytect.Core.ViewModels
         void SaveChanges()
         {
             Settings.Current.ShowResultsForAllChildren = AllCategory.IsFiltered;
-            Settings.Current.IterationsCountToShow = IterationsOption.Value;
+            Settings.Current.TimeInterval = TimeIntervalOption.Value;
             Settings.Current.FilteredSonCategories = string.Join(",", Categories?.Where(c => c.IsFiltered).Select(c => c.Identity));
         }
+
+		protected override void OnBackPressed()
+		{
+
+			if (IsDirty)
+			{
+
+				_appHelper.RequestConfirmation(AppResources.Common_Cancel_Changes)
+					  .Subscribe((_) => base.OnBackPressed());
+			}
+			else
+			{
+
+				base.OnBackPressed();
+			}
+		}
 
         #endregion
     }

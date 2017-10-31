@@ -9,6 +9,7 @@ using Bullytect.Core.Helpers;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
+using Bullytect.Core.Utils;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
@@ -26,12 +27,13 @@ namespace Bullytect.Core.ViewModels
 			_parentService = parentService;
 
             SignupCommand = ReactiveCommand
-                .CreateFromObservable<Unit, ParentEntity>((_) => _parentService.Register(FirstName, LastName, Birthdate, Email, PasswordClear, ConfirmPassword, String.Concat(Prefix, Telephone)));
+                .CreateFromObservable<Unit, ParentEntity>(
+                    (_) => _parentService.Register(FirstName, LastName, Birthdate, Email, PasswordClear, ConfirmPassword, String.Concat(Prefix, Telephone)));
 
             SignupCommand.Subscribe(AccountCreated);
 
 
-            SignupCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Signup_CreatingAccount));
+            SignupCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecutingWithDialogs(isLoading, AppResources.Signup_CreatingAccount));
 
 			SignupCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }
@@ -40,6 +42,7 @@ namespace Bullytect.Core.ViewModels
 
         string _firstName;
 
+        [IsDirtyMonitoring]
 		public string FirstName
 		{
 			get => _firstName;
@@ -48,6 +51,7 @@ namespace Bullytect.Core.ViewModels
 
 		string _lastName;
 
+        [IsDirtyMonitoring]
 		public string LastName
 		{
 			get => _lastName;
@@ -56,6 +60,7 @@ namespace Bullytect.Core.ViewModels
 
 		private DateTime _birthdate;
 
+        [IsDirtyMonitoring]
 		public DateTime Birthdate
 		{
 			get { return _birthdate; }
@@ -64,6 +69,7 @@ namespace Bullytect.Core.ViewModels
 
 		string _email;
 
+        [IsDirtyMonitoring]
 		public string Email
 		{
 			get => _email;
@@ -72,6 +78,7 @@ namespace Bullytect.Core.ViewModels
 
         string _passwordClear;
 
+        [IsDirtyMonitoring]
 		public string PasswordClear
 		{
 			get => _passwordClear;
@@ -81,6 +88,7 @@ namespace Bullytect.Core.ViewModels
 
         string _confirmPassword;
 
+        [IsDirtyMonitoring]
 		public string ConfirmPassword
 		{
 			get => _confirmPassword;
@@ -96,6 +104,7 @@ namespace Bullytect.Core.ViewModels
 
 		int _telephone;
 
+        [IsDirtyMonitoring]
 		public int Telephone
 		{
 			get => _telephone;
@@ -103,7 +112,12 @@ namespace Bullytect.Core.ViewModels
 		}
 
 
-        #endregion
+		#endregion
+
+		public void Init()
+		{
+			IsDirtyMonitoring = true;
+		}
 
 		#region commands
 
@@ -119,8 +133,24 @@ namespace Bullytect.Core.ViewModels
 			Debug.WriteLine(String.Format("Parent: {0}", parent.ToString()));
 			ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter()
 			{
-                ReasonForAuthentication = AuthenticationViewModel.SIGN_UP
+				ReasonForAuthentication = AuthenticationViewModel.SIGN_UP
 			});
+
+        }
+
+        protected override void OnBackPressed() {
+
+
+            if(IsDirty) {
+
+				_appHelper.RequestConfirmation(AppResources.Signup_Cancel)
+					  .Subscribe((_) => base.OnBackPressed());
+            } else {
+
+                base.OnBackPressed();
+            }
+
+
         }
 
 	}

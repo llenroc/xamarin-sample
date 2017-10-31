@@ -12,5 +12,6 @@ namespace Bullytect.Core.Rest.Services
     public interface IDeviceGroupsRestService
     {
         IObservable<APIResponse<DeviceDTO>> save(SaveDeviceDTO saveDevice);
+        IObservable<APIResponse<string>> Delete(string DeviceId);
     }
 }

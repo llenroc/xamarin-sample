@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<d:MvxContentPage 
+<common:BaseContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
@@ -19,6 +18,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
             <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -67,10 +67,25 @@
                 </common:AppHeader.Options>
             </common:AppHeader>
 
-            <TableView  Grid.Row="1" Intent="Settings" HasUnevenRows="true">
+
+            <common:ActivityLoading
+                Grid.Row="1"
+                IsLoading="{ Binding IsBusy }"
+                LoadingText="{ Binding LoadingText }"
+                Icon="{ x:Static helper:FontAwesomeFont.Gear }"
+                HorizontalOptions="Center" 
+                VerticalOptions="FillAndExpand" />
+
+            <TableView  
+                Grid.Row="1" 
+                IsVisible="{ Binding IsBusy , Converter = { StaticResource InverseBoolConverter }}"
+                Intent="Settings" 
+                HasUnevenRows="true">
                 
                 <TableSection Title="{i18n:Translate Settings.Alerts.General}">
-                     <extended:ExtendedViewCell SeparatorColor="{DynamicResource AccentColor}" SeparatorPadding="5">
+                     <extended:ExtendedViewCell 
+                        SeparatorColor="{DynamicResource AccentColor}" 
+                        SeparatorPadding="5">
 
                         <Grid Padding="16,6,16,6" ColumnSpacing="16">
                             <Grid.ColumnDefinitions>
@@ -92,7 +107,8 @@
                             
                             <Label Grid.Column="1" 
                                    Text="{i18n:Translate Settings.Alerts.Count.New.Alerts }"
-                                   VerticalTextAlignment="Center" 
+                                   LineBreakMode="TailTruncation"
+                                    VerticalTextAlignment="Center" 
                                    HorizontalOptions="StartAndExpand"
                                    />
 
@@ -152,10 +168,12 @@
                                 HorizontalTextAlignment="Center"
                                 VerticalTextAlignment="Center"/>
                             
-                            <Label Grid.Column="1" 
-                                   Text="{i18n:Translate Settings.Antiquity.Of.Alerts }"
-                                   VerticalTextAlignment="Center" 
-                                   HorizontalOptions="StartAndExpand"
+                            <Label 
+                                Grid.Column="1" 
+                                Text="{i18n:Translate Settings.Antiquity.Of.Alerts }"
+                                LineBreakMode="TailTruncation"
+                                VerticalTextAlignment="Center" 
+                                 HorizontalOptions="StartAndExpand"
                                    />
 
                             <Label
@@ -195,6 +213,68 @@
 
                     </extended:ExtendedViewCell>
 
+
+                    <extended:ExtendedViewCell SeparatorColor="{DynamicResource AccentColor}" SeparatorPadding="5">
+
+                        <Grid Padding="16,6,16,6" ColumnSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                             <Label 
+                                Grid.Column="0"
+                                Text="{ x:Static helper:FontAwesomeFont.MobilePhone }"
+                                Style="{StaticResource FontIcon}"
+                                FontSize ="12"
+                                WidthRequest="12" HeightRequest="12" 
+                                VerticalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"/>
+                            
+                            <Label 
+                                Grid.Column="1" 
+                                Text="{i18n:Translate Settings.Push.Notifications }"
+                                LineBreakMode="TailTruncation"
+                                VerticalTextAlignment="Center" 
+                                 HorizontalOptions="StartAndExpand"
+                                   />
+
+                            <Label
+                                Grid.Column="2" 
+                                
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions="End"
+                                VerticalOptions="CenterAndExpand"
+                                Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                                FontFamily="{ StaticResource IconsFontFamily }"
+                                TextColor="{ DynamicResource AccentColor }">
+                                <Label.FontSize>
+                                    <OnIdiom 
+                                        x:TypeArguments="x:Double"
+                                        Phone="20" 
+                                        Tablet="20" />
+                                </Label.FontSize> 
+
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Tapped="OnPushNotificationsInfo"
+                                        NumberOfTapsRequired="1" /> 
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Switch Grid.Column="3" 
+                                VerticalOptions="Center"
+                                IsToggled="{Binding IsPushNotificationEnabled }"/>
+                            
+                        </Grid>
+
+
+                    </extended:ExtendedViewCell>
+
                 </TableSection>
                 
                 <TableSection Title="{i18n:Translate Settings.Alerts.Categories}" x:Name="TableSectionCategories"></TableSection>
@@ -203,4 +283,4 @@
          </Grid>
         
 	</ContentPage.Content>
-</d:MvxContentPage>
+</common:BaseContentPage>

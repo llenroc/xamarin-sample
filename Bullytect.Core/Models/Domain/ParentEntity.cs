@@ -61,11 +61,19 @@ namespace Bullytect.Core.Models.Domain
 
 		}
 
-		string _telephone;
-		public string Telephone
+		string _phonePrefix;
+		public string PhonePrefix
 		{
-			get { return _telephone; }
-			set { SetProperty(ref _telephone, value); }
+			get { return _phonePrefix ?? "+34"; }
+			set { SetProperty(ref _phonePrefix, value); }
+
+		}
+
+		string _phoneNumber;
+		public string PhoneNumber
+		{
+			get { return _phoneNumber; }
+			set { SetProperty(ref _phoneNumber, value); }
 
 		}
 
@@ -110,7 +118,8 @@ namespace Bullytect.Core.Models.Domain
 			Birthdate = OtherParentEntity.Birthdate;
 			Age = OtherParentEntity.Age;
             Email = OtherParentEntity.Email;
-            Telephone = OtherParentEntity.Telephone;
+            PhonePrefix = OtherParentEntity.PhonePrefix;
+            PhoneNumber = OtherParentEntity.PhoneNumber;
             FbId = OtherParentEntity.FbId;
             Children = OtherParentEntity.Children;
             Locale = OtherParentEntity.Locale;
@@ -123,8 +132,8 @@ namespace Bullytect.Core.Models.Domain
 		public override string ToString()
 		{
             return String.Format("Identity: {0}, FirstName:{1}, LastName:{2}, Birthdate:{3}, " +
-                                 "Age:{4}, Email:{5}, Telephone:{6}, FbId:{7}, Children:{8}, Locale:{9}", Identity, FirstName, 
-                                 LastName, Birthdate, Age, Email, Telephone, FbId, Children, Locale);
+                                 "Age:{4}, Email:{5}, PhonePrefix:{6}, PhoneNumber:{7},  FbId:{8}, Children:{9}, Locale:{10}", Identity, FirstName, 
+                                 LastName, Birthdate, Age, Email, PhonePrefix, PhoneNumber, FbId, Children, Locale);
 		}
     }
 }

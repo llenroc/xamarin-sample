@@ -107,6 +107,7 @@ namespace Bullytect.Core.ViewModels
                 NewProfileImage = null;
                 OnSonUpdated(CurrentSon);
                 _userDialogs.ShowSuccess(AppResources.EditSon_Saved_Changes_Successfully);
+                IsDirtyMonitoring = true;
             });
 
             SaveChangesCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.EditSon_Saving_Changes));
@@ -149,6 +150,7 @@ namespace Bullytect.Core.ViewModels
 
         SonEntity _currentSon = new SonEntity();
 
+        [IsDirtyMonitoring]
         public SonEntity CurrentSon
         {
             get => _currentSon;
@@ -272,7 +274,7 @@ namespace Bullytect.Core.ViewModels
         public ReactiveCommand<Unit, PageModel> ForceRefreshCommand { get; protected set;  }
 
         public ICommand ToggleFacebookSocialMediaCommand
-                        => new MvxCommand(() => ToggleSocialMediaHandler(new FacebookOAuth2(), AppConstants.FACEBOOK));
+                        => new MvxCommand(() => ToggleSocialMediaHandler(new SonFacebookOAuth2(), AppConstants.FACEBOOK));
 
         public ICommand ToggleInstagramSocialMediaCommand
                         => new MvxCommand(() => ToggleSocialMediaHandler(new InstagramOAuth2(), AppConstants.INSTAGRAM));
@@ -294,9 +296,25 @@ namespace Bullytect.Core.ViewModels
                             await PopupNavigation.PushAsync(page);
                         });
 
-        #endregion
+		#endregion
 
-        #region methods
+		#region methods
+
+		protected override void OnBackPressed()
+		{
+
+			if (IsDirty)
+			{
+
+                _appHelper.RequestConfirmation(AppResources.EditSon_Cancel)
+					  .Subscribe((_) => base.OnBackPressed());
+			}
+			else
+			{
+
+				base.OnBackPressed();
+			}
+		}
 
         IObservable<SonInformation> GetSonInformation()
         {
@@ -442,6 +460,8 @@ namespace Bullytect.Core.ViewModels
             ResetCommonProps();
 
             PageLoaded = true;
+
+			IsDirtyMonitoring = true;
 
         }
 

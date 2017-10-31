@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<d:MvxContentPage 
+<common:BaseContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
     x:Class="Bullytect.Core.Pages.Signup.SignupPage"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
     x:TypeArguments="viewModels:SignupViewModel"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
@@ -65,7 +65,9 @@
                     TranslationX="-20"
                     TranslationY="35">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{ Binding CloseCommand }" NumberOfTapsRequired="1"/>
+                            <TapGestureRecognizer 
+                                Command="{ Binding BackPressedCommand }" 
+                                NumberOfTapsRequired="1"/>
                         </Label.GestureRecognizers>
                 </Label>
 
@@ -205,6 +207,7 @@
                                 <Entry 
                                     Placeholder="{ i18n:Translate Common.Placeholder.Email }"
                                     Style="{StaticResource ArtinaLoginEntryStyle}"
+                                    Keyboard="Email"
                                     Text="{ Binding Email }">
                                     <Entry.Behaviors>
                                         <artina:EmailValidatorBehavior x:Name="emailValidator" />
@@ -342,7 +345,6 @@
                         Grid.Row="3" >
 
                         <artina:Button
-                            IsEnabled="{Binding HaveInternet}"
                             Style="{StaticResource PrimaryActionButtonStyle}"
                             VerticalOptions="End"
                             Text="{i18n:Translate Signup.Create}"
@@ -354,7 +356,18 @@
                                     PortraitPhone=Fill,
                                     LandscapePhone=Center,
                                     PortraitTablet=Fill,
-                                    LandscapeTablet=Center }"/>
+                                    LandscapeTablet=Center }">
+
+                                    <Button.Triggers>
+                                        <DataTrigger 
+                                            TargetType="Button"
+                                            Binding="{Binding HaveInternet}"
+                                            Value="False">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                </Button.Triggers>
+
+                        </artina:Button>
 
                         <artina:Button
                             Style="{StaticResource TransparentButtonStyle}"
@@ -374,4 +387,4 @@
                 </Grid>
            </Grid>
 	</ContentView.Content>
-</d:MvxContentPage>
+</common:BaseContentPage>

@@ -2,6 +2,7 @@
 <ContentView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:templates="clr-namespace:Bullytect.Core.Pages.Results.Templates"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
@@ -14,13 +15,22 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
-        <StackLayout>
+        <StackLayout
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="FillAndExpand">
 
-             <StackLayout 
-                VerticalOptions="Fill">
+            <Grid
+                x:Name="ChartPageContainer"
+                VerticalOptions="FillAndExpand">
+                
+                 <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions> 
                 
                     <StackLayout 
-                        VerticalOptions="Start"
+                        Grid.Row="0"
+                        VerticalOptions="CenterAndExpand"
                         Margin="10"
                         Spacing="10">
 
@@ -46,8 +56,19 @@
                             Margin="10, 0"/>
                     
                     </StackLayout>
+
+
+                    <common:ActivityLoading
+                        Grid.Row="1"
+                        x:Name="LoadingIndicator"
+                        Icon="{ x:Static helper:FontAwesomeFont.BarChart }"
+                        HorizontalOptions="Center" 
+                        VerticalOptions="FillAndExpand"/>
                 
-                    <ScrollView>
+                    <ScrollView
+                        Grid.Row="1"
+                        VerticalOptions="StartAndExpand"
+                        x:Name="ChartsContainerScroll">
                           <StackLayout 
                             x:Name="ChartsContainer"
                             Padding="10"
@@ -55,16 +76,23 @@
                             VerticalOptions="CenterAndExpand"
                             Margin="20, 0"></StackLayout>
                     </ScrollView>
-                     
-                </StackLayout>
+
+                </Grid>
 
                 <common:NoDataFound
+                    IsVisible="false"
+                    x:Name="NoDataFound"
                     HorizontalOptions="FillAndExpand" 
                     VerticalOptions="FillAndExpand"
-                    IsVisible="false"
-                    MainText="{i18n:Translate Results.Iterations.Not.Found.MainText }"
-                    DetailText="{i18n:Translate Results.Iterations.Not.Found.SecondText }"/>
+                    MainText="{i18n:Translate Common.No.Results.Found }"
+                    DetailText="{i18n:Translate Common.No.Results.Found.Detail }"/>
 
+               <common:ErrorOcurred 
+                    x:Name="ErrorOcurred"
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand"
+                    IsVisible="{ Binding ErrorOccurred }"/>
+            
          </StackLayout>
     </ContentView.Content>
 </ContentView>

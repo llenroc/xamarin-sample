@@ -39,10 +39,17 @@ namespace Bullytect.Core.Rest.Utils
         public static string DELETE_ALERT = string.Concat(SharedConfig.BASE_API_URL, "/children/:son/alerts/:alert");
         public static string GET_COMMENTS_BY_SON_FOR_LAST_ITERATION = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/iterations/last/comments-by-son");
         public static string GET_LAST_ITERATIONS_FOR_SELF_PARENT = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/iterations");
-       
-
-                                                 
-
-
+        public static string DIMENSIONS_STATISTICS = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/statistics/dimensions");
+        public static string COMMUNITIES_STATISTICS = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/statistics/communities");
+        public static string SENTIMENT_ANALYSIS_STATISTICS = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/statistics/sentiment-analysis");
+        public static string SOCIAL_ACTIVITY_STATISTICS = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/statistics/social-activity");
+        public static string COMMENTS_EXTRACTED = string.Concat(SharedConfig.BASE_API_URL, "/comments/comments-extracted");
+        public static string SOCIAL_MEDIA_LIKES = string.Concat(SharedConfig.BASE_API_URL, "/comments/social-media-Likes");
+        public static string ALERTS_STATISTICS = string.Concat(SharedConfig.BASE_API_URL, "/alerts/statistics/alerts");
+        public static string MOST_ACTIVE_FRIENDS = string.Concat(SharedConfig.BASE_API_URL, "/comments/most-active-friends");
+        public static string NEW_FRIENDS = string.Concat(SharedConfig.BASE_API_URL, "/comments/new-friends");
+        public static string DELETE_DEVICE_FROM_GROUP = string.Concat(SharedConfig.BASE_API_URL, "/devices/:id/delete");
+        public static string SAVE_SELF_PREFERENCES = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/preferences");
+        public static string GET_SELF_PREFERENCES = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/preferences");
     }
 }
