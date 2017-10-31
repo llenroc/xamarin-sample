@@ -91,18 +91,6 @@ namespace Bullytect.Core.Config
 			}
 		}
 
-		static readonly int IterationsCountToShowDefaultDefault = 10;
-
-		public int IterationsCountToShow
-		{
-			get { return AppSettings.GetValueOrDefault(nameof(IterationsCountToShow), IterationsCountToShowDefaultDefault); }
-			set
-			{
-				if (AppSettings.AddOrUpdateValue(nameof(IterationsCountToShow), value))
-					OnPropertyChanged();
-			}
-		}
-
 		static readonly bool ShowResultsForAllChildrenDefault = true;
 
 		
@@ -129,7 +117,7 @@ namespace Bullytect.Core.Config
 			}
 		}
 
-		static readonly int SonStatisticsTimeIntervalDefault = 7;
+		static readonly int SonStatisticsTimeIntervalDefault = 1;
 
 		public int SonStatisticsTimeInterval
 		{
@@ -141,7 +129,17 @@ namespace Bullytect.Core.Config
 			}
 		}
 
+		static readonly int TimeIntervalDefault = 1;
 
+		public int TimeInterval
+		{
+			get { return AppSettings.GetValueOrDefault(nameof(TimeInterval), TimeIntervalDefault); }
+			set
+			{
+				if (AppSettings.AddOrUpdateValue(nameof(TimeInterval), value))
+					OnPropertyChanged();
+			}
+		}
 
 
 		public static string AccessTokenAndType

@@ -20,6 +20,19 @@
 			_deviceGroupsRestService = deviceGroupsRestService;
 		}
 
+        public IObservable<string> Delete(string DeviceId)
+		{
+			Debug.WriteLine("Delete Device ...");
+			var observable = _deviceGroupsRestService
+                .Delete(DeviceId)
+				.Select(response => response.Data)
+				.Finally(() => {
+					Debug.WriteLine("Dlete Device finished ...");
+				});
+
+			return operationDecorator(observable);
+        }
+
         public IObservable<DeviceEntity> saveDevice(string deviceId, string token)
         {
             Debug.WriteLine("Save Token ...");

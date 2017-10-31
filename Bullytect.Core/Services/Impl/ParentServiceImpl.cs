@@ -99,7 +99,7 @@ namespace Bullytect.Core.Services.Impl
                     LastName = LastName,
                     Birthdate = Birthdate,
                     Email = Email,
-                    Telephone = Telephone ?? string.Empty
+                    Telephone = Telephone
                 })
                 .Select((APIResponse<ParentDTO> response) => response.Data)
                 .Select(parent => Mapper.Map<ParentDTO, ParentEntity>(parent))
@@ -136,7 +136,6 @@ namespace Bullytect.Core.Services.Impl
             var observable = _parentsRestService
                 .DeleteAccount()
                 .Select((APIResponse<string> response) => response.Data)
-                .Do((_) => _mvxMessenger.Publish(new AccountDeletedMessage(this){}))
                 .Finally(() =>
                 {
                     Debug.WriteLine("Delete Account Finished ...");
@@ -254,22 +253,6 @@ namespace Bullytect.Core.Services.Impl
 
         }
 
-        public IObservable<List<IterationEntity>> GetLastIterations()
-        {
-
-            Debug.WriteLine("Get Last Iterations ...");
-
-            var observable = _parentsRestService
-                .GetLastIterations(Settings.Current.IterationsCountToShow)
-                .Select((response) => response.Data)
-                .Select(iterations => Mapper.Map<List<IterationDTO>, List<IterationEntity>>(iterations))
-				.Finally(() =>
-				{
-					Debug.WriteLine("Get Last Finished ...");
-				});
-
-			return operationDecorator(observable);
-        }
 
         public IObservable<string> DeleteSonById(string Id)
         {

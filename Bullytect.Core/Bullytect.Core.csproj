@@ -140,16 +140,13 @@
     <EmbeddedResource Include="Pages\Home\Templates\AlertItemTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Common\CustomActivityIndicator.xaml">
+    <EmbeddedResource Include="Pages\Common\ActivityLoading.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Results\ResultsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\EditSon\Popup\SocialMediaInfoPopup.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Results\Templates\LastIterationsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Common\Templates\CommonInfoPopup.xaml">
@@ -192,6 +189,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Common\Templates\ChartPageTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Results\Templates\UserListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Results\Templates\UserItemTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -385,7 +388,6 @@
       <DependentUpon>AlertDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AlertDetailViewModel.cs" />
-    <Compile Include="Messages\SignOutMessage.cs" />
     <Compile Include="Properties\AssemblyGlobal.cs" />
     <Compile Include="Pages\Common\Extended\ExtendedViewCell.cs" />
     <Compile Include="Models\Domain\ImageEntity.cs" />
@@ -440,15 +442,14 @@
     <Compile Include="Converters\AlertLevelToFontIconConverter.cs" />
     <Compile Include="Converters\AlertLevelToColorConverter.cs" />
     <Compile Include="Models\Domain\AlertLevelEnum.cs" />
-    <Compile Include="Pages\Common\CustomActivityIndicator.xaml.cs">
-      <DependentUpon>CustomActivityIndicator.xaml</DependentUpon>
+    <Compile Include="Pages\Common\ActivityLoading.xaml.cs">
+      <DependentUpon>ActivityLoading.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\AlertLevelToTextConverter.cs" />
     <Compile Include="Rest\Utils\ApiUtils.cs" />
     <Compile Include="Pages\Results\ResultsPage.xaml.cs">
       <DependentUpon>ResultsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\CommentsBySonViewModel.cs" />
     <Compile Include="Helpers\AppHelper.cs" />
     <Compile Include="Pages\EditSon\Popup\SocialMediaInfoPopup.xaml.cs">
       <DependentUpon>SocialMediaInfoPopup.xaml</DependentUpon>
@@ -462,9 +463,6 @@
     <Compile Include="ViewModels\ResultsViewModel.cs" />
     <Compile Include="Rest\Models\Response\IterationDTO.cs" />
     <Compile Include="Models\Domain\IterationEntity.cs" />
-    <Compile Include="Pages\Results\Templates\LastIterationsPage.xaml.cs">
-      <DependentUpon>LastIterationsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Converters\PickerSelectedIndexChangedArgsConverter.cs" />
     <Compile Include="Pages\Common\Templates\CommonInfoPopup.xaml.cs">
       <DependentUpon>CommonInfoPopup.xaml</DependentUpon>
@@ -512,7 +510,6 @@
     <Compile Include="Pages\Common\SignOutOptionMenu.xaml.cs">
       <DependentUpon>SignOutOptionMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\Core\Models\AlertsBySon.cs" />
     <Compile Include="Pages\SonStatistics\SonStatisticsPage.xaml.cs">
       <DependentUpon>SonStatisticsPage.xaml</DependentUpon>
     </Compile>
@@ -525,6 +522,33 @@
       <DependentUpon>ChartPageTemplate.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Core\Models\ChartModel.cs" />
+    <Compile Include="Rest\Models\Response\SocialMediaActivityStatisticsDTO.cs" />
+    <Compile Include="Rest\Models\Response\SentimentAnalysisStatisticsDTO.cs" />
+    <Compile Include="Rest\Models\Response\CommunitiesStatisticsDTO.cs" />
+    <Compile Include="Rest\Models\Response\DimensionsStatisticsDTO.cs" />
+    <Compile Include="Services\IStatisticsService.cs" />
+    <Compile Include="Services\Impl\StatisticsServiceImpl.cs" />
+    <Compile Include="ViewModels\Core\Models\SentimentEnum.cs" />
+    <Compile Include="ViewModels\Core\Models\SocialMediaTypeEnum.cs" />
+    <Compile Include="Pages\Common\BaseContentPage.cs" />
+    <Compile Include="Utils\IsDirtyMonitoringAttribute.cs" />
+    <Compile Include="Utils\IsDirtyViewModelJsonContractResolver.cs" />
+    <Compile Include="Rest\Models\Response\CommentsAnalyzedStatisticsDTO.cs" />
+    <Compile Include="Rest\Models\Response\SocialMediaLikesStatisticsDTO.cs" />
+    <Compile Include="Rest\Models\Response\AlertsStatisticsDTO.cs" />
+    <Compile Include="Pages\Common\Controls\LayoutTouchListner.cs" />
+    <Compile Include="Pages\Common\Controls\SearchPageViewCellWithId.cs" />
+    <Compile Include="Converters\ItemToIndexConverter.cs" />
+    <Compile Include="Rest\Utils\HttpClientFactory.cs" />
+    <Compile Include="Pages\Results\Templates\UserListPage.xaml.cs">
+      <DependentUpon>UserListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Results\Templates\UserItemTemplate.xaml.cs">
+      <DependentUpon>UserItemTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Core\Models\UserListModel.cs" />
+    <Compile Include="Rest\Models\Response\MostActiveFriendsDTO.cs" />
+    <Compile Include="Rest\Models\Response\NewFriendsDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -716,6 +740,12 @@
     <Reference Include="Refractored.XamForms.PullToRefresh">
       <HintPath>..\packages\Refractored.XamForms.PullToRefresh.2.0.0.13\lib\netstandard1.0\Refractored.XamForms.PullToRefresh.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.PushNotification.Abstractions">
+      <HintPath>..\packages\Plugin.PushNotification.1.0.0\lib\netstandard1.0\Plugin.PushNotification.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.PushNotification">
+      <HintPath>..\packages\Plugin.PushNotification.1.0.0\lib\netstandard1.0\Plugin.PushNotification.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -738,6 +768,7 @@
     <Folder Include="Pages\Results\Settings\Templates\" />
     <Folder Include="Pages\SonStatistics\" />
     <Folder Include="Pages\SonStatistics\Settings\" />
+    <Folder Include="Pages\Common\Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />

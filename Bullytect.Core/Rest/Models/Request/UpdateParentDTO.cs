@@ -7,19 +7,59 @@ namespace Bullytect.Core.Rest.Models.Request
     {
         #pragma warning disable CS1701
 
+		string _firstName;
+
 		[JsonProperty("first_name")]
-		public string FirstName { get; set; }
+		public string FirstName
+		{
+			get => _firstName;
+			set
+			{
+				if (!string.IsNullOrEmpty(value))
+					_firstName = value;
+			}
+		}
+
+		string _lastName;
 
 		[JsonProperty("last_name")]
-		public string LastName { get; set; }
+		public string LastName
+		{
+			get => _lastName;
+			set
+			{
+				if (!string.IsNullOrEmpty(value))
+					_lastName = value;
+			}
+		}
 
 		[JsonProperty("birthdate")]
 		public DateTime Birthdate { get; set; }
 
+		string _email;
+
 		[JsonProperty("email")]
-		public string Email { get; set; }
+		public string Email
+		{
+			get => _email;
+			set
+			{
+				if (!string.IsNullOrEmpty(value))
+					_email = value;
+			}
+		}
+
+		string _telephone;
 
 		[JsonProperty("telephone")]
-		public string Telephone { get; set; }
+		public string Telephone
+		{
+			get => _telephone;
+			set
+			{
+				if (!string.IsNullOrEmpty(value))
+					_telephone = value;
+			}
+		}
 	}
 }

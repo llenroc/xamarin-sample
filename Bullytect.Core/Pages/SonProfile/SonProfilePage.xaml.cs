@@ -1,5 +1,6 @@
 ﻿
 using System;
+using Bullytect.Core.Pages.Common;
 using Bullytect.Core.Pages.SonProfileFullScreen;
 using Bullytect.Core.ViewModels;
 using MvvmCross.Forms.Core;
@@ -7,12 +8,11 @@ using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.SonProfile
 {
-    public partial class SonProfilePage : MvxContentPage<SonProfileViewModel>
+    public partial class SonProfilePage : BaseContentPage<SonProfileViewModel>
     {
         public SonProfilePage()
         {
             InitializeComponent();
-			NavigationPage.SetHasNavigationBar(this, false);
         }
 
         protected override void OnAppearing(){

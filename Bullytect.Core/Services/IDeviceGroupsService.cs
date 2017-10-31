@@ -8,6 +8,7 @@ namespace Bullytect.Core.Services
     {
 
         IObservable<DeviceEntity> saveDevice(string deviceId, string token);
+        IObservable<string> Delete(string DeviceId);
 
     }
 }

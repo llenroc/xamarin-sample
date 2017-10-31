@@ -35,6 +35,7 @@
             <Label Grid.Column="1" 
                    x:Name="LabelName"
                    Text="{Binding Name}" 
+                   LineBreakMode="TailTruncation"
                    VerticalTextAlignment="Center" 
                    HorizontalOptions="StartAndExpand"
                    />

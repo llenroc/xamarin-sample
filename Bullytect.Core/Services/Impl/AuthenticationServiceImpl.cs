@@ -9,18 +9,20 @@ namespace Bullytect.Core.Services.Impl
     using MvvmCross.Plugins.Messenger;
     using Bullytect.Core.Rest.Services;
     using Bullytect.Core.Rest.Models.Request;
-    using Bullytect.Core.Rest.Models.Exceptions;
-    using Bullytect.Core.Rest.Models.Response;
+    using Plugin.DeviceInfo;
 
     public class AuthenticationServiceImpl: BaseService, IAuthenticationService
     {
         readonly IAuthenticationRestService _authenticationRestService;
         readonly IMvxMessenger _mvxMessenger;
+        readonly IDeviceGroupsService _deviceGroupsService;
 
-        public AuthenticationServiceImpl(IAuthenticationRestService authenticationRestService, IMvxMessenger mvxMessenger)
+        public AuthenticationServiceImpl(IAuthenticationRestService authenticationRestService, 
+                                         IMvxMessenger mvxMessenger, IDeviceGroupsService deviceGroupsService)
         {
             _authenticationRestService = authenticationRestService;
             _mvxMessenger = mvxMessenger;
+            _deviceGroupsService = deviceGroupsService;
             Debug.WriteLine(GetType().Name + " was created on context");
         }
 
@@ -39,9 +41,9 @@ namespace Bullytect.Core.Services.Impl
                 {
                     Debug.WriteLine(String.Format("Jwt Access Token: {0} ", jwtToken));
                     Settings.AccessToken = jwtToken;
-                    _mvxMessenger.Publish(new AuthenticatedUserMessage(this) {
-                        JwtToken = jwtToken
-                    });
+					_deviceGroupsService.saveDevice(CrossDeviceInfo.Current.Id, Settings.FcmToken).Subscribe(device => {
+						Debug.WriteLine(String.Format("Device Saved: {0}", device.ToString()));
+					});
 				}
 			}).Finally(() => {
                 Debug.WriteLine("Log in finished ...");
@@ -63,9 +65,9 @@ namespace Bullytect.Core.Services.Impl
                             Debug.WriteLine(String.Format("Jwt Access Token -> {0} ", jwtToken));
 							Debug.WriteLine("Notify Authentication Success");
                             Settings.AccessToken = jwtToken;
-                            _mvxMessenger.Publish(new AuthenticatedUserMessage(this) {
-                                JwtToken = jwtToken
-                            });
+							_deviceGroupsService.saveDevice(CrossDeviceInfo.Current.Id, Settings.FcmToken).Subscribe(device => {
+								Debug.WriteLine(String.Format("Device Saved: {0}", device.ToString()));
+							});
                         }
                     })
                     .Finally(() => {

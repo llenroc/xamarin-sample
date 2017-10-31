@@ -54,5 +54,104 @@ namespace Bullytect.Core.Rest.Services.Impl
 		{
             return Observable.FromAsync(() => DeleteData<APIResponse<string>>(ApiEndpoints.DELETE_SON_BY_ID.Replace(":id", id)));
 		}
+
+        public IObservable<APIResponse<SocialMediaActivityStatisticsDTO>> GetSocialMediaActivityStatistics(string id, int daysLimit)
+        {
+            return Observable.FromAsync(() => GetData<APIResponse<SocialMediaActivityStatisticsDTO>>(new Uri(ApiEndpoints.SOCIAL_ACTIVITY_STATISTICS.Replace(":id", id)).AttachParameters(new Dictionary<string, string>()
+			{
+                { "days-limit", daysLimit.ToString()}
+			})));
+        }
+
+        public IObservable<APIResponse<SentimentAnalysisStatisticsDTO>> GetSentimentAnalysisStatistics(string id, int daysLimit)
+        {
+            return Observable.FromAsync(() => GetData<APIResponse<SentimentAnalysisStatisticsDTO>>(new Uri(ApiEndpoints.SENTIMENT_ANALYSIS_STATISTICS.Replace(":id", id)).AttachParameters(new Dictionary<string, string>()
+			{
+				{ "days-limit", daysLimit.ToString()}
+			})));
+        }
+
+        public IObservable<APIResponse<CommunitiesStatisticsDTO>> GetCommunitiesStatistics(string id, int daysLimit)
+        {
+            return Observable.FromAsync(() => GetData<APIResponse<CommunitiesStatisticsDTO>>(new Uri(ApiEndpoints.COMMUNITIES_STATISTICS.Replace(":id", id)).AttachParameters(new Dictionary<string, string>()
+			{
+				{ "days-limit", daysLimit.ToString()}
+			})));
+        }
+
+        public IObservable<APIResponse<DimensionsStatisticsDTO>> GetDimensionsStatistics(string id, int daysLimit)
+        {
+            return Observable.FromAsync(() => GetData<APIResponse<DimensionsStatisticsDTO>>(new Uri(ApiEndpoints.DIMENSIONS_STATISTICS.Replace(":id", id)).AttachParameters(new Dictionary<string, string>()
+			{
+				{ "days-limit", daysLimit.ToString()}
+			})));
+        }
+
+        public IObservable<APIResponse<CommentsAnalyzedStatisticsDTO>> GetCommentsAnalyzedStatistics(String[] Ids, int daysLimit)
+        {
+
+			var queryParams = new Dictionary<string, string>()
+			{
+				{ "days-limit", daysLimit.ToString()}
+			};
+
+            if (Ids?.Length > 0)
+				queryParams.Add("identities", string.Join(",", Ids));
+
+			return Observable.FromAsync(() => GetData<APIResponse<CommentsAnalyzedStatisticsDTO>>(new Uri(ApiEndpoints.COMMENTS_ANALYZED).AttachParameters(queryParams)));
+        }
+
+        public IObservable<APIResponse<SocialMediaLikesStatisticsDTO>> GetSocialMediaLikesStatistics(string[] Ids, int daysLimit)
+        {
+			var queryParams = new Dictionary<string, string>()
+			{
+				{ "days-limit", daysLimit.ToString()}
+			};
+
+			if (Ids?.Length > 0)
+				queryParams.Add("identities", string.Join(",", Ids));
+
+			return Observable.FromAsync(() => GetData<APIResponse<SocialMediaLikesStatisticsDTO>>(new Uri(ApiEndpoints.SOCIAL_MEDIA_LIKES).AttachParameters(queryParams)));
+            
+        }
+
+        public IObservable<APIResponse<AlertsStatisticsDTO>> GetAlertsStatistics(string[] Ids, int daysLimit)
+        {
+			var queryParams = new Dictionary<string, string>()
+			{
+				{ "days-limit", daysLimit.ToString()}
+			};
+
+			if (Ids?.Length > 0)
+				queryParams.Add("identities", string.Join(",", Ids));
+
+            return Observable.FromAsync(() => GetData<APIResponse<AlertsStatisticsDTO>>(new Uri(ApiEndpoints.ALERTS_STATISTICS).AttachParameters(queryParams)));
+        }
+
+        public IObservable<APIResponse<MostActiveFriendsDTO>> GetMostActiveFriends(string[] Ids, int daysLimit)
+        {
+			var queryParams = new Dictionary<string, string>()
+			{
+				{ "days-limit", daysLimit.ToString()}
+			};
+
+			if (Ids?.Length > 0)
+				queryParams.Add("identities", string.Join(",", Ids));
+
+            return Observable.FromAsync(() => GetData<APIResponse<MostActiveFriendsDTO>>(new Uri(ApiEndpoints.MOST_ACTIVE_FRIENDS).AttachParameters(queryParams)));
+        }
+
+        public IObservable<APIResponse<NewFriendsDTO>> GetNewFriends(string[] Ids, int daysLimit)
+        {
+			var queryParams = new Dictionary<string, string>()
+			{
+				{ "days-limit", daysLimit.ToString()}
+			};
+
+			if (Ids?.Length > 0)
+				queryParams.Add("identities", string.Join(",", Ids));
+
+            return Observable.FromAsync(() => GetData<APIResponse<NewFriendsDTO>>(new Uri(ApiEndpoints.NEW_FRIENDS).AttachParameters(queryParams)));
+        }
     }
 }

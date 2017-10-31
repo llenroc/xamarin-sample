@@ -21,6 +21,15 @@ namespace Bullytect.Core.ViewModels
     using Bullytect.Core.Helpers;
     using System.Reactive;
     using Bullytect.Core.Config;
+    using System.IO;
+    using Newtonsoft.Json;
+    using Bullytect.Core.Utils;
+    using MvvmCross.Platform.Core;
+    using PCLCrypto;
+    using System.Text;
+    using MvvmCross.Platform;
+    using Bullytect.Core.Services;
+    using Plugin.DeviceInfo;
 
     public abstract class BaseViewModel : MvxReactiveViewModel
     {
@@ -29,20 +38,22 @@ namespace Bullytect.Core.ViewModels
         protected readonly IMvxMessenger _mvxMessenger;
         protected readonly AppHelper _appHelper;
 
-        public BaseViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger, AppHelper appHelper)
+        public BaseViewModel(IUserDialogs userDialogs, 
+                             IMvxMessenger mvxMessenger, AppHelper appHelper)
         {
             _userDialogs = userDialogs;
             _mvxMessenger = mvxMessenger;
             _appHelper = appHelper;
-
+            {}
 
 			SignOutCommand = ReactiveCommand
-                .CreateFromObservable<Unit, bool>((_) => _appHelper.RequestConfirmation(AppResources.Profile_Confirm_SignOut));
+                .CreateFromObservable<Unit, string>((_) => 
+                                                  _appHelper.RequestConfirmation(AppResources.Profile_Confirm_SignOut)
+                                                    .Where((confirmed) => confirmed).SelectMany((confirmed) => Mvx.Resolve<IDeviceGroupsService>()?.Delete(CrossDeviceInfo.Current.Id)));
 
 			SignOutCommand.Subscribe((_) =>
 			{
                 Bullytect.Core.Config.Settings.AccessToken = null;
-				//var mvxBundle = new MvxBundle(new Dictionary<string, string> { { "NavigationCommand", "StackClear" } });
 				ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter()
 				{
 					ReasonForAuthentication = AuthenticationViewModel.SIGN_OUT
@@ -92,14 +103,143 @@ namespace Bullytect.Core.ViewModels
             }
         }
 
-        protected ObservableAsPropertyHelper<bool> _isBusy;
-        public bool IsBusy
-        {
-            get { return _isBusy != null ? _isBusy.Value : false; }
+		bool _isBusy;
+
+		public bool IsBusy
+		{
+			get => _isBusy;
+			set => SetProperty(ref _isBusy, value);
+		}
+
+		string _loadingText = AppResources.Profile_Saving_Changes;
+
+		public string LoadingText
+		{
+			get => _loadingText;
+			set => SetProperty(ref _loadingText, value);
+		}
+
+       
+		#region IsDirty
+
+		private string _cleanHash;
+
+		protected string CleanHash
+		{
+			get { return _cleanHash; }
+		}
+
+		private bool? _isDirtyMonitoring;
+
+		/// <summary>
+		/// Set this to true to start monitoring for changes to this object.
+		/// </summary>
+		public bool IsDirtyMonitoring
+		{
+			get
+			{
+				if (!_isDirtyMonitoring.HasValue)
+				{
+					return false;
+				}
+
+				return _isDirtyMonitoring.Value;
+			}
+			set
+			{
+				if (value)
+				{
+					// starts the monitoring and stores non-nulls
+					// and ignores default bools values in binding 
+					// situations where RaiseAllPropertyChanged() has
+					// been used
+					_isDirtyMonitoring = true;
+					// IsDirty = false;
+					_cleanHash = GetObjectHash();
+				}
+			}
+		}
+
+		/// <summary>
+		/// Gets or sets a value indicating whether this instance is dirty.
+		/// </summary>
+		/// <value>
+		///   <c>true</c> if this instance is has changed; otherwise, <c>false</c>.
+		/// </value>
+		/// <remarks>
+		/// Monitoring an objects contents only starts when <seealso cref="IsDirtyMonitoring"></seealso> is explicitly set to true />.
+		/// </remarks>
+		public bool IsDirty
+		{
+			get
+			{
+				if (_cleanHash == null)
+				{
+					return false;
+				}
+
+				return !string.IsNullOrEmpty(CleanHash) && GetObjectHash() != CleanHash;
+			}
+		}
+
+		/// <summary>
+		/// Gets the object hash from the objects property values.
+		/// </summary>
+		/// <returns>An MD5 hash representing the object</returns>
+		private string GetObjectHash()
+		{
+			string md5;
+			try
+			{
+				using (var ms = new MemoryStream())
+				{
+					using (StreamWriter sw = new StreamWriter(ms))
+					{
+						using (JsonWriter writer = new JsonTextWriter(sw))
+						{
+							JsonSerializer serializer = new JsonSerializer
+							{
+								ContractResolver = IsDirtyViewModelJsonContractResolver.Instance
+							};
+							serializer.Serialize(writer, this);
+							writer.Flush();
+							serializer.DisposeIfDisposable();
+							md5 = GetMd5Sum(ms.ToArray());
+						}
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				// you should make this more specific really :) OK for testing
+				// but since ViewModels are often not directly created
+				// throwing exceptions isn't a great idea really
+				throw new Exception("Cannot calculate hash.", ex);
+			}
+
+			return md5;
+		}
+
+
+		/// <summary>
+		/// Gets the MD5 sum from the buffer byte data.
+		/// </summary>
+		/// <param name="buffer">The buffer.</param>
+		/// <returns>a string MD5 value</returns>
+		private static string GetMd5Sum(byte[] buffer)
+		{
+            IHashAlgorithmProvider algoProv = WinRTCrypto.HashAlgorithmProvider.OpenAlgorithm(HashAlgorithm.Md5);
+		    byte[] hash = algoProv.HashData(buffer);
+			var hex = new StringBuilder(hash.Length * 2);
+			foreach (byte b in hash)
+				hex.AppendFormat("{0:x2}", b);
+
+			return hex.ToString();
         }
 
+		#endregion
 
-        protected virtual void HandleExceptions(Exception ex)
+		protected virtual void HandleExceptions(Exception ex)
         {
 
 
@@ -143,7 +283,7 @@ namespace Bullytect.Core.ViewModels
         }
 
 
-        protected void HandleIsExecuting(bool isLoading, string Text)
+		protected void HandleIsExecutingWithDialogs(bool isLoading, string Text)
         {
             if (isLoading)
             {
@@ -156,18 +296,28 @@ namespace Bullytect.Core.ViewModels
             }
         }
 
-        protected void ResetCommonProps(){
+		protected void HandleIsExecuting(bool isLoading, string Text)
+        {
+            IsBusy = isLoading;
+            LoadingText = Text;
+        }
+
+
+		protected void ResetCommonProps(){
             ErrorOccurred = false;
             DataFound = true;
             FieldErrors = new Dictionary<string, string>();
         }
 
+        protected virtual void OnBackPressed() => Close(this);
 		
         #region commmands 
 
             public ICommand CloseCommand => new MvxCommand(() => Close(this));
 
-		    public ReactiveCommand<Unit, bool> SignOutCommand { get; protected set; }
+		    public ReactiveCommand<Unit, string> SignOutCommand { get; protected set; }
+
+            public ICommand BackPressedCommand => new MvxCommand(() => OnBackPressed());
 
         #endregion
 

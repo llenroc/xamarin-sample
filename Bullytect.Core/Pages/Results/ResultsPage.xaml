@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<d:MvxContentPage  
+<common:BaseContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
@@ -20,6 +19,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -56,26 +56,71 @@
             </common:AppHeader>
 
             <controls:CarouselViewControl 
+                x:Name="CarouseView"
                 Grid.Row="1"
                 Orientation="Horizontal" 
                 InterPageSpacing="10" 
                 VerticalOptions="FillAndExpand" 
                 HorizontalOptions="FillAndExpand"
                 ShowIndicators="true"
+                IsSwipingEnabled="{ Binding IsBusy, Converter = { StaticResource InverseBoolConverter } }"
+                Position="{Binding Position}"
                 IndicatorsTintColor="{ DynamicResource AccentColor }">
                 <controls:CarouselViewControl.ItemsSource>
                     <x:Array Type="{x:Type View}">
+                        <!-- Comments Analyzed chart -->
                         <commonTemplates:ChartPageTemplate 
-                            Title="{i18n:Translate Results.Last.Iterations}"
-                            Chart="{ Binding LastIterationsChart }"
-                            ChartWidth="350"
-                            ChartHeight="350"
+                            Title="{i18n:Translate Results.Comments.Analyzed.Son}"
+                            IsLoading="{ Binding IsBusy }"
+                            Chart="{ Binding CommentsAnalyzedChart }"
+                            LoadingText="{i18n:Translate Results.Comments.Analyzed.Son.Loading }"
+                            ChartWidth="300"
+                            ChartHeight="300"
+                            Error="{ Binding ErrorOccurred }"
+                            ErrorText="{i18n:Translate Results.Comments.Analyzed.Son.Error}"
+                        />
+                        <!-- System Alerts Chart  -->
+                        <commonTemplates:ChartPageTemplate 
+                            Title="{i18n:Translate Results.System.Alerts}"
+                            IsLoading="{ Binding IsBusy }"
+                            Chart="{ Binding SystemAlertsChart }"
+                            LoadingText="{i18n:Translate Results.System.Alerts.Loading }"
+                            ChartWidth="300"
+                            ChartHeight="300"
+                            Error="{ Binding ErrorOccurred }"
+                            ErrorText="{i18n:Translate Results.System.Alerts.Error}"
+                        />
+                        <!-- Social Media Likes Chart -->
+                        <commonTemplates:ChartPageTemplate 
+                            Title="{i18n:Translate Results.Social.Media.Likes}"
+                            IsLoading="{ Binding IsBusy }"
+                            Chart="{ Binding SocialMediaLikesChart }"
+                            LoadingText="{i18n:Translate Results.Social.Media.Likes.Loading }"
+                            ChartWidth="300"
+                            ChartHeight="300"
+                            Error="{ Binding ErrorOccurred }"
+                            ErrorText="{i18n:Translate Results.Social.Media.Likes.Error}"
+                        />
+                        <!-- Most Active Friends -->
+                        <carouselTemplate:UserListPage 
+                            Title="{i18n:Translate Results.Most.Active.Friends}"
+                            IsLoading="{ Binding IsBusy }"
+                            LoadingText="{i18n:Translate Results.Most.Active.Friends.Loading }"
+                            Error="{ Binding ErrorOccurred }"
+                            ErrorText="{i18n:Translate Results.Most.Active.Friends.Error }"
+                            Source="{ Binding MostActiveFriends }"
                         />
 
-                        <commonTemplates:ChartPageTemplate 
-                            Title="{i18n:Translate Results.Alerts.by.Son}"
-                            ChartList="{ Binding AlertsBySonChartList }"
+                        <!-- New Friends -->
+                        <carouselTemplate:UserListPage 
+                            Title="{i18n:Translate Results.New.Friends}"
+                            IsLoading="{ Binding IsBusy }"
+                            LoadingText="{i18n:Translate Results.New.Friends.Loading }"
+                            Error="{ Binding ErrorOccurred }"
+                            ErrorText="{i18n:Translate Results.New.Friends.Error}"
+                            Source="{ Binding NewFriends }"
                         />
+                        
                     </x:Array>
                 </controls:CarouselViewControl.ItemsSource>
             </controls:CarouselViewControl>
@@ -84,4 +129,4 @@
 
     </ContentPage.Content>
 
-</d:MvxContentPage>
+</common:BaseContentPage>

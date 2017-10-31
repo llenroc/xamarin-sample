@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<d:MvxContentPage 
+<common:BaseContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
@@ -70,7 +69,9 @@
             <TableView  Grid.Row="1" Intent="Settings" HasUnevenRows="true">
                 
                 <TableSection Title="{i18n:Translate Settings.Alerts.General}">
-                     <extended:ExtendedViewCell SeparatorColor="{DynamicResource AccentColor}" SeparatorPadding="5">
+                     <extended:ExtendedViewCell 
+                        SeparatorColor="{DynamicResource AccentColor}" 
+                        SeparatorPadding="5">
 
                         <Grid Padding="16,6,16,6" ColumnSpacing="16">
                             <Grid.ColumnDefinitions>
@@ -92,7 +93,8 @@
                             
                             <Label Grid.Column="1" 
                                    Text="{i18n:Translate Settings.Alerts.Count.New.Alerts }"
-                                   VerticalTextAlignment="Center" 
+                                   LineBreakMode="TailTruncation"
+                                    VerticalTextAlignment="Center" 
                                    HorizontalOptions="StartAndExpand"
                                    />
 
@@ -152,10 +154,12 @@
                                 HorizontalTextAlignment="Center"
                                 VerticalTextAlignment="Center"/>
                             
-                            <Label Grid.Column="1" 
-                                   Text="{i18n:Translate Settings.Antiquity.Of.Alerts }"
-                                   VerticalTextAlignment="Center" 
-                                   HorizontalOptions="StartAndExpand"
+                            <Label 
+                                Grid.Column="1" 
+                                Text="{i18n:Translate Settings.Antiquity.Of.Alerts }"
+                                LineBreakMode="TailTruncation"
+                                VerticalTextAlignment="Center" 
+                                 HorizontalOptions="StartAndExpand"
                                    />
 
                             <Label
@@ -203,4 +207,4 @@
          </Grid>
         
 	</ContentPage.Content>
-</d:MvxContentPage>
+</common:BaseContentPage>

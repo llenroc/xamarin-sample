@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<d:MvxContentPage 
+<common:BaseContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
@@ -194,6 +193,7 @@
                             <Label 
                                 Text="{ Binding CreateAt , Converter={ StaticResource DateTimeToElapsedTimeConverter }}"
                                 FontSize="14"
+                                LineBreakMode="TailTruncation"
                                 TextColor="{ DynamicResource BaseTextColor }"
                                 HorizontalOptions="End"/>
                         
@@ -226,4 +226,4 @@
             </ScrollView>
          </Grid>
 	</ContentPage.Content>
-</d:MvxContentPage>
+</common:BaseContentPage>

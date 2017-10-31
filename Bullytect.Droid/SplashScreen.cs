@@ -1,6 +1,7 @@
 ﻿
 using Android.App;
 using Android.Content.PM;
+using Android.OS;
 using MvvmCross.Droid.Views;
 
 namespace Bullytect.Droid
@@ -15,6 +16,8 @@ namespace Bullytect.Droid
 		, ScreenOrientation = ScreenOrientation.Portrait)]
 	public class SplashScreen : MvxSplashScreenActivity
 	{
+
+
 		protected override void TriggerFirstNavigate()
 		{
 			StartActivity(typeof(MvxFormsApplicationActivity));

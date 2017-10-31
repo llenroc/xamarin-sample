@@ -2,27 +2,27 @@
 using System.Collections.Generic;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Models.Domain;
+using Bullytect.Core.Pages.Common;
 using Bullytect.Core.Pages.Common.Templates;
 using Bullytect.Core.Pages.Home.Settings.Templates;
 using Bullytect.Core.ViewModels;
 using Bullytect.Core.ViewModels.Core.Models;
-using MvvmCross.Forms.Core;
 using Rg.Plugins.Popup.Services;
-using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.Home.Settings
 {
-    public partial class SettingsPage : MvxContentPage<HomeSettingsViewModel>
+    public partial class SettingsPage : BaseContentPage<HomeSettingsViewModel>
     {
         public SettingsPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         protected override void OnAppearing()
         {
             ViewModel.AlertsCategoriesLoaded += ViewModel_OnAlertsCategoriesLoaded;
+
+			
         }
 
         protected override void OnDisappearing()
@@ -47,6 +47,7 @@ namespace Bullytect.Core.Pages.Home.Settings
 			await PopupNavigation.PushAsync(page);
 
 		}
+
 		
 
         void ViewModel_OnAlertsCategoriesLoaded(Object sender, List<AlertCategoryModel> AlertsCategories)
@@ -60,10 +61,12 @@ namespace Bullytect.Core.Pages.Home.Settings
 
 			foreach (var item in AlertsCategories)
 			{
-				TableSectionCategories.Add(new AlertCategoryCell
-				{
-					BindingContext = item
-				});
+                var AlertCategoryCell = new AlertCategoryCell
+                {
+                    BindingContext = item
+                };
+
+				TableSectionCategories.Add(AlertCategoryCell);
 			}
 		}
     }

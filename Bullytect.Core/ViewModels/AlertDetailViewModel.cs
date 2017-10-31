@@ -27,7 +27,7 @@ namespace Bullytect.Core.ViewModels
                 .CreateFromObservable(() =>  _appHelper.RequestConfirmation(AppResources.Alert_Confirm_Clear)
                                       .SelectMany((_) => alertService.DeleteAlertOfSon(SonIdentity, Identity)).Do((_) => Close(this)));
             
-            DeleteAlertCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Common_Loading));
+            DeleteAlertCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecutingWithDialogs(isLoading, AppResources.Common_Loading));
 
 			DeleteAlertCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }

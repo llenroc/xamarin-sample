@@ -25,8 +25,11 @@ namespace Bullytect.Core.Rest.Models.Response
 		[JsonProperty("email")]
 		public string Email { get; set; }
 
-		[JsonProperty("telephone")]
-		public string Telephone { get; set; }
+        [JsonProperty("phone_prefix")]
+        public string PhonePrefix { get; set; }
+
+		[JsonProperty("phone_number")]
+		public string PhoneNumber { get; set; }
 
 		[JsonProperty("fb_id")]
 		public string FbId { get; set; }

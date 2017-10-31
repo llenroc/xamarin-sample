@@ -131,6 +131,18 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Common_No_Results_Found {
+            get {
+                return ResourceManager.GetString("Common.No.Results.Found", resourceCulture);
+            }
+        }
+        
+        internal static string Common_No_Results_Found_Detail {
+            get {
+                return ResourceManager.GetString("Common.No.Results.Found.Detail", resourceCulture);
+            }
+        }
+        
         internal static string Common_Timeout_Operation {
             get {
                 return ResourceManager.GetString("Common.Timeout.Operation", resourceCulture);
@@ -413,6 +425,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Signup_Cancel {
+            get {
+                return ResourceManager.GetString("Signup.Cancel", resourceCulture);
+            }
+        }
+        
         internal static string Password_Recovery_Main_Text {
             get {
                 return ResourceManager.GetString("Password.Recovery.Main.Text", resourceCulture);
@@ -560,6 +578,12 @@ namespace Bullytect.Core.I18N {
         internal static string Profile_Save_Changes {
             get {
                 return ResourceManager.GetString("Profile.Save.Changes", resourceCulture);
+            }
+        }
+        
+        internal static string Profile_Cancel_Changes {
+            get {
+                return ResourceManager.GetString("Profile.Cancel.Changes", resourceCulture);
             }
         }
         
@@ -752,6 +776,12 @@ namespace Bullytect.Core.I18N {
         internal static string EditSon_General_Section_Title {
             get {
                 return ResourceManager.GetString("EditSon.General.Section.Title", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Cancel {
+            get {
+                return ResourceManager.GetString("EditSon.Cancel", resourceCulture);
             }
         }
         
@@ -995,51 +1025,57 @@ namespace Bullytect.Core.I18N {
             }
         }
         
-        internal static string Results_Comments_By_Son {
+        internal static string Results_Comments_Analyzed_Son {
             get {
-                return ResourceManager.GetString("Results.Comments.By.Son", resourceCulture);
+                return ResourceManager.GetString("Results.Comments.Analyzed.Son", resourceCulture);
             }
         }
         
-        internal static string Results_Last_Iterations {
+        internal static string Results_Comments_Analyzed_Son_Loading {
             get {
-                return ResourceManager.GetString("Results.Last.Iterations", resourceCulture);
+                return ResourceManager.GetString("Results.Comments.Analyzed.Son.Loading", resourceCulture);
             }
         }
         
-        internal static string Results_Alerts_by_Son {
+        internal static string Results_Comments_Analyzed_Son_Error {
             get {
-                return ResourceManager.GetString("Results.Alerts.by.Son", resourceCulture);
+                return ResourceManager.GetString("Results.Comments.Analyzed.Son.Error", resourceCulture);
             }
         }
         
-        internal static string Results_Settings_Iterations_Count {
+        internal static string Results_System_Alerts {
             get {
-                return ResourceManager.GetString("Results.Settings.Iterations.Count", resourceCulture);
+                return ResourceManager.GetString("Results.System.Alerts", resourceCulture);
             }
         }
         
-        internal static string Results_Iterations_Not_Found_MainText {
+        internal static string Results_System_Alerts_Loading {
             get {
-                return ResourceManager.GetString("Results.Iterations.Not.Found.MainText", resourceCulture);
+                return ResourceManager.GetString("Results.System.Alerts.Loading", resourceCulture);
             }
         }
         
-        internal static string Results_Iterations_Not_Found_SecondText {
+        internal static string Results_System_Alerts_Error {
             get {
-                return ResourceManager.GetString("Results.Iterations.Not.Found.SecondText", resourceCulture);
+                return ResourceManager.GetString("Results.System.Alerts.Error", resourceCulture);
             }
         }
         
-        internal static string Results_Settings_Iterations_Count_Description {
+        internal static string Results_Social_Media_Likes {
             get {
-                return ResourceManager.GetString("Results.Settings.Iterations.Count.Description", resourceCulture);
+                return ResourceManager.GetString("Results.Social.Media.Likes", resourceCulture);
             }
         }
         
-        internal static string Results_Settings_Iterations_Count_Option {
+        internal static string Results_Social_Media_Likes_Loading {
             get {
-                return ResourceManager.GetString("Results.Settings.Iterations.Count.Option", resourceCulture);
+                return ResourceManager.GetString("Results.Social.Media.Likes.Loading", resourceCulture);
+            }
+        }
+        
+        internal static string Results_Social_Media_Likes_Error {
+            get {
+                return ResourceManager.GetString("Results.Social.Media.Likes.Error", resourceCulture);
             }
         }
         
@@ -1049,27 +1085,63 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Results_Most_Active_Friends {
+            get {
+                return ResourceManager.GetString("Results.Most.Active.Friends", resourceCulture);
+            }
+        }
+        
+        internal static string Results_Most_Active_Friends_Loading {
+            get {
+                return ResourceManager.GetString("Results.Most.Active.Friends.Loading", resourceCulture);
+            }
+        }
+        
+        internal static string Results_Most_Active_Friends_Error {
+            get {
+                return ResourceManager.GetString("Results.Most.Active.Friends.Error", resourceCulture);
+            }
+        }
+        
+        internal static string Results_New_Friends {
+            get {
+                return ResourceManager.GetString("Results.New.Friends", resourceCulture);
+            }
+        }
+        
+        internal static string Results_New_Friends_Loading {
+            get {
+                return ResourceManager.GetString("Results.New.Friends.Loading", resourceCulture);
+            }
+        }
+        
+        internal static string Results_New_Friends_Error {
+            get {
+                return ResourceManager.GetString("Results.New.Friends.Error", resourceCulture);
+            }
+        }
+        
         internal static string Settings_Statistics_Son_General {
             get {
                 return ResourceManager.GetString("Settings.Statistics.Son.General", resourceCulture);
             }
         }
         
-        internal static string Settings_Statistics_Son_General_Interval {
+        internal static string Settings_Statistics_General_Interval {
             get {
-                return ResourceManager.GetString("Settings.Statistics.Son.General.Interval", resourceCulture);
+                return ResourceManager.GetString("Settings.Statistics.General.Interval", resourceCulture);
             }
         }
         
-        internal static string Settings_Statistics_Son_General_Interval_Description {
+        internal static string Settings_Statistics_General_Interval_Description {
             get {
-                return ResourceManager.GetString("Settings.Statistics.Son.General.Interval.Description", resourceCulture);
+                return ResourceManager.GetString("Settings.Statistics.General.Interval.Description", resourceCulture);
             }
         }
         
-        internal static string Settings_Statistics_Son_General_Interval_Option {
+        internal static string Settings_Statistics_General_Interval_Option {
             get {
-                return ResourceManager.GetString("Settings.Statistics.Son.General.Interval.Option", resourceCulture);
+                return ResourceManager.GetString("Settings.Statistics.General.Interval.Option", resourceCulture);
             }
         }
         
@@ -1079,9 +1151,33 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Statistics_Son_Social_Sentiment_Analysis_Loading {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Social.Sentiment.Analysis.Loading", resourceCulture);
+            }
+        }
+        
+        internal static string Statistics_Son_Social_Sentiment_Analysis_Error {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Social.Sentiment.Analysis.Error", resourceCulture);
+            }
+        }
+        
         internal static string Statistics_Son_Social_Media_Activities {
             get {
                 return ResourceManager.GetString("Statistics.Son.Social.Media.Activities", resourceCulture);
+            }
+        }
+        
+        internal static string Statistics_Son_Social_Media_Activities_Loading {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Social.Media.Activities.Loading", resourceCulture);
+            }
+        }
+        
+        internal static string Statistics_Son_Social_Media_Activities_Error {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Social.Media.Activities.Error", resourceCulture);
             }
         }
         
@@ -1091,9 +1187,33 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Statistics_Son_Four_Dimensions_Loading {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Four.Dimensions.Loading", resourceCulture);
+            }
+        }
+        
+        internal static string Statistics_Son_Four_Dimensions_Error {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Four.Dimensions.Error", resourceCulture);
+            }
+        }
+        
         internal static string Statistics_Son_Communities {
             get {
                 return ResourceManager.GetString("Statistics.Son.Communities", resourceCulture);
+            }
+        }
+        
+        internal static string Statistics_Son_Communities_Loading {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Communities.Loading", resourceCulture);
+            }
+        }
+        
+        internal static string Statistics_Son_Communities_Error {
+            get {
+                return ResourceManager.GetString("Statistics.Son.Communities.Error", resourceCulture);
             }
         }
     }

@@ -48,6 +48,7 @@
 
              <Label
                 Grid.Column="2" 
+                LineBreakMode="TailTruncation"
                 VerticalTextAlignment="Center"
                 HorizontalTextAlignment="Center"
                 HorizontalOptions="End"

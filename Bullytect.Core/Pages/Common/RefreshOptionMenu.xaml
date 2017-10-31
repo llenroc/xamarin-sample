@@ -8,7 +8,7 @@
 
         <ContentView 
             HorizontalOptions="End"
-            Margin="0,0,10,0"
+            Margin="0,0,15,0" 
             Padding="10" 
             BackgroundColor="Transparent">
             <Label 

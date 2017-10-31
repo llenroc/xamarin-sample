@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<d:MvxContentPage 
+<common:BaseContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
     xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
@@ -20,6 +20,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
             <converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter" />
             <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
         </ResourceDictionary>
@@ -33,6 +34,7 @@
                     Converter="{ StaticResource DefaultReactiveUnitConverter}" />
         </behaviors:EventHandlerBehavior>
     </ContentPage.Behaviors>
+
 
     <ContentPage.Content>
         <!-- MAIN CONTAINER -->
@@ -55,38 +57,58 @@
             </common:AppHeader>
 
             <controls:CarouselViewControl 
+                x:Name="CarouseView"
                 Grid.Row="1"
                 Orientation="Horizontal" 
                 InterPageSpacing="10" 
                 VerticalOptions="FillAndExpand" 
                 HorizontalOptions="FillAndExpand"
                 ShowIndicators="true"
+                IsSwipingEnabled="{ Binding IsBusy, Converter = { StaticResource InverseBoolConverter } }"
+                Position="{Binding Position}"
                 IndicatorsTintColor="{ DynamicResource AccentColor }">
+               
                 <controls:CarouselViewControl.ItemsSource>
                     <x:Array Type="{x:Type View}">
                         <commonTemplates:ChartPageTemplate 
                             Title="{i18n:Translate Statistics.Son.Social.Media.Activities}"
+                            IsLoading="{ Binding IsBusy }"
                             Chart="{ Binding SocialMediaActivitiesChart }"
+                            LoadingText="{i18n:Translate Statistics.Son.Social.Media.Activities.Loading }"
                             ChartWidth="350"
                             ChartHeight="350"
+                            Error="{ Binding ErrorOccurred }"
+                            ErrorText="{i18n:Translate Statistics.Son.Social.Media.Activities.Error}"
                         />
                         <commonTemplates:ChartPageTemplate 
                             Title="{i18n:Translate Statistics.Son.Four.Dimensions}"
+                            IsLoading="{ Binding IsBusy }"
                             Chart="{ Binding FourDimensionsChart }"
+                            LoadingText="{i18n:Translate Statistics.Son.Four.Dimensions.Loading }"
                             ChartWidth="350"
                             ChartHeight="350"
+                            Error="{ Binding ErrorOccurred }"
+                            ErrorText="{i18n:Translate Statistics.Son.Four.Dimensions.Error}"
                         />
                         <commonTemplates:ChartPageTemplate 
                             Title="{i18n:Translate Statistics.Son.Social.Sentiment.Analysis}"
+                            IsLoading="{ Binding IsBusy }"
                             Chart="{ Binding SentimentAnalysisChart }"
-                            ChartWidth="350"
-                            ChartHeight="350"
+                            LoadingText="{i18n:Translate Statistics.Son.Social.Sentiment.Analysis.Loading }"
+                            ChartWidth="300"
+                            ChartHeight="300"
+                            Error="{ Binding ErrorOccurred }"
+                            ErrorText="{i18n:Translate Statistics.Son.Social.Sentiment.Analysis.Error}"
                         />
                         <commonTemplates:ChartPageTemplate 
                             Title="{i18n:Translate Statistics.Son.Communities}"
+                            IsLoading="{ Binding IsBusy }"
                             Chart="{ Binding CommunitiesCharts }"
+                            LoadingText="{i18n:Translate Statistics.Son.Communities.Loading }"
                             ChartWidth="350"
                             ChartHeight="350"
+                            Error="{ Binding ErrorOccurred }"
+                            ErrorText="{i18n:Translate Statistics.Son.Communities.Error}"
                         />
                     </x:Array>
                 </controls:CarouselViewControl.ItemsSource>
@@ -94,4 +116,4 @@
 
         </Grid>
     </ContentPage.Content>
-</d:MvxContentPage>
+</common:BaseContentPage>

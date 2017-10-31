@@ -173,6 +173,14 @@
     <value>Operation in progress</value>
     <comment>Common Loading</comment>
   </data>
+  <data name="Common.No.Results.Found" xml:space="preserve">
+    <value>No results found</value>
+    <comment>Common No Results Found</comment>
+  </data>
+  <data name="Common.No.Results.Found.Detail" xml:space="preserve">
+    <value>No new results available</value>
+    <comment>Common No Results Found Detail</comment>
+  </data>
   <data name="Common.Timeout.Operation" xml:space="preserve">
     <value>The operation took too long to complete. Try again.</value>
     <comment>Common Timeout Operation</comment>
@@ -363,6 +371,10 @@ pleasures of the demo.</value>
     <value> Passwords do not match </value>
     <comment>Signup Account Password Not Match</comment>
   </data>
+  <data name="Signup.Cancel" xml:space="preserve">
+    <value>Cancel Signup ?</value>
+    <comment>Signup Cancel</comment>
+  </data>
   <data name="Password.Recovery.Main.Text" xml:space="preserve">
     <value> Forgot your password? </value>
     <comment>Password Recovery Main Text</comment>
@@ -464,6 +476,10 @@ and we will recover it for you. </value>
   <data name="Profile.Save.Changes" xml:space="preserve">
     <value> Save Changes </value>
     <comment>Profile Save Changes</comment>
+  </data>
+  <data name="Profile.Cancel.Changes" xml:space="preserve">
+    <value> Cancel Changes?</value>
+    <comment>Profile Cancel Changes</comment>
   </data>
   <data name="Profile.Saving.Changes" xml:space="preserve">
     <value> Saving Changes ...</value>
@@ -592,6 +608,10 @@ and we will recover it for you. </value>
   <data name="EditSon.General.Section.Title" xml:space="preserve">
     <value> General Information </value>
     <comment>EditSon General Section Title</comment>
+  </data>
+  <data name="EditSon.Cancel" xml:space="preserve">
+    <value> Cancel Changes? </value>
+    <comment>EditSon Cancel</comment>
   </data>
   <data name="EditSon.General.Change.Profile.Image" xml:space="preserve">
     <value> Change Profile Image </value>
@@ -753,42 +773,83 @@ and we will recover it for you. </value>
     <value>Changes saved</value>
     <comment>Settings Changes Saved</comment>
   </data>   
-  <data name="Results.Comments.By.Son" xml:space="preserve">
-    <value>Comments by son for last iteration </value>
-    <comment>Results Comments By Son</comment>
-  </data> 
-  <data name="Results.Last.Iterations" xml:space="preserve">
-    <value>Last Iterations</value>
-    <comment>Results Last Iterations</comment>
+  <data name="Results.Comments.Analyzed.Son" xml:space="preserve">
+    <value>Comments Analyzed by son </value>
+    <comment>Results Comments Analyzed Son</comment>
   </data>
-  <data name="Results.Alerts.by.Son" xml:space="preserve">
-    <value>Alerts By Son</value>
-    <comment>Results Alerts by son</comment>
-  </data> 
-  <data name="Results.Settings.Iterations.Count" xml:space="preserve">
-    <value>Number of Iterations</value>
-    <comment>Results Settings Iterations Count</comment>
+  <data name="Results.Comments.Analyzed.Son.Loading" xml:space="preserve">
+    <value>Loading comments analyzed </value>
+    <comment>Results Comments Analyzed Son Loading</comment>
   </data>
-  <data name="Results.Iterations.Not.Found.MainText" xml:space="preserve">
-    <value>No Iterations Found</value>
-    <comment>Results Iterations Not Found Title</comment>
+  <data name="Results.Comments.Analyzed.Son.Error" xml:space="preserve">
+    <value>Error Loading comments analyzed </value>
+    <comment>Results Comments Reviewed Son Error</comment>
   </data>
-  <data name="Results.Iterations.Not.Found.SecondText" xml:space="preserve">
-    <value>No Iterations Found</value>
-    <comment>Results Iterations Not Found Title</comment>
+  <data name="Results.System.Alerts" xml:space="preserve">
+    <value>System Alerts</value>
+    <comment>Results System Alerts</comment>
   </data>
-   <data name="Results.Settings.Iterations.Count.Description" xml:space="preserve">
-    <value>Select the maximum number of iterations you want to appear on the chart</value>
-    <comment>Results Settings Iterations Count Description</comment>
+  <data name="Results.System.Alerts.Loading" xml:space="preserve">
+    <value>Loading System Alerts ...</value>
+    <comment>Results System Alerts Loading</comment>
   </data>
-	<data name="Results.Settings.Iterations.Count.Option" xml:space="preserve">
-    <value>{0} Iterations</value>
-    <comment>Results Settings Iterations Count Option</comment>
+
+   <data name="Results.System.Alerts.Error" xml:space="preserve">
+    <value>Error Loading System Alerts </value>
+    <comment>Results System Alerts Error</comment>
   </data>
+	
+  <data name="Results.Social.Media.Likes" xml:space="preserve">
+    <value>Social Media Likes</value>
+    <comment>Results Social Media Likes</comment>
+  </data>
+
+  <data name="Results.Social.Media.Likes.Loading" xml:space="preserve">
+    <value>Loading Social Media Likes</value>
+    <comment>Results Social Media Likes Loading</comment>
+  </data>
+
+	<data name="Results.Social.Media.Likes.Error" xml:space="preserve">
+    <value>Error Loading Social Media Likes</value>
+    <comment>Results Social Media Likes Error</comment>
+  </data>
+
   <data name="Results.Settings.Show.Results.For" xml:space="preserve">
     <value>Show Results For</value>
     <comment>Results Settings Show Results For</comment>
   </data>
+
+  <data name="Results.Most.Active.Friends" xml:space="preserve">
+    <value>Most Active Friends</value>
+    <comment>Results.Most.Active.Friends</comment>
+  </data>
+
+   <data name="Results.Most.Active.Friends.Loading" xml:space="preserve">
+    <value>Loading New Friends</value>
+    <comment>Results.New.Friends.Loading</comment>
+  </data>
+
+  <data name="Results.Most.Active.Friends.Error" xml:space="preserve">
+    <value>Error Loading New Friends</value>
+    <comment>Results.New.Friends.Error</comment>
+  </data>
+
+  <data name="Results.New.Friends" xml:space="preserve">
+    <value>New Friends</value>
+    <comment>Results.New.Friends</comment>
+  </data>
+
+  <data name="Results.New.Friends.Loading" xml:space="preserve">
+    <value>Loading New Friends</value>
+    <comment>Results.New.Friends.Loading</comment>
+  </data>
+
+  <data name="Results.New.Friends.Error" xml:space="preserve">
+    <value>Error Loading New Friends</value>
+    <comment>Results.New.Friends.Error</comment>
+  </data>
+
+	
 
   <!-- Statistics son -->
   <data name="Settings.Statistics.Son.General" xml:space="preserve">
@@ -796,17 +857,17 @@ and we will recover it for you. </value>
     <comment>Settings Statistics Son General</comment>
   </data>
 
-  <data name="Settings.Statistics.Son.General.Interval" xml:space="preserve">
+  <data name="Settings.Statistics.General.Interval" xml:space="preserve">
     <value>Time interval</value>
     <comment>Settings Statistics Son General Interval</comment>
   </data>  
 
-  <data name="Settings.Statistics.Son.General.Interval.Description" xml:space="preserve">
+  <data name="Settings.Statistics.General.Interval.Description" xml:space="preserve">
     <value>You can set the time interval for which the results will be displayed</value>
     <comment>Settings Statistics Son General Interval Description</comment>
   </data>  
 
-   <data name="Settings.Statistics.Son.General.Interval.Option" xml:space="preserve">
+   <data name="Settings.Statistics.General.Interval.Option" xml:space="preserve">
     <value>The last {0} days</value>
     <comment>Settings Statistics Son General Interval Description</comment>
   </data>  
@@ -816,9 +877,29 @@ and we will recover it for you. </value>
     <comment>Statistics Son Social Sentiment Analysis</comment>
   </data> 
 
+  <data name="Statistics.Son.Social.Sentiment.Analysis.Loading" xml:space="preserve">
+    <value>Loading Sentiment Analysis ...</value>
+    <comment>Statistics Son Social Sentiment Analysis Loading</comment>
+  </data>
+
+  <data name="Statistics.Son.Social.Sentiment.Analysis.Error" xml:space="preserve">
+    <value>Sentiment Analysis graph could not be loaded</value>
+    <comment>Statistics Son Social Sentiment Analysis Error </comment>
+  </data>
+
   <data name="Statistics.Son.Social.Media.Activities" xml:space="preserve">
     <value>Social Media Activities</value>
     <comment>Statistics Son Social Media Activities</comment>
+  </data>
+
+	<data name="Statistics.Son.Social.Media.Activities.Loading" xml:space="preserve">
+    <value>Loading Activities Statistics</value>
+    <comment>Statistics Son Social Media Activities Loading</comment>
+  </data>
+
+   <data name="Statistics.Son.Social.Media.Activities.Error" xml:space="preserve">
+    <value>Activities graph could not be loaded</value>
+    <comment>Statistics Son Social Media Activitie Error </comment>
   </data>
 
   <data name="Statistics.Son.Four.Dimensions" xml:space="preserve">
@@ -826,9 +907,29 @@ and we will recover it for you. </value>
     <comment>Statistics Son Four Dimensions</comment>
   </data>
 
+  <data name="Statistics.Son.Four.Dimensions.Loading" xml:space="preserve">
+    <value>Loading Dimensions ...</value>
+    <comment>Statistics Son Four Dimensions Loading </comment>
+  </data>
+
+  <data name="Statistics.Son.Four.Dimensions.Error" xml:space="preserve">
+    <value>Dimensions graph could not be loaded</value>
+    <comment>Statistics Son Four Dimensions Error </comment>
+  </data>
+
   <data name="Statistics.Son.Communities" xml:space="preserve">
     <value>Communities</value>
     <comment>Statistics Son Communities</comment>
+  </data> 
+
+  <data name="Statistics.Son.Communities.Loading" xml:space="preserve">
+    <value>Communities</value>
+    <comment>Statistics Son Communities Loading</comment>
+  </data>
+
+  <data name="Statistics.Son.Communities.Error" xml:space="preserve">
+    <value>Community graph could not be loaded</value>
+    <comment>Statistics Son Communities Error</comment>
   </data> 
 
 	

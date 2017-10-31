@@ -44,7 +44,7 @@ namespace Bullytect.Core.ViewModels
             LoginCommand.Subscribe(HandleAuthSuccess);
 
 
-            LoginCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Login_Authenticating));
+            LoginCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecutingWithDialogs(isLoading, AppResources.Login_Authenticating));
 
 
             LoginCommand.ThrownExceptions.Subscribe(HandleExceptions);
@@ -114,6 +114,7 @@ namespace Bullytect.Core.ViewModels
         public const string SIGN_OUT = "SIGN_OUT";
         public const string SESSION_EXPIRED = "SESSION_EXPIRED";
         public const string SIGN_UP = "SIGN_UP";
+        public const string ACCOUNT_DELETED = "ACCOUNT_DELETED";
 
 		public class AuthenticationParameter
 		{
@@ -130,18 +131,21 @@ namespace Bullytect.Core.ViewModels
         public override void Start()
         {
 
-
             if (ReasonForAuthentication.Equals(SIGN_OUT))
             {
-                _appHelper.Toast(AppResources.Common_SignOut, System.Drawing.Color.FromArgb(255, 0, 0));
+                _appHelper.Toast(AppResources.Common_SignOut, System.Drawing.Color.FromArgb(12, 131, 193));
             }
             else if (ReasonForAuthentication.Equals(SESSION_EXPIRED)) {
                 _appHelper.Toast(AppResources.Common_Invalid_Session, System.Drawing.Color.FromArgb(255, 0, 0));
 
             } else if(ReasonForAuthentication.Equals(SIGN_UP)) {
                 _appHelper.Toast(AppResources.Signup_Account_Created, System.Drawing.Color.FromArgb(12, 131, 193));
+            } else if(ReasonForAuthentication.Equals(ACCOUNT_DELETED)) {
+                _appHelper.Toast(AppResources.Profile_Account_Deleted, System.Drawing.Color.FromArgb(12, 131, 193));
             }
         }
+
+        protected override void OnBackPressed() => ShowViewModel<WelcomeViewModel>();
 
         #region commands
 

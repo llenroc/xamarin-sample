@@ -16,6 +16,5 @@ namespace Bullytect.Core.Services
         IObservable<IList<AlertEntity>> GetAlertsBySon(string SonId);
         IObservable<string> ClearSelfAlerts();
         IObservable<IList<AlertCategoryModel>> GetAllAlertsCategories();
-        IObservable<IList<AlertsBySon>> GetAlertsBySon();
     }
 }
