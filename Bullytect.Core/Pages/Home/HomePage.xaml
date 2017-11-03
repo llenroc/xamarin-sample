@@ -448,9 +448,23 @@
              </controls:PullToRefreshLayout>
 
             <common:ErrorOcurred 
-                    Grid.Row="1"
-                    IsVisible="{ Binding ErrorOccurred }"
-                    MainText="{i18n:Translate Home.Profile.Load.Error}"/>
+                 Grid.Row="1"
+                 IsVisible="false"
+                 MainText="{i18n:Translate Home.Profile.Load.Error}">
+                 <ContentView.Triggers>
+                    <MultiTrigger TargetType="common:ErrorOcurred">
+                        <MultiTrigger.Conditions>
+                          <BindingCondition 
+                              Binding="{ Binding ErrorOccurred }"
+                              Value="True" />
+                          <BindingCondition 
+                              Binding="{Binding IsBusy }"
+                              Value="False" />
+                        </MultiTrigger.Conditions>
+                        <Setter Property="IsVisible" Value="True" />
+                    </MultiTrigger>
+               </ContentView.Triggers>
+           </common:ErrorOcurred>
         </Grid>
        <!-- END MAIN CONTAINER -->
     </ContentPage.Content>

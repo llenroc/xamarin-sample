@@ -221,7 +221,8 @@ namespace Bullytect.Core.Pages.Common.Templates
 			ChartContainer.Children.Add(new Label()
 			{
 				Text = chart.Title,
-                TextColor = (Color)Application.Current.Resources["AccentColor"]
+                TextColor = (Color)Application.Current.Resources["AccentColor"],
+                FontSize = 15.0
 			});
 
 			var chartTypeObj = (Chart)Activator.CreateInstance(chart.Type ?? DEFAULT_CHART_TYPE);
@@ -229,7 +230,7 @@ namespace Bullytect.Core.Pages.Common.Templates
 
 			MCChart.Chart = chartTypeObj;
 
-			MCChart.Chart.LabelTextSize = 20.45f;
+			MCChart.Chart.LabelTextSize = 25.45f;
 
 			ChartContainer.Children.Add(MCChart);
 

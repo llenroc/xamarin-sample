@@ -8,6 +8,7 @@
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:commonControls="clr-namespace:Bullytect.Core.Pages.Common.Controls"
     xmlns:extended="clr-namespace:Bullytect.Core.Pages.Common.Extended"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:xfg="clr-namespace:XFGloss;assembly=XFGloss"
@@ -401,9 +402,23 @@
               DetailText="{i18n:Translate Profile.Data.Not.Found}"/>
 
           <common:ErrorOcurred
-               Grid.Row="1"
-              IsVisible="{ Binding ErrorOccurred }"
-              MainText="{i18n:Translate Profile.Updating.Error}"/>
+              Grid.Row="1"
+              IsVisible="false"
+              MainText="{i18n:Translate Profile.Updating.Error}">
+              <ContentView.Triggers>
+                    <MultiTrigger TargetType="common:ErrorOcurred">
+                        <MultiTrigger.Conditions>
+                          <BindingCondition 
+                              Binding="{ Binding ErrorOccurred }"
+                              Value="True" />
+                          <BindingCondition 
+                              Binding="{Binding IsBusy }"
+                              Value="False" />
+                        </MultiTrigger.Conditions>
+                        <Setter Property="IsVisible" Value="True" />
+                    </MultiTrigger>
+               </ContentView.Triggers>
+          </common:ErrorOcurred>
 
         </Grid>
 	</ContentPage.Content>

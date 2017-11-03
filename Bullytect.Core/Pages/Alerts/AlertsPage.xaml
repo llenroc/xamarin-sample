@@ -100,7 +100,7 @@
             ItemsSource="{ Binding Alerts }"
             HasUnevenRows = "true"
             IsPullToRefreshEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter} }"
-            RefreshCommand="{ Binding LoadAlertsCommand }"
+            RefreshCommand="{ Binding RefreshCommand }"
             IsRefreshing="{Binding IsBusy}">
 
             <ListView.RowHeight>
@@ -132,12 +132,6 @@
             </ListView.ItemTemplate>
 
             <ListView.Triggers>
-                <DataTrigger 
-                     TargetType="ListView" 
-                     Binding="{Binding IsBusy}"
-                     Value="True">
-                     <Setter Property="IsVisible" Value="False" />
-                </DataTrigger>
                 <DataTrigger 
                      TargetType="ListView"
                      Binding="{Binding DataFound}"

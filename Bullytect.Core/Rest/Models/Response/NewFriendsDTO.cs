@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Bullytect.Core.Rest.Models.Response
@@ -20,8 +19,11 @@ namespace Bullytect.Core.Rest.Models.Response
 			[JsonProperty("name")]
 			public string Name { get; set; }
 
-			[JsonProperty("value")]
-            public int Value { get; set; }
+            [JsonProperty("profile_image")]
+            public string ProfileImage { get; set; }
+
+            [JsonProperty("since")]
+            public string ValueLabel { get; set; }
 
         }
 

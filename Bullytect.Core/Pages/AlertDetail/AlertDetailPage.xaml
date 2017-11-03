@@ -45,6 +45,7 @@
                             HorizontalOptions="End"
                             Text="{ x:Static helper:FontAwesomeFont.Trash } " 
                             FontSize="22"
+                            VerticalOptions="Center"
                             TextColor="{ DynamicResource CustomNavBarTextColor }" 
                             Style="{ StaticResource FontIcon }">
                             <Label.TranslationY>

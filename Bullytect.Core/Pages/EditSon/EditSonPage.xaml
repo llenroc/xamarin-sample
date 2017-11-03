@@ -93,15 +93,7 @@
                                  <TapGestureRecognizer Command="{ Binding ForceRefreshCommand }" NumberOfTapsRequired="1" /> 
                             </Label.GestureRecognizers>
 
-                            <Label.Triggers>
-                                <DataTrigger
-                                    TargetType="Label"
-                                    Binding="{Binding ErrorOccurred}"
-                                    Value="True">
-                                    <Setter Property="IsVisible" Value="False" />
-                                </DataTrigger>
-                            </Label.Triggers>
-                            
+                          
                         </Label>
 
                         <Label 
@@ -123,6 +115,17 @@
                                     Command="{ Binding ShowAddSchoolPopupCommand }" 
                                     NumberOfTapsRequired="1" /> 
                             </Label.GestureRecognizers>
+
+                            <Label.Triggers>
+                                <DataTrigger
+                                    TargetType="Label"
+                                    Binding="{Binding ErrorOccurred}"
+                                    Value="True">
+                                    <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                           
+                            
                         </Label>
                     </x:Array>
                 </common:AppHeader.Options>
@@ -898,8 +901,22 @@
 
             <common:ErrorOcurred
                 Grid.Row="1"
-                IsVisible="{ Binding ErrorOccurred }"
-                MainText="{i18n:Translate Home.Profile.Load.Error}"/>
+                IsVisible="false"
+                MainText="{i18n:Translate Home.Profile.Load.Error}">
+                <ContentView.Triggers>
+                    <MultiTrigger TargetType="common:ErrorOcurred">
+                        <MultiTrigger.Conditions>
+                          <BindingCondition 
+                              Binding="{ Binding ErrorOccurred }"
+                              Value="True" />
+                          <BindingCondition 
+                              Binding="{Binding IsBusy }"
+                              Value="False" />
+                        </MultiTrigger.Conditions>
+                        <Setter Property="IsVisible" Value="True" />
+                    </MultiTrigger>
+               </ContentView.Triggers>
+            </common:ErrorOcurred>
 
         </Grid>
 
