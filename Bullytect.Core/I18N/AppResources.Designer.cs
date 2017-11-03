@@ -1037,6 +1037,42 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Settings_Remove_Alerts {
+            get {
+                return ResourceManager.GetString("Settings.Remove.Alerts", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Remove_Alerts_Description {
+            get {
+                return ResourceManager.GetString("Settings.Remove.Alerts.Description", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Remove_Alerts_Never {
+            get {
+                return ResourceManager.GetString("Settings.Remove.Alerts.Never", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Remove_Alerts_Last_Hour {
+            get {
+                return ResourceManager.GetString("Settings.Remove.Alerts.Last.Hour", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Remove_Alerts_Last_Day {
+            get {
+                return ResourceManager.GetString("Settings.Remove.Alerts.Last.Day", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Remove_Alerts_Last_Month {
+            get {
+                return ResourceManager.GetString("Settings.Remove.Alerts.Last.Month", resourceCulture);
+            }
+        }
+        
         internal static string Settings_Alerts_Count_New_Alerts {
             get {
                 return ResourceManager.GetString("Settings.Alerts.Count.New.Alerts", resourceCulture);

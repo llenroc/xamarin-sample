@@ -90,7 +90,6 @@ namespace Bullytect.Core.Rest.Utils.Logging
 			Data.Append($"{msg}==========End==========");
 
             Data.TrackToConsole();
-            Data.TrackToFile();
 			return response;
 		}
 

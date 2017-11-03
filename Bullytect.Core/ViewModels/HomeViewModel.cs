@@ -214,9 +214,12 @@ namespace Bullytect.Core.ViewModels
             }
             else if (ex is UploadImageFailException)
             {
-                _appHelper.Toast(AppResources.Profile_Updating_Profile_Image_Failed, System.Drawing.Color.FromArgb(255, 0, 0));
+                _appHelper.ShowAlert(AppResources.Profile_Updating_Profile_Image_Failed);
 
-            }
+            } else if (ex is UploadFileIsTooLargeException){
+
+                _appHelper.ShowAlert(((UploadFileIsTooLargeException)ex).Response.Data);
+            } 
             else if (ex is CanNotTakePhotoFromCameraException)
             {
                 _appHelper.Toast(AppResources.Profile_Can_Not_Take_Photo_From_Camera, System.Drawing.Color.FromArgb(12, 131, 193));

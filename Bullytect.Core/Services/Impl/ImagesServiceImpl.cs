@@ -1,9 +1,9 @@
 ﻿
 using Bullytect.Core.Exceptions;
 using Plugin.Media;
-using System.IO;
 using System.Threading.Tasks;
 using Plugin.Media.Abstractions;
+using Xamarin.Forms;
 
 namespace Bullytect.Core.Services.Impl
 {
@@ -12,7 +12,9 @@ namespace Bullytect.Core.Services.Impl
 
         public async Task<MediaFile> PickPhoto()
         {
-            await CrossMedia.Current.Initialize();
+	
+		    await CrossMedia.Current.Initialize();
+
 
 			var file = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions()
 			{
@@ -25,7 +27,10 @@ namespace Bullytect.Core.Services.Impl
 
         public async Task<MediaFile> TakePhotoFromFrontCamera()
         {
-            await CrossMedia.Current.Initialize();
+			Device.BeginInvokeOnMainThread(async () =>
+			{
+				await CrossMedia.Current.Initialize();
+			});
 
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
 			{

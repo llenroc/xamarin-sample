@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
@@ -6,6 +7,7 @@ using Bullytect.Core.Config;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Services;
 using Plugin.Media.Abstractions;
+using ReactiveUI;
 using Xamarin.Forms;
 
 namespace Bullytect.Core.Helpers
@@ -51,26 +53,30 @@ namespace Bullytect.Core.Helpers
 		public IObservable<MediaFile> PickPhotoStream()
 		{
 
-			return Observable.FromAsync<string>((_) => _userDialogs.ActionSheetAsync(
+            return Observable
+                .Start(() => Observable.FromAsync<string>((_) => _userDialogs.ActionSheetAsync(
                 AppResources.Profile_Select_Profile_Image,
                 AppResources.Common_Cancel_Operation, null, null,
-				new string[] { AppResources.Profile_Select_Profile_Image_From_Camera, AppResources.Profile_Select_Profile_Image_From_Galery }))
-							 .Select((action => !action.Equals(AppResources.Common_Cancel_Operation)))
-							 .SelectMany((action) =>
-							 {
+                new string[] { AppResources.Profile_Select_Profile_Image_From_Camera, AppResources.Profile_Select_Profile_Image_From_Galery })), RxApp.MainThreadScheduler)
+                .Select((action => !action.Equals(AppResources.Common_Cancel_Operation)))
+                .SelectMany((action) =>
+                {
 
-								 Task<MediaFile> photoSelectedTask;
-								 if (action.Equals(AppResources.Profile_Select_Profile_Image_From_Camera))
-								 {
-									 photoSelectedTask = _imagesService.TakePhotoFromFrontCamera();
-								 }
-								 else
-								 {
-									 photoSelectedTask = _imagesService.PickPhoto();
-								 }
+                    Task<MediaFile> photoSelectedTask;
+                    if (action.Equals(AppResources.Profile_Select_Profile_Image_From_Camera))
+                    {
+                        photoSelectedTask = _imagesService.TakePhotoFromFrontCamera();
+                    }
+                    else
+                    {
+                        photoSelectedTask = _imagesService.PickPhoto();
+                    }
 
-								 return Observable.FromAsync<MediaFile>((_) => photoSelectedTask);
-							 });
+
+                    return Observable.FromAsync<MediaFile>((_) => photoSelectedTask);
+                });
+
+
 		}
     }
 }

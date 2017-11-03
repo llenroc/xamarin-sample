@@ -8,6 +8,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Windows.Input;
 using Acr.UserDialogs;
+using Bullytect.Core.Exceptions;
 using Bullytect.Core.Helpers;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Models.Domain;
@@ -189,7 +190,7 @@ namespace Bullytect.Core.ViewModels
 
         }
 
-        int _schoolSelectedIndex;
+        int _schoolSelectedIndex = 0;
         public int SchoolSelectedIndex
         {
             get => _schoolSelectedIndex;
@@ -464,6 +465,28 @@ namespace Bullytect.Core.ViewModels
 			IsDirtyMonitoring = true;
 
         }
+
+		protected override void HandleExceptions(Exception ex)
+		{
+			if (ex is UploadImageFailException)
+			{
+				_appHelper.ShowAlert(AppResources.Profile_Updating_Profile_Image_Failed);
+
+			}
+			else if (ex is UploadFileIsTooLargeException)
+			{
+
+				_appHelper.ShowAlert(((UploadFileIsTooLargeException)ex).Response.Data);
+			}
+			else if (ex is CanNotTakePhotoFromCameraException)
+			{
+				_appHelper.Toast(AppResources.Profile_Can_Not_Take_Photo_From_Camera, System.Drawing.Color.FromArgb(255, 0, 0));
+			}
+			else
+			{
+				base.HandleExceptions(ex);
+			}
+		}
 
         #endregion
 

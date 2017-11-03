@@ -259,7 +259,9 @@
 
                             <!-- Birthdate -->
                             <StackLayout>
-                                <DatePicker 
+
+                                <commonControls:CustomDatePicker 
+                                    TextColor="{ DynamicResource AccentColor }"
                                     VerticalOptions="CenterAndExpand" 
                                     Date="{ Binding SelfParent.Birthdate }"
                                     >
@@ -278,7 +280,7 @@
                                             </x:Arguments>
                                         </sys:DateTime>
                                     </DatePicker.MaximumDate>
-                                </DatePicker>
+                                </commonControls:CustomDatePicker >
 
                                 <Label
                                     Text="{Binding Path=FieldErrors,       

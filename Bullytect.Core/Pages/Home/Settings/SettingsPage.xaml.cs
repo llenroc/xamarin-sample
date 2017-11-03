@@ -57,6 +57,14 @@ namespace Bullytect.Core.Pages.Home.Settings
 
 		}
 
+        async void OnRemoveAlertsInfo(object sender, EventArgs args){
+
+            var page = new CommonInfoPopup(AppResources.Settings_Remove_Alerts,
+                                           AppResources.Settings_Remove_Alerts_Description);
+			await PopupNavigation.PushAsync(page);
+
+        }
+
 
         void ViewModel_OnAlertsCategoriesLoaded(Object sender, List<AlertCategoryModel> AlertsCategories)
 		{

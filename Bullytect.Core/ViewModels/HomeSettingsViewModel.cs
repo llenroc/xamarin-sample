@@ -22,6 +22,15 @@ namespace Bullytect.Core.ViewModels
         readonly IAlertService _alertsService;
         readonly IParentService _parentService;
 
+        readonly Dictionary<int, string> RemoveAlertsEveryDict = new Dictionary<int, string>
+		{
+			{ 0, "NEVER" },
+			{ 1, "LAST_HOUR" },
+            { 2, "LAST_DAY" },
+            { 3, "LAST_MONTH" }
+		};
+
+
         public HomeSettingsViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger, AppHelper appHelper,
              IAlertService alertsService, IParentService parentService) : base(userDialogs, mvxMessenger, appHelper)
         {
@@ -58,6 +67,11 @@ namespace Bullytect.Core.ViewModels
                 OnAlertsCategoriesLoaded(Categories);
 
                 IsPushNotificationEnabled = PageModel.UserPreferences.PushNotificationsEnabled;
+                RemoveAlertsEveryOption = RemoveAlertsEveryOptionsList
+                    .First((RemoveAlertsEveryOption) => 
+                           RemoveAlertsEveryOption.Value.Equals(RemoveAlertsEveryDict
+                                                                .FirstOrDefault(x => x.Value.Equals(PageModel.UserPreferences.RemoveAlertsEvery ?? string.Empty)).Key));
+
                 IsDirtyMonitoring = true;
             });
 
@@ -67,7 +81,8 @@ namespace Bullytect.Core.ViewModels
             RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
 
-            SaveCommand = ReactiveCommand.CreateFromObservable<Unit, UserSystemPreferencesEntity>((param) => _parentService.SavePreferences(IsPushNotificationEnabled));
+            SaveCommand = ReactiveCommand.CreateFromObservable<Unit, UserSystemPreferencesEntity>((param) => 
+                                                                                                  _parentService.SavePreferences(IsPushNotificationEnabled, RemoveAlertsEveryDict.Values.ElementAt(RemoveAlertsEveryOption.Value)));
 
             SaveCommand.IsExecuting.Subscribe((IsLoading) => IsBusy = IsLoading);
 
@@ -117,6 +132,17 @@ namespace Bullytect.Core.ViewModels
             new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 60), Value = 60 }
         };
 
+		public List<PickerOptionModel> RemoveAlertsEveryOptionsList { get; set; } = new List<PickerOptionModel>()
+		{
+            new PickerOptionModel(){ Description = AppResources.Settings_Remove_Alerts_Never, Value = 0 },
+            new PickerOptionModel(){ Description = AppResources.Settings_Remove_Alerts_Last_Hour, Value = 1 },
+            new PickerOptionModel(){ Description = AppResources.Settings_Remove_Alerts_Last_Day, Value = 2 },
+            new PickerOptionModel(){ Description = AppResources.Settings_Remove_Alerts_Last_Month, Value = 3 }
+		};
+
+
+
+
         PickerOptionModel _alertsOption;
 
         [IsDirtyMonitoring]
@@ -147,6 +173,16 @@ namespace Bullytect.Core.ViewModels
             set => SetProperty(ref _isPushNotificationEnabled, value);
 
         }
+
+		PickerOptionModel _removeAlertsEveryOption;
+
+		[IsDirtyMonitoring]
+		public PickerOptionModel RemoveAlertsEveryOption
+		{
+            get => _removeAlertsEveryOption ?? RemoveAlertsEveryOptionsList.First();
+
+			set => SetProperty(ref _removeAlertsEveryOption, value);
+		}
 
         #endregion
 

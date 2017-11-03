@@ -24,7 +24,7 @@ namespace Bullytect.Core.Services
         IObservable<SonEntity> GetSonById(string Id);
         IObservable<ImageEntity> UploadSonProfileImage(string identity, Stream stream);
         IObservable<string> DeleteSonById(string Id);
-		IObservable<UserSystemPreferencesEntity> SavePreferences(bool PushNotificationsEnabled);
+		IObservable<UserSystemPreferencesEntity> SavePreferences(bool PushNotificationsEnabled, string RemoveAlertsEvery);
 		IObservable<UserSystemPreferencesEntity> GetPreferences();
     }
 }

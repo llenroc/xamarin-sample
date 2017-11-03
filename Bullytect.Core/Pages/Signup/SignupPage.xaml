@@ -7,6 +7,7 @@
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
     x:TypeArguments="viewModels:SignupViewModel"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:commonControls="clr-namespace:Bullytect.Core.Pages.Common.Controls"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
@@ -167,10 +168,11 @@
 
                             <!-- Birthday FIELD-->
                             <StackLayout>
-                                <DatePicker 
+                                <commonControls:CustomDatePicker 
+                                    TextColor="White"
+                                    HasBorder="false"
                                     VerticalOptions="CenterAndExpand" 
-                                    Date="{ Binding Birthdate }"
-                                     >
+                                    Date="{ Binding Birthdate }">
                                     <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
                                     <DatePicker.MinimumDate>
                                        <sys:DateTime x:FactoryMethod="Parse">
@@ -186,7 +188,7 @@
                                              </x:Arguments>
                                             </sys:DateTime>
                                     </DatePicker.MaximumDate>
-                                </DatePicker>
+                                </commonControls:CustomDatePicker>
 
 
                                 <Label

@@ -77,6 +77,12 @@ namespace Bullytect.Core.Rest.Utils
                         case ResponseNames.FAILED_TO_UPLOAD_IMAGE_RESPONSE:
 							exResponse = new UploadImageFailException()
 							{
+                                Response = ex.GetContentAs<APIResponse<string>>()
+							};
+                            break;
+                        case ResponseNames.UPLOAD_FILE_IS_TOO_LARGE_RESPONSE:
+                            exResponse = new UploadFileIsTooLargeException()
+							{
 								Response = ex.GetContentAs<APIResponse<string>>()
 							};
                             break;

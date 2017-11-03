@@ -75,20 +75,6 @@ namespace Bullytect.Utils.Helpers
 		}
 
 
-
-		public static void TrackToFile(this string Data)
-		{
-            // Save data to file
-            TrackerService.getInstance().Save(Data);
-		}
-
-		public static void TrackToFile(this StringBuilder Data)
-		{
-			// Save data to file
-            TrackerService.getInstance().Save(Data.ToString());
-		}
-
-
 		public static void TrackToConsole(this string Data)
 		{
             Debug.WriteLine(Data);

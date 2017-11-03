@@ -28,10 +28,10 @@ namespace Bullytect.Core.Pages.SonStatistics
 			
 		}
 
-        void Handle_PositionSelected(object sender, CarouselView.FormsPlugin.Abstractions.PositionSelectedEventArgs e) {
+        void Handle_PositionSelected(object sender, int pos) {
             
-            Debug.WriteLine("Chart pos -> " + e.NewValue);
-            ViewModel.RefreshChartCommand.Execute(e.NewValue);
+            Debug.WriteLine("Chart pos -> " + pos);
+            ViewModel.RefreshChartCommand.Execute(pos);
         }
     }
 }

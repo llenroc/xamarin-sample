@@ -250,13 +250,14 @@ namespace Bullytect.Core.Services.Impl
 			return operationDecorator(observable);
         }
 
-        public IObservable<UserSystemPreferencesEntity> SavePreferences(bool PushNotificationsEnabled)
+        public IObservable<UserSystemPreferencesEntity> SavePreferences(bool PushNotificationsEnabled, string RemoveAlertsEvery)
         {
 			Debug.WriteLine(string.Format("Save Preferences"));
 
 			var observable = _parentsRestService
                 .SavePreferences(new SaveUserSystemPreferencesDTO() {
-                    PushNotificationsEnabled = PushNotificationsEnabled
+                    PushNotificationsEnabled = PushNotificationsEnabled,
+                    RemoveAlertsEvery = RemoveAlertsEvery
                 })
 				.Select((response) => response.Data)
                 .Select((UserSystemPreferencesDTO preferences) => Mapper.Map<UserSystemPreferencesDTO, UserSystemPreferencesEntity>(preferences))

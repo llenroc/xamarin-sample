@@ -337,12 +337,6 @@
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.6.1.1\lib\netstandard1.3\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="CarouselView.FormsPlugin.Abstractions">
-      <HintPath>..\packages\CarouselView.FormsPlugin.4.4.6\lib\Xamarin.iOS10\CarouselView.FormsPlugin.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="CarouselView.FormsPlugin.iOS">
-      <HintPath>..\packages\CarouselView.FormsPlugin.4.4.6\lib\Xamarin.iOS10\CarouselView.FormsPlugin.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="Firebase.Core">
       <HintPath>..\packages\Xamarin.Firebase.iOS.Core.3.4.6\lib\Xamarin.iOS10\Firebase.Core.dll</HintPath>
     </Reference>
@@ -361,11 +355,11 @@
     <Reference Include="Plugin.FirebasePushNotification">
       <HintPath>..\packages\Plugin.FirebasePushNotification.1.0.7\lib\Xamarin.iOS10\Plugin.FirebasePushNotification.dll</HintPath>
     </Reference>
-    <Reference Include="PCLStorage.Abstractions">
-      <HintPath>..\packages\PCLStorage.1.0.2\lib\portable-Xamarin.iOS+Xamarin.Mac\PCLStorage.Abstractions.dll</HintPath>
+    <Reference Include="CarouselView.FormsPlugin.Abstractions">
+      <HintPath>..\packages\CarouselView.FormsPlugin.4.4.2\lib\Xamarin.iOS10\CarouselView.FormsPlugin.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="PCLStorage">
-      <HintPath>..\packages\PCLStorage.1.0.2\lib\portable-Xamarin.iOS+Xamarin.Mac\PCLStorage.dll</HintPath>
+    <Reference Include="CarouselView.FormsPlugin.iOS">
+      <HintPath>..\packages\CarouselView.FormsPlugin.4.4.2\lib\Xamarin.iOS10\CarouselView.FormsPlugin.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

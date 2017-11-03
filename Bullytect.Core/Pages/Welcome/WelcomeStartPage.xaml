@@ -55,14 +55,29 @@
 
                             <Label
                                 LineBreakMode="WordWrap"
+                                Text="{i18n:Translate WelcomePage.MainLabel}" 
+                                TextColor="{ DynamicResource OverImageTextColor }"
+                                VerticalTextAlignment="Center"
+                                FontAttributes="Bold">
+                                    <Label.FontSize>
+                                        <OnIdiom x:TypeArguments="x:Double"
+                                            Phone="25"
+                                            Tablet="35"/>
+                                    </Label.FontSize>
+                            </Label>
+
+                        
+
+                            <Label
+                                LineBreakMode="WordWrap"
                                 Text="{i18n:Translate WelcomePage.SecondLabel}" 
                                 TextColor="{ DynamicResource OverImageTextColor }"
                                 VerticalTextAlignment="Center"
                                 FontAttributes="Bold">
                                     <Label.FontSize>
                                         <OnIdiom x:TypeArguments="x:Double"
-                                            Phone="26"
-                                            Tablet="36"/>
+                                            Phone="18"
+                                            Tablet="28"/>
                                     </Label.FontSize>
                             </Label>
 
@@ -74,8 +89,8 @@
                                 <Label.FontSize> 
                                     <OnIdiom 
                                         x:TypeArguments="x:Double"
-                                        Phone="17"
-                                        Tablet="27"/>
+                                        Phone="15"
+                                        Tablet="25"/>
                                 </Label.FontSize>
                             </Label>
 

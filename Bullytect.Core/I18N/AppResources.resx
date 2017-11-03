@@ -282,11 +282,11 @@
     <comment>Walkthrough Btn Finish</comment>
   </data>
   <data name="WelcomePage.MainLabel" xml:space="preserve">
-    <value>BullTec</value>
+    <value>BullTec - The first anti-bullying in internet history.</value>
     <comment>WelcomePage MainLabel</comment>
   </data>
   <data name="WelcomePage.SecondLabel" xml:space="preserve">
-    <value>BullTec - The first anti-bullying in internet history. Designed to protect the younger and pre-teenagers from attack on social networks of other groups of their age</value>
+    <value>Designed to protect the younger and pre-teenagers from attack on social networks of other groups of their age</value>
     <comment>WelcomePage SecondLabel</comment>
   </data>
   <data name="WelcomePage.ClaimText" xml:space="preserve">
@@ -554,7 +554,7 @@ and we will recover it for you. </value>
     <comment>Profile.Select.Profile.Image.From.Galery</comment>
   </data>
   <data name="Profile.Updating.Profile.Image.Failed" xml:space="preserve">
-    <value> Failed to update profile image</value>
+    <value> An error occurred while processing the file on the server. The profile image could not be updated. Try another file or try it later</value>
     <comment>Profile Updating Profile Image Failed</comment>
   </data>
   <data name="Profile.Updating.Profile.Image.Success" xml:space="preserve">
@@ -780,6 +780,30 @@ and we will recover it for you. </value>
   <data name="Settings.Push.Notifications.Description" xml:space="preserve">
     <value> Enabling push notifications will allow you to receive notifications without having the app open. </value>
     <comment>Settings Push Notifications Description</comment>
+  </data>
+  <data name="Settings.Remove.Alerts" xml:space="preserve">
+    <value>Remove Alerts</value>
+    <comment>Settings Remove Alerts</comment>
+  </data>
+  <data name="Settings.Remove.Alerts.Description" xml:space="preserve">
+    <value> Alerts are not deleted by default, you can set them when they are deleted. </value>
+    <comment>Settings Remove Alerts Description</comment>
+  </data>
+  <data name="Settings.Remove.Alerts.Never" xml:space="preserve">
+    <value>Never</value>
+    <comment>Settings Remove Alerts Never</comment>
+  </data>
+  <data name="Settings.Remove.Alerts.Last.Hour" xml:space="preserve">
+    <value>Last Hour</value>
+    <comment>Settings Remove Alerts Last Hour</comment>
+  </data>
+  <data name="Settings.Remove.Alerts.Last.Day" xml:space="preserve">
+    <value>Last Day</value>
+    <comment>Settings Remove Alerts Last Day</comment>
+  </data>
+  <data name="Settings.Remove.Alerts.Last.Month" xml:space="preserve">
+    <value>Last Month</value>
+    <comment>Settings Remove Alerts Last Month</comment>
   </data>
   <data name="Settings.Alerts.Count.New.Alerts" xml:space="preserve">
     <value>Number of Alerts</value>

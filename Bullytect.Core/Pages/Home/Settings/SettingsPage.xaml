@@ -275,6 +275,70 @@
 
                     </extended:ExtendedViewCell>
 
+                    <extended:ExtendedViewCell SeparatorColor="{DynamicResource AccentColor}" SeparatorPadding="5">
+
+                        <Grid Padding="16,6,16,6" ColumnSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                             <Label 
+                                Grid.Column="0"
+                                Text="{ x:Static helper:FontAwesomeFont.Trash }"
+                                Style="{StaticResource FontIcon}"
+                                FontSize ="12"
+                                WidthRequest="12" HeightRequest="12" 
+                                VerticalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"/>
+                            
+                            <Label 
+                                Grid.Column="1" 
+                                Text="{i18n:Translate Settings.Remove.Alerts }"
+                                LineBreakMode="TailTruncation"
+                                VerticalTextAlignment="Center" 
+                                 HorizontalOptions="StartAndExpand"
+                                   />
+
+                            <Label
+                                Grid.Column="2" 
+                                
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions="End"
+                                VerticalOptions="CenterAndExpand"
+                                Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                                FontFamily="{ StaticResource IconsFontFamily }"
+                                TextColor="{ DynamicResource AccentColor }">
+                                <Label.FontSize>
+                                    <OnIdiom 
+                                        x:TypeArguments="x:Double"
+                                        Phone="20" 
+                                        Tablet="20" />
+                                </Label.FontSize> 
+
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Tapped="OnRemoveAlertsInfo"
+                                        NumberOfTapsRequired="1" /> 
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Picker Grid.Column="3"
+                                WidthRequest="100"
+                                VerticalOptions="Center"
+                                ItemsSource="{Binding RemoveAlertsEveryOptionsList }"
+                                SelectedItem="{Binding RemoveAlertsEveryOption }"
+                                ItemDisplayBinding="{Binding Description}"/>
+                            
+                        </Grid>
+
+
+                    </extended:ExtendedViewCell>
+
                 </TableSection>
                 
                 <TableSection Title="{i18n:Translate Settings.Alerts.Categories}" x:Name="TableSectionCategories"></TableSection>

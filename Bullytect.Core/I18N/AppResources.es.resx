@@ -155,11 +155,11 @@
     <comment>Walkthrough Btn Finish</comment>
   </data>
   <data name="WelcomePage.MainLabel" xml:space="preserve">
-    <value>BullTec</value>
+    <value>BullTec - El primer anti-bullying en la historia de Internet.</value>
     <comment>WelcomePage MainLabel</comment>
   </data>
   <data name="WelcomePage.SecondLabel" xml:space="preserve">
-    <value>BullTec - El primer anti-bullying en la historia de Internet. Diseñado para proteger a los jóvenes y preadolescentes del ataque a las redes sociales de otros grupos de su edad</value>
+    <value>Diseñado para proteger a los jóvenes y preadolescentes del ataque a las redes sociales de otros grupos de su edad</value>
     <comment>WelcomePage SecondLabel</comment>
   </data>
   <data name="WelcomePage.ClaimText" xml:space="preserve">

@@ -9,5 +9,8 @@ namespace Bullytect.Core.Rest.Models.Response
 
 		[JsonProperty("push_notifications_enabled")]
         public bool PushNotificationsEnabled { get; set; }
+
+        [JsonProperty("remove_alerts_every")]
+        public string RemoveAlertsEvery { get; set; }
     }
 }
