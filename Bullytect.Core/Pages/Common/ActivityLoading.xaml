@@ -9,7 +9,8 @@
         <Grid
             x:Name="Container"
             IsVisible="false"
-            VerticalOptions="Center">
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />

@@ -119,6 +119,14 @@ namespace Bullytect.Core.ViewModels
 			set => SetProperty(ref _isBusy, value);
 		}
 
+        bool _isTimeout = false;
+
+        public bool IsTimeout
+        {
+            get => _isTimeout;
+            set => SetProperty(ref _isTimeout, value);
+        }
+
 		string _loadingText = AppResources.Profile_Saving_Changes;
 
 		public string LoadingText
@@ -243,6 +251,7 @@ namespace Bullytect.Core.ViewModels
 
             if (ex is TimeoutOperationException)
             {
+                IsTimeout = true;
                 _appHelper.Toast(AppResources.Common_Timeout_Operation, System.Drawing.Color.FromArgb(255, 0, 0));
 
             }
@@ -294,12 +303,14 @@ namespace Bullytect.Core.ViewModels
 
 		protected void HandleIsExecuting(bool isLoading, string Text)
         {
+            ResetCommonProps();
             IsBusy = isLoading;
             LoadingText = Text;
         }
 
 
 		protected void ResetCommonProps(){
+            IsTimeout = false;
             ErrorOccurred = false;
             DataFound = true;
             FieldErrors = new Dictionary<string, string>();

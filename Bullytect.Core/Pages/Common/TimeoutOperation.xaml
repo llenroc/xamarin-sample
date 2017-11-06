@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Bullytect.Core.Pages.Common.TimeoutOperation"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
-    x:Class="Bullytect.Core.Pages.Common.NoDataFound">
-	<ContentView.Content>
-
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N">
+    <ContentView.Content>
+        
         <Grid>
 
             <Grid.RowDefinitions>
@@ -50,7 +51,7 @@
                 <!--ICON-->
                 <Label
                     Grid.Row="0"
-                    Text="{ x:Static helper:FontAwesomeFont.Database }"
+                    Text="{ x:Static helper:FontAwesomeFont.ClockO }"
                     Style="{StaticResource FontIcon}"
                     FontSize="70"
                     HorizontalTextAlignment="Center"
@@ -66,22 +67,25 @@
                     Spacing="2">
 
                     <Label 
-                        x:Name="MainTextLabel"
                         HorizontalTextAlignment="Center" 
+                        Text="{i18n:Translate Common.Timeout.Operation}"
                         FontSize="24" 
                         FontAttributes="Bold" 
                         TextColor="{ DynamicResource BaseTextColor }"/>
 
-                    <Label 
-                        x:Name="DetailTextLabel"
-                        HorizontalTextAlignment="Center"
-                        Opacity="0.8" 
-                        FontSize="18" 
-                        TextColor="{ DynamicResource BaseTextColor }"/>
-
                 </StackLayout>
+
+                
             </Grid>
+
+            <artina:Button
+                Grid.Row="1"
+                Style="{StaticResource SaveButtonStyle}"
+                Command="{ Binding RefreshCommand }"
+                Text="{i18n:Translate Common.Retry}" />
+            
         </Grid>
+
         
-	</ContentView.Content>
+    </ContentView.Content>
 </ContentView>

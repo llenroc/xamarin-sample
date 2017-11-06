@@ -241,6 +241,7 @@ namespace Bullytect.Core.ViewModels
         }
 
         void RefreshBindings() {
+            IsTimeout = false;
 			RaisePropertyChanged(nameof(ListAlertTitle));
 			RaisePropertyChanged(nameof(ShouldShowNoAlertsFound));
 			RaisePropertyChanged(nameof(ShouldShowNoChildrenFound));

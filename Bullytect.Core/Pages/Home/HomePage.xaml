@@ -69,15 +69,15 @@
             <!-- End APP Header -->
 
             <controls:PullToRefreshLayout
-               Grid.Row="1"
-               x:Name="RefreshLayout"
-               IsVisible="{ Binding ErrorOccurred, Converter={StaticResource InverseBoolConverter} }"
-               IsPullToRefreshEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
-               RefreshCommand="{Binding RefreshCommand}"
-               IsRefreshing="{Binding IsBusy}"
-               RefreshColor="{DynamicResource AccentColor}"
-               HorizontalOptions="FillAndExpand"
-               VerticalOptions="FillAndExpand">
+                Grid.Row="1"
+                x:Name="RefreshLayout"
+                IsVisible="false"
+                IsPullToRefreshEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
+                RefreshCommand="{Binding RefreshCommand}"
+                IsRefreshing="{Binding IsBusy}"
+                RefreshColor="{DynamicResource AccentColor}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
                 
                 <!--GRID WRAPPER-->
                 <Grid 
@@ -444,6 +444,19 @@
                     </Grid>
                     <!-- END BODY -->
                 </Grid>
+                <ContentView.Triggers>
+                    <MultiTrigger TargetType="controls:PullToRefreshLayout">
+                        <MultiTrigger.Conditions>
+                          <BindingCondition 
+                              Binding="{ Binding ErrorOccurred }"
+                              Value="False" />
+                           <BindingCondition 
+                              Binding="{Binding IsTimeout }"
+                              Value="False" />
+                        </MultiTrigger.Conditions>
+                        <Setter Property="IsVisible" Value="True" />
+                    </MultiTrigger>
+                </ContentView.Triggers>
                 <!--END GRID WRAPPER-->
              </controls:PullToRefreshLayout>
 
@@ -465,6 +478,29 @@
                     </MultiTrigger>
                </ContentView.Triggers>
            </common:ErrorOcurred>
+
+           <common:TimeoutOperation
+                Grid.Row="1"
+                IsVisible="false">
+                <ContentView.Triggers>
+                    <MultiTrigger TargetType="common:TimeoutOperation">
+                        <MultiTrigger.Conditions>
+                          <BindingCondition 
+                              Binding="{ Binding ErrorOccurred }"
+                              Value="False" />
+                          <BindingCondition 
+                              Binding="{Binding IsBusy }"
+                              Value="False" />
+                           <BindingCondition 
+                              Binding="{Binding IsTimeout }"
+                              Value="True" />
+                        </MultiTrigger.Conditions>
+                        <Setter Property="IsVisible" Value="True" />
+                    </MultiTrigger>
+               </ContentView.Triggers>
+            </common:TimeoutOperation>
+
+            
         </Grid>
        <!-- END MAIN CONTAINER -->
     </ContentPage.Content>

@@ -34,7 +34,7 @@ namespace Bullytect.Core.ViewModels
 
             // Create Reactive Commands
             LoginCommand = ReactiveCommand.CreateFromObservable<Unit, string>(
-                (_) => _authenticationService.LogIn(_email, _password),
+                (_) =>  _authenticationService.LogIn(_email, _password),
                 this.WhenAnyValue(x => x.Email, x => x.Password, (email, pass) =>
                     !String.IsNullOrWhiteSpace(email) && !String.IsNullOrWhiteSpace(pass)
                            && email.Length >= 3 && pass.Length >= 6).DistinctUntilChanged());
@@ -52,23 +52,25 @@ namespace Bullytect.Core.ViewModels
 			LoginWithFacebookCommand = ReactiveCommand.CreateFromObservable<Unit, string>(
 				(param) => {
 
-                if(Device.RuntimePlatform == Device.Android)
-                    _userDialogs.ShowLoading(AppResources.Login_Authenticating);
-                
-                            
-                return oauthService
-                        .Authenticate(new ParentFacebookOAuth2())
-                        .Do(AccessToken =>
-                        {
-                            if (string.IsNullOrEmpty(AccessToken))
-                                throw new OAuthInvalidAccessTokenException();
+                    ResetCommonProps();
+
+                    if(Device.RuntimePlatform == Device.Android)
+                        _userDialogs.ShowLoading(AppResources.Login_Authenticating);
+                    
+                                
+                    return oauthService
+                            .Authenticate(new ParentFacebookOAuth2())
+                            .Do(AccessToken =>
+                            {
+                                if (string.IsNullOrEmpty(AccessToken))
+                                    throw new OAuthInvalidAccessTokenException();
 
 
-                            if(Device.RuntimePlatform == Device.iOS)
-                                _userDialogs.ShowLoading(AppResources.Login_Authenticating);
-                        })
-						.SelectMany(accessToken => authenticationService.LoginWithFacebook(accessToken))
-                        .Do((_) => _userDialogs.HideLoading());
+                                if(Device.RuntimePlatform == Device.iOS)
+                                    _userDialogs.ShowLoading(AppResources.Login_Authenticating);
+                            })
+    						.SelectMany(accessToken => authenticationService.LoginWithFacebook(accessToken))
+                            .Do((_) => _userDialogs.HideLoading());
                     
 				});
 

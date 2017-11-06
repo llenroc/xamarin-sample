@@ -156,9 +156,44 @@
              DetailText="{i18n:Translate Alerts.Not.Found.SecondText}"/>
 
          <common:ErrorOcurred 
-             Grid.Row="1"
-             IsVisible="{ Binding ErrorOccurred }"
-             MainText="{i18n:Translate Alerts.Error.Ocurred}"/>
+            Grid.Row="1"
+            IsVisible="false"
+            MainText="{i18n:Translate Alerts.Error.Ocurred}">
+            <ContentView.Triggers>
+                <MultiTrigger TargetType="common:ErrorOcurred">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition 
+                            Binding="{ Binding ErrorOccurred }"
+                            Value="True" />
+                        <BindingCondition
+                            Binding="{Binding IsBusy }"
+                            Value="False" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="True" />
+                </MultiTrigger>
+            </ContentView.Triggers>
+        </common:ErrorOcurred>
+
+        <common:TimeoutOperation
+            Grid.Row="1"
+            IsVisible="false">
+            <ContentView.Triggers>
+                <MultiTrigger TargetType="common:TimeoutOperation">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition 
+                              Binding="{ Binding ErrorOccurred }"
+                              Value="False" />
+                        <BindingCondition 
+                              Binding="{Binding IsBusy }"
+                              Value="False" />
+                        <BindingCondition 
+                              Binding="{Binding IsTimeout }"
+                              Value="True" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="True" />
+                </MultiTrigger>
+            </ContentView.Triggers>
+        </common:TimeoutOperation>
 
    </Grid>
 </common:BaseContentPage>

@@ -10,6 +10,7 @@ namespace Bullytect.Core.Models.Domain
         public string Title { get; set; }
 		public string Payload { get; set; }
 		public DateTime CreateAt { get; set; }
+        public string Since { get; set; }
 		public SonEntity Son { get; set; }
     }
 }

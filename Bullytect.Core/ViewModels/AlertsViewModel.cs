@@ -52,6 +52,7 @@ namespace Bullytect.Core.ViewModels
 
             RefreshCommand.Subscribe((AlertsEntities) => {
                 Alerts.ReplaceRange(AlertsEntities);
+                IsTimeout = false;
             });
 
             RefreshCommand.IsExecuting.Subscribe((IsLoading) => IsBusy = IsLoading);

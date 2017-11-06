@@ -121,6 +121,7 @@
                     <!---FIELDS CONTAINER-->
                     <StackLayout
                         Padding="40,0"
+                        Spacing="25"
                         VerticalOptions="CenterAndExpand">
 
                             <!-- First Name FIELD-->

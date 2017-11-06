@@ -26,7 +26,12 @@ namespace Bullytect.Core.Rest.Services.Impl
 			T result = default(T);
 			try
 			{
-				result = JsonConvert.DeserializeObject<T>(value);
+                result = JsonConvert.DeserializeObject<T>(value, new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    MissingMemberHandling = MissingMemberHandling.Ignore
+                });
+
             } catch (Exception ex) {
                 Debug.WriteLine($"\nDeserialization failed with exception : { ex }\n");
             }

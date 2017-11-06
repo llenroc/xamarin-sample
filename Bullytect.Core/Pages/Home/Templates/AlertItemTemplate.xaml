@@ -13,7 +13,6 @@
     <ContentView.Resources>
         <ResourceDictionary>
             <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
-            <converters:DateTimeToElapsedTimeConverter x:Key="DateTimeToElapsedTimeConverter" />
             <converters:AlertLevelToFontIconConverter x:Key="AlertLevelToFontIconConverter" />
             <converters:AlertLevelToColorConverter x:Key="AlertLevelToColorConverter" />
             <converter:BooleanToObjectConverter x:Key="isReadConverter" x:TypeArguments="FontAttributes">
@@ -80,7 +79,7 @@
                             VerticalOptions="Center" />
                         
                         <Label 
-                            Text="{ Binding CreateAt , Converter={ StaticResource DateTimeToElapsedTimeConverter }}" 
+                            Text="{ Binding Since }" 
                             FontSize ="12"
                             LineBreakMode="TailTruncation"
                             HorizontalTextAlignment="End" 

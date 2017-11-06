@@ -16,6 +16,7 @@ namespace Bullytect.Core.Rest.Models.Response
 		[JsonProperty("last_name")]
 		public string LastName { get; set; }
 
+
 		[JsonProperty("birthdate")]
 		public DateTime Birthdate { get; set; }
 

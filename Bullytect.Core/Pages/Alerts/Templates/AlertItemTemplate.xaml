@@ -12,7 +12,6 @@
     xmlns:converter="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared.Base">
     <ContentView.Resources>
         <ResourceDictionary>
-            <converters:DateTimeToElapsedTimeConverter x:Key="DateTimeToElapsedTimeConverter" />
             <converters:AlertLevelToFontIconConverter x:Key="AlertLevelToFontIconConverter" />
             <converters:AlertLevelToColorConverter x:Key="AlertLevelToColorConverter" />
         </ResourceDictionary>
@@ -60,7 +59,7 @@
                            
                         
                         <Label 
-                            Text="{ Binding CreateAt , Converter={ StaticResource DateTimeToElapsedTimeConverter }}" 
+                            Text="{ Binding Since }"  
                             FontSize ="12"
                             LineBreakMode="TailTruncation"
                             HorizontalTextAlignment="End" 

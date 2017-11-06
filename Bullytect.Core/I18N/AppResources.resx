@@ -205,6 +205,10 @@
     <value> Cancel Changes? </value>
     <comment>Common Cancel Changes</comment>
   </data>
+	<data name="Common.Retry" xml:space="preserve">
+    <value> Retry </value>
+    <comment>Common Retry</comment>
+  </data>
   <data name="Common.Btn.Save.Changes" xml:space="preserve">
     <value> Save Changes</value>
     <comment>Common Btn Save Changes</comment>

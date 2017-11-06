@@ -22,6 +22,9 @@ namespace Bullytect.Core.Rest.Models.Response
 		[JsonProperty("create_at")]
 		public DateTime CreateAt { get; set; }
 
+		[JsonProperty("since")]
+		public string Since { get; set; }
+
 		[JsonProperty("son")]
 		public SonDTO Son { get; set; }
 

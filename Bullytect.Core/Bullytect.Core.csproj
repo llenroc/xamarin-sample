@@ -197,6 +197,10 @@
     <EmbeddedResource Include="Pages\Results\Templates\UserItemTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\TimeoutOperation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\CanNotTakePhotoFromCameraException.cs" />
@@ -570,6 +574,9 @@
     <Compile Include="ViewModels\Core\Models\RemoveAlertsEveryEnum.cs" />
     <Compile Include="Rest\Models\Exceptions\UploadFileIsTooLargeException.cs" />
     <Compile Include="Pages\Common\Controls\CustomDatePicker.cs" />
+    <Compile Include="Pages\Common\TimeoutOperation.xaml.cs">
+      <DependentUpon>TimeoutOperation.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">

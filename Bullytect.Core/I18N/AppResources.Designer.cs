@@ -179,6 +179,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Common_Retry {
+            get {
+                return ResourceManager.GetString("Common.Retry", resourceCulture);
+            }
+        }
+        
         internal static string Common_Btn_Save_Changes {
             get {
                 return ResourceManager.GetString("Common.Btn.Save.Changes", resourceCulture);
