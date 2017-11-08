@@ -2,17 +2,17 @@
 using System.Globalization;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
-using static Bullytect.Core.ViewModels.EditSonViewModel;
+using Bullytect.Core.Models.Domain;
 
 namespace Bullytect.Core.Converters
 {
-	public class IsSchoolNamesCollectionNotEmptyConverter : IValueConverter
+    public class IsSchoolCollectionNotEmptyConverter : IValueConverter
 	{
-		public static IsSchoolNamesCollectionNotEmptyConverter Instance = new IsSchoolNamesCollectionNotEmptyConverter();
+        public static IsSchoolCollectionNotEmptyConverter Instance = new IsSchoolCollectionNotEmptyConverter();
 
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-            ObservableCollection<SchoolPickerModel> items = (ObservableCollection<SchoolPickerModel>)value;
+            ObservableCollection<SchoolEntity> items = (ObservableCollection<SchoolEntity>)value;
 
             return items?.Count > 0;
 		}

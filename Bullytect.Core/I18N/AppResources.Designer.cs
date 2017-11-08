@@ -887,6 +887,42 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string EditSon_Find_School {
+            get {
+                return ResourceManager.GetString("EditSon.Find.School", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Find_School_Title {
+            get {
+                return ResourceManager.GetString("EditSon.Find.School.Title", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Find_School_Placeholder {
+            get {
+                return ResourceManager.GetString("EditSon.Find.School.Placeholder", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Find_School_No_Results_Title {
+            get {
+                return ResourceManager.GetString("EditSon.Find.School.No.Results.Title", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Add_School {
+            get {
+                return ResourceManager.GetString("EditSon.Add.School", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Find_School_No_Results_Text {
+            get {
+                return ResourceManager.GetString("EditSon.Find.School.No.Results.Text", resourceCulture);
+            }
+        }
+        
         internal static string Global_ErrorOcurred {
             get {
                 return ResourceManager.GetString("Global.ErrorOcurred", resourceCulture);

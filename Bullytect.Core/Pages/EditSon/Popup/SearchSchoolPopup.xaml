@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:templates="clr-namespace:Bullytect.Core.Pages.EditSon.Templates"
+    x:Class="Bullytect.Core.Pages.EditSon.Popup.SearchSchoolPopup">
+    <pages:PopupPage.Resources>
+           <ResourceDictionary>
+                <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+                <converters:IsSchoolCollectionEmptyConverter x:Key="IsSchoolCollectionEmptyConverter"/>
+                <converters:IsSchoolCollectionNotEmptyConverter x:Key="IsSchoolCollectionNotEmptyConverter"/>
+                <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
+                <converters:IsNullOrWhiteSpaceConverter x:Key="IsNullOrWhiteSpaceConverter"/>
+           </ResourceDictionary>
+    </pages:PopupPage.Resources>
+    <!--Animations use example-->
+    <pages:PopupPage.Animation>
+            <animations:ScaleAnimation 
+              PositionIn="Center"
+              PositionOut="Center"
+              ScaleIn="1.2"
+              ScaleOut="0.8"
+              DurationIn="400"
+              DurationOut="300"
+              EasingIn="SinOut"
+              EasingOut="SinIn"
+              HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+
+
+    <!-- MAIN CONTAINER -->
+    <ScrollView
+        HeightRequest="550"
+        Margin="10"
+        BackgroundColor="White"
+        HorizontalOptions="Fill"
+        VerticalOptions="Center">
+        <Grid
+            ColumnSpacing="0" 
+            RowSpacing="0">
+
+             <Grid.RowDefinitions>
+                 <RowDefinition Height="120" />
+                 <RowDefinition Height="Auto" />
+                 <RowDefinition Height="*" />
+             </Grid.RowDefinitions>
+
+            <StackLayout 
+                Orientation="Horizontal" 
+                Grid.Row="0"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand">
+                <Label
+                    TextColor="{ DynamicResource AccentColor }"
+                    Text="{ x:Static helper:FontAwesomeFont.GraduationCap } " 
+                    Style="{ StaticResource FontIcon }"
+                    VerticalOptions="Center"
+                    FontSize="25"/>
+
+                <Label
+                    TextColor="{ DynamicResource AccentColor }"
+                    Text="{ i18n:Translate EditSon.Find.School.Title }"
+                    VerticalOptions="Center"
+                    FontSize="25"/>
+            </StackLayout>
+
+            <SearchBar
+                x:Name="searchBar"
+                Grid.Row="1" 
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Placeholder="{ i18n:Translate EditSon.Find.School.Placeholder }"
+                SearchCommand="{ Binding FindSchoolsCommand }"
+                SearchCommandParameter="{Binding Text, Source={x:Reference searchBar }}"/>
+
+            <common:ActivityLoading
+                Grid.Row="2"
+                IsLoading="{ Binding IsBusy }"
+                Icon="{ x:Static helper:FontAwesomeFont.GraduationCap }"
+                LoadingText="{ Binding LoadingText }"
+                HorizontalOptions="Center" 
+                VerticalOptions="FillAndExpand"/>
+
+            
+            <ListView 
+                x:Name="SchoolsListView"
+                Grid.Row="2"
+                Margin="10"
+                IsVisible="false"
+                ItemsSource="{ Binding Schools }"
+                HasUnevenRows="true"
+                IsPullToRefreshEnabled="false">
+
+                <ListView.Behaviors>
+                    <utils:EventToCommandBehavior 
+                        EventName="ItemTapped"
+                        Command="{ Binding SchoolSelectedCommand }"
+                        EventArgsConverter="{ StaticResource ItemTappedEventArgsConverter }" />
+                </ListView.Behaviors>
+
+                <ListView.RowHeight>
+                    <OnIdiom 
+                        x:TypeArguments="x:Int32"
+                        Phone="80"
+                        Tablet="120"/>
+                </ListView.RowHeight>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <templates:SchoolItemTemplate />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <ListView.Triggers>
+                    <MultiTrigger TargetType="ListView">
+                        <MultiTrigger.Conditions>
+                            <BindingCondition 
+                                  Binding="{Binding IsBusy }"
+                                  Value="False" />
+                            <BindingCondition 
+                                  Binding="{Binding Schools, Converter = { StaticResource IsSchoolCollectionNotEmptyConverter } }"
+                                  Value="True" />
+                        </MultiTrigger.Conditions>
+                        <Setter Property="IsVisible" Value="True" />
+                    </MultiTrigger>
+                </ListView.Triggers>
+
+            </ListView>
+
+            <!-- No Schools Found -->
+            <templates:NoSchoolFound
+                Grid.Row="2"
+                IsVisible="false">
+                <ContentView.Triggers>
+                    <MultiTrigger TargetType="templates:NoSchoolFound">
+                        <MultiTrigger.Conditions>
+                            <BindingCondition 
+                                  Binding="{Binding IsBusy }"
+                                  Value="False" />
+                            <BindingCondition 
+                                  Binding="{Binding Schools, Converter = { StaticResource IsSchoolCollectionEmptyConverter } }"
+                                  Value="True" />
+                            <BindingCondition 
+                                  Binding="{Binding Text, Source= { x:Reference searchBar }, Converter = { StaticResource IsNullOrWhiteSpaceConverter } }"
+                                  Value="False" />
+                        </MultiTrigger.Conditions>
+                        <Setter Property="IsVisible" Value="True" />
+                    </MultiTrigger>
+                </ContentView.Triggers>
+            </templates:NoSchoolFound>
+
+        </Grid>
+      </ScrollView>
+</pages:PopupPage>

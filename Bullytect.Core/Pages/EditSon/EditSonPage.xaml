@@ -27,8 +27,6 @@
                 <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
                 <converters:SocialMediaStatusToBoolConverter x:Key="SocialMediaStatusToBoolConverter" />
                 <converters:SwitchChangeEventArgsConverter x:Key="SwitchChangeEventArgsConverter" />
-                <converters:IsSchoolNamesCollectionEmptyConverter x:Key="IsSchoolNamesCollectionEmptyConverter" />
-                <converters:IsSchoolNamesCollectionNotEmptyConverter x:Key="IsSchoolNamesCollectionNotEmptyConverter" />
                 <converters:IsNullToBoolConverter x:Key="IsNullToBoolConverter" />
                 <converters:SocialMediaStatusToColorConverter x:Key="SocialMediaStatusToColorConverter" />
                 <converters:SocialMediaStatusToTextConverter x:Key="SocialMediaStatusToTextConverter" />
@@ -37,6 +35,7 @@
                 <converters:NullVisibilityConverter x:Key="NullVisibilityConverter" />
                 <converters:SocialMediaInvalidStatusToBoolConverter x:Key="SocialMediaInvalidStatusToBoolConverter" />
                 <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
+                <converters:ValueEqualToZeroConverter x:Key="ValueEqualToZeroConverter" />
                 <x:String x:Key="firstNameKey">firstName</x:String>
                 <x:String x:Key="lastNameKey">lastName</x:String>
                 <x:String x:Key="schoolKey">school</x:String>
@@ -293,14 +292,15 @@
                             <StackLayout>
 
                                 <StackLayout>
+                               
 
-                                    <Picker 
-                                        Title="{ i18n:Translate Common.Placeholder.School }"
-                                        IsEnabled="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionNotEmptyConverter }}"
-                                        ItemsSource="{Binding Schools}"
-                                        SelectedIndex="{Binding SchoolSelectedIndex, Mode=TwoWay}"
-                                        ItemDisplayBinding="{Binding Name}">
-                                    </Picker>
+                                    <Entry
+                                        x:Name="schoolEntry"
+                                        Text="{ Binding CurrentSon.SchoolName }"
+                                        Placeholder="{ i18n:Translate Common.Placeholder.School }"
+                                        VerticalOptions="StartAndExpand"
+                                        Style="{StaticResource ArtinaProfileEntryStyle}"
+                                        />
 
                                     <Label
                                         Text="{Binding Path=FieldErrors,
@@ -315,7 +315,7 @@
 
 
                                  <common:RoundedLabel
-                                    IsVisible="{ Binding Path=Schools, Converter={ StaticResource IsSchoolNamesCollectionEmptyConverter}}"
+                                    IsVisible="{ Binding TotalSchools, Converter={ StaticResource ValueEqualToZeroConverter }}"
                                     HorizontalOptions="Center"
                                     RoundedLabelText="{ i18n:Translate EditSon.School.Not.Found }"
                                     RoundedLabelBackgroundColor="{ DynamicResource WarningColor }"/>

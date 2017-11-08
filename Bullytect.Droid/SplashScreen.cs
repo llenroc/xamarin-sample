@@ -8,7 +8,7 @@ namespace Bullytect.Droid
 {
 	[Activity(
 		Name = "com.usal.bisite.bulltect.SplashScreen",
-		Label = "bulltect"
+        Label = "BullTec"
 		, MainLauncher = true
 		, Icon = "@mipmap/ic_launcher"
 		, Theme = "@style/Theme.Splash"

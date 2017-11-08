@@ -169,27 +169,29 @@
 
                             <!-- Birthday FIELD-->
                             <StackLayout>
-                                <commonControls:CustomDatePicker 
-                                    TextColor="White"
-                                    HasBorder="false"
+                                <DatePicker 
                                     VerticalOptions="CenterAndExpand" 
-                                    Date="{ Binding Birthdate }">
+                                    Date="{Binding Birthdate}"
+                                    artina:PickerProperties.BorderStyle="BottomLine" 
+                                    artina:PickerProperties.BorderColor="White" 
+                                    artina:PickerProperties.BorderWidth="1"
+                                    TextColor="White">
                                     <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
                                     <DatePicker.MinimumDate>
-                                       <sys:DateTime x:FactoryMethod="Parse">
-                                           <x:Arguments>
-                                              <x:String>Jan 1 1970</x:String>
-                                           </x:Arguments>
-                                        </sys:DateTime>
-                                    </DatePicker.MinimumDate>
-                                    <DatePicker.MaximumDate>
-                                        <sys:DateTime x:FactoryMethod="Parse">
-                                            <x:Arguments>
-                                              <x:String>Dec 31 2050</x:String>
-                                             </x:Arguments>
+                                           <sys:DateTime x:FactoryMethod="Parse">
+                                               <x:Arguments>
+                                                  <x:String>Jan 1 1970</x:String>
+                                               </x:Arguments>
                                             </sys:DateTime>
-                                    </DatePicker.MaximumDate>
-                                </commonControls:CustomDatePicker>
+                                        </DatePicker.MinimumDate>
+                                        <DatePicker.MaximumDate>
+                                            <sys:DateTime x:FactoryMethod="Parse">
+                                                <x:Arguments>
+                                                  <x:String>Dec 31 2050</x:String>
+                                                 </x:Arguments>
+                                                </sys:DateTime>
+                                        </DatePicker.MaximumDate>
+                                </DatePicker>
 
 
                                 <Label

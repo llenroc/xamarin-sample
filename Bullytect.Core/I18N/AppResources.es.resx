@@ -127,7 +127,7 @@
     <comment>Common Placeholder School Name</comment>
   </data>
   <data name="Common.Placeholder.School.Residence" xml:space="preserve">
-    <value> Residencia </value>
+    <value> Dirección </value>
     <comment>Common Placeholder School Residence</comment>
   </data>
   <data name="Common.Placeholder.School.Location" xml:space="preserve">
@@ -532,6 +532,10 @@ pleasures of the demo.</value>
   <data name="EditSon.School.Saved" xml:space="preserve">
     <value> School Saved </value>
     <comment>EditSon School Saved</comment>
+  </data>
+  <data name="EditSon.Find.School" xml:space="preserve">
+    <value> Buscando colegios </value>
+    <comment>EditSon Find School</comment>
   </data>
   <data name="Global.ErrorOcurred" xml:space="preserve">
     <value>An error occurred</value>

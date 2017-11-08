@@ -1,6 +1,5 @@
 ﻿
 using System;
-using System.Diagnostics;
 using System.Reactive.Linq;
 using System.Windows.Input;
 using Acr.UserDialogs;
@@ -186,7 +185,8 @@ namespace Bullytect.Core.ViewModels
             CreateAt = AlertEntity.CreateAt,
             SonFullName = AlertEntity.Son.FullName,
             SonIdentity = AlertEntity.Son.Identity,
-            ProfileImage = AlertEntity.Son.ProfileImage
+            ProfileImage = AlertEntity.Son.ProfileImage,
+            Since = AlertEntity.Since
         }));
 
         public ReactiveCommand<string, ImageEntity> TakePhotoCommand { get; set; }

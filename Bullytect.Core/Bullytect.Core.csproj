@@ -131,9 +131,6 @@
     <EmbeddedResource Include="Pages\AlertDetail\AlertDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\AddSchool\AddSchoolPopup.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\SonProfileFullScreen\SonProfileFullScreenPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -201,6 +198,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\EditSon\Popup\SearchSchoolPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\EditSon\Templates\SchoolItemTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\EditSon\Popup\AddSchoolPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\EditSon\Templates\NoSchoolFound.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\CanNotTakePhotoFromCameraException.cs" />
@@ -214,7 +226,6 @@
     <Compile Include="Rest\Models\Exceptions\LoadProfileFailedException.cs" />
     <Compile Include="Rest\Models\Exceptions\NoAlertsFoundException.cs" />
     <Compile Include="Rest\Models\Exceptions\NoChildrenFoundException.cs" />
-    <Compile Include="Rest\Models\Exceptions\NoSchoolFoundException.cs" />
     <Compile Include="Rest\Models\Exceptions\UploadImageFailException.cs" />
     <Compile Include="Rest\Models\Request\AddSchoolDTO.cs" />
     <Compile Include="Rest\Models\Request\JwtAuthenticationRequestDTO.cs" />
@@ -405,12 +416,9 @@
     <Compile Include="OAuth\Providers\Instagram\InstagramOAuth2.cs" />
     <Compile Include="Pages\Common\Extended\TableViewWithoutBorders.cs" />
     <Compile Include="Utils\AppConstants.cs" />
-    <Compile Include="Pages\AddSchool\AddSchoolPopup.xaml.cs">
-      <DependentUpon>AddSchoolPopup.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Utils\IMvxCarouselPage.cs" />
-    <Compile Include="Converters\IsSchoolNamesCollectionEmptyConverter.cs" />
-    <Compile Include="Converters\IsSchoolNamesCollectionNotEmptyConverter.cs" />
+    <Compile Include="Converters\IsSchoolCollectionEmptyConverter.cs" />
+    <Compile Include="Converters\IsSchoolCollectionNotEmptyConverter.cs" />
     <Compile Include="Services\ISchoolService.cs" />
     <Compile Include="Services\Impl\SchoolServiceImpl.cs" />
     <Compile Include="Models\Domain\SchoolEntity.cs" />
@@ -577,6 +585,21 @@
     <Compile Include="Pages\Common\TimeoutOperation.xaml.cs">
       <DependentUpon>TimeoutOperation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EditSon\Popup\SearchSchoolPopup.xaml.cs">
+      <DependentUpon>SearchSchoolPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EditSon\Templates\SchoolItemTemplate.xaml.cs">
+      <DependentUpon>SchoolItemTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Rest\Models\Exceptions\NoSchoolsFoundException.cs" />
+    <Compile Include="Pages\EditSon\Popup\AddSchoolPopup.xaml.cs">
+      <DependentUpon>AddSchoolPopup.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pages\EditSon\Templates\NoSchoolFound.xaml.cs">
+      <DependentUpon>NoSchoolFound.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\IsNullOrWhiteSpaceConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -803,6 +826,7 @@
     <Folder Include="Pages\SonStatistics\" />
     <Folder Include="Pages\SonStatistics\Settings\" />
     <Folder Include="Pages\Common\Controls\" />
+    <Folder Include="Pages\EditSon\Templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />

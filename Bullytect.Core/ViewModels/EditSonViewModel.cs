@@ -17,9 +17,8 @@ using Bullytect.Core.OAuth.Providers.Facebook;
 using Bullytect.Core.OAuth.Providers.Google;
 using Bullytect.Core.OAuth.Providers.Instagram;
 using Bullytect.Core.OAuth.Services;
-using Bullytect.Core.Pages.AddSchool;
+using Bullytect.Core.Pages.EditSon.Popup;
 using Bullytect.Core.Rest.Models.Exceptions;
-using Bullytect.Core.Rest.Utils;
 using Bullytect.Core.Services;
 using Bullytect.Core.Utils;
 using MvvmCross.Core.ViewModels;
@@ -119,12 +118,10 @@ namespace Bullytect.Core.ViewModels
 
             SaveSchoolCommand.Subscribe((SchoolAdded) =>
             {
+          
                 NewSchool = new SchoolEntity();
-                Schools.Add(new SchoolPickerModel()
-                {
-                    Identity = SchoolAdded.Identity,
-                    Name = SchoolAdded.Name
-                });
+                CurrentSon.SchoolName = SchoolAdded.Name;
+                CurrentSon.SchoolIdentity = SchoolAdded.Identity;
                 OnSchoolAdded(SchoolAdded);
                 _appHelper.Toast(AppResources.EditSon_School_Saved, System.Drawing.Color.FromArgb(12, 131, 193));
             });
@@ -133,12 +130,22 @@ namespace Bullytect.Core.ViewModels
             SaveSchoolCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.EditSon_Saving_School));
 
             SaveSchoolCommand.ThrownExceptions.Subscribe(HandleExceptions);
+
+
+            FindSchoolsCommand = ReactiveCommand.CreateFromObservable<string, IList<SchoolEntity>>(
+                (name) => _schoolService.FindSchools(name));
+        
+            FindSchoolsCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.EditSon_Find_School));
+
+            FindSchoolsCommand.ThrownExceptions.Subscribe(HandleExceptions);
+
+            FindSchoolsCommand.Subscribe((SchoolsFounded) => Schools.ReplaceRange(SchoolsFounded));
         }
 
         #region properties
 
         public ObservableRangeCollection<SocialMediaEntity> CurrentSocialMedia { get; } = new ObservableRangeCollection<SocialMediaEntity>();
-        public ObservableRangeCollection<SchoolPickerModel> Schools { get; } = new ObservableRangeCollection<SchoolPickerModel>();
+        public ObservableRangeCollection<SchoolEntity> Schools { get; } = new ObservableRangeCollection<SchoolEntity>();
 
 
         protected MediaFile _newProfileImage;
@@ -190,19 +197,13 @@ namespace Bullytect.Core.ViewModels
 
         }
 
-        int _schoolSelectedIndex = 0;
-        public int SchoolSelectedIndex
-        {
-            get => _schoolSelectedIndex;
-            set
-            {
-                if(Schools != null && value >= 0 && value < Schools.Count()) {
-					CurrentSon.SchoolIdentity = Schools[value]?.Identity;
-					CurrentSon.SchoolName = Schools[value]?.Name;
-                    SetProperty(ref _schoolSelectedIndex, value);
-                }
+        long _totalSchools;
 
-            }
+        public long TotalSchools
+        {
+            get => _totalSchools;
+            set => SetProperty(ref _totalSchools, value);
+
         }
 
         bool _pageLoaded = false;
@@ -274,6 +275,8 @@ namespace Bullytect.Core.ViewModels
 
         public ReactiveCommand<Unit, PageModel> ForceRefreshCommand { get; protected set;  }
 
+        public ReactiveCommand<string, IList<SchoolEntity>> FindSchoolsCommand { get; protected set; }
+
         public ICommand ToggleFacebookSocialMediaCommand
                         => new MvxCommand(() => ToggleSocialMediaHandler(new SonFacebookOAuth2(), AppConstants.FACEBOOK));
 
@@ -292,10 +295,22 @@ namespace Bullytect.Core.ViewModels
         public ICommand ShowAddSchoolPopupCommand
                         => new MvxCommand(async () =>
                         {
+                            if(PopupNavigation.PopupStack.Count > 0) {
+                                await PopupNavigation.PopAsync();
+                            }
                             var page = new AddSchoolPopup();
                             page.BindingContext = this;
                             await PopupNavigation.PushAsync(page);
                         });
+
+
+        public ICommand SchoolSelectedCommand
+            => new MvxCommand<SchoolEntity>((SchoolEntity) => {
+                CurrentSon.SchoolName = SchoolEntity.Name;
+                CurrentSon.SchoolIdentity = SchoolEntity.Identity;
+                PopupNavigation.PopAsync(true);
+                Schools.Clear();
+            });
 
 		#endregion
 
@@ -332,14 +347,11 @@ namespace Bullytect.Core.ViewModels
                 }).ObserveOn(Scheduler.Default);
         }
 
-        IObservable<IEnumerable<SchoolPickerModel>> GetSchoolNames()
-        {
-            return _schoolService.AllNames().Select(SchoolNamesDict => SchoolNamesDict.ToList()).Select((SchoolEntryList) => SchoolEntryList.Select((SchoolEntry) => new SchoolPickerModel()
-            {
-                Identity = SchoolEntry.Key,
-                Name = SchoolEntry.Value
-            })).OnErrorResumeNext(Observable.Return(new List<SchoolPickerModel>())).ObserveOn(Scheduler.Default);
+
+        IObservable<long> GetTotalSchools(){
+            return _schoolService.CountSchools();
         }
+
 
         IObservable<PageModel> LoadPageModel() {
             
@@ -347,19 +359,19 @@ namespace Bullytect.Core.ViewModels
 			if (!string.IsNullOrEmpty(SonToEdit))
 			{
 
-			    return Observable.Zip(GetSonInformation(), GetSchoolNames(), (sonInformation, schools) => new PageModel()
+                return Observable.Zip(GetSonInformation(), GetTotalSchools(), (sonInformation, Total) => new PageModel()
 				{
 					SonInformation = sonInformation,
-					Schools = schools
+                    TotalSchools = Total
 
 				}).ObserveOn(Scheduler.Default);
 			}
 			else
 			{
 
-				return GetSchoolNames().Select((schools) => new PageModel()
+                return GetTotalSchools().Select((Total) => new PageModel()
 				{
-					Schools = schools
+                    TotalSchools = Total
 
 				});
 			}
@@ -434,29 +446,13 @@ namespace Bullytect.Core.ViewModels
 
         void OnPageModelLoaded(PageModel Page) {
 
-
-
-			if (Page?.Schools?.Count() > 0)
-			{
-				Schools.ReplaceRange(Page.Schools);
-			}
-
-
-			if (Page.SonInformation != null)
-			{
+            if (Page.SonInformation != null)
+            {
                 CurrentSon.HydrateWith(Page.SonInformation.Son);
-				CurrentSocialMedia.ReplaceRange(Page.SonInformation.SocialMedia);
-			}
+                CurrentSocialMedia.ReplaceRange(Page.SonInformation.SocialMedia);
+            }
 
-			if (Page?.Schools?.Count() > 0 && Page.SonInformation != null)
-			{
-
-				var index = Schools.Select((SchoolItem, SchoolIndex) => new { SchoolItem, SchoolIndex })
-								   .FirstOrDefault(i => i.SchoolItem.Identity.Equals(CurrentSon.SchoolIdentity))?.SchoolIndex;
-
-                if (index.HasValue && index.Value >= 0)
-                    SchoolSelectedIndex = index.Value;
-			}
+            TotalSchools = Page.TotalSchools;
 
             ResetCommonProps();
 
@@ -482,6 +478,11 @@ namespace Bullytect.Core.ViewModels
 			{
 				_appHelper.Toast(AppResources.Profile_Can_Not_Take_Photo_From_Camera, System.Drawing.Color.FromArgb(255, 0, 0));
 			}
+            else if (ex is NoSchoolsFoundException) 
+            {
+                Schools.Clear();
+
+            }
 			else
 			{
 				base.HandleExceptions(ex);
@@ -497,7 +498,7 @@ namespace Bullytect.Core.ViewModels
         {
 
             public SonInformation SonInformation { get; set; }
-            public IEnumerable<SchoolPickerModel> Schools { get; set; }
+            public long TotalSchools { get; set; }
 
         }
 
@@ -508,13 +509,6 @@ namespace Bullytect.Core.ViewModels
             public SonEntity Son { get; set; }
             public IList<SocialMediaEntity> SocialMedia { get; set; }
 
-        }
-
-        public class SchoolPickerModel
-        {
-
-            public string Identity { get; set; }
-            public string Name { get; set; }
         }
 
 

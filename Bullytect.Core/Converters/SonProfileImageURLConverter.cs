@@ -17,6 +17,7 @@ namespace Bullytect.Core.Converters
 			return !string.IsNullOrEmpty((string)value) ?
 						  ImageSource.FromUri(new Uri(ApiEndpoints.GET_SON_PROFILE_IMAGE.Replace(":id", (string)value))) :
 						  ImageSource.FromFile("user_default.png");
+
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

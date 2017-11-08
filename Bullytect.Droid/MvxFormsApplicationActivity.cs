@@ -7,7 +7,6 @@ using Refractored.XamForms.PullToRefresh.Droid;
 using UXDivers.Artina.Shared;
 using FFImageLoading.Forms.Droid;
 using UXDivers.Artina.Shared.Droid;
-using MvvmCross.Forms.Droid;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using MvvmCross.Forms.Core;
@@ -27,7 +26,7 @@ namespace Bullytect.Droid
 
 	[Activity(
         Name = "com.usal.bisite.bulltect.MvxFormsApplicationActivity",
-        Label = "bulltect",
+        Label = "BullTec",
         Icon = "@mipmap/ic_launcher",
         Theme = "@style/AppTheme",
         MainLauncher = false,

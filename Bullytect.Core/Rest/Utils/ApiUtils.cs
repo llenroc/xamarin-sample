@@ -88,7 +88,7 @@ namespace Bullytect.Core.Rest.Utils
                             break;
                             // Parse No Schools not found
                         case ResponseNames.NO_SCHOOLS_FOUND_RESPONSE:
-							exResponse = new NoSchoolFoundException()
+							exResponse = new NoSchoolsFoundException()
 							{
 								Response = ex.GetContentAs<APIResponse<string>>()
 							};

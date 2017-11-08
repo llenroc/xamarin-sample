@@ -39,6 +39,25 @@ namespace Bullytect.Core.Services.Impl
 
         }
 
+        public IObservable<long> CountSchools()
+        {
+            Debug.WriteLine("Count Schools");
+
+            var observable = _schoolRestService
+                .Total()
+                .Select(response => response.Data)
+                .Select((response) => {
+                    long temp;
+                    return long.TryParse(response, out temp) ? temp : 0;
+                })
+                .Finally(() =>
+                {
+                    Debug.WriteLine("Count School Finish ...");
+                });
+
+            return operationDecorator(observable);
+        }
+
         public IObservable<SchoolEntity> CreateSchool(string Name, string Residence, string Location, string Province, string Tfno, string Email)
         {
             Debug.WriteLine(string.Format("Create School -> Name: {0}, Residence: {1}, Location: {2}, Province: {3}, Tfno: {4}, Email: {5}",
@@ -60,6 +79,22 @@ namespace Bullytect.Core.Services.Impl
 				{
 					Debug.WriteLine("Create School Finish ...");
 				});
+
+            return operationDecorator(observable);
+        }
+
+        public IObservable<IList<SchoolEntity>> FindSchools(string Name)
+        {
+            Debug.WriteLine("Find schools by " + Name);
+
+            var observable = _schoolRestService
+                .FindSchools(Name)
+                .Select(response => response.Data)
+                .Select((schools) => Mapper.Map<IList<SchoolDTO>, IList<SchoolEntity>>(schools))
+                .Finally(() =>
+                {
+                    Debug.WriteLine("Find schools finished ...");
+                });
 
             return operationDecorator(observable);
         }

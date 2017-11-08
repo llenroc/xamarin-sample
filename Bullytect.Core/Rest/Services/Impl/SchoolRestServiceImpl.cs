@@ -24,5 +24,18 @@ namespace Bullytect.Core.Rest.Services.Impl
         {
             return Observable.FromAsync(() => PostData<APIResponse<SchoolDTO>, AddSchoolDTO>(ApiEndpoints.CREATE_SCHOOL, school));
         }
+
+        public IObservable<APIResponse<IList<SchoolDTO>>> FindSchools(string name)
+        {
+            return Observable.FromAsync(() => GetData<APIResponse<IList<SchoolDTO>>>(new Uri(ApiEndpoints.FIND_SCHOOLS).AttachParameters(new Dictionary<string, string>()
+            {
+                { "name", name }
+            })));
+        }
+
+        public IObservable<APIResponse<string>> Total()
+        {
+            return Observable.FromAsync(() => GetData<APIResponse<string>>(ApiEndpoints.COUNT_SCHOOL));
+        }
     }
 }

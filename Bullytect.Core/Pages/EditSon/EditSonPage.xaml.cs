@@ -5,6 +5,7 @@ using Bullytect.Core.Pages.Common;
 using Bullytect.Core.Pages.EditSon.Popup;
 using Bullytect.Core.ViewModels;
 using Plugin.Media.Abstractions;
+using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
@@ -24,6 +25,7 @@ namespace Bullytect.Core.Pages.EditSon
 
             ViewModel.SchoolAdded += ViewModel_OnSchoolAddedAsync;
             ViewModel.SonUpdated += ViewModel_OnOnSonUpdatedAsync;
+            schoolEntry.Focused += OnSelectSchool;
 
 		}
 
@@ -32,6 +34,7 @@ namespace Bullytect.Core.Pages.EditSon
 			ViewModel.NewSelectedImage -= ViewModel_OnNewSelectedImage;
             ViewModel.SchoolAdded -= ViewModel_OnSchoolAddedAsync;
             ViewModel.SonUpdated -= ViewModel_OnOnSonUpdatedAsync;
+            schoolEntry.Focused -= OnSelectSchool;
 		}
 
 		void ViewModel_OnNewSelectedImage(Object sender, MediaFile NewProfileImage)
@@ -55,6 +58,18 @@ namespace Bullytect.Core.Pages.EditSon
         async void OnSocialMediaInfoAsync(object sender, EventArgs args)
         {
             var page = new SocialMediaInfoPopup();
+            page.BindingContext = ViewModel;
+            await PopupNavigation.PushAsync(page);
+        }
+
+        async void OnSelectSchool(object sender, EventArgs args)
+        {
+            ((Entry)sender).Unfocus();
+            PopupPage page = null;
+            if (ViewModel.TotalSchools > 0)
+                page = new SearchSchoolPopup();
+            else
+                page = new AddSchoolPopup();
             page.BindingContext = ViewModel;
             await PopupNavigation.PushAsync(page);
         }

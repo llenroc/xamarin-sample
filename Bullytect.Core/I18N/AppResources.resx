@@ -681,6 +681,30 @@ and we will recover it for you. </value>
     <value> School Saved </value>
     <comment>EditSon School Saved</comment>
   </data>
+  <data name="EditSon.Find.School" xml:space="preserve">
+    <value> Searching schools </value>
+    <comment>EditSon Find School</comment>
+  </data>
+  <data name="EditSon.Find.School.Title" xml:space="preserve">
+    <value> Search Schools </value>
+    <comment>EditSon Find School Title</comment>
+  </data>
+  <data name="EditSon.Find.School.Placeholder" xml:space="preserve">
+    <value> Enter the name of the school </value>
+    <comment>EditSon Find School Title</comment>
+  </data>
+  <data name="EditSon.Find.School.No.Results.Title" xml:space="preserve">
+    <value> No schools found </value>
+    <comment>EditSon Find School No Results Title</comment>
+  </data>
+  <data name="EditSon.Add.School" xml:space="preserve">
+    <value>Add school</value>
+    <comment>EditSon Add School</comment>
+  </data>
+  <data name="EditSon.Find.School.No.Results.Text" xml:space="preserve">
+    <value> No schools found for search terms </value>
+    <comment>EditSon Find School For Search Terms</comment>
+  </data>
   <data name="Global.ErrorOcurred" xml:space="preserve">
     <value>An error occurred</value>
     <comment>Global Error Ocurred</comment>

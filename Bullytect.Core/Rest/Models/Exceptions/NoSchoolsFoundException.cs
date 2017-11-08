@@ -3,9 +3,8 @@ using System;
 
 namespace Bullytect.Core.Rest.Models.Exceptions
 {
-    public class NoSchoolFoundException : Exception
+    public class NoSchoolsFoundException: Exception
     {
         public APIResponse<string> Response { get; set; }
-
     }
 }

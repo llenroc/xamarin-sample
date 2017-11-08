@@ -1,7 +1,6 @@
 ﻿
 using System;
 using System.Reactive.Linq;
-using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.Helpers;
 using Bullytect.Core.I18N;
@@ -39,6 +38,7 @@ namespace Bullytect.Core.ViewModels
             public string Title { get; set; }
             public string Payload { get; set; }
             public DateTime CreateAt { get; set; }
+            public string Since { get; set; }
             public string SonFullName { get; set; }
             public string SonIdentity { get; set; }
             public string ProfileImage { get; set; }
@@ -55,6 +55,7 @@ namespace Bullytect.Core.ViewModels
             SonFullName = alertParameter.SonFullName;
             SonIdentity = alertParameter.SonIdentity;
             ProfileImage = alertParameter.ProfileImage;
+            Since = alertParameter.Since;
         }
 
         #region properties
@@ -131,6 +132,15 @@ namespace Bullytect.Core.ViewModels
 			get => _profileImage;
 			set => SetProperty(ref _profileImage, value);
 		}
+
+        string _since;
+
+        public string Since
+        {
+            get => _since;
+            set => SetProperty(ref _since, value);
+
+        }
 
 
         #endregion

@@ -9,7 +9,8 @@ namespace Bullytect.Core.Services
 
         IObservable<Dictionary<string, string>> AllNames();
         IObservable<SchoolEntity> CreateSchool(string Name, string Residence, string Location, string Province, string Tfno, string Email);
-
+        IObservable<long> CountSchools();
+        IObservable<IList<SchoolEntity>> FindSchools(string Name);
 
     }
 }

@@ -3,10 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
-    x:Class="Bullytect.Core.Pages.AddSchool.AddSchoolPopup">
+    x:Class="Bullytect.Core.Pages.EditSon.Popup.AddSchoolPopup">
     <pages:PopupPage.Resources>
            <ResourceDictionary>
                 <converters:ContainsKeyVisibilityConverter x:Key="ContainsKeyVisibilityConverter"/>
@@ -45,29 +46,33 @@
             VerticalOptions="Center" >
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="40" />
+                <RowDefinition Height="120" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
 
-            <Label
-                Grid.Row="1"
-                Text="{i18n:Translate EditSon.Add.School.Title}"
-                TextColor="{ DynamicResource AccentColor }"
-                HorizontalTextAlignment="Center"
-                VerticalTextAlignment="Center"
-                FontAttributes="Bold">
-                <Label.FontSize> 
-                    <OnIdiom
-                        x:TypeArguments="x:Double"
-                        Phone="26"
-                        Tablet="36"/>
-                </Label.FontSize>
-            </Label>
+            <StackLayout 
+                Orientation="Horizontal" 
+                Grid.Row="0"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand">
+                <Label
+                    TextColor="{ DynamicResource AccentColor }"
+                    Text="{ x:Static helper:FontAwesomeFont.GraduationCap } " 
+                    Style="{ StaticResource FontIcon }"
+                    VerticalOptions="Center"
+                    FontSize="25"/>
 
+                <Label
+                    TextColor="{ DynamicResource AccentColor }"
+                    Text="{i18n:Translate EditSon.Add.School.Title}"
+                    VerticalOptions="Center"
+                    FontSize="25"/>
+            </StackLayout>
 
-            <ScrollView Grid.Row="2" Padding="{ StaticResource MainWrapperPadding }">
+           
+            <ScrollView Grid.Row="1" Padding="{ StaticResource MainWrapperPadding }">
 
                     <!---FIELDS CONTAINER-->
                     <StackLayout
@@ -212,10 +217,10 @@
 
         <!-- FOOTER -->
         <StackLayout
-            Grid.Row="3"
+            Grid.Row="2"
             HorizontalOptions="Fill"
             VerticalOptions="End" 
-            Padding="10">
+            Margin="10">
 
              <artina:Button 
                 Command="{ Binding SaveSchoolCommand }"
