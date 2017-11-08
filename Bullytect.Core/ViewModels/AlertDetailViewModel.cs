@@ -42,6 +42,7 @@ namespace Bullytect.Core.ViewModels
             public string SonFullName { get; set; }
             public string SonIdentity { get; set; }
             public string ProfileImage { get; set; }
+            public AlertCategoryEnum Category { get; set; }
         }
 
 
@@ -56,6 +57,7 @@ namespace Bullytect.Core.ViewModels
             SonIdentity = alertParameter.SonIdentity;
             ProfileImage = alertParameter.ProfileImage;
             Since = alertParameter.Since;
+            Category = alertParameter.Category;
         }
 
         #region properties
@@ -140,6 +142,14 @@ namespace Bullytect.Core.ViewModels
             get => _since;
             set => SetProperty(ref _since, value);
 
+        }
+
+        AlertCategoryEnum _category;
+
+        public AlertCategoryEnum Category
+        {
+            get => _category;
+            set => SetProperty(ref _category, value);
         }
 
 

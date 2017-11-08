@@ -28,6 +28,9 @@ namespace Bullytect.Core.Rest.Models.Response
 		[JsonProperty("son")]
 		public SonDTO Son { get; set; }
 
+        [JsonProperty("category")]
+        public string Category { get; set; }
+
 		
     }
 }

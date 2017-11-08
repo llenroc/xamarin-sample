@@ -61,7 +61,9 @@ namespace Bullytect.Core
 			cfg.CreateMap<DeviceDTO, DeviceEntity>();
 			cfg.CreateMap<AlertDTO, AlertEntity>()
 				.ForMember(d => d.Level, (obj) =>
-						   obj.ResolveUsing(o => o?.Level.ToEnum<AlertLevelEnum>()));
+						   obj.ResolveUsing(o => o?.Level.ToEnum<AlertLevelEnum>()))
+                .ForMember(d => d.Category, (obj) =>
+                           obj.ResolveUsing(o => o?.Category.ToEnum<AlertCategoryEnum>()));
 			cfg.CreateMap<ImageDTO, ImageEntity>();
 			cfg.CreateMap<SocialMediaDTO, SocialMediaEntity>();
 			cfg.CreateMap<SocialMediaEntity, SaveSocialMediaDTO>();

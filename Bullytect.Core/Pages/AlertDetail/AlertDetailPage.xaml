@@ -188,7 +188,6 @@
                                 VerticalTextAlignment="Center"/>
 
                             
-                            
                             <Label 
                                 Text="{ Binding Since }"
                                 FontSize="14"
@@ -205,21 +204,47 @@
                             VerticalOptions="End"
                             Style="{ StaticResource Horizontal1ptLineStyle}" />
 
-                        <!-- TEXT -->
-                        <StackLayout
+                        <ScrollView 
                             Grid.Row="1"
                             Padding="20,20,20,0"
                             VerticalOptions="StartAndExpand">
 
-                            <!-- MAIN PARAGRAPH -->
-                            <Label
-                                Text="{ Binding Payload }"
-                                VerticalOptions="Start"
-                                TextColor="{ DynamicResource BaseTextColor }" />
+                            <StackLayout>
 
+                                <Label
+                                    Text="Mensaje"
+                                    LineBreakMode="WordWrap"
+                                    TextColor="{ DynamicResource BaseTextColor }"
+                                    FontSize="20"
+                                    FontAttributes="Bold"/>
 
-                            
-                        </StackLayout>
+                                <BoxView  
+                                    Style="{StaticResource BaseTextBrandNameOrnamentStyle}"/>
+                                
+                                <Label
+                                    Text="{ Binding Payload }"
+                                    VerticalOptions="Start"
+                                    Margin="0,10,0,0"
+                                    TextColor="{ DynamicResource BaseTextColor }" />
+
+                                <Label
+                                    Text="Acciones Requeridas"
+                                    LineBreakMode="WordWrap"
+                                    TextColor="{ DynamicResource BaseTextColor }"
+                                    FontSize="20"
+                                    FontAttributes="Bold"/>
+
+                                <BoxView  
+                                    Style="{StaticResource BaseTextBrandNameOrnamentStyle}"/>
+                                
+                                <Label
+                                    Text="{ Binding Category }"
+                                    VerticalOptions="Start"
+                                    Margin="0,10,0,0"
+                                    TextColor="{ DynamicResource BaseTextColor }" />
+                            </StackLayout>
+
+                        </ScrollView>
                     </Grid>
                 </Grid>
             </ScrollView>

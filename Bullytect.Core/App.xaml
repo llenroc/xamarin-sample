@@ -609,6 +609,12 @@
                 <Setter Property="WidthRequest" Value="40" />
             </Style>
 
+            <Style x:Key="BaseTextBrandNameOrnamentStyle" TargetType="BoxView" BasedOn="{ StaticResource BaseBrandNameOrnamentStyle }">
+                <Setter Property="WidthRequest" Value="40" />
+                <Setter Property="BackgroundColor" Value="{ DynamicResource BaseTextColor }" />
+                <Setter Property="Margin" Value="0,5,0,0" />
+            </Style>
+
             <Style x:Key="LargeBrandNameOrnamentStyle" TargetType="BoxView" BasedOn="{ StaticResource BaseBrandNameOrnamentStyle }"> 
                     <Setter Property="WidthRequest" Value="150" />
             </Style>

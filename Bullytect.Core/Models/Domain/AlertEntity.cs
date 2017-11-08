@@ -12,5 +12,6 @@ namespace Bullytect.Core.Models.Domain
 		public DateTime CreateAt { get; set; }
         public string Since { get; set; }
 		public SonEntity Son { get; set; }
+        public AlertCategoryEnum Category { get; set; }
     }
 }
