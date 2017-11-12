@@ -81,8 +81,8 @@ namespace Bullytect.Core.ViewModels
                 {
 
                     return (CurrentSon.Identity == null ?
-                                _parentService.AddSonToSelfParent(CurrentSon.FirstName, CurrentSon.LastName, CurrentSon.Birthdate, CurrentSon.SchoolIdentity) :
-                                _parentService.UpdateSonInformation(CurrentSon.Identity, CurrentSon.FirstName, CurrentSon.LastName, CurrentSon.Birthdate, CurrentSon.SchoolIdentity))
+                            _parentService.AddSonToSelfParent(CurrentSon.FirstName, CurrentSon.LastName, CurrentSon.Birthdate, CurrentSon.School.Identity) :
+                            _parentService.UpdateSonInformation(CurrentSon.Identity, CurrentSon.FirstName, CurrentSon.LastName, CurrentSon.Birthdate, CurrentSon.School.Identity))
                                 .Do((SonEntity) => CurrentSon.HydrateWith(SonEntity))
                                 .SelectMany((SonEntity) => _socialMediaService
                                             .SaveAllSocialMedia(
@@ -114,16 +114,16 @@ namespace Bullytect.Core.ViewModels
 
             SaveChangesCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
-            SaveSchoolCommand = ReactiveCommand.CreateFromObservable<Unit, SchoolEntity>((param) => _schoolService.CreateSchool(NewSchool.Name, NewSchool.Residence, NewSchool.Location, NewSchool.Province, NewSchool.Tfno, NewSchool.Email));
+            SaveSchoolCommand = ReactiveCommand.CreateFromObservable<Unit, SchoolEntity>((param) => _schoolService.CreateSchool(NewSchool.Name, NewSchool.Residence, NewSchool.Latitude, NewSchool.Longitude, NewSchool.Province, NewSchool.Tfno, NewSchool.Email));
 
             SaveSchoolCommand.Subscribe((SchoolAdded) =>
             {
           
                 NewSchool = new SchoolEntity();
-                CurrentSon.SchoolName = SchoolAdded.Name;
-                CurrentSon.SchoolIdentity = SchoolAdded.Identity;
+                CurrentSon.School.HydrateWith(SchoolAdded);
+                _appHelper.ShowAlert(AppResources.EditSon_School_Saved);
                 OnSchoolAdded(SchoolAdded);
-                _appHelper.Toast(AppResources.EditSon_School_Saved, System.Drawing.Color.FromArgb(12, 131, 193));
+            
             });
 
 
@@ -296,7 +296,7 @@ namespace Bullytect.Core.ViewModels
                         => new MvxCommand(async () =>
                         {
                             if(PopupNavigation.PopupStack.Count > 0) {
-                                await PopupNavigation.PopAsync();
+                                await PopupNavigation.PopAllAsync();
                             }
                             var page = new AddSchoolPopup();
                             page.BindingContext = this;
@@ -305,10 +305,10 @@ namespace Bullytect.Core.ViewModels
 
 
         public ICommand SchoolSelectedCommand
-            => new MvxCommand<SchoolEntity>((SchoolEntity) => {
-                CurrentSon.SchoolName = SchoolEntity.Name;
-                CurrentSon.SchoolIdentity = SchoolEntity.Identity;
-                PopupNavigation.PopAsync(true);
+            => new MvxCommand<SchoolEntity>(async (SchoolSelected) => {
+                CurrentSon.School.HydrateWith(SchoolSelected);
+                if (PopupNavigation.PopupStack.Count > 0)
+                    await PopupNavigation.PopAllAsync(true);
                 Schools.Clear();
             });
 

@@ -53,11 +53,7 @@ namespace Bullytect.Core
 			cfg.CreateMap<string, DateTime>().ConvertUsing<StringToDateTimeConverter>();
 
 			cfg.CreateMap<ParentDTO, ParentEntity>();
-			cfg.CreateMap<SonDTO, SonEntity>()
-			.ForMember(s => s.SchoolIdentity, (obj) =>
-					   obj.ResolveUsing(o => o?.School.Identity))
-			.ForMember(s => s.SchoolName, (obj) =>
-					   obj.ResolveUsing(o => o?.School.Name));
+            cfg.CreateMap<SonDTO, SonEntity>();
 			cfg.CreateMap<DeviceDTO, DeviceEntity>();
 			cfg.CreateMap<AlertDTO, AlertEntity>()
 				.ForMember(d => d.Level, (obj) =>

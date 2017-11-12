@@ -45,7 +45,8 @@ namespace Bullytect.Core.Pages.EditSon
 
         async void ViewModel_OnSchoolAddedAsync(Object sender, SchoolEntity SchoolEntity)
         {
-            await PopupNavigation.PopAsync(animate: true);
+            if(PopupNavigation.PopupStack.Count > 0)
+                await PopupNavigation.PopAllAsync(animate: true);
         }
 
 
@@ -70,8 +71,18 @@ namespace Bullytect.Core.Pages.EditSon
                 page = new SearchSchoolPopup();
             else
                 page = new AddSchoolPopup();
+            if (PopupNavigation.PopupStack.Count > 0)
+            {
+                await PopupNavigation.PopAllAsync();
+            }
             page.BindingContext = ViewModel;
             await PopupNavigation.PushAsync(page);
+        }
+
+        async void OnShowSchoolLocation(object sender, EventArgs args)
+        {
+            await PopupNavigation.PushAsync(new SchoolMapPopup(ViewModel.CurrentSon.School));
+
         }
 
 

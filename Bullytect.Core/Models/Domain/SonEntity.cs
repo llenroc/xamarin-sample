@@ -49,21 +49,7 @@ namespace Bullytect.Core.Models.Domain
 
 		}
 
-		string _schoolIdentity;
-		public string SchoolIdentity
-		{
-			get { return _schoolIdentity; }
-			set { SetProperty(ref _schoolIdentity, value); }
-
-		}
-
-		string _schoolName;
-		public string SchoolName
-		{
-			get { return _schoolName; }
-			set { SetProperty(ref _schoolName, value); }
-
-		}
+        public SchoolEntity School { get; set; } = new SchoolEntity();
 
 
 		string _profileImage;
@@ -86,15 +72,14 @@ namespace Bullytect.Core.Models.Domain
             LastName = OtherSonEntity.LastName;
             Birthdate = OtherSonEntity.Birthdate;
             Age = OtherSonEntity.Age;
-            SchoolIdentity = OtherSonEntity.SchoolIdentity;
-            SchoolName = OtherSonEntity.SchoolName;
+            School.HydrateWith(OtherSonEntity.School);
             ProfileImage = OtherSonEntity.ProfileImage;
         }
 
 
 		public override string ToString()
 		{
-			return String.Format("Identity: {0}, FirstName:{1}, LastName:{2}, Age:{3}, School:{4}", Identity, FirstName, LastName,Age,  SchoolIdentity);
+            return String.Format("Identity: {0}, FirstName:{1}, LastName:{2}, Age:{3}, ", Identity, FirstName, LastName,Age);
 		}
     }
 }

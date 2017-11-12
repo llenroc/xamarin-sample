@@ -17,8 +17,11 @@ namespace Bullytect.Core.Rest.Models.Response
         [JsonProperty("residence")]
         public string Residence { get; set; }
 
-		[JsonProperty("location")]
-		public string Location { get; set; }
+        [JsonProperty("latitude")]
+        public double Latitude { get; set; }
+
+        [JsonProperty("longitude")]
+        public double Longitude { get; set; }
 
         [JsonProperty("province")]
         public string Province { get; set; }

@@ -18,7 +18,7 @@ namespace Bullytect.Core.Rest.Models.Response
         [JsonProperty("age")]
         public int Age { get; set; }
         [JsonProperty("school")]
-        public SchoolNameDTO School { get; set; }
+        public SchoolDTO School { get; set; }
         [JsonProperty("profile_image")]
         public string ProfileImage { get; set; }
 

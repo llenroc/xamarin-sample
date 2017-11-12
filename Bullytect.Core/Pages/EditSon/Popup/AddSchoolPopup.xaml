@@ -15,8 +15,6 @@
                 <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
                 <x:String x:Key="nameKey">schoolName</x:String>
                 <x:String x:Key="residenceKey">residence</x:String>
-                <x:String x:Key="locationKey">location</x:String>
-                <x:String x:Key="provinceKey">province</x:String>
                 <x:String x:Key="tfnoKey">tfno</x:String>
                 <x:String x:Key="emailKey">email</x:String>
            </ResourceDictionary>
@@ -100,33 +98,13 @@
 
                             </StackLayout>
 
-                             <!-- Residence FIELD-->
+                             <!-- Location FIELD-->
                             <StackLayout Padding="5">
 
                             
                                 <Entry 
+                                    x:Name="LocationEntry"
                                     Placeholder="{ i18n:Translate Common.Placeholder.School.Residence }"
-                                    Style="{StaticResource ArtinaProfileEntryStyle}" 
-                                    Text="{ Binding NewSchool.Residence }"/>
-
-
-                                <Label
-                                        Text="{Binding Path=FieldErrors,                            
-                                                    Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                    ConverterParameter={StaticResource residenceKey}}"
-                                         IsVisible="{Binding Path=FieldErrors,                            
-                                                    Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                    ConverterParameter={StaticResource residenceKey}}"
-                                         Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-
-                            </StackLayout>
-
-                            <!-- Location FIELD-->
-                            <StackLayout Padding="5">
-
-                            
-                                <Entry 
-                                    Placeholder="{ i18n:Translate Common.Placeholder.School.Location }"
                                     Style="{StaticResource ArtinaProfileEntryStyle}" 
                                     Text="{ Binding NewSchool.Location }"/>
 
@@ -134,35 +112,14 @@
                                 <Label
                                         Text="{Binding Path=FieldErrors,                            
                                                     Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                    ConverterParameter={StaticResource locationKey}}"
+                                                    ConverterParameter={StaticResource residenceKey}}"
                                          IsVisible="{Binding Path=FieldErrors,                            
                                                     Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                    ConverterParameter={StaticResource locationKey}}"
+                                                    ConverterParameter={StaticResource residenceKey}}"
                                          Style="{StaticResource ValidationEntryErrorStyle}"></Label>
 
                             </StackLayout>
 
-
-                            <!-- Province FIELD-->
-                            <StackLayout Padding="5">
-
-                            
-                                <Entry 
-                                    Placeholder="{ i18n:Translate Common.Placeholder.School.Province }"
-                                    Style="{StaticResource ArtinaProfileEntryStyle}" 
-                                    Text="{ Binding NewSchool.Province }"/>
-
-
-                                <Label
-                                        Text="{Binding Path=FieldErrors,                            
-                                                    Converter={StaticResource ValidationErrorFormatValueConverter},
-                                                    ConverterParameter={StaticResource provinceKey}}"
-                                         IsVisible="{Binding Path=FieldErrors,                            
-                                                    Converter={StaticResource ContainsKeyVisibilityConverter},
-                                                    ConverterParameter={StaticResource provinceKey}}"
-                                         Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-
-                            </StackLayout>
 
                             <!-- Tfno FIELD-->
                             <StackLayout Padding="5">

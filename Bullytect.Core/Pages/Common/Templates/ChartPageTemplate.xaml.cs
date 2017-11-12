@@ -212,7 +212,7 @@ namespace Bullytect.Core.Pages.Common.Templates
 			ChartView MCChart = new ChartView()
 			{
 				HeightRequest = chartHeight,
-				WidthRequest = chart?.Width != 0 ? chart.Width : page.ChartWidth
+				WidthRequest = chart?.Width != 0 ? chart.Width : page.ChartWidth,
 
 			};
 

@@ -33,18 +33,11 @@ namespace Bullytect.Core.Rest.Models.Request
 			}
 		}
 
-		string _location;
+        [JsonProperty("latitude")]
+        public double Latitude { get; set; }
 
-		[JsonProperty("location")]
-		public string Location
-		{
-			get => _location;
-			set
-			{
-				if (!string.IsNullOrEmpty(value))
-					_location = value;
-			}
-		}
+        [JsonProperty("longitude")]
+        public double Longitude { get; set; }
 
 		string _province;
 

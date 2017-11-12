@@ -261,10 +261,6 @@
     <value> Residence </value>
     <comment>Common Placeholder School Residence</comment>
   </data>
-  <data name="Common.Placeholder.School.Location" xml:space="preserve">
-    <value> Location </value>
-    <comment>Common Placeholder School Location</comment>
-  </data>
   <data name="Common.Placeholder.School.Province" xml:space="preserve">
     <value> Province </value>
     <comment>Common Placeholder School Province</comment>
@@ -705,6 +701,23 @@ and we will recover it for you. </value>
     <value> No schools found for search terms </value>
     <comment>EditSon Find School For Search Terms</comment>
   </data>
+  <data name="EditSon.School.Map.Select" xml:space="preserve">
+    <value> Select location of {0} </value>
+    <comment>EditSon School Map Select</comment>
+  </data>
+  <data name="EditSon.School.Map.Select2" xml:space="preserve">
+    <value> Select location of School </value>
+    <comment>EditSon School Map Select2</comment>
+  </data>
+  <data name="EditSon.School.Map.Visualize" xml:space="preserve">
+    <value> Location of {0} </value>
+    <comment>EditSon School Map Visualize</comment>
+  </data>
+   <data name="EditSon.School.Map.Visualize2" xml:space="preserve">
+    <value> Location of School </value>
+    <comment>EditSon School Map Visualize</comment>
+  </data>
+
   <data name="Global.ErrorOcurred" xml:space="preserve">
     <value>An error occurred</value>
     <comment>Global Error Ocurred</comment>
@@ -757,6 +770,8 @@ and we will recover it for you. </value>
     <value>Alerts Categories</value>
     <comment>Settings Alerts Categories</comment>
   </data>
+
+	
   <data name="Settings.Alerts.Categories.Success.Alerts.Name" xml:space="preserve">
     <value>Success Alerts</value>
     <comment>Settings Alerts Categories Success Alerts Name</comment>
@@ -1007,7 +1022,23 @@ and we will recover it for you. </value>
     <value>Community graph could not be loaded</value>
     <comment>Statistics Son Communities Error</comment>
   </data> 
+  <data name="Alerts.Category.Default" xml:space="preserve">
+        <value>No action required</value>
+        <comment>Alerts Category Default</comment>
+   </data>
+   <data name="Alerts.Category.Information.Son" xml:space="preserve">
+	    <value>Go to the editing section of the child for more information</value>
+        <comment>Alerts Category Information Son</comment>
+   </data>
 
-	
+    <data name="Alerts.Category.General.Statistics" xml:space="preserve">
+        <value>Go to the Results section to get more information</value>
+        <comment>Alerts Category General Statistics</comment>
+    </data>
+
+	<data name="Alerts.Category.Statistics.Son" xml:space="preserve">
+        <value>Go to the child's statistics section for more information</value>
+        <comment>Alerts Category Statistics Son</comment>
+    </data>
 	
 </root>

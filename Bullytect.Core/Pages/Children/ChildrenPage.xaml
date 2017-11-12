@@ -158,7 +158,7 @@
 
                                         <!-- School -->
                                         <Label
-                                            Text="{ Binding SchoolName }"
+                                            Text="{ Binding School.Name }"
                                             
                                             TextColor="{ DynamicResource AccentColor }"
                                             FontSize="{ artina:OnOrientationDouble

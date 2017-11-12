@@ -48,18 +48,19 @@
 
             <Label
                 Grid.Column="2"
-                VerticalTextAlignment="Center"
-                HorizontalTextAlignment="Center"
-                HorizontalOptions="End"
-                Text="{ Binding Province }"
-                TextColor="{ DynamicResource AccentColor }">
+                Text="{ x:Static helper:FontAwesomeFont.MapMarker }"
+                TextColor="{ DynamicResource AccentColor }"
+                Style="{ StaticResource FontIcon }"
+                HorizontalOptions = "CenterAndExpand"
+                VerticalOptions = "CenterAndExpand"
+                FontSize="20">
 
-                <Label.FontSize>
-                    <OnIdiom 
-                        x:TypeArguments="x:Double" 
-                        Phone="17" 
-                        Tablet="17" />
-                </Label.FontSize> 
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Tapped="OnShowSchoolLocation"
+                        NumberOfTapsRequired="1" /> 
+                </Label.GestureRecognizers>
+                
             </Label>
             
         </Grid>

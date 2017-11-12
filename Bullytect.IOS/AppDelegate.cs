@@ -27,6 +27,7 @@ namespace Bullytect.iOS
 			Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
             global::Xamarin.Forms.Forms.Init();
+            Xamarin.FormsMaps.Init();
 			CachedImageRenderer.Init(); // Initializing FFImageLoading
 			AnimationViewRenderer.Init(); // Initializing Lottie
 			PullToRefreshLayoutRenderer.Init();

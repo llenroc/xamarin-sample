@@ -86,5 +86,9 @@
 	<string>This app needs access to microphone.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This app needs access to the photo gallery.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+    <string>Can we use your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>We are using your location</string>
 </dict>
 </plist>

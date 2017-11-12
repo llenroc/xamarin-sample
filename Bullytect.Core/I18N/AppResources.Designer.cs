@@ -263,12 +263,6 @@ namespace Bullytect.Core.I18N {
             }
         }
         
-        internal static string Common_Placeholder_School_Location {
-            get {
-                return ResourceManager.GetString("Common.Placeholder.School.Location", resourceCulture);
-            }
-        }
-        
         internal static string Common_Placeholder_School_Province {
             get {
                 return ResourceManager.GetString("Common.Placeholder.School.Province", resourceCulture);
@@ -923,6 +917,30 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string EditSon_School_Map_Select {
+            get {
+                return ResourceManager.GetString("EditSon.School.Map.Select", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_School_Map_Select2 {
+            get {
+                return ResourceManager.GetString("EditSon.School.Map.Select2", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_School_Map_Visualize {
+            get {
+                return ResourceManager.GetString("EditSon.School.Map.Visualize", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_School_Map_Visualize2 {
+            get {
+                return ResourceManager.GetString("EditSon.School.Map.Visualize2", resourceCulture);
+            }
+        }
+        
         internal static string Global_ErrorOcurred {
             get {
                 return ResourceManager.GetString("Global.ErrorOcurred", resourceCulture);
@@ -1328,6 +1346,30 @@ namespace Bullytect.Core.I18N {
         internal static string Statistics_Son_Communities_Error {
             get {
                 return ResourceManager.GetString("Statistics.Son.Communities.Error", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Category_Default {
+            get {
+                return ResourceManager.GetString("Alerts.Category.Default", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Category_Information_Son {
+            get {
+                return ResourceManager.GetString("Alerts.Category.Information.Son", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Category_General_Statistics {
+            get {
+                return ResourceManager.GetString("Alerts.Category.General.Statistics", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Category_Statistics_Son {
+            get {
+                return ResourceManager.GetString("Alerts.Category.Statistics.Son", resourceCulture);
             }
         }
     }

@@ -186,6 +186,7 @@ namespace Bullytect.Core.ViewModels
             SonFullName = AlertEntity.Son.FullName,
             SonIdentity = AlertEntity.Son.Identity,
             ProfileImage = AlertEntity.Son.ProfileImage,
+            Category = AlertEntity.Category,
             Since = AlertEntity.Since
         }));
 

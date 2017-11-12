@@ -36,6 +36,7 @@
                 <converters:SocialMediaInvalidStatusToBoolConverter x:Key="SocialMediaInvalidStatusToBoolConverter" />
                 <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
                 <converters:ValueEqualToZeroConverter x:Key="ValueEqualToZeroConverter" />
+                <converters:IsValidStringConverter x:Key="IsValidStringConverter" />
                 <x:String x:Key="firstNameKey">firstName</x:String>
                 <x:String x:Key="lastNameKey">lastName</x:String>
                 <x:String x:Key="schoolKey">school</x:String>
@@ -289,39 +290,51 @@
                             </StackLayout>
 
                             <!-- shools -->
-                            <StackLayout>
-
+                            <StackLayout Orientation="Horizontal">
                                 <StackLayout>
-                               
 
                                     <Entry
                                         x:Name="schoolEntry"
-                                        Text="{ Binding CurrentSon.SchoolName }"
+                                        Text="{ Binding CurrentSon.School.Location }"
                                         Placeholder="{ i18n:Translate Common.Placeholder.School }"
-                                        VerticalOptions="StartAndExpand"
+                                        VerticalOptions="CenterAndExpand"
                                         Style="{StaticResource ArtinaProfileEntryStyle}"
-                                        />
+                                          />
 
-                                    <Label
-                                        Text="{Binding Path=FieldErrors,
-                                        Converter={StaticResource ValidationErrorFormatValueConverter},
-                                        ConverterParameter={StaticResource schoolKey}}"
-                                        IsVisible="{Binding Path=FieldErrors,
-                                        Converter={StaticResource ContainsKeyVisibilityConverter},
-                                        ConverterParameter={StaticResource schoolKey}}"
-                                        Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+                                     <Label
+                                         Text="{Binding Path=FieldErrors,
+                                            Converter={StaticResource ValidationErrorFormatValueConverter},
+                                            ConverterParameter={StaticResource schoolKey}}"
+                                          IsVisible="{Binding Path=FieldErrors,
+                                            Converter={StaticResource ContainsKeyVisibilityConverter},
+                                            ConverterParameter={StaticResource schoolKey}}"
+                                           Style="{StaticResource ValidationEntryErrorStyle}"></Label>
+
+
+                                        <common:RoundedLabel
+                                            IsVisible="{ Binding TotalSchools, Converter={ StaticResource ValueEqualToZeroConverter }}"
+                                            HorizontalOptions="Center"
+                                            RoundedLabelText="{ i18n:Translate EditSon.School.Not.Found }"
+                                            RoundedLabelBackgroundColor="{ DynamicResource WarningColor }"/>
 
                                 </StackLayout>
 
+                                <Label
+                                      IsVisible="{ Binding CurrentSon.School.Location , Converter = { StaticResource IsValidStringConverter }}"
+                                      Text="{ x:Static helper:FontAwesomeFont.MapMarker }"
+                                      TextColor="{ DynamicResource AccentColor }"
+                                      Style="{ StaticResource FontIcon }"
+                                      HorizontalOptions = "End"
+                                      VerticalOptions = "CenterAndExpand"
+                                      FontSize="20">
 
-                                 <common:RoundedLabel
-                                    IsVisible="{ Binding TotalSchools, Converter={ StaticResource ValueEqualToZeroConverter }}"
-                                    HorizontalOptions="Center"
-                                    RoundedLabelText="{ i18n:Translate EditSon.School.Not.Found }"
-                                    RoundedLabelBackgroundColor="{ DynamicResource WarningColor }"/>
-
+                                       <Label.GestureRecognizers>
+                                                 <TapGestureRecognizer 
+                                                     Tapped="OnShowSchoolLocation"
+                                                      NumberOfTapsRequired="1" /> 
+                                         </Label.GestureRecognizers>
+                                  </Label>
                             </StackLayout>
-
 
                             <!-- birthdate -->
 

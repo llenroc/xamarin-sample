@@ -19,6 +19,7 @@
             <converters:AlertLevelToFontIconConverter x:Key="AlertLevelToFontIconConverter" />
             <converters:AlertLevelToColorConverter x:Key="AlertLevelToColorConverter" />
             <converters:AlertLevelToTextConverter x:Key="AlertLevelToTextConverter" />
+            <converters:AlertCategoryConverter  x:Key="AlertCategoryConverter"/>
         </ResourceDictionary>
     </ContentView.Resources>
 	<ContentPage.Content>
@@ -238,7 +239,7 @@
                                     Style="{StaticResource BaseTextBrandNameOrnamentStyle}"/>
                                 
                                 <Label
-                                    Text="{ Binding Category }"
+                                    Text="{ Binding Category, Converter = { StaticResource AlertCategoryConverter } }"
                                     VerticalOptions="Start"
                                     Margin="0,10,0,0"
                                     TextColor="{ DynamicResource BaseTextColor }" />
