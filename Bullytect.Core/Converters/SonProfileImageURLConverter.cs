@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
 using Xamarin.Forms;
 using Bullytect.Core.Rest.Utils;

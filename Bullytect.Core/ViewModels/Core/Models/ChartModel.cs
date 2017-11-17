@@ -8,6 +8,7 @@ namespace Bullytect.Core.ViewModels.Core.Models
     public class ChartModel
     {
         public string Title { get; set; }
+        public string Subtitle { get; set; }
         public IList<Entry> Entries { get; set; }
         Type _type;
         public Type Type {

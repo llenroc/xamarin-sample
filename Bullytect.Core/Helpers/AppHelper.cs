@@ -15,6 +15,7 @@ namespace Bullytect.Core.Helpers
     public class AppHelper
     {
 
+
         protected readonly IImagesService _imagesService;
         protected readonly IUserDialogs _userDialogs;
 

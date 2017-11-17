@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:templates="clr-namespace:Bullytect.Core.Pages.EditSon.Templates"
+    xmlns:extended="clr-namespace:Bullytect.Core.Pages.Common.Extended"
+    x:Class="Bullytect.Core.Pages.Comments.Popup.DimensionsFilterPopup">
+    <pages:PopupPage.Resources>
+           <ResourceDictionary>
+                <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+                <converters:IsSchoolCollectionEmptyConverter x:Key="IsSchoolCollectionEmptyConverter"/>
+                <converters:IsSchoolCollectionNotEmptyConverter x:Key="IsSchoolCollectionNotEmptyConverter"/>
+                <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
+                <converters:IsNullOrWhiteSpaceConverter x:Key="IsNullOrWhiteSpaceConverter"/>
+           </ResourceDictionary>
+    </pages:PopupPage.Resources>
+    <!--Animations use example-->
+    <pages:PopupPage.Animation>
+            <animations:ScaleAnimation 
+              PositionIn="Center"
+              PositionOut="Center"
+              ScaleIn="1.2"
+              ScaleOut="0.8"
+              DurationIn="400"
+              DurationOut="300"
+              EasingIn="SinOut"
+              EasingOut="SinIn"
+              HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+
+    <!-- MAIN CONTAINER -->
+
+    <Grid 
+        HeightRequest="550"
+        Margin="10"
+        BackgroundColor="White"
+        HorizontalOptions="Fill"
+        VerticalOptions="Center"
+        RowSpacing="0">
+            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackLayout
+            Grid.Row="0"
+            Orientation="Horizontal"
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand">
+
+            <Label
+                TextColor="{ DynamicResource AccentColor }"
+                Text="{ x:Static helper:FontAwesomeFont.Filter } " 
+                Style="{ StaticResource FontIcon }"
+                VerticalOptions="Center"
+                FontSize="25"/>
+
+            <Label
+                TextColor="{ DynamicResource AccentColor }"
+                Text="{i18n:Translate Comments.Dimensions.Filter.Title}"
+                VerticalOptions="Center"
+                FontSize="25"/>
+
+        </StackLayout>
+
+        <ScrollView
+            Grid.Row="1">
+
+            <TableView 
+                Intent="Settings" 
+                HasUnevenRows="true">
+
+                <TableSection Title="{i18n:Translate Settings.Alerts.General}">
+
+                    <extended:ExtendedViewCell SeparatorColor="{DynamicResource AccentColor}" SeparatorPadding="5">
+
+                         <Grid Padding="16,6,16,6" ColumnSpacing="16">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label 
+                                Grid.Column="0"
+                                Text="{ x:Static helper:FontAwesomeFont.Calendar }"
+                                Style="{StaticResource FontIcon}"
+                                FontSize ="12"
+                                WidthRequest="12"
+                                HeightRequest="12"
+                                VerticalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"/>
+
+                            <Label 
+                                Grid.Column="1"
+                                Text="{i18n:Translate Settings.Statistics.General.Interval }"
+                                VerticalTextAlignment="Center"
+                                HorizontalOptions="StartAndExpand"/>
+
+                            <Label
+                                Grid.Column="2" 
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions="End"
+                                VerticalOptions="CenterAndExpand"
+                                TextColor="{ DynamicResource AccentColor }"
+                                Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                                FontFamily="{ StaticResource IconsFontFamily }">
+
+                                <Label.FontSize>
+                                    <OnIdiom 
+                                        x:TypeArguments="x:Double"
+                                        Phone="20"
+                                        Tablet="20" />
+                                </Label.FontSize> 
+
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Tapped="OnTimeIntervalInfo"
+                                        NumberOfTapsRequired="1" />
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <Picker
+                                Grid.Column="3"
+                                WidthRequest="100"
+                                VerticalOptions="Center"
+                                ItemsSource="{Binding TimeIntervalsOptionsList }"
+                                SelectedItem="{Binding TimeIntervalOption }"
+                                ItemDisplayBinding="{Binding Description}"/>
+
+                        </Grid>
+
+                    </extended:ExtendedViewCell> 
+                </TableSection>
+
+               <TableSection 
+                    Title="{i18n:Translate Comments.Dimensions.Filter }"
+                     x:Name="TableSectionCategories">
+               </TableSection>
+
+          </TableView>
+
+       </ScrollView>
+
+      <!-- FOOTER -->
+      <StackLayout
+            Grid.Row="2"
+            HorizontalOptions="Fill"
+            VerticalOptions="End" 
+            Margin="10">
+
+            <artina:Button
+                Style="{StaticResource PrimaryActionButtonStyle}"
+                VerticalOptions="Center"
+                Text="{i18n:Translate Common.Apply.Filter}"
+                Command="{ Binding FilterCommentsCommand }"
+                WidthRequest="{ artina:OnOrientationDouble
+                    LandscapePhone=200,
+                    LandscapeTablet=400 }"
+                HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                    PortraitPhone=Fill,
+                    LandscapePhone=Center,
+                    PortraitTablet=Fill,
+                    LandscapeTablet=Center }">
+            </artina:Button>
+        </StackLayout>
+    </Grid>
+</pages:PopupPage>

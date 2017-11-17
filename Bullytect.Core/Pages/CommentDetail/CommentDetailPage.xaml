@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<common:BaseContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    x:TypeArguments="viewModels:CommentDetailViewModel"
+    BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
+    x:Class="Bullytect.Core.Pages.CommentDetail.CommentDetailPage">
+     <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:SocialMediaToIconConverter x:Key="SocialMediaToIconConverter" />
+            <converters:SentimentLevelToTextConverter x:Key="SentimentLevelToTextConverter" />
+            <converters:SentimentLevelToColorConverter x:Key="SentimentLevelToColorConverter" />
+            <converters:AdultLevelToTextConverter x:Key="AdultLevelToTextConverter" />
+            <converters:AdultLevelToColorConverter x:Key="AdultLevelToColorConverter" />
+            <converters:DrugsLevelToTextConverter x:Key="DrugsLevelToTextConverter" />
+            <converters:DrugsLevelToColorConverter x:Key="DrugsLevelToColorConverter" />
+            <converters:ViolenceLevelToTextConverter x:Key="ViolenceLevelToTextConverter" />
+            <converters:ViolenceLevelToColorConverter x:Key="ViolenceLevelToColorConverter" />
+            <converters:BullyingLevelToTextConverter x:Key="BullyingLevelToTextConverter" />
+            <converters:BullyingLevelToColorConverter x:Key="BullyingLevelToColorConverter" />
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentPage.Content>
+
+        <!-- MAIN CONTAINER -->
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- APP Header -->
+            <common:AppHeader 
+                Grid.Row="0"
+                Title="{i18n:Translate Page.Comment.Detail.Title}">
+                <common:AppHeader.Options>
+                    <x:Array Type="{x:Type View}">
+                        <common:RefreshOptionMenu />
+                    </x:Array>
+                </common:AppHeader.Options>
+
+            </common:AppHeader>
+
+            <ScrollView 
+                Grid.Row="1"
+                Padding="{ StaticResource MainWrapperPadding }">
+                
+                <Grid
+                    RowSpacing="0"
+                    VerticalOptions="FillAndExpand">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="240" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid 
+                        Grid.Row="0"
+                        Padding="0"
+                        BackgroundColor="Black">
+
+                        <!-- MAIN IMAGE -->
+                        <ffimageloading:CachedImage
+                            ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+                            LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
+                            CacheType="Disk" CacheDuration="30"
+                            Source="{ Binding AuthorPhoto }"
+                            Aspect="AspectFill"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start"
+                            Opacity=".8">
+                         </ffimageloading:CachedImage>
+                    </Grid>
+
+                    <!-- MAIN HEADER -->
+                    <StackLayout
+                        Grid.Row="0"
+                        Padding="20"
+                        Spacing="0"
+                        VerticalOptions="End"
+                        x:Name="headers" 
+                        AnchorX="0"
+                        AnchorY="0">
+
+                        <!-- HEADERS -->
+                        <Label
+                            Text="{ Binding AuthorName }"
+                            LineBreakMode="WordWrap"
+                            TextColor="{ DynamicResource OverImageTextColor }"
+                            FontSize="26"
+                            FontAttributes="Bold"/>
+
+                        <Label
+                            Text="{Binding CreatedTime, StringFormat={i18n:Translate Comments.Detail.CreatedTime } }"
+                            LineBreakMode="WordWrap"
+                            TextColor="{ DynamicResource OverImageTextColor }"
+                            FontSize="16"/>
+
+                        <BoxView  
+                            Style="{StaticResource BrandNameOrnamentStyle}"
+                            Margin="0,20,0,0"/>
+
+                    </StackLayout>
+
+
+
+                    <Grid
+                        Grid.Row="1"
+                        BackgroundColor="{ DynamicResource BasePageColor }">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <!--HEADER BACKGROUND-->
+                        <BoxView
+                            Grid.Row="0"
+                            BackgroundColor="{ DynamicResource ArticleHeaderBackgroundColor }" />
+
+                        <!--HEADER INFO-->
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Grid.Row="0"
+                            Padding="20,0"
+                            VerticalOptions="Center"
+                            HorizontalOptions="FillAndExpand"
+                            Spacing="10">
+
+                            <Label
+                                VerticalTextAlignment="Center"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Start"
+                                HorizontalOptions="Start"
+                                Text="{ Binding SocialMedia, Converter = { StaticResource SocialMediaToIconConverter }}"
+                                FontFamily="{ StaticResource IconsFontFamily }"
+                                FontSize ="22"
+                                TextColor="{ DynamicResource AccentColor }"/>
+
+                            <StackLayout 
+                                Orientation="Horizontal" 
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="EndAndExpand">
+                                <Label
+                                    TextColor="{ DynamicResource AccentColor }"
+                                    Text="{ x:Static helper:FontAwesomeFont.ThumbsOUp } " 
+                                    Style="{ StaticResource FontIcon }"
+                                    VerticalOptions="Center"
+                                    FontSize="14"/>
+
+                                <Label
+                                    TextColor="{ DynamicResource AccentColor }"
+                                    Text="{ Binding Likes }"
+                                    VerticalOptions="Center"
+                                    FontSize="14"/>
+                            </StackLayout>
+
+   
+                            <Label 
+                                Text="{ Binding ExtractedAtSince }"
+                                FontSize="14"
+                                LineBreakMode="TailTruncation"
+                                TextColor="{ DynamicResource BaseTextColor }"
+                                HorizontalOptions="End"
+                                VerticalOptions="Center"/>
+                        
+                            
+                        </StackLayout>
+
+                        <!-- SEPARATOR -->
+                        <BoxView
+                            Grid.Row="0"
+                            VerticalOptions="End"
+                            Style="{ StaticResource Horizontal1ptLineStyle}" />
+
+                        <ScrollView 
+                            Grid.Row="1"
+                            Padding="20,20,20,0"
+                            VerticalOptions="StartAndExpand">
+
+                            <StackLayout
+                                Padding="10">
+
+                                
+                                <Label
+                                    Text="{ Binding Message }"
+                                    TextColor="{ DynamicResource BaseTextColor }"
+                                    FontSize="20"
+                                    VerticalOptions="Start"
+                                    Margin="0,10,0,0"
+                                    LineBreakMode="WordWrap"
+                                    FontAttributes="Bold"/>
+
+                                <StackLayout
+                                    Margin="0,20,0,0">
+
+                                    <Label
+                                        Text="Resultados"
+                                        LineBreakMode="WordWrap"
+                                        TextColor="{ DynamicResource BaseTextColor }"
+                                        FontSize="20"
+                                        FontAttributes="Bold"/>
+
+                                    <BoxView  
+                                        Style="{StaticResource BaseTextBrandNameOrnamentStyle}"/>
+
+                                </StackLayout>
+
+
+                                <StackLayout Margin="0,5,0,0" Orientation="Horizontal">
+
+                                    <Image 
+                                        WidthRequest="50"
+                                        HeightRequest="50"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Start"
+                                        Source="sentimientos.png" />
+
+                                     <Label
+                                        Text="{ Binding Sentiment, Converter = { StaticResource SentimentLevelToTextConverter } }"
+                                        TextColor="{ Binding Sentiment, Converter = { StaticResource SentimentLevelToColorConverter } }"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="StartAndExpand"
+                                        Margin="0,10,0,0" />
+
+                                </StackLayout>
+
+
+                                <StackLayout Margin="0,5,0,0" Orientation="Horizontal">
+
+                                    <Image 
+                                        WidthRequest="50"
+                                        HeightRequest="50"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Start"
+                                        Source="violencia.png" />
+
+                                     <Label
+                                        Text="{ Binding Violence, Converter = { StaticResource ViolenceLevelToTextConverter } }"
+                                        TextColor="{ Binding Violence, Converter = { StaticResource ViolenceLevelToColorConverter } }"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="StartAndExpand"
+                                        Margin="0,10,0,0" />
+
+                                </StackLayout>
+
+                                <StackLayout Margin="0,5,0,0" Orientation="Horizontal">
+
+                                    <Image 
+                                        WidthRequest="50"
+                                        HeightRequest="50"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Start"
+                                        Source="drogas.png" />
+
+                                     <Label
+                                        Text="{ Binding Drugs, Converter = { StaticResource DrugsLevelToTextConverter } }"
+                                        TextColor="{ Binding Drugs, Converter = { StaticResource DrugsLevelToColorConverter } }"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="StartAndExpand"
+                                        Margin="0,10,0,0" />
+
+                                </StackLayout>
+
+
+                                <StackLayout Margin="0,5,0,0" Orientation="Horizontal">
+
+
+                                    <Image 
+                                        WidthRequest="50"
+                                        HeightRequest="50"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Start"
+                                        Source="bullying.png" />
+                                    
+                                     <Label
+                                        Text="{ Binding Bullying, Converter = { StaticResource BullyingLevelToTextConverter } }"
+                                        TextColor="{ Binding Bullying, Converter = { StaticResource BullyingLevelToColorConverter } }"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="StartAndExpand"
+                                        Margin="0,10,0,0" />
+
+                                </StackLayout>
+
+
+                                <StackLayout Margin="0,5,0,0" Orientation="Horizontal">
+
+                                    <Image 
+                                        WidthRequest="50"
+                                        HeightRequest="50"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Start"
+                                        Source="sexo.png" />
+
+                                     <Label
+                                        Text="{ Binding Adult, Converter = { StaticResource AdultLevelToTextConverter } }"
+                                        TextColor="{ Binding Adult, Converter = { StaticResource AdultLevelToColorConverter } }"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="StartAndExpand"
+                                        Margin="0,10,0,0" />
+
+                                </StackLayout>
+                                 
+                            </StackLayout>
+
+                        </ScrollView>
+                    </Grid>
+                </Grid>
+            </ScrollView>
+         </Grid>
+    </ContentPage.Content>
+</common:BaseContentPage>

@@ -1,11 +1,13 @@
 ﻿
 using System;
 using System.Reactive.Linq;
+using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.Helpers;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
+using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 
@@ -158,7 +160,33 @@ namespace Bullytect.Core.ViewModels
         #region commands
 
 
-            public ReactiveCommand DeleteAlertCommand { get; protected set; }  
+            public ReactiveCommand DeleteAlertCommand { get; protected set; } 
+
+            public ICommand NavigateToCommand
+                => new MvxCommand<AlertCategoryEnum>((Category) => {
+
+                    switch(Category) {
+                        case AlertCategoryEnum.INFORMATION_SON:
+                            ShowViewModel<EditSonViewModel>(new { SonIdentity });
+                            break;
+                        case AlertCategoryEnum.GENERAL_STATISTICS:
+                            ShowViewModel<ResultsViewModel>();
+                            break;
+                        case AlertCategoryEnum.STATISTICS_SON:
+                            ShowViewModel<SonStatisticsViewModel>(new SonStatisticsViewModel.SonStatisticsParameter()
+                            {
+                                Identity = SonIdentity,
+                                FullName = SonFullName,
+                                ShowChart = SonStatisticsViewModel.FOUR_DIMENSIONS_CHART
+                            });
+                            break;
+                        case AlertCategoryEnum.INFORMATION_EXTRACTION:
+                            ShowViewModel<CommentsViewModel>(new { Identity = SonIdentity });
+                            break;
+                    }
+
+                    
+                });
 
         #endregion
 

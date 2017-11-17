@@ -77,15 +77,18 @@
                             Margin="20, 0"></StackLayout>
                     </ScrollView>
 
+
+                    <common:NoDataFound
+                        Grid.Row="1"
+                        IsVisible="false"
+                        HorizontalOptions="Center" 
+                        VerticalOptions="FillAndExpand"
+                        x:Name="NoDataFound"
+                        MainText="{i18n:Translate Common.No.Results.Found }"
+                        DetailText="{i18n:Translate Common.No.Results.Found.Detail }"/>
+
                 </Grid>
 
-                <common:NoDataFound
-                    IsVisible="false"
-                    x:Name="NoDataFound"
-                    HorizontalOptions="FillAndExpand" 
-                    VerticalOptions="FillAndExpand"
-                    MainText="{i18n:Translate Common.No.Results.Found }"
-                    DetailText="{i18n:Translate Common.No.Results.Found.Detail }"/>
 
                <common:ErrorOcurred 
                     x:Name="ErrorOcurred"

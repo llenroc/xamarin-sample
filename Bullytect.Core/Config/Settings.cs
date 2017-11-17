@@ -50,8 +50,20 @@ namespace Bullytect.Core.Config
 			}
 		}
 
+        static readonly bool ShowAllSocialMediaDefault = true;
 
-        static readonly int LastAlertsCountDefault = 5;
+        public bool ShowAllSocialMedia
+        {
+            get { return AppSettings.GetValueOrDefault(nameof(ShowAllSocialMedia), ShowAllSocialMediaDefault); }
+            set
+            {
+                if (AppSettings.AddOrUpdateValue(nameof(ShowAllSocialMedia), value))
+                    OnPropertyChanged();
+            }
+        }
+
+
+        static readonly int LastAlertsCountDefault = 20;
 
 		public int LastAlertsCount
 		{
@@ -63,7 +75,7 @@ namespace Bullytect.Core.Config
 			}
 		}
 
-		static readonly int AntiquityOfAlertsDefault = 15;
+		static readonly int AntiquityOfAlertsDefault = 0;
 
 		public int AntiquityOfAlerts
 		{
@@ -89,6 +101,19 @@ namespace Bullytect.Core.Config
 					OnPropertyChanged();
 			}
 		}
+
+        static readonly string FilteredSocialMediaDefault = string.Empty;
+
+
+        public string FilteredSocialMedia
+        {
+            get { return AppSettings.GetValueOrDefault(nameof(FilteredSocialMedia), FilteredSocialMediaDefault); }
+            set
+            {
+                if (AppSettings.AddOrUpdateValue(nameof(FilteredSocialMedia), value))
+                    OnPropertyChanged();
+            }
+        }
 
 		static readonly bool ShowResultsForAllChildrenDefault = true;
 

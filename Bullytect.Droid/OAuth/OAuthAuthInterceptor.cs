@@ -19,8 +19,7 @@ namespace Bullytect.Droid.OAuth
 			DataSchemes = new[]
 			{
                 "com.usal.bisite.bulltect",
-                "fb341732922916068",
-                "ig08a463d96c5149a8beaf00c1d911fb67"
+                "fb341732922916068"
 			},
 			DataPaths = new[]
 			{

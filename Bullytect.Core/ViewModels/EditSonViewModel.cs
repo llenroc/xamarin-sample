@@ -284,7 +284,7 @@ namespace Bullytect.Core.ViewModels
                         => new MvxCommand(() => ToggleSocialMediaHandler(new InstagramOAuth2(), AppConstants.INSTAGRAM));
 
         public ICommand ToggleYoutubeSocialMediaCommand
-                        => new MvxCommand(() => ToggleSocialMediaHandler(new GoogleOAuth2(), AppConstants.YOUTUBE));
+                        => new MvxCommand(() => ToggleSocialMediaHandler(new SonGoogleOAuth2(), AppConstants.YOUTUBE));
 
         public ReactiveCommand<Unit, SchoolEntity> SaveSchoolCommand { get; set; }
 
@@ -407,15 +407,17 @@ namespace Bullytect.Core.ViewModels
 				Debug.WriteLine(string.Format("Enable Social Media: {0}", Type));
 
 				_oauthService.Authenticate(Provider)
-							 .Where(AccessToken => !string.IsNullOrWhiteSpace(AccessToken))
-					.Subscribe(AccessToken =>
+                             .Where(AuthDict => AuthDict.ContainsKey("access_token") && !string.IsNullOrWhiteSpace("access_token"))
+                             .Subscribe(AuthDict =>
 					{
 
 						if (index.HasValue)
 						{
 
 							var SocialMedia = CurrentSocialMedia.ElementAt(index.Value);
-							SocialMedia.AccessToken = AccessToken;
+                            SocialMedia.AccessToken = AuthDict["access_token"];
+                            if(AuthDict.ContainsKey("refresh_token"))
+                                SocialMedia.RefreshToken = AuthDict["refresh_token"];
 							SocialMedia.InvalidToken = false;
 							RaisePropertyChanged(nameof(CurrentSocialMedia));
 						}
@@ -423,7 +425,9 @@ namespace Bullytect.Core.ViewModels
 						{
 							CurrentSocialMedia.Add(new SocialMediaEntity()
 							{
-								AccessToken = AccessToken,
+                                AccessToken = AuthDict["access_token"],
+                                RefreshToken = AuthDict.ContainsKey("refresh_token") 
+                                                       ? AuthDict["refresh_token"] : string.Empty,
 								InvalidToken = false,
 								Type = Type
 							});

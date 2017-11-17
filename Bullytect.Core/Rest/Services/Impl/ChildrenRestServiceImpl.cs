@@ -153,5 +153,10 @@ namespace Bullytect.Core.Rest.Services.Impl
 
             return Observable.FromAsync(() => GetData<APIResponse<NewFriendsDTO>>(new Uri(ApiEndpoints.NEW_FRIENDS).AttachParameters(queryParams)));
         }
+
+        public IObservable<APIResponse<IList<CommentDTO>>> GetCommentsBySon(string SonId)
+        {
+            return Observable.FromAsync(() => GetData<APIResponse<IList<CommentDTO>>>(ApiEndpoints.GET_COMMENTS_BY_SON.Replace(":id", SonId)));
+        }
     }
 }

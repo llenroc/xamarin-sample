@@ -65,7 +65,18 @@ namespace Bullytect.Core
 			cfg.CreateMap<SocialMediaEntity, SaveSocialMediaDTO>();
 			cfg.CreateMap<SchoolDTO, SchoolEntity>();
 			cfg.CreateMap<AlertsPageDTO, AlertsPageEntity>();
-			cfg.CreateMap<IterationDTO, IterationEntity>();
+            cfg.CreateMap<CommentDTO, CommentEntity>()
+                .ForMember(c => c.Sentiment, (obj) =>
+                           obj.MapFrom((Comment) => Comment.Sentiment.ToEnum<SentimentLevelEnum>()))
+                 .ForMember(c => c.Violence, (obj) =>
+                            obj.MapFrom((Comment) => Comment.Violence.ToEnum<ViolenceLevelEnum>()))
+                 .ForMember(c => c.Bullying, (obj) =>
+                           obj.MapFrom((Comment) => Comment.Bullying.ToEnum<BullyingLevelEnum>()))
+                 .ForMember(c => c.Adult, (obj) =>
+                           obj.MapFrom((Comment) => Comment.Bullying.ToEnum<AdultLevelEnum>()))
+                .ForMember(c => c.Drugs, (obj) =>
+                           obj.MapFrom((Comment) => Comment.Drugs.ToEnum<DrugsLevelEnum>()));
+            
             cfg.CreateMap<UserSystemPreferencesDTO, UserSystemPreferencesEntity>();
 
 			// Mapper for SonEntity to SonCategoryModel
@@ -250,16 +261,16 @@ namespace Bullytect.Core
                     AlertLevelEnum alertLevel = o.Level.ToEnum<AlertLevelEnum>();
                     switch(alertLevel) {
                         case AlertLevelEnum.INFO:
-                            Color = SKColor.Parse("#2C8DA9");
+                            Color = SKColor.Parse("#6781c0");
                             break;
                         case AlertLevelEnum.WARNING:
-                            Color = SKColor.Parse("#FFA700");
+                            Color = SKColor.Parse("#dbc66e");
                             break;
                         case AlertLevelEnum.DANGER:
-                            Color = SKColor.Parse("#D93028");
+                            Color = SKColor.Parse("#dd6a6b");
                             break;
                         case AlertLevelEnum.SUCCESS:
-							Color = SKColor.Parse("#E03867");
+                            Color = SKColor.Parse("#6bdd9b");
 							break;
                     }
 					return Color;

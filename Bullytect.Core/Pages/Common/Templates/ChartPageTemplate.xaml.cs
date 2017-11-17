@@ -39,7 +39,7 @@ namespace Bullytect.Core.Pages.Common.Templates
 				var chartPage = bindable as ChartPageTemplate;
 				var DataFound = (bool)newValue;
                 chartPage.NoDataFound.IsVisible = !DataFound;
-                chartPage.ChartPageContainer.IsVisible = DataFound;
+                chartPage.ChartsContainerScroll.IsVisible = DataFound;
 			});
 
 
@@ -222,15 +222,26 @@ namespace Bullytect.Core.Pages.Common.Templates
 			{
 				Text = chart.Title,
                 TextColor = (Color)Application.Current.Resources["AccentColor"],
-                FontSize = 15.0
+                FontSize = 20.0,
+                Margin = 10
 			});
+
+
+            if(!string.IsNullOrEmpty(chart.Subtitle))
+                ChartContainer.Children.Add(new Label()
+                {
+                    Text = chart.Subtitle,
+                    TextColor = (Color)Application.Current.Resources["AccentColor"],
+                    FontSize = 15.0,
+                    Margin = 10
+                });
 
 			var chartTypeObj = (Chart)Activator.CreateInstance(chart.Type ?? DEFAULT_CHART_TYPE);
 			chartTypeObj.Entries = chart.Entries;
 
 			MCChart.Chart = chartTypeObj;
 
-			MCChart.Chart.LabelTextSize = 25.45f;
+			MCChart.Chart.LabelTextSize = 20.45f;
 
 			ChartContainer.Children.Add(MCChart);
 

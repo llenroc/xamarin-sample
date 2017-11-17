@@ -149,6 +149,14 @@
     <value>Alert Detail</value>
     <comment>Page Alert Detail Title</comment>
   </data>
+  <data name="Page.Comments.Title" xml:space="preserve">
+    <value>Comments</value>
+    <comment>Page Comments Title</comment>
+  </data>
+  <data name="Page.Comment.Detail.Title" xml:space="preserve">
+    <value>Comment Detail</value>
+    <comment>Page Comments Detail Title</comment>
+  </data>
   <data name="Page.Add.Son.Title" xml:space="preserve">
     <value>Add Son</value>
     <comment>Page Add Son Title</comment>
@@ -166,8 +174,12 @@
     <comment>Page Results Title</comment>
   </data>
   <data name="Page.Statistics.Title" xml:space="preserve">
-    <value>Statistics for {0}</value>
+    <value>Statistics</value>
     <comment>Page Statistics Title</comment>
+  </data>
+  <data name="Common.Title" xml:space="preserve">
+    <value>BullTec</value>
+    <comment>Common Title</comment>
   </data>
   <data name="Common.Loading" xml:space="preserve">
     <value>Operation in progress</value>
@@ -205,9 +217,13 @@
     <value> Cancel Changes? </value>
     <comment>Common Cancel Changes</comment>
   </data>
-	<data name="Common.Retry" xml:space="preserve">
+  <data name="Common.Retry" xml:space="preserve">
     <value> Retry </value>
     <comment>Common Retry</comment>
+  </data>
+  <data name="Common.Apply.Filter" xml:space="preserve">
+    <value>Apply Filter</value>
+    <comment>Common Apply Filter</comment>
   </data>
   <data name="Common.Btn.Save.Changes" xml:space="preserve">
     <value> Save Changes</value>
@@ -281,12 +297,13 @@
     <value>Go To Login</value>
     <comment>Walkthrough Btn Finish</comment>
   </data>
+
   <data name="WelcomePage.MainLabel" xml:space="preserve">
-    <value>BullTec - The first anti-bullying in internet history.</value>
+    <value>The Social Media Protec</value>
     <comment>WelcomePage MainLabel</comment>
   </data>
   <data name="WelcomePage.SecondLabel" xml:space="preserve">
-    <value>Designed to protect the younger and pre-teenagers from attack on social networks of other groups of their age</value>
+    <value>Help protect children and youth from harassment and attacks received from social networks.</value>
     <comment>WelcomePage SecondLabel</comment>
   </data>
   <data name="WelcomePage.ClaimText" xml:space="preserve">
@@ -351,12 +368,11 @@ email and password.</value>
     <comment>Signup Page Title</comment>
   </data>
   <data name="Signup.Title.Main" xml:space="preserve">
-    <value>Register now</value>
+    <value>Sign up</value>
     <comment>Signup Title Main</comment>
   </data>
   <data name="Signup.Title.Second" xml:space="preserve">
-    <value>Register now and enjoy the
-pleasures of the demo.</value>
+    <value>With an existing account or creating a new one.</value>
     <comment>Signup Title</comment>
   </data>
   <data name="Signup.Create" xml:space="preserve">
@@ -372,7 +388,7 @@ pleasures of the demo.</value>
     <comment>Creating Account</comment>
   </data>
   <data name="Signup.Account.Created" xml:space="preserve">
-    <value> Your account was created successfully, check your email for more information on how to activate it. </value>
+    <value> Your account has been created successfully. Before you can log in, you must verify your email by following the steps we have sent to you. </value>
     <comment>Account Created</comment>
   </data>
   <data name="Signup.Account.Email.Invalid" xml:space="preserve">
@@ -428,8 +444,12 @@ and we will recover it for you. </value>
     <value> Failed to load user profile </value>
     <comment>Home Loading Failed</comment>
   </data>
-  <data name="Home.Alerts.List.Title" xml:space="preserve">
+  <data name="Home.Alerts.List.Title.Filter" xml:space="preserve">
     <value>  Last Alerts ( last {0} minutes )</value>
+    <comment>Home Alerts List Title Filter</comment>
+  </data>
+  <data name="Home.Alerts.List.Title" xml:space="preserve">
+    <value>  Last Alerts</value>
     <comment>Home Alerts List Title</comment>
   </data>
   <data name="Home.Show.Alerts" xml:space="preserve">
@@ -488,6 +508,10 @@ and we will recover it for you. </value>
   <data name="Children.Toolbar.Edit" xml:space="preserve">
     <value> Edit </value>
     <comment>Children Toolbar Edit</comment>
+  </data>
+  <data name="Children.Toolbar.Relations" xml:space="preserve">
+    <value> Relations </value>
+    <comment>Children Toolbar Relations</comment>
   </data>
   <data name="Profile.Save.Changes" xml:space="preserve">
     <value> Save Changes </value>
@@ -816,6 +840,10 @@ and we will recover it for you. </value>
     <value> {0} minutes</value>
     <comment>Settings Antiquity Of Alerts Description</comment>
   </data>
+  <data name="Settings.Antiquity.Of.Alerts.No.Filter" xml:space="preserve">
+    <value> No Filter</value>
+    <comment>Settings Antiquity Of Alerts No Filter</comment>
+  </data>
   <data name="Settings.Push.Notifications" xml:space="preserve">
     <value>Enable Push Notifications</value>
     <comment>Settings Push Notifications</comment>
@@ -1040,5 +1068,195 @@ and we will recover it for you. </value>
         <value>Go to the child's statistics section for more information</value>
         <comment>Alerts Category Statistics Son</comment>
     </data>
+
+    <data name="Alerts.Category.Information.Extraction" xml:space="preserve">
+        <value>Go to the comments list to see them</value>
+        <comment>Alerts Category Information Extraction</comment>
+    </data>
+
+	<data name="Alerts.Category.Information.Son.Action.Text" xml:space="preserve">
+        <value>Go to edit son</value>
+        <comment>Alerts Category Information Son Action Text</comment>
+    </data>
+
+	<data name="Alerts.Category.General.Statistics.Action.Text" xml:space="preserve">
+        <value>Go to general statistics</value>
+        <comment>Alerts Category General Statistics Action Text</comment>
+    </data>
+
+	<data name="Alerts.Category.Statistics.Son.Action.Text" xml:space="preserve">
+        <value>Go to son's statistics</value>
+        <comment>Alerts Category Statistics Son Action Text</comment>
+    </data>
+
+	<data name="Alerts.Category.Information.Extraction.Action.Text" xml:space="preserve">
+        <value>Go to the comments list</value>
+        <comment>Alerts Category Information Extraction Action Text</comment>
+    </data>
+
+	
+    <data name="Comments.Not.Found.MainText" xml:space="preserve">
+        <value>No comments found</value>
+        <comment>Comments Not Found MainText</comment>
+    </data>
+
+	<data name="Comments.Not.Found.SecondText" xml:space="preserve">
+        <value>No comments found</value>
+        <comment>Comments Not Found SecondText</comment>
+    </data>
+
+	<data name="Comments.Error.Ocurred" xml:space="preserve">
+        <value>There was an error loading comments</value>
+        <comment>Comments Error Ocurred</comment>
+    </data>
+
+
+	
+	<data name="Comments.Detail.CreatedTime" xml:space="preserve">
+        <value>Comment created at {0}</value>
+        <comment>Comments Detail CreatedTime</comment>
+    </data>
+
+
+	<data name="Comments.Detail.Sentiment.Level.Unknown" xml:space="preserve">
+        <value>There are no results for the sentiment analysis</value>
+        <comment>Comments.Detail.Sentiment.Level.Unknown</comment>
+    </data>
+
+	<data name="Comments.Detail.Sentiment.Level.Neutro" xml:space="preserve">
+        <value>The comment has a neutral sentiment</value>
+        <comment>Comments.Detail.Sentiment.Level.Neutro</comment>
+    </data>
+
+	<data name="Comments.Detail.Sentiment.Level.Positive" xml:space="preserve">
+        <value>The comment has a positive sentiment</value>
+        <comment>Comments.Detail.Sentiment.Level.Positive</comment>
+    </data>
+
+	<data name="Comments.Detail.Sentiment.Level.Negative" xml:space="preserve">
+        <value>The comment has a negative sentiment</value>
+        <comment>Comments.Detail.Sentiment.Level.Negative</comment>
+    </data>
+
+	<data name="Comments.Detail.Adult.Level.Unknown" xml:space="preserve">
+        <value>There are no results for the analysis of adult content</value>
+        <comment>Comments.Detail.Adult.Level.Unknown</comment>
+    </data>
+
+    <data name="Comments.Detail.Adult.Level.Positive" xml:space="preserve">
+        <value>The comment is related to adult content</value>
+        <comment>Comments.Detail.Adult.Level.Positive</comment>
+    </data>
+
+    <data name="Comments.Detail.Adult.Level.Negative" xml:space="preserve">
+        <value>The comment has no relation to adult content</value>
+        <comment>Comments.Detail.Adult.Level.Negative</comment>
+    </data>
+
+    <data name="Comments.Detail.Drugs.Level.Unknown" xml:space="preserve">
+        <value>There are no results for drug analysis</value>
+        <comment>Comments.Detail.Drugs.Level.Unknown</comment>
+    </data>
+
+	<data name="Comments.Detail.Drugs.Level.Positive" xml:space="preserve">
+        <value>The comment is related to drugs</value>
+        <comment>Comments.Detail.Drugs.Level.Positive</comment>
+    </data>
+
+	<data name="Comments.Detail.Drugs.Level.Negative" xml:space="preserve">
+        <value>The comment is not related to drugs</value>
+        <comment>Comments.Detail.Drugs.Level.Negative</comment>
+    </data>
+
+	<data name="Comments.Detail.Violence.Level.Unknown" xml:space="preserve">
+        <value>There are no results for the analysis of violence</value>
+        <comment>Comments.Detail.Violence.Level.Unknown</comment>
+    </data>
+
+    <data name="Comments.Detail.Violence.Level.Positive" xml:space="preserve">
+        <value>The comment is violent</value>
+        <comment>Comments.Detail.Violence.Level.Positive</comment>
+    </data>
+
+    <data name="Comments.Detail.Violence.Level.Negative" xml:space="preserve">
+        <value>The comment is not violent</value>
+        <comment>Comments.Detail.Violence.Level.Negative</comment>
+    </data>
+
+	<data name="Comments.Detail.Bullying.Level.Unknown" xml:space="preserve">
+        <value>There are no results for the analysis of bullying</value>
+        <comment>Comments.Detail.Bullying.Level.Unknown</comment>
+    </data>
+
+    <data name="Comments.Detail.Bullying.Level.Positive" xml:space="preserve">
+        <value>Comment created at {0}</value>
+        <comment>Comments.Detail.Bullying.Level.Positive</comment>
+    </data>
+
+    <data name="Comments.Detail.Bullying.Level.Negative" xml:space="preserve">
+        <value>Comment created at {0}</value>
+        <comment>Comments.Detail.Bullying.Level.Negative</comment>
+    </data>
+
+	<data name="Comments.Dimensions.Filter" xml:space="preserve">
+        <value>Apply Dimension filter</value>
+        <comment>Comments Dimensions Filter</comment>
+    </data>
+
+	<data name="Comments.Dimensions.Filter.All" xml:space="preserve">
+        <value>All Dimmension</value>
+        <comment>Comments Dimensions Filter All</comment>
+    </data>
+
+	<data name="Comments.Dimensions.Filter.All.Description" xml:space="preserve">
+        <value>All Dimensions enabled</value>
+        <comment>Comments Dimensions Filter All Description</comment>
+    </data>
+
+	<data name="Comments.Dimensions.Violence" xml:space="preserve">
+        <value>Violence</value>
+        <comment>Comments Dimensions Violence</comment>
+    </data>
+	
+	<data name="Comments.Dimensions.Violence.Description" xml:space="preserve">
+        <value>Comments related to violence</value>
+        <comment>Comments Dimensions Violence Description</comment>
+    </data>
+
+	<data name="Comments.Dimensions.Drugs" xml:space="preserve">
+        <value>Drugs</value>
+        <comment>Comments Dimensions Drugs</comment>
+    </data>
+    
+    <data name="Comments.Dimensions.Drugs.Description" xml:space="preserve">
+        <value>Comments related to drugs</value>
+        <comment>Comments Dimensions Drugs Description</comment>
+    </data>
+
+	<data name="Comments.Dimensions.Bullying" xml:space="preserve">
+        <value>Bullying</value>
+        <comment>Comments Dimensions Bullying</comment>
+    </data>
+    
+    <data name="Comments.Dimensions.Bullying.Description" xml:space="preserve">
+        <value>Comments related to Bullying</value>
+        <comment>Comments Dimensions Bullying Description</comment>
+    </data>
+
+	<data name="Comments.Dimensions.Sex" xml:space="preserve">
+        <value>Sex</value>
+        <comment>Comments Dimensions Sex</comment>
+    </data>
+    
+    <data name="Comments.Dimensions.Sex.Description" xml:space="preserve">
+        <value>Comments related to Adult content</value>
+        <comment>Comments Dimensions Sex Description</comment>
+    </data>
+
+	<data name="Comments.Dimensions.Filter.Title" xml:space="preserve">
+        <value>Filter Comments</value>
+        <comment>Comments Dimensions Filter Title</comment>
+    </data>
+
 	
 </root>

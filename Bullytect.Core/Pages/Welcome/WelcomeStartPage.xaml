@@ -25,8 +25,7 @@
                 Style="{StaticResource WelcomeBackgroundImage}"/>
 
                 <ScrollView>
-                    <Grid 
-                        Padding="20">
+                    <Grid Padding="20">
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -34,30 +33,27 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <!-- LOGO -->
-                        <Image 
-                            Grid.Column="0"
-                            Source="Icon_76.png"
-                            WidthRequest="76"
-                            HeightRequest="76"
-                            Margin="20"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Center" />
 
+                        <StackLayout 
+                            VerticalOptions="StartAndExpand"
+                            Margin="0,30,0,0"
+                            Grid.Row="0">
 
-                        <!--CLAIM TEXT-->
-                        <StackLayout
-                            Grid.Row="1"
-                            Spacing="10"
-                            Padding="20,10"
-                            Orientation="Vertical"
-                            VerticalOptions="Center">
+                            <!-- LOGO -->
+                            <Image 
+                                Source="Icon_76.png"
+                                WidthRequest="76"
+                                HeightRequest="76"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center" />
 
                             <Label
                                 LineBreakMode="WordWrap"
-                                Text="{i18n:Translate WelcomePage.MainLabel}" 
+                                Text="{ i18n:Translate Common.Title }" 
                                 TextColor="{ DynamicResource OverImageTextColor }"
+                                HorizontalTextAlignment="Center"
                                 VerticalTextAlignment="Center"
+                                HorizontalOptions="Center"
                                 FontAttributes="Bold">
                                     <Label.FontSize>
                                         <OnIdiom x:TypeArguments="x:Double"
@@ -66,30 +62,56 @@
                                     </Label.FontSize>
                             </Label>
 
+                            <Label
+                                LineBreakMode="WordWrap"
+                                Text="{ i18n:Translate WelcomePage.MainLabel }" 
+                                TextColor="{ DynamicResource OverImageTextColor }"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions="Center"
+                                FontAttributes="Bold">
+                                    <Label.FontSize>
+                                        <OnIdiom 
+                                            x:TypeArguments="x:Double"
+                                            Phone="22"
+                                            Tablet="32"/>
+                                    </Label.FontSize>
+                            </Label>
                         
+                        </StackLayout>
+
+                        <!--CLAIM TEXT-->
+                        <StackLayout
+                            Grid.Row="1"
+                            Spacing="10"
+                            Padding="10,10"
+                            Orientation="Vertical"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center">
 
                             <Label
                                 LineBreakMode="WordWrap"
-                                Text="{i18n:Translate WelcomePage.SecondLabel}" 
+                                Text="{ i18n:Translate WelcomePage.SecondLabel }" 
                                 TextColor="{ DynamicResource OverImageTextColor }"
                                 VerticalTextAlignment="Center"
                                 FontAttributes="Bold">
                                     <Label.FontSize>
-                                        <OnIdiom x:TypeArguments="x:Double"
-                                            Phone="18"
+                                        <OnIdiom 
+                                            x:TypeArguments="x:Double"
+                                            Phone="24"
                                             Tablet="28"/>
                                     </Label.FontSize>
                             </Label>
 
                             <Label
                                 LineBreakMode="WordWrap"
-                                Text="{i18n:Translate WelcomePage.ClaimTextSecond}"
+                                Text="{ i18n:Translate WelcomePage.ClaimTextSecond }"
                                 TextColor="{ DynamicResource OverImageTextColor }"
                                 VerticalTextAlignment="Center">
                                 <Label.FontSize> 
                                     <OnIdiom 
                                         x:TypeArguments="x:Double"
-                                        Phone="15"
+                                        Phone="18"
                                         Tablet="25"/>
                                 </Label.FontSize>
                             </Label>

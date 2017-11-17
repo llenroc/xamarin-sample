@@ -44,5 +44,7 @@ namespace Bullytect.Core.Rest.Services
         IObservable<APIResponse<MostActiveFriendsDTO>> GetMostActiveFriends(String[] Ids, int daysAgo);
 
         IObservable<APIResponse<NewFriendsDTO>> GetNewFriends(String[] Ids, int daysAgo);
+
+        IObservable<APIResponse<IList<CommentDTO>>> GetCommentsBySon(String SonId);
     }
 }

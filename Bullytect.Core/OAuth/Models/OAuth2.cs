@@ -19,5 +19,7 @@ namespace Bullytect.Core.OAuth.Models
 			set;
 		}
 
+        public bool UsingNativeUI { get; set; } = true;
+
 	}
 }

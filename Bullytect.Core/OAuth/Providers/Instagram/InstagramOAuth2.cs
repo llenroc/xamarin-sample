@@ -1,4 +1,5 @@
 ﻿using System;
+using Bullytect.Core.Config;
 using Bullytect.Core.OAuth.Models;
 
 namespace Bullytect.Core.OAuth.Providers.Instagram
@@ -19,11 +20,12 @@ namespace Bullytect.Core.OAuth.Providers.Instagram
 		partial void SetPublicNonSensitiveData()
 		{
 			Description = "BullTect Instagram";
-			OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer = "08a463d96c5149a8beaf00c1d911fb67";
+            OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer = "63b03cfec6894833aaf0c2823b4a66fb";
 			OAuth2_Scope = "basic comments public_content relationships likes follower_list";
 			OAuth_UriAuthorization = new Uri("https://api.instagram.com/oauth/authorize/");
-			OAuth_UriCallbackAKARedirect = new Uri("http://bulltec-dev.der.usal.es:8080/bulltect-integration-platform/api/v1/children/redirect");
+            OAuth_UriCallbackAKARedirect = new Uri(SharedConfig.REDIRECT_URL);
 			AllowCancel = true;
+            UsingNativeUI = false;
 			HowToMarkDown =
 @"
     https://instagram.com/developer/

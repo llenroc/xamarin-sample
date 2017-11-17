@@ -214,25 +214,9 @@
                                     Style="{StaticResource ArtinaLoginEntryStyle}"
                                     Keyboard="Email"
                                     Text="{ Binding Email }">
-                                    <Entry.Behaviors>
-                                        <artina:EmailValidatorBehavior x:Name="emailValidator" />
-                                    </Entry.Behaviors>
                                  </Entry>
 
                                  <Label
-                                    Text="{ i18n:Translate Signup.Account.Email.Invalid } " IsVisible="false"
-                                    Style="{StaticResource ValidationEntryErrorStyle}">
-                                    <Label.Triggers>
-                                        <DataTrigger 
-                                            TargetType="Label"
-                                            Binding="{Binding Source={x:Reference emailValidator}, Path=IsValid}"
-                                            Value="false">
-                                            <Setter Property="IsVisible" Value="true" />
-                                        </DataTrigger> 
-                                    </Label.Triggers>
-                                   </Label>
-
-                                   <Label
                                         Text="{Binding Path=FieldErrors,                            
                                                     Converter={StaticResource ValidationErrorFormatValueConverter},
                                                     ConverterParameter={StaticResource emailValidationKey}}"

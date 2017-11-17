@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Bullytect.Core.Rest.Models.Request
 {
-    public class JwtFacebookAuthenticationRequestDTO
+    public class JwtSocialAuthenticationRequestDTO
     {
         #pragma warning disable CS1701
 

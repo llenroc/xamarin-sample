@@ -95,6 +95,18 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Page_Comments_Title {
+            get {
+                return ResourceManager.GetString("Page.Comments.Title", resourceCulture);
+            }
+        }
+        
+        internal static string Page_Comment_Detail_Title {
+            get {
+                return ResourceManager.GetString("Page.Comment.Detail.Title", resourceCulture);
+            }
+        }
+        
         internal static string Page_Add_Son_Title {
             get {
                 return ResourceManager.GetString("Page.Add.Son.Title", resourceCulture);
@@ -122,6 +134,12 @@ namespace Bullytect.Core.I18N {
         internal static string Page_Statistics_Title {
             get {
                 return ResourceManager.GetString("Page.Statistics.Title", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Title {
+            get {
+                return ResourceManager.GetString("Common.Title", resourceCulture);
             }
         }
         
@@ -182,6 +200,12 @@ namespace Bullytect.Core.I18N {
         internal static string Common_Retry {
             get {
                 return ResourceManager.GetString("Common.Retry", resourceCulture);
+            }
+        }
+        
+        internal static string Common_Apply_Filter {
+            get {
+                return ResourceManager.GetString("Common.Apply.Filter", resourceCulture);
             }
         }
         
@@ -509,6 +533,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Home_Alerts_List_Title_Filter {
+            get {
+                return ResourceManager.GetString("Home.Alerts.List.Title.Filter", resourceCulture);
+            }
+        }
+        
         internal static string Home_Alerts_List_Title {
             get {
                 return ResourceManager.GetString("Home.Alerts.List.Title", resourceCulture);
@@ -596,6 +626,12 @@ namespace Bullytect.Core.I18N {
         internal static string Children_Toolbar_Edit {
             get {
                 return ResourceManager.GetString("Children.Toolbar.Edit", resourceCulture);
+            }
+        }
+        
+        internal static string Children_Toolbar_Relations {
+            get {
+                return ResourceManager.GetString("Children.Toolbar.Relations", resourceCulture);
             }
         }
         
@@ -1085,6 +1121,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Settings_Antiquity_Of_Alerts_No_Filter {
+            get {
+                return ResourceManager.GetString("Settings.Antiquity.Of.Alerts.No.Filter", resourceCulture);
+            }
+        }
+        
         internal static string Settings_Push_Notifications {
             get {
                 return ResourceManager.GetString("Settings.Push.Notifications", resourceCulture);
@@ -1370,6 +1412,228 @@ namespace Bullytect.Core.I18N {
         internal static string Alerts_Category_Statistics_Son {
             get {
                 return ResourceManager.GetString("Alerts.Category.Statistics.Son", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Category_Information_Extraction {
+            get {
+                return ResourceManager.GetString("Alerts.Category.Information.Extraction", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Category_Information_Son_Action_Text {
+            get {
+                return ResourceManager.GetString("Alerts.Category.Information.Son.Action.Text", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Category_General_Statistics_Action_Text {
+            get {
+                return ResourceManager.GetString("Alerts.Category.General.Statistics.Action.Text", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Category_Statistics_Son_Action_Text {
+            get {
+                return ResourceManager.GetString("Alerts.Category.Statistics.Son.Action.Text", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Category_Information_Extraction_Action_Text {
+            get {
+                return ResourceManager.GetString("Alerts.Category.Information.Extraction.Action.Text", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Not_Found_MainText {
+            get {
+                return ResourceManager.GetString("Comments.Not.Found.MainText", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Not_Found_SecondText {
+            get {
+                return ResourceManager.GetString("Comments.Not.Found.SecondText", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Error_Ocurred {
+            get {
+                return ResourceManager.GetString("Comments.Error.Ocurred", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_CreatedTime {
+            get {
+                return ResourceManager.GetString("Comments.Detail.CreatedTime", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_Sentiment_Level_Unknown {
+            get {
+                return ResourceManager.GetString("Comments.Detail.Sentiment.Level.Unknown", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_Sentiment_Level_Neutro {
+            get {
+                return ResourceManager.GetString("Comments.Detail.Sentiment.Level.Neutro", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_Sentiment_Level_Positive {
+            get {
+                return ResourceManager.GetString("Comments.Detail.Sentiment.Level.Positive", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_Sentiment_Level_Negative {
+            get {
+                return ResourceManager.GetString("Comments.Detail.Sentiment.Level.Negative", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_Adult_Level_Unknown {
+            get {
+                return ResourceManager.GetString("Comments.Detail.Adult.Level.Unknown", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_Adult_Level_Positive {
+            get {
+                return ResourceManager.GetString("Comments.Detail.Adult.Level.Positive", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_Adult_Level_Negative {
+            get {
+                return ResourceManager.GetString("Comments.Detail.Adult.Level.Negative", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_Drugs_Level_Unknown {
+            get {
+                return ResourceManager.GetString("Comments.Detail.Drugs.Level.Unknown", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_Drugs_Level_Positive {
+            get {
+                return ResourceManager.GetString("Comments.Detail.Drugs.Level.Positive", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_Drugs_Level_Negative {
+            get {
+                return ResourceManager.GetString("Comments.Detail.Drugs.Level.Negative", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_Violence_Level_Unknown {
+            get {
+                return ResourceManager.GetString("Comments.Detail.Violence.Level.Unknown", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_Violence_Level_Positive {
+            get {
+                return ResourceManager.GetString("Comments.Detail.Violence.Level.Positive", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_Violence_Level_Negative {
+            get {
+                return ResourceManager.GetString("Comments.Detail.Violence.Level.Negative", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_Bullying_Level_Unknown {
+            get {
+                return ResourceManager.GetString("Comments.Detail.Bullying.Level.Unknown", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_Bullying_Level_Positive {
+            get {
+                return ResourceManager.GetString("Comments.Detail.Bullying.Level.Positive", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Detail_Bullying_Level_Negative {
+            get {
+                return ResourceManager.GetString("Comments.Detail.Bullying.Level.Negative", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Dimensions_Filter {
+            get {
+                return ResourceManager.GetString("Comments.Dimensions.Filter", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Dimensions_Filter_All {
+            get {
+                return ResourceManager.GetString("Comments.Dimensions.Filter.All", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Dimensions_Filter_All_Description {
+            get {
+                return ResourceManager.GetString("Comments.Dimensions.Filter.All.Description", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Dimensions_Violence {
+            get {
+                return ResourceManager.GetString("Comments.Dimensions.Violence", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Dimensions_Violence_Description {
+            get {
+                return ResourceManager.GetString("Comments.Dimensions.Violence.Description", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Dimensions_Drugs {
+            get {
+                return ResourceManager.GetString("Comments.Dimensions.Drugs", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Dimensions_Drugs_Description {
+            get {
+                return ResourceManager.GetString("Comments.Dimensions.Drugs.Description", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Dimensions_Bullying {
+            get {
+                return ResourceManager.GetString("Comments.Dimensions.Bullying", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Dimensions_Bullying_Description {
+            get {
+                return ResourceManager.GetString("Comments.Dimensions.Bullying.Description", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Dimensions_Sex {
+            get {
+                return ResourceManager.GetString("Comments.Dimensions.Sex", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Dimensions_Sex_Description {
+            get {
+                return ResourceManager.GetString("Comments.Dimensions.Sex.Description", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_Dimensions_Filter_Title {
+            get {
+                return ResourceManager.GetString("Comments.Dimensions.Filter.Title", resourceCulture);
             }
         }
     }

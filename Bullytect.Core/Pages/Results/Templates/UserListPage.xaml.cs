@@ -32,7 +32,7 @@ namespace Bullytect.Core.Pages.Results.Templates
 				var page = bindable as UserListPage;
 				var DataFound = (bool)newValue;
 				page.NoDataFound.IsVisible = !DataFound;
-				page.PageContainer.IsVisible = DataFound;
+                page.UserListView.IsVisible = DataFound;
 			});
 
 

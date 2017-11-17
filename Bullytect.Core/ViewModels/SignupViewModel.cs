@@ -123,9 +123,6 @@ namespace Bullytect.Core.ViewModels
 
         public ReactiveCommand<Unit, ParentEntity> SignupCommand { get; protected set; }
 
-        public ICommand GoToLoginCommand => new MvxCommand(() => ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter() {
-            ReasonForAuthentication = AuthenticationViewModel.NORMAL_AUTHENTICATION
-        }));
 
         #endregion
 

@@ -19,10 +19,10 @@ namespace Bullytect.Core.ViewModels
         readonly IStatisticsService _statisticsService;
 
 
-        const int SOCIAL_MEDIA_ACTIVITIES_CHART_POS = 0;
-        const int FOUR_DIMENSIONS_CHART = 1;
-        const int SENTIMENT_ANALYSIS_CHART = 2;
-        const int COMMUNITIES_CHART = 3;
+        public const int SOCIAL_MEDIA_ACTIVITIES_CHART = 0;
+        public const int FOUR_DIMENSIONS_CHART = 1;
+        public const int SENTIMENT_ANALYSIS_CHART = 2;
+        public const int COMMUNITIES_CHART = 3;
 
 
         public SonStatisticsViewModel(IUserDialogs userDialogs,
@@ -44,6 +44,7 @@ namespace Bullytect.Core.ViewModels
         {
             public string Identity { get; set; }
             public string FullName { get; set; }
+            public int ShowChart { get; set; } = SOCIAL_MEDIA_ACTIVITIES_CHART;
         }
 
 
@@ -51,6 +52,7 @@ namespace Bullytect.Core.ViewModels
         {
             Identity = sonStatisticsParameter.Identity;
             FullName = sonStatisticsParameter.FullName;
+            Position = sonStatisticsParameter.ShowChart;
         }
 
         #region properties
@@ -103,6 +105,15 @@ namespace Bullytect.Core.ViewModels
                 return new MvxCommand(() => ShowViewModel<SonStatisticsSettingsViewModel>());
             }
         }
+
+        public ICommand ShowCommentsCommand
+        {
+            get
+            {
+                return new MvxCommand(() => ShowViewModel<CommentsViewModel>(new { Identity = Identity }));
+            }
+        }
+
 
         #endregion
 
@@ -166,7 +177,7 @@ namespace Bullytect.Core.ViewModels
 			switch (Position)
 			{
 
-				case SOCIAL_MEDIA_ACTIVITIES_CHART_POS:
+                case SOCIAL_MEDIA_ACTIVITIES_CHART:
 					SocialMediaActivitiesChart = Chart;
 					break;
 
@@ -193,7 +204,7 @@ namespace Bullytect.Core.ViewModels
 
             switch(Position){
 
-                case SOCIAL_MEDIA_ACTIVITIES_CHART_POS:
+                case SOCIAL_MEDIA_ACTIVITIES_CHART:
                     if(force || SocialMediaActivitiesChart == null) {
                         IsBusy = true;
                         observable = _statisticsService.GetSocialMediaActivityStatistics(Identity);

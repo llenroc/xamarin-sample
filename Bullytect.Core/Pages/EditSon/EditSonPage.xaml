@@ -298,8 +298,7 @@
                                         Text="{ Binding CurrentSon.School.Location }"
                                         Placeholder="{ i18n:Translate Common.Placeholder.School }"
                                         VerticalOptions="CenterAndExpand"
-                                        Style="{StaticResource ArtinaProfileEntryStyle}"
-                                          />
+                                        Style="{StaticResource ArtinaProfileEntryStyle}"/>
 
                                      <Label
                                          Text="{Binding Path=FieldErrors,
@@ -309,9 +308,8 @@
                                             Converter={StaticResource ContainsKeyVisibilityConverter},
                                             ConverterParameter={StaticResource schoolKey}}"
                                            Style="{StaticResource ValidationEntryErrorStyle}"></Label>
-
-
-                                        <common:RoundedLabel
+                                
+                                      <common:RoundedLabel
                                             IsVisible="{ Binding TotalSchools, Converter={ StaticResource ValueEqualToZeroConverter }}"
                                             HorizontalOptions="Center"
                                             RoundedLabelText="{ i18n:Translate EditSon.School.Not.Found }"

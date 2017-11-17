@@ -72,7 +72,7 @@
 			<array>
 				<string>com.usal.bisite.bulltect</string>
 				<string>fb341732922916068</string>
-				<string>ig08a463d96c5149a8beaf00c1d911fb67</string>
+				<string>ig63b03cfec6894833aaf0c2823b4a66fb</string>
 			</array>
 			<key>CFBundleURLTypes</key>
 			<string>Viewer</string>
@@ -87,8 +87,8 @@
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>This app needs access to the photo gallery.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-    <string>Can we use your location</string>
+	<string>Can we use your location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-    <string>We are using your location</string>
+	<string>We are using your location</string>
 </dict>
 </plist>

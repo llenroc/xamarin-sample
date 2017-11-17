@@ -26,5 +26,6 @@ namespace Bullytect.Core.Services
         IObservable<string> DeleteSonById(string Id);
 		IObservable<UserSystemPreferencesEntity> SavePreferences(bool PushNotificationsEnabled, string RemoveAlertsEvery);
 		IObservable<UserSystemPreferencesEntity> GetPreferences();
+        IObservable<IList<CommentEntity>> GetCommentsBySon(string SonId);
     }
 }

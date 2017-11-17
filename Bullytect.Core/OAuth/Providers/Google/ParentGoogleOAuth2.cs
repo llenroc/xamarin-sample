@@ -4,12 +4,12 @@ using Xamarin.Forms;
 
 namespace Bullytect.Core.OAuth.Providers.Google
 {
-    public partial class GoogleOAuth2 : OAuth2
+    public partial class ParentGoogleOAuth2 : OAuth2
     {
         partial void SetPublicNonSensitiveData();
         partial void SetPrivateSensitiveData();
 
-        public GoogleOAuth2()
+        public ParentGoogleOAuth2()
         {
             SetPublicNonSensitiveData();
             SetPrivateSensitiveData();
@@ -29,7 +29,7 @@ namespace Bullytect.Core.OAuth.Providers.Google
             else
                 OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer = "";
 
-			OAuth2_Scope = "https://www.googleapis.com/auth/youtube.force-ssl";
+            OAuth2_Scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/plus.me";
 			OAuth_UriAuthorization = new Uri("https://accounts.google.com/o/oauth2/auth");
             OAuth_UriAccessToken_UriRequestToken = new Uri("https://www.googleapis.com/oauth2/v4/token");
             OAuth_UriCallbackAKARedirect = new Uri("com.usal.bisite.bulltect:/oauth2redirect");

@@ -33,6 +33,11 @@
         HorizontalOptions="FillAndExpand"
         VerticalOptions="Center">
 
+        <Label
+           WidthRequest="10"
+           VerticalOptions="FillAndExpand"
+           BackgroundColor="{ Binding Level, Converter={ StaticResource AlertLevelToColorConverter }}"></Label>
+
 
         <ffimageloading:CachedImage
             Grid.Column="0"
@@ -54,7 +59,8 @@
 
 
         <StackLayout 
-            Padding="10, 0, 0, 0" Spacing="0"
+            Padding="10, 0, 0, 0" 
+            Spacing="0"
             Orientation="Horizontal"
             HorizontalOptions="FillAndExpand">
                 
@@ -63,28 +69,31 @@
 
                     <StackLayout Orientation="Horizontal">
 
+                         <Label 
+                            Text="{ Binding Level , Converter={ StaticResource AlertLevelToFontIconConverter}}" 
+                            TextColor="{ Binding Level, Converter={ StaticResource AlertLevelToColorConverter }}"
+                            Style="{StaticResource FontIcon}"
+                            FontSize ="12"
+                            HorizontalTextAlignment="Center" 
+                            HorizontalOptions="Start" 
+                            VerticalOptions="Center" />
+
                         <Label 
                             Text="{Binding Title }"
+                            TextColor="{ Binding Level, Converter={ StaticResource AlertLevelToColorConverter }}"
+                            FontSize ="14"
                             LineBreakMode="TailTruncation"
                             HorizontalOptions="StartAndExpand"
                             VerticalOptions="FillAndExpand"/>
 
                         <Label 
-                            Text="{ Binding Level , Converter={ StaticResource AlertLevelToFontIconConverter}}" 
-                            TextColor="{ Binding Level, Converter={ StaticResource AlertLevelToColorConverter }}"
-                            Style="{StaticResource FontIcon}"
-                            FontSize ="12"
-                            HorizontalTextAlignment="End" 
-                            HorizontalOptions="End" 
-                            VerticalOptions="Center" />
-                        
-                        <Label 
                             Text="{ Binding Since }" 
+                            TextColor="{ Binding Level, Converter={ StaticResource AlertLevelToColorConverter }}"
                             FontSize ="12"
                             LineBreakMode="TailTruncation"
                             HorizontalTextAlignment="End" 
                             HorizontalOptions="End" 
-                            VerticalOptions="Center"/>
+                            VerticalOptions="FillAndExpand"/>
                         
                     </StackLayout>
                 

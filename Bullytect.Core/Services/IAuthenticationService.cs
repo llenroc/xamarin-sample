@@ -8,6 +8,7 @@ namespace Bullytect.Core.Services
     {
         IObservable<string> LogIn(string email, string password);
         IObservable<string> LoginWithFacebook(string accessToken);
+        IObservable<string> LoginWithGoogle(string accessToken);
         bool IsLoggedIn();
     }
 }

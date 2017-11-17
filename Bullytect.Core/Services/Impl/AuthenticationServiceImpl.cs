@@ -46,7 +46,7 @@ namespace Bullytect.Core.Services.Impl
             Debug.WriteLine("Log To Facebook ...");
 
             var observable =  _authenticationRestService
-                    .getAuthorizationTokenByFacebook(new JwtFacebookAuthenticationRequestDTO() { Token = accessToken })
+                .getAuthorizationTokenByFacebook(new JwtSocialAuthenticationRequestDTO() { Token = accessToken })
                     .Select(response => response.Data.Token)
                     .Finally(() => {
                         Debug.WriteLine("Log To Facebook finished ...");
@@ -59,5 +59,19 @@ namespace Bullytect.Core.Services.Impl
 		{
             return Settings.AccessToken != null;
 		}
+
+        public IObservable<string> LoginWithGoogle(string accessToken)
+        {
+            Debug.WriteLine("Log To Google ...");
+
+            var observable = _authenticationRestService
+                    .getAuthorizationTokenByGoogle(new JwtSocialAuthenticationRequestDTO() { Token = accessToken })
+                    .Select(response => response.Data.Token)
+                    .Finally(() => {
+                        Debug.WriteLine("Log To Google finished ...");
+                    });
+
+            return operationDecorator(observable);
+        }
     }
 }

@@ -32,8 +32,6 @@ namespace Bullytect.Core.Rest.Services
 
         IObservable<APIResponse<List<CommentsBySonDTO>>> GetCommentsBySonForLastIteration();
 
-        IObservable<APIResponse<List<IterationDTO>>> GetLastIterations(int count);
-
         IObservable<APIResponse<UserSystemPreferencesDTO>> SavePreferences(SaveUserSystemPreferencesDTO preferences);
 
         IObservable<APIResponse<UserSystemPreferencesDTO>> GetPreferences();

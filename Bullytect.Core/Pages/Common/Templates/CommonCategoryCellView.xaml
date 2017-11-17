@@ -14,13 +14,12 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            
-            <Label Grid.Column="0" 
-                   x:Name="LabelName"
-                   Text="{Binding Name}" 
-                   VerticalTextAlignment="Center" 
-                   HorizontalOptions="StartAndExpand"
-                   />
+            <Label 
+                Grid.Column="0" 
+                x:Name="LabelName"
+                Text="{Binding Name}" 
+                VerticalTextAlignment="Center" 
+                HorizontalOptions="StartAndExpand" />
 
              <Label
                 Grid.Column="1" 

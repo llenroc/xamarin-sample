@@ -19,9 +19,14 @@ namespace Bullytect.Core.Rest.Services.Impl
             return Observable.FromAsync(() => PostData<APIResponse<JwtAuthenticationResponseDTO>, JwtAuthenticationRequestDTO>(ApiEndpoints.GET_AUTHORIZATION_TOKEN, authorizationRequest));
         }
 
-        public IObservable<APIResponse<JwtAuthenticationResponseDTO>> getAuthorizationTokenByFacebook(JwtFacebookAuthenticationRequestDTO authorizationRequest)
+        public IObservable<APIResponse<JwtAuthenticationResponseDTO>> getAuthorizationTokenByFacebook(JwtSocialAuthenticationRequestDTO authorizationRequest)
         {
-            return Observable.FromAsync(() => PostData<APIResponse<JwtAuthenticationResponseDTO>, JwtFacebookAuthenticationRequestDTO>(ApiEndpoints.GET_AUTHORIZATION_TOKEN_BY_FACEBOOK, authorizationRequest));
+            return Observable.FromAsync(() => PostData<APIResponse<JwtAuthenticationResponseDTO>, JwtSocialAuthenticationRequestDTO>(ApiEndpoints.GET_AUTHORIZATION_TOKEN_BY_FACEBOOK, authorizationRequest));
+        }
+
+        public IObservable<APIResponse<JwtAuthenticationResponseDTO>> getAuthorizationTokenByGoogle(JwtSocialAuthenticationRequestDTO authorizationRequest)
+        {
+            return Observable.FromAsync(() => PostData<APIResponse<JwtAuthenticationResponseDTO>, JwtSocialAuthenticationRequestDTO>(ApiEndpoints.GET_AUTHORIZATION_TOKEN_BY_GOOGLE, authorizationRequest));
         }
     }
 }

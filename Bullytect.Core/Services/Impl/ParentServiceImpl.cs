@@ -284,5 +284,21 @@ namespace Bullytect.Core.Services.Impl
 
 			return operationDecorator(observable);
         }
+
+        public IObservable<IList<CommentEntity>> GetCommentsBySon(string SonId)
+        {
+            Debug.WriteLine(string.Format("Get Comments by Son: {0}", SonId));
+
+            var observable = _childrenRestService
+                .GetCommentsBySon(SonId)
+                .Select((response) => response.Data)
+                .Select(comments => Mapper.Map<IList<CommentDTO>, IList<CommentEntity>>(comments))
+                .Finally(() =>
+                {
+                    Debug.WriteLine("Get Comments by Son Finished ....");
+                });
+
+            return operationDecorator(observable);
+        }
     }
 }

@@ -83,6 +83,7 @@
                 HasUnevenRows="true">
                 
                 <TableSection Title="{i18n:Translate Settings.Alerts.General}">
+                    
                      <extended:ExtendedViewCell 
                         SeparatorColor="{DynamicResource AccentColor}" 
                         SeparatorPadding="5">
@@ -148,7 +149,9 @@
 
 
                      </extended:ExtendedViewCell>
-                     <extended:ExtendedViewCell SeparatorColor="{DynamicResource AccentColor}" SeparatorPadding="5">
+                     <extended:ExtendedViewCell 
+                            SeparatorColor="{DynamicResource AccentColor}" 
+                            SeparatorPadding="5">
 
                         <Grid Padding="16,6,16,6" ColumnSpacing="16">
                             <Grid.ColumnDefinitions>

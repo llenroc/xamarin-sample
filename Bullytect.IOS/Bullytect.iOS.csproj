@@ -552,6 +552,18 @@
     <BundleResource Include="Resources\home_header%402x.jpg" />
     <BundleResource Include="GoogleService-Info.plist" />
     <BundleResource Include="Resources\user_default.png" />
+    <BundleResource Include="Resources\sentimientos.png" />
+    <BundleResource Include="Resources\bullying.png" />
+    <BundleResource Include="Resources\drogas.png" />
+    <BundleResource Include="Resources\sexo.png" />
+    <BundleResource Include="Resources\violencia.png" />
+    <BundleResource Include="Resources\alertas_gris.png" />
+    <BundleResource Include="Resources\circulo_gris.png" />
+    <BundleResource Include="Resources\statistics_gris.png" />
+    <BundleResource Include="Resources\alertas.png" />
+    <BundleResource Include="Resources\circulo.png" />
+    <BundleResource Include="Resources\editar.png" />
+    <BundleResource Include="Resources\statistics.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bullytect.Core\Bullytect.Core.csproj">

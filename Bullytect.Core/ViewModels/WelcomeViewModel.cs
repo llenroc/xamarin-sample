@@ -33,7 +33,7 @@ namespace Bullytect.Core.ViewModels
 		{
 			get
 			{
-				return new MvxCommand(() => ShowViewModel<SignupViewModel>());
+                return new MvxCommand(() => ShowViewModel<SignupSelectorViewModel>());
 			}
 		}
 

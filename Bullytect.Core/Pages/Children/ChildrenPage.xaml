@@ -168,6 +168,41 @@
                                                         LandscapeTablet=13 }"
                                             VerticalOptions="Center"
                                             HorizontalOptions="Fill"/>
+
+                                        <StackLayout 
+                                            HorizontalOptions="Fill"
+                                            Orientation="Horizontal">
+
+                                            <Image 
+                                                WidthRequest="30" 
+                                                HeightRequest="30" 
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Center"
+                                                Source="editar.png" />
+
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center"
+                                                TextColor="{DynamicResource AccentColor}"
+                                                Text="{i18n:Translate Children.Toolbar.Edit }">
+                                                  <Label.FontSize>
+                                                    <OnIdiom
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="15"
+                                                        Tablet="15" />
+                                                  </Label.FontSize>
+                                            </Label>
+
+
+                                            <StackLayout.GestureRecognizers>
+                                              <TapGestureRecognizer 
+                                                  Command="{ Binding Path=BindingContext.EditSonCommand , Source={x:Reference Root} }"
+                                                  CommandParameter="{ Binding Identity }" NumberOfTapsRequired="1" />
+                                            </StackLayout.GestureRecognizers>
+
+                                        </StackLayout>
+
+
                                     </StackLayout>
 
                                 </Grid>
@@ -188,24 +223,18 @@
                                           HorizontalOptions="Start"
                                           VerticalOptions="CenterAndExpand">
 
+
+                                            <Image 
+                                                WidthRequest="30" 
+                                                HeightRequest="30" 
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Center"
+                                                Source="statistics.png" />
+                                        
                                             <Label
                                                 HorizontalOptions="Center"
                                                 VerticalOptions="Center"
-                                                Text="{ x:Static helper:FontAwesomeFont.BarChart }"
-                                                FontFamily="{ StaticResource IconsFontFamily }"
-                                                TextColor="{ DynamicResource AccentColor }">
-
-                                              <Label.FontSize>
-                                                <OnIdiom
-                                                     x:TypeArguments="x:Double"
-                                                     Phone="15"
-                                                     Tablet="15" />
-                                              </Label.FontSize>
-                                            </Label>
-
-                                            <Label
-                                                HorizontalOptions="Center"
-                                                VerticalOptions="Center"
+                                                TextColor="{DynamicResource AccentColor}"
                                                 Text="{i18n:Translate Children.Toolbar.Results}">
                                               <Label.FontSize>
                                                 <OnIdiom
@@ -228,23 +257,17 @@
                                           VerticalOptions="CenterAndExpand"
                                           HorizontalOptions="Center">
 
-                                        <Label
-                                            HorizontalOptions="Center"
-                                            VerticalOptions="Center"
-                                            Text="{ x:Static helper:FontAwesomeFont.Bell }"
-                                            FontFamily="{ StaticResource IconsFontFamily }">
-
-                                          <Label.FontSize>
-                                            <OnIdiom
-                                                 x:TypeArguments="x:Double"
-                                                 Phone="15"
-                                                 Tablet="15" />
-                                          </Label.FontSize>
-                                        </Label>
+                                         <Image 
+                                                WidthRequest="30" 
+                                                HeightRequest="30" 
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Center"
+                                                Source="alertas.png" />
 
                                         <Label
                                             HorizontalOptions="Center"
                                             VerticalOptions="Center"
+                                            TextColor="{DynamicResource AccentColor}"
                                             Text="{i18n:Translate Children.Toolbar.Alerts}">
                                           <Label.FontSize>
                                             <OnIdiom
@@ -266,24 +289,18 @@
                                           VerticalOptions="CenterAndExpand"
                                           HorizontalOptions="EndAndExpand">
 
-                                            <Label
-                                                HorizontalOptions="Center"
+                                           <Image 
+                                                WidthRequest="30" 
+                                                HeightRequest="30" 
                                                 VerticalOptions="Center"
-                                                Text="{ x:Static helper:FontAwesomeFont.Pencil }"
-                                                FontFamily="{ StaticResource IconsFontFamily }">
-
-                                              <Label.FontSize>
-                                                <OnIdiom
-                                                     x:TypeArguments="x:Double"
-                                                     Phone="15"
-                                                     Tablet="15" />
-                                              </Label.FontSize>
-                                            </Label>
+                                                HorizontalOptions="Center"
+                                                Source="circulo.png" />
 
                                             <Label
                                                 HorizontalOptions="Center"
                                                 VerticalOptions="Center"
-                                                Text="{i18n:Translate Children.Toolbar.Edit}">
+                                                TextColor="{DynamicResource AccentColor}"
+                                                Text="{i18n:Translate Children.Toolbar.Relations }">
                                               <Label.FontSize>
                                                 <OnIdiom
                                                     x:TypeArguments="x:Double"

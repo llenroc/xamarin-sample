@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<common:BaseContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    x:Class="Bullytect.Core.Pages.Comments.CommentsPage"
+    xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
+    xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
+    x:TypeArguments="viewModels:CommentsViewModel"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:templates="clr-namespace:Bullytect.Core.Pages.Comments.Templates"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    Title="{i18n:Translate Page.Comments.Title}"
+    BackgroundColor="{ DynamicResource BasePageColor }"
+    x:Name="Root">
+    <ContentPage.Resources>
+           <ResourceDictionary>
+                <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+                <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
+                <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
+            </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!-- Refresh On Appearing Event -->
+    <ContentPage.Behaviors>
+        <behaviors:EventHandlerBehavior EventName="Appearing">
+            <behaviors:InvokeCommandAction 
+                    Command="{ Binding RefreshCommand }" 
+                    Converter="{ StaticResource DefaultReactiveUnitConverter}" />
+        </behaviors:EventHandlerBehavior>
+    </ContentPage.Behaviors>
+    
+    <!-- MAIN CONTAINER -->
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- APP Header -->
+        <common:AppHeader 
+            Grid.Row="0"
+            Title="{i18n:Translate Page.Comments.Title}">
+            <common:AppHeader.Options>
+                <x:Array Type="{x:Type View}">
+
+                    <common:RefreshOptionMenu />
+
+                    <!-- Filter -->
+                    <Label 
+                        HorizontalOptions="End"
+                        TranslationY="0"
+                        Margin="20,0"
+                        VerticalOptions="Center"
+                        Text="{ x:Static helper:FontAwesomeFont.Filter } " 
+                        FontSize="22"
+                        TextColor="{ DynamicResource CustomNavBarTextColor }" 
+                        Style="{ StaticResource FontIcon }">
+                        <Label.TranslationY>
+                            <OnPlatform 
+                                x:TypeArguments="x:Double" 
+                                iOS="10" 
+                                Android="0" />
+                        </Label.TranslationY>
+                        <Label.GestureRecognizers>
+                             <TapGestureRecognizer Command="{ Binding OpenFilterDimensionsCommand }" NumberOfTapsRequired="1" /> 
+                        </Label.GestureRecognizers>
+                    </Label>
+                </x:Array>
+            </common:AppHeader.Options>
+        </common:AppHeader>
+
+        <ListView 
+            Grid.Row="1" 
+            ItemsSource="{ Binding Comments }"
+            HasUnevenRows = "true"
+            IsPullToRefreshEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter} }"
+            RefreshCommand="{ Binding RefreshCommand }"
+            IsRefreshing="{Binding IsBusy}">
+
+            <ListView.RowHeight>
+                <OnIdiom 
+                    x:TypeArguments="x:Int32"
+                    Phone="80"
+                    Tablet="120"/>
+            </ListView.RowHeight>
+
+            <ListView.Behaviors>
+                <utils:EventToCommandBehavior 
+                    EventName="ItemTapped"
+                    Command="{Binding ShowCommentDetailCommand }" 
+                    EventArgsConverter="{ StaticResource ItemTappedEventArgsConverter }" />
+            </ListView.Behaviors>
+                    
+            <ListView.ItemTemplate>
+                 <DataTemplate>
+                     <ViewCell>
+                         <templates:CommentItemTemplate/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <ListView.Triggers>
+                <DataTrigger 
+                     TargetType="ListView"
+                     Binding="{Binding DataFound}"
+                     Value="False">
+                     <Setter Property="IsVisible" Value="False" />
+                </DataTrigger>
+                <DataTrigger 
+                     TargetType="ListView"
+                     Binding="{Binding ErrorOccurred}"
+                     Value="True">
+                     <Setter Property="IsVisible" Value="False" />
+                </DataTrigger>
+            </ListView.Triggers>
+
+
+         </ListView>
+
+         <common:NoDataFound 
+             Grid.Row="1"
+             IsVisible="{ Binding DataFound, Converter={StaticResource InverseBoolConverter}}"
+             MainText="{i18n:Translate Comments.Not.Found.MainText}"
+             DetailText="{i18n:Translate Comments.Not.Found.SecondText}"/>
+
+         <common:ErrorOcurred 
+            Grid.Row="1"
+            IsVisible="false"
+            MainText="{i18n:Translate Comments.Error.Ocurred}">
+            <ContentView.Triggers>
+                <MultiTrigger TargetType="common:ErrorOcurred">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition 
+                            Binding="{ Binding ErrorOccurred }"
+                            Value="True" />
+                        <BindingCondition
+                            Binding="{Binding IsBusy }"
+                            Value="False" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="True" />
+                </MultiTrigger>
+            </ContentView.Triggers>
+        </common:ErrorOcurred>
+
+        <common:TimeoutOperation
+            Grid.Row="1"
+            IsVisible="false">
+            <ContentView.Triggers>
+                <MultiTrigger TargetType="common:TimeoutOperation">
+                    <MultiTrigger.Conditions>
+                        <BindingCondition 
+                              Binding="{ Binding ErrorOccurred }"
+                              Value="False" />
+                        <BindingCondition 
+                              Binding="{Binding IsBusy }"
+                              Value="False" />
+                        <BindingCondition 
+                              Binding="{Binding IsTimeout }"
+                              Value="True" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="IsVisible" Value="True" />
+                </MultiTrigger>
+            </ContentView.Triggers>
+        </common:TimeoutOperation>
+
+   </Grid>
+</common:BaseContentPage>

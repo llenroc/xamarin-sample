@@ -155,11 +155,11 @@
     <comment>Walkthrough Btn Finish</comment>
   </data>
   <data name="WelcomePage.MainLabel" xml:space="preserve">
-    <value>BullTec - El primer anti-bullying en la historia de Internet.</value>
+    <value>The Social Media Protec.</value>
     <comment>WelcomePage MainLabel</comment>
   </data>
   <data name="WelcomePage.SecondLabel" xml:space="preserve">
-    <value>Diseñado para proteger a los jóvenes y preadolescentes del ataque a las redes sociales de otros grupos de su edad</value>
+    <value>Ayuda a proteger a niños y jóvenes del acoso y ataques recibidos desde las redes sociales</value>
     <comment>WelcomePage SecondLabel</comment>
   </data>
   <data name="WelcomePage.ClaimText" xml:space="preserve">
@@ -224,12 +224,11 @@ correo electrónico y contraseña.</value>
     <comment>Signup Page Title</comment>
   </data>
   <data name="Signup.Title.Main" xml:space="preserve">
-    <value>Regístrate ahora</value>
+    <value>Regístrate</value>
     <comment>Signup Title Main</comment>
   </data>
   <data name="Signup.Title.Second" xml:space="preserve">
-    <value>Register now and enjoy the
-pleasures of the demo.</value>
+    <value>Con una cuenta existente o creando una nueva</value>
     <comment>Signup Title</comment>
   </data>
   <data name="Signup.Create" xml:space="preserve">
@@ -245,7 +244,7 @@ pleasures of the demo.</value>
     <comment>Creating Account</comment>
   </data>
   <data name="Signup.Account.Created" xml:space="preserve">
-    <value> Tu cuenta fue creada con éxito, compruebe su email de registro para obtener más información sobre como activarla. </value>
+    <value> Su cuenta ha sido creada con éxito. Antes de poder iniciar sesión deberá verificar su correo electrónico siguiendo los pasos que le hemos enviado al mismo. </value>
     <comment>Account Created</comment>
   </data>
   <data name="Signup.Account.Email.Invalid" xml:space="preserve">
@@ -296,8 +295,12 @@ pleasures of the demo.</value>
     <value> Error al cargar el perfil de usuario </value>
     <comment>Home Loading Failed</comment>
   </data>
+  <data name="Home.Alerts.List.Title.Filter" xml:space="preserve">
+    <value>Últimas Alertas ( últimos {0} minutos )</value>
+    <comment>Home Alerts List Title Filter</comment>
+  </data>
   <data name="Home.Alerts.List.Title" xml:space="preserve">
-    <value> Últimas Alertas ( hace {0} minutos ) </value>
+    <value>Últimas Alertas</value>
     <comment>Home Alerts List Title</comment>
   </data>
   <data name="Home.Show.Alerts" xml:space="preserve">

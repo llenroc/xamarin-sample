@@ -57,5 +57,8 @@ namespace Bullytect.Core.Rest.Utils
         public const int NO_COMMUNITY_STATISTICS_FOR_THIS_PERIOD_CODE = 119;
         public const string NO_DIMENSIONS_STATISTICS_FOR_THIS_PERIOD_RESPONSE = "NO_DIMENSIONS_STATISTICS_FOR_THIS_PERIOD";
         public const int NO_DIMENSIONS_STATISTICS_FOR_THIS_PERIOD_CODE = 120;
+
+        public const string COMMENTS_BY_CHILD_NOT_FOUND_RESPONSE = "COMMENTS_BY_CHILD_NOT_FOUND";
+        public const int COMMENTS_BY_CHILD_NOT_FOUND_CODE = 204;
     }   
 }

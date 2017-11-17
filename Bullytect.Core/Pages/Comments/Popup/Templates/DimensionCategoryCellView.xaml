@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Bullytect.Core.Pages.Comments.Popup.Templates.DimensionCategoryCellView"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N">
+    <ContentView.Resources>
+        <ResourceDictionary>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid Padding="16,6,16,6" ColumnSpacing="16">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Image 
+                Grid.Column="0"
+                WidthRequest="25" 
+                HeightRequest="25" 
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Source="{ Binding Icon }" />
+            
+            <Label Grid.Column="1" 
+                   x:Name="LabelName"
+                   Text="{Binding Name}" 
+                   LineBreakMode="TailTruncation"
+                   VerticalTextAlignment="Center" 
+                   HorizontalOptions="StartAndExpand"
+                   />
+
+             <Label
+                Grid.Column="2" 
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="End"
+                VerticalOptions="CenterAndExpand"
+                Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                FontFamily="{ StaticResource IconsFontFamily }"
+                TextColor="{ DynamicResource AccentColor }">
+                <Label.FontSize>
+                    <OnIdiom 
+                        x:TypeArguments="x:Double"
+                        Phone="20" 
+                        Tablet="20" />
+                </Label.FontSize> 
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Tapped="OnCategoryInfo"
+                        NumberOfTapsRequired="1" /> 
+                </Label.GestureRecognizers>
+            </Label>
+
+            
+            <Switch Grid.Column="3" 
+                    VerticalOptions="Center"
+                    IsEnabled="{Binding IsEnabled}"
+                    IsToggled="{Binding IsFiltered}"/>
+            
+        </Grid>
+    </ContentView.Content>
+</ContentView>

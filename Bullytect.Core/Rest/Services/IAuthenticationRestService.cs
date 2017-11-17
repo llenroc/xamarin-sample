@@ -10,6 +10,7 @@ namespace Bullytect.Core.Rest.Services
     public interface IAuthenticationRestService
     {
 		IObservable<APIResponse<JwtAuthenticationResponseDTO>> getAuthorizationToken(JwtAuthenticationRequestDTO authorizationRequest);
-        IObservable<APIResponse<JwtAuthenticationResponseDTO>> getAuthorizationTokenByFacebook(JwtFacebookAuthenticationRequestDTO authorizationRequest);
+        IObservable<APIResponse<JwtAuthenticationResponseDTO>> getAuthorizationTokenByFacebook(JwtSocialAuthenticationRequestDTO authorizationRequest);
+        IObservable<APIResponse<JwtAuthenticationResponseDTO>> getAuthorizationTokenByGoogle(JwtSocialAuthenticationRequestDTO authorizationRequest);
     }
 }

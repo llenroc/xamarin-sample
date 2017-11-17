@@ -24,8 +24,8 @@ namespace Bullytect.Core.Pages.EditSon.Popup
         public SchoolMapPopup(SchoolEntity School, bool Selectable = false)
         {
 
-            this._school = School;
-            this._selectable = Selectable;
+            _school = School;
+            _selectable = Selectable;
 
             InitializeComponent();
 
@@ -121,29 +121,31 @@ namespace Bullytect.Core.Pages.EditSon.Popup
 
         void initTapHandler()
         {
-            Map.Tap += async (object sender, Common.Controls.TapEventArgs e) =>
-            {
 
-                if (_school != null && e?.Position != null)
+            Map.MapLongPress += async (object sender, TK.CustomMap.TKGenericEventArgs<Xamarin.Forms.Maps.Position> e) => {
+
+                if (_school != null && e?.Value != null)
                 {
-                    _school.Latitude = e.Position.Latitude;
-                    _school.Longitude = e.Position.Longitude;
-
+                    
                     try
                     {
                         var locator = CrossGeolocator.Current;
                         var addresses = await locator.GetAddressesForPositionAsync(new Plugin.Geolocator.Abstractions.Position()
                         {
-                            Latitude = e.Position.Latitude,
-                            Longitude = e.Position.Longitude
+                            Latitude = e.Value.Latitude,
+                            Longitude = e.Value.Longitude
                         });
                         var address = addresses.FirstOrDefault();
 
                         if (address != null)
                         {
                             Debug.WriteLine("Addresss: {0} {1} {2}", address.Thoroughfare, address.Locality, address.CountryName);
+                            _school.Latitude = e.Value.Latitude;
+                            _school.Longitude = e.Value.Longitude;
                             _school.Residence = address.Thoroughfare;
                             _school.Province = address.Locality;
+
+                            await PopupNavigation.PopAsync(animate: true);
                         }
                         else
                         {
@@ -159,7 +161,6 @@ namespace Bullytect.Core.Pages.EditSon.Popup
 
                 }
 
-                await PopupNavigation.PopAsync(animate: true);
             };
         }
 

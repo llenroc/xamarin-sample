@@ -118,14 +118,15 @@ namespace Bullytect.Core.ViewModels
 
         public List<PickerOptionModel> AlertsOptionsList { get; set; } = new List<PickerOptionModel>()
         {
-            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 5), Value = 5 },
-            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 10), Value = 10 },
-            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 15), Value = 15 },
-            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 20), Value = 20 }
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 20), Value = 20 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 40), Value = 40 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 60), Value = 60 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 80), Value = 80 }
         };
 
         public List<PickerOptionModel> AntiquityOfAlertsOptionsList { get; set; } = new List<PickerOptionModel>()
         {
+            new PickerOptionModel(){ Description = AppResources.Settings_Antiquity_Of_Alerts_No_Filter, Value = 0 },
             new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 15), Value = 15 },
             new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 30), Value = 30 },
             new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 45), Value = 45 },
@@ -139,8 +140,6 @@ namespace Bullytect.Core.ViewModels
             new PickerOptionModel(){ Description = AppResources.Settings_Remove_Alerts_Last_Day, Value = 2 },
             new PickerOptionModel(){ Description = AppResources.Settings_Remove_Alerts_Last_Month, Value = 3 }
 		};
-
-
 
 
         PickerOptionModel _alertsOption;

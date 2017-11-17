@@ -89,15 +89,18 @@
                         </ListView.ItemTemplate>
 
                      </ListView>
+
+
+                    <common:NoDataFound
+                        Grid.Row="1"
+                        IsVisible="false"
+                        x:Name="NoDataFound"
+                        HorizontalOptions="Center" 
+                        VerticalOptions="FillAndExpand"
+                        MainText="{i18n:Translate Common.No.Results.Found }"
+                        DetailText="{i18n:Translate Common.No.Results.Found.Detail }"/>
            </Grid>
 
-            <common:NoDataFound
-                    IsVisible="false"
-                    x:Name="NoDataFound"
-                    HorizontalOptions="FillAndExpand" 
-                    VerticalOptions="FillAndExpand"
-                    MainText="{i18n:Translate Common.No.Results.Found }"
-                    DetailText="{i18n:Translate Common.No.Results.Found.Detail }"/>
 
             <common:ErrorOcurred 
                     x:Name="ErrorOcurred"

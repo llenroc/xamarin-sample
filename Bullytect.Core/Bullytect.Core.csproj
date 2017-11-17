@@ -217,6 +217,34 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Comments\CommentsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Comments\Templates\CommentItemTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\CommentDetail\CommentDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Comments\Settings\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Signup\SignupSelectorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Comments\Popup\DimensionsFilterPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Comments\Popup\Templates\DimensionCategoryCellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\CanNotTakePhotoFromCameraException.cs" />
@@ -233,7 +261,7 @@
     <Compile Include="Rest\Models\Exceptions\UploadImageFailException.cs" />
     <Compile Include="Rest\Models\Request\AddSchoolDTO.cs" />
     <Compile Include="Rest\Models\Request\JwtAuthenticationRequestDTO.cs" />
-    <Compile Include="Rest\Models\Request\JwtFacebookAuthenticationRequestDTO.cs" />
+    <Compile Include="Rest\Models\Request\JwtSocialAuthenticationRequestDTO.cs" />
     <Compile Include="Rest\Models\Request\RegisterParentDTO.cs" />
     <Compile Include="Rest\Models\Request\RegisterSonDTO.cs" />
     <Compile Include="Rest\Models\Request\ResetPasswordRequestDTO.cs" />
@@ -426,7 +454,7 @@
     <Compile Include="Services\ISchoolService.cs" />
     <Compile Include="Services\Impl\SchoolServiceImpl.cs" />
     <Compile Include="Models\Domain\SchoolEntity.cs" />
-    <Compile Include="OAuth\Providers\Google\GoogleOAuth2.cs" />
+    <Compile Include="OAuth\Providers\Google\SonGoogleOAuth2.cs" />
     <Compile Include="Rest\Services\Impl\AlertRestServiceImpl.cs" />
     <Compile Include="Rest\Services\Impl\AuthenticationRestServiceImpl.cs" />
     <Compile Include="Rest\Services\Impl\ChildrenRestServiceImpl.cs" />
@@ -477,8 +505,6 @@
     <Compile Include="Rest\Models\Response\SchoolNameDTO.cs" />
     <Compile Include="Rest\Models\Response\CommentsBySonDTO.cs" />
     <Compile Include="ViewModels\ResultsViewModel.cs" />
-    <Compile Include="Rest\Models\Response\IterationDTO.cs" />
-    <Compile Include="Models\Domain\IterationEntity.cs" />
     <Compile Include="Converters\PickerSelectedIndexChangedArgsConverter.cs" />
     <Compile Include="Pages\Common\Templates\CommonInfoPopup.xaml.cs">
       <DependentUpon>CommonInfoPopup.xaml</DependentUpon>
@@ -610,7 +636,55 @@
       <DependentUpon>SchoolMapPopup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\IsValidStringConverter.cs" />
-    <Compile Include="Converters\AlertCategoryConverter.cs" />
+    <Compile Include="Converters\AlertCategoryToTextConverter.cs" />
+    <Compile Include="Rest\Models\Response\CommentDTO.cs" />
+    <Compile Include="Models\Domain\CommentEntity.cs" />
+    <Compile Include="Rest\Models\Exceptions\NoCommentsBySonFoundException.cs" />
+    <Compile Include="ViewModels\CommentsViewModel.cs" />
+    <Compile Include="Pages\Comments\CommentsPage.xaml.cs">
+      <DependentUpon>CommentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Comments\Templates\CommentItemTemplate.xaml.cs">
+      <DependentUpon>CommentItemTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CommentDetail\CommentDetailPage.xaml.cs">
+      <DependentUpon>CommentDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\CommentDetailViewModel.cs" />
+    <Compile Include="Models\Domain\AdultLevelEnum.cs" />
+    <Compile Include="Models\Domain\BullyingLevelEnum.cs" />
+    <Compile Include="Models\Domain\DrugsLevelEnum.cs" />
+    <Compile Include="Models\Domain\SentimentLevelEnum.cs" />
+    <Compile Include="Models\Domain\ViolenceLevelEnum.cs" />
+    <Compile Include="Converters\SentimentLevelToTextConverter.cs" />
+    <Compile Include="Converters\AdultLevelToTextConverter.cs" />
+    <Compile Include="Converters\DrugsLevelToTextConverter.cs" />
+    <Compile Include="Converters\ViolenceLevelToTextConverter.cs" />
+    <Compile Include="Converters\BullyingLevelToTextConverter.cs" />
+    <Compile Include="Converters\AlertCategoryToTextActionConverter.cs" />
+    <Compile Include="Converters\AdultLevelToColorConverter.cs" />
+    <Compile Include="Converters\BullyingLevelToColorConverter.cs" />
+    <Compile Include="Converters\ViolenceLevelToColorConverter.cs" />
+    <Compile Include="Converters\DrugsLevelToColorConverter.cs" />
+    <Compile Include="Converters\SentimentLevelToColorConverter.cs" />
+    <Compile Include="Pages\Comments\Settings\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\CommentsSettingsViewModel.cs" />
+    <Compile Include="ViewModels\Core\Models\SocialMediaCategoryModel.cs" />
+    <Compile Include="Pages\Signup\SignupSelectorPage.xaml.cs">
+      <DependentUpon>SignupSelectorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\SignupSelectorViewModel.cs" />
+    <Compile Include="ViewModels\Core\AccountsBaseViewModel.cs" />
+    <Compile Include="Pages\Comments\Popup\DimensionsFilterPopup.xaml.cs">
+      <DependentUpon>DimensionsFilterPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Core\Models\DimensionCategoryModel.cs" />
+    <Compile Include="Pages\Comments\Popup\Templates\DimensionCategoryCellView.xaml.cs">
+      <DependentUpon>DimensionCategoryCellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OAuth\Providers\Google\ParentGoogleOAuth2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -823,6 +897,12 @@
     <Reference Include="Plugin.Geolocator">
       <HintPath>..\packages\Xam.Plugin.Geolocator.4.1.2\lib\netstandard1.0\Plugin.Geolocator.dll</HintPath>
     </Reference>
+    <Reference Include="HockeySDK">
+      <HintPath>..\packages\HockeySDK.Xamarin.5.0.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\HockeySDK.dll</HintPath>
+    </Reference>
+    <Reference Include="TK.CustomMap">
+      <HintPath>..\packages\TK.CustomMap.1.6.1\lib\netstandard1.1\TK.CustomMap.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -847,6 +927,12 @@
     <Folder Include="Pages\SonStatistics\Settings\" />
     <Folder Include="Pages\Common\Controls\" />
     <Folder Include="Pages\EditSon\Templates\" />
+    <Folder Include="Pages\Comments\" />
+    <Folder Include="Pages\Comments\Templates\" />
+    <Folder Include="Pages\CommentDetail\" />
+    <Folder Include="Pages\Comments\Settings\" />
+    <Folder Include="Pages\Comments\Popup\" />
+    <Folder Include="Pages\Comments\Popup\Templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />

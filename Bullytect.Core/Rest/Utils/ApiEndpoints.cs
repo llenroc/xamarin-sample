@@ -9,6 +9,7 @@ namespace Bullytect.Core.Rest.Utils
 
         public static string GET_AUTHORIZATION_TOKEN = string.Concat(SharedConfig.BASE_API_URL, "/parents/auth/");
         public static string GET_AUTHORIZATION_TOKEN_BY_FACEBOOK = string.Concat(SharedConfig.BASE_API_URL, "/parents/auth/facebook");
+        public static string GET_AUTHORIZATION_TOKEN_BY_GOOGLE = string.Concat(SharedConfig.BASE_API_URL, "/parents/auth/google");
         public static string GET_SON_BY_ID = string.Concat(SharedConfig.BASE_API_URL, "/children/:id");
         public static string DELETE_SON_BY_ID = string.Concat(SharedConfig.BASE_API_URL, "/children/:id");
         public static string GET_ALL_SOCIAL_MEDIA_BY_SON_ID = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/social");
@@ -53,5 +54,7 @@ namespace Bullytect.Core.Rest.Utils
         public static string DELETE_DEVICE_FROM_GROUP = string.Concat(SharedConfig.BASE_API_URL, "/devices/:id/delete");
         public static string SAVE_SELF_PREFERENCES = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/preferences");
         public static string GET_SELF_PREFERENCES = string.Concat(SharedConfig.BASE_API_URL, "/parents/self/preferences");
+        public static string GET_COMMENTS_BY_SON = string.Concat(SharedConfig.BASE_API_URL, "/children/:id/comments");
+
     }
 }

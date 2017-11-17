@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Reactive.Linq;
 using Bullytect.Core.Rest.Models.Request;
 using Bullytect.Core.Rest.Models.Response;
@@ -33,15 +32,6 @@ namespace Bullytect.Core.Rest.Services.Impl
         public IObservable<APIResponse<List<CommentsBySonDTO>>> GetCommentsBySonForLastIteration()
         {
             return Observable.FromAsync(() => GetData<APIResponse<List<CommentsBySonDTO>>>(ApiEndpoints.GET_COMMENTS_BY_SON_FOR_LAST_ITERATION));
-        }
-
-        public IObservable<APIResponse<List<IterationDTO>>> GetLastIterations(int count)
-        {
-
-			return Observable.FromAsync(() => GetData<APIResponse<List<IterationDTO>>>(new Uri(ApiEndpoints.GET_LAST_ITERATIONS_FOR_SELF_PARENT).AttachParameters(new Dictionary<string, string>()
-			{
-                { "count", count.ToString()}
-			})));
         }
 
         public IObservable<APIResponse<UserSystemPreferencesDTO>> GetPreferences()

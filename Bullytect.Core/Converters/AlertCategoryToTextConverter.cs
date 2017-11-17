@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace Bullytect.Core.Converters
 {
-    public class AlertCategoryConverter: IValueConverter
+    public class AlertCategoryToTextConverter: IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -27,6 +27,8 @@ namespace Bullytect.Core.Converters
                         return AppResources.Alerts_Category_Information_Son;
                     case AlertCategoryEnum.STATISTICS_SON:
                         return AppResources.Alerts_Category_Statistics_Son;
+                    case AlertCategoryEnum.INFORMATION_EXTRACTION:
+                        return AppResources.Alerts_Category_Information_Extraction;
                 }
             }
             catch (Exception ex)

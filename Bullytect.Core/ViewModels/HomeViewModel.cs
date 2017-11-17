@@ -92,7 +92,9 @@ namespace Bullytect.Core.ViewModels
 
         public string ListAlertTitle
         {
-            get => string.Format(AppResources.Home_Alerts_List_Title, Settings.Current.AntiquityOfAlerts);
+            get => Settings.Current.AntiquityOfAlerts == 0 ?
+                           AppResources.Home_Alerts_List_Title :
+                           string.Format(AppResources.Home_Alerts_List_Title_Filter, Settings.Current.AntiquityOfAlerts);
 
         }
 

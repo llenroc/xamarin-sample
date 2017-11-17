@@ -77,7 +77,7 @@
                                 VerticalOptions="Center">
                                 <Label
                                     LineBreakMode="WordWrap"
-                                    Text="{i18n:Translate Login.Text}" 
+                                    Text="{ i18n:Translate Common.Title }" 
                                     TextColor="{ DynamicResource OverImageTextColor }"
                                     VerticalTextAlignment="Center"
                                     FontAttributes="Bold">
@@ -195,6 +195,54 @@
                                 Padding="20"
                                 Grid.Row="3" >
 
+                               
+                               <artina:Button
+                                    IsEnabled="{Binding HaveInternet}"
+                                    Style="{StaticResource PrimaryActionButtonStyle}"
+                                    VerticalOptions="End"
+                                    Text="Login"
+                                    Command="{ Binding LoginCommand }"
+                                    WidthRequest="{ artina:OnOrientationDouble
+                                        LandscapePhone=200,
+                                        LandscapeTablet=400 }"
+                                    HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                                        PortraitPhone=Fill,
+                                        LandscapePhone=Center,
+                                        PortraitTablet=Fill,
+                                        LandscapeTablet=Center }"/>        
+
+                                <artina:Button
+                                    IsEnabled="{Binding HaveInternet}"
+                                    Style="{StaticResource PrimaryActionButtonStyle}"
+                                    BackgroundColor="#3b5998"
+                                    VerticalOptions="End"
+                                    Text="Facebook"
+                                    Command="{ Binding LoginWithFacebookCommand }"
+                                    WidthRequest="{ artina:OnOrientationDouble
+                                        LandscapePhone=200,
+                                        LandscapeTablet=400 }"
+                                    HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                                        PortraitPhone=Fill,
+                                        LandscapePhone=Center,
+                                        PortraitTablet=Fill,
+                                        LandscapeTablet=Center }"/>
+
+                                <artina:Button
+                                    IsEnabled="{Binding HaveInternet}"
+                                    Style="{StaticResource PrimaryActionButtonStyle}"
+                                    BackgroundColor="#d34836"
+                                    VerticalOptions="End"
+                                    Text="Google"
+                                    Command="{ Binding LoginWithGoogleCommand }"
+                                    WidthRequest="{ artina:OnOrientationDouble
+                                        LandscapePhone=200,
+                                        LandscapeTablet=400 }"
+                                    HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                                        PortraitPhone=Fill,
+                                        LandscapePhone=Center,
+                                        PortraitTablet=Fill,
+                                        LandscapeTablet=Center }"/>
+
                                 <artina:Button
                                     IsEnabled="{Binding HaveInternet}"
                                     Style="{StaticResource TransparentButtonStyle}"
@@ -209,38 +257,9 @@
                                             LandscapePhone=Center,
                                             PortraitTablet=Fill,
                                             LandscapeTablet=Center }"/>
-                                       
+                        
 
-                                <artina:Button
-                                    IsEnabled="{Binding HaveInternet}"
-                                    Style="{StaticResource PrimaryActionButtonStyle}"
-                                    BackgroundColor="#3b5998"
-                                    VerticalOptions="End"
-                                    Text="Faceebook"
-                                    Command="{ Binding LoginWithFacebookCommand }"
-                                    WidthRequest="{ artina:OnOrientationDouble
-                                        LandscapePhone=200,
-                                        LandscapeTablet=400 }"
-                                    HorizontalOptions="{ artina:OnOrientationLayoutOptions
-                                        PortraitPhone=Fill,
-                                        LandscapePhone=Center,
-                                        PortraitTablet=Fill,
-                                        LandscapeTablet=Center }"/>
-
-                                <artina:Button
-                                    IsEnabled="{Binding HaveInternet}"
-                                    Style="{StaticResource PrimaryActionButtonStyle}"
-                                    VerticalOptions="End"
-                                    Text="Login"
-                                    Command="{ Binding LoginCommand }"
-                                    WidthRequest="{ artina:OnOrientationDouble
-                                        LandscapePhone=200,
-                                        LandscapeTablet=400 }"
-                                    HorizontalOptions="{ artina:OnOrientationLayoutOptions
-                                        PortraitPhone=Fill,
-                                        LandscapePhone=Center,
-                                        PortraitTablet=Fill,
-                                        LandscapeTablet=Center }"/>
+                                
                         
                             </StackLayout>
 

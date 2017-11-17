@@ -11,6 +11,9 @@ namespace Bullytect.Core.Rest.Models.Response
 		[JsonProperty("title")]
 		public string Title { get; set; }
 
+        [JsonProperty("subtitle")]
+        public string Subtitle { get; set; }
+
         [JsonProperty("likes")]
         public IList<SocialMediaLikesDTO> Data { get; set; }
 

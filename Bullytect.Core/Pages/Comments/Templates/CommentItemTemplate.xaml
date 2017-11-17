@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Bullytect.Core.Pages.Comments.Templates.CommentItemTemplate"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:converter="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared.Base">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:SocialMediaToIconConverter x:Key="SocialMediaToIconConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    
+     <StackLayout
+        Spacing="0" 
+        Orientation="Horizontal" 
+        Padding="10, 5, 10, 5"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="Center">
+
+
+        <ffimageloading:CachedImage
+            HorizontalOptions = "Start"
+            VerticalOptions = "Center"
+            WidthRequest="50"
+            HeightRequest="50"
+            FadeAnimationEnabled="true"
+            ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+            LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
+            Source="{ Binding AuthorPhoto }}">
+                <ffimageloading:CachedImage.Transformations>
+                    <fftransformations:CircleTransformation BorderSize="3" BorderHexColor="#6BC7E0" />
+                </ffimageloading:CachedImage.Transformations>
+        </ffimageloading:CachedImage>
+
+
+        <StackLayout 
+            Padding="10, 0, 0, 0" Spacing="0"
+            Orientation="Horizontal"
+            HorizontalOptions="FillAndExpand">
+                
+
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="0" Padding="10">
+
+                    <StackLayout Orientation="Horizontal">
+
+                        <Label 
+                            Text="{Binding AuthorName }"
+                            LineBreakMode="TailTruncation"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="FillAndExpand"/>
+
+                        <Label
+                            VerticalTextAlignment="Center"
+                            VerticalOptions="Center"
+                            HorizontalTextAlignment="End"
+                            HorizontalOptions="End"
+                            Text="{ Binding SocialMedia, Converter = { StaticResource SocialMediaToIconConverter }}"
+                            FontFamily="{ StaticResource IconsFontFamily }"
+                            FontSize ="12"
+                            TextColor="{ DynamicResource AccentColor }"/>
+                        
+                        <Label 
+                            Text="{ Binding ExtractedAtSince }"  
+                            FontSize ="12"
+                            LineBreakMode="TailTruncation"
+                            HorizontalTextAlignment="End" 
+                            HorizontalOptions="End" 
+                            VerticalOptions="Center"/>
+                        
+                    </StackLayout>
+                
+                    <StackLayout Orientation="Horizontal" VerticalOptions="End">
+
+                        <Label 
+                                Text="{ Binding Message }"
+                                LineBreakMode="TailTruncation"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"/>
+
+                    </StackLayout>
+                </StackLayout>
+
+            </StackLayout>
+
+        
+    </StackLayout>
+</ContentView>

@@ -1,36 +1,30 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows.Input;
 using Acr.UserDialogs;
-using Bullytect.Core.Config;
 using Bullytect.Core.I18N;
-using Bullytect.Core.OAuth.Providers.Facebook;
 using Bullytect.Core.OAuth.Services;
 using Bullytect.Core.Services;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
-using Xamarin.Forms;
 using Bullytect.Core.Rest.Models.Exceptions;
 using Bullytect.Core.Helpers;
-using Bullytect.Core.Exceptions;
+using Bullytect.Core.ViewModels.Core;
 
 namespace Bullytect.Core.ViewModels
 {
 
-    public class AuthenticationViewModel : BaseViewModel
+    public class AuthenticationViewModel : AccountsBaseViewModel
     {
-        readonly IAuthenticationService _authenticationService;
-		readonly INotificationService _notificationService;
+        
 
         public AuthenticationViewModel(IAuthenticationService authenticationService,
                                        IUserDialogs userDialogs, IMvxMessenger mvxMessenger,
-                                       IOAuthService oauthService,  AppHelper appHelper, INotificationService notificationService): base(userDialogs, mvxMessenger, appHelper)
+                                       IOAuthService oauthService,  AppHelper appHelper, INotificationService notificationService)
+            : base(userDialogs, mvxMessenger, appHelper, oauthService, notificationService, authenticationService)
         {
-            _authenticationService = authenticationService;
-            _notificationService = notificationService;
 
             // Create Reactive Commands
             LoginCommand = ReactiveCommand.CreateFromObservable<Unit, string>(
@@ -48,36 +42,7 @@ namespace Bullytect.Core.ViewModels
             LoginCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
 
-			// Create Reactive Commands
-			LoginWithFacebookCommand = ReactiveCommand.CreateFromObservable<Unit, string>(
-				(param) => {
-
-                    ResetCommonProps();
-
-                    if(Device.RuntimePlatform == Device.Android)
-                        _userDialogs.ShowLoading(AppResources.Login_Authenticating);
-                    
-                                
-                    return oauthService
-                            .Authenticate(new ParentFacebookOAuth2())
-                            .Do(AccessToken =>
-                            {
-                                if (string.IsNullOrEmpty(AccessToken))
-                                    throw new OAuthInvalidAccessTokenException();
-
-
-                                if(Device.RuntimePlatform == Device.iOS)
-                                    _userDialogs.ShowLoading(AppResources.Login_Authenticating);
-                            })
-    						.SelectMany(accessToken => authenticationService.LoginWithFacebook(accessToken))
-                            .Do((_) => _userDialogs.HideLoading());
-                    
-				});
-
-
-            LoginWithFacebookCommand.Subscribe(HandleAuthSuccess);
-
-			LoginWithFacebookCommand.ThrownExceptions.Subscribe(HandleExceptions);
+			
         }
 
 
@@ -153,8 +118,6 @@ namespace Bullytect.Core.ViewModels
 
         public ReactiveCommand<Unit, string> LoginCommand { get; protected set; }
 
-        public ReactiveCommand<Unit, string> LoginWithFacebookCommand { get; protected set; }
-
         public ICommand GoToPasswordRecoveryCommand => new MvxCommand(() => ShowViewModel<PasswordRecoveryViewModel>());
 
         #endregion
@@ -186,19 +149,6 @@ namespace Bullytect.Core.ViewModels
 				base.HandleExceptions(ex);
 			}
 		}
-
-        void HandleAuthSuccess(string jwtToken) {
-			Debug.WriteLine("JWT Token -> " + jwtToken);
-            Settings.AccessToken = jwtToken;
-            // Subscribe Device For Push Notifications
-			_notificationService.subscribeDevice().Subscribe(device => {
-                Settings.Current.DeviceRegistered = true;
-				Debug.WriteLine(String.Format("Device Saved: {0}", device.ToString()));
-			});
-            _userDialogs.ShowSuccess(AppResources.Login_Success);
-            ShowViewModel<HomeViewModel>();
-        }
-       
 
     }
 
