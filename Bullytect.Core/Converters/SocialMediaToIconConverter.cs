@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
 using Bullytect.Core.Helpers;
-using Bullytect.Core.Models.Domain;
 using Bullytect.Core.ViewModels.Core.Models;
 using Bullytect.Utils.Helpers;
 using Xamarin.Forms;
@@ -19,14 +17,14 @@ namespace Bullytect.Core.Converters
                 return string.Empty;
 
             string TextIcon;
-            
 
-            SocialMediaTypeEnum socialMedia = ((string)value).ToEnum<SocialMediaTypeEnum>();
-			if (socialMedia.Equals(SocialMediaTypeEnum.FACEBOOK))
+            SocialMediaTypeEnum SocialMedia = value is string ? ((string)value).ToEnum<SocialMediaTypeEnum>() : (SocialMediaTypeEnum)value;
+
+            if (SocialMedia.Equals(SocialMediaTypeEnum.FACEBOOK))
 			{
                 TextIcon = FontAwesomeFont.Facebook;
 			}
-			else if (socialMedia.Equals(SocialMediaTypeEnum.INSTAGRAM))
+            else if (SocialMedia.Equals(SocialMediaTypeEnum.INSTAGRAM))
 			{
 				TextIcon = FontAwesomeFont.Instagram;
 			}

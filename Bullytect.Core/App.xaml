@@ -67,6 +67,7 @@
             <FileImageSource x:Key="HomeBackground">home_header.jpg</FileImageSource>
             <FileImageSource x:Key="ProfileImagePlaceholder">user_default.png</FileImageSource>
             <FileImageSource x:Key="ProfileErrorImage">user_default.png</FileImageSource>
+            <FileImageSource x:Key="UserDefaultImage">user_default.png</FileImageSource>
 
 
             <!-- RESPONSIVE COMMON -->

@@ -50,38 +50,59 @@
                 Title="{ i18n:Translate Page.Statistics.Title}">
                 <common:AppHeader.Options>
                     <x:Array Type="{x:Type View}">
-                        <common:RefreshOptionMenu />
-                        <!-- Show Comments -->
-                        <Label 
-                            HorizontalOptions="End"
-                            Text="{ x:Static helper:FontAwesomeFont.Comments } " 
-                            FontSize="22"
-                            VerticalOptions="Center"
-                            TextColor="{ DynamicResource CustomNavBarTextColor }" 
-                            Style="{ StaticResource FontIcon }">
-                            <Label.TranslationY>
-                                <OnPlatform 
-                                    x:TypeArguments="x:Double" 
-                                    iOS="10" 
-                                    Android="0" />
-                            </Label.TranslationY>
-                            <Label.GestureRecognizers>
-                                 <TapGestureRecognizer Command="{ Binding ShowCommentsCommand }" NumberOfTapsRequired="1" /> 
-                            </Label.GestureRecognizers>
 
+                        <!-- Refresh Menu Option -->
 
-                            <Label.Triggers>
-                                <DataTrigger 
-                                    TargetType="Label"
-                                    Binding="{Binding HaveInternet}"
+                        <common:MenuOption
+                            Icon="{ x:Static helper:FontAwesomeFont.Refresh }"
+                            ClickedItemCommand="{ Binding RefreshCommand }">
+
+                            <common:MenuOption.Triggers>
+                                <DataTrigger
+                                    TargetType="common:MenuOption"
+                                    Binding="{Binding IsBusy}"
+                                    Value="True">
+                                   <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    TargetType="common:MenuOption"
+                                    Binding="{Binding ErrorOccurred}"
                                     Value="False">
                                     <Setter Property="IsVisible" Value="False" />
                                 </DataTrigger>
-                            </Label.Triggers>
-                           
-                            
-                        </Label>
-                        <common:SettingsOptionMenu />
+                            </common:MenuOption.Triggers>
+
+                        </common:MenuOption>
+
+                        <!-- End Refresh Menu Option -->
+
+                        <!-- Show Comments Menu Option -->
+
+                        <common:MenuOption
+                            Icon="{ x:Static helper:FontAwesomeFont.Comments }"
+                            ClickedItemCommand="{ Binding ShowCommentsCommand }">
+
+                            <common:MenuOption.Triggers>
+                                <DataTrigger
+                                    TargetType="common:MenuOption"
+                                    Binding="{ Binding HaveInternet }"
+                                    Value="False">
+                                   <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                            </common:MenuOption.Triggers>
+
+                        </common:MenuOption>
+
+
+                        <!-- End Show Comments Menu Option -->
+
+                        <!-- Settings Menu Option -->
+
+                        <common:MenuOption
+                            Icon="{ x:Static helper:FontAwesomeFont.Gear }"
+                            ClickedItemCommand="{ Binding GoToSettingsCommand }" />
+
+                        <!-- End Settings Menu Option -->
                     </x:Array>
                 </common:AppHeader.Options>
             </common:AppHeader>
@@ -100,17 +121,7 @@
                
                 <controls:CarouselViewControl.ItemsSource>
                     <x:Array Type="{x:Type View}">
-                        <commonTemplates:ChartPageTemplate 
-                            Title="{i18n:Translate Statistics.Son.Social.Media.Activities}"
-                            IsLoading="{ Binding IsBusy }"
-                            Chart="{ Binding SocialMediaActivitiesChart }"
-                            LoadingText="{i18n:Translate Statistics.Son.Social.Media.Activities.Loading }"
-                            ChartWidth="200"
-                            ChartHeight="200"
-                            DataFound="{ Binding DataFound }"
-                            Error="{ Binding ErrorOccurred }"
-                            ErrorText="{i18n:Translate Statistics.Son.Social.Media.Activities.Error}"
-                        />
+
                         <commonTemplates:ChartPageTemplate 
                             Title="{i18n:Translate Statistics.Son.Four.Dimensions}"
                             IsLoading="{ Binding IsBusy }"
@@ -122,6 +133,19 @@
                             Error="{ Binding ErrorOccurred }"
                             ErrorText="{i18n:Translate Statistics.Son.Four.Dimensions.Error}"
                         />
+                        
+                        <commonTemplates:ChartPageTemplate 
+                            Title="{i18n:Translate Statistics.Son.Social.Media.Activities}"
+                            IsLoading="{ Binding IsBusy }"
+                            Chart="{ Binding SocialMediaActivitiesChart }"
+                            LoadingText="{i18n:Translate Statistics.Son.Social.Media.Activities.Loading }"
+                            ChartWidth="200"
+                            ChartHeight="200"
+                            DataFound="{ Binding DataFound }"
+                            Error="{ Binding ErrorOccurred }"
+                            ErrorText="{i18n:Translate Statistics.Son.Social.Media.Activities.Error}"
+                        />
+
                         <commonTemplates:ChartPageTemplate 
                             Title="{i18n:Translate Statistics.Son.Social.Sentiment.Analysis}"
                             IsLoading="{ Binding IsBusy }"

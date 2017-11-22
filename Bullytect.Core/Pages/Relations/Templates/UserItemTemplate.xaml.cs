@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace Bullytect.Core.Pages.Common
+namespace Bullytect.Core.Pages.Relations.Templates
 {
-    public partial class SignOutOptionMenu : ContentView
+    public partial class UserItemTemplate : ContentView
     {
-        public SignOutOptionMenu()
+        public UserItemTemplate()
         {
             InitializeComponent();
         }

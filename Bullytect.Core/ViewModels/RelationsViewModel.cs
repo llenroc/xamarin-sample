@@ -1,7 +1,5 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Windows.Input;
@@ -17,18 +15,17 @@ using ReactiveUI;
 
 namespace Bullytect.Core.ViewModels
 {
-    public class ResultsViewModel : BaseViewModel
+    public class RelationsViewModel : BaseViewModel
     {
-
         readonly IStatisticsService _statisticsService;
 
-		const int COMMENTS_CHART_POS = 0;
+        const int COMMENTS_CHART_POS = 0;
         const int SYSTEM_ALERTS_CHART_POS = 1;
         const int SOCIAL_MEDIA_LIKES_CHART_POS = 2;
         const int MOST_ACTIVE_FRIENDS_POS = 3;
         const int NEW_FRIENDS_POS = 4;
 
-        public ResultsViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger,
+        public RelationsViewModel(IUserDialogs userDialogs, IMvxMessenger mvxMessenger,
                                 AppHelper appHelper, IStatisticsService statisticsService) : base(userDialogs, mvxMessenger, appHelper)
         {
 
@@ -36,13 +33,25 @@ namespace Bullytect.Core.ViewModels
 
             RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, object>((_) => RefreshCurrentPage(force: true));
 
-			RefreshCommand.Subscribe(HandlerRefreshCurrentPage);
+            RefreshCommand.Subscribe(HandlerRefreshCurrentPage);
 
-			RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
+            RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
         }
 
+        public void Init(string SonIdentity){
+            this.SonIdentity = SonIdentity;
+        }
+
         #region properties
+
+        string _sonIdentity;
+
+        public string SonIdentity {
+
+            get => _sonIdentity;
+            set => SetProperty(ref _sonIdentity, value);
+        }
 
         int _position;
 
@@ -112,116 +121,135 @@ namespace Bullytect.Core.ViewModels
         {
             get
             {
-                return new MvxCommand(() => ShowViewModel<ResultsSettingsViewModel>());
+                return new MvxCommand(() => ShowViewModel<RelationsSettingsViewModel>());
             }
         }
 
-		#endregion
-
-		#region methods
 
 
-		void HandlerRefreshCurrentPage(object Data)
-		{
+        public ICommand ShowCommentsByAuthorCommand
+        {
+            get
+            {
+                return new MvxCommand<UserListModel>((Author) => ShowViewModel<CommentsViewModel>(new
+                {
+                    SonIdentity = SonIdentity,
+                    AuthorIndentity = Author.Id
+                }));
+            }
+        }
 
-			IsBusy = false;
 
 
-			switch (Position)
-			{
+        #endregion
 
-				case COMMENTS_CHART_POS:
+        #region methods
+
+
+        void HandlerRefreshCurrentPage(object Data)
+        {
+
+            IsBusy = false;
+
+
+            switch (Position)
+            {
+
+                case COMMENTS_CHART_POS:
                     CommentsChart = Data as ChartModel;
-					break;
+                    break;
 
-				case SYSTEM_ALERTS_CHART_POS:
-					SystemAlertsChart = Data as ChartModel;
-					break;
+                case SYSTEM_ALERTS_CHART_POS:
+                    SystemAlertsChart = Data as ChartModel;
+                    break;
 
-				case SOCIAL_MEDIA_LIKES_CHART_POS:
-					SocialMediaLikesChart = Data as ChartModel;
-					break;
+                case SOCIAL_MEDIA_LIKES_CHART_POS:
+                    SocialMediaLikesChart = Data as ChartModel;
+                    break;
                 case MOST_ACTIVE_FRIENDS_POS:
                     MostActiveFriends.ReplaceRange(Data as IList<UserListModel>);
                     break;
-				case NEW_FRIENDS_POS:
+                case NEW_FRIENDS_POS:
                     NewFriends.ReplaceRange(Data as IList<UserListModel>);
-					break;
+                    break;
 
-			}
-		}
+            }
+        }
 
-		IObservable<object> RefreshCurrentPage(bool force = false)
-		{
+        IObservable<object> RefreshCurrentPage(bool force = false)
+        {
 
             IObservable<object> observable = Observable.Empty<object>();
 
-			ErrorOccurred = false;
-			DataFound = true;
+            ErrorOccurred = false;
+            DataFound = true;
 
-			switch (Position)
-			{
+            switch (Position)
+            {
 
-				case COMMENTS_CHART_POS:
-					if (force || CommentsChart == null)
-					{
-						IsBusy = true;
-                        observable = _statisticsService.GetCommentsStatistics();
-					}
-					break;
+                case COMMENTS_CHART_POS:
+                    if (force || CommentsChart == null)
+                    {
+                        IsBusy = true;
+                        observable = _statisticsService.GetCommentsStatistics(SonIdentity);
+                    }
+                    break;
 
-				case SYSTEM_ALERTS_CHART_POS:
-					if (force || SystemAlertsChart == null)
-					{
-						IsBusy = true;
-                        observable = _statisticsService.GetAlertsStatistics();
-					}
-					break;
+                case SYSTEM_ALERTS_CHART_POS:
+                    if (force || SystemAlertsChart == null)
+                    {
+                        IsBusy = true;
+                        observable = _statisticsService.GetAlertsStatistics(SonIdentity);
+                    }
+                    break;
 
-				case SOCIAL_MEDIA_LIKES_CHART_POS:
-					if (force || SocialMediaLikesChart == null)
-					{
-						IsBusy = true;
-                        observable = _statisticsService.GetSocialMediaLikesStatistics();
-					}
-					break;
+                case SOCIAL_MEDIA_LIKES_CHART_POS:
+                    if (force || SocialMediaLikesChart == null)
+                    {
+                        IsBusy = true;
+                        observable = _statisticsService.GetSocialMediaLikesStatistics(SonIdentity);
+                    }
+                    break;
 
                 case MOST_ACTIVE_FRIENDS_POS:
                     IsBusy = true;
-                    observable = _statisticsService.GetMostActiveFriends();
+                    observable = _statisticsService.GetMostActiveFriends(SonIdentity);
                     break;
 
                 case NEW_FRIENDS_POS:
                     IsBusy = true;
-                    observable = _statisticsService.GetNewFriends();
+                    observable = _statisticsService.GetNewFriends(SonIdentity);
                     break;
-				default:
-					if (force || SocialMediaLikesChart == null)
-					{
-						IsBusy = true;
-						observable = _statisticsService.GetSocialMediaLikesStatistics();
-					}
-					break;
-			}
+                default:
+                    if (force || SocialMediaLikesChart == null)
+                    {
+                        IsBusy = true;
+                        observable = _statisticsService.GetSocialMediaLikesStatistics(SonIdentity);
+                    }
+                    break;
+            }
 
-			return observable.DefaultIfEmpty();
+            return observable.DefaultIfEmpty();
 
-		}
+        }
 
         protected override void HandleExceptions(Exception ex)
         {
             IsBusy = false;
 
-            if(
+            if (
                 ex is NoCommentsExtractedException ||
                 ex is NoAlertsStatisticsForThisPeriodException ||
-                ex is NoLikesFoundInThisPeriodException || 
+                ex is NoLikesFoundInThisPeriodException ||
                 ex is NoActiveFriendsInThisPeriodException ||
-                ex is NoNewFriendsInThisPeriodException) {
+                ex is NoNewFriendsInThisPeriodException)
+            {
 
                 DataFound = false;
 
-            } else {
+            }
+            else
+            {
 
                 base.HandleExceptions(ex);
             }

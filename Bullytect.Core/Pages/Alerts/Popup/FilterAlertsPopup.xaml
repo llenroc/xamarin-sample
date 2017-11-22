@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:templates="clr-namespace:Bullytect.Core.Pages.EditSon.Templates"
+    xmlns:commonViewCells="clr-namespace:Bullytect.Core.Pages.Common.ViewCells"
+    x:Class="Bullytect.Core.Pages.Alerts.Popup.FilterAlertsPopup">
+    <!--Animations use example-->
+    <pages:PopupPage.Animation>
+            <animations:ScaleAnimation 
+              PositionIn="Center"
+              PositionOut="Center"
+              ScaleIn="1.2"
+              ScaleOut="0.8"
+              DurationIn="400"
+              DurationOut="300"
+              EasingIn="SinOut"
+              EasingOut="SinIn"
+              HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+
+    <!-- MAIN CONTAINER -->
+
+    <Grid 
+        HeightRequest="550"
+        Margin="10"
+        BackgroundColor="White"
+        HorizontalOptions="Fill"
+        VerticalOptions="Center"
+        RowSpacing="0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+      <!-- Header -->
+      <StackLayout
+            Grid.Row="0"
+            Orientation="Horizontal"
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand">
+
+            <Label
+                TextColor="{ DynamicResource AccentColor }"
+                Text="{ x:Static helper:FontAwesomeFont.Filter } " 
+                Style="{ StaticResource FontIcon }"
+                VerticalOptions="Center"
+                FontSize="25"/>
+
+            <Label
+                TextColor="{ DynamicResource AccentColor }"
+                Text="{i18n:Translate Alerts.Filter.Title }"
+                VerticalOptions="Center"
+                FontSize="25"/>
+
+      </StackLayout>
+      <!-- End Header -->
+
+
+      <!-- Content -->
+
+     <ScrollView
+            x:Name="FilterContainer"
+            Grid.Row="1">
+
+           <TableView 
+                x:Name="TableFilter"
+                Intent="Settings" 
+                HeightRequest="600"
+                VerticalOptions="StartAndExpand"
+                HasUnevenRows="true">
+
+                <TableSection Title="{ i18n:Translate Settings.Alerts.General }">
+
+                    <commonViewCells:CommonOptionPickerViewCell
+                        Icon="{ x:Static helper:FontAwesomeFont.SortAmountDesc }"
+                        Text="{i18n:Translate Settings.Alerts.Count.New.Alerts }"
+                        Options="{ Binding AlertsOptionsList }"
+                        SelectedItem="{ Binding AlertsOption }"/>
+
+                    <!-- Start Antiquity of alerts -->
+                    <commonViewCells:CommonOptionPickerViewCell
+                        Icon="{ x:Static helper:FontAwesomeFont.ClockO }"
+                        Text="{ i18n:Translate Settings.Antiquity.Of.Alerts }"
+                        Options="{ Binding AntiquityOfAlertsOptionsList }"
+                        SelectedItem="{ Binding AntiquityOfAlertsOption }"/>
+                    <!-- End Antiquity of alerts -->
+                    
+                </TableSection>
+
+                <TableSection 
+                    Title="{ i18n:Translate Alerts.Filter.Levels.Title }"
+                    x:Name="TableSectionAlertLevels"></TableSection>
+                
+           </TableView>
+      </ScrollView>
+      <!-- end content -->
+
+
+      <!-- FOOTER -->
+      <StackLayout
+            Grid.Row="2"
+            HorizontalOptions="Fill"
+            VerticalOptions="End" 
+            Margin="10">
+
+            <artina:Button
+                Style="{StaticResource PrimaryActionButtonStyle}"
+                VerticalOptions="Center"
+                Text="{i18n:Translate Common.Apply.Filter}"
+                Command="{ Binding RefreshCommand }"
+                WidthRequest="{ artina:OnOrientationDouble
+                    LandscapePhone=200,
+                    LandscapeTablet=400 }"
+                HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                    PortraitPhone=Fill,
+                    LandscapePhone=Center,
+                    PortraitTablet=Fill,
+                    LandscapeTablet=Center }">
+            </artina:Button>
+        </StackLayout>
+        <!-- END FOOTER -->
+    </Grid>
+
+    <!-- END MAIN CONTAINER -->
+    
+ </pages:PopupPage>

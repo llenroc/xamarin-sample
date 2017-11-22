@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    x:Class="Bullytect.Core.Pages.Common.SeeMore">
+	<ContentView.Content>
+
+        <Grid
+            Grid.Row="0"
+            x:Name="MainContainer"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+
+           <!--ICON BACKGROUND-->
+           <Label
+                Style="{StaticResource RoundShape}"
+                TextColor="White"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                FontSize="100"
+                Opacity="0.1"/>
+
+            <!--ICON BACKGROUND-->
+            <Label
+                Style="{StaticResource RoundShape}" 
+                TextColor="White"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                FontSize="50"
+                Opacity="0.1"/> 
+
+            <!--ICON-->
+            <Label
+                Text="{ x:Static helper:FontAwesomeFont.Plus }"
+                Style="{StaticResource FontIcon}"
+                FontSize="20"
+                HorizontalTextAlignment="Center"
+                TextColor="White"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+
+        </Grid>
+        
+    </ContentView.Content>
+</ContentView>

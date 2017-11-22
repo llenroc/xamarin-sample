@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Reactive.Linq;
 using Bullytect.Core.Rest.Models.Request;
 using Bullytect.Core.Rest.Models.Response;
 using Bullytect.Core.Rest.Utils;
+using Bullytect.Core.ViewModels.Core.Models;
 
 namespace Bullytect.Core.Rest.Services.Impl
 {
@@ -154,9 +156,30 @@ namespace Bullytect.Core.Rest.Services.Impl
             return Observable.FromAsync(() => GetData<APIResponse<NewFriendsDTO>>(new Uri(ApiEndpoints.NEW_FRIENDS).AttachParameters(queryParams)));
         }
 
-        public IObservable<APIResponse<IList<CommentDTO>>> GetCommentsBySon(string SonId)
+        public IObservable<APIResponse<IList<CommentDTO>>> GetCommentsBySon(string SonId, string AuthorId, int daysAgo, IList<SocialMediaTypeEnum> SocialMedia, Dictionary<DimensionCategoryEnum, string> Dimensions)
         {
-            return Observable.FromAsync(() => GetData<APIResponse<IList<CommentDTO>>>(ApiEndpoints.GET_COMMENTS_BY_SON.Replace(":id", SonId)));
+
+            var queryParams = new Dictionary<string, string>() {
+                { "days_ago" , daysAgo.ToString() }
+            };
+
+            if(!string.IsNullOrEmpty(AuthorId))
+                queryParams.Add("author", AuthorId);
+
+            if(SocialMedia?.Count > 0)
+                queryParams.Add("social_media", string.Join(",", SocialMedia));
+
+
+
+
+            foreach(var dimension in Dimensions){
+                queryParams.Add(dimension.Key.ToString().ToLower(), dimension.Value);
+
+            }
+
+            Debug.WriteLine(queryParams.ToString());
+
+            return Observable.FromAsync(() => GetData<APIResponse<IList<CommentDTO>>>(new Uri(ApiEndpoints.GET_COMMENTS_BY_SON.Replace(":id", SonId)).AttachParameters(queryParams)));
         }
     }
 }

@@ -12,24 +12,10 @@
     xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
     xmlns:templates="clr-namespace:Bullytect.Core.Pages.Settings.Templates"
     xmlns:extended="clr-namespace:Bullytect.Core.Pages.Common.Extended"
-    x:Class="Bullytect.Core.Pages.Results.Settings.SettingsPage"
-    x:TypeArguments="viewModels:ResultsSettingsViewModel"
+    x:Class="Bullytect.Core.Pages.Relations.Settings.SettingsPage"
+    x:TypeArguments="viewModels:RelationsSettingsViewModel"
     BackgroundColor="{DynamicResource BasePageColor}">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
-            <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
   
-    <!-- Refresh On Appearing Event -->
-    <ContentPage.Behaviors>
-        <behaviors:EventHandlerBehavior EventName="Appearing" >
-            <behaviors:InvokeCommandAction 
-                    Command="{Binding RefreshCommand}" 
-                    Converter="{ StaticResource DefaultReactiveUnitConverter}" />
-        </behaviors:EventHandlerBehavior>
-    </ContentPage.Behaviors>
     
     <ContentPage.Content>
 
@@ -46,39 +32,19 @@
                 Title="{i18n:Translate Page.Settings.Title}">
                 <common:AppHeader.Options>
                     <x:Array Type="{x:Type View}">
-                        <Label 
-                            HorizontalOptions="End"
-                            VerticalOptions="CenterAndExpand"
-                            Text="{ x:Static helper:FontAwesomeFont.Save } " 
-                            FontSize="22"
-                            TextColor="{ DynamicResource CustomNavBarTextColor }" 
-                            Style="{ StaticResource FontIcon }">
-                            <Label.TranslationY>
-                                <OnPlatform 
-                                    x:TypeArguments="x:Double" 
-                                    iOS="10" 
-                                    Android="0" />
-                            </Label.TranslationY>
-                            <Label.GestureRecognizers>
-                                 <TapGestureRecognizer Command="{ Binding SaveCommand }" NumberOfTapsRequired="1" /> 
-                            </Label.GestureRecognizers>
-                        </Label>
+                         <!-- Save Menu Option --> 
+                        <common:MenuOption
+                            Icon="{ x:Static helper:FontAwesomeFont.Save }"
+                            ClickedItemCommand="{ Binding SaveCommand }" />
+                        <!-- End Save Menu Option -->
                     </x:Array>
                 </common:AppHeader.Options>
              
             </common:AppHeader>
 
-            <common:ActivityLoading
-                Grid.Row="1"
-                IsLoading="{ Binding IsBusy }"
-                LoadingText="{ Binding LoadingText }"
-                Icon="{ x:Static helper:FontAwesomeFont.Gear }"
-                HorizontalOptions="Center" 
-                VerticalOptions="FillAndExpand" />
 
             <TableView  
                 Grid.Row="1"
-                IsVisible="{ Binding IsBusy , Converter = { StaticResource InverseBoolConverter }}"
                 Intent="Settings" 
                 HasUnevenRows="true">
 
@@ -149,9 +115,6 @@
 
 
                 </TableSection>
-
-                <TableSection Title="{i18n:Translate Results.Settings.Show.Results.For}" x:Name="TableSectionChildren"></TableSection>
-
             </TableView>
         </Grid>
      </ContentPage.Content>

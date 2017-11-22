@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Bullytect.Core.Rest.Models.Response;
 using Bullytect.Core.Rest.Models.Request;
 using System.IO;
+using Bullytect.Core.ViewModels.Core.Models;
 
 namespace Bullytect.Core.Rest.Services
 {
@@ -45,6 +46,6 @@ namespace Bullytect.Core.Rest.Services
 
         IObservable<APIResponse<NewFriendsDTO>> GetNewFriends(String[] Ids, int daysAgo);
 
-        IObservable<APIResponse<IList<CommentDTO>>> GetCommentsBySon(String SonId);
+        IObservable<APIResponse<IList<CommentDTO>>> GetCommentsBySon(string SonId, string AuthorId, int daysAgo, IList<SocialMediaTypeEnum> SocialMedia, Dictionary<DimensionCategoryEnum, string> Dimensions);
     }
 }

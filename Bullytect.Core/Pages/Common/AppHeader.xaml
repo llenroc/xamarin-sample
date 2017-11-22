@@ -5,12 +5,41 @@
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
-    x:Class="Bullytect.Core.Pages.Common.AppHeader">         
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    x:Class="Bullytect.Core.Pages.Common.AppHeader">       
+
+  
+
     <ContentView.Content>
 
         <Grid 
             Style="{ StaticResource CustomNavBarStyle }"
             Padding="0">
+
+            <!-- AVATAR -->
+            <ffimageloading:CachedImage
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                IsVisible="false"
+                x:Name="ProfileCachedImage"
+                CacheType="Disk"
+                CacheDuration="30"
+                WidthRequest="50"
+                HeightRequest="50"
+                Margin="10,0,0,0"
+                FadeAnimationEnabled="true"
+                ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+                LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }">
+                <ffimageloading:CachedImage.Transformations>
+                    <fftransformations:CircleTransformation 
+                        BorderSize="2" 
+                        BorderHexColor="#FFFFFF" />
+                </ffimageloading:CachedImage.Transformations>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{ Binding GoToProfileCommand }" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </ffimageloading:CachedImage>
 
             <ContentView 
                 BackgroundColor="Transparent"
@@ -40,6 +69,7 @@
                     </ContentView.GestureRecognizers>
 
                </ContentView>
+
 
            
             <Label 

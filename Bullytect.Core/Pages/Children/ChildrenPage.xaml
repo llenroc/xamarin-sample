@@ -51,26 +51,36 @@
             Title="{i18n:Translate Page.Children.Title}">
             <common:AppHeader.Options>
                 <x:Array Type="{x:Type View}">
-                    <common:RefreshOptionMenu />
-                    <!-- Add User -->
-                    <Label 
-                        HorizontalOptions="End"
-                        TranslationY="0"
-                        VerticalOptions="CenterAndExpand"
-                        Text="{ x:Static helper:FontAwesomeFont.UserPlus } " 
-                        FontSize="22"
-                        TextColor="{ DynamicResource CustomNavBarTextColor }" 
-                        Style="{ StaticResource FontIcon }">
-                        <Label.TranslationY>
-                            <OnPlatform 
-                                x:TypeArguments="x:Double" 
-                                iOS="10" 
-                                Android="0" />
-                        </Label.TranslationY>
-                        <Label.GestureRecognizers>
-                             <TapGestureRecognizer Command="{ Binding GoToAddSonCommand }" NumberOfTapsRequired="1" /> 
-                        </Label.GestureRecognizers>
-                    </Label>
+                    
+                    <!-- Refresh Menu Option -->
+                    <common:MenuOption
+                        Icon="{ x:Static helper:FontAwesomeFont.Refresh }"
+                        ClickedItemCommand="{ Binding RefreshCommand }">
+
+                        <common:MenuOption.Triggers>
+                            <DataTrigger
+                                TargetType="common:MenuOption"
+                                Binding="{Binding IsBusy}"
+                                Value="True">
+                                <Setter Property="IsVisible" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger
+                                TargetType="common:MenuOption"
+                                Binding="{Binding ErrorOccurred}"
+                                Value="False">
+                                <Setter Property="IsVisible" Value="False" />
+                            </DataTrigger>
+                        </common:MenuOption.Triggers>
+                    </common:MenuOption>
+                    <!-- End Refresh Menu Option -->
+
+                    <!-- Add User Menu Option -->
+
+                    <common:MenuOption
+                            Icon="{ x:Static helper:FontAwesomeFont.UserPlus }"
+                            ClickedItemCommand="{ Binding GoToAddSonCommand }" />
+
+                    <!-- End Add User Menu Option -->
                 </x:Array>
             </common:AppHeader.Options>
         </common:AppHeader>
@@ -122,16 +132,29 @@
                                         <ColumnDefinition Width="*" />
                                       </Grid.ColumnDefinitions>
 
-                                        
-                                      <!---Left Column Content -->
-                                      <ffimageloading:CachedImage
-                                        Grid.Column="0"
-                                        VerticalOptions="CenterAndExpand"
-                                        FadeAnimationEnabled="true"
-                                        ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
-                                        LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
-                                        Source="{ Binding ProfileImage, Converter={ StaticResource SonProfileImageURLConverter }}"
-                                        Aspect="AspectFill"/>
+                                    <!-- Right Column Content-->
+                                    <StackLayout
+                                        Grid.Column="0">
+
+                                        <ffimageloading:CachedImage
+                                                WidthRequest="120"
+                                                HeightRequest="120"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Center"
+                                                FadeAnimationEnabled="true"
+                                                ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+                                                LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
+                                                Source="{ Binding ProfileImage, Converter={ StaticResource SonProfileImageURLConverter }}"
+                                                Aspect="AspectFill">
+                                                <ffimageloading:CachedImage.Transformations>
+                                                    <fftransformations:CircleTransformation 
+                                                        BorderSize="5" 
+                                                        BorderHexColor="#6BC7E0" />
+                                                </ffimageloading:CachedImage.Transformations>
+                                           </ffimageloading:CachedImage>
+
+                                    </StackLayout>
+                                      
 
                                       <!-- Right Column Content-->
                                       <StackLayout
@@ -311,7 +334,7 @@
 
                                             <StackLayout.GestureRecognizers>
                                               <TapGestureRecognizer 
-                                                  Command="{ Binding Path=BindingContext.EditSonCommand , Source={x:Reference Root} }"
+                                                  Command="{ Binding Path=BindingContext.GoToRelations , Source={x:Reference Root} }"
                                                   CommandParameter="{ Binding Identity }" NumberOfTapsRequired="1" />
                                             </StackLayout.GestureRecognizers>
                                       </StackLayout>

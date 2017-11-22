@@ -44,7 +44,29 @@
                 Title="{i18n:Translate Page.Comment.Detail.Title}">
                 <common:AppHeader.Options>
                     <x:Array Type="{x:Type View}">
-                        <common:RefreshOptionMenu />
+                        <!-- Refresh Menu Option -->
+                        <common:MenuOption
+                            Icon="{ x:Static helper:FontAwesomeFont.Refresh }"
+                            ClickedItemCommand="{ Binding RefreshCommand }">
+
+                            <common:MenuOption.Triggers>
+                                <DataTrigger
+                                    TargetType="common:MenuOption"
+                                    Binding="{ Binding IsBusy }"
+                                    Value="True">
+                                   <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    TargetType="common:MenuOption"
+                                    Binding="{ Binding ErrorOccurred }"
+                                    Value="False">
+                                    <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                            </common:MenuOption.Triggers>
+
+                        </common:MenuOption>
+
+                        <!-- End Refresh Menu Option -->
                     </x:Array>
                 </common:AppHeader.Options>
 

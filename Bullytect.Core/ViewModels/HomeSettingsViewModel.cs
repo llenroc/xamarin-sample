@@ -115,7 +115,6 @@ namespace Bullytect.Core.ViewModels
         }
         public List<AlertCategoryModel> Categories { get; } = new List<AlertCategoryModel>();
 
-
         public List<PickerOptionModel> AlertsOptionsList { get; set; } = new List<PickerOptionModel>()
         {
             new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 20), Value = 20 },
@@ -132,15 +131,6 @@ namespace Bullytect.Core.ViewModels
             new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 45), Value = 45 },
             new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 60), Value = 60 }
         };
-
-		public List<PickerOptionModel> RemoveAlertsEveryOptionsList { get; set; } = new List<PickerOptionModel>()
-		{
-            new PickerOptionModel(){ Description = AppResources.Settings_Remove_Alerts_Never, Value = 0 },
-            new PickerOptionModel(){ Description = AppResources.Settings_Remove_Alerts_Last_Hour, Value = 1 },
-            new PickerOptionModel(){ Description = AppResources.Settings_Remove_Alerts_Last_Day, Value = 2 },
-            new PickerOptionModel(){ Description = AppResources.Settings_Remove_Alerts_Last_Month, Value = 3 }
-		};
-
 
         PickerOptionModel _alertsOption;
 
@@ -161,6 +151,15 @@ namespace Bullytect.Core.ViewModels
 
             set => SetProperty(ref _antiquityOfAlertsOption, value);
         }
+
+		public List<PickerOptionModel> RemoveAlertsEveryOptionsList { get; set; } = new List<PickerOptionModel>()
+		{
+            new PickerOptionModel(){ Description = AppResources.Settings_Remove_Alerts_Never, Value = 0 },
+            new PickerOptionModel(){ Description = AppResources.Settings_Remove_Alerts_Last_Hour, Value = 1 },
+            new PickerOptionModel(){ Description = AppResources.Settings_Remove_Alerts_Last_Day, Value = 2 },
+            new PickerOptionModel(){ Description = AppResources.Settings_Remove_Alerts_Last_Month, Value = 3 }
+		};
+
 
         bool _isPushNotificationEnabled;
 
@@ -187,7 +186,7 @@ namespace Bullytect.Core.ViewModels
 
         #region methods
 
-        private void FilteredAllCategories(bool showAll)
+        void FilteredAllCategories(bool showAll)
         {
 
             foreach (var category in Categories)

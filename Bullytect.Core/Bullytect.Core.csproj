@@ -140,9 +140,6 @@
     <EmbeddedResource Include="Pages\Common\ActivityLoading.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Results\ResultsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\EditSon\Popup\SocialMediaInfoPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -158,25 +155,10 @@
     <EmbeddedResource Include="Pages\Home\Settings\Templates\AlertCategoryCellView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Results\Settings\SettingsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\Common\Templates\CommonCategoryCellView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Results\Settings\Templates\SonCategoryCellView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\Common\AppHeader.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Common\RefreshOptionMenu.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Common\SettingsOptionMenu.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Common\SignOutOptionMenu.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\SonStatistics\SonStatisticsPage.xaml">
@@ -186,12 +168,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Common\Templates\ChartPageTemplate.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Results\Templates\UserListPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Results\Templates\UserItemTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Common\TimeoutOperation.xaml">
@@ -242,6 +218,43 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Comments\Popup\Templates\DimensionCategoryCellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Comments\Popup\Templates\SocialMediaCategoryCellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Relations\RelationsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Relations\Templates\UserItemTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Relations\Templates\UserListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Relations\Settings\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\ChildProfileImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\SeeMore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\MenuOption.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Alerts\Popup\FilterAlertsPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Common\ViewCells\CommonOptionPickerViewCell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -491,9 +504,6 @@
     </Compile>
     <Compile Include="Converters\AlertLevelToTextConverter.cs" />
     <Compile Include="Rest\Utils\ApiUtils.cs" />
-    <Compile Include="Pages\Results\ResultsPage.xaml.cs">
-      <DependentUpon>ResultsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\AppHelper.cs" />
     <Compile Include="Pages\EditSon\Popup\SocialMediaInfoPopup.xaml.cs">
       <DependentUpon>SocialMediaInfoPopup.xaml</DependentUpon>
@@ -504,7 +514,6 @@
     <Compile Include="ViewModels\HomeSettingsViewModel.cs" />
     <Compile Include="Rest\Models\Response\SchoolNameDTO.cs" />
     <Compile Include="Rest\Models\Response\CommentsBySonDTO.cs" />
-    <Compile Include="ViewModels\ResultsViewModel.cs" />
     <Compile Include="Converters\PickerSelectedIndexChangedArgsConverter.cs" />
     <Compile Include="Pages\Common\Templates\CommonInfoPopup.xaml.cs">
       <DependentUpon>CommonInfoPopup.xaml</DependentUpon>
@@ -525,10 +534,7 @@
     <Compile Include="Pages\Home\Settings\Templates\AlertCategoryCellView.xaml.cs">
       <DependentUpon>..\..\..\Settings\Templates\AlertCategoryCellView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Results\Settings\SettingsPage.xaml.cs">
-      <DependentUpon>SettingsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\ResultsSettingsViewModel.cs" />
+    <Compile Include="ViewModels\RelationsSettingsViewModel.cs" />
     <Compile Include="ViewModels\Core\Models\PickerOptionModel.cs" />
     <Compile Include="Rest\Models\Exceptions\NoIterationsFoundForSelfParentException.cs" />
     <Compile Include="ViewModels\Core\Models\CategoryModel.cs" />
@@ -536,21 +542,8 @@
     <Compile Include="Pages\Common\Templates\CommonCategoryCellView.xaml.cs">
       <DependentUpon>CommonCategoryCellView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\Core\Models\SonCategoryModel.cs" />
-    <Compile Include="Pages\Results\Settings\Templates\SonCategoryCellView.xaml.cs">
-      <DependentUpon>SonCategoryCellView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Common\AppHeader.xaml.cs">
       <DependentUpon>AppHeader.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Common\RefreshOptionMenu.xaml.cs">
-      <DependentUpon>RefreshOptionMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Common\SettingsOptionMenu.xaml.cs">
-      <DependentUpon>SettingsOptionMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Common\SignOutOptionMenu.xaml.cs">
-      <DependentUpon>SignOutOptionMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SonStatistics\SonStatisticsPage.xaml.cs">
       <DependentUpon>SonStatisticsPage.xaml</DependentUpon>
@@ -582,12 +575,6 @@
     <Compile Include="Pages\Common\Controls\SearchPageViewCellWithId.cs" />
     <Compile Include="Converters\ItemToIndexConverter.cs" />
     <Compile Include="Rest\Utils\HttpClientFactory.cs" />
-    <Compile Include="Pages\Results\Templates\UserListPage.xaml.cs">
-      <DependentUpon>UserListPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Results\Templates\UserItemTemplate.xaml.cs">
-      <DependentUpon>UserItemTemplate.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\Core\Models\UserListModel.cs" />
     <Compile Include="Rest\Models\Response\MostActiveFriendsDTO.cs" />
     <Compile Include="Rest\Models\Response\NewFriendsDTO.cs" />
@@ -685,6 +672,41 @@
       <DependentUpon>DimensionCategoryCellView.xaml</DependentUpon>
     </Compile>
     <Compile Include="OAuth\Providers\Google\ParentGoogleOAuth2.cs" />
+    <Compile Include="ViewModels\Core\Models\DimensionCategoryEnum.cs" />
+    <Compile Include="Pages\Comments\Popup\Templates\SocialMediaCategoryCellView.xaml.cs">
+      <DependentUpon>SocialMediaCategoryCellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Relations\RelationsPage.xaml.cs">
+      <DependentUpon>RelationsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\RelationsViewModel.cs" />
+    <Compile Include="Pages\Relations\Templates\UserItemTemplate.xaml.cs">
+      <DependentUpon>UserItemTemplate.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pages\Relations\Templates\UserListPage.xaml.cs">
+      <DependentUpon>UserListPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pages\Relations\Settings\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pages\Common\ChildProfileImage.xaml.cs">
+      <DependentUpon>ChildProfileImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\SeeMore.xaml.cs">
+      <DependentUpon>SeeMore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\MenuOption.xaml.cs">
+      <DependentUpon>MenuOption.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Alerts\Popup\FilterAlertsPopup.xaml.cs">
+      <DependentUpon>FilterAlertsPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Common\ViewCells\CommonOptionPickerViewCell.xaml.cs">
+      <DependentUpon>CommonOptionPickerViewCell.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -915,14 +937,10 @@
   <ItemGroup>
     <Folder Include="Models\Domain\Converter\" />
     <Folder Include="Pages\SonProfileFullScreen\" />
-    <Folder Include="Pages\Results\" />
     <Folder Include="Pages\EditSon\Popup\" />
     <Folder Include="OAuth\Services\Impl\" />
-    <Folder Include="Pages\Results\Templates\" />
     <Folder Include="Pages\Home\Settings\" />
-    <Folder Include="Pages\Results\Settings\" />
     <Folder Include="ViewModels\Core\Models\" />
-    <Folder Include="Pages\Results\Settings\Templates\" />
     <Folder Include="Pages\SonStatistics\" />
     <Folder Include="Pages\SonStatistics\Settings\" />
     <Folder Include="Pages\Common\Controls\" />
@@ -933,6 +951,11 @@
     <Folder Include="Pages\Comments\Settings\" />
     <Folder Include="Pages\Comments\Popup\" />
     <Folder Include="Pages\Comments\Popup\Templates\" />
+    <Folder Include="Pages\Relations\" />
+    <Folder Include="Pages\Relations\Templates\" />
+    <Folder Include="Pages\Relations\Settings\" />
+    <Folder Include="Pages\Alerts\Popup\" />
+    <Folder Include="Pages\Common\ViewCells\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />

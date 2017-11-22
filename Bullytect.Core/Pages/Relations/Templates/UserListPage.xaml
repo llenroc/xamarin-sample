@@ -3,12 +3,12 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
-    xmlns:templates="clr-namespace:Bullytect.Core.Pages.Results.Templates"
+    xmlns:templates="clr-namespace:Bullytect.Core.Pages.Relations.Templates"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
     BackgroundColor="{ DynamicResource BasePageColor }"
-    x:Class="Bullytect.Core.Pages.Results.Templates.UserListPage">
+    x:Class="Bullytect.Core.Pages.Relations.Templates.UserListPage">
     <ContentView.Resources>
         <ResourceDictionary>
             <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>

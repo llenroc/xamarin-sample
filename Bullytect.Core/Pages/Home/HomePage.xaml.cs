@@ -1,12 +1,11 @@
 ﻿
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Pages.Common;
 using Bullytect.Core.ViewModels;
-using FFImageLoading.Cache;
-using FFImageLoading.Forms;
 using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.Home
@@ -18,25 +17,39 @@ namespace Bullytect.Core.Pages.Home
             InitializeComponent();
         }
 
-		protected override void OnAppearing()
-		{
-
-			ViewModel.NewSelectedImage += ViewModel_OnNewSelectedImageAsync;
-
-		}
-
-		protected override void OnDisappearing()
-		{
-			ViewModel.NewSelectedImage -= ViewModel_OnNewSelectedImageAsync;
-		}
-
-        async void ViewModel_OnNewSelectedImageAsync(Object sender, ImageEntity NewProfileImage)
+        protected override void OnAppearing()
         {
-            await CachedImage.InvalidateCache(profileImage.Source, CacheType.All, true);
-            profileImage.ReloadImage();
+
+            ViewModel.ChildrenLoaded += ViewModel_OnChildrenLoaded;
+
         }
 
-            
+        protected override void OnDisappearing()
+        {
+            ViewModel.ChildrenLoaded -= ViewModel_OnChildrenLoaded;
+        }
+
+
+        void ViewModel_OnChildrenLoaded(Object sender, List<SonEntity> SonEntities)
+        {
+            ChildProfileContainer.Children.Clear();
+            foreach(var SonEntity in SonEntities){
+                ChildProfileContainer.Children.Add(new ChildProfileImage(){
+                    ProfileId = SonEntity.Identity,
+                    ProfileImage = SonEntity.ProfileImage,
+                    ProfileName = SonEntity.FirstName,
+                    ProfileWidth = 85,
+                    ProfileHeight = 85,
+                    BadgeText = "4",
+                    BadgeColor = "#22c064",
+                    BadgeCommand = ViewModel.GoToAlertsCommand,
+                    VerticalOptions = LayoutOptions.Center,
+                    HorizontalOptions = LayoutOptions.Center,
+                    ClickedItemCommand = ViewModel.ShowSonProfileCommand
+                });
+            }
+        }
+
 		/// First item Appearing => animate MoveDown
 		private void SearchPageViewCellWithId_OnFirstApper(object sender, EventArgs e) => MoveDown();
 

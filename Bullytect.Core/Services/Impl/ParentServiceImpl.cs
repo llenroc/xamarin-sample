@@ -14,6 +14,7 @@ namespace Bullytect.Core.Services.Impl
     using Bullytect.Core.Rest.Services;
     using Bullytect.Core.Rest.Models.Response;
     using Bullytect.Core.Rest.Models.Request;
+    using Bullytect.Core.ViewModels.Core.Models;
 
     public class ParentServiceImpl: BaseService, IParentService
     {
@@ -285,12 +286,12 @@ namespace Bullytect.Core.Services.Impl
 			return operationDecorator(observable);
         }
 
-        public IObservable<IList<CommentEntity>> GetCommentsBySon(string SonId)
+        public IObservable<IList<CommentEntity>> GetComments(string SonId, string AuthorId, int DaysAgo, IList<SocialMediaTypeEnum> SocialMedia, Dictionary<DimensionCategoryEnum, string> Dimensions)
         {
             Debug.WriteLine(string.Format("Get Comments by Son: {0}", SonId));
 
             var observable = _childrenRestService
-                .GetCommentsBySon(SonId)
+                .GetCommentsBySon(SonId, AuthorId, DaysAgo, SocialMedia, Dimensions)
                 .Select((response) => response.Data)
                 .Select(comments => Mapper.Map<IList<CommentDTO>, IList<CommentEntity>>(comments))
                 .Finally(() =>

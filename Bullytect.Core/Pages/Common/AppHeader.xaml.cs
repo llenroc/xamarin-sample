@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Bullytect.Core.Utils;
+using Bullytect.Core.Rest.Utils;
 using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.Common
@@ -50,7 +50,20 @@ namespace Bullytect.Core.Pages.Common
                 
 			});
 
-
+        public static readonly BindableProperty ProfileImageProperty = BindableProperty.Create(
+            nameof(ProfileImage),
+            typeof(string),
+            typeof(AppHeader),
+            defaultValue: string.Empty,
+            propertyChanging: (bindable, oldValue, newValue) =>
+            {
+                var AppHeader = bindable as AppHeader;
+                var newProfileImage = newValue as string;
+                AppHeader.ProfileCachedImage.IsVisible = true;
+                AppHeader.ProfileCachedImage.Source = !string.IsNullOrEmpty(newProfileImage) ?
+                          ImageSource.FromUri(new Uri(ApiEndpoints.GET_PARENT_PROFILE_IMAGE.Replace(":id", newProfileImage))) :
+                          ImageSource.FromFile("user_default.png");
+            });
 
 
         public AppHeader()
@@ -71,6 +84,12 @@ namespace Bullytect.Core.Pages.Common
 			get { return (bool)GetValue(BackEnableProperty); }
 			set { SetValue(BackEnableProperty, value); }
 		}
+
+        public string ProfileImage
+        {
+            get { return (string)GetValue(ProfileImageProperty); }
+            set { SetValue(ProfileImageProperty, value); }
+        }
 
         public IList<View> Options{
 			get { return (IList<View>)GetValue(OptionsProperty); }

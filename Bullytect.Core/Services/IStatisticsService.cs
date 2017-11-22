@@ -7,23 +7,25 @@ namespace Bullytect.Core.Services
     public interface IStatisticsService
     {
 
-		IObservable<ChartModel> GetSocialMediaActivityStatistics(string id);
+        IObservable<ChartModel> GetSocialMediaActivityStatistics(string Id);
 
-		IObservable<ChartModel> GetSentimentAnalysisStatistics(string id);
+        IObservable<ChartModel> GetSentimentAnalysisStatistics(string Id);
 
-		IObservable<ChartModel> GetCommunitiesStatistics(string id);
+        IObservable<ChartModel> GetCommunitiesStatistics(string Id);
 
-		IObservable<ChartModel> GetDimensionsStatistics(string id);
+        IObservable<ChartModel> GetDimensionsStatistics(string Id);
 
-        IObservable<ChartModel> GetCommentsStatistics();
+        IObservable<ChartModel> GetDimensionsStatistics(string Id, int DaysAgo);
 
-        IObservable<ChartModel> GetSocialMediaLikesStatistics();
+        IObservable<ChartModel> GetCommentsStatistics(string Id);
 
-        IObservable<ChartModel> GetAlertsStatistics();
+        IObservable<ChartModel> GetSocialMediaLikesStatistics(string Id);
 
-        IObservable<IList<UserListModel>> GetMostActiveFriends();
+        IObservable<ChartModel> GetAlertsStatistics(string Id);
 
-        IObservable<IList<UserListModel>> GetNewFriends();
+        IObservable<IList<UserListModel>> GetMostActiveFriends(string Id);
+
+        IObservable<IList<UserListModel>> GetNewFriends(string Id);
 
     }
 }

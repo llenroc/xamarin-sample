@@ -79,16 +79,7 @@ namespace Bullytect.Core
             
             cfg.CreateMap<UserSystemPreferencesDTO, UserSystemPreferencesEntity>();
 
-			// Mapper for SonEntity to SonCategoryModel
-			cfg.CreateMap<SonEntity, SonCategoryModel>()
-			.ForMember(s => s.Name, (obj) =>
-					   obj.MapFrom((Son) => Son.FullName))
-			.ForMember(s => s.Description, (obj) =>
-					   obj.MapFrom((Son) => Son.FullName))
-			.ForMember(s => s.IsFiltered, (obj) =>
-					   obj.ResolveUsing(o => Settings.Current.ShowResultsForAllChildren || Settings.Current.FilteredSonCategories.Contains(o.Identity)))
-			.ForMember(s => s.IsEnabled, (obj) =>
-					   obj.ResolveUsing(o => !Settings.Current.ShowResultsForAllChildren));
+			
 
 			// Mapper for MostActiveFriendsDTO.UserDTO to UserListModel
 

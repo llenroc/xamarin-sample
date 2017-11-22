@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
+    xmlns:utils="clr-namespace:Bullytect.Core.Utils;assembly=Bullytect.Core"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:converters="clr-namespace:Bullytect.Core.Converters"
+    xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
+    xmlns:commonControls="clr-namespace:Bullytect.Core.Pages.Common.Controls"
+    xmlns:templates="clr-namespace:Bullytect.Core.Pages.Home.Templates"
+    xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
+    x:Class="Bullytect.Core.Pages.Common.ChildProfileImage">
+	<ContentView.Content>
+   
+        <Grid 
+            HorizontalOptions="Fill"
+            VerticalOptions="CenterAndExpand"
+            x:Name="MainContainer">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid 
+                Grid.Row="0"
+                Padding="0, 5"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+
+
+                <!-- AVATAR -->
+                <ffimageloading:CachedImage
+                    
+                    x:Name="ProfileCachedImage"
+                    CacheType="Disk"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    CacheDuration="30"
+                    FadeAnimationEnabled="true"
+                    WidthRequest="80"
+                    HeightRequest="80"
+                    ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+                    LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }">
+                    <ffimageloading:CachedImage.Transformations>
+                        <fftransformations:CircleTransformation 
+                            x:Name="ProfileBorderColorCircle"
+                            BorderSize="5" 
+                            BorderHexColor="#22c064" />
+                    </ffimageloading:CachedImage.Transformations>
+                </ffimageloading:CachedImage>
+
+
+                <!-- BADGE -->
+                <common:Badge
+                    Grid.Row="0"
+                    x:Name="BadgeLabel"
+                    BadgeTextColor="{ DynamicResource InverseTextColor }"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Start"
+                    TranslationX="40">
+                </common:Badge>
+
+
+            </Grid>
+
+
+            <Label 
+                x:Name="ProfileNameLabel"
+                Grid.Row="1"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                LineBreakMode="TailTruncation"
+                TextColor="White"
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold"
+                FontSize="18"  />
+                
+        </Grid>
+	</ContentView.Content>
+</ContentView>

@@ -1,13 +1,20 @@
 ﻿
 using System.Collections.Generic;
+using System.Windows.Input;
 using Bullytect.Core.I18N;
 using Bullytect.Core.ViewModels.Core.Models;
 using Xamarin.Forms;
 
-namespace Bullytect.Core.Pages.Results.Templates
+namespace Bullytect.Core.Pages.Relations.Templates
 {
     public partial class UserListPage : ContentView
     {
+
+        public static readonly BindableProperty SelectedItemCommandProperty = 
+            BindableProperty.Create(
+                nameof(SelectedItemCommand),
+                typeof(ICommand),
+                typeof(UserListPage));
 
 		public static readonly BindableProperty IsLoadingProperty = BindableProperty.Create(
 			nameof(IsLoading),
@@ -102,10 +109,29 @@ namespace Bullytect.Core.Pages.Results.Templates
         public UserListPage()
         {
             InitializeComponent();
+
+            UserListView.ItemSelected += (object sender, SelectedItemChangedEventArgs e) => {
+
+                if(e.SelectedItem != null){
+
+                    var UserModel = e.SelectedItem as UserListModel;
+                    SelectedItemCommand?.Execute(UserModel);
+
+                }
+
+
+            };
         }
 
 
 		#region properties
+
+
+        public ICommand SelectedItemCommand
+        {
+            get { return (ICommand)GetValue(SelectedItemCommandProperty); }
+            set { SetValue(SelectedItemCommandProperty, value); }
+        }
 
 		public bool IsLoading
 		{

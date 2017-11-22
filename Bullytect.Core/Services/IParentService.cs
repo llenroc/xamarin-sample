@@ -6,7 +6,7 @@ namespace Bullytect.Core.Services
 	using System.Collections.Generic;
     using System.IO;
     using Bullytect.Core.Models.Domain;
-
+    using Bullytect.Core.ViewModels.Core.Models;
 
     public interface IParentService
     {
@@ -26,6 +26,6 @@ namespace Bullytect.Core.Services
         IObservable<string> DeleteSonById(string Id);
 		IObservable<UserSystemPreferencesEntity> SavePreferences(bool PushNotificationsEnabled, string RemoveAlertsEvery);
 		IObservable<UserSystemPreferencesEntity> GetPreferences();
-        IObservable<IList<CommentEntity>> GetCommentsBySon(string SonId);
+        IObservable<IList<CommentEntity>> GetComments(string SonId, string AuthorId, int DaysAgo, IList<SocialMediaTypeEnum> SocialMedia, Dictionary<DimensionCategoryEnum, string> Dimensions);
     }
 }

@@ -515,6 +515,12 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Home_Toolbar_Relations {
+            get {
+                return ResourceManager.GetString("Home.Toolbar.Relations", resourceCulture);
+            }
+        }
+        
         internal static string Home_Toolbar_Profile {
             get {
                 return ResourceManager.GetString("Home.Toolbar.Profile", resourceCulture);
@@ -566,12 +572,6 @@ namespace Bullytect.Core.I18N {
         internal static string Home_Profile_Load_Error {
             get {
                 return ResourceManager.GetString("Home.Profile.Load.Error", resourceCulture);
-            }
-        }
-        
-        internal static string Home_Results_No_Children {
-            get {
-                return ResourceManager.GetString("Home.Results.No.Children", resourceCulture);
             }
         }
         
@@ -824,6 +824,18 @@ namespace Bullytect.Core.I18N {
         internal static string Alerts_Deleted {
             get {
                 return ResourceManager.GetString("Alerts.Deleted", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Filter_Title {
+            get {
+                return ResourceManager.GetString("Alerts.Filter.Title", resourceCulture);
+            }
+        }
+        
+        internal static string Alerts_Filter_Levels_Title {
+            get {
+                return ResourceManager.GetString("Alerts.Filter.Levels.Title", resourceCulture);
             }
         }
         
@@ -1253,12 +1265,6 @@ namespace Bullytect.Core.I18N {
             }
         }
         
-        internal static string Results_Settings_Show_Results_For {
-            get {
-                return ResourceManager.GetString("Results.Settings.Show.Results.For", resourceCulture);
-            }
-        }
-        
         internal static string Results_Most_Active_Friends {
             get {
                 return ResourceManager.GetString("Results.Most.Active.Friends", resourceCulture);
@@ -1634,6 +1640,18 @@ namespace Bullytect.Core.I18N {
         internal static string Comments_Dimensions_Filter_Title {
             get {
                 return ResourceManager.GetString("Comments.Dimensions.Filter.Title", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_SocialMedia_Filter_All {
+            get {
+                return ResourceManager.GetString("Comments.SocialMedia.Filter.All", resourceCulture);
+            }
+        }
+        
+        internal static string Comments_SocialMedia_Filter_All_Description {
+            get {
+                return ResourceManager.GetString("Comments.SocialMedia.Filter.All.Description", resourceCulture);
             }
         }
     }

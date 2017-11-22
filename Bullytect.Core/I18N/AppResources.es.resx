@@ -320,10 +320,6 @@ correo electrónico y contraseña.</value>
     <value> Error cargando la información del perfil </value>
     <comment>Home Profile Load Error</comment>
   </data>
-  <data name="Home.Results.No.Children" xml:space="preserve">
-    <value> There are no statistics to display, you need to add children for the analysis </value>
-    <comment>Home Results No Children</comment>
-  </data>
   <data name="Son.Profile.Birthday" xml:space="preserve">
     <value> Fecha Nacimiento: {0} </value>
     <comment>Son Profile Birthday</comment>

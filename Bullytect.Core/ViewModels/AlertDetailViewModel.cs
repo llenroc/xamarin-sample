@@ -170,7 +170,7 @@ namespace Bullytect.Core.ViewModels
                             ShowViewModel<EditSonViewModel>(new { SonIdentity });
                             break;
                         case AlertCategoryEnum.GENERAL_STATISTICS:
-                            ShowViewModel<ResultsViewModel>();
+                            ShowViewModel<RelationsViewModel>();
                             break;
                         case AlertCategoryEnum.STATISTICS_SON:
                             ShowViewModel<SonStatisticsViewModel>(new SonStatisticsViewModel.SonStatisticsParameter()
@@ -181,7 +181,7 @@ namespace Bullytect.Core.ViewModels
                             });
                             break;
                         case AlertCategoryEnum.INFORMATION_EXTRACTION:
-                            ShowViewModel<CommentsViewModel>(new { Identity = SonIdentity });
+                            ShowViewModel<CommentsViewModel>(new { SonIdentity });
                             break;
                     }
 

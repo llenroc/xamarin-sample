@@ -29,23 +29,11 @@
                 Title="{i18n:Translate Page.Settings.Title}">
                 <common:AppHeader.Options>
                     <x:Array Type="{x:Type View}">
-                        <Label 
-                            HorizontalOptions="End"
-                            VerticalOptions="CenterAndExpand"
-                            Text="{ x:Static helper:FontAwesomeFont.Save } " 
-                            FontSize="22"
-                            TextColor="{ DynamicResource CustomNavBarTextColor }" 
-                            Style="{ StaticResource FontIcon }">
-                            <Label.TranslationY>
-                                <OnPlatform 
-                                    x:TypeArguments="x:Double" 
-                                    iOS="10" 
-                                    Android="0" />
-                            </Label.TranslationY>
-                            <Label.GestureRecognizers>
-                                 <TapGestureRecognizer Command="{ Binding SaveCommand }" NumberOfTapsRequired="1" /> 
-                            </Label.GestureRecognizers>
-                        </Label>
+                        <!-- Save Menu Option --> 
+                        <common:MenuOption
+                            Icon="{ x:Static helper:FontAwesomeFont.Save }"
+                            ClickedItemCommand="{ Binding SaveCommand }" />
+                        <!-- End Save Menu Option -->
                     </x:Array>
                 </common:AppHeader.Options>
              

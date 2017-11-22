@@ -11,11 +11,13 @@ using ReactiveUI;
 using Bullytect.Core.Rest.Models.Exceptions;
 using System.Reactive;
 using System.Reactive.Linq;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using Bullytect.Core.Helpers;
 using System.Linq;
 using MvvmHelpers;
+using Bullytect.Core.ViewModels.Core.Models;
+using Rg.Plugins.Popup.Services;
+using Bullytect.Core.Pages.Alerts.Popup;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -95,6 +97,41 @@ namespace Bullytect.Core.ViewModels
         public ObservableRangeCollection<AlertEntity> Alerts { get; } = new ObservableRangeCollection<AlertEntity>();
 
 
+        public List<PickerOptionModel> AlertsOptionsList { get; set; } = new List<PickerOptionModel>()
+        {
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 20), Value = 20 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 40), Value = 40 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 60), Value = 60 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 80), Value = 80 }
+        };
+
+        public List<PickerOptionModel> AntiquityOfAlertsOptionsList { get; set; } = new List<PickerOptionModel>()
+        {
+            new PickerOptionModel(){ Description = AppResources.Settings_Antiquity_Of_Alerts_No_Filter, Value = 0 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 15), Value = 15 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 30), Value = 30 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 45), Value = 45 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 60), Value = 60 }
+        };
+
+        PickerOptionModel _alertsOption;
+
+        public PickerOptionModel AlertsOption
+        {
+            get => _alertsOption ?? AlertsOptionsList.First();
+
+            set => SetProperty(ref _alertsOption, value);
+        }
+
+        PickerOptionModel _antiquityOfAlertsOption;
+
+        public PickerOptionModel AntiquityOfAlertsOption
+        {
+            get => _antiquityOfAlertsOption ?? AntiquityOfAlertsOptionsList.First();
+
+            set => SetProperty(ref _antiquityOfAlertsOption, value);
+        }
+
         #endregion
 
 
@@ -119,6 +156,16 @@ namespace Bullytect.Core.ViewModels
         }));
 
         public ReactiveCommand<AlertEntity, string> DeleteAlertCommand { get; protected set; }
+
+        public ICommand OpenFilterAlertsCommand
+                        => new MvxCommand(async () =>
+                        {
+                            if (PopupNavigation.PopupStack.Count > 0)
+                            {
+                                await PopupNavigation.PopAllAsync();
+                            }
+                            await PopupNavigation.PushAsync(new FilterAlertsPopup());
+                        });
 
 
 		#endregion

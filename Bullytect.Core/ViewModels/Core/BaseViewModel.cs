@@ -326,6 +326,14 @@ namespace Bullytect.Core.ViewModels
 
             public ICommand BackPressedCommand => new MvxCommand(() => OnBackPressed());
 
+            public ICommand GoToProfileCommand
+            {
+                get
+                {
+                    return new MvxCommand(() => ShowViewModel<ProfileViewModel>());
+                }
+            }
+
         #endregion
 
 

@@ -12,15 +12,6 @@
     xmlns:templates="clr-namespace:Bullytect.Core.Pages.EditSon.Templates"
     xmlns:extended="clr-namespace:Bullytect.Core.Pages.Common.Extended"
     x:Class="Bullytect.Core.Pages.Comments.Popup.DimensionsFilterPopup">
-    <pages:PopupPage.Resources>
-           <ResourceDictionary>
-                <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
-                <converters:IsSchoolCollectionEmptyConverter x:Key="IsSchoolCollectionEmptyConverter"/>
-                <converters:IsSchoolCollectionNotEmptyConverter x:Key="IsSchoolCollectionNotEmptyConverter"/>
-                <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
-                <converters:IsNullOrWhiteSpaceConverter x:Key="IsNullOrWhiteSpaceConverter"/>
-           </ResourceDictionary>
-    </pages:PopupPage.Resources>
     <!--Animations use example-->
     <pages:PopupPage.Animation>
             <animations:ScaleAnimation 
@@ -73,86 +64,161 @@
         </StackLayout>
 
         <ScrollView
+            x:Name="FilterContainer"
             Grid.Row="1">
 
-            <TableView 
+           <TableView 
+                x:Name="TableFilterComments"
                 Intent="Settings" 
+                HeightRequest="600"
+                VerticalOptions="StartAndExpand"
                 HasUnevenRows="true">
 
-                <TableSection Title="{i18n:Translate Settings.Alerts.General}">
+                    <TableSection Title="{i18n:Translate Settings.Alerts.General}">
 
-                    <extended:ExtendedViewCell SeparatorColor="{DynamicResource AccentColor}" SeparatorPadding="5">
+                        <extended:ExtendedViewCell SeparatorColor="{DynamicResource AccentColor}" SeparatorPadding="5">
 
-                         <Grid Padding="16,6,16,6" ColumnSpacing="16">
+                             <Grid Padding="16,6,16,6" ColumnSpacing="16">
 
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
 
-                            <Label 
-                                Grid.Column="0"
-                                Text="{ x:Static helper:FontAwesomeFont.Calendar }"
-                                Style="{StaticResource FontIcon}"
-                                FontSize ="12"
-                                WidthRequest="12"
-                                HeightRequest="12"
-                                VerticalOptions="Center"
-                                HorizontalTextAlignment="Center"
-                                VerticalTextAlignment="Center"/>
+                                <Label 
+                                    Grid.Column="0"
+                                    Text="{ x:Static helper:FontAwesomeFont.Calendar }"
+                                    Style="{StaticResource FontIcon}"
+                                    FontSize ="12"
+                                    WidthRequest="12"
+                                    HeightRequest="12"
+                                    VerticalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"/>
 
-                            <Label 
-                                Grid.Column="1"
-                                Text="{i18n:Translate Settings.Statistics.General.Interval }"
-                                VerticalTextAlignment="Center"
-                                HorizontalOptions="StartAndExpand"/>
+                                <Label 
+                                    Grid.Column="1"
+                                    Text="{i18n:Translate Settings.Statistics.General.Interval }"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalOptions="StartAndExpand"/>
 
-                            <Label
-                                Grid.Column="2" 
-                                VerticalTextAlignment="Center"
-                                HorizontalTextAlignment="Center"
-                                HorizontalOptions="End"
-                                VerticalOptions="CenterAndExpand"
-                                TextColor="{ DynamicResource AccentColor }"
-                                Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
-                                FontFamily="{ StaticResource IconsFontFamily }">
+                                <Label
+                                    Grid.Column="2" 
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="CenterAndExpand"
+                                    TextColor="{ DynamicResource AccentColor }"
+                                    Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                                    FontFamily="{ StaticResource IconsFontFamily }">
 
-                                <Label.FontSize>
-                                    <OnIdiom 
-                                        x:TypeArguments="x:Double"
-                                        Phone="20"
-                                        Tablet="20" />
-                                </Label.FontSize> 
+                                    <Label.FontSize>
+                                        <OnIdiom 
+                                            x:TypeArguments="x:Double"
+                                            Phone="20"
+                                            Tablet="20" />
+                                    </Label.FontSize> 
 
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer 
-                                        Tapped="OnTimeIntervalInfo"
-                                        NumberOfTapsRequired="1" />
-                                </Label.GestureRecognizers>
-                            </Label>
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Tapped="OnTimeIntervalInfo"
+                                            NumberOfTapsRequired="1" />
+                                    </Label.GestureRecognizers>
+                                </Label>
 
-                            <Picker
-                                Grid.Column="3"
-                                WidthRequest="100"
-                                VerticalOptions="Center"
-                                ItemsSource="{Binding TimeIntervalsOptionsList }"
-                                SelectedItem="{Binding TimeIntervalOption }"
-                                ItemDisplayBinding="{Binding Description}"/>
+                                <Picker
+                                    Grid.Column="3"
+                                    WidthRequest="100"
+                                    VerticalOptions="Center"
+                                    ItemsSource="{Binding TimeIntervalsOptionsList }"
+                                    SelectedItem="{Binding TimeIntervalOption }"
+                                    ItemDisplayBinding="{Binding Description}"/>
 
-                        </Grid>
+                            </Grid>
 
-                    </extended:ExtendedViewCell> 
-                </TableSection>
+                        </extended:ExtendedViewCell>
+                    </TableSection>
 
-               <TableSection 
-                    Title="{i18n:Translate Comments.Dimensions.Filter }"
-                     x:Name="TableSectionCategories">
-               </TableSection>
+                    <TableSection 
+                        Title="Social Media"
+                        x:Name="TableSectionSocialMediaCategories">
 
-          </TableView>
+                    </TableSection>
 
+                    <TableSection Title="{i18n:Translate Comments.Dimensions.Filter }">
+                         <extended:ExtendedViewCell 
+                            SeparatorColor="{DynamicResource AccentColor}" 
+                            SeparatorPadding="5">
+
+                             <Grid Padding="16,6,16,6" ColumnSpacing="16">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label 
+                                    Grid.Column="0"
+                                    Text="{ x:Static helper:FontAwesomeFont.Connectdevelop }"
+                                    Style="{StaticResource FontIcon}"
+                                    FontSize ="12"
+                                    WidthRequest="12"
+                                    HeightRequest="12"
+                                    VerticalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"/>
+
+                                <Label 
+                                    Grid.Column="1"
+                                    Text="Habilitar filtro dimensiones"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalOptions="StartAndExpand"/>
+
+                                <Label
+                                    Grid.Column="2" 
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="CenterAndExpand"
+                                    TextColor="{ DynamicResource AccentColor }"
+                                    Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
+                                    FontFamily="{ StaticResource IconsFontFamily }">
+
+                                    <Label.FontSize>
+                                        <OnIdiom 
+                                            x:TypeArguments="x:Double"
+                                            Phone="20"
+                                            Tablet="20" />
+                                    </Label.FontSize> 
+
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Tapped="OnTimeIntervalInfo"
+                                            NumberOfTapsRequired="1" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <Switch 
+                                    x:Name="SwitchDimension"
+                                    IsToggled = "{ Binding EnableDimensionFilter }"
+                                    Grid.Column="3" 
+                                    VerticalOptions="Center"/>
+
+                            </Grid>
+
+                        </extended:ExtendedViewCell> 
+
+                    </TableSection>
+
+                   <TableSection 
+                         x:Name="TableSectionDimensionCategories">
+                   </TableSection>
+
+              </TableView>
        </ScrollView>
 
       <!-- FOOTER -->
@@ -166,7 +232,7 @@
                 Style="{StaticResource PrimaryActionButtonStyle}"
                 VerticalOptions="Center"
                 Text="{i18n:Translate Common.Apply.Filter}"
-                Command="{ Binding FilterCommentsCommand }"
+                Command="{ Binding RefreshCommand }"
                 WidthRequest="{ artina:OnOrientationDouble
                     LandscapePhone=200,
                     LandscapeTablet=400 }"

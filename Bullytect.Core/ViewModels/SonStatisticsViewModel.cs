@@ -19,8 +19,8 @@ namespace Bullytect.Core.ViewModels
         readonly IStatisticsService _statisticsService;
 
 
-        public const int SOCIAL_MEDIA_ACTIVITIES_CHART = 0;
-        public const int FOUR_DIMENSIONS_CHART = 1;
+        public const int FOUR_DIMENSIONS_CHART = 0;
+        public const int SOCIAL_MEDIA_ACTIVITIES_CHART = 1;
         public const int SENTIMENT_ANALYSIS_CHART = 2;
         public const int COMMUNITIES_CHART = 3;
 
@@ -44,7 +44,7 @@ namespace Bullytect.Core.ViewModels
         {
             public string Identity { get; set; }
             public string FullName { get; set; }
-            public int ShowChart { get; set; } = SOCIAL_MEDIA_ACTIVITIES_CHART;
+            public int ShowChart { get; set; } = FOUR_DIMENSIONS_CHART;
         }
 
 
@@ -110,7 +110,7 @@ namespace Bullytect.Core.ViewModels
         {
             get
             {
-                return new MvxCommand(() => ShowViewModel<CommentsViewModel>(new { Identity = Identity }));
+                return new MvxCommand(() => ShowViewModel<CommentsViewModel>(new { SonIdentity = Identity }));
             }
         }
 

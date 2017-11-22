@@ -15,6 +15,9 @@ using Bullytect.Core.Helpers;
 using Plugin.Media.Abstractions;
 using System.Reactive;
 using Bullytect.Core.Config;
+using System.Collections.Generic;
+using MvvmHelpers;
+using System.Linq;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -36,10 +39,12 @@ namespace Bullytect.Core.ViewModels
 
                 return Observable.Zip(
                     _parentService.GetProfileInformation(),
+                    _parentService.GetChildren().OnErrorResumeNext(Observable.Return(new List<SonEntity>())),
                     _alertService.GetLastAlertsForSelfParent().OnErrorResumeNext(Observable.Return(new AlertsPageEntity())),
-                    (ParentEntity, AlertsPageEntity) => new PageModel()
+                    (ParentEntity, SonEntities, AlertsPageEntity) => new PageModel()
                     {
                         SelfParent = ParentEntity,
+                        SonEntities = SonEntities,
                         AlertsPage = AlertsPageEntity
                     });
 
@@ -63,7 +68,6 @@ namespace Bullytect.Core.ViewModels
             TakePhotoCommand.Subscribe((image) =>
             {
                 SelfParent.ProfileImage = image.Identity;
-                OnNewSelectedImage(image);
                 _userDialogs.ShowSuccess(AppResources.Profile_Updating_Profile_Image_Success);
             });
 
@@ -80,6 +84,8 @@ namespace Bullytect.Core.ViewModels
             get => _selfParent;
             set => SetProperty(ref _selfParent, value);
         }
+
+        public ObservableRangeCollection<SonEntity> SonEntities { get; } = new ObservableRangeCollection<SonEntity>();
 
         AlertsPageEntity _alertsPage = new AlertsPageEntity();
 
@@ -112,27 +118,19 @@ namespace Bullytect.Core.ViewModels
 
         #region delegates
 
-        public delegate void NewSelectedImageEvent(object sender, ImageEntity NewProfileImage);
-        public event NewSelectedImageEvent NewSelectedImage;
+        public delegate void ChildrenLoadedEvent(object sender, List<SonEntity> SonEntities);
+        public event ChildrenLoadedEvent ChildrenLoaded;
 
-        protected virtual void OnNewSelectedImage(ImageEntity NewProfileImage)
+        protected virtual void OnChildrenLoaded(List<SonEntity> SonEntities)
         {
-            NewSelectedImage?.Invoke(this, NewProfileImage);
+            ChildrenLoaded?.Invoke(this, SonEntities);
         }
 
-        #endregion
+        #endregion 
 
         #region commands
 
         public ReactiveCommand<Unit, PageModel> RefreshCommand { get; protected set; }
-
-        public ICommand GoToProfileCommand
-        {
-            get
-            {
-                return new MvxCommand(() => ShowViewModel<ProfileViewModel>());
-            }
-        }
 
 
         public ICommand GoToChildrenCommand
@@ -140,23 +138,6 @@ namespace Bullytect.Core.ViewModels
             get
             {
                 return new MvxCommand(() => ShowViewModel<ChildrenViewModel>());
-            }
-        }
-
-
-        public ICommand GoToResultsCommand
-        {
-            get
-            {
-                return new MvxCommand(() => {
-
-                    if(SelfParent?.Children > 0){
-                        ShowViewModel<ResultsViewModel>();
-                    } else {
-                        _appHelper.ShowAlert(AppResources.Home_Results_No_Children);
-                    }
-
-                });
             }
         }
 
@@ -191,6 +172,29 @@ namespace Bullytect.Core.ViewModels
             Category = AlertEntity.Category,
             Since = AlertEntity.Since
         }));
+
+        public ICommand ShowSonProfileCommand
+        {
+            get
+            {
+                return new MvxCommand<string>((SonId) => {
+
+                    var SonEntity = SonEntities.FirstOrDefault((Son) => Son.Identity.Equals(SonId));
+
+                    if(SonEntity != null)
+
+                        ShowViewModel<SonProfileViewModel>(new SonProfileViewModel.SonParameter()
+                        {
+                            Identity = SonEntity.Identity,
+                            FullName = SonEntity.FullName,
+                            Birthdate = SonEntity.Birthdate,
+                            School = SonEntity.School?.Name,
+                            ProfileImage = SonEntity.ProfileImage
+                        });
+
+                });
+            }
+        }
 
         public ReactiveCommand<string, ImageEntity> TakePhotoCommand { get; set; }
 
@@ -240,6 +244,8 @@ namespace Bullytect.Core.ViewModels
             ErrorOccurred = false;
             AlertsPage.HydrateWith(pageModel.AlertsPage);
             SelfParent.HydrateWith(pageModel.SelfParent);
+            SonEntities.ReplaceRange(pageModel.SonEntities);
+            OnChildrenLoaded(pageModel.SonEntities);
             RefreshBindings();
         }
 
@@ -256,6 +262,7 @@ namespace Bullytect.Core.ViewModels
 		{
 
             public ParentEntity SelfParent { get; set; } = new ParentEntity();
+            public List<SonEntity> SonEntities { get; set; } = new List<SonEntity>();
             public AlertsPageEntity AlertsPage { get; set; } = new AlertsPageEntity();
 
 		}

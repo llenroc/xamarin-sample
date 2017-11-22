@@ -432,6 +432,12 @@ and we will recover it for you. </value>
     <value> Results </value>
     <comment>Home Toolbar Resuls</comment>
   </data>
+
+  <data name="Home.Toolbar.Relations" xml:space="preserve">
+    <value> Relations </value>
+    <comment>Home Toolbar Relations</comment>
+  </data>
+	
   <data name="Home.Toolbar.Profile" xml:space="preserve">
     <value> Profile </value>
     <comment>Home Toolbar Profile</comment>
@@ -468,10 +474,6 @@ and we will recover it for you. </value>
   <data name="Home.Profile.Load.Error" xml:space="preserve">
     <value> Error loading profile </value>
     <comment>Home Profile Load Error</comment>
-  </data>
-  <data name="Home.Results.No.Children" xml:space="preserve">
-    <value> No hay estadísticas para mostrar, es necesario añadir hijos para el análisis </value>
-    <comment>Home Results No Children</comment>
   </data>
   <data name="Son.Profile.Birthday" xml:space="preserve">
     <value> Birthday: {0} </value>
@@ -640,6 +642,14 @@ and we will recover it for you. </value>
   <data name="Alerts.Deleted" xml:space="preserve">
     <value> Alert Deleted  </value>
     <comment>Alerts Deleted</comment>
+  </data>
+  <data name="Alerts.Filter.Title" xml:space="preserve">
+    <value> Filter alerts </value>
+    <comment>Alerts Filter Title</comment>
+  </data>
+  <data name="Alerts.Filter.Levels.Title" xml:space="preserve">
+    <value> Alert levels </value>
+    <comment>Alerts Filter Levels Title</comment>
   </data>
   <data name="Loading.Alerts" xml:space="preserve">
     <value> Loading Alerts </value>
@@ -931,11 +941,6 @@ and we will recover it for you. </value>
 	<data name="Results.Social.Media.Likes.Error" xml:space="preserve">
     <value>Error Loading Social Media Likes</value>
     <comment>Results Social Media Likes Error</comment>
-  </data>
-
-  <data name="Results.Settings.Show.Results.For" xml:space="preserve">
-    <value>Show Results For</value>
-    <comment>Results Settings Show Results For</comment>
   </data>
 
   <data name="Results.Most.Active.Friends" xml:space="preserve">
@@ -1256,6 +1261,17 @@ and we will recover it for you. </value>
 	<data name="Comments.Dimensions.Filter.Title" xml:space="preserve">
         <value>Filter Comments</value>
         <comment>Comments Dimensions Filter Title</comment>
+    </data>
+
+
+	<data name="Comments.SocialMedia.Filter.All" xml:space="preserve">
+        <value>All Social Media</value>
+        <comment>Comments SocialMedia Filter All</comment>
+    </data>
+
+	<data name="Comments.SocialMedia.Filter.All.Description" xml:space="preserve">
+        <value>Enable all Social Media</value>
+        <comment>Comments SocialMedia Filter All Description</comment>
     </data>
 
 	

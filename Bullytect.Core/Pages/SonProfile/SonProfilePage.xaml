@@ -5,6 +5,8 @@
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:helper="clr-namespace:Bullytect.Core.Helpers;assembly=Bullytect.Core"
     xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
+    xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
@@ -17,14 +19,24 @@
         <ResourceDictionary>
             <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
             <converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter" />
+            <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
 
-    <ContentPage.Content>
+    <!-- Refresh On Appearing Event -->
+    <ContentPage.Behaviors>
+        <behaviors:EventHandlerBehavior EventName="Appearing" >
+            <behaviors:InvokeCommandAction 
+                    Command="{Binding RefreshCommand}" 
+                    Converter="{ StaticResource DefaultReactiveUnitConverter}" />
+        </behaviors:EventHandlerBehavior>
+    </ContentPage.Behaviors>
 
-       
-        <!-- MAIN CONTAINER -->
+
+
+    <ContentPage.Content>
+         <!-- MAIN CONTAINER -->
         <Grid RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -37,155 +49,284 @@
                 Title="{ Binding FullName, StringFormat={i18n:Translate Page.Son.Profile.Title}}">
                 <common:AppHeader.Options>
                     <x:Array Type="{x:Type View}">
-                        <!-- Delete Son -->
-                        <Label 
-                            HorizontalOptions="End"
-                            Margin="0,0,10,0"
-                            Text="{ x:Static helper:FontAwesomeFont.Trash } " 
-                            FontSize="22"
-                            TextColor="{ DynamicResource CustomNavBarTextColor }" 
-                            Style="{ StaticResource FontIcon }">
-                            <Label.TranslationY>
-                                <OnPlatform 
-                                    x:TypeArguments="x:Double" 
-                                    iOS="10" 
-                                    Android="0" />
-                            </Label.TranslationY>
-                            <Label.GestureRecognizers>
-                                 <TapGestureRecognizer 
-                                        Command="{ Binding DeleteSonCommand }" 
-                                        NumberOfTapsRequired="1" /> 
-                            </Label.GestureRecognizers>
 
+                        <!-- Refresh Menu Option -->
+                        <common:MenuOption
+                            Icon="{ x:Static helper:FontAwesomeFont.Refresh }"
+                            ClickedItemCommand="{ Binding RefreshCommand }">
 
-                            <Label.Triggers>
-                                <DataTrigger 
-                                    TargetType="Label"
-                                    Binding="{Binding HaveInternet}"
-                                    Value="False">
-                                    <Setter Property="IsVisible" Value="False" />
+                            <common:MenuOption.Triggers>
+                                <DataTrigger
+                                    TargetType="common:MenuOption"
+                                    Binding="{Binding IsBusy}"
+                                    Value="True">
+                                   <Setter Property="IsVisible" Value="False" />
                                 </DataTrigger>
                                 <DataTrigger
-                                    TargetType="Label"
-                                    Binding="{Binding DataFound}"
+                                    TargetType="common:MenuOption"
+                                    Binding="{Binding ErrorOccurred}"
                                     Value="False">
                                     <Setter Property="IsVisible" Value="False" />
                                 </DataTrigger>
-                            </Label.Triggers>
-                           
-                            
-                        </Label>
+                            </common:MenuOption.Triggers>
 
+                        </common:MenuOption>
+
+                        <!-- End Refresh Menu Option -->
+
+                        <!-- Edit Son Menu Option -->
+
+                        <common:MenuOption
+                            Icon="{ x:Static helper:FontAwesomeFont.Pencil }"
+                            ClickedItemCommand="{ Binding EditSonCommand }" />
+
+                        <!-- Edn Edit Son Menu Option -->
+                        
                     </x:Array>
                 </common:AppHeader.Options>
+
             </common:AppHeader>
 
-
-            <Grid 
+            <ScrollView 
                 Grid.Row="1"
-                RowSpacing="0"
-                VerticalOptions="Fill">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60*" />
-                    <RowDefinition Height="40*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-
-                <!--Son Profile Image -->
-                <ffimageloading:CachedImage 
-                    Grid.Row="0"
-                    CacheType="Disk"
-                    CacheDuration="30"
-                    FadeAnimationEnabled="true"
-                    ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
-                    LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
-                    Source="{ Binding ProfileImage, Converter={ StaticResource SonProfileImageURLConverter }}"
-                    Aspect="AspectFill" >
-                    <ffimageloading:CachedImage.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnImageTapped" />
-                    </ffimageloading:CachedImage.GestureRecognizers>
-                </ffimageloading:CachedImage>
-
-                <!-- Son Data  -->
+                Padding="{ StaticResource MainWrapperPadding }">
+                
                 <Grid
-                    Grid.Row="1"
-                    Padding="20,15,20,0"
-                    VerticalOptions="StartAndExpand"
-                    RowSpacing="5">
+                    RowSpacing="0"
+                    VerticalOptions="FillAndExpand">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="240" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <!-- FULLNAME NAME -->
-                    <Label
+                    <Grid 
                         Grid.Row="0"
-                        Margin="0,0,0,15"
-                        Text="{Binding FullName}"
-                        FontSize="{ artina:OnOrientationDouble 
-                            PortraitPhone=28,
-                            LandscapePhone=28,
-                            PortraitTablet=38,
-                            LandscapeTablet=38 }"
-                        FontAttributes="Bold"
-                        HorizontalTextAlignment="Start"/>
+                        Padding="0"
+                        BackgroundColor="Black">
 
-                  <BoxView
-                    Style="{StaticResource BrandNameOrnamentStyle}"
-                    BackgroundColor="{DynamicResource AccentColor}"
-                   />
-                    
-                   <!-- Birthdate -->
+                        <!-- MAIN IMAGE -->
+                        <ffimageloading:CachedImage
+                            ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+                            LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
+                            CacheType="Disk" CacheDuration="30"
+                            Source="{ Binding ProfileImage, Converter={ StaticResource SonProfileImageURLConverter }}"
+                            Aspect="AspectFill"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Start"
+                            Opacity=".8">
+                            <ffimageloading:CachedImage.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnImageTapped" />
+                            </ffimageloading:CachedImage.GestureRecognizers>
+                         </ffimageloading:CachedImage>
+                    </Grid>
 
-                   <Label
+                    <!-- MAIN HEADER -->
+                    <StackLayout
+                        Grid.Row="0"
+                        Padding="20"
+                        Spacing="0"
+                        VerticalOptions="End"
+                        x:Name="headers" 
+                        AnchorX="0"
+                        AnchorY="0">
+
+                        <Label
+                            Text="{ Binding FullName }"
+                            LineBreakMode="WordWrap"
+                            TextColor="{ DynamicResource OverImageTextColor }"
+                            FontSize="26"
+                            FontAttributes="Bold"/>
+
+                        <Label
+                            Grid.Row="1"
+                            Text="{Binding Birthdate, 
+                                Converter={ StaticResource DateTimeToStringConverter }, 
+                                StringFormat={ i18n:Translate Son.Profile.Birthday }}"
+                            FontSize="{ artina:OnOrientationDouble 
+                                PortraitPhone=18,
+                                LandscapePhone=18,
+                                PortraitTablet=28,
+                                LandscapeTablet=28 }"
+                            HorizontalTextAlignment="Start"
+                            LineBreakMode="WordWrap"
+                            TextColor="{ DynamicResource OverImageTextColor }"/>
+
+
+                        <Label
+                            Grid.Row="2"
+                            Text="{Binding School, StringFormat={i18n:Translate Son.Profile.School}}"
+                            FontSize="{ artina:OnOrientationDouble 
+                                PortraitPhone=16,
+                                LandscapePhone=16,
+                                PortraitTablet=26,
+                                LandscapeTablet=26 }"
+                            HorizontalTextAlignment="Start"
+                            TextColor="{ DynamicResource OverImageTextColor }"/>
+
+                        <BoxView  
+                            Style="{StaticResource BrandNameOrnamentStyle}"
+                            Margin="0,20,0,0"/>
+
+                    </StackLayout>
+
+
+
+                    <Grid
                         Grid.Row="1"
-                        Text="{Binding Birthdate, 
-                            Converter={ StaticResource DateTimeToStringConverter }, 
-                            StringFormat={i18n:Translate Son.Profile.Birthday}}"
-                        FontSize="{ artina:OnOrientationDouble 
-                            PortraitPhone=18,
-                            LandscapePhone=18,
-                            PortraitTablet=28,
-                            LandscapeTablet=28 }"
-                        HorizontalTextAlignment="Start"/>
+                        BackgroundColor="{ DynamicResource BasePageColor }">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <!--HEADER BACKGROUND-->
+                        <BoxView
+                            Grid.Row="0"
+                            BackgroundColor="{ DynamicResource ArticleHeaderBackgroundColor }" />
+
+                        <!--HEADER INFO-->
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Grid.Row="0"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Spacing="20">
 
 
-                    <!-- School -->
+                            <!-- User charts Action -->
+                            <StackLayout
+                                Orientation="Horizontal"
+                                HorizontalOptions="Center"
+                                VerticalOptions="CenterAndExpand">
 
-                    <Label
-                        Grid.Row="2"
-                        Text="{Binding School, StringFormat={i18n:Translate Son.Profile.School}}"
-                        FontSize="{ artina:OnOrientationDouble 
-                            PortraitPhone=18,
-                            LandscapePhone=18,
-                            PortraitTablet=28,
-                            LandscapeTablet=28 }"
-                        HorizontalTextAlignment="Start"
-                        TextColor="{ DynamicResource BaseTextColor }"/>
-                    
+                                <Image 
+                                    WidthRequest="30" 
+                                    HeightRequest="30" 
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Source="statistics.png" />
 
-                </Grid>
+                                    <Label
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        TextColor="{DynamicResource AccentColor}"
+                                        Text="{i18n:Translate Children.Toolbar.Results}">
 
-                <!-- Edit Action -->
-                <artina:Button
-                    Grid.Row="2"
-                    Command="{ Binding EditSonCommand }"
-                    CommandParameter="{ Binding Identity }"
-                    Margin="20,10,20,20"
-                    Style="{StaticResource PrimaryActionButtonStyle}" 
-                    Text="Edit"
-                    WidthRequest="{ artina:OnOrientationDouble
-                        LandscapePhone=200,
-                        LandscapeTablet=400 }"
-                    HorizontalOptions="{ artina:OnOrientationLayoutOptions
-                        PortraitPhone=Fill,
-                        LandscapePhone=Center,
-                        PortraitTablet=Fill,
-                        LandscapeTablet=Center }"/>
-            
-            </Grid> 
-        </Grid>
+                                        <Label.FontSize>
+                                                <OnIdiom
+                                                    x:TypeArguments="x:Double"
+                                                    Phone="15"
+                                                    Tablet="15" />
+                                        </Label.FontSize>
+                                    </Label>
+
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Command="{ Binding ShowSonStatisticsCommand }"
+                                            NumberOfTapsRequired="1" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <!-- End User charts Action -->
+
+                                <!-- Alerts Action -->
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="Center">
+
+                                    <Image 
+                                        WidthRequest="30" 
+                                        HeightRequest="30" 
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Source="alertas.png" />
+
+                                    <Label
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        TextColor="{DynamicResource AccentColor}"
+                                        Text="{i18n:Translate Children.Toolbar.Alerts}">
+                                        <Label.FontSize>
+                                            <OnIdiom
+                                                x:TypeArguments="x:Double"
+                                                Phone="15"
+                                                Tablet="15" />
+                                        </Label.FontSize>
+                                    </Label>
+
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Command="{ Binding GoToAlertsCommand }"
+                                            NumberOfTapsRequired="1" />
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <!-- End Alerts Action -->
+                            
+                                <!-- Edit Profile Action -->
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="EndAndExpand">
+                                
+                                    <Image 
+                                        WidthRequest="30" 
+                                        HeightRequest="30" 
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Source="circulo.png" />
+
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            TextColor="{DynamicResource AccentColor}"
+                                            Text="{i18n:Translate Children.Toolbar.Relations }">
+                                            <Label.FontSize>
+                                              <OnIdiom
+                                                x:TypeArguments="x:Double"
+                                                Phone="15"
+                                                Tablet="15" />
+                                            </Label.FontSize>
+                                        </Label>
+
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                                    Command="{ Binding GoToRelationsCommand }"  
+                                                    NumberOfTapsRequired="1" />
+                                         </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <!-- End Edit Profile Action -->
+                            
+                            </StackLayout>
+
+                            <!-- SEPARATOR -->
+                            <BoxView
+                                Grid.Row="0"
+                                VerticalOptions="End"
+                                Style="{ StaticResource Horizontal1ptLineStyle}" />
+
+                            <ScrollView 
+                                Grid.Row="1"
+                                Padding="20,20,20,0"
+                                VerticalOptions="StartAndExpand">
+                                
+
+                                <commonTemplates:ChartPageTemplate 
+                                    Title="{i18n:Translate Statistics.Son.Four.Dimensions}"
+                                    IsLoading="{ Binding IsBusy }"
+                                    Chart="{ Binding FourDimensionsChart }"
+                                    LoadingText="{i18n:Translate Statistics.Son.Four.Dimensions.Loading }"
+                                    ChartWidth="350"
+                                    ChartHeight="350"
+                                    DataFound="{ Binding DataFound }"
+                                    Error="{ Binding ErrorOccurred }"
+                                    ErrorText="{i18n:Translate Statistics.Son.Four.Dimensions.Error}"
+                                />
+
+                            </ScrollView>
+                        </Grid>
+                    </Grid>
+            </ScrollView>
+         </Grid>
 	</ContentPage.Content>
 </common:BaseContentPage>

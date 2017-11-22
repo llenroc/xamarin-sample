@@ -56,12 +56,51 @@
             <common:AppHeader 
                 Grid.Row="0"
                 Title="{i18n:Translate Page.Home.Title}"
-                BackEnable="false">
+                BackEnable="false"
+                ProfileImage="{ Binding SelfParent.ProfileImage }">
                 <common:AppHeader.Options>
                     <x:Array Type="{x:Type View}">
-                        <common:RefreshOptionMenu />
-                        <common:SettingsOptionMenu />
-                        <common:SignOutOptionMenu />
+
+                        <!-- Refresh Menu Option -->
+                        <common:MenuOption
+                            Icon="{ x:Static helper:FontAwesomeFont.Refresh }"
+                            ClickedItemCommand="{ Binding RefreshCommand }">
+
+                            <common:MenuOption.Triggers>
+                                <DataTrigger
+                                    TargetType="common:MenuOption"
+                                    Binding="{Binding IsBusy}"
+                                    Value="True">
+                                   <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    TargetType="common:MenuOption"
+                                    Binding="{Binding ErrorOccurred}"
+                                    Value="False">
+                                    <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                            </common:MenuOption.Triggers>
+
+                        </common:MenuOption>
+
+                        <!-- End Refresh Menu Option -->
+
+                        <!-- Settings Menu Option -->
+
+                        <common:MenuOption
+                            Icon="{ x:Static helper:FontAwesomeFont.Gear }"
+                            ClickedItemCommand="{ Binding GoToSettingsCommand }" />
+
+                        <!-- End Settings Menu Option -->
+
+                        <!-- SignOut Menu Option -->
+
+                        <common:MenuOption
+                            Icon="{ x:Static helper:FontAwesomeFont.SignOut }"
+                            
+                            ClickedItemCommand="{ Binding SignOutCommand }" />
+
+                        <!-- End SignOut Menu Option -->
                     </x:Array>
                 </common:AppHeader.Options>
 
@@ -85,7 +124,7 @@
                      IsVisible="{ Binding ErrorOccurred , Converter = { StaticResource InverseBoolConverter }  }">
 
                      <Grid.RowDefinitions>
-                          <RowDefinition Height="250" />
+                          <RowDefinition Height="150" />
                           <RowDefinition Height="*" />
                      </Grid.RowDefinitions>
 
@@ -95,225 +134,44 @@
                         Grid.Row="0"
                         Padding="0">
 
+                        <!-- BACKGROUND IMAGE -->
+                        <Image 
+                            Source="{ StaticResource HomeBackground }"
+                            IsOpaque="false"
+                            Aspect="AspectFill"
+                            HorizontalOptions="FillAndExpand"/>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
+                        <ScrollView
+                            HorizontalOptions="Fill"
+                            VerticalOptions="CenterAndExpand"
+                            Orientation="Horizontal">
 
-                            <!-- BACKGROUND IMAGE -->
-                            <Image 
-                                Grid.Row="0"
-                                Grid.RowSpan="2"
-                                Source="{ StaticResource HomeBackground }"
-                                IsOpaque="false"
-                                Aspect="AspectFill"
-                                HorizontalOptions="FillAndExpand"/>
+                            <StackLayout 
+                                Orientation="Horizontal"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Center">
 
-                            <StackLayout
-                                Grid.Row="0"
-                                HorizontalOptions="FillAndExpand">
-
-                                <Grid 
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center"
-                                    TranslationY="25">
-
-                                    <!-- AVATAR -->
-                                    <ffimageloading:CachedImage
-                                        x:Name="profileImage"
-                                        CacheType="Disk"
-                                        CacheDuration="30"
-                                        WidthRequest="100"
-                                        HeightRequest="100"
-                                        FadeAnimationEnabled="true"
-                                        ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
-                                        LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
-                                        Source="{ Binding SelfParent.ProfileImage , Converter={ StaticResource ParentProfileImageURLConverter } }">
-                                        <ffimageloading:CachedImage.Transformations>
-                                             <fftransformations:CircleTransformation BorderSize="5" BorderHexColor="#FFFFFF" />
-                                        </ffimageloading:CachedImage.Transformations>
-                                     </ffimageloading:CachedImage>
-
-                                      <!-- BADGE -->
-                                      <common:Badge
-                                        IsVisible="{ Binding  AlertsPage.Remaining, Converter={ StaticResource ValueGreaterThanZeroConverter }}"
-                                        BadgeText="{ Binding  AlertsPage.Remaining, StringFormat='+ {0}'}"
-                                        BadgeTextColor="{ DynamicResource InverseTextColor }"
-                                        BadgeBackgroundColor="#22c064"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Start"
-                                        TranslationX="40">
-
-                                        <common:Badge.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{ Binding GoToAlertsCommand }" NumberOfTapsRequired="1" /> 
-                                        </common:Badge.GestureRecognizers>
-
-                                    </common:Badge>
-
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{ Binding TakePhotoCommand }"  NumberOfTapsRequired="1" />
-                                    </Grid.GestureRecognizers>
-                                </Grid>
-
-                                <!-- Parent FullName -->
                                 <StackLayout
                                     Orientation="Horizontal"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Padding="20">
-
-                                    <Label 
-                                        HorizontalOptions="CenterAndExpand"
-                                        Text="{Binding SelfParent.FullName}"
-                                        TextColor="{ DynamicResource OverImageTextColor }"
-                                        HorizontalTextAlignment="Center"
-                                        FontAttributes="Bold"
-                                        FontSize="{ artina:OnOrientationDouble
-                                            PortraitPhone=22,
-                                            LandscapePhone=22,
-                                            PortraitTablet=24,
-                                            LandscapeTablet=24 }"  />
+                                    Padding="10,0"
+                                    Spacing="15"
+                                    x:Name="ChildProfileContainer"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Start">
                                 </StackLayout>
+
+
+                                <common:SeeMore 
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"
+                                    ClickedItemCommand="{ Binding GoToChildrenCommand }"/>
+
+
                             </StackLayout>
 
-                            <!-- TOOLBAR -->
-                            <Grid
-                                x:Name="Toolbar"
-                                Grid.Row="1"
-                                Style="{ StaticResource ToolbarStyle }"
-                                BackgroundColor="{ DynamicResource TranslucidWhite }">
+                        </ScrollView>
 
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-
-
-                                <!-- Children Action -->
-                                <StackLayout
-                                    Grid.Column="0"
-                                    Orientation="Horizontal"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="Center"
-                                    Spacing="0">
-
-                                    <Label
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        Text="{ x:Static helper:FontAwesomeFont.Users }"
-                                        FontFamily="{ StaticResource IconsFontFamily }"
-                                        TextColor="{ DynamicResource InverseTextColor }">
-
-                                        <Label.FontSize>
-                                            <OnIdiom 
-                                                x:TypeArguments="x:Double" 
-                                                Phone="15" 
-                                                Tablet="20" />
-                                        </Label.FontSize>
-                                    </Label>
-
-                                    <Label
-                                        VerticalTextAlignment="Center"
-                                        HorizontalTextAlignment="Center"
-                                        Text="{Binding SelfParent.Children, StringFormat={i18n:Translate Home.Toolbar.Children} }"
-                                        TextColor="{ DynamicResource OverImageTextColor }">
-                                        <Label.FontSize>
-                                            <OnIdiom 
-                                                x:TypeArguments="x:Double" 
-                                                Phone="15" 
-                                                Tablet="20" />
-                                        </Label.FontSize> 
-                                    </Label>
-
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{ Binding GoToChildrenCommand }" NumberOfTapsRequired="1" /> 
-                                    </StackLayout.GestureRecognizers>
-                                 </StackLayout>
-
-                                   <!-- IsEnabled="{ Binding SelfParent.Children, Converter={ StaticResource ValueGreaterThanZeroConverter }}" -->
-                                  <!-- Results Action -->
-                                  <StackLayout
-                                    Grid.Column="1"
-                                    Orientation="Horizontal"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="Center"
-                                    Spacing="0">
-
-                                        <Label
-                                            VerticalTextAlignment="Center"
-                                            HorizontalTextAlignment="Center"
-                                            Text="{ x:Static helper:FontAwesomeFont.AreaChart }"
-                                            FontFamily="{ StaticResource IconsFontFamily }"
-                                            TextColor="{ DynamicResource InverseTextColor }">
-                                            <Label.FontSize>
-                                                <OnIdiom 
-                                                    x:TypeArguments="x:Double" 
-                                                    Phone="15" 
-                                                    Tablet="20" />
-                                             </Label.FontSize> 
-                                         </Label>
-
-                                          <Label
-                                            VerticalTextAlignment="Center" 
-                                            HorizontalTextAlignment="Center"
-                                            Text="{i18n:Translate Home.Toolbar.Results}"
-                                            TextColor="{ DynamicResource OverImageTextColor }">
-
-                                            <Label.FontSize>
-                                                <OnIdiom 
-                                                    x:TypeArguments="x:Double" 
-                                                    Phone="15"
-                                                    Tablet="20" />
-                                             </Label.FontSize> 
-                                        </Label>
-
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{ Binding GoToResultsCommand}" NumberOfTapsRequired="1" /> 
-                                        </StackLayout.GestureRecognizers>
-                                </StackLayout>
-
-                                <!-- Profile Action -->
-                                <StackLayout
-                                    Grid.Column="2"
-                                    Orientation="Horizontal"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="Center"
-                                    Spacing="0">
-
-                                        <Label
-                                            VerticalTextAlignment="Center" 
-                                            HorizontalTextAlignment="Center"
-                                            Text="{ x:Static helper:FontAwesomeFont.User }"
-                                            FontFamily="{ StaticResource IconsFontFamily }"
-                                            TextColor="{ DynamicResource InverseTextColor }">
-                                            <Label.FontSize>
-                                                <OnIdiom 
-                                                    x:TypeArguments="x:Double" 
-                                                    Phone="15" 
-                                                    Tablet="20" />
-                                            </Label.FontSize> 
-                                        </Label>
-
-                                        <Label
-                                            VerticalTextAlignment="Center" 
-                                            HorizontalTextAlignment="Center"
-                                            Text="{i18n:Translate Home.Toolbar.Profile}"
-                                            TextColor="{ DynamicResource OverImageTextColor }">
-                                            <Label.FontSize>
-                                                <OnIdiom 
-                                                    x:TypeArguments="x:Double" 
-                                                    Phone="15" 
-                                                    Tablet="20" />
-                                            </Label.FontSize> 
-                                        </Label>
-
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{ Binding GoToProfileCommand }" NumberOfTapsRequired="1" /> 
-                                        </StackLayout.GestureRecognizers>
-                                   </StackLayout>
-                                </Grid>
-
+                           
                     </Grid>
                     <!-- END PROFILE HEADER-->
 

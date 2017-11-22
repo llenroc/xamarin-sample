@@ -115,32 +115,6 @@ namespace Bullytect.Core.Config
             }
         }
 
-		static readonly bool ShowResultsForAllChildrenDefault = true;
-
-		
-		public bool ShowResultsForAllChildren
-		{
-			get { return AppSettings.GetValueOrDefault(nameof(ShowResultsForAllChildren), ShowResultsForAllChildrenDefault); }
-			set
-			{
-				if (AppSettings.AddOrUpdateValue(nameof(ShowResultsForAllChildren), value))
-					OnPropertyChanged();
-			}
-		}
-
-		static readonly string FilteredSonCategoriesDefault = string.Empty;
-
-
-		public string FilteredSonCategories
-		{
-			get { return AppSettings.GetValueOrDefault(nameof(FilteredSonCategories), FilteredSonCategoriesDefault); }
-			set
-			{
-				if (AppSettings.AddOrUpdateValue(nameof(FilteredSonCategories), value))
-					OnPropertyChanged();
-			}
-		}
-
 		static readonly int SonStatisticsTimeIntervalDefault = 1;
 
 		public int SonStatisticsTimeInterval

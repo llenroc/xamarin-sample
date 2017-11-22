@@ -97,6 +97,7 @@ namespace Bullytect.Core.ViewModels
 
         public ICommand EditSonCommand => new MvxCommand<string>((string Id) => ShowViewModel<EditSonViewModel>(new { SonIdentity = Id }));
 
+        public ICommand GoToRelations => new MvxCommand<string>((string Id) => ShowViewModel<RelationsViewModel>(new { SonIdentity = Id }));
 
         public ICommand GoToAlerts {
 

@@ -10,12 +10,12 @@
     xmlns:common="clr-namespace:Bullytect.Core.Pages.Common"
     xmlns:commonTemplates="clr-namespace:Bullytect.Core.Pages.Common.Templates"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
-    xmlns:carouselTemplate="clr-namespace:Bullytect.Core.Pages.Results.Templates"
+    xmlns:carouselTemplate="clr-namespace:Bullytect.Core.Pages.Relations.Templates"
     xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
-    x:Class="Bullytect.Core.Pages.Results.ResultsPage"
-    x:TypeArguments="viewModels:ResultsViewModel"
+    x:Class="Bullytect.Core.Pages.Relations.RelationsPage"
+    x:TypeArguments="viewModels:RelationsViewModel"
     BackgroundColor="{ DynamicResource MainWrapperBackgroundColor }"
-    Title="{i18n:Translate Home.Toolbar.Results}">
+    Title="{i18n:Translate Home.Toolbar.Relations}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
@@ -48,8 +48,36 @@
                 Title="{i18n:Translate Page.Results.Title}">
                 <common:AppHeader.Options>
                     <x:Array Type="{x:Type View}">
-                        <common:RefreshOptionMenu />
-                        <common:SettingsOptionMenu />
+                        <!-- Refresh Menu Option -->
+                        <common:MenuOption
+                            Icon="{ x:Static helper:FontAwesomeFont.Refresh }"
+                            ClickedItemCommand="{ Binding RefreshCommand }">
+
+                            <common:MenuOption.Triggers>
+                                <DataTrigger
+                                    TargetType="common:MenuOption"
+                                    Binding="{Binding IsBusy}"
+                                    Value="True">
+                                   <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    TargetType="common:MenuOption"
+                                    Binding="{Binding ErrorOccurred}"
+                                    Value="False">
+                                    <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                            </common:MenuOption.Triggers>
+
+                        </common:MenuOption>
+
+                        <!-- End Refresh Menu Option -->
+                        <!-- Settings Menu Option -->
+
+                        <common:MenuOption
+                            Icon="{ x:Static helper:FontAwesomeFont.Gear }"
+                            ClickedItemCommand="{ Binding GoToSettingsCommand }" />
+
+                        <!-- End Settings Menu Option -->
                     </x:Array>
                 </common:AppHeader.Options>
 
@@ -113,6 +141,7 @@
                             Error="{ Binding ErrorOccurred }"
                             ErrorText="{i18n:Translate Results.Most.Active.Friends.Error }"
                             Source="{ Binding MostActiveFriends }"
+                            SelectedItemCommand="{ Binding ShowCommentsByAuthorCommand }"
                         />
 
                         <!-- New Friends -->
@@ -124,6 +153,7 @@
                             Error="{ Binding ErrorOccurred }"
                             ErrorText="{i18n:Translate Results.New.Friends.Error}"
                             Source="{ Binding NewFriends }"
+                            SelectedItemCommand="{ Binding ShowCommentsByAuthorCommand }"
                         />
                         
                     </x:Array>

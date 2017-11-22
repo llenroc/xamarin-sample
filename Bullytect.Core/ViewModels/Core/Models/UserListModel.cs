@@ -3,6 +3,7 @@ namespace Bullytect.Core.ViewModels.Core.Models
 {
     public class UserListModel
     {
+        public string Id { get; set; }
         public string Name { get; set; }
         public string ProfileImage { get; set; }
         public string SocialMediaType { get; set; }
