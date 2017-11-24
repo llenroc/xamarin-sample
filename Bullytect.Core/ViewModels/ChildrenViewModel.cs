@@ -73,13 +73,7 @@ namespace Bullytect.Core.ViewModels
 		{
 			get
 			{
-                return new MvxCommand<SonEntity>((SonEntity) => ShowViewModel<SonProfileViewModel>(new SonProfileViewModel.SonParameter(){
-                    Identity = SonEntity.Identity,
-                    FullName = SonEntity.FullName,
-                    Birthdate = SonEntity.Birthdate,
-                    School = SonEntity.School?.Name,
-                    ProfileImage = SonEntity.ProfileImage
-                }));
+                return new MvxCommand<SonEntity>((SonEntity) => ShowViewModel<SonProfileViewModel>(new { SonEntity.Identity }));
 			}
 		}
 

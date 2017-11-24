@@ -21,5 +21,9 @@ namespace Bullytect.Core.OAuth.Models
 
         public bool UsingNativeUI { get; set; } = true;
 
+        public bool ResetData { get; set; } = false;
+
+        public string Title { get; set; }
+
 	}
 }

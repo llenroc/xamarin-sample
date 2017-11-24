@@ -32,8 +32,7 @@ namespace Bullytect.Core.ViewModels
 
             SignupCommand.Subscribe(AccountCreated);
 
-
-            SignupCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecutingWithDialogs(isLoading, AppResources.Signup_CreatingAccount));
+            SignupCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Signup_CreatingAccount));
 
 			SignupCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }

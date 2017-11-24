@@ -60,5 +60,8 @@ namespace Bullytect.Core.Rest.Utils
 
         public const string COMMENTS_BY_CHILD_NOT_FOUND_RESPONSE = "COMMENTS_BY_CHILD_NOT_FOUND";
         public const int COMMENTS_BY_CHILD_NOT_FOUND_CODE = 204;
+
+        public const string ACCOUNT_PENDING_TO_BE_REMOVE_RESPONSE = "ACCOUNT_PENDING_TO_BE_REMOVE";
+        public const int ACCOUNT_PENDING_TO_BE_REMOVE_CODE = 507;
     }   
 }

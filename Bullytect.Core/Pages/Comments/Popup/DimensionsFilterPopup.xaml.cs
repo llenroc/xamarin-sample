@@ -12,8 +12,6 @@ namespace Bullytect.Core.Pages.Comments.Popup
 {
     public partial class DimensionsFilterPopup : PopupPage
     {
-
-
         TableSection DimensionCategories { get; set; }
 
 
@@ -57,10 +55,16 @@ namespace Bullytect.Core.Pages.Comments.Popup
                     DimensionCategories.Add(DimensionCategoryCell);
                 }
 
-                ViewModel.UpdateDimensionFilter();
-
-                if(!ViewModel.EnableDimensionFilter)
+                if (ViewModel.EnableDimensionFilter)
+                {
+                    ViewModel.UpdateDimensionFilter();
+                }
+                else
+                {
                     TableFilterComments.Root.Remove(DimensionCategories);
+                    ViewModel?.ClearDimensionFilter();
+                }
+                
 
 
                 SwitchDimension.Toggled += ToggledEventHandler;

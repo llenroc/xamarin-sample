@@ -377,6 +377,18 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Login_Authenticating_Facebook {
+            get {
+                return ResourceManager.GetString("Login.Authenticating.Facebook", resourceCulture);
+            }
+        }
+        
+        internal static string Login_Authenticating_Google {
+            get {
+                return ResourceManager.GetString("Login.Authenticating.Google", resourceCulture);
+            }
+        }
+        
         internal static string Login_Success {
             get {
                 return ResourceManager.GetString("Login.Success", resourceCulture);
@@ -398,6 +410,12 @@ namespace Bullytect.Core.I18N {
         internal static string Account_Locked {
             get {
                 return ResourceManager.GetString("Account.Locked", resourceCulture);
+            }
+        }
+        
+        internal static string Account_Pending_To_Be_Remove {
+            get {
+                return ResourceManager.GetString("Account.Pending.To.Be.Remove", resourceCulture);
             }
         }
         
@@ -1067,6 +1085,18 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Settings_Alerts_All {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.All", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Alerts_All_Description {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.All.Description", resourceCulture);
+            }
+        }
+        
         internal static string Settings_Alerts_Categories_Success_Alerts_Name {
             get {
                 return ResourceManager.GetString("Settings.Alerts.Categories.Success.Alerts.Name", resourceCulture);
@@ -1202,6 +1232,12 @@ namespace Bullytect.Core.I18N {
         internal static string Settings_Alerts_Last_Alerts {
             get {
                 return ResourceManager.GetString("Settings.Alerts.Last.Alerts", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Alerts_Last_Alerts_No_Filter {
+            get {
+                return ResourceManager.GetString("Settings.Alerts.Last.Alerts.No.Filter", resourceCulture);
             }
         }
         
@@ -1652,6 +1688,12 @@ namespace Bullytect.Core.I18N {
         internal static string Comments_SocialMedia_Filter_All_Description {
             get {
                 return ResourceManager.GetString("Comments.SocialMedia.Filter.All.Description", resourceCulture);
+            }
+        }
+        
+        internal static string Authentication_Facebook_Enable_Title {
+            get {
+                return ResourceManager.GetString("Authentication.Facebook.Enable.Title", resourceCulture);
             }
         }
     }

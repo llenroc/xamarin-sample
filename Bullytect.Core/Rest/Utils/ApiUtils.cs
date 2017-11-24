@@ -203,6 +203,12 @@ namespace Bullytect.Core.Rest.Utils
                                 Response = ex.GetContentAs<APIResponse<string>>()
                             };
                             break;
+                        case ResponseNames.ACCOUNT_PENDING_TO_BE_REMOVE_RESPONSE:
+                            exResponse = new AccountPendingToBeRemoveException()
+                            {
+                                Response = ex.GetContentAs<APIResponse<string>>()
+                            };
+                            break;
 							// Parse Generic Error
                         case ResponseNames.GENERIC_ERROR_RESPONSE:
 							exResponse = new GenericErrorException()

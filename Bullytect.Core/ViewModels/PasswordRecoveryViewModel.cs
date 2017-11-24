@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Reactive;
 using Acr.UserDialogs;
 using Bullytect.Core.Helpers;
@@ -27,7 +26,7 @@ namespace Bullytect.Core.ViewModels
             });
 
 
-            ResetPasswordCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecutingWithDialogs(isLoading, AppResources.Common_Loading));
+            ResetPasswordCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Common_Loading));
 
 			ResetPasswordCommand.ThrownExceptions.Subscribe(HandleExceptions);
         }

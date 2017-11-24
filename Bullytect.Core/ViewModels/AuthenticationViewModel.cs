@@ -19,7 +19,6 @@ namespace Bullytect.Core.ViewModels
     public class AuthenticationViewModel : AccountsBaseViewModel
     {
         
-
         public AuthenticationViewModel(IAuthenticationService authenticationService,
                                        IUserDialogs userDialogs, IMvxMessenger mvxMessenger,
                                        IOAuthService oauthService,  AppHelper appHelper, INotificationService notificationService)
@@ -35,17 +34,11 @@ namespace Bullytect.Core.ViewModels
 
             LoginCommand.Subscribe(HandleAuthSuccess);
 
-
-            LoginCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecutingWithDialogs(isLoading, AppResources.Login_Authenticating));
-
+            LoginCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Login_Authenticating));
 
             LoginCommand.ThrownExceptions.Subscribe(HandleExceptions);
-
-
-			
+            	
         }
-
-
 
         #region Properties
 
@@ -108,7 +101,9 @@ namespace Bullytect.Core.ViewModels
                 _appHelper.ShowAlert(AppResources.Signup_Account_Created);
 
             } else if(ReasonForAuthentication.Equals(ACCOUNT_DELETED)) {
-                _appHelper.Toast(AppResources.Profile_Account_Deleted, System.Drawing.Color.FromArgb(12, 131, 193));
+
+                _appHelper.ShowAlert(AppResources.Profile_Account_Deleted);
+               
             }
         }
 
@@ -139,10 +134,12 @@ namespace Bullytect.Core.ViewModels
                 _appHelper.Toast(AppResources.Account_Locked, System.Drawing.Color.FromArgb(255, 0, 0));
 
             } else if(ex is EmailAlreadyExistsException) {
-
-                _userDialogs.HideLoading();
-
+                
                 _appHelper.Toast(AppResources.Authentication_Email_Already_Exists, System.Drawing.Color.FromArgb(255, 0, 0));
+            } else if(ex is AccountPendingToBeRemoveException)
+            {
+
+                _appHelper.Toast(AppResources.Account_Pending_To_Be_Remove, System.Drawing.Color.FromArgb(255, 0, 0));
             }
 			else
 			{

@@ -23,15 +23,13 @@
             x:Name="MainContainer">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*" />
+                <RowDefinition Height="3*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <Grid 
                 Grid.Row="0"
-                Padding="0, 5"
-                HorizontalOptions="Center"
-                VerticalOptions="Center">
+                Padding="0, 5">
 
 
                 <!-- AVATAR -->
@@ -40,7 +38,7 @@
                     x:Name="ProfileCachedImage"
                     CacheType="Disk"
                     HorizontalOptions="Center"
-                    VerticalOptions="Center"
+                    VerticalOptions="End"
                     CacheDuration="30"
                     FadeAnimationEnabled="true"
                     WidthRequest="80"
@@ -73,7 +71,7 @@
             <Label 
                 x:Name="ProfileNameLabel"
                 Grid.Row="1"
-                VerticalOptions="Center"
+                VerticalOptions="Start"
                 HorizontalOptions="Center"
                 LineBreakMode="TailTruncation"
                 TextColor="White"

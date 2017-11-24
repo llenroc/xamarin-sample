@@ -26,22 +26,23 @@ namespace Bullytect.Core.ViewModels
 
         readonly IAlertService _alertService;
 
-        public AlertsViewModel(IAlertService alertService, IUserDialogs userDialogs, 
-                               IMvxMessenger mvxMessenger, AppHelper appHelper): base(userDialogs, mvxMessenger, appHelper)
+        public AlertsViewModel(IAlertService alertService, IUserDialogs userDialogs,
+                               IMvxMessenger mvxMessenger, AppHelper appHelper) : base(userDialogs, mvxMessenger, appHelper)
         {
             _alertService = alertService;
 
-			ClearAlertsCommand = ReactiveCommand
-				.CreateFromObservable<Unit, string>((param) =>
-				{
+            ClearAlertsCommand = ReactiveCommand
+                .CreateFromObservable<Unit, string>((param) =>
+                {
                     return _appHelper.RequestConfirmation(AppResources.Alerts_Confirm_Clear)
                                      .Do((_) => _userDialogs.ShowLoading(AppResources.Alerts_Deleting_Alerts))
-                                     .SelectMany((_) => string.IsNullOrEmpty(SonIdentity) 
+                                     .SelectMany((_) => string.IsNullOrEmpty(SonIdentity)
                                                  ? _alertService.ClearSelfAlerts() : _alertService.ClearAlertsOfSon(SonIdentity))
-									 .Do((_) => _userDialogs.HideLoading());
-				});
+                                     .Do((_) => _userDialogs.HideLoading());
+                });
 
-            ClearAlertsCommand.Subscribe((alertsDeleted) => {
+            ClearAlertsCommand.Subscribe((alertsDeleted) =>
+            {
                 Debug.WriteLine("Alerts Deleted -> " + alertsDeleted);
                 Alerts.Clear();
                 DataFound = false;
@@ -50,25 +51,36 @@ namespace Bullytect.Core.ViewModels
             ClearAlertsCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
             RefreshCommand = ReactiveCommand
-                .CreateFromObservable<Unit, IList<AlertEntity>>((param) => string.IsNullOrEmpty(SonIdentity) ? alertService.GetSelfAlerts() : _alertService.GetAlertsBySon(SonIdentity));
+                .CreateFromObservable<Unit, IList<AlertEntity>>((param) =>
+                {
+                    if (PopupNavigation.PopupStack.Count > 0)
+                    {
+                        PopupNavigation.PopAllAsync();
+                    }
+                    return string.IsNullOrEmpty(SonIdentity) ? 
+                                 alertService.GetSelfAlerts(CountAlertsOption.Value, AntiquityOfAlertsOption.Value, AlertLevelFilter) : 
+                                 _alertService.GetAlertsBySon(SonIdentity, CountAlertsOption.Value, AntiquityOfAlertsOption.Value, AlertLevelFilter);
+                });
 
-            RefreshCommand.Subscribe((AlertsEntities) => {
+            RefreshCommand.Subscribe((AlertsEntities) =>
+            {
                 Alerts.ReplaceRange(AlertsEntities);
-                IsTimeout = false;
+                ResetCommonProps();
             });
 
             RefreshCommand.IsExecuting.Subscribe((IsLoading) => IsBusy = IsLoading);
 
-			RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
+            RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
             DeleteAlertCommand = ReactiveCommand
-                .CreateFromObservable<AlertEntity, string>((AlertEntity) => 
+                .CreateFromObservable<AlertEntity, string>((AlertEntity) =>
                                                            alertService.DeleteAlertOfSon(AlertEntity.Son.Identity, AlertEntity.Identity)
                                                            .Do((_) => Alerts.Remove(AlertEntity)));
 
-			DeleteAlertCommand.IsExecuting.Subscribe((IsLoading) => IsBusy = IsLoading);
+            DeleteAlertCommand.IsExecuting.Subscribe((IsLoading) => IsBusy = IsLoading);
 
-            DeleteAlertCommand.Subscribe((_) => {
+            DeleteAlertCommand.Subscribe((_) =>
+            {
 
                 _userDialogs.ShowSuccess(AppResources.Alerts_Deleted);
 
@@ -78,9 +90,41 @@ namespace Bullytect.Core.ViewModels
             });
 
             DeleteAlertCommand.ThrownExceptions.Subscribe(HandleExceptions);
+
+
+            AllCategory.PropertyChanged += (sender, e) =>
+            {
+                if (e.PropertyName == "IsFiltered")
+                {
+                    foreach (var category in AlertsLevelCategories)
+                    {
+                        category.IsEnabled = !AllCategory.IsFiltered;
+                        if (AllCategory.IsFiltered)
+                            category.IsFiltered = true;
+                    }
+
+                }
+            };
+
+            foreach (AlertCategoryModel AlertCategory in AlertsLevelCategories){
+
+                AlertCategory.PropertyChanged += (sender, e) =>
+                {
+
+                    if(e.PropertyName == "IsFiltered"){
+
+                        var AlertCategoryModel = sender as AlertCategoryModel;
+                        UpdateAlertFilter(AlertCategoryModel);
+                    }
+
+                };
+            }
+
+
         }
 
-        public void Init(string Identity) {
+        public void Init(string Identity)
+        {
             SonIdentity = Identity;
         }
 
@@ -90,15 +134,61 @@ namespace Bullytect.Core.ViewModels
 
         public string SonIdentity
         {
-			get => _sonIdentity;
-			set => SetProperty(ref _sonIdentity, value);
+            get => _sonIdentity;
+            set => SetProperty(ref _sonIdentity, value);
         }
 
         public ObservableRangeCollection<AlertEntity> Alerts { get; } = new ObservableRangeCollection<AlertEntity>();
 
+        public IList<AlertLevelEnum> AlertLevelFilter { get; private set; } = new List<AlertLevelEnum>();
+
+        CategoryModel _allCategory;
+
+        public CategoryModel AllCategory
+        {
+            get => _allCategory ?? (_allCategory = new CategoryModel()
+            {
+                Name = AppResources.Settings_Alerts_All,
+                Description = AppResources.Settings_Alerts_All_Description,
+                IsEnabled = true,
+                IsFiltered = false
+            });
+            set => SetProperty(ref _allCategory, value);
+        }
+        public List<AlertCategoryModel> AlertsLevelCategories { get; } = new List<AlertCategoryModel>(){
+                new AlertCategoryModel() {
+                    Name = AppResources.Settings_Alerts_Categories_Success_Alerts_Name,
+                    Description = AppResources.Settings_Alerts_Categories_Success_Alerts_Description,
+                    Level = AlertLevelEnum.SUCCESS,
+                    IsEnabled = true,
+                    IsFiltered = false
+                },
+                new AlertCategoryModel() {
+                    Name = AppResources.Settings_Alerts_Categories_Info_Alerts_Name,
+                    Description = AppResources.Settings_Alerts_Categories_Info_Alerts_Description,
+                    Level = AlertLevelEnum.INFO,
+                    IsEnabled = true,
+                    IsFiltered = false
+                },
+                new AlertCategoryModel() {
+                    Name = AppResources.Settings_Alerts_Categories_Warning_Alerts_Name,
+                    Description = AppResources.Settings_Alerts_Categories_Warning_Alerts_Description,
+                    Level = AlertLevelEnum.WARNING,
+                    IsEnabled = true,
+                    IsFiltered = false
+                },
+                new AlertCategoryModel() {
+                    Name = AppResources.Settings_Alerts_Categories_Danger_Alerts_Name,
+                    Description = AppResources.Settings_Alerts_Categories_Danger_Alerts_Description,
+                    Level = AlertLevelEnum.DANGER,
+                    IsEnabled = true,
+                    IsFiltered = false
+                }
+        };
 
         public List<PickerOptionModel> AlertsOptionsList { get; set; } = new List<PickerOptionModel>()
         {
+            new PickerOptionModel(){ Description = AppResources.Settings_Alerts_Last_Alerts_No_Filter, Value = 0 },
             new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 20), Value = 20 },
             new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 40), Value = 40 },
             new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Alerts_Last_Alerts, 60), Value = 60 },
@@ -107,29 +197,27 @@ namespace Bullytect.Core.ViewModels
 
         public List<PickerOptionModel> AntiquityOfAlertsOptionsList { get; set; } = new List<PickerOptionModel>()
         {
-            new PickerOptionModel(){ Description = AppResources.Settings_Antiquity_Of_Alerts_No_Filter, Value = 0 },
-            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 15), Value = 15 },
-            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 30), Value = 30 },
-            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 45), Value = 45 },
-            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 60), Value = 60 }
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 15), Value = 1 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 30), Value = 7 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 45), Value = 15 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Antiquity_Of_Alerts_Description, 60), Value = 30 }
         };
 
-        PickerOptionModel _alertsOption;
+        PickerOptionModel _countAlertsOption;
 
-        public PickerOptionModel AlertsOption
+        public PickerOptionModel CountAlertsOption
         {
-            get => _alertsOption ?? AlertsOptionsList.First();
+            get => _countAlertsOption ?? AlertsOptionsList.First();
 
-            set => SetProperty(ref _alertsOption, value);
+            set => SetProperty(ref _countAlertsOption, value);
         }
 
         PickerOptionModel _antiquityOfAlertsOption;
 
         public PickerOptionModel AntiquityOfAlertsOption
         {
-            get => _antiquityOfAlertsOption ?? AntiquityOfAlertsOptionsList.First();
-
-            set => SetProperty(ref _antiquityOfAlertsOption, value);
+                get => _antiquityOfAlertsOption ?? AntiquityOfAlertsOptionsList.Last();
+                set => SetProperty(ref _antiquityOfAlertsOption, value);
         }
 
         #endregion
@@ -164,11 +252,32 @@ namespace Bullytect.Core.ViewModels
                             {
                                 await PopupNavigation.PopAllAsync();
                             }
-                            await PopupNavigation.PushAsync(new FilterAlertsPopup());
+                            await PopupNavigation.PushAsync(new FilterAlertsPopup(this));
                         });
 
 
 		#endregion
+
+
+        void UpdateAlertFilter(AlertCategoryModel AlertLevelCategory){
+
+            if (AlertLevelCategory.IsFiltered)
+            {
+                AlertLevelFilter.Add(AlertLevelCategory.Level);
+            }
+            else
+            {
+                AlertLevelFilter.Remove(AlertLevelCategory.Level);
+            }
+        }
+
+
+        public void UpdateAlertLevelFilter() {
+
+            foreach (AlertCategoryModel AlertLevelCategory in AlertsLevelCategories)
+                UpdateAlertFilter(AlertLevelCategory);
+
+        }
 
 		protected override void HandleExceptions(Exception ex)
 		{

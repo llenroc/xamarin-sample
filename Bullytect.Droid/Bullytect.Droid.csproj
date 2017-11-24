@@ -578,6 +578,12 @@
     <Reference Include="TK.CustomMap">
       <HintPath>..\packages\TK.CustomMap.1.6.1\lib\MonoAndroid10\TK.CustomMap.dll</HintPath>
     </Reference>
+    <Reference Include="HighlightMarker.Forms">
+      <HintPath>..\packages\HighlightMarker.Forms.1.1.0\lib\monoandroid10\HighlightMarker.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="HighlightMarker">
+      <HintPath>..\packages\HighlightMarker.1.1.0\lib\monoandroid10\HighlightMarker.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="OAuth\" />

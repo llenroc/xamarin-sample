@@ -38,7 +38,7 @@ namespace Bullytect.Core.Pages.Common.ViewCells
             nameof(Options),
             typeof(List<PickerOptionModel>),
             typeof(CommonOptionPickerViewCell),
-            defaultValue: string.Empty,
+            defaultValue: new List<PickerOptionModel>(),
             propertyChanging: (bindable, oldValue, newValue) =>
             {
                 var ViewCell = bindable as CommonOptionPickerViewCell;
@@ -51,7 +51,6 @@ namespace Bullytect.Core.Pages.Common.ViewCells
             nameof(SelectedItem),
             typeof(PickerOptionModel),
             typeof(CommonOptionPickerViewCell),
-            defaultValue: string.Empty,
             propertyChanging: (bindable, oldValue, newValue) =>
             {
                 var ViewCell = bindable as CommonOptionPickerViewCell;

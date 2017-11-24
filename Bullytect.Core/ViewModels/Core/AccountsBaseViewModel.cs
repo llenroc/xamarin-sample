@@ -15,7 +15,6 @@ using Bullytect.Core.Services;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
-using Xamarin.Forms;
 
 namespace Bullytect.Core.ViewModels.Core
 {
@@ -44,10 +43,6 @@ namespace Bullytect.Core.ViewModels.Core
 
                     ResetCommonProps();
 
-                    if (Device.RuntimePlatform == Device.Android)
-                        _userDialogs.ShowLoading(AppResources.Login_Authenticating);
-
-
                     return oauthService
                             .Authenticate(new ParentFacebookOAuth2())
                             .Do(AuthDict =>
@@ -55,17 +50,16 @@ namespace Bullytect.Core.ViewModels.Core
                                 if (!AuthDict.ContainsKey("access_token") || string.IsNullOrEmpty(AuthDict["access_token"]))
                                     throw new OAuthInvalidAccessTokenException();
 
+                                HandleIsExecuting(true, AppResources.Login_Authenticating_Facebook, FontAwesomeFont.Facebook);
 
-                                if (Device.RuntimePlatform == Device.iOS)
-                                    _userDialogs.ShowLoading(AppResources.Login_Authenticating);
                             })
-                            .SelectMany(AuthDict => authenticationService.LoginWithFacebook(AuthDict["access_token"]))
-                            .Do((_) => _userDialogs.HideLoading());
+                            .SelectMany(AuthDict => authenticationService.LoginWithFacebook(AuthDict["access_token"]));
 
                 });
 
 
             LoginWithFacebookCommand.Subscribe(HandleAuthSuccess);
+
 
             LoginWithFacebookCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
@@ -76,10 +70,6 @@ namespace Bullytect.Core.ViewModels.Core
 
                     ResetCommonProps();
 
-                    if (Device.RuntimePlatform == Device.Android)
-                        _userDialogs.ShowLoading(AppResources.Login_Authenticating);
-
-
                     return oauthService
                             .Authenticate(new ParentGoogleOAuth2())
                             .Do(AuthDict =>
@@ -87,15 +77,13 @@ namespace Bullytect.Core.ViewModels.Core
                                 if (!AuthDict.ContainsKey("access_token") || string.IsNullOrEmpty(AuthDict["access_token"]))
                                     throw new OAuthInvalidAccessTokenException();
 
-
-                                if (Device.RuntimePlatform == Device.iOS)
-                                    _userDialogs.ShowLoading(AppResources.Login_Authenticating);
+                                HandleIsExecuting(true, AppResources.Login_Authenticating_Google, FontAwesomeFont.Google);
                             })
-                            .SelectMany(AuthDict => authenticationService.LoginWithGoogle(AuthDict["access_token"]))
-                            .Do((_) => _userDialogs.HideLoading());
+                            .SelectMany(AuthDict => authenticationService.LoginWithGoogle(AuthDict["access_token"]));
 
                 });
 
+            LoginWithGoogleCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Login_Authenticating));
 
             LoginWithGoogleCommand.Subscribe(HandleAuthSuccess);
 

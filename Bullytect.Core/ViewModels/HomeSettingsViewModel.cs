@@ -106,8 +106,8 @@ namespace Bullytect.Core.ViewModels
         {
             get => _allCategory ?? (_allCategory = new CategoryModel()
             {
-                Name = "All Alerts",
-                Description = "Todas las alertas de cualquier nivel",
+                Name = AppResources.Settings_Alerts_All,
+                Description = AppResources.Settings_Alerts_All_Description,
                 IsEnabled = true,
                 IsFiltered = Settings.Current.ShowAllCategories
             });

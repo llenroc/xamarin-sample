@@ -265,6 +265,22 @@
 
                         </Grid>
                     </ScrollView>
+
+                    <Grid
+                        IsVisible="{ Binding IsBusy }"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill"
+                        BackgroundColor="Black"
+                        Opacity="0.7">
+
+                        <common:ActivityLoading
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Icon="{ Binding LoadingIcon }"
+                            IsLoading="{ Binding IsBusy }"
+                            LoadingText="{ Binding LoadingText }"/>
+
+                    </Grid>
                         
             </Grid>
         

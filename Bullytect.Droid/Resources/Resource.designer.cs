@@ -9784,27 +9784,6 @@ namespace Bullytect.Droid
 			// aapt resource value: 0x7f080013
 			public const int common_signin_button_text_long = 2131230739;
 			
-			// aapt resource value: 0x7f0800af
-			public const int default_web_client_id = 2131230895;
-			
-			// aapt resource value: 0x7f0800b0
-			public const int firebase_database_url = 2131230896;
-			
-			// aapt resource value: 0x7f0800ad
-			public const int gcm_defaultSenderId = 2131230893;
-			
-			// aapt resource value: 0x7f0800b1
-			public const int google_api_key = 2131230897;
-			
-			// aapt resource value: 0x7f0800ae
-			public const int google_app_id = 2131230894;
-			
-			// aapt resource value: 0x7f0800b2
-			public const int google_crash_reporting_api_key = 2131230898;
-			
-			// aapt resource value: 0x7f0800b3
-			public const int google_storage_bucket = 2131230899;
-			
 			// aapt resource value: 0x7f080055
 			public const int hockeyapp_crash_dialog_app_name_fallback = 2131230805;
 			

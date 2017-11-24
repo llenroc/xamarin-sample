@@ -67,12 +67,12 @@ namespace Bullytect.Core.Services.Impl
 			return operationDecorator(observable);
         }
 
-        public IObservable<IList<AlertEntity>> GetAlertsBySon(string SonId)
+        public IObservable<IList<AlertEntity>> GetAlertsBySon(string SonId, int Count, int DaysAgo, IList<AlertLevelEnum> Levels)
         {
 			Debug.WriteLine("Get Alerts By Son : " + SonId);
 
 			var observable = _alertRestService
-				.GetAlertsBySon(SonId)
+                .GetAlertsBySon(SonId, Count, DaysAgo, Levels)
                 .Select((response) => response.Data)
 				.Select((Alerts) => Mapper.Map<IList<AlertDTO>, IList<AlertEntity>>(Alerts))
 				.Finally(() => {
@@ -133,12 +133,12 @@ namespace Bullytect.Core.Services.Impl
 			return operationDecorator(observable);
         }
 
-        public IObservable<IList<AlertEntity>> GetSelfAlerts()
+        public IObservable<IList<AlertEntity>> GetSelfAlerts(int Count, int DaysAgo, IList<AlertLevelEnum> Levels)
         {
 			Debug.WriteLine("Get Self Alerts");
 
 			var observable = _alertRestService
-                .GetSelfAlerts()
+                .GetSelfAlerts(Count, DaysAgo, Levels)
                 .Select((response) => response.Data)
                 .Select((Alerts) => Mapper.Map<IList<AlertDTO>, IList<AlertEntity>>(Alerts))
 				.Finally(() => {

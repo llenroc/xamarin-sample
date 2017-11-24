@@ -1,5 +1,4 @@
 ﻿using System;
-using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Pages.Common.Templates;
 using Bullytect.Core.ViewModels.Core.Models;
 using Rg.Plugins.Popup.Services;

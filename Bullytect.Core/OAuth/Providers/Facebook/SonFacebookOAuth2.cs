@@ -1,4 +1,6 @@
 ﻿using System;
+using Bullytect.Core.Config;
+using Bullytect.Core.I18N;
 using Bullytect.Core.OAuth.Models;
 
 namespace Bullytect.Core.OAuth.Providers.Facebook
@@ -17,11 +19,18 @@ namespace Bullytect.Core.OAuth.Providers.Facebook
 		partial void SetPublicNonSensitiveData()
 		{
 			Description = "Facebook OAuth2 WWW App Type Callbackurl http[s]://[www.]xamarin.com";
-			OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer = "341732922916068";
+            OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer = SharedConfig.FACEBOOK_CLIENT_ID;
+            OAuth_SecretKey_ConsumerSecret_APISecret = SharedConfig.FACEBOOK_CLIENT_SECRET;
 			OAuth2_Scope = "user_likes, user_photos, user_posts, user_relationship_details, user_relationships, user_friends";
-			OAuth_UriAuthorization = new Uri("https://m.facebook.com/dialog/oauth/");
-            OAuth_UriCallbackAKARedirect = new Uri("fb341732922916068://authorize");
+            OAuth_UriAccessToken_UriRequestToken = new Uri("https://graph.facebook.com/oauth/access_token");
+            OAuth_UriAuthorization = new Uri("https://m.facebook.com/dialog/oauth/");
+            //OAuth_UriCallbackAKARedirect = new Uri("fb341732922916068://authorize");
+            OAuth_UriCallbackAKARedirect = new Uri("https://www.facebook.com/connect/login_success.html");
 			AllowCancel = true;
+
+            ResetData = true;
+            UsingNativeUI = false;
+            Title = AppResources.Authentication_Facebook_Enable_Title;
 			HowToMarkDown =
 @"
     https://developers.facebook.com/apps/

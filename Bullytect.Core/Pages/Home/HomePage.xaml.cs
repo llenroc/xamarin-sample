@@ -15,6 +15,7 @@ namespace Bullytect.Core.Pages.Home
         public HomePage()
         {
             InitializeComponent();
+
         }
 
         protected override void OnAppearing()

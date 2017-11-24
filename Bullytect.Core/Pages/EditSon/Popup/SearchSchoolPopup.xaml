@@ -10,6 +10,7 @@
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
     xmlns:templates="clr-namespace:Bullytect.Core.Pages.EditSon.Templates"
+    xmlns:highlight="clr-namespace:HighlightMarker.Forms;assembly=HighlightMarker.Forms"
     x:Class="Bullytect.Core.Pages.EditSon.Popup.SearchSchoolPopup">
     <pages:PopupPage.Resources>
            <ResourceDictionary>
@@ -18,6 +19,70 @@
                 <converters:IsSchoolCollectionNotEmptyConverter x:Key="IsSchoolCollectionNotEmptyConverter"/>
                 <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
                 <converters:IsNullOrWhiteSpaceConverter x:Key="IsNullOrWhiteSpaceConverter"/>
+                 <DataTemplate x:Key="SchoolItemTemplate">
+                    <ViewCell>
+                      <ViewCell.View>
+                        <Grid Padding="16,6,16,6" ColumnSpacing="16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label
+                                Grid.Column="0"
+                                Text="{ x:Static helper:FontAwesomeFont.GraduationCap }"
+                                TextColor="{ DynamicResource AccentColor }"
+                                Style="{ StaticResource FontIcon }"
+                                HorizontalOptions = "Center"
+                                VerticalOptions = "Center"
+                                FontSize="20">
+                            </Label>
+
+
+                             <Label
+                                Grid.Column="1" 
+                                LineBreakMode="TailTruncation"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                highlight:TextHighlightBehavior.HighlightedText="{Binding Text, Source={x:Reference searchBar}}"
+                                highlight:TextHighlightBehavior.FullText="{Binding Name}"
+                                highlight:TextHighlightBehavior.Background="{x:Static Color.Yellow}"
+                                highlight:TextHighlightBehavior.FontAttributes="{x:Static FontAttributes.Bold}"
+                                TextColor="{ DynamicResource AccentColor }">
+                                <Label.FontSize>
+                                    <OnIdiom 
+                                        x:TypeArguments="x:Double"
+                                        Phone="17"
+                                        Tablet="17" />
+                                </Label.FontSize> 
+                            </Label>
+
+                            <Label
+                                Grid.Column="2"
+                                Text="{ x:Static helper:FontAwesomeFont.MapMarker }"
+                                TextColor="{ DynamicResource AccentColor }"
+                                Style="{ StaticResource FontIcon }"
+                                HorizontalOptions = "CenterAndExpand"
+                                VerticalOptions = "CenterAndExpand"
+                                FontSize="20">
+
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Tapped="OnShowSchoolLocation"
+                                        NumberOfTapsRequired="1" /> 
+                                </Label.GestureRecognizers>
+                                
+                            </Label>
+                            
+                        </Grid>
+                      </ViewCell.View>
+                    </ViewCell>
+                 </DataTemplate>
+
+            
            </ResourceDictionary>
     </pages:PopupPage.Resources>
     <!--Animations use example-->
@@ -77,6 +142,7 @@
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Center"
                 Placeholder="{ i18n:Translate EditSon.Find.School.Placeholder }"
+                TextChanged="SearchBarOnTextChangedAsync"
                 SearchCommand="{ Binding FindSchoolsCommand }"
                 SearchCommandParameter="{Binding Text, Source={x:Reference searchBar }}"/>
 
@@ -96,7 +162,8 @@
                 IsVisible="false"
                 ItemsSource="{ Binding Schools }"
                 HasUnevenRows="true"
-                IsPullToRefreshEnabled="false">
+                IsPullToRefreshEnabled="false"
+                ItemTemplate="{ StaticResource SchoolItemTemplate }">
 
                 <ListView.Behaviors>
                     <utils:EventToCommandBehavior 
@@ -111,14 +178,6 @@
                         Phone="80"
                         Tablet="120"/>
                 </ListView.RowHeight>
-
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <templates:SchoolItemTemplate />
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
 
                 <ListView.Triggers>
                     <MultiTrigger TargetType="ListView">

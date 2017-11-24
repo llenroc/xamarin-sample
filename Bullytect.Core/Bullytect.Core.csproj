@@ -178,10 +178,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\EditSon\Templates\SchoolItemTemplate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Pages\EditSon\Popup\AddSchoolPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -605,9 +601,6 @@
     <Compile Include="Pages\EditSon\Popup\SearchSchoolPopup.xaml.cs">
       <DependentUpon>SearchSchoolPopup.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\EditSon\Templates\SchoolItemTemplate.xaml.cs">
-      <DependentUpon>SchoolItemTemplate.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Rest\Models\Exceptions\NoSchoolsFoundException.cs" />
     <Compile Include="Pages\EditSon\Popup\AddSchoolPopup.xaml.cs">
       <DependentUpon>AddSchoolPopup.xaml</DependentUpon>
@@ -707,6 +700,9 @@
     <Compile Include="Pages\Common\ViewCells\CommonOptionPickerViewCell.xaml.cs">
       <DependentUpon>CommonOptionPickerViewCell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Common\Behavior\EntryLengthValidatorBehavior.cs" />
+    <Compile Include="Rest\Models\Exceptions\AccountPendingToBeRemoveException.cs" />
+    <Compile Include="Utils\ReactiveUiExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -925,6 +921,12 @@
     <Reference Include="TK.CustomMap">
       <HintPath>..\packages\TK.CustomMap.1.6.1\lib\netstandard1.1\TK.CustomMap.dll</HintPath>
     </Reference>
+    <Reference Include="HighlightMarker.Forms">
+      <HintPath>..\packages\HighlightMarker.Forms.1.1.0\lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\HighlightMarker.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="HighlightMarker">
+      <HintPath>..\packages\HighlightMarker.1.1.0\lib\portable-net45+dnxcore50+wp80+wpa81+win81+netcore45+monoandroid10+monotouch10+xamarin.ios10\HighlightMarker.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -956,6 +958,7 @@
     <Folder Include="Pages\Relations\Settings\" />
     <Folder Include="Pages\Alerts\Popup\" />
     <Folder Include="Pages\Common\ViewCells\" />
+    <Folder Include="Pages\Common\Behavior\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\NETStandard.Library.targets')" />

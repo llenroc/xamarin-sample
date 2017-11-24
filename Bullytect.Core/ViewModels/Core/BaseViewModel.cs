@@ -135,6 +135,14 @@ namespace Bullytect.Core.ViewModels
 			set => SetProperty(ref _loadingText, value);
 		}
 
+        string _loadingIcon = FontAwesomeFont.User;
+
+        public string LoadingIcon
+        {
+            get => _loadingIcon;
+            set => SetProperty(ref _loadingIcon, value);
+        }
+
        
 		#region IsDirty
 
@@ -247,8 +255,6 @@ namespace Bullytect.Core.ViewModels
         {
 
 
-            _userDialogs.HideLoading();
-
             if (ex is TimeoutOperationException)
             {
                 IsTimeout = true;
@@ -301,11 +307,18 @@ namespace Bullytect.Core.ViewModels
             }
         }
 
-		protected void HandleIsExecuting(bool isLoading, string Text)
+
+        protected void HandleIsExecuting(bool isLoading, string Text)
+        {
+            HandleIsExecuting(isLoading, Text, FontAwesomeFont.User);
+        }
+
+		protected void HandleIsExecuting(bool isLoading, string Text, string Icon)
         {
             ResetCommonProps();
             IsBusy = isLoading;
             LoadingText = Text;
+            LoadingIcon = Icon;
         }
 
 

@@ -339,6 +339,14 @@ email and password.</value>
     <value>Authenticating ....</value>
     <comment>Loading Title</comment>
   </data>
+  <data name="Login.Authenticating.Facebook" xml:space="preserve">
+    <value>Authenticating with facebook</value>
+    <comment>Loading Title</comment>
+  </data>
+  <data name="Login.Authenticating.Google" xml:space="preserve">
+    <value>Authenticating with Google</value>
+    <comment>Loading Title</comment>
+  </data>
   <data name="Login.Success" xml:space="preserve">
     <value>Successful Authentication</value>
     <comment>Login Success</comment>
@@ -354,6 +362,10 @@ email and password.</value>
   <data name="Account.Locked" xml:space="preserve">
     <value>Your account is locked, contact your administrator for more information.</value>
     <comment>Account Locked</comment>
+  </data>
+  <data name="Account.Pending.To.Be.Remove" xml:space="preserve">
+    <value>Account Pending To Be Remove</value>
+    <comment>Account Pending To Be Remove</comment>
   </data>
   <data name="Authentication.Email.Already.Exists" xml:space="preserve">
     <value>A user already exists with this email</value>
@@ -548,7 +560,7 @@ and we will recover it for you. </value>
     <comment>Profile Loading Data</comment>
   </data>
   <data name="Profile.Account.Deleted" xml:space="preserve">
-    <value> Account Deleted </value>
+    <value> You have requested the deletion of the account, access your email to confirm the deletion of the account. </value>
     <comment>Profile Account Deleted</comment>
   </data>
   <data name="Profile.Account.Deleting" xml:space="preserve">
@@ -805,7 +817,14 @@ and we will recover it for you. </value>
     <comment>Settings Alerts Categories</comment>
   </data>
 
-	
+  <data name="Settings.Alerts.All" xml:space="preserve">
+    <value>All Alerts</value>
+    <comment>Settings Alerts All</comment>
+  </data>
+  <data name="Settings.Alerts.All.Description" xml:space="preserve">
+    <value>All alerts of any level</value>
+    <comment>Settings Alerts All Description</comment>
+  </data>   
   <data name="Settings.Alerts.Categories.Success.Alerts.Name" xml:space="preserve">
     <value>Success Alerts</value>
     <comment>Settings Alerts Categories Success Alerts Name</comment>
@@ -897,6 +916,10 @@ and we will recover it for you. </value>
   <data name="Settings.Alerts.Last.Alerts" xml:space="preserve">
     <value>{0} Alerts</value>
     <comment>Settings Alerts Last Alerts</comment>
+  </data>
+  <data name="Settings.Alerts.Last.Alerts.No.Filter" xml:space="preserve">
+    <value>No Filter</value>
+    <comment>Settings Alerts Last Alerts No Filter</comment>
   </data>
   <data name="Settings.Changes.Saved" xml:space="preserve">
     <value>Changes saved</value>
@@ -1272,6 +1295,11 @@ and we will recover it for you. </value>
 	<data name="Comments.SocialMedia.Filter.All.Description" xml:space="preserve">
         <value>Enable all Social Media</value>
         <comment>Comments SocialMedia Filter All Description</comment>
+    </data>
+
+	<data name="Authentication.Facebook.Enable.Title" xml:space="preserve">
+        <value>Enable access to Bulltec</value>
+        <comment>Authentication Facebook Enable Title</comment>
     </data>
 
 	

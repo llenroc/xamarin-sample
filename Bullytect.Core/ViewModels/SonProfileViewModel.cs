@@ -40,26 +40,32 @@ namespace Bullytect.Core.ViewModels
 
             DeleteSonCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
-            RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, ChartModel>((_) => _statisticsService.GetDimensionsStatistics(Identity, 1));
+            RefreshCommand = ReactiveCommand.CreateFromObservable<Unit, PageModel>((_) =>
+                     Observable.Zip(
+                        _parentService.GetSonById(Identity),
+                        _statisticsService.GetDimensionsStatistics(Identity, 1).OnErrorResumeNext(Observable.Return(new ChartModel())), 
+                        (SonEntity SonInformation, ChartModel ChartModel) => new PageModel()
+                        {
+                            SonEntity = SonInformation,
+                            DimensionChart = ChartModel
+                        }));
 
-            RefreshCommand.Subscribe((Chart) =>
+            RefreshCommand.IsExecuting.Subscribe((IsLoading) => IsBusy = IsLoading);
+
+            RefreshCommand.Subscribe((PageModel) =>
             {
-                FourDimensionsChart = Chart;
+                ResetCommonProps();
+                SonEntity.HydrateWith(PageModel.SonEntity);
+
+                if (PageModel.DimensionChart.Entries?.Count > 0)
+                    FourDimensionsChart = PageModel.DimensionChart;
+                else
+                    DataFound = false;
             });
 
             RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
         }
-
-        public class SonParameter
-        {
-            public string Identity { get; set; }
-            public string FullName { get; set; }
-            public DateTime Birthdate { get; set; }
-            public string School { get; set; }
-            public string ProfileImage { get; set; }
-        }
-
 
         string _identity;
 
@@ -69,40 +75,14 @@ namespace Bullytect.Core.ViewModels
             set => SetProperty(ref _identity, value);
         }
 
-        string _fullName;
+        SonEntity _sonEntity = new SonEntity();
 
-        public string FullName
-        {
-            get => _fullName;
-            set => SetProperty(ref _fullName, value);
+        public SonEntity SonEntity {
+
+            get => _sonEntity;
+            set => SetProperty(ref _sonEntity, value);
+
         }
-
-        DateTime _birthdate;
-
-        public DateTime Birthdate
-        {
-
-            get => _birthdate;
-            set => SetProperty(ref _birthdate, value);
-        }
-
-        string _school;
-
-        public string School
-        {
-
-            get => _school;
-            set => SetProperty(ref _school, value);
-        }
-
-        string _profileImage;
-
-        public string ProfileImage
-        {
-            get => _profileImage;
-            set => SetProperty(ref _profileImage, value);
-        }
-
 
         ChartModel _fourDimensionsChart;
 
@@ -113,19 +93,15 @@ namespace Bullytect.Core.ViewModels
 
         }
 
-        public void Init(SonParameter sonParameter)
+        public void Init(string Identity)
         {
-            Identity = sonParameter.Identity;
-            FullName = sonParameter.FullName;
-            Birthdate = sonParameter.Birthdate;
-            School = sonParameter.School;
-            ProfileImage = sonParameter.ProfileImage;
+            this.Identity = Identity;
         }
 
 
         #region commands
 
-        public ReactiveCommand<Unit, ChartModel> RefreshCommand { get; protected set; }
+        public ReactiveCommand<Unit, PageModel> RefreshCommand { get; protected set; }
 
         public ICommand EditSonCommand => new MvxCommand(() => ShowViewModel<EditSonViewModel>(new { SonIdentity = Identity }));
 
@@ -143,7 +119,7 @@ namespace Bullytect.Core.ViewModels
             get => new MvxCommand(() => ShowViewModel<SonStatisticsViewModel>(new SonStatisticsViewModel.SonStatisticsParameter()
             {
                 Identity = Identity,
-                FullName = FullName
+                FullName = SonEntity.FullName
             }));
         }
 
@@ -167,6 +143,17 @@ namespace Bullytect.Core.ViewModels
                 base.HandleExceptions(ex);
             }
 
+        }
+
+        #endregion
+
+        #region models
+
+        public class PageModel
+        {
+
+            public SonEntity SonEntity { get; set; } = new SonEntity();
+            public ChartModel DimensionChart { get; set; }
         }
 
         #endregion

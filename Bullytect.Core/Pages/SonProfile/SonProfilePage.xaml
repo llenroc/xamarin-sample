@@ -12,6 +12,7 @@
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:converters="clr-namespace:Bullytect.Core.Converters"
     xmlns:viewModels="clr-namespace:Bullytect.Core.ViewModels;assembly=Bullytect.Core"
+    xmlns:controls="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
     x:TypeArguments="viewModels:SonProfileViewModel"
     x:Class="Bullytect.Core.Pages.SonProfile.SonProfilePage"
     x:Name="root">
@@ -20,6 +21,7 @@
             <converters:SonProfileImageURLConverter x:Key="SonProfileImageURLConverter" />
             <converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter" />
             <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -46,7 +48,7 @@
             <!-- APP Header -->
             <common:AppHeader 
                 Grid.Row="0"
-                Title="{ Binding FullName, StringFormat={i18n:Translate Page.Son.Profile.Title}}">
+                Title="{ Binding SonEntity.FullName, StringFormat={i18n:Translate Page.Son.Profile.Title}}">
                 <common:AppHeader.Options>
                     <x:Array Type="{x:Type View}">
 
@@ -87,246 +89,255 @@
 
             </common:AppHeader>
 
-            <ScrollView 
+            <controls:PullToRefreshLayout
                 Grid.Row="1"
-                Padding="{ StaticResource MainWrapperPadding }">
-                
-                <Grid
-                    RowSpacing="0"
-                    VerticalOptions="FillAndExpand">
+                IsPullToRefreshEnabled="{Binding IsBusy, Converter={ StaticResource InverseBoolConverter }}"
+                RefreshCommand="{ Binding RefreshCommand }"
+                IsRefreshing="{ Binding IsBusy }"
+                RefreshColor="{ DynamicResource AccentColor }"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="240" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-
-                    <Grid 
-                        Grid.Row="0"
-                        Padding="0"
-                        BackgroundColor="Black">
-
-                        <!-- MAIN IMAGE -->
-                        <ffimageloading:CachedImage
-                            ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
-                            LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
-                            CacheType="Disk" CacheDuration="30"
-                            Source="{ Binding ProfileImage, Converter={ StaticResource SonProfileImageURLConverter }}"
-                            Aspect="AspectFill"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="Start"
-                            Opacity=".8">
-                            <ffimageloading:CachedImage.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnImageTapped" />
-                            </ffimageloading:CachedImage.GestureRecognizers>
-                         </ffimageloading:CachedImage>
-                    </Grid>
-
-                    <!-- MAIN HEADER -->
-                    <StackLayout
-                        Grid.Row="0"
-                        Padding="20"
-                        Spacing="0"
-                        VerticalOptions="End"
-                        x:Name="headers" 
-                        AnchorX="0"
-                        AnchorY="0">
-
-                        <Label
-                            Text="{ Binding FullName }"
-                            LineBreakMode="WordWrap"
-                            TextColor="{ DynamicResource OverImageTextColor }"
-                            FontSize="26"
-                            FontAttributes="Bold"/>
-
-                        <Label
-                            Grid.Row="1"
-                            Text="{Binding Birthdate, 
-                                Converter={ StaticResource DateTimeToStringConverter }, 
-                                StringFormat={ i18n:Translate Son.Profile.Birthday }}"
-                            FontSize="{ artina:OnOrientationDouble 
-                                PortraitPhone=18,
-                                LandscapePhone=18,
-                                PortraitTablet=28,
-                                LandscapeTablet=28 }"
-                            HorizontalTextAlignment="Start"
-                            LineBreakMode="WordWrap"
-                            TextColor="{ DynamicResource OverImageTextColor }"/>
-
-
-                        <Label
-                            Grid.Row="2"
-                            Text="{Binding School, StringFormat={i18n:Translate Son.Profile.School}}"
-                            FontSize="{ artina:OnOrientationDouble 
-                                PortraitPhone=16,
-                                LandscapePhone=16,
-                                PortraitTablet=26,
-                                LandscapeTablet=26 }"
-                            HorizontalTextAlignment="Start"
-                            TextColor="{ DynamicResource OverImageTextColor }"/>
-
-                        <BoxView  
-                            Style="{StaticResource BrandNameOrnamentStyle}"
-                            Margin="0,20,0,0"/>
-
-                    </StackLayout>
-
-
-
+                <ScrollView 
+                    Padding="{ StaticResource MainWrapperPadding }">
+                    
                     <Grid
-                        Grid.Row="1"
-                        BackgroundColor="{ DynamicResource BasePageColor }">
+                        RowSpacing="0"
+                        VerticalOptions="FillAndExpand">
+
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="60" />
+                            <RowDefinition Height="240" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
-                        <!--HEADER BACKGROUND-->
-                        <BoxView
+                        <Grid 
                             Grid.Row="0"
-                            BackgroundColor="{ DynamicResource ArticleHeaderBackgroundColor }" />
+                            Padding="0"
+                            BackgroundColor="Black">
 
-                        <!--HEADER INFO-->
+                            <!-- MAIN IMAGE -->
+                            <ffimageloading:CachedImage
+                                ErrorPlaceholder="{ StaticResource ProfileErrorImage }"
+                                LoadingPlaceholder="{ StaticResource ProfileImagePlaceholder }"
+                                CacheType="Disk" CacheDuration="30"
+                                Source="{ Binding SonEntity.ProfileImage, Converter={ StaticResource SonProfileImageURLConverter }}"
+                                Aspect="AspectFill"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="Start"
+                                Opacity=".8">
+                                <ffimageloading:CachedImage.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnImageTapped" />
+                                </ffimageloading:CachedImage.GestureRecognizers>
+                             </ffimageloading:CachedImage>
+                        </Grid>
+
+                        <!-- MAIN HEADER -->
                         <StackLayout
-                            Orientation="Horizontal"
                             Grid.Row="0"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            Spacing="20">
+                            Padding="20"
+                            Spacing="0"
+                            VerticalOptions="End"
+                            x:Name="headers" 
+                            AnchorX="0"
+                            AnchorY="0">
+
+                            <Label
+                                Text="{ Binding SonEntity.FullName }"
+                                LineBreakMode="WordWrap"
+                                TextColor="{ DynamicResource OverImageTextColor }"
+                                FontSize="26"
+                                FontAttributes="Bold"/>
+
+                            <Label
+                                Grid.Row="1"
+                                Text="{Binding SonEntity.Birthdate, 
+                                    Converter={ StaticResource DateTimeToStringConverter }, 
+                                    StringFormat={ i18n:Translate Son.Profile.Birthday }}"
+                                FontSize="{ artina:OnOrientationDouble 
+                                    PortraitPhone=18,
+                                    LandscapePhone=18,
+                                    PortraitTablet=28,
+                                    LandscapeTablet=28 }"
+                                HorizontalTextAlignment="Start"
+                                LineBreakMode="WordWrap"
+                                TextColor="{ DynamicResource OverImageTextColor }"/>
 
 
-                            <!-- User charts Action -->
+                            <Label
+                                Grid.Row="2"
+                                Text="{Binding SonEntity.School.Name, StringFormat={i18n:Translate Son.Profile.School}}"
+                                FontSize="{ artina:OnOrientationDouble 
+                                    PortraitPhone=16,
+                                    LandscapePhone=16,
+                                    PortraitTablet=26,
+                                    LandscapeTablet=26 }"
+                                HorizontalTextAlignment="Start"
+                                TextColor="{ DynamicResource OverImageTextColor }"/>
+
+                            <BoxView  
+                                Style="{StaticResource BrandNameOrnamentStyle}"
+                                Margin="0,20,0,0"/>
+
+                        </StackLayout>
+
+
+
+                        <Grid
+                            Grid.Row="1"
+                            BackgroundColor="{ DynamicResource BasePageColor }">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <!--HEADER BACKGROUND-->
+                            <BoxView
+                                Grid.Row="0"
+                                BackgroundColor="{ DynamicResource ArticleHeaderBackgroundColor }" />
+
+                            <!--HEADER INFO-->
                             <StackLayout
                                 Orientation="Horizontal"
+                                Grid.Row="0"
                                 HorizontalOptions="Center"
-                                VerticalOptions="CenterAndExpand">
+                                VerticalOptions="Center"
+                                Spacing="20">
 
-                                <Image 
-                                    WidthRequest="30" 
-                                    HeightRequest="30" 
-                                    VerticalOptions="Center"
+
+                                <!-- User charts Action -->
+                                <StackLayout
+                                    Orientation="Horizontal"
                                     HorizontalOptions="Center"
-                                    Source="statistics.png" />
-
-                                    <Label
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center"
-                                        TextColor="{DynamicResource AccentColor}"
-                                        Text="{i18n:Translate Children.Toolbar.Results}">
-
-                                        <Label.FontSize>
-                                                <OnIdiom
-                                                    x:TypeArguments="x:Double"
-                                                    Phone="15"
-                                                    Tablet="15" />
-                                        </Label.FontSize>
-                                    </Label>
-
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer 
-                                            Command="{ Binding ShowSonStatisticsCommand }"
-                                            NumberOfTapsRequired="1" />
-                                    </StackLayout.GestureRecognizers>
-                                </StackLayout>
-                                <!-- End User charts Action -->
-
-                                <!-- Alerts Action -->
-                                <StackLayout
-                                    Orientation="Horizontal"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="Center">
+                                    VerticalOptions="CenterAndExpand">
 
                                     <Image 
                                         WidthRequest="30" 
                                         HeightRequest="30" 
                                         VerticalOptions="Center"
                                         HorizontalOptions="Center"
-                                        Source="alertas.png" />
-
-                                    <Label
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center"
-                                        TextColor="{DynamicResource AccentColor}"
-                                        Text="{i18n:Translate Children.Toolbar.Alerts}">
-                                        <Label.FontSize>
-                                            <OnIdiom
-                                                x:TypeArguments="x:Double"
-                                                Phone="15"
-                                                Tablet="15" />
-                                        </Label.FontSize>
-                                    </Label>
-
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer 
-                                            Command="{ Binding GoToAlertsCommand }"
-                                            NumberOfTapsRequired="1" />
-                                    </StackLayout.GestureRecognizers>
-                                </StackLayout>
-                                <!-- End Alerts Action -->
-                            
-                                <!-- Edit Profile Action -->
-                                <StackLayout
-                                    Orientation="Horizontal"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="EndAndExpand">
-                                
-                                    <Image 
-                                        WidthRequest="30" 
-                                        HeightRequest="30" 
-                                        VerticalOptions="Center"
-                                        HorizontalOptions="Center"
-                                        Source="circulo.png" />
+                                        Source="statistics.png" />
 
                                         <Label
                                             HorizontalOptions="Center"
                                             VerticalOptions="Center"
                                             TextColor="{DynamicResource AccentColor}"
-                                            Text="{i18n:Translate Children.Toolbar.Relations }">
+                                            Text="{i18n:Translate Children.Toolbar.Results}">
+
                                             <Label.FontSize>
-                                              <OnIdiom
-                                                x:TypeArguments="x:Double"
-                                                Phone="15"
-                                                Tablet="15" />
+                                                    <OnIdiom
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="15"
+                                                        Tablet="15" />
                                             </Label.FontSize>
                                         </Label>
 
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer 
-                                                    Command="{ Binding GoToRelationsCommand }"  
-                                                    NumberOfTapsRequired="1" />
-                                         </StackLayout.GestureRecognizers>
-                                </StackLayout>
-                                <!-- End Edit Profile Action -->
-                            
-                            </StackLayout>
+                                                Command="{ Binding ShowSonStatisticsCommand }"
+                                                NumberOfTapsRequired="1" />
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                    <!-- End User charts Action -->
 
-                            <!-- SEPARATOR -->
-                            <BoxView
-                                Grid.Row="0"
-                                VerticalOptions="End"
-                                Style="{ StaticResource Horizontal1ptLineStyle}" />
+                                    <!-- Alerts Action -->
+                                    <StackLayout
+                                        Orientation="Horizontal"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="Center">
 
-                            <ScrollView 
-                                Grid.Row="1"
-                                Padding="20,20,20,0"
-                                VerticalOptions="StartAndExpand">
+                                        <Image 
+                                            WidthRequest="30" 
+                                            HeightRequest="30" 
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            Source="alertas.png" />
+
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            TextColor="{DynamicResource AccentColor}"
+                                            Text="{i18n:Translate Children.Toolbar.Alerts}">
+                                            <Label.FontSize>
+                                                <OnIdiom
+                                                    x:TypeArguments="x:Double"
+                                                    Phone="15"
+                                                    Tablet="15" />
+                                            </Label.FontSize>
+                                        </Label>
+
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                                Command="{ Binding GoToAlertsCommand }"
+                                                NumberOfTapsRequired="1" />
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                    <!-- End Alerts Action -->
                                 
+                                    <!-- Edit Profile Action -->
+                                    <StackLayout
+                                        Orientation="Horizontal"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="EndAndExpand">
+                                    
+                                        <Image 
+                                            WidthRequest="30" 
+                                            HeightRequest="30" 
+                                            VerticalOptions="Center"
+                                            HorizontalOptions="Center"
+                                            Source="circulo.png" />
 
-                                <commonTemplates:ChartPageTemplate 
-                                    Title="{i18n:Translate Statistics.Son.Four.Dimensions}"
-                                    IsLoading="{ Binding IsBusy }"
-                                    Chart="{ Binding FourDimensionsChart }"
-                                    LoadingText="{i18n:Translate Statistics.Son.Four.Dimensions.Loading }"
-                                    ChartWidth="350"
-                                    ChartHeight="350"
-                                    DataFound="{ Binding DataFound }"
-                                    Error="{ Binding ErrorOccurred }"
-                                    ErrorText="{i18n:Translate Statistics.Son.Four.Dimensions.Error}"
-                                />
+                                            <Label
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center"
+                                                TextColor="{DynamicResource AccentColor}"
+                                                Text="{i18n:Translate Children.Toolbar.Relations }">
+                                                <Label.FontSize>
+                                                  <OnIdiom
+                                                    x:TypeArguments="x:Double"
+                                                    Phone="15"
+                                                    Tablet="15" />
+                                                </Label.FontSize>
+                                            </Label>
 
-                            </ScrollView>
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer 
+                                                        Command="{ Binding GoToRelationsCommand }"  
+                                                        NumberOfTapsRequired="1" />
+                                             </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                    <!-- End Edit Profile Action -->
+                                
+                                </StackLayout>
+
+                                <!-- SEPARATOR -->
+                                <BoxView
+                                    Grid.Row="0"
+                                    VerticalOptions="End"
+                                    Style="{ StaticResource Horizontal1ptLineStyle}" />
+
+                                <ScrollView 
+                                    Grid.Row="1"
+                                    Padding="20,20,20,0"
+                                    VerticalOptions="StartAndExpand">
+                                    
+
+                                    <commonTemplates:ChartPageTemplate 
+                                        Title="{i18n:Translate Statistics.Son.Four.Dimensions}"
+                                        IsLoading="{ Binding IsBusy }"
+                                        Chart="{ Binding FourDimensionsChart }"
+                                        LoadingText="{i18n:Translate Statistics.Son.Four.Dimensions.Loading }"
+                                        ChartWidth="350"
+                                        ChartHeight="350"
+                                        DataFound="{ Binding DataFound }"
+                                        Error="{ Binding ErrorOccurred }"
+                                        ErrorText="{i18n:Translate Statistics.Son.Four.Dimensions.Error}"
+                                    />
+
+                                </ScrollView>
+                            </Grid>
                         </Grid>
-                    </Grid>
-            </ScrollView>
+                </ScrollView>
+              </controls:PullToRefreshLayout>
          </Grid>
 	</ContentPage.Content>
 </common:BaseContentPage>

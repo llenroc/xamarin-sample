@@ -183,14 +183,7 @@ namespace Bullytect.Core.ViewModels
 
                     if(SonEntity != null)
 
-                        ShowViewModel<SonProfileViewModel>(new SonProfileViewModel.SonParameter()
-                        {
-                            Identity = SonEntity.Identity,
-                            FullName = SonEntity.FullName,
-                            Birthdate = SonEntity.Birthdate,
-                            School = SonEntity.School?.Name,
-                            ProfileImage = SonEntity.ProfileImage
-                        });
+                        ShowViewModel<SonProfileViewModel>(new { SonEntity.Identity});
 
                 });
             }
@@ -204,6 +197,21 @@ namespace Bullytect.Core.ViewModels
             {
                 return new MvxCommand(() => ShowViewModel<AlertsViewModel>());
             }
+        }
+
+        public ICommand SeeMoreCommand
+        {
+            get
+            {
+                return new MvxCommand(() => {
+
+                    if (SelfParent?.Children > 0)
+                        ShowViewModel<ChildrenViewModel>();
+                    else
+                        ShowViewModel<EditSonViewModel>();
+                });
+            }
+
         }
 
 

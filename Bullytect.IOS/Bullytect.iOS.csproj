@@ -379,6 +379,12 @@
     <Reference Include="Xamarin.Forms.Maps.iOS">
       <HintPath>..\packages\Xamarin.Forms.Maps.2.4.0.74863\lib\Xamarin.iOS10\Xamarin.Forms.Maps.iOS.dll</HintPath>
     </Reference>
+    <Reference Include="HighlightMarker.Forms">
+      <HintPath>..\packages\HighlightMarker.Forms.1.1.0\lib\xamarin.ios10\HighlightMarker.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="HighlightMarker">
+      <HintPath>..\packages\HighlightMarker.1.1.0\lib\xamarin.ios10\HighlightMarker.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Contents.json">

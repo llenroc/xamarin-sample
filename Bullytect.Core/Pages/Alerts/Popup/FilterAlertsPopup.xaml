@@ -85,7 +85,7 @@
                         Icon="{ x:Static helper:FontAwesomeFont.SortAmountDesc }"
                         Text="{i18n:Translate Settings.Alerts.Count.New.Alerts }"
                         Options="{ Binding AlertsOptionsList }"
-                        SelectedItem="{ Binding AlertsOption }"/>
+                        SelectedItem="{ Binding CountAlertsOption }"/>
 
                     <!-- Start Antiquity of alerts -->
                     <commonViewCells:CommonOptionPickerViewCell

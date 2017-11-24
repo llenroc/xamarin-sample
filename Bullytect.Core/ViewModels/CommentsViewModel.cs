@@ -53,9 +53,7 @@ namespace Bullytect.Core.ViewModels
             RefreshCommand.Subscribe((CommentEntities) =>
             {
                 Comments.ReplaceRange(CommentEntities);
-                DataFound = true;
-                ErrorOccurred = false;
-                IsTimeout = false;
+                ResetCommonProps();
             });
 
             RefreshCommand.IsExecuting.Subscribe((IsLoading) => IsBusy = IsLoading);
@@ -278,14 +276,15 @@ namespace Bullytect.Core.ViewModels
             new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_General_Interval_Option, 1), Value = 1 },
             new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_General_Interval_Option, 7), Value = 7 },
             new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_General_Interval_Option, 15), Value = 15 },
-            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_General_Interval_Option, 30), Value = 30 }
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_General_Interval_Option, 30), Value = 30 },
+            new PickerOptionModel(){ Description = String.Format(AppResources.Settings_Statistics_General_Interval_Option, 60), Value = 60 }
         };
 
         PickerOptionModel _timeIntervalOption;
 
         public PickerOptionModel TimeIntervalOption
         {
-            get => _timeIntervalOption ?? TimeIntervalsOptionsList.First();
+            get => _timeIntervalOption ?? TimeIntervalsOptionsList.Last();
             set => SetProperty(ref _timeIntervalOption, value);
         }
 

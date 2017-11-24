@@ -17,7 +17,6 @@
     xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
     xmlns:rest="clr-namespace:Bullytect.Core.Rest.Utils"
     xmlns:config="clr-namespace:Bullytect.Core.Config"
-    xmlns:controls="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
     x:Class="Bullytect.Core.Pages.Home.HomePage"
     x:TypeArguments="viewModels:HomeViewModel"
     Title="{i18n:Translate Page.Common.Title}">
@@ -106,27 +105,19 @@
 
             </common:AppHeader>
             <!-- End APP Header -->
-
-            <controls:PullToRefreshLayout
+            <!--GRID WRAPPER-->
+            <Grid 
                 Grid.Row="1"
-                x:Name="RefreshLayout"
-                IsVisible="false"
-                IsPullToRefreshEnabled="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
-                RefreshCommand="{Binding RefreshCommand}"
-                IsRefreshing="{Binding IsBusy}"
-                RefreshColor="{DynamicResource AccentColor}"
                 HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
-                
-                <!--GRID WRAPPER-->
-                <Grid 
-                     Padding="0" 
-                     IsVisible="{ Binding ErrorOccurred , Converter = { StaticResource InverseBoolConverter }  }">
+                VerticalOptions="FillAndExpand"
+                Padding="0" 
+                IsVisible="false"
+                BackgroundColor="White">
 
-                     <Grid.RowDefinitions>
-                          <RowDefinition Height="150" />
-                          <RowDefinition Height="*" />
-                     </Grid.RowDefinitions>
+                   <Grid.RowDefinitions>
+                        <RowDefinition Height="150" />
+                        <RowDefinition Height="*" />
+                   </Grid.RowDefinitions>
 
 
                     <!-- PROFILE HEADER-->
@@ -164,7 +155,7 @@
                                 <common:SeeMore 
                                     HorizontalOptions="Start"
                                     VerticalOptions="Center"
-                                    ClickedItemCommand="{ Binding GoToChildrenCommand }"/>
+                                    ClickedItemCommand="{ Binding SeeMoreCommand }"/>
 
 
                             </StackLayout>
@@ -225,13 +216,19 @@
                                 <Label
                                     FontSize="18"
                                     Style="{ StaticResource CommonHeaderStyle }"
-                                    Text="{ x:Static helper:FontAwesomeFont.Inbox }"
+                                    Text="{ x:Static helper:FontAwesomeFont.Refresh }"
                                     FontFamily="{ StaticResource IconsFontFamily }" />
 
                                 <Label
                                     Style="{ StaticResource CommonHeaderStyle }"
                                     LineBreakMode="TailTruncation"
                                     Text="{ Binding ListAlertTitle }"/>
+
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Command="{ Binding RefreshCommand }" 
+                                        NumberOfTapsRequired="1" /> 
+                                </StackLayout.GestureRecognizers>
                             </StackLayout>
 
                             <StackLayout
@@ -301,22 +298,22 @@
 
                     </Grid>
                     <!-- END BODY -->
-                </Grid>
+
                 <ContentView.Triggers>
-                    <MultiTrigger TargetType="controls:PullToRefreshLayout">
-                        <MultiTrigger.Conditions>
-                          <BindingCondition 
-                              Binding="{ Binding ErrorOccurred }"
-                              Value="False" />
-                           <BindingCondition 
-                              Binding="{Binding IsTimeout }"
-                              Value="False" />
-                        </MultiTrigger.Conditions>
-                        <Setter Property="IsVisible" Value="True" />
-                    </MultiTrigger>
+                        <MultiTrigger TargetType="Grid">
+                            <MultiTrigger.Conditions>
+                              <BindingCondition 
+                                  Binding="{ Binding ErrorOccurred }"
+                                  Value="False" />
+                               <BindingCondition 
+                                  Binding="{Binding IsTimeout }"
+                                  Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="IsVisible" Value="True" />
+                       </MultiTrigger>
                 </ContentView.Triggers>
-                <!--END GRID WRAPPER-->
-             </controls:PullToRefreshLayout>
+            </Grid>
+            <!--END GRID WRAPPER-->
 
             <common:ErrorOcurred 
                  Grid.Row="1"

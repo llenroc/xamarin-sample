@@ -213,6 +213,11 @@ namespace Bullytect.Core.ViewModels
             set => SetProperty(ref _pageLoaded, value);
         }
 
+
+        public DateTime MinimumDatetime { get; set; } = DateTime.Now.AddYears(-18);
+
+        public DateTime MaximumDatetime { get; set; } = DateTime.Now.AddYears(-8);
+
         #endregion
 
         #region delegates

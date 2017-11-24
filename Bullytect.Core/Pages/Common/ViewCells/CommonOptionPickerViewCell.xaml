@@ -22,7 +22,6 @@
             <Label 
                 x:Name="IconLabel"
                 Grid.Column="0"
-                Text="{ x:Static helper:FontAwesomeFont.SortAmountDesc }"
                 Style="{StaticResource FontIcon}"
                 FontSize ="12"
                 WidthRequest="12" 
@@ -35,7 +34,6 @@
             <Label 
                 x:Name="TextLabel"
                 Grid.Column="1" 
-                Text="{i18n:Translate Settings.Alerts.Count.New.Alerts }"
                 LineBreakMode="TailTruncation"
                 VerticalTextAlignment="Center" 
                 HorizontalOptions="StartAndExpand" />

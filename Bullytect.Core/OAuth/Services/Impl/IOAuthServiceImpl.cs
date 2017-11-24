@@ -20,7 +20,7 @@ namespace Bullytect.Core.OAuth.Services.Impl
             {
                 auth = new OAuth2Authenticator(
                     clientId: oauth2Info.OAuth_IdApplication_IdAPI_KeyAPI_IdClient_IdCustomer,
-                    clientSecret: string.Empty,
+                    clientSecret: oauth2Info.OAuth_SecretKey_ConsumerSecret_APISecret,
                     scope: oauth2Info.OAuth2_Scope,
                     authorizeUrl: oauth2Info.OAuth_UriAuthorization,
                     redirectUrl: oauth2Info.OAuth_UriCallbackAKARedirect,
@@ -43,6 +43,9 @@ namespace Bullytect.Core.OAuth.Services.Impl
 
 
             auth.AllowCancel = oauth2Info.AllowCancel;
+            auth.ClearCookiesBeforeLogin = oauth2Info.ResetData;
+            if (!string.IsNullOrEmpty(oauth2Info.Title))
+                auth.Title = oauth2Info.Title;
 
             AuthenticationState.Authenticator = auth;
 
@@ -59,12 +62,12 @@ namespace Bullytect.Core.OAuth.Services.Impl
                     if (eventPattern.EventArgs.IsAuthenticated)
                     {
 
-                    if (eventPattern?.EventArgs?.Account?.Properties.ContainsKey("access_token") == true)
-                        authDict.Add("access_token", eventPattern.EventArgs.Account.Properties["access_token"]);
+                        if (eventPattern?.EventArgs?.Account?.Properties.ContainsKey("access_token") == true)
+                            authDict.Add("access_token", eventPattern.EventArgs.Account.Properties["access_token"]);
 
 
-                    if (eventPattern?.EventArgs?.Account?.Properties.ContainsKey("refresh_token") == true)
-                        authDict.Add("refresh_token", eventPattern.EventArgs.Account.Properties["refresh_token"]);
+                        if (eventPattern?.EventArgs?.Account?.Properties.ContainsKey("refresh_token") == true)
+                            authDict.Add("refresh_token", eventPattern.EventArgs.Account.Properties["refresh_token"]);
 
                     }
 

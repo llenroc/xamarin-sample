@@ -180,6 +180,21 @@
                                     LandscapeTablet=Center }"/>
                 </StackLayout>
              </Grid>
+
+            <Grid
+                IsVisible="{ Binding IsBusy }"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"
+                BackgroundColor="Black"
+                Opacity="0.7">
+
+                    <common:ActivityLoading
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Icon="{ x:Static helper:FontAwesomeFont.User }"
+                        IsLoading="{ Binding IsBusy }"  
+                        LoadingText="{ Binding LoadingText }"/>
+            </Grid>
          </Grid>
     </ContentView.Content>
 </common:BaseContentPage>
