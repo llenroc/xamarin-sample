@@ -11,6 +11,7 @@ using MvvmCross.Forms.iOS;
 using MvvmCross.Platform;
 using Plugin.FirebasePushNotification;
 using Refractored.XamForms.PullToRefresh.iOS;
+using TK.CustomMap.iOSUnified;
 using UIKit;
 using UserNotifications;
 using UXDivers.Artina.Shared;
@@ -28,6 +29,8 @@ namespace Bullytect.iOS
 
             global::Xamarin.Forms.Forms.Init();
             Xamarin.FormsMaps.Init();
+            TKCustomMapRenderer.InitMapRenderer();
+            NativePlacesApi.Init();
 			CachedImageRenderer.Init(); // Initializing FFImageLoading
 			AnimationViewRenderer.Init(); // Initializing Lottie
 			PullToRefreshLayoutRenderer.Init();

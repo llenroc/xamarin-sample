@@ -86,7 +86,6 @@
     <Compile Include="OAuth\OAuthAuthInterceptor.cs" />
     <Compile Include="Renderers\LayoutTouchListnerRender.cs" />
     <Compile Include="Renderers\CustomDatePickerRenderer.cs" />
-    <Compile Include="Renderers\ExtendedMapRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

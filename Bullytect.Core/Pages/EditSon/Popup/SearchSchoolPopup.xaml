@@ -209,8 +209,8 @@
                                   Binding="{Binding Schools, Converter = { StaticResource IsSchoolCollectionEmptyConverter } }"
                                   Value="True" />
                             <BindingCondition 
-                                  Binding="{Binding Text, Source= { x:Reference searchBar }, Converter = { StaticResource IsNullOrWhiteSpaceConverter } }"
-                                  Value="False" />
+                                  Binding="{Binding SearchPerformed  }"
+                                  Value="True" />
                         </MultiTrigger.Conditions>
                         <Setter Property="IsVisible" Value="True" />
                     </MultiTrigger>

@@ -12,6 +12,9 @@ namespace Bullytect.Core.Pages.EditSon.Popup
 {
     public partial class SearchSchoolPopup : PopupPage
     {
+
+        Timer tmr;
+
         public SearchSchoolPopup()
         {
             InitializeComponent();
@@ -34,14 +37,19 @@ namespace Bullytect.Core.Pages.EditSon.Popup
             if (ViewModel != null)
             {
 
+                if (tmr?.IsCancellationRequested == false)
+                    tmr?.Dispose();
+
                 if (e.NewTextValue == string.Empty && e.OldTextValue.Length > 1)
                 {
                     ViewModel.Schools.Clear();
                 }
                 else if (e.NewTextValue.Length > 0)
                 {
-                    ViewModel.FindSchoolsCommand.ExecuteIfPossible(e.NewTextValue).Subscribe();
-
+                    tmr = new Timer((_) => {
+                        ViewModel.FindSchoolsCommand.Execute(e.NewTextValue).Subscribe();
+                        tmr?.Dispose();
+                    }, this, 2000, 4000);
                 }
 
             }

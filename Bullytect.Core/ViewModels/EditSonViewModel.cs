@@ -139,7 +139,10 @@ namespace Bullytect.Core.ViewModels
 
             FindSchoolsCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
-            FindSchoolsCommand.Subscribe((SchoolsFounded) => Schools.ReplaceRange(SchoolsFounded));
+            FindSchoolsCommand.Subscribe((SchoolsFounded) => {
+                SearchPerformed = true;
+                Schools.ReplaceRange(SchoolsFounded);
+            });
         }
 
         #region properties
@@ -172,6 +175,14 @@ namespace Bullytect.Core.ViewModels
         {
             get => _newSchool;
             set => SetProperty(ref _newSchool, value);
+        }
+
+        bool _searchPerformed = false;
+
+        public bool SearchPerformed
+        {
+            get => _searchPerformed;
+            set => SetProperty(ref _searchPerformed, value);
         }
 
         string _sonToEdit = null;
@@ -300,6 +311,7 @@ namespace Bullytect.Core.ViewModels
         public ICommand ShowAddSchoolPopupCommand
                         => new MvxCommand(async () =>
                         {
+                            SearchPerformed = false;
                             if(PopupNavigation.PopupStack.Count > 0) {
                                 await PopupNavigation.PopAllAsync();
                             }
@@ -311,6 +323,7 @@ namespace Bullytect.Core.ViewModels
 
         public ICommand SchoolSelectedCommand
             => new MvxCommand<SchoolEntity>(async (SchoolSelected) => {
+                SearchPerformed = false;
                 CurrentSon.School.HydrateWith(SchoolSelected);
                 if (PopupNavigation.PopupStack.Count > 0)
                     await PopupNavigation.PopAllAsync(true);
@@ -489,6 +502,7 @@ namespace Bullytect.Core.ViewModels
 			}
             else if (ex is NoSchoolsFoundException) 
             {
+                SearchPerformed = true;
                 Schools.Clear();
 
             }

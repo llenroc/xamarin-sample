@@ -611,7 +611,6 @@
     </Compile>
     <Compile Include="Converters\IsNullOrWhiteSpaceConverter.cs" />
     <Compile Include="Models\Domain\AlertCategoryEnum.cs" />
-    <Compile Include="Pages\Common\Controls\ExtendedMap.cs" />
     <Compile Include="Pages\EditSon\Popup\SchoolMapPopup.xaml.cs">
       <DependentUpon>SchoolMapPopup.xaml</DependentUpon>
     </Compile>
@@ -703,6 +702,8 @@
     <Compile Include="Pages\Common\Behavior\EntryLengthValidatorBehavior.cs" />
     <Compile Include="Rest\Models\Exceptions\AccountPendingToBeRemoveException.cs" />
     <Compile Include="Utils\ReactiveUiExtensions.cs" />
+    <Compile Include="Pages\Common\Controls\PlacesAutoComplete.cs" />
+    <Compile Include="Utils\Timer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">

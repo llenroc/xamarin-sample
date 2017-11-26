@@ -56,22 +56,6 @@ namespace Bullytect.Core.ViewModels
 
             RefreshCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
-            TakePhotoCommand = ReactiveCommand.CreateFromObservable<string, ImageEntity>((param) =>
-           {
-               return _appHelper.PickPhotoStream()
-                   .Select(MediaFile => MediaFile.GetStream())
-                   .Do((_) => _userDialogs.ShowLoading(AppResources.Profile_Updating_Profile_Image))
-                   .SelectMany((FileStream) => parentService.UploadProfileImage(FileStream))
-                   .Do((_) => _userDialogs.HideLoading());
-           });
-
-            TakePhotoCommand.Subscribe((image) =>
-            {
-                SelfParent.ProfileImage = image.Identity;
-                _userDialogs.ShowSuccess(AppResources.Profile_Updating_Profile_Image_Success);
-            });
-
-            TakePhotoCommand.ThrownExceptions.Subscribe(HandleExceptions);
 
         }
 
@@ -189,7 +173,6 @@ namespace Bullytect.Core.ViewModels
             }
         }
 
-        public ReactiveCommand<string, ImageEntity> TakePhotoCommand { get; set; }
 
         public ICommand GoToAlertsCommand
         {
@@ -226,18 +209,6 @@ namespace Bullytect.Core.ViewModels
             if (ex is LoadProfileFailedException)
             {
                 _userDialogs.ShowError(AppResources.Home_Loading_Failed);
-            }
-            else if (ex is UploadImageFailException)
-            {
-                _appHelper.ShowAlert(AppResources.Profile_Updating_Profile_Image_Failed);
-
-            } else if (ex is UploadFileIsTooLargeException){
-
-                _appHelper.ShowAlert(((UploadFileIsTooLargeException)ex).Response.Data);
-            } 
-            else if (ex is CanNotTakePhotoFromCameraException)
-            {
-                _appHelper.Toast(AppResources.Profile_Can_Not_Take_Photo_From_Camera, System.Drawing.Color.FromArgb(12, 131, 193));
             }
             else
             {

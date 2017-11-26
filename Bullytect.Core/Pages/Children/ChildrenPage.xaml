@@ -151,6 +151,12 @@
                                                         BorderSize="5" 
                                                         BorderHexColor="#6BC7E0" />
                                                 </ffimageloading:CachedImage.Transformations>
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                                                        Command="{ Binding Path=BindingContext.TakePhotoCommand , Source={x:Reference Root} }"
+                                                        CommandParameter="{ Binding Identity }"
+                                                        NumberOfTapsRequired="2" />
+                                                </Image.GestureRecognizers>
                                            </ffimageloading:CachedImage>
 
                                     </StackLayout>

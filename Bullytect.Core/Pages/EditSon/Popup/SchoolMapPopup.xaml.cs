@@ -11,6 +11,10 @@ using Plugin.Geolocator.Abstractions;
 using ReactiveUI;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
+using TK.CustomMap.Api;
+using TK.CustomMap.Api.Google;
+using TK.CustomMap.Api.OSM;
+using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
 namespace Bullytect.Core.Pages.EditSon.Popup
@@ -32,21 +36,32 @@ namespace Bullytect.Core.Pages.EditSon.Popup
             initMap();
         }
 
+
         #region methods
 
-        void initMap() {
+        void initMap()
+        {
 
             if (_selectable)
             {
+                PlacesAutocomplete.IsVisible = true;
+                PlacesAutocomplete.PlaceSelectedCommand = PlaceSelectedCommand;
+                Map.Margin = new Thickness(0, 60, 0, 0);
 
                 Observable.FromAsync(() => GetCurrentLocation())
                       .ObserveOn(RxApp.MainThreadScheduler)
                       .Where((Position) => Position != null)
                       .Subscribe((Position) =>
                       {
-                          Map.MoveToRegion(MapSpan.FromCenterAndRadius(
-                                      new Xamarin.Forms.Maps.Position(Position.Latitude, Position.Longitude),
-                                          Distance.FromMiles(1)));
+                          var MapRegion = MapSpan.FromCenterAndRadius(
+                                            new Xamarin.Forms.Maps.Position(Position.Latitude, Position.Longitude),
+                                Distance.FromKilometers(2));
+
+                          Map.MoveToRegion(MapRegion);
+
+                          PlacesAutocomplete.Bounds = MapRegion;
+
+                          
                       });
 
                 initTapHandler();
@@ -56,16 +71,22 @@ namespace Bullytect.Core.Pages.EditSon.Popup
                         String.Format(AppResources.EditSon_School_Map_Select, _school.Name) :
                         AppResources.EditSon_School_Map_Select2;
                 else
-                   Title.Text = AppResources.EditSon_School_Map_Select2;
+                    Title.Text = AppResources.EditSon_School_Map_Select2;
             }
             else
             {
 
+                PlacesAutocomplete.IsVisible = false;
+
                 if (_school != null)
                 {
-                    Map.MoveToRegion(MapSpan.FromCenterAndRadius(
+
+                    var MapRegion = MapSpan.FromCenterAndRadius(
                         new Xamarin.Forms.Maps.Position(_school.Latitude, _school.Longitude),
-                                    Distance.FromMiles(1)));
+                        Distance.FromKilometers(2));
+
+                    Map.MoveToRegion(MapRegion);
+
                     Title.Text = !string.IsNullOrWhiteSpace(_school.Name) ?
                         String.Format(AppResources.EditSon_School_Map_Visualize, _school.Name) :
                         AppResources.EditSon_School_Map_Visualize2;
@@ -122,11 +143,12 @@ namespace Bullytect.Core.Pages.EditSon.Popup
         void initTapHandler()
         {
 
-            Map.MapLongPress += async (object sender, TK.CustomMap.TKGenericEventArgs<Xamarin.Forms.Maps.Position> e) => {
+            Map.MapLongPress += async (object sender, TK.CustomMap.TKGenericEventArgs<Xamarin.Forms.Maps.Position> e) =>
+            {
 
                 if (_school != null && e?.Value != null)
                 {
-                    
+
                     try
                     {
                         var locator = CrossGeolocator.Current;
@@ -162,6 +184,76 @@ namespace Bullytect.Core.Pages.EditSon.Popup
                 }
 
             };
+        }
+
+        #endregion
+
+        #region commands
+
+        public Command<IPlaceResult> PlaceSelectedCommand
+        {
+            get
+            {
+                return new Command<IPlaceResult>(async p =>
+                {
+                    var gmsResult = p as GmsPlacePrediction;
+                    var osmResult = p as OsmNominatimResult;
+
+                    if(gmsResult != null || osmResult != null) {
+
+                        Xamarin.Forms.Maps.Position PositionSelected;
+
+                        if(gmsResult != null) {
+
+                            var details = await GmsPlace.Instance.GetDetails(gmsResult.PlaceId);
+                            PositionSelected = new Xamarin.Forms.Maps.Position(details.Item.Geometry.Location.Latitude, details.Item.Geometry.Location.Longitude);
+
+                        } else {
+                            PositionSelected = new Xamarin.Forms.Maps.Position(osmResult.Latitude, osmResult.Longitude);
+                        }
+
+                        var MapRegion = MapSpan.FromCenterAndRadius(PositionSelected, Distance.FromKilometers(2));
+                        Map.MoveToRegion(MapRegion);
+
+                    } else {
+                        
+                        if (Device.OS == TargetPlatform.Android)
+                        {
+                            var prediction = (TKNativeAndroidPlaceResult)p;
+
+                            var details = await TKNativePlacesApi.Instance.GetDetails(prediction.PlaceId);
+
+                            Xamarin.Forms.Maps.Position? PositionSelected = details?.Coordinate;
+
+                            if(PositionSelected.HasValue) {
+
+                                var MapRegion = MapSpan.FromCenterAndRadius(PositionSelected.Value, Distance.FromKilometers(2));
+                                Map.MoveToRegion(MapRegion);
+                            }
+
+                           
+                        }
+                        else if (Device.OS == TargetPlatform.iOS)
+                        {
+                            var prediction = (TKNativeiOSPlaceResult)p;
+
+                            Xamarin.Forms.Maps.Position? PositionSelected = prediction?.Details?.Coordinate;
+
+                            if(PositionSelected.HasValue) {
+
+                                var MapRegion = MapSpan.FromCenterAndRadius(PositionSelected.Value, Distance.FromKilometers(2));
+                                Map.MoveToRegion(MapRegion);
+                            }
+
+
+                        }
+
+                    }
+
+
+
+                });
+            }
         }
 
         #endregion
