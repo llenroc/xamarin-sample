@@ -149,7 +149,6 @@
                                 FontAttributes="Bold"/>
 
                             <Label
-                                Grid.Row="1"
                                 Text="{Binding SonEntity.Birthdate, 
                                     Converter={ StaticResource DateTimeToStringConverter }, 
                                     StringFormat={ i18n:Translate Son.Profile.Birthday }}"
@@ -164,7 +163,6 @@
 
 
                             <Label
-                                Grid.Row="2"
                                 Text="{Binding SonEntity.School.Name, StringFormat={i18n:Translate Son.Profile.School}}"
                                 FontSize="{ artina:OnOrientationDouble 
                                     PortraitPhone=16,

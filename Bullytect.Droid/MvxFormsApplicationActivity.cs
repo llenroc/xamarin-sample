@@ -19,6 +19,8 @@ using CarouselView.FormsPlugin.Android;
 using Bullytect.Core;
 using Firebase.Iid;
 using Plugin.FirebasePushNotification;
+using HockeyApp.Android;
+using HockeyApp.Android.Metrics;
 
 namespace Bullytect.Droid
 {
@@ -119,6 +121,9 @@ namespace Bullytect.Droid
 
     			var starter = Mvx.Resolve<IMvxAppStart>();
     			starter.Start();
+
+                CrashManager.Register(this, "1a19190547c340aa9e7bf156aa5527ec");
+                MetricsManager.Register(Application, "1a19190547c340aa9e7bf156aa5527ec");
 
             }
             catch (Exception e)

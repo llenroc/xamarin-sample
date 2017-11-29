@@ -103,7 +103,6 @@ namespace Bullytect.Core.ViewModels
                 if (!CrossConnectivity.IsSupported)
                     return true;
 
-                //Do this only if you need to and aren't listening to any other events as they will not fire.
                 using (var connectivity = CrossConnectivity.Current)
                 {
                     return connectivity.IsConnected;
@@ -155,9 +154,6 @@ namespace Bullytect.Core.ViewModels
 
 		private bool? _isDirtyMonitoring;
 
-		/// <summary>
-		/// Set this to true to start monitoring for changes to this object.
-		/// </summary>
 		public bool IsDirtyMonitoring
 		{
 			get
@@ -173,12 +169,7 @@ namespace Bullytect.Core.ViewModels
 			{
 				if (value)
 				{
-					// starts the monitoring and stores non-nulls
-					// and ignores default bools values in binding 
-					// situations where RaiseAllPropertyChanged() has
-					// been used
 					_isDirtyMonitoring = true;
-					// IsDirty = false;
 					_cleanHash = GetObjectHash();
 				}
 			}
@@ -197,7 +188,6 @@ namespace Bullytect.Core.ViewModels
 			}
 		}
 
-		/// Gets the object hash from the objects property values.
 		private string GetObjectHash()
 		{
 			string md5;
@@ -223,9 +213,6 @@ namespace Bullytect.Core.ViewModels
 			}
 			catch (Exception ex)
 			{
-				// you should make this more specific really :) OK for testing
-				// but since ViewModels are often not directly created
-				// throwing exceptions isn't a great idea really
 				throw new Exception("Cannot calculate hash.", ex);
 			}
 
@@ -233,11 +220,6 @@ namespace Bullytect.Core.ViewModels
 		}
 
 
-		/// <summary>
-		/// Gets the MD5 sum from the buffer byte data.
-		/// </summary>
-		/// <param name="buffer">The buffer.</param>
-		/// <returns>a string MD5 value</returns>
 		private static string GetMd5Sum(byte[] buffer)
 		{
             IHashAlgorithmProvider algoProv = WinRTCrypto.HashAlgorithmProvider.OpenAlgorithm(HashAlgorithm.Md5);

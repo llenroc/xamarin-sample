@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using Bullytect.Core.Services.Impl;
-using Bullytect.Core.Utils;
+using Bullytect.Core.Models.Domain;
+using SkiaSharp;
 
 namespace Bullytect.Utils.Helpers
 {
@@ -36,6 +35,54 @@ namespace Bullytect.Utils.Helpers
 		{
 			return (T)Enum.Parse(typeof(T), value, true);
 		}
+
+        public static SKColor ToColor (this AlertLevelEnum level)
+        {
+            SKColor Color;
+
+            switch (level)
+            {
+                case AlertLevelEnum.INFO:
+                    Color = SKColor.Parse("#6781c0");
+                    break;
+                case AlertLevelEnum.WARNING:
+                    Color = SKColor.Parse("#dbc66e");
+                    break;
+                case AlertLevelEnum.DANGER:
+                    Color = SKColor.Parse("#dd6a6b");
+                    break;
+                case AlertLevelEnum.SUCCESS:
+                    Color = SKColor.Parse("#6bdd9b");
+                    break;
+            }
+
+            return Color;
+        
+        }
+
+        public static string ToColorString(this AlertLevelEnum level)
+        {
+            string Color = string.Empty;
+
+            switch (level)
+            {
+                case AlertLevelEnum.INFO:
+                    Color = "#6781c0";
+                    break;
+                case AlertLevelEnum.WARNING:
+                    Color = "#dbc66e";
+                    break;
+                case AlertLevelEnum.DANGER:
+                    Color = "#dd6a6b";
+                    break;
+                case AlertLevelEnum.SUCCESS:
+                    Color = "#6bdd9b";
+                    break;
+            }
+
+            return Color;
+
+        }
 
 		public static string ToOrdinal(this int num)
 		{

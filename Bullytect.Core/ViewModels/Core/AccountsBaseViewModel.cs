@@ -83,8 +83,6 @@ namespace Bullytect.Core.ViewModels.Core
 
                 });
 
-            LoginWithGoogleCommand.IsExecuting.Subscribe((isLoading) => HandleIsExecuting(isLoading, AppResources.Login_Authenticating));
-
             LoginWithGoogleCommand.Subscribe(HandleAuthSuccess);
 
             LoginWithGoogleCommand.ThrownExceptions.Subscribe(HandleExceptions);

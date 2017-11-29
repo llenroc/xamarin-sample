@@ -292,28 +292,30 @@
                             <!-- Birthdate -->
                             <StackLayout>
 
-                                <commonControls:CustomDatePicker 
-                                    TextColor="{ DynamicResource AccentColor }"
+                              <DatePicker 
                                     VerticalOptions="CenterAndExpand" 
                                     Date="{ Binding SelfParent.Birthdate }"
-                                    >
-                                    <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                                    artina:PickerProperties.BorderStyle="BottomLine" 
+                                    artina:PickerProperties.BorderColor="{ DynamicResource AccentColor }" 
+                                    artina:PickerProperties.BorderWidth="1"
+                                    TextColor="White">
+                                    <DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
                                     <DatePicker.MinimumDate>
-                                        <sys:DateTime x:FactoryMethod="Parse">
-                                            <x:Arguments>
-                                                <x:String>Jan 1 1970</x:String>
-                                            </x:Arguments>
-                                        </sys:DateTime>
-                                    </DatePicker.MinimumDate>
-                                    <DatePicker.MaximumDate>
-                                        <sys:DateTime x:FactoryMethod="Parse">
-                                            <x:Arguments>
-                                                <x:String>Dec 31 2050</x:String>
-                                            </x:Arguments>
-                                        </sys:DateTime>
-                                    </DatePicker.MaximumDate>
-                                </commonControls:CustomDatePicker >
-
+                                           <sys:DateTime x:FactoryMethod="Parse">
+                                               <x:Arguments>
+                                                  <x:String>1-1-1961</x:String>
+                                               </x:Arguments>
+                                            </sys:DateTime>
+                                        </DatePicker.MinimumDate>
+                                        <DatePicker.MaximumDate>
+                                            <sys:DateTime x:FactoryMethod="Parse">
+                                                <x:Arguments>
+                                                  <x:String>1-1-2000</x:String>
+                                                 </x:Arguments>
+                                                </sys:DateTime>
+                                        </DatePicker.MaximumDate>
+                                </DatePicker>
+                               
                                 <Label
                                     Text="{Binding Path=FieldErrors,       
                                     Converter={StaticResource ValidationErrorFormatValueConverter},
@@ -337,6 +339,7 @@
                                         Placeholder="{ i18n:Translate Common.Placeholder.Telephone }"  
                                         Text="{ Binding SelfParent.PhoneNumber }" 
                                         Keyboard="Telephone" 
+                                        WidthRequest="150"
                                         Style="{StaticResource ArtinaProfileEntryStyle}">
                                     </Entry>
                                 </StackLayout>

@@ -12,6 +12,8 @@ using ReactiveUI;
 using Bullytect.Core.Rest.Models.Exceptions;
 using Bullytect.Core.Helpers;
 using Bullytect.Core.ViewModels.Core;
+using Bullytect.Core.Pages.Common.Templates;
+using Rg.Plugins.Popup.Services;
 
 namespace Bullytect.Core.ViewModels
 {
@@ -43,6 +45,7 @@ namespace Bullytect.Core.ViewModels
         #region Properties
 
         public string _reasonForAuthentication = NORMAL_AUTHENTICATION;
+        public string Payload;
 
         public string ReasonForAuthentication
         {
@@ -77,12 +80,14 @@ namespace Bullytect.Core.ViewModels
 		public class AuthenticationParameter
 		{
 			public string ReasonForAuthentication { get; set; }
+            public string Payload { get; set; } 
 		}
 
 
         public void Init(AuthenticationParameter authenticationParameter)
         {
             ReasonForAuthentication = authenticationParameter.ReasonForAuthentication;
+            Payload = authenticationParameter.Payload;
         }
 
 
@@ -97,12 +102,18 @@ namespace Bullytect.Core.ViewModels
                 _appHelper.Toast(AppResources.Common_Invalid_Session, System.Drawing.Color.FromArgb(255, 0, 0));
             }
             else if (ReasonForAuthentication.Equals(SIGN_UP)) { 
-            
-                _appHelper.ShowAlert(AppResources.Signup_Account_Created);
+
+                PopupNavigation.PushAsync(new ConfirmationPopup(AppResources.Signup_Account_Created));
+
+                string[] args = Payload.Split(',');
+
+                Email = args[0];
+                Password = args[1];
+
 
             } else if(ReasonForAuthentication.Equals(ACCOUNT_DELETED)) {
 
-                _appHelper.ShowAlert(AppResources.Profile_Account_Deleted);
+                PopupNavigation.PushAsync(new ConfirmationPopup(AppResources.Profile_Account_Deleted));
                
             }
         }

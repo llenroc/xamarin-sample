@@ -69,6 +69,7 @@
             BackgroundColor="#99FFFFFF">
                 <Label 
                     x:Name="Title"
+                    LineBreakMode="TailTruncation"
                     TextColor="{ DynamicResource AccentColor }"
                     HorizontalOptions="Center"
                     VerticalOptions="Center" />

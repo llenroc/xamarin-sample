@@ -335,6 +335,21 @@
                 </TableSection>
                 
                 <TableSection Title="{i18n:Translate Settings.Alerts.Categories}" x:Name="TableSectionCategories"></TableSection>
+
+                <TableSection>
+                     <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="16,6,16,6">
+                           <StackLayout.GestureRecognizers>
+                               <TapGestureRecognizer
+                                   Tapped="OnPrivacyPolicyTapped"
+                                   NumberOfTapsRequired="1" />
+                           </StackLayout.GestureRecognizers>
+
+                           <Label Text="{ i18n:Translate Settings.Privacy.Policy }" XAlign="Center"/>
+                           <Label Text=">" HorizontalOptions="EndAndExpand" XAlign="Center"/>
+                        </StackLayout>
+                    </ViewCell>
+                 </TableSection>
             </TableView>
 
          </Grid>

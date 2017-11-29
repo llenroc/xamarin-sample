@@ -3,14 +3,12 @@
 using System;
 using System.Diagnostics;
 using System.Reactive;
-using System.Windows.Input;
 using Acr.UserDialogs;
 using Bullytect.Core.Helpers;
 using Bullytect.Core.I18N;
 using Bullytect.Core.Models.Domain;
 using Bullytect.Core.Services;
 using Bullytect.Core.Utils;
-using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Messenger;
 using ReactiveUI;
 
@@ -57,12 +55,12 @@ namespace Bullytect.Core.ViewModels
 			set => SetProperty(ref _lastName, value);
 		}
 
-		private DateTime _birthdate;
+        private DateTime _birthdate = new DateTime(1961, 1, 1);
 
         [IsDirtyMonitoring]
 		public DateTime Birthdate
 		{
-			get { return _birthdate; }
+            get { return _birthdate; }
 			set { SetProperty(ref _birthdate, value); }
 		}
 
@@ -129,7 +127,8 @@ namespace Bullytect.Core.ViewModels
 			Debug.WriteLine(String.Format("Parent: {0}", parent.ToString()));
 			ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter()
 			{
-				ReasonForAuthentication = AuthenticationViewModel.SIGN_UP
+				ReasonForAuthentication = AuthenticationViewModel.SIGN_UP,
+                Payload = Email + ',' + ConfirmPassword
 			});
 
         }

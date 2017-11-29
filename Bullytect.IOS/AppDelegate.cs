@@ -1,10 +1,10 @@
 ﻿
 using System;
-using System.Diagnostics;
 using Bullytect.Core.OAuth.Models;
 using CarouselView.FormsPlugin.iOS;
 using FFImageLoading.Forms.Touch;
 using Foundation;
+using HockeyApp.iOS;
 using Lottie.Forms.iOS.Renderers;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Forms.iOS;
@@ -58,6 +58,12 @@ namespace Bullytect.iOS
             FirebasePushNotificationManager.Initialize(options, true);
             // Presentation Options
             FirebasePushNotificationManager.CurrentNotificationPresentationOption = UNNotificationPresentationOptions.Alert | UNNotificationPresentationOptions.Badge;
+
+            var manager = BITHockeyManager.SharedHockeyManager;
+            manager.Configure("1b44222db10b498f82e43ddc488bf1d5");
+            manager.StartManager();
+            manager.Authenticator.AuthenticateInstallation(); 
+
 
 			return true;
 		}

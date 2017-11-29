@@ -39,6 +39,11 @@ namespace Bullytect.Core.Pages.Home.Settings
 
 		}
 
+        async void OnPrivacyPolicyTapped(object sender, EventArgs args){
+
+            var page = new CommonInfoPopup(AppResources.Privacy_Policy_Title, AppResources.Privacy_Policy_Description);
+            await PopupNavigation.PushAsync(page);
+        }
 
 		async void OnAntiquityOfAlertsInfo(object sender, EventArgs args)
 		{

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Bullytect.Core.Models.Domain;
 using Newtonsoft.Json;
 
 namespace Bullytect.Core.Rest.Models.Response
@@ -21,6 +23,8 @@ namespace Bullytect.Core.Rest.Models.Response
         public SchoolDTO School { get; set; }
         [JsonProperty("profile_image")]
         public string ProfileImage { get; set; }
+        [JsonProperty("alert_statistics")]
+        public Dictionary<AlertLevelEnum, int> alertStatistics { get; set; }
 
     }
 }

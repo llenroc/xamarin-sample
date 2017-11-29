@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Input;
 using Bullytect.Core.Rest.Utils;
+using FFImageLoading.Transformations;
 using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.Common
@@ -57,6 +59,7 @@ namespace Bullytect.Core.Pages.Common
             {
                 var Page = bindable as ChildProfileImage;
                 var newBadgeText = newValue as string;
+                Page.BadgeLabel.IsVisible = true;
                 Page.BadgeLabel.BadgeText = newBadgeText;
 
             });
@@ -102,7 +105,7 @@ namespace Bullytect.Core.Pages.Common
             defaultValue: PROFILE_HEIGHT_DEFAULT);
 
 
-        /*public static readonly BindableProperty ProfileBorderColorProperty = BindableProperty.Create(
+        public static readonly BindableProperty ProfileBorderColorProperty = BindableProperty.Create(
             nameof(ProfileBorderColor),
             typeof(string),
             typeof(ChildProfileImage),
@@ -110,8 +113,10 @@ namespace Bullytect.Core.Pages.Common
             {
                 var Page = bindable as ChildProfileImage;
                 var newProfileBorderColor = newValue as string;
-                Page.ProfileBorderColorCircle.BorderHexColor = newProfileBorderColor;
-            });*/
+                var Circle = Page.ProfileCachedImage.Transformations.FirstOrDefault() as CircleTransformation;
+                    if (Circle != null)
+                    Circle.BorderHexColor = newProfileBorderColor;
+            });
 
 
         public ChildProfileImage()
@@ -173,10 +178,10 @@ namespace Bullytect.Core.Pages.Common
             set { SetValue(ProfileHeightProperty, value); }
         }
 
-        /*public string ProfileBorderColor{
+        public string ProfileBorderColor{
             get { return (string)GetValue(ProfileBorderColorProperty); }
             set { SetValue(ProfileBorderColorProperty, value); }
-        }*/
+        }
 
         public string BadgeText
         {

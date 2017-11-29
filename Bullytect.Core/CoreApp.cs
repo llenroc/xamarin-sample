@@ -247,25 +247,7 @@ namespace Bullytect.Core
                 .ForMember(s => s.Label, (obj) => obj.ResolveUsing(o => o.Level))
 				.ForMember(s => s.Value, (obj) => obj.ResolveUsing(o => o.Total))
 				.ForMember(s => s.ValueLabel, (obj) => obj.ResolveUsing(o => o.Label))
-				.ForMember(s => s.Color, (obj) => obj.ResolveUsing(o => {
-					SkiaSharp.SKColor Color;
-                    AlertLevelEnum alertLevel = o.Level.ToEnum<AlertLevelEnum>();
-                    switch(alertLevel) {
-                        case AlertLevelEnum.INFO:
-                            Color = SKColor.Parse("#6781c0");
-                            break;
-                        case AlertLevelEnum.WARNING:
-                            Color = SKColor.Parse("#dbc66e");
-                            break;
-                        case AlertLevelEnum.DANGER:
-                            Color = SKColor.Parse("#dd6a6b");
-                            break;
-                        case AlertLevelEnum.SUCCESS:
-                            Color = SKColor.Parse("#6bdd9b");
-							break;
-                    }
-					return Color;
-				}));
+                .ForMember(s => s.Color, (obj) => obj.ResolveUsing(o => o.Level.ToEnum<AlertLevelEnum>().ToColor()));
 
 			//Mapper for AlertsStatisticsDTO to ChartModel
 			cfg.CreateMap<AlertsStatisticsDTO, ChartModel>()

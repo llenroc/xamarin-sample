@@ -1247,6 +1247,24 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string Settings_Privacy_Policy {
+            get {
+                return ResourceManager.GetString("Settings.Privacy.Policy", resourceCulture);
+            }
+        }
+        
+        internal static string Privacy_Policy_Title {
+            get {
+                return ResourceManager.GetString("Privacy.Policy.Title", resourceCulture);
+            }
+        }
+        
+        internal static string Privacy_Policy_Description {
+            get {
+                return ResourceManager.GetString("Privacy.Policy.Description", resourceCulture);
+            }
+        }
+        
         internal static string Results_Comments_Son {
             get {
                 return ResourceManager.GetString("Results.Comments.Son", resourceCulture);

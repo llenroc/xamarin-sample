@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.6.2.2" package="com.usal.bisite.bulltect" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.7" package="com.usal.bisite.bulltect" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="16" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -13,7 +13,7 @@
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.CAMERA" />
 	<application android:theme="@android:style/Theme.Material.Light" android:icon="@mipmap/ic_launcher" android:label="BullTec">
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDcrQv8GOhjSKSkus8ZAy35ia1QK5_A33Q" />
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDcrQv8GOhjSKSkus8ZAy35ia1QK5_A33Q" />
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
 			<intent-filter>

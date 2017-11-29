@@ -924,7 +924,19 @@ and we will recover it for you. </value>
   <data name="Settings.Changes.Saved" xml:space="preserve">
     <value>Changes saved</value>
     <comment>Settings Changes Saved</comment>
-  </data>   
+  </data>
+  <data name="Settings.Privacy.Policy" xml:space="preserve">
+    <value>Privacy Policy</value>
+    <comment>Settings Privacy Policy</comment>
+  </data> 
+  <data name="Privacy.Policy.Title" xml:space="preserve">
+    <value>Privacy Policy</value>
+    <comment>Privacy Policy Title</comment>
+  </data>
+  <data name="Privacy.Policy.Description" xml:space="preserve">
+    <value>Privacy Policy Description</value>
+    <comment>Privacy Policy Description</comment>
+  </data>
   <data name="Results.Comments.Son" xml:space="preserve">
     <value>Extracted Comments </value>
     <comment>Results Comments Son</comment>

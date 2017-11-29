@@ -34,7 +34,6 @@
 
                 <!-- AVATAR -->
                 <ffimageloading:CachedImage
-                    
                     x:Name="ProfileCachedImage"
                     CacheType="Disk"
                     HorizontalOptions="Center"
@@ -57,6 +56,7 @@
                 <!-- BADGE -->
                 <common:Badge
                     Grid.Row="0"
+                    IsVisible="false"
                     x:Name="BadgeLabel"
                     BadgeTextColor="{ DynamicResource InverseTextColor }"
                     HorizontalOptions="Center"

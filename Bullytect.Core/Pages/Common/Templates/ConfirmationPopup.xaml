@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:i18n="clr-namespace:Bullytect.Core.I18N"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+    x:Class="Bullytect.Core.Pages.Common.Templates.ConfirmationPopup">
+      <!--Animations use example-->
+      <pages:PopupPage.Animation>
+            <animations:ScaleAnimation 
+              PositionIn="Center"
+              PositionOut="Center"
+              ScaleIn="1.2"
+              ScaleOut="0.8"
+              DurationIn="400"
+              DurationOut="300"
+              EasingIn="SinOut"
+              EasingOut="SinIn"
+              HasBackgroundAnimation="True"/>
+      </pages:PopupPage.Animation>
+
+        <!-- MAIN CONTAINER -->
+        <Grid
+            ColumnSpacing="0" 
+            RowSpacing="0" 
+            Margin="10"
+            Padding="20"
+            BackgroundColor="White"
+            HeightRequest="250"
+            HorizontalOptions="Fill"
+            VerticalOptions="Center" >
+
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Row="0"
+                x:Name="DescriptionLabel"
+                VerticalOptions="Center"
+                Text="{Binding Description}"
+                LineBreakMode="WordWrap">
+                <Label.FontSize> 
+                    <OnIdiom
+                        x:TypeArguments="x:Double"
+                        Phone="17"
+                        Tablet="20"/>
+                </Label.FontSize>
+            </Label> 
+
+            <artina:Button
+                Grid.Row="1"
+                Clicked="OnClose"
+                Style="{StaticResource PrimaryActionButtonStyle}"
+                VerticalOptions="Center"
+                Text="OK"
+                WidthRequest="{ artina:OnOrientationDouble
+                                    LandscapePhone=200,
+                                    LandscapeTablet=400 }"
+                HorizontalOptions="{ artina:OnOrientationLayoutOptions
+                                    PortraitPhone=Fill,
+                                    LandscapePhone=Center,
+                                    PortraitTablet=Fill,
+                                    LandscapeTablet=Center }" />
+        
+
+        </Grid>
+ </pages:PopupPage>

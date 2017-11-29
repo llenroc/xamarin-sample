@@ -182,7 +182,7 @@
                                     <DatePicker.MinimumDate>
                                            <sys:DateTime x:FactoryMethod="Parse">
                                                <x:Arguments>
-                                                  <x:String>1-1-1960</x:String>
+                                                  <x:String>1-1-1961</x:String>
                                                </x:Arguments>
                                             </sys:DateTime>
                                         </DatePicker.MinimumDate>
@@ -335,21 +335,6 @@
 
                     </ScrollView>
 
-                    <Grid
-                        Grid.Row="1"
-                        IsVisible="{ Binding IsBusy }"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="Fill"
-                        BackgroundColor="Black"
-                        Opacity="0.7">
-
-                            <common:ActivityLoading
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                Icon="{ x:Static helper:FontAwesomeFont.User }"
-                                IsLoading="{ Binding IsBusy }"  
-                                LoadingText="{ Binding LoadingText }"/>
-                    </Grid>
 
                     <!-- FOOTER -->
                     <StackLayout
@@ -413,6 +398,20 @@
                         </artina:Button>
 
                         </StackLayout>
+                </Grid>
+                <Grid
+                    IsVisible="{ Binding IsBusy }"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"
+                    BackgroundColor="Black"
+                    Opacity="0.7">
+
+                    <common:ActivityLoading
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Icon="{ x:Static helper:FontAwesomeFont.User }"
+                        IsLoading="{ Binding IsBusy }" 
+                        LoadingText="{ Binding LoadingText }"/>
                 </Grid>
            </Grid>
 	</ContentView.Content>

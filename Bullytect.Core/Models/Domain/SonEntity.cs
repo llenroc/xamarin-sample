@@ -21,14 +21,24 @@ namespace Bullytect.Core.Models.Domain
 		public string FirstName
 		{
 			get { return _firstName; }
-			set { SetProperty(ref _firstName, value); }
+			set { 
+                
+                SetProperty(ref _firstName, value);
+                OnPropertyChanged("FullName");
+
+            }
 		}
 
         string _lastName;
 		public string LastName
 		{
 			get { return _lastName; }
-            set { SetProperty(ref _lastName, value); }
+            set { 
+                
+                SetProperty(ref _lastName, value); 
+                OnPropertyChanged("FullName");
+
+            }
             
         }
 
@@ -60,6 +70,8 @@ namespace Bullytect.Core.Models.Domain
 
 		}
 
+        public Dictionary<AlertLevelEnum, int> AlertStatistics { get; set; }
+
 
         public string FullName => string.Format("{0} {1}", FirstName, LastName);
 
@@ -74,6 +86,7 @@ namespace Bullytect.Core.Models.Domain
             Age = OtherSonEntity.Age;
             School.HydrateWith(OtherSonEntity.School);
             ProfileImage = OtherSonEntity.ProfileImage;
+            AlertStatistics = OtherSonEntity.AlertStatistics;
         }
 
 

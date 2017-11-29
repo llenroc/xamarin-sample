@@ -43,43 +43,87 @@
     <comment>Page Alerts Title</comment>
   </data>
   <data name="Page.Alert.Detail.Title" xml:space="preserve">
-    <value>Detalle de la Alerta</value>
+    <value>Detalle de la alerta</value>
     <comment>Page Alert Detail Title</comment>
   </data>
+  <data name="Page.Comments.Title" xml:space="preserve">
+    <value>Comentarios</value>
+    <comment>Page Comments Title</comment>
+  </data>
+  <data name="Page.Comment.Detail.Title" xml:space="preserve">
+    <value>Detalle del comentario</value>
+    <comment>Page Comments Detail Title</comment>
+  </data>
   <data name="Page.Add.Son.Title" xml:space="preserve">
-    <value>Añadir Hijo</value>
+    <value>Añadir hijo</value>
     <comment>Page Add Son Title</comment>
   </data>
   <data name="Page.Edit.Son.Title" xml:space="preserve">
-    <value>Editar Hijo</value>
+    <value>Editar hijo</value>
     <comment>Page Edit Son Title</comment>
+  </data>
+  <data name="Page.Son.Profile.Title" xml:space="preserve">
+    <value>Detalle {0}</value>
+    <comment>Page Son Profile Title</comment>
+  </data>
+    <data name="Page.Results.Title" xml:space="preserve">
+    <value>Resultados</value>
+    <comment>Page Results Title</comment>
+  </data>
+  <data name="Page.Statistics.Title" xml:space="preserve">
+    <value>Estadísticas</value>
+    <comment>Page Statistics Title</comment>
+  </data>
+  <data name="Common.Title" xml:space="preserve">
+    <value>BullTec</value>
+    <comment>Common Title</comment>
   </data>
   <data name="Common.Loading" xml:space="preserve">
     <value>Operación en progreso</value>
     <comment>Common Loading</comment>
   </data>
+  <data name="Common.No.Results.Found" xml:space="preserve">
+    <value>Ningún resultado encontrado</value>
+    <comment>Common No Results Found</comment>
+  </data>
+  <data name="Common.No.Results.Found.Detail" xml:space="preserve">
+    <value>No hay nuevos resultados disponibles</value>
+    <comment>Common No Results Found Detail</comment>
+  </data>
   <data name="Common.Timeout.Operation" xml:space="preserve">
-    <value>La operación tardo demasiado tiempo en completarse. inténtalo de nuevo</value>
+    <value>La operación tardo demasiado tiempo en completarse. Inténtalo de nuevo.</value>
     <comment>Common Timeout Operation</comment>
   </data>
   <data name="Common.Invalid.Session" xml:space="preserve">
-    <value>Su sesión ya no es válida, debe autenticarse de nuevo.</value>
+    <value>Tú sesión ya no es válida, deberías autenticarte de nuevo.</value>
     <comment>Common Invalid Session</comment>
   </data>
   <data name="Common.Server.Connection.Error" xml:space="preserve">
-    <value>No se pudo conectar al servidor. Vuelve a intentarlo más tarde.</value>
+    <value>Fallo al conectarse al servidor, por favor inténtalo de nuevo.</value>
     <comment>Common Server Connection Error</comment>
   </data>
   <data name="Common.Server.Error" xml:space="preserve">
-    <value>Se ha producido un error al procesar la solicitud en el servidor.</value>
+    <value>Ocurrió un error al procesar la solicitud en el servidor.</value>
     <comment>Common Server Error</comment>
   </data>
   <data name="Common.Cancel.Operation" xml:space="preserve">
-    <value> Cancelar la operación</value>
+    <value> Cancelar operación</value>
     <comment>Common Cancel Operation</comment>
   </data>
+  <data name="Common.Cancel.Changes" xml:space="preserve">
+    <value> ¿ Cancelar cambios ? </value>
+    <comment>Common Cancel Changes</comment>
+  </data>
+  <data name="Common.Retry" xml:space="preserve">
+    <value> Reintentar </value>
+    <comment>Common Retry</comment>
+  </data>
+  <data name="Common.Apply.Filter" xml:space="preserve">
+    <value>Aplicar filtros</value>
+    <comment>Common Apply Filter</comment>
+  </data>
   <data name="Common.Btn.Save.Changes" xml:space="preserve">
-    <value> Guardar Cambios</value>
+    <value> Guardar cambios </value>
     <comment>Common Btn Save Changes</comment>
   </data>
   <data name="Common.RRSS.Facebook" xml:space="preserve">
@@ -115,7 +159,7 @@
     <comment>Common Placeholder Password</comment>
   </data>
   <data name="Common.Placeholder.ConfirmPassword" xml:space="preserve">
-    <value> Confirmar Contraseña </value>
+    <value> Confirmar contraseña </value>
     <comment>Common Placeholder ConfirmPassword</comment>
   </data>
   <data name="Common.Placeholder.Telephone" xml:space="preserve">
@@ -127,12 +171,8 @@
     <comment>Common Placeholder School Name</comment>
   </data>
   <data name="Common.Placeholder.School.Residence" xml:space="preserve">
-    <value> Dirección </value>
+    <value> Residencia </value>
     <comment>Common Placeholder School Residence</comment>
-  </data>
-  <data name="Common.Placeholder.School.Location" xml:space="preserve">
-    <value> Localización </value>
-    <comment>Common Placeholder School Location</comment>
   </data>
   <data name="Common.Placeholder.School.Province" xml:space="preserve">
     <value> Provincia </value>
@@ -154,12 +194,13 @@
     <value>Ir al Login</value>
     <comment>Walkthrough Btn Finish</comment>
   </data>
+
   <data name="WelcomePage.MainLabel" xml:space="preserve">
-    <value>The Social Media Protec.</value>
+    <value>The Social Media Protec</value>
     <comment>WelcomePage MainLabel</comment>
   </data>
   <data name="WelcomePage.SecondLabel" xml:space="preserve">
-    <value>Ayuda a proteger a niños y jóvenes del acoso y ataques recibidos desde las redes sociales</value>
+    <value>Ayuda a proteger a los niños y jóvenes del acoso y los ataques recibidos de las redes sociales.</value>
     <comment>WelcomePage SecondLabel</comment>
   </data>
   <data name="WelcomePage.ClaimText" xml:space="preserve">
@@ -187,12 +228,19 @@
     <comment>WelcomePage Walkthrough Btn</comment>
   </data>
   <data name="Login.Text" xml:space="preserve">
-    <value>Inicie sesión o regístrese con su
-correo electrónico y contraseña.</value>
+    <value>Inicie sesión o regístrese usando su correo electrónico y contraseña.</value>
     <comment>Login Text</comment>
   </data>
   <data name="Login.Authenticating" xml:space="preserve">
     <value>Autenticando ....</value>
+    <comment>Loading Title</comment>
+  </data>
+  <data name="Login.Authenticating.Facebook" xml:space="preserve">
+    <value>Autenticando con facebook</value>
+    <comment>Loading Title</comment>
+  </data>
+  <data name="Login.Authenticating.Google" xml:space="preserve">
+    <value>Autenticando con Google</value>
     <comment>Loading Title</comment>
   </data>
   <data name="Login.Success" xml:space="preserve">
@@ -200,20 +248,24 @@ correo electrónico y contraseña.</value>
     <comment>Login Success</comment>
   </data>
   <data name="Login.Failed" xml:space="preserve">
-    <value>Correo electrónico o contraseña no válidos</value>
+    <value>Correo electrónico o contraseña inválidos</value>
     <comment>Login Failed</comment>
   </data>
   <data name="Account.Disabled" xml:space="preserve">
-    <value>Tu cuenta no está activada, debería comporbar su correo electrónico para obtener más información sobre como activarla</value>
+    <value>Su cuenta no está validada, debe verificar su correo electrónico para activarla</value>
     <comment>Account Disabled</comment>
   </data>
-  <data name="Authentication.Email.Already.Exists" xml:space="preserve">
-    <value>Ya existe un usuario con este correo electrónico</value>
-    <comment>Authentication Email Already Exists</comment>
-  </data>
   <data name="Account.Locked" xml:space="preserve">
-    <value>Tu cuenta está bloqueada,contacta con su administrador para obtener más detalles.</value>
+    <value>Su cuenta está bloqueada, contacte a su administrador para más información.</value>
     <comment>Account Locked</comment>
+  </data>
+  <data name="Account.Pending.To.Be.Remove" xml:space="preserve">
+    <value>Cuenta pendiente de eliminar</value>
+    <comment>Account Pending To Be Remove</comment>
+  </data>
+  <data name="Authentication.Email.Already.Exists" xml:space="preserve">
+    <value>Un usuario ya existe con este correo electrónico</value>
+    <comment>Authentication Email Already Exists</comment>
   </data>
   <data name="Login.Forget.Password" xml:space="preserve">
     <value>¿Olvidaste tu contraseña?</value>
@@ -228,11 +280,11 @@ correo electrónico y contraseña.</value>
     <comment>Signup Title Main</comment>
   </data>
   <data name="Signup.Title.Second" xml:space="preserve">
-    <value>Con una cuenta existente o creando una nueva</value>
+    <value>Con una cuenta existente o creando una nueva.</value>
     <comment>Signup Title</comment>
   </data>
   <data name="Signup.Create" xml:space="preserve">
-    <value>Crear Cuenta</value>
+    <value>Crear una cuenta</value>
     <comment>Create Account</comment>
   </data>
   <data name="Signup.Alredy.User" xml:space="preserve">
@@ -244,7 +296,7 @@ correo electrónico y contraseña.</value>
     <comment>Creating Account</comment>
   </data>
   <data name="Signup.Account.Created" xml:space="preserve">
-    <value> Su cuenta ha sido creada con éxito. Antes de poder iniciar sesión deberá verificar su correo electrónico siguiendo los pasos que le hemos enviado al mismo. </value>
+    <value> Su cuenta ha sido creada con éxito. Antes de que pueda iniciar sesión, debe verificar su correo electrónico siguiendo los pasos que le hemos enviado. </value>
     <comment>Account Created</comment>
   </data>
   <data name="Signup.Account.Email.Invalid" xml:space="preserve">
@@ -255,12 +307,17 @@ correo electrónico y contraseña.</value>
     <value> Las contraseñas no coinciden </value>
     <comment>Signup Account Password Not Match</comment>
   </data>
+  <data name="Signup.Cancel" xml:space="preserve">
+    <value>¿Cancelar registro?</value>
+    <comment>Signup Cancel</comment>
+  </data>
   <data name="Password.Recovery.Main.Text" xml:space="preserve">
     <value> ¿Olvidaste tu contraseña? </value>
     <comment>Password Recovery Main Text</comment>
   </data>
   <data name="Password.Recovery.Second.Text" xml:space="preserve">
-    <value> No se preocupe escriba su correo electrónico aquí y lo recuperaremos para usted. </value>
+    <value> No te preocupes, escribe tu correo electrónico aquí
+y lo recuperaremos por usted. </value>
     <comment>Password Recovery Second Text</comment>
   </data>
   <data name="Password.Recovery.Send" xml:space="preserve">
@@ -272,7 +329,7 @@ correo electrónico y contraseña.</value>
     <comment>Password Recovery Validation Email</comment>
   </data>
   <data name="Password.Recovery.Request.Completed" xml:space="preserve">
-    <value> Recibirá un correo electrónico con los pasos para completar el proceso </value>
+    <value> Recibirás un correo electrónico con los pasos para completar el proceso </value>
     <comment>Password Recovery Request Completed</comment>
   </data>
   <data name="Home.Toolbar.Children" xml:space="preserve">
@@ -283,6 +340,12 @@ correo electrónico y contraseña.</value>
     <value> Resultados </value>
     <comment>Home Toolbar Resuls</comment>
   </data>
+
+  <data name="Home.Toolbar.Relations" xml:space="preserve">
+    <value> Relaciones </value>
+    <comment>Home Toolbar Relations</comment>
+  </data>
+    
   <data name="Home.Toolbar.Profile" xml:space="preserve">
     <value> Perfil </value>
     <comment>Home Toolbar Profile</comment>
@@ -304,156 +367,168 @@ correo electrónico y contraseña.</value>
     <comment>Home Alerts List Title</comment>
   </data>
   <data name="Home.Show.Alerts" xml:space="preserve">
-    <value>  Ver Alertas </value>
+    <value> Ver Alertas </value>
     <comment>Home Show Alerts</comment>
   </data>
   <data name="Home.Alerts.Not.Found.MainText" xml:space="preserve">
-    <value>  No se han encontrado alertas </value>
+    <value> No se encontraron alertas </value>
     <comment>Home Alerts Not Found MainText</comment>
   </data>
   <data name="Home.Alerts.Not.Found.SecondText" xml:space="preserve">
-    <value> Ninguna alerta nueva disponible </value>
+    <value> No hay nuevas alertas disponibles </value>
     <comment>Home Alerts Not Found SecondText</comment>
   </data>
     
   <data name="Home.Profile.Load.Error" xml:space="preserve">
-    <value> Error cargando la información del perfil </value>
+    <value> Error cargando el perfil </value>
     <comment>Home Profile Load Error</comment>
   </data>
   <data name="Son.Profile.Birthday" xml:space="preserve">
-    <value> Fecha Nacimiento: {0} </value>
+    <value> Nacimiento: {0} </value>
     <comment>Son Profile Birthday</comment>
   </data>
   <data name="Son.Profile.School" xml:space="preserve">
     <value> Colegio: {0} </value>
     <comment>Son Profile School</comment>
   </data>
+  <data name="Son.Profile.Delete.Confirm" xml:space="preserve">
+    <value> ¿Eliminar hijo? </value>
+    <comment>Son Profile Delete Confirm</comment>
+  </data>
   <data name="Children.Not.Found.MainText" xml:space="preserve">
-    <value> Ningún hijo encontrado </value>
+    <value> No se encontraron hijos </value>
     <comment>Children Not Found MainText</comment>
   </data>
   <data name="Children.Not.Found.SecondText" xml:space="preserve">
-    <value> Ningún hijo encontrado </value>
+    <value> No se encontraron hijos </value>
     <comment>Children Not Found SecondText</comment>
   </data>
   <data name="Children.Error.Ocurred" xml:space="preserve">
-    <value> Se ha producido un error al cargar la información de los niños </value>
+    <value> Se produjo un error al cargar la información de los niños </value>
     <comment>Children Error Ocurred</comment>
   </data>
-  <data name="Children.Toolbar.Profile" xml:space="preserve">
-    <value> Perfil </value>
-    <comment>Children Toolbar Profile</comment>
+  <data name="Children.Toolbar.Results" xml:space="preserve">
+    <value> Resultados </value>
+    <comment>Children Toolbar Results</comment>
   </data>
   <data name="Children.Toolbar.Alerts" xml:space="preserve">
-    <value>  Alertas </value>
+    <value> Alertas </value>
     <comment>Children Toolbar Alerts</comment>
   </data>
   <data name="Children.Toolbar.Edit" xml:space="preserve">
     <value> Editar </value>
     <comment>Children Toolbar Edit</comment>
   </data>
+  <data name="Children.Toolbar.Relations" xml:space="preserve">
+    <value> Relaciones </value>
+    <comment>Children Toolbar Relations</comment>
+  </data>
   <data name="Profile.Save.Changes" xml:space="preserve">
-    <value> Guardando Cambios </value>
+    <value> Guardar Cambios </value>
     <comment>Profile Save Changes</comment>
+  </data>
+  <data name="Profile.Cancel.Changes" xml:space="preserve">
+    <value> ¿ Cancelar cambios ?</value>
+    <comment>Profile Cancel Changes</comment>
   </data>
   <data name="Profile.Saving.Changes" xml:space="preserve">
     <value> Guardando cambios ...</value>
     <comment>Profile Saving Changes</comment>
   </data>
   <data name="Profile.Delete.Account" xml:space="preserve">
-    <value> Borrar cuenta </value>
+    <value> Borrar Cuenta </value>
     <comment>Profile Delete Account</comment>
   </data>
   <data name="Profile.Account.Updated" xml:space="preserve">
-    <value> Account Updated ...</value>
+    <value> Cuenta actualizada ...</value>
     <comment>Profile Account Updated</comment>
   </data>
   <data name="Profile.Image.Section" xml:space="preserve">
-    <value> Edit Profile Image </value>
+    <value> Cambiar imagen de perfil </value>
     <comment>Profile Image Section</comment>
   </data>
   <data name="Profile.General.Information.Section" xml:space="preserve">
-    <value> General information </value>
+    <value> Información general </value>
     <comment>Profile General Information Section</comment>
   </data>
   <data name="Profile.Loading.Data" xml:space="preserve">
-    <value> Loading profile data </value>
+    <value> Cargando información del perfil </value>
     <comment>Profile Loading Data</comment>
   </data>
   <data name="Profile.Account.Deleted" xml:space="preserve">
-    <value> Account Deleted </value>
+    <value> Ha solicitado la eliminación de la cuenta, acceda a su correo electrónico para confirmar la eliminación de la cuenta. </value>
     <comment>Profile Account Deleted</comment>
   </data>
   <data name="Profile.Account.Deleting" xml:space="preserve">
-    <value> Account Deleting </value>
+    <value> Eliminación de cuenta </value>
     <comment>Profile Account Deleting</comment>
   </data>
   <data name="Profile.Confirm.Account.Deleting" xml:space="preserve">
-    <value> Confirm Account Deleting </value>
+    <value> Confirmar la eliminación de la cuenta </value>
     <comment>Profile Confirm Account Deleting</comment>
   </data>
   <data name="Profile.Confirm.SignOut" xml:space="preserve">
-    <value> Sign out?</value>
+    <value> ¿ Cerrar sesión ?</value>
     <comment>Profile.Confirm.SignOut</comment>
   </data>
   <data name="Profile.Updating.Profile.Image" xml:space="preserve">
-    <value> Updating Profile Image</value>
+    <value> Actualizando imagen de perfil </value>
     <comment>Profile Updating Profile Image</comment>
   </data>
   <data name="Profile.Select.Profile.Image" xml:space="preserve">
-    <value> Select profile image</value>
+    <value> Seleccionar imagen de perfil </value>
     <comment>Profile Select Profile Image</comment>
   </data>
   <data name="Profile.Select.Profile.Image.From.Camera" xml:space="preserve">
-    <value> Take photo from camera</value>
+    <value> Tomar fotos de la cámara </value>
     <comment>Profile.Select.Profile.Image.From.Camera</comment>
   </data>
   <data name="Profile.Select.Profile.Image.From.Galery" xml:space="preserve">
-    <value> Pick photo from gallery</value>
+    <value> Escoja la foto de la galería </value>
     <comment>Profile.Select.Profile.Image.From.Galery</comment>
   </data>
   <data name="Profile.Updating.Profile.Image.Failed" xml:space="preserve">
-    <value> Failed to update profile image</value>
+    <value> Se produjo un error al procesar el archivo en el servidor. La imagen del perfil no se pudo actualizar. Prueba con otro archivo o pruébalo más tarde </value>
     <comment>Profile Updating Profile Image Failed</comment>
   </data>
   <data name="Profile.Updating.Profile.Image.Success" xml:space="preserve">
-    <value> Profile Image Uploaded Successfully</value>
+    <value> Imagen de perfil cargada con éxito </value>
     <comment>Profile Updating Profile Image Success</comment>
   </data>
   <data name="Profile.Updating.Error" xml:space="preserve">
-    <value> There was an error updating profile information</value>
+    <value> Hubo un error al actualizar la información del perfil </value>
     <comment>Profile Updating Error</comment>
   </data>
   <data name="Profile.Data.Not.Found" xml:space="preserve">
-    <value> Profile information not found</value>
+    <value> Información de perfil no encontrada </value>
     <comment>Profile Data Not Found</comment>
   </data>
   <data name="Alerts.Not.Found.MainText" xml:space="preserve">
-    <value> Alerts Not Found </value>
+    <value> Alertas no encontradas </value>
     <comment>Alerts Not Found MainText</comment>
   </data>
     <data name="Alerts.Not.Found.SecondText" xml:space="preserve">
-    <value> Alerts Not Found </value>
+    <value> Alertas no encontradas </value>
     <comment>Alerts Not Found SecondText</comment>
   </data>
   <data name="Alerts.Delete.Alert" xml:space="preserve">
-    <value> Delete Alert </value>
+    <value> Eliminar alerta </value>
     <comment>Alerts Delete Alert</comment>
   </data>
   <data name="Alerts.Error.Ocurred" xml:space="preserve">
-    <value> Error loading Alerts </value>
+    <value> Error al cargar Alertas </value>
     <comment>Alerts Error Ocurred</comment>
   </data>
     <data name="Alerts.Confirm.Clear" xml:space="preserve">
-    <value> Clear alerts? </value>
+    <value> ¿ Limpiar alertas ? </value>
     <comment>Alerts Confirm Clear</comment>
   </data>
   <data name="Alert.Confirm.Clear" xml:space="preserve">
-    <value> Delete alert? </value>
+    <value> ¿ Eliminar alerta ? </value>
     <comment>Alert Confirm Clear</comment>
   </data>
   <data name="Alerts.Deleting.Alerts" xml:space="preserve">
-    <value> Deleting Alerts </value>
+    <value> Eliminar alertas </value>
     <comment>Alerts Deleting Alerts</comment>
   </data>
   <data name="Alerts.Warning.Text" xml:space="preserve">
@@ -473,189 +548,667 @@ correo electrónico y contraseña.</value>
     <comment>Alerts Success Text</comment>
   </data>
   <data name="Alerts.Deleted" xml:space="preserve">
-    <value> Alert Deleted  </value>
+    <value> Alerta eliminada  </value>
     <comment>Alerts Deleted</comment>
   </data>
+  <data name="Alerts.Filter.Title" xml:space="preserve">
+    <value> Filtrar alertas </value>
+    <comment>Alerts Filter Title</comment>
+  </data>
+  <data name="Alerts.Filter.Levels.Title" xml:space="preserve">
+    <value> Niveles de alerta </value>
+    <comment>Alerts Filter Levels Title</comment>
+  </data>
   <data name="Loading.Alerts" xml:space="preserve">
-    <value> Loading Alerts </value>
+    <value> Cargando Alertas </value>
     <comment>Loading Alerts</comment>
   </data>
   <data name="EditSon.General.Section.Title" xml:space="preserve">
-    <value> General Information </value>
+    <value> Información General </value>
     <comment>EditSon General Section Title</comment>
   </data>
+  <data name="EditSon.Cancel" xml:space="preserve">
+    <value> ¿ Cancelar Cambios ? </value>
+    <comment>EditSon Cancel</comment>
+  </data>
   <data name="EditSon.General.Change.Profile.Image" xml:space="preserve">
-    <value> Change Profile Image </value>
+    <value> Cambiar imagen de perfil </value>
     <comment>EditSon General Change Profile Image</comment>
   </data>
   <data name="EditSon.RRSS.Section.Title" xml:space="preserve">
-    <value> Enabled Social Networks </value>
+    <value> Redes sociales habilitadas </value>
     <comment>EditSon RRSS Section Title</comment>
   </data>
   <data name="EditSon.Update.Social.Media.Facebook" xml:space="preserve">
-    <value> Update Social Media Facebook </value>
+    <value> Actualizar redes sociales Facebook </value>
     <comment>EditSon Update Social Media Facebook</comment>
   </data>
   <data name="EditSon.Update.Social.Media.Instagram" xml:space="preserve">
-    <value> Update Social Media Instagram </value>
+    <value> Actualizar redes sociales Instagram </value>
     <comment>EditSon Update Social Media Instagram</comment>
   </data>
   <data name="EditSon.Update.Social.Media.Youtube" xml:space="preserve">
-    <value> Update Social Media Youtube </value>
+    <value> Actualizar redes sociales Youtube </value>
     <comment>EditSon Update Social Media Youtube</comment>
   </data>
   <data name="EditSon.Saving.Changes" xml:space="preserve">
-    <value> Saving Changes ... </value>
+    <value> Guardando cambios ... </value>
     <comment>EditSon Saving Changes</comment>
   </data>
   <data name="EditSon.Saved.Changes.Successfully" xml:space="preserve">
-    <value> Saved Changes successfully ... </value>
+    <value> Cambios Guardados satisfactoriamente ... </value>
     <comment>EditSon Saving Changes</comment>
   </data>
   <data name="EditSon.Social.Media.Added" xml:space="preserve">
-    <value> Social Media Added </value>
+    <value> Medio social añadido </value>
     <comment>EditSon Social Media Added</comment>
   </data>
   <data name="EditSon.Social.Media.Deleted" xml:space="preserve">
-    <value> Social Media Deleted </value>
+    <value> Medio social eliminado </value>
     <comment>EditSon Social Media Deleted</comment>
   </data>
   <data name="EditSon.School.Not.Found" xml:space="preserve">
-    <value> No schools found. You must add it </value>
+    <value> No se encontraron escuelas. Debes agregarlo </value>
     <comment>EditSon School Not Found</comment>
   </data>
   <data name="EditSon.Saving.School" xml:space="preserve">
-    <value> Saving School ... </value>
+    <value> Guardando colegio ... </value>
     <comment>EditSon Saving School</comment>
   </data>
   <data name="EditSon.School.Saved" xml:space="preserve">
-    <value> School Saved </value>
+    <value> Colegio registrado </value>
     <comment>EditSon School Saved</comment>
   </data>
   <data name="EditSon.Find.School" xml:space="preserve">
-    <value> Buscando colegios </value>
+    <value> Buscando escuelas </value>
     <comment>EditSon Find School</comment>
   </data>
+  <data name="EditSon.Find.School.Title" xml:space="preserve">
+    <value> Buscar escuelas </value>
+    <comment>EditSon Find School Title</comment>
+  </data>
+  <data name="EditSon.Find.School.Placeholder" xml:space="preserve">
+    <value> Ingrese el nombre de la escuela </value>
+    <comment>EditSon Find School Title</comment>
+  </data>
+  <data name="EditSon.Find.School.No.Results.Title" xml:space="preserve">
+    <value> No se encontraron escuelas </value>
+    <comment>EditSon Find School No Results Title</comment>
+  </data>
+  <data name="EditSon.Add.School" xml:space="preserve">
+    <value>Agregar escuela</value>
+    <comment>EditSon Add School</comment>
+  </data>
+  <data name="EditSon.Find.School.No.Results.Text" xml:space="preserve">
+    <value> No se encontraron escuelas para los términos de búsqueda </value>
+    <comment>EditSon Find School For Search Terms</comment>
+  </data>
+  <data name="EditSon.School.Map.Select" xml:space="preserve">
+    <value> Seleccione la ubicación de {0} </value>
+    <comment>EditSon School Map Select</comment>
+  </data>
+  <data name="EditSon.School.Map.Select2" xml:space="preserve">
+    <value> Seleccione la ubicación de la escuela </value>
+    <comment>EditSon School Map Select2</comment>
+  </data>
+  <data name="EditSon.School.Map.Visualize" xml:space="preserve">
+    <value> Ubicación de {0} </value>
+    <comment>EditSon School Map Visualize</comment>
+  </data>
+   <data name="EditSon.School.Map.Visualize2" xml:space="preserve">
+    <value> Ubicación de la escuela </value>
+    <comment>EditSon School Map Visualize</comment>
+  </data>
+
   <data name="Global.ErrorOcurred" xml:space="preserve">
-    <value>An error occurred</value>
+    <value> Ocurrió un error </value>
     <comment>Global Error Ocurred</comment>
   </data>
   <data name="Common.SignOut" xml:space="preserve">
-    <value>You have successfully logged out</value>
+    <value>Has terminado tu sesion satisfactoriamente</value>
     <comment>Common SignOut</comment>
   </data>
   <data name="EditSon.Add.School.Title" xml:space="preserve">
-    <value>Add school</value>
+    <value>Agregar escuela</value>
     <comment>EditSon Add School Title</comment>
   </data>
   <data name="Home.Add.Son" xml:space="preserve">
-    <value>Añadir Hijo</value>
+    <value>Agregar hijo</value>
     <comment>Home Add Son</comment>
   </data>
   <data name="Home.Not.Children.Found" xml:space="preserve">
-    <value>No se han encontrado hijos para el análisis</value>
+    <value>Ningún niño para analizar</value>
     <comment>Home Not Children Found MainText</comment>
   </data>
   <data name="Profile.Can.Not.Take.Photo.From.Camera" xml:space="preserve">
-    <value>Can not take Photo From Camera</value>
+    <value>No se puede tomar la foto de la cámara</value>
     <comment>Profile Can Not Take Photo From Camera</comment>
   </data>
   <data name="Profile.Image.Change" xml:space="preserve">
-    <value>Change profile picture</value>
+    <value>Cambiar foto de perfil</value>
     <comment>Profile Image Change</comment>
   </data>
   <data name="EditSon.Social.Media.Info.Title" xml:space="preserve">
-    <value>How to enable social media?</value>
+    <value>¿Cómo habilitar las redes sociales?</value>
     <comment>EditSon Social Media Info Title</comment>
   </data>
     <data name="EditSon.Social.Media.Info.Text" xml:space="preserve">
-    <value>Unconfigured social media or an invalid access token will appear disabled. In this case, I changed the status of the switch to the desired social medium and enter the child's credentials in the login screen that will appear next.</value>
+    <value>Las redes sociales no configuradas o un token de acceso no válido aparecerán deshabilitados. En este caso, cambié el estado del interruptor al medio social deseado e ingresé las credenciales del niño en la pantalla de inicio de sesión que aparecerá a continuación.</value>
     <comment>EditSon Social Media Info Title</comment>
   </data>
   <data name="EditSon.Social.Media.Invalid.Access.Token" xml:space="preserve">
-    <value>The Access Token is invalid</value>
+    <value>El token de acceso no es válido</value>
     <comment>EditSon Social Media Invalid Access Token</comment>
   </data>
   <data name="EditSon.Social.Media.Unconfigured.Access.Token" xml:space="preserve">
-    <value>Unconfigured access token</value>
+    <value>Token de acceso no configurado</value>
     <comment>EditSon Social Media Unconfigured Access Token</comment>
   </data>
    <data name="EditSon.Social.Media.Valid.Access.Token" xml:space="preserve">
-    <value>Access Token is valid</value>
+    <value>Token de acceso no válido</value>
     <comment>EditSon Social Media Valid Access Token</comment>
   </data>   
   <data name="Settings.Alerts.Categories" xml:space="preserve">
-    <value>Alerts Categories</value>
+    <value>Categorías de alertas</value>
     <comment>Settings Alerts Categories</comment>
   </data>
+
+  <data name="Settings.Alerts.All" xml:space="preserve">
+    <value>Todas las alertas</value>
+    <comment>Settings Alerts All</comment>
+  </data>
+  <data name="Settings.Alerts.All.Description" xml:space="preserve">
+    <value>Todas las alertas de cualquier nivel</value>
+    <comment>Settings Alerts All Description</comment>
+  </data>   
   <data name="Settings.Alerts.Categories.Success.Alerts.Name" xml:space="preserve">
-    <value>Success Alerts</value>
+    <value>Alertas de éxito</value>
     <comment>Settings Alerts Categories Success Alerts Name</comment>
   </data>
   <data name="Settings.Alerts.Categories.Success.Alerts.Description" xml:space="preserve">
-    <value>Success Alerts</value>
+    <value>Alertas de éxito</value>
     <comment>Settings Alerts Categories Success Alerts Description</comment>
   </data>
   <data name="Settings.Alerts.Categories.Info.Alerts.Name" xml:space="preserve">
-    <value>Info Alerts</value>
+    <value>Alertas de información</value>
     <comment>Settings Alerts Categories Info Name</comment>
   </data>
   <data name="Settings.Alerts.Categories.Info.Alerts.Description" xml:space="preserve">
-    <value>Info Alerts</value>
+    <value>Alertas de información</value>
     <comment>Settings Alerts Categories Info Description</comment>
   </data>
  <data name="Settings.Alerts.Categories.Warning.Alerts.Name" xml:space="preserve">
-    <value>Warning Alerts</value>
+    <value>Alertas de advertencia</value>
     <comment>Settings Alerts Categories Warning Name</comment>
   </data>
   <data name="Settings.Alerts.Categories.Warning.Alerts.Description" xml:space="preserve">
-    <value>Warning Alerts</value>
+    <value>Alertas de advertencia</value>
     <comment>Settings Alerts Categories Warning Description</comment>
   </data>
     <data name="Settings.Alerts.Categories.Danger.Alerts.Name" xml:space="preserve">
-    <value>Danger Alerts</value>
+    <value>Alertas de peligro</value>
     <comment>Settings Alerts Categories Danger Name</comment>
   </data>
   <data name="Settings.Alerts.Categories.Danger.Alerts.Description" xml:space="preserve">
-    <value>Danger Alerts</value>
+    <value>Alertas de peligro</value>
     <comment>Settings Alerts Categories Danger Description</comment>
   </data>
   <data name="Settings.Alerts.General" xml:space="preserve">
-    <value>General configuration</value>
+    <value>Configuración general</value>
     <comment>Settings Alerts General</comment>
   </data>
   <data name="Settings.Antiquity.Of.Alerts" xml:space="preserve">
-    <value>Antiquity of alerts</value>
+    <value>Antigüedad de alertas</value>
     <comment>Settings Antiquity Of Alerts</comment>
   </data>
   <data name="Settings.Antiquity.Of.Alerts.Description" xml:space="preserve">
-    <value>{0} minutes</value>
+    <value> {0} minutos</value>
     <comment>Settings Antiquity Of Alerts Description</comment>
   </data>
+  <data name="Settings.Antiquity.Of.Alerts.No.Filter" xml:space="preserve">
+    <value> Sin filtro </value>
+    <comment>Settings Antiquity Of Alerts No Filter</comment>
+  </data>
+  <data name="Settings.Push.Notifications" xml:space="preserve">
+    <value>Habilitar notificaciones automáticas</value>
+    <comment>Settings Push Notifications</comment>
+  </data>
+  <data name="Settings.Push.Notifications.Description" xml:space="preserve">
+    <value> La activación de notificaciones push le permitirá recibir notificaciones sin tener la aplicación abierta. </value>
+    <comment>Settings Push Notifications Description</comment>
+  </data>
+  <data name="Settings.Remove.Alerts" xml:space="preserve">
+    <value>Eliminar alertas</value>
+    <comment>Settings Remove Alerts</comment>
+  </data>
+  <data name="Settings.Remove.Alerts.Description" xml:space="preserve">
+    <value> Las alertas no se eliminan de forma predeterminada, puede configurarlas cuando se eliminan. </value>
+    <comment>Settings Remove Alerts Description</comment>
+  </data>
+  <data name="Settings.Remove.Alerts.Never" xml:space="preserve">
+    <value>Nunca</value>
+    <comment>Settings Remove Alerts Never</comment>
+  </data>
+  <data name="Settings.Remove.Alerts.Last.Hour" xml:space="preserve">
+    <value>última hora</value>
+    <comment>Settings Remove Alerts Last Hour</comment>
+  </data>
+  <data name="Settings.Remove.Alerts.Last.Day" xml:space="preserve">
+    <value>Último día</value>
+    <comment>Settings Remove Alerts Last Day</comment>
+  </data>
+  <data name="Settings.Remove.Alerts.Last.Month" xml:space="preserve">
+    <value>El mes pasado</value>
+    <comment>Settings Remove Alerts Last Month</comment>
+  </data>
   <data name="Settings.Alerts.Count.New.Alerts" xml:space="preserve">
-    <value>Number of Alerts</value>
+    <value>Número de alertas</value>
     <comment>Settings Alerts Count New Alerts</comment>
   </data>
    <data name="Settings.Alerts.Count.New.Alerts.Description" xml:space="preserve">
-    <value>Select the maximum number of alerts you want to appear on the home screen</value>
+    <value>Seleccione la cantidad máxima de alertas que desea que aparezca en la pantalla de inicio</value>
     <comment>Settings Alerts Count New Alerts Description</comment>
   </data>
   <data name="Settings.Alerts.Last.Alerts" xml:space="preserve">
-    <value>{0} Alerts</value>
+    <value>{0} Alertas</value>
     <comment>Settings Alerts Last Alerts</comment>
   </data>
+  <data name="Settings.Alerts.Last.Alerts.No.Filter" xml:space="preserve">
+    <value>Sin filtro</value>
+    <comment>Settings Alerts Last Alerts No Filter</comment>
+  </data>
   <data name="Settings.Changes.Saved" xml:space="preserve">
-    <value>Changes saved</value>
+    <value>Cambios guardados</value>
     <comment>Settings Changes Saved</comment>
   </data>   
-  <data name="Results.Comments.By.Son" xml:space="preserve">
-    <value>Comments by son for last iteration </value>
-    <comment>Results Comments By Son</comment>
+  <data name="Settings.Privacy.Policy" xml:space="preserve">
+    <value>Política de Privacidad</value>
+    <comment>Settings Privacy Policy</comment>
   </data> 
-  <data name="Results.Last.Iterations" xml:space="preserve">
-    <value>Last Iterations</value>
-    <comment>Results Last Iterations</comment>
+  <data name="Privacy.Policy.Title" xml:space="preserve">
+    <value>Política de Privacidad</value>
+    <comment>Privacy Policy Title</comment>
+  </data>
+  <data name="Privacy.Policy.Description" xml:space="preserve">
+    <value>Privacy Policy Description</value>
+    <comment>Privacy Policy Description</comment>
+  </data>
+  <data name="Results.Comments.Son" xml:space="preserve">
+    <value>Comentarios extraídos</value>
+    <comment>Results Comments Son</comment>
+  </data>
+  <data name="Results.Comments.Son.Loading" xml:space="preserve">
+    <value>Cargando los comentarios extraídos </value>
+    <comment>Results Comments Son Loading</comment>
+  </data>
+  <data name="Results.Comments.Son.Error" xml:space="preserve">
+    <value>Error al cargar los comentarios extraídos </value>
+    <comment>Results Comments Son Error</comment>
+  </data>
+  <data name="Results.System.Alerts" xml:space="preserve">
+    <value>Alertas del sistema</value>
+    <comment>Results System Alerts</comment>
+  </data>
+  <data name="Results.System.Alerts.Loading" xml:space="preserve">
+    <value>Cargando alertas del sistema ...</value>
+    <comment>Results System Alerts Loading</comment>
+  </data>
+
+   <data name="Results.System.Alerts.Error" xml:space="preserve">
+    <value>Error al cargar las alertas del sistema </value>
+    <comment>Results System Alerts Error</comment>
+  </data>
+    
+  <data name="Results.Social.Media.Likes" xml:space="preserve">
+    <value>"Likes" por medio social</value>
+    <comment>Results Social Media Likes</comment>
+  </data>
+
+  <data name="Results.Social.Media.Likes.Loading" xml:space="preserve">
+    <value>Cargando "Likes" por medio social</value>
+    <comment>Results Social Media Likes Loading</comment>
+  </data>
+
+    <data name="Results.Social.Media.Likes.Error" xml:space="preserve">
+    <value>Error cargando "Likes" por medio social</value>
+    <comment>Results Social Media Likes Error</comment>
+  </data>
+
+  <data name="Results.Most.Active.Friends" xml:space="preserve">
+    <value>Amigos más activos</value>
+    <comment>Results.Most.Active.Friends</comment>
+  </data>
+
+   <data name="Results.Most.Active.Friends.Loading" xml:space="preserve">
+    <value>Cargando nuevos amigos</value>
+    <comment>Results.New.Friends.Loading</comment>
+  </data>
+
+  <data name="Results.Most.Active.Friends.Error" xml:space="preserve">
+    <value>Error al cargar nuevos amigos</value>
+    <comment>Results.New.Friends.Error</comment>
+  </data>
+
+  <data name="Results.New.Friends" xml:space="preserve">
+    <value>Nuevos amigos</value>
+    <comment>Results.New.Friends</comment>
+  </data>
+
+  <data name="Results.New.Friends.Loading" xml:space="preserve">
+    <value>Cargando nuevos amigos</value>
+    <comment>Results.New.Friends.Loading</comment>
+  </data>
+
+  <data name="Results.New.Friends.Error" xml:space="preserve">
+    <value>Error al cargar nuevos amigos</value>
+    <comment>Results.New.Friends.Error</comment>
+  </data>
+
+    
+
+  <!-- Statistics son -->
+  <data name="Settings.Statistics.Son.General" xml:space="preserve">
+    <value>Configuración general</value>
+    <comment>Settings Statistics Son General</comment>
+  </data>
+
+  <data name="Settings.Statistics.General.Interval" xml:space="preserve">
+    <value>Intervalo de tiempo</value>
+    <comment>Settings Statistics Son General Interval</comment>
+  </data>  
+
+  <data name="Settings.Statistics.General.Interval.Description" xml:space="preserve">
+    <value>Puede establecer el intervalo de tiempo para el que se mostrarán los resultados</value>
+    <comment>Settings Statistics Son General Interval Description</comment>
+  </data>  
+
+   <data name="Settings.Statistics.General.Interval.Option" xml:space="preserve">
+    <value>Los últimos {0} días</value>
+    <comment>Settings Statistics Son General Interval Description</comment>
+  </data>  
+
+  <data name="Statistics.Son.Social.Sentiment.Analysis" xml:space="preserve">
+    <value>Análisis de sentimiento social</value>
+    <comment>Statistics Son Social Sentiment Analysis</comment>
   </data> 
+
+  <data name="Statistics.Son.Social.Sentiment.Analysis.Loading" xml:space="preserve">
+    <value>Cargando el análisis de sentimiento ...</value>
+    <comment>Statistics Son Social Sentiment Analysis Loading</comment>
+  </data>
+
+  <data name="Statistics.Son.Social.Sentiment.Analysis.Error" xml:space="preserve">
+    <value>El gráfico de Análisis de Sentimiento no se pudo cargar</value>
+    <comment>Statistics Son Social Sentiment Analysis Error </comment>
+  </data>
+
+  <data name="Statistics.Son.Social.Media.Activities" xml:space="preserve">
+    <value>Actividad en medios sociales</value>
+    <comment>Statistics Son Social Media Activities</comment>
+  </data>
+
+    <data name="Statistics.Son.Social.Media.Activities.Loading" xml:space="preserve">
+    <value>Cargando estadísticas de medios sociales</value>
+    <comment>Statistics Son Social Media Activities Loading</comment>
+  </data>
+
+   <data name="Statistics.Son.Social.Media.Activities.Error" xml:space="preserve">
+    <value>La gráfica de actividad en medios sociales no ha podido ser mostrada</value>
+    <comment>Statistics Son Social Media Activitie Error </comment>
+  </data>
+
+  <data name="Statistics.Son.Four.Dimensions" xml:space="preserve">
+    <value>Cuatro dimensiones</value>
+    <comment>Statistics Son Four Dimensions</comment>
+  </data>
+
+  <data name="Statistics.Son.Four.Dimensions.Loading" xml:space="preserve">
+    <value>Cargando dimensiones ...</value>
+    <comment>Statistics Son Four Dimensions Loading </comment>
+  </data>
+
+  <data name="Statistics.Son.Four.Dimensions.Error" xml:space="preserve">
+    <value>Gráfica de dimensiones no ha podido ser cargada </value>
+    <comment>Statistics Son Four Dimensions Error </comment>
+  </data>
+
+  <data name="Statistics.Son.Communities" xml:space="preserve">
+    <value>Comunidades</value>
+    <comment>Statistics Son Communities</comment>
+  </data> 
+
+  <data name="Statistics.Son.Communities.Loading" xml:space="preserve">
+    <value>Comunidades</value>
+    <comment>Statistics Son Communities Loading</comment>
+  </data>
+
+  <data name="Statistics.Son.Communities.Error" xml:space="preserve">
+    <value>La gráfica de comunidades no ha podido ser mostrada </value>
+    <comment>Statistics Son Communities Error</comment>
+  </data> 
+  <data name="Alerts.Category.Default" xml:space="preserve">
+        <value>Ninguna acción requerida</value>
+        <comment>Alerts Category Default</comment>
+   </data>
+   <data name="Alerts.Category.Information.Son" xml:space="preserve">
+        <value>Vaya a la sección de edición del niño para más información</value>
+        <comment>Alerts Category Information Son</comment>
+   </data>
+
+    <data name="Alerts.Category.General.Statistics" xml:space="preserve">
+        <value>Vaya a la sección de Resultados para obtener más información</value>
+        <comment>Alerts Category General Statistics</comment>
+    </data>
+
+    <data name="Alerts.Category.Statistics.Son" xml:space="preserve">
+        <value>Vaya a la sección de estadísticas del niño para más información</value>
+        <comment>Alerts Category Statistics Son</comment>
+    </data>
+
+    <data name="Alerts.Category.Information.Extraction" xml:space="preserve">
+        <value>Ve a la lista de comentarios para verlos</value>
+        <comment>Alerts Category Information Extraction</comment>
+    </data>
+
+    <data name="Alerts.Category.Information.Son.Action.Text" xml:space="preserve">
+        <value>Ir a editar hijo</value>
+        <comment>Alerts Category Information Son Action Text</comment>
+    </data>
+
+    <data name="Alerts.Category.General.Statistics.Action.Text" xml:space="preserve">
+        <value>Ir a estadísticas generales</value>
+        <comment>Alerts Category General Statistics Action Text</comment>
+    </data>
+
+    <data name="Alerts.Category.Statistics.Son.Action.Text" xml:space="preserve">
+        <value> Ir a las estadísticas del hijo</value>
+        <comment>Alerts Category Statistics Son Action Text</comment>
+    </data>
+
+    <data name="Alerts.Category.Information.Extraction.Action.Text" xml:space="preserve">
+        <value>Ir a la lista de comentarios</value>
+        <comment>Alerts Category Information Extraction Action Text</comment>
+    </data>
+
+    
+    <data name="Comments.Not.Found.MainText" xml:space="preserve">
+        <value>No se encontraron comentarios</value>
+        <comment>Comments Not Found MainText</comment>
+    </data>
+
+    <data name="Comments.Not.Found.SecondText" xml:space="preserve">
+        <value>No se encontraron comentarios</value>
+        <comment>Comments Not Found SecondText</comment>
+    </data>
+
+    <data name="Comments.Error.Ocurred" xml:space="preserve">
+        <value>Hubo un error al cargar comentarios</value>
+        <comment>Comments Error Ocurred</comment>
+    </data>
+
+
+    
+    <data name="Comments.Detail.CreatedTime" xml:space="preserve">
+        <value>Comentario creado en {0}</value>
+        <comment>Comments Detail CreatedTime</comment>
+    </data>
+
+
+    <data name="Comments.Detail.Sentiment.Level.Unknown" xml:space="preserve">
+        <value>No hay resultados para el análisis de sentimiento</value>
+        <comment>Comments.Detail.Sentiment.Level.Unknown</comment>
+    </data>
+
+    <data name="Comments.Detail.Sentiment.Level.Neutro" xml:space="preserve">
+        <value>El comentario tiene un sentimiento neutral</value>
+        <comment>Comments.Detail.Sentiment.Level.Neutro</comment>
+    </data>
+
+    <data name="Comments.Detail.Sentiment.Level.Positive" xml:space="preserve">
+        <value>El comentario tiene un sentimiento positivo</value>
+        <comment>Comments.Detail.Sentiment.Level.Positive</comment>
+    </data>
+
+    <data name="Comments.Detail.Sentiment.Level.Negative" xml:space="preserve">
+        <value>El comentario tiene un sentimiento negativo</value>
+        <comment>Comments.Detail.Sentiment.Level.Negative</comment>
+    </data>
+
+    <data name="Comments.Detail.Adult.Level.Unknown" xml:space="preserve">
+        <value>No hay resultados para el análisis de contenido para adultos</value>
+        <comment>Comments.Detail.Adult.Level.Unknown</comment>
+    </data>
+
+    <data name="Comments.Detail.Adult.Level.Positive" xml:space="preserve">
+        <value>El comentario está relacionado con contenido para adultos</value>
+        <comment>Comments.Detail.Adult.Level.Positive</comment>
+    </data>
+
+    <data name="Comments.Detail.Adult.Level.Negative" xml:space="preserve">
+        <value>El comentario no tiene relación con el contenido para adultos</value>
+        <comment>Comments.Detail.Adult.Level.Negative</comment>
+    </data>
+
+    <data name="Comments.Detail.Drugs.Level.Unknown" xml:space="preserve">
+        <value>No hay resultados para el análisis de drogas</value>
+        <comment>Comments.Detail.Drugs.Level.Unknown</comment>
+    </data>
+
+    <data name="Comments.Detail.Drugs.Level.Positive" xml:space="preserve">
+        <value>El comentario está relacionado con las drogas</value>
+        <comment>Comments.Detail.Drugs.Level.Positive</comment>
+    </data>
+
+    <data name="Comments.Detail.Drugs.Level.Negative" xml:space="preserve">
+        <value>El comentario no está relacionado con las drogas</value>
+        <comment>Comments.Detail.Drugs.Level.Negative</comment>
+    </data>
+
+    <data name="Comments.Detail.Violence.Level.Unknown" xml:space="preserve">
+        <value>No hay resultados para el análisis de la violencia</value>
+        <comment>Comments.Detail.Violence.Level.Unknown</comment>
+    </data>
+
+    <data name="Comments.Detail.Violence.Level.Positive" xml:space="preserve">
+        <value>El comentario es violento</value>
+        <comment>Comments.Detail.Violence.Level.Positive</comment>
+    </data>
+
+    <data name="Comments.Detail.Violence.Level.Negative" xml:space="preserve">
+        <value>El comentario no es violento</value>
+        <comment>Comments.Detail.Violence.Level.Negative</comment>
+    </data>
+
+    <data name="Comments.Detail.Bullying.Level.Unknown" xml:space="preserve">
+        <value>No hay resultados para el análisis de bullying</value>
+        <comment>Comments.Detail.Bullying.Level.Unknown</comment>
+    </data>
+
+    <data name="Comments.Detail.Bullying.Level.Positive" xml:space="preserve">
+        <value>Comentario creado en {0}</value>
+        <comment>Comments.Detail.Bullying.Level.Positive</comment>
+    </data>
+
+    <data name="Comments.Detail.Bullying.Level.Negative" xml:space="preserve">
+        <value>Comentario creado en {0}</value>
+        <comment>Comments.Detail.Bullying.Level.Negative</comment>
+    </data>
+
+    <data name="Comments.Dimensions.Filter" xml:space="preserve">
+        <value>Aplicar filtro de dimensión</value>
+        <comment>Comments Dimensions Filter</comment>
+    </data>
+
+    <data name="Comments.Dimensions.Filter.All" xml:space="preserve">
+        <value>Toda la dimensiones</value>
+        <comment>Comments Dimensions Filter All</comment>
+    </data>
+
+    <data name="Comments.Dimensions.Filter.All.Description" xml:space="preserve">
+        <value>Todas las dimensiones habilitadas</value>
+        <comment>Comments Dimensions Filter All Description</comment>
+    </data>
+
+    <data name="Comments.Dimensions.Violence" xml:space="preserve">
+        <value>Violencia</value>
+        <comment>Comments Dimensions Violence</comment>
+    </data>
+    
+    <data name="Comments.Dimensions.Violence.Description" xml:space="preserve">
+        <value>Comentarios relacionados con la violencia</value>
+        <comment>Comments Dimensions Violence Description</comment>
+    </data>
+
+    <data name="Comments.Dimensions.Drugs" xml:space="preserve">
+        <value>Drogas</value>
+        <comment>Comments Dimensions Drugs</comment>
+    </data>
+    
+    <data name="Comments.Dimensions.Drugs.Description" xml:space="preserve">
+        <value>Comentarios relacionados con drogas</value>
+        <comment>Comments Dimensions Drugs Description</comment>
+    </data>
+
+    <data name="Comments.Dimensions.Bullying" xml:space="preserve">
+        <value>Bullying</value>
+        <comment>Comments Dimensions Bullying</comment>
+    </data>
+    
+    <data name="Comments.Dimensions.Bullying.Description" xml:space="preserve">
+        <value>Comentarios relacionados con Bullying</value>
+        <comment>Comments Dimensions Bullying Description</comment>
+    </data>
+
+    <data name="Comments.Dimensions.Sex" xml:space="preserve">
+        <value>Sexo</value>
+        <comment>Comments Dimensions Sex</comment>
+    </data>
+    
+    <data name="Comments.Dimensions.Sex.Description" xml:space="preserve">
+        <value>Comentarios relacionados con el contenido para adultos</value>
+        <comment>Comments Dimensions Sex Description</comment>
+    </data>
+
+    <data name="Comments.Dimensions.Filter.Title" xml:space="preserve">
+        <value>Filtro Comentarios</value>
+        <comment>Comments Dimensions Filter Title</comment>
+    </data>
+
+
+    <data name="Comments.SocialMedia.Filter.All" xml:space="preserve">
+        <value>Todos los medios sociales</value>
+        <comment>Comments SocialMedia Filter All</comment>
+    </data>
+
+    <data name="Comments.SocialMedia.Filter.All.Description" xml:space="preserve">
+        <value>Habilitar todas las redes sociales</value>
+        <comment>Comments SocialMedia Filter All Description</comment>
+    </data>
+
+    <data name="Authentication.Facebook.Enable.Title" xml:space="preserve">
+        <value>Habilitar el acceso a Bulltec</value>
+        <comment>Authentication Facebook Enable Title</comment>
+    </data>
 
 	
 </root>
