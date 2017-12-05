@@ -294,7 +294,7 @@
     <comment>Walkthrough Btn Next</comment>
   </data>
   <data name="Walkthrough.Btn.Finish" xml:space="preserve">
-    <value>Go To Login</value>
+    <value>Finish</value>
     <comment>Walkthrough Btn Finish</comment>
   </data>
 
@@ -329,6 +329,48 @@
   <data name="WelcomePage.Walkthrough.Btn" xml:space="preserve">
     <value>See Walkthrough</value>
     <comment>WelcomePage Walkthrough Btn</comment>
+  </data>
+
+	
+  <data name="WelcomePage.Walkthrough.First.Header" xml:space="preserve">
+    <value>The Social Media Protec</value>
+    <comment>WelcomePage Walkthrough First Header</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.First.Description" xml:space="preserve">
+    <value>Help protect children and youth from harassment and attacks received from social networks.</value>
+    <comment>WelcomePage Walkthrough First Description</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.Second.Header" xml:space="preserve">
+    <value>Register children</value>
+    <comment>WelcomePage Walkthrough Second Header</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.Second.Description" xml:space="preserve">
+    <value>Registers children to supervise</value>
+    <comment>WelcomePage Walkthrough Second Description</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.Third.Header" xml:space="preserve">
+    <value>Enable social media</value>
+    <comment>WelcomePage Walkthrough Third Header</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.Third.Description" xml:space="preserve">
+    <value>Monitor your social media</value>
+    <comment>WelcomePage Walkthrough First Description</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.Four.Header" xml:space="preserve">
+    <value>Activity in social media</value>
+    <comment>WelcomePage Walkthrough Four Header</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.Four.Description" xml:space="preserve">
+    <value>We obtain information about your activity in social media</value>
+    <comment>WelcomePage Walkthrough Four Description</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.Five.Header" xml:space="preserve">
+    <value>Four Dimensions</value>
+    <comment>WelcomePage Walkthrough Five Header</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.Five.Description" xml:space="preserve">
+    <value>We determine its relationship with the different risk groups</value>
+    <comment>WelcomePage Walkthrough Five Description</comment>
   </data>
   <data name="Login.Text" xml:space="preserve">
     <value>Login or register using your
@@ -763,7 +805,48 @@ and we will recover it for you. </value>
     <value> Location of School </value>
     <comment>EditSon School Map Visualize</comment>
   </data>
+	
+  <data name="EditSon.Account.Info.Not.Configured.Title" xml:space="preserve">
+    <value> Social Media not configured </value>
+    <comment>EditSon Account Info Not Configured</comment>
+  </data>
+	
+  <data name="EditSon.Account.Info.Not.Configured.Description" xml:space="preserve">
+    <value> This social environment is not enabled. You must enable it to obtain information. </value>
+    <comment>EditSon Account Info Not Configured</comment>
+  </data>   
 
+  <data name="EditSon.Account.Info.Valid.Title" xml:space="preserve">
+    <value> Account linked correctly </value>
+    <comment>EditSon Account Info Valid Title</comment>
+  </data>
+
+  <data name="EditSon.Account.Info.Valid.Description" xml:space="preserve">
+    <value> the user is linked to a {0} account </value>
+    <comment>EditSon Account Info Valid Description</comment>
+  </data>
+
+  <data name="EditSon.Account.Info.Valid.UserSocial.Description" xml:space="preserve">
+    <value> This user is linked to the account of the user {0} on {1} </value>
+    <comment>EditSon Account Info Valid UserSocial Description</comment>
+  </data>
+    
+  <data name="EditSon.Account.Info.Invalid.Title" xml:space="preserve">
+    <value> Account not linked </value>
+    <comment>EditSon Account Info Invalid Title</comment>
+  </data>
+
+
+  <data name="EditSon.Account.Info.Invalid.Description" xml:space="preserve">
+    <value> It is necessary to re-enable access. The link to the {0} account is no longer valid </value>
+    <comment>EditSon Account Info Invalid Description</comment>
+  </data>
+
+  <data name="EditSon.Account.Info.Invalid.UserSocial.Description" xml:space="preserve">
+    <value> It is necessary to re-enable access. The link to the {0} account on {1} has expired </value>
+    <comment>EditSon Account Info Invalid Description</comment>
+  </data>
+	
   <data name="Global.ErrorOcurred" xml:space="preserve">
     <value>An error occurred</value>
     <comment>Global Error Ocurred</comment>

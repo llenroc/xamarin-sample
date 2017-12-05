@@ -37,6 +37,7 @@
                 <converters:DefaultReactiveUnitConverter x:Key="DefaultReactiveUnitConverter" />
                 <converters:ValueEqualToZeroConverter x:Key="ValueEqualToZeroConverter" />
                 <converters:IsValidStringConverter x:Key="IsValidStringConverter" />
+                <converters:SocialMediaToItemConverter x:Key="SocialMediaToItemConverter" />
                 <x:String x:Key="firstNameKey">firstName</x:String>
                 <x:String x:Key="lastNameKey">lastName</x:String>
                 <x:String x:Key="schoolKey">school</x:String>
@@ -381,7 +382,6 @@
                             </StackLayout>
 
                             <!-- Facebook -->
-
                             <Grid ColumnSpacing="10" Padding="5">
 
                                 <Grid.ColumnDefinitions>
@@ -404,8 +404,8 @@
                                             Text="{ x:Static helper:FontAwesomeFont.Facebook }"
                                             FontFamily="{ StaticResource IconsFontFamily }"
                                             TextColor="{ Binding Path=CurrentSocialMedia,
-                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
-                                                    ConverterParameter={StaticResource facebookKey}}">
+                                                    Converter={ StaticResource SocialMediaStatusToColorConverter },
+                                                    ConverterParameter={ StaticResource facebookKey }}">
 
                                             <Label.FontSize>
                                                 <OnIdiom 
@@ -416,15 +416,15 @@
 
                                          </Label>
 
-                                          <Label
+                                         <Label
                                                 VerticalTextAlignment="Center"
                                                 HorizontalTextAlignment="Center"
                                                 HorizontalOptions="StartAndExpand"
                                                 Text="{i18n:Translate Common.RRSS.Facebook}"
                                                 Margin="0,0,10,0"
                                                 TextColor="{ Binding Path=CurrentSocialMedia,
-                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
-                                                    ConverterParameter={StaticResource facebookKey}}">
+                                                    Converter={ StaticResource SocialMediaStatusToColorConverter },
+                                                    ConverterParameter={ StaticResource facebookKey }}">
                                                 <Label.FontSize>
                                                     <OnIdiom 
                                                         x:TypeArguments="x:Double"
@@ -434,7 +434,6 @@
                                            </Label>
 
                                             <Label
-                                                Grid.Column="2" 
                                                 VerticalTextAlignment="Center"
                                                 HorizontalTextAlignment="Center"
                                                 HorizontalOptions="Start"
@@ -442,8 +441,8 @@
                                                 Text="{ x:Static helper:FontAwesomeFont.InfoCircle }"
                                                 FontFamily="{ StaticResource IconsFontFamily }"
                                                 TextColor="{ Binding Path=CurrentSocialMedia,
-                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
-                                                    ConverterParameter={StaticResource facebookKey}}">
+                                                    Converter={ StaticResource SocialMediaStatusToColorConverter },
+                                                    ConverterParameter={ StaticResource facebookKey }}">
                                                 <Label.FontSize>
                                                     <OnIdiom 
                                                         x:TypeArguments="x:Double"
@@ -451,36 +450,16 @@
                                                         Tablet="20" />
                                                 </Label.FontSize> 
 
-                                                <!--<Label.GestureRecognizers>
-                                                    <TapGestureRecognizer 
-                                                        Tapped="OnCountNewAlertsInfo"
-                                                        NumberOfTapsRequired="1" /> 
-                                                </Label.GestureRecognizers>-->
+
                                             </Label>
 
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer 
+                                                        Command="{ Binding ShowAccountInfoCommand }"
+                                                        CommandParameter="{ StaticResource facebookKey }"
+                                                        NumberOfTapsRequired="1" /> 
+                                                </StackLayout.GestureRecognizers>
 
-                                            <!--<Label
-                                                VerticalTextAlignment="Center"
-                                                HorizontalTextAlignment="End"
-                                                HorizontalOptions="EndAndExpand"
-                                                LineBreakMode="TailTruncation"
-                                                Text="{ Binding Path=CurrentSocialMedia,
-                                                    Converter={StaticResource SocialMediaStatusToTextConverter},
-                                                    ConverterParameter={StaticResource facebookKey}}"
-                                                TextColor="{ Binding Path=CurrentSocialMedia,
-                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
-                                                    ConverterParameter={StaticResource facebookKey}}">
-                                                <Label.FontSize>
-                                                    <OnIdiom 
-                                                        x:TypeArguments="x:Double"
-                                                        Phone="15" 
-                                                        Tablet="20" />
-                                                 </Label.FontSize> 
-                                           </Label>-->
-
-
-                                            
-                                                
                                    </StackLayout>
 
                                    <StackLayout Grid.Column="1" Orientation="Horizontal">
@@ -533,6 +512,7 @@
                                             NumberOfTapsRequired="1" />
                                    </Grid.GestureRecognizers>
                             </Grid>
+                            <!-- End Facebook -->
 
                             <!-- Instagram -->
                             <Grid ColumnSpacing="10" Padding="5">
@@ -584,7 +564,6 @@
                                             </Label>
 
                                             <Label
-                                                Grid.Column="2" 
                                                 VerticalTextAlignment="Center"
                                                 HorizontalTextAlignment="Center"
                                                 HorizontalOptions="Start"
@@ -601,33 +580,17 @@
                                                         Tablet="20" />
                                                 </Label.FontSize> 
 
-                                                <!--<Label.GestureRecognizers>
-                                                    <TapGestureRecognizer 
-                                                        Tapped="OnCountNewAlertsInfo"
-                                                        NumberOfTapsRequired="1" /> 
-                                                </Label.GestureRecognizers>-->
+
+
                                             </Label>
 
-                                            <!--<Label
-                                                VerticalTextAlignment="Center"
-                                                HorizontalTextAlignment="End"
-                                                HorizontalOptions="EndAndExpand"
-                                                LineBreakMode="TailTruncation"
-                                                Text="{ Binding CurrentSocialMedia,
-                                                    Converter={StaticResource SocialMediaStatusToTextConverter},
-                                                    ConverterParameter={StaticResource instagramKey}}"
-                                                TextColor="{ Binding Path=CurrentSocialMedia,
-                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
-                                                    ConverterParameter={StaticResource instagramKey}}">
-                                                <Label.FontSize>
-                                                    <OnIdiom 
-                                                        x:TypeArguments="x:Double"
-                                                        Phone="15" 
-                                                        Tablet="20" />
-                                                 </Label.FontSize> 
-                                           </Label>-->
+                                            <StackLayout.GestureRecognizers>
+                                                  <TapGestureRecognizer 
+                                                       Command="{ Binding ShowAccountInfoCommand }"
+                                                       CommandParameter="{ StaticResource instagramKey }"
+                                                       NumberOfTapsRequired="1" /> 
+                                            </StackLayout.GestureRecognizers>
 
-                                
                                     </StackLayout>
 
                                     <StackLayout Grid.Column="1" Orientation="Horizontal">
@@ -734,7 +697,6 @@
                                         </Label>
 
                                         <Label
-                                            Grid.Column="2" 
                                             VerticalTextAlignment="Center"
                                             HorizontalTextAlignment="Center"
                                             HorizontalOptions="Start"
@@ -751,33 +713,15 @@
                                                     Tablet="20" />
                                             </Label.FontSize> 
 
-                                            <!--<Label.GestureRecognizers>
-                                                <TapGestureRecognizer 
-                                                    Tapped="OnCountNewAlertsInfo"
-                                                    NumberOfTapsRequired="1" /> 
-                                            </Label.GestureRecognizers>-->
                                         </Label>
 
-                                        <!--<Label
-                                                VerticalTextAlignment="Center"
-                                                HorizontalTextAlignment="End"
-                                                HorizontalOptions="EndAndExpand"
-                                                LineBreakMode="TailTruncation"
-                                                Text="{ Binding CurrentSocialMedia,
-                                                    Converter={StaticResource SocialMediaStatusToTextConverter},
-                                                    ConverterParameter={StaticResource youtubeKey}}"
-                                                TextColor="{ Binding Path=CurrentSocialMedia,
-                                                    Converter={StaticResource SocialMediaStatusToColorConverter},
-                                                    ConverterParameter={StaticResource youtubeKey}}">
-                                                <Label.FontSize>
-                                                    <OnIdiom 
-                                                        x:TypeArguments="x:Double"
-                                                        Phone="15" 
-                                                        Tablet="20" />
-                                                 </Label.FontSize> 
-                                           </Label>-->
+                                        <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer 
+                                                    Command="{ Binding ShowAccountInfoCommand }"
+                                                    CommandParameter="{ StaticResource youtubeKey }"
+                                                    NumberOfTapsRequired="1" /> 
+                                        </StackLayout.GestureRecognizers>
 
-                                            
                                     </StackLayout>
 
 
@@ -818,8 +762,8 @@
                                             VerticalOptions="Center" 
                                             HorizontalOptions="End" 
                                             IsToggled="{Binding Path=CurrentSocialMedia,  
-                                                        Converter={StaticResource SocialMediaStatusToBoolConverter},
-                                                        ConverterParameter={StaticResource youtubeKey}}">
+                                                        Converter={ StaticResource SocialMediaStatusToBoolConverter },
+                                                        ConverterParameter={ StaticResource youtubeKey }}">
 
                                                        
                                         </Switch>

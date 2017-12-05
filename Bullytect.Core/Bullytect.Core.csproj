@@ -258,6 +258,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\EditSon\Popup\AccountInfoPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\CanNotTakePhotoFromCameraException.cs" />
@@ -710,6 +714,10 @@
     <Compile Include="Utils\Timer.cs" />
     <Compile Include="Pages\Common\Templates\ConfirmationPopup.xaml.cs">
       <DependentUpon>ConfirmationPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\SocialMediaToItemConverter.cs" />
+    <Compile Include="Pages\EditSon\Popup\AccountInfoPopup.xaml.cs">
+      <DependentUpon>AccountInfoPopup.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

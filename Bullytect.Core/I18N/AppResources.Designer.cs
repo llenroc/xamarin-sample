@@ -365,6 +365,66 @@ namespace Bullytect.Core.I18N {
             }
         }
         
+        internal static string WelcomePage_Walkthrough_First_Header {
+            get {
+                return ResourceManager.GetString("WelcomePage.Walkthrough.First.Header", resourceCulture);
+            }
+        }
+        
+        internal static string WelcomePage_Walkthrough_First_Description {
+            get {
+                return ResourceManager.GetString("WelcomePage.Walkthrough.First.Description", resourceCulture);
+            }
+        }
+        
+        internal static string WelcomePage_Walkthrough_Second_Header {
+            get {
+                return ResourceManager.GetString("WelcomePage.Walkthrough.Second.Header", resourceCulture);
+            }
+        }
+        
+        internal static string WelcomePage_Walkthrough_Second_Description {
+            get {
+                return ResourceManager.GetString("WelcomePage.Walkthrough.Second.Description", resourceCulture);
+            }
+        }
+        
+        internal static string WelcomePage_Walkthrough_Third_Header {
+            get {
+                return ResourceManager.GetString("WelcomePage.Walkthrough.Third.Header", resourceCulture);
+            }
+        }
+        
+        internal static string WelcomePage_Walkthrough_Third_Description {
+            get {
+                return ResourceManager.GetString("WelcomePage.Walkthrough.Third.Description", resourceCulture);
+            }
+        }
+        
+        internal static string WelcomePage_Walkthrough_Four_Header {
+            get {
+                return ResourceManager.GetString("WelcomePage.Walkthrough.Four.Header", resourceCulture);
+            }
+        }
+        
+        internal static string WelcomePage_Walkthrough_Four_Description {
+            get {
+                return ResourceManager.GetString("WelcomePage.Walkthrough.Four.Description", resourceCulture);
+            }
+        }
+        
+        internal static string WelcomePage_Walkthrough_Five_Header {
+            get {
+                return ResourceManager.GetString("WelcomePage.Walkthrough.Five.Header", resourceCulture);
+            }
+        }
+        
+        internal static string WelcomePage_Walkthrough_Five_Description {
+            get {
+                return ResourceManager.GetString("WelcomePage.Walkthrough.Five.Description", resourceCulture);
+            }
+        }
+        
         internal static string Login_Text {
             get {
                 return ResourceManager.GetString("Login.Text", resourceCulture);
@@ -1004,6 +1064,54 @@ namespace Bullytect.Core.I18N {
         internal static string EditSon_School_Map_Visualize2 {
             get {
                 return ResourceManager.GetString("EditSon.School.Map.Visualize2", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Account_Info_Not_Configured_Title {
+            get {
+                return ResourceManager.GetString("EditSon.Account.Info.Not.Configured.Title", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Account_Info_Not_Configured_Description {
+            get {
+                return ResourceManager.GetString("EditSon.Account.Info.Not.Configured.Description", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Account_Info_Valid_Title {
+            get {
+                return ResourceManager.GetString("EditSon.Account.Info.Valid.Title", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Account_Info_Valid_Description {
+            get {
+                return ResourceManager.GetString("EditSon.Account.Info.Valid.Description", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Account_Info_Valid_UserSocial_Description {
+            get {
+                return ResourceManager.GetString("EditSon.Account.Info.Valid.UserSocial.Description", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Account_Info_Invalid_Title {
+            get {
+                return ResourceManager.GetString("EditSon.Account.Info.Invalid.Title", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Account_Info_Invalid_Description {
+            get {
+                return ResourceManager.GetString("EditSon.Account.Info.Invalid.Description", resourceCulture);
+            }
+        }
+        
+        internal static string EditSon_Account_Info_Invalid_UserSocial_Description {
+            get {
+                return ResourceManager.GetString("EditSon.Account.Info.Invalid.UserSocial.Description", resourceCulture);
             }
         }
         

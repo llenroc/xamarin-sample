@@ -22,6 +22,12 @@ namespace Bullytect.Core.Rest.Models.Response
         [JsonProperty("invalid_token")]
         public bool InvalidToken { get; set; }
 
+        [JsonProperty("user_social_name")]
+        public string UserSocialName { get; set; }
+
+        [JsonProperty("user_picture")]
+        public string UserPicture { get; set; }
+
         [JsonProperty("user")]
         public string Son { get; set;  }
 

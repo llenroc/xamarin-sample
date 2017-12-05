@@ -330,7 +330,50 @@ namespace Bullytect.Core.ViewModels
                 Schools.Clear();
             });
 
-		#endregion
+        public ICommand ShowAccountInfoCommand
+                => new MvxCommand<string>(async (string Type) =>  {
+
+                    var index = CurrentSocialMedia.Select((SocialItem, SocialIndex)
+                                                  => new { SocialItem, SocialIndex }).FirstOrDefault(i => i.SocialItem.Type.Equals(Type))?.SocialIndex;
+
+                    string Title, Description, Image = null;
+
+                    if (index.HasValue && index.Value >= 0)
+                    {
+                        var SocialMedia = CurrentSocialMedia.ElementAt(index.Value);
+
+                        if (SocialMedia.InvalidToken)
+                        {
+                            Title = AppResources.EditSon_Account_Info_Invalid_Title;
+                            if (SocialMedia.UserSocialName != null)
+                                Description = string.Format(AppResources.EditSon_Account_Info_Invalid_UserSocial_Description, new object[] { SocialMedia.UserSocialName, SocialMedia.Type });
+                            else
+                                Description = string.Format(AppResources.EditSon_Account_Info_Invalid_Description, new object[] { SocialMedia.Type });
+                        }
+                        else
+                        {
+                            Title = AppResources.EditSon_Account_Info_Valid_Title;
+                            if (SocialMedia.UserSocialName != null)
+                                Description = string.Format(AppResources.EditSon_Account_Info_Valid_UserSocial_Description, new object[] { SocialMedia.UserSocialName, SocialMedia.Type });
+                            else
+                                Description = string.Format(AppResources.EditSon_Account_Info_Valid_Description, new object[] { SocialMedia.Type });
+                        }
+
+                        Image = SocialMedia.UserPicture;
+                        
+                    } else {
+                        
+                        Title = AppResources.EditSon_Account_Info_Not_Configured_Title;
+                        Description = AppResources.EditSon_Account_Info_Not_Configured_Description;
+
+                    }
+
+                    var InfoPopup = new AccountInfoPopup(Title, Description, Image);
+                    InfoPopup.BindingContext = this;
+                    await PopupNavigation.PushAsync(InfoPopup);
+                });
+
+        #endregion
 
 		#region methods
 

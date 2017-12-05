@@ -63,6 +63,8 @@ namespace Bullytect.Core.Pages.EditSon
             await PopupNavigation.PushAsync(page);
         }
 
+   
+
         async void OnSelectSchool(object sender, EventArgs args)
         {
             ((Entry)sender).Unfocus();

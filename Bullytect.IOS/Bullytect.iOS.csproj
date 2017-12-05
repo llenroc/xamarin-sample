@@ -583,6 +583,11 @@
     <BundleResource Include="Resources\circulo.png" />
     <BundleResource Include="Resources\editar.png" />
     <BundleResource Include="Resources\statistics.png" />
+    <BundleResource Include="Resources\app_img_01.jpg" />
+    <BundleResource Include="Resources\app_img_02.jpg" />
+    <BundleResource Include="Resources\app_img_03.jpg" />
+    <BundleResource Include="Resources\app_img_04.jpg" />
+    <BundleResource Include="Resources\app_img_05.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bullytect.Core\Bullytect.Core.csproj">

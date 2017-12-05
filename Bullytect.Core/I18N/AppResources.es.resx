@@ -191,8 +191,49 @@
     <comment>Walkthrough Btn Next</comment>
   </data>
   <data name="Walkthrough.Btn.Finish" xml:space="preserve">
-    <value>Ir al Login</value>
+    <value>Finalizar</value>
     <comment>Walkthrough Btn Finish</comment>
+  </data>
+
+  <data name="WelcomePage.Walkthrough.First.Header" xml:space="preserve">
+    <value>The Social Media Protec</value>
+    <comment>WelcomePage Walkthrough First Header</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.First.Description" xml:space="preserve">
+    <value>Ayude a proteger a los niños y jóvenes del acoso y los ataques recibidos de las redes sociales.</value>
+    <comment>WelcomePage Walkthrough First Description</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.Second.Header" xml:space="preserve">
+    <value>Registro de Niños</value>
+    <comment>WelcomePage Walkthrough Second Header</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.Second.Description" xml:space="preserve">
+    <value>Registra los niños a supervisar</value>
+    <comment>WelcomePage Walkthrough Second Description</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.Third.Header" xml:space="preserve">
+    <value>Habilita medios sociales</value>
+    <comment>WelcomePage Walkthrough Third Header</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.Third.Description" xml:space="preserve">
+    <value>Habilita el acceso a los medios sociales que quieras supervisar</value>
+    <comment>WelcomePage Walkthrough First Description</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.Four.Header" xml:space="preserve">
+    <value>Actvidad en medios sociales</value>
+    <comment>WelcomePage Walkthrough Four Header</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.Four.Description" xml:space="preserve">
+    <value>Obtenemos información sobre su actividad en las redes sociales</value>
+    <comment>WelcomePage Walkthrough Four Description</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.Five.Header" xml:space="preserve">
+    <value>Cuatro Dimensiones</value>
+    <comment>WelcomePage Walkthrough Five Header</comment>
+  </data>
+  <data name="WelcomePage.Walkthrough.Five.Description" xml:space="preserve">
+    <value>Determinamos su relación con los diferentes grupos de riesgo</value>
+    <comment>WelcomePage Walkthrough Five Description</comment>
   </data>
 
   <data name="WelcomePage.MainLabel" xml:space="preserve">
@@ -658,6 +699,47 @@ y lo recuperaremos por usted. </value>
    <data name="EditSon.School.Map.Visualize2" xml:space="preserve">
     <value> Ubicación de la escuela </value>
     <comment>EditSon School Map Visualize</comment>
+  </data>
+
+	<data name="EditSon.Account.Info.Not.Configured.Title" xml:space="preserve">
+    <value> Medio social no configurado </value>
+    <comment>EditSon Account Info Not Configured</comment>
+  </data>
+    
+  <data name="EditSon.Account.Info.Not.Configured.Description" xml:space="preserve">
+    <value> El medio social no está habilitado. Debes habilitarlo para comenzar el análisis </value>
+    <comment>EditSon Account Info Not Configured</comment>
+  </data>   
+
+  <data name="EditSon.Account.Info.Valid.Title" xml:space="preserve">
+    <value> Cuenta vinculada correctamente </value>
+    <comment>EditSon Account Info Valid Title</comment>
+  </data>
+
+  <data name="EditSon.Account.Info.Valid.Description" xml:space="preserve">
+    <value> Este usuario está vinculado a una cuenta de {0} </value>
+    <comment>EditSon Account Info Valid Description</comment>
+  </data>
+
+  <data name="EditSon.Account.Info.Valid.UserSocial.Description" xml:space="preserve">
+    <value> Este usuario este vinculado a la cuenta de {0} de {1}  </value>
+    <comment>EditSon Account Info Valid UserSocial Description</comment>
+  </data>
+    
+  <data name="EditSon.Account.Info.Invalid.Title" xml:space="preserve">
+    <value> La cuenta no está vinculada </value>
+    <comment>EditSon Account Info Invalid Title</comment>
+  </data>
+
+
+  <data name="EditSon.Account.Info.Invalid.Description" xml:space="preserve">
+    <value> Es necesario volver a vincular la cuenta. El vinculo a la cuenta de {0} ha dejado de ser válido </value>
+    <comment>EditSon Account Info Invalid Description</comment>
+  </data>
+
+  <data name="EditSon.Account.Info.Invalid.UserSocial.Description" xml:space="preserve">
+    <value> Es necesario volver a vincular la cuenta. El vínculo a la cuenta del usuario {0} de {1} ha expirado </value>
+    <comment>EditSon Account Info Invalid Description</comment>
   </data>
 
   <data name="Global.ErrorOcurred" xml:space="preserve">

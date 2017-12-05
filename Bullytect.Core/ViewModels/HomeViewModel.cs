@@ -235,6 +235,26 @@ namespace Bullytect.Core.ViewModels
 			RaisePropertyChanged(nameof(ShouldShowNoChildrenFound));
         }
 
+        protected override void OnBackPressed()
+        {
+
+
+            _appHelper.RequestConfirmation(AppResources.Profile_Confirm_SignOut)
+                      .Where((confirmed) => confirmed)
+                      .Subscribe((_) =>
+                      {
+
+                          Settings.AccessToken = null;
+                          ShowViewModel<AuthenticationViewModel>(new AuthenticationViewModel.AuthenticationParameter()
+                          {
+                              ReasonForAuthentication = AuthenticationViewModel.SIGN_OUT
+                          });
+                      });
+
+
+
+        }
+
 		#region models
 
 		public class PageModel

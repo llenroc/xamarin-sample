@@ -1,5 +1,6 @@
 ﻿
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Bullytect.Core.Pages.Walkthrough.Items
@@ -86,6 +87,26 @@ namespace Bullytect.Core.Pages.Walkthrough.Items
 			set { SetValue(ButtonBackgroundColorProperty, value); }
 		}
 
+
+        public static BindableProperty ButtonTextColorProperty =
+            BindableProperty.Create(
+                nameof(ButtonTextColor),
+                typeof(Color),
+                typeof(WalkthroughStepItemTemplate),
+                Color.Default,
+                defaultBindingMode: BindingMode.OneWay,
+                propertyChanged: (bindable, oldValue, newValue) => {
+                    var ctrl = (WalkthroughStepItemTemplate)bindable;
+                    ctrl.PrimaryActionButton.TextColor = (Color)newValue;
+                }
+            );
+
+        public Color ButtonTextColor
+        {
+            get { return (Color)GetValue(ButtonTextColorProperty); }
+            set { SetValue(ButtonTextColorProperty, value); }
+        }
+
 		/* ICON */
 
 		public static BindableProperty IconColorProperty =
@@ -147,9 +168,48 @@ namespace Bullytect.Core.Pages.Walkthrough.Items
 			set { SetValue(IconTextProperty, value); }
 		}
 
+        public static readonly BindableProperty ClickedCommandProperty =
+            BindableProperty.Create(
+                nameof(ClickedCommand),
+                typeof(ICommand),
+                typeof(WalkthroughStepItemTemplate),
+                propertyChanged: (bindable, oldValue, newValue) => {
+                    var ctrl = (WalkthroughStepItemTemplate)bindable;
+                    ctrl.PrimaryActionButton.Command = (ICommand)newValue;
+                });
+
+        public ICommand ClickedCommand
+        {
+            get { return (ICommand)GetValue(ClickedCommandProperty); }
+            set { SetValue(ClickedCommandProperty, value); }
+        }
+
+        public static readonly BindableProperty CloseCommandProperty =
+           BindableProperty.Create(
+                nameof(CloseCommandProperty),
+               typeof(ICommand),
+               typeof(WalkthroughStepItemTemplate));
+
+        public ICommand CloseCommand
+        {
+            get { return (ICommand)GetValue(CloseCommandProperty); }
+            set { SetValue(CloseCommandProperty, value); }
+        }
+
+
 		public WalkthroughStepItemTemplate()
 		{
 			InitializeComponent();
+
+           
+
+            var TapGestureRecognizer = new TapGestureRecognizer();
+            TapGestureRecognizer.Tapped += (s, e) => {
+                CloseCommand?.Execute(false);
+            };
+
+            Close.GestureRecognizers.Add(TapGestureRecognizer);
+
 
 			ResetAnimation();
 		}

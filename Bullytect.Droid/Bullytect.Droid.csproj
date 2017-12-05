@@ -61,6 +61,11 @@
     <AndroidResource Include="Resources\drawable\circulo.png" />
     <AndroidResource Include="Resources\drawable\editar.png" />
     <AndroidResource Include="Resources\drawable\statistics.png" />
+    <AndroidResource Include="Resources\drawable\app_img_01.jpg" />
+    <AndroidResource Include="Resources\drawable\app_img_02.jpg" />
+    <AndroidResource Include="Resources\drawable\app_img_03.jpg" />
+    <AndroidResource Include="Resources\drawable\app_img_04.jpg" />
+    <AndroidResource Include="Resources\drawable\app_img_05.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Bullytect.Core\Bullytect.Core.csproj">

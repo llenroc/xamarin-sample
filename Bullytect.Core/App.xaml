@@ -61,6 +61,12 @@
 
             <FileImageSource x:Key="WalkthroughStepGenericPhoneBackgroundImage">walkthrough_generic_phone_bg.png</FileImageSource>
 
+            <FileImageSource x:Key="WalkthroughFirstStep">app_img_01.jpg</FileImageSource>
+            <FileImageSource x:Key="WalkthroughSecondStep">app_img_02.jpg</FileImageSource>
+            <FileImageSource x:Key="WalkthroughThirdStep">app_img_03.jpg</FileImageSource>
+            <FileImageSource x:Key="WalkthroughFourStep">app_img_04.jpg</FileImageSource>
+            <FileImageSource x:Key="WalkthroughFiveStep">app_img_05.jpg</FileImageSource>
+
             <FileImageSource x:Key="ThemeAvatarSample0Image">user_profile_0.jpg</FileImageSource>
             <FileImageSource x:Key="ThemeAvatarSample1Image">user_profile_1.jpg</FileImageSource>
 

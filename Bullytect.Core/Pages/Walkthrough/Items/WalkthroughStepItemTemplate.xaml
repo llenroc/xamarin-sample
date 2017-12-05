@@ -11,9 +11,8 @@
 
     <AbsoluteLayout Padding="20,20,20,20">
         <!-- Background Image -->
-        <ffimageloading:CachedImage 
+        <Image 
             x:Name="img"
-            Source="{ StaticResource WalkthroughStepGenericPhoneBackgroundImage }"
             Aspect="AspectFill"
             TranslationY="60"
             AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
@@ -30,12 +29,33 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="80" />
             </Grid.RowDefinitions>
+
+            <!-- ROW 0 (TOP) -->
+            <!-- Close Icon -->
+
+            <Label
+                x:Name="Close"
+                Grid.Row="0"
+                FontSize="30"
+                TranslationY="20"
+                Text="{ x:Static helper:FontAwesomeFont.Close }"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                TextColor="{ DynamicResource OverImageTextColor}"
+                HeightRequest="30"
+                WidthRequest="30"
+                Style="{StaticResource FontIcon}">
+            </Label>
             
 
-            <!-- ROW 1 (MIDDLE) -->
+            <!-- ROW 1 (TOP) -->
             <StackLayout
-                VerticalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+                TranslationY="50"
                 Grid.Row="1">
+
+                
                 <StackLayout
                     VerticalOptions="EndAndExpand"
                     Padding="60,0,60,10"
@@ -83,28 +103,10 @@
                     Style="{StaticResource PrimaryActionButtonStyle}"
                     x:Name="PrimaryActionButton"
                     Text="Next"
-                    Command="{Binding MoveNextCommand}"
                 />
             </Grid>
 
-            <!-- ROW 0 (TOP) -->
-            <!-- Close Icon -->
 
-            <Label
-                Grid.Row="0"
-                FontSize="30"
-                TranslationY="20"
-                Text="{ x:Static helper:FontAwesomeFont.Close }"
-                HorizontalOptions="End"
-                VerticalOptions="Start"
-                TextColor="{DynamicResource OverImageTextColor}"
-                HeightRequest="30"
-                WidthRequest="30"
-                Style="{StaticResource FontIcon}">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding CloseCommand}" />
-                </Label.GestureRecognizers>
-            </Label>
 
         </Grid>
 

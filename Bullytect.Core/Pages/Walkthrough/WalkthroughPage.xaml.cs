@@ -23,7 +23,7 @@ namespace Bullytect.Core.Pages.Walkthrough
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
 			_closeCommand = new Command(async () => await Close(), () => !Closing);
-			_moveNextCommand = new Command(async () => await MoveNext(), () => !MovingNext);
+            _moveNextCommand = new Command(async () => await MoveNext(), () => !MovingNext);
         }
 
 		protected async override void OnCurrentPageChanged()
@@ -72,18 +72,18 @@ namespace Bullytect.Core.Pages.Walkthrough
 
 		public ICommand CloseCommand => _closeCommand;
 
-		public ICommand MoveNextCommand => _moveNextCommand;
+        public ICommand MoveNextCommand => _moveNextCommand;
 
-		private async Task Close()
+	   async Task Close()
 		{
-            Debug.WriteLine("Close Command Called ...");
+
 			if (!Closing)
 			{
 				Closing = true;
 
 				try
 				{
-					await  Navigation.PopModalAsync();
+                    await Navigation.PopAsync();
 				}
 				finally
 				{
@@ -92,9 +92,9 @@ namespace Bullytect.Core.Pages.Walkthrough
 			}
 		}
 
-		private async Task MoveNext()
+		async Task MoveNext()
 		{
-            Debug.WriteLine("Move Next Command Called ...");
+
 			if (!MovingNext)
 			{
 				MovingNext = true;
@@ -110,7 +110,7 @@ namespace Bullytect.Core.Pages.Walkthrough
 			}
 		}
 
-		private async Task GoToStep()
+		async Task GoToStep()
 		{
             Debug.WriteLine("Go To Step ...");
 			var index = Children.IndexOf(CurrentPage);
